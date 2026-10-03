@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import argparse
+from contextlib import redirect_stdout
 import json
+import sys
 from collections import Counter
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -18,12 +20,20 @@ from .models import PlayerBlockValidationSummary
 from .registry import DECODER_FIELD_STATUSES, EVENT_HEADER_CLAIMS, OFFSET_CLAIMS
 from .player_blocks import parse_player_blocks
 from .truth_inventory import build_truth_inventory
+from .truth_inventory import inventory_inputs
+from .report_inputs import load_research_truth, prepare_truth_inputs, truth_replay_files
+from vg.core.replay_output import ReportInputs, validate_report_outputs, write_report_output
+from vg.core.truth_input import TruthInputError
 
 
 def load_truth_matches(truth_path: str) -> List[Dict]:
     """Load tournament truth matches."""
-    data = json.loads(Path(truth_path).read_text(encoding="utf-8"))
-    return data.get("matches", [])
+    matches = load_research_truth(truth_path)
+    truth_replay_files(matches, truth_path)
+    for row in matches:
+        if not row.get('replay_name'):
+            raise TruthInputError('truth_invalid', Path(truth_path), 'Validation requires replay_name')
+    return matches
 
 
 def validate_player_block_claims(truth_path: str) -> PlayerBlockValidationSummary:
@@ -48,7 +58,7 @@ def validate_player_block_claims(truth_path: str) -> PlayerBlockValidationSummar
             truth_name = _resolve_truth_player_name(record.name, match["players"])
             truth_player = match["players"].get(truth_name) if truth_name else None
             hero_name = BINARY_HERO_ID_MAP.get(record.hero_id_le)
-            if truth_player and hero_name:
+            if truth_player and truth_player.get('hero_name') and hero_name:
                 summary.hero_total += 1
                 if normalize_hero_name(hero_name) == normalize_hero_name(truth_player["hero_name"]):
                     summary.hero_matches += 1
@@ -68,7 +78,7 @@ def validate_player_block_claims(truth_path: str) -> PlayerBlockValidationSummar
     return summary
 
 
-def build_foundation_report(truth_path: str) -> Dict[str, object]:
+def build_foundation_report(truth_path: str, *, base_path: Optional[str] = None) -> Dict[str, object]:
     """Build a combined registry + fixture-backed validation report."""
     player_block_summary = validate_player_block_claims(truth_path)
     decoder_summary = run_validation(truth_path, verbose=False)
@@ -101,12 +111,7 @@ def build_foundation_report(truth_path: str) -> Dict[str, object]:
                 }
             )
 
-    replay_base = Path(r"D:\Desktop\My Folder\Game\VG\vg replay")
-    truth_inventory = (
-        build_truth_inventory(str(replay_base), truth_path)
-        if replay_base.exists()
-        else None
-    )
+    truth_inventory = build_truth_inventory(base_path, truth_path) if base_path is not None else None
 
     return {
         "truth_path": str(Path(truth_path).resolve()),
@@ -129,18 +134,35 @@ def main(argv: Optional[List[str]] = None) -> int:
         help="Path to tournament truth JSON",
     )
     parser.add_argument(
-        "--output",
+        "-o", "--output",
         help="Optional JSON output path",
     )
+    parser.add_argument('--base', help='Optional explicit replay root for inventory')
     args = parser.parse_args(argv)
 
-    report = build_foundation_report(args.truth)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
-        print(f"Foundation report saved to {output_path}")
-    else:
-        print(json.dumps(report, indent=2, ensure_ascii=False))
+    try:
+        documents = prepare_truth_inputs(args.truth)
+        validate_report_outputs(documents.inputs, [args.output] if args.output else [])
+        matches = load_truth_matches(args.truth)
+        replays = truth_replay_files(matches, args.truth)
+        base_inputs = inventory_inputs(args.base, args.truth) if args.base else ReportInputs()
+        inputs = ReportInputs(files=(Path(args.truth), *base_inputs.files),
+                              replays=(*replays, *base_inputs.replays))
+        documents.inputs.recheck()
+        base_inputs.recheck()
+        validate_report_outputs(inputs, [args.output] if args.output else [])
+        with redirect_stdout(sys.stderr):
+            report = build_foundation_report(args.truth, base_path=args.base)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            write_report_output(inputs, Path(args.output), payload)
+            print(f"Foundation report saved to {args.output}")
+        else:
+            inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as error:
+        print(f'foundation: {args.truth}: {error}', file=sys.stderr)
+        return 2
     return 0
 
 

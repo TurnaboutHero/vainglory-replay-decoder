@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 
@@ -14,6 +15,10 @@ from vg.core.vgr_parser import VGRParser
 
 from .completeness import load_frames
 from .validation import validate_player_block_claims
+from .validation import load_truth_matches
+from .report_inputs import prepare_truth_inputs, truth_replay_files
+from vg.core.replay_output import validate_report_outputs, write_report_output
+from vg.core.truth_input import TruthInputError
 
 BufferConfig = Tuple[int, int]
 DEFAULT_BUFFER_CONFIGS: Tuple[BufferConfig, ...] = (
@@ -25,8 +30,12 @@ DEFAULT_BUFFER_CONFIGS: Tuple[BufferConfig, ...] = (
 
 
 def _load_truth_matches(truth_path: str) -> List[Dict[str, object]]:
-    payload = json.loads(Path(truth_path).read_text(encoding="utf-8"))
-    return payload.get("matches", [])
+    matches = load_truth_matches(truth_path)
+    for row in matches:
+        if row.get('match_info', {}).get('duration_seconds') is None:
+            raise TruthInputError('truth_invalid', Path(truth_path),
+                                  f'KDA postgame audit requires duration_seconds for {row["replay_name"]}')
+    return matches
 
 
 def _config_key(kill_buffer: int, death_buffer: int) -> str:
@@ -241,14 +250,24 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(list(argv) if argv is not None else None)
 
-    report = build_kda_postgame_audit(args.truth)
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"KDA post-game audit saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        documents = prepare_truth_inputs(args.truth)
+        validate_report_outputs(documents.inputs, [args.output] if args.output else [])
+        matches = _load_truth_matches(args.truth)
+        prepared = prepare_truth_inputs(args.truth, truth_replay_files(matches, args.truth))
+        documents.inputs.recheck()
+        validate_report_outputs(prepared.inputs, [args.output] if args.output else [])
+        report = build_kda_postgame_audit(args.truth)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            write_report_output(prepared.inputs, Path(args.output), payload)
+            print(f"KDA post-game audit saved to {args.output}")
+        else:
+            prepared.inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as error:
+        print(f'kda-postgame: {args.truth}: {error}', file=sys.stderr)
+        return 2
     return 0
 
 

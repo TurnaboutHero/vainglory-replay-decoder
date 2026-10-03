@@ -4,11 +4,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 from typing import Dict, List, Optional
 
 from .batch_decode import find_replays
 from .completeness import assess_completeness, extract_replay_signals
+from vg.core.replay_output import ReportInputs, validate_report_outputs, write_report_output
 
 
 def _build_review_flags(signals: object, status: str) -> List[str]:
@@ -100,6 +102,7 @@ def build_completeness_audit(base_path: str) -> Dict[str, object]:
     )
 
     return {
+        "status": "complete" if replays else "empty",
         "base_path": str(Path(base_path).resolve()),
         "total_replays": len(replays),
         "status_summary": status_counter,
@@ -120,14 +123,20 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(argv)
 
-    report = build_completeness_audit(args.base)
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Completeness audit saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        inputs = ReportInputs(replays=find_replays(args.base))
+        validate_report_outputs(inputs, [args.output] if args.output else [])
+        report = build_completeness_audit(args.base)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            write_report_output(inputs, Path(args.output), payload)
+            print(f"Completeness audit saved to {args.output}")
+        else:
+            inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as error:
+        print(f'completeness-audit: {args.base}: {error}', file=sys.stderr)
+        return 2
     return 0
 
 

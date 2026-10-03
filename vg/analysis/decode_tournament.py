@@ -22,13 +22,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from vg.core.unified_decoder import UnifiedDecoder
 from vg.core.vgr_mapping import normalize_hero_name
+from vg.decoder_v2.report_inputs import load_research_truth
 
 
 def load_truth(truth_path: str) -> List[Dict]:
     """Load all matches from tournament truth JSON."""
-    with open(truth_path, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-    return data.get("matches", [])
+    return load_research_truth(truth_path)
 
 
 def _detect_team_swap(decoded_players, truth_players) -> bool:

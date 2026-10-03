@@ -27,6 +27,8 @@ def load_research_truth(truth_path: str | Path) -> list[TruthMatch]:
     rows = []
     for match in load_truth_matches(truth_path):
         row = dict(match)
+        row.setdefault('players', {})
+        row.setdefault('match_info', {})
         reference = row.get('replay_file')
         if isinstance(reference, str) and not (PureWindowsPath(reference).drive or '\\' in reference):
             row['replay_file'] = truth_reference_key(reference, truth_path)
