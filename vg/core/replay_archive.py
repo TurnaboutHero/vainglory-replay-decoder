@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 import shutil
 import socket
+import stat
 import struct
 from typing import Iterator, TypedDict
 import uuid
@@ -118,8 +119,14 @@ def _check_unchanged(before: Inventory, code: str, *, manifest: bool = False) ->
 
 def _copy(source: Path, destination: Path) -> None:
     shutil.copy2(source, destination)
-    with destination.open('rb') as stream:
-        os.fsync(stream.fileno())
+    mode = destination.stat().st_mode
+    destination.chmod(mode | stat.S_IWUSR)
+    try:
+        with destination.open('r+b') as stream:
+            stream.flush()
+            os.fsync(stream.fileno())
+    finally:
+        destination.chmod(mode)
 
 
 def _verify(directory: Path, entries: tuple[Entry, ...]) -> None:

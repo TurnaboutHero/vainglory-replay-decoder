@@ -5,6 +5,7 @@ import json
 import os
 from pathlib import Path
 import shutil
+import stat
 import subprocess
 import sys
 import tempfile
@@ -27,6 +28,26 @@ def hashes(root):
 
 
 class TestProductLoader(unittest.TestCase):
+    def test_loader_happy_copy_sync_preserves_read_only_source(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / 'source'
+            destination = Path(directory) / 'copy'
+            source.write_bytes(b'generated durable archive copy')
+            source.chmod(stat.S_IREAD)
+            try:
+                archive._copy(source, destination)
+                self.assertEqual(destination.read_bytes(), source.read_bytes())
+                self.assertFalse(destination.stat().st_mode & stat.S_IWUSR)
+                with patch.object(archive.os, 'fsync', side_effect=OSError('sync failed')):
+                    with self.assertRaisesRegex(OSError, 'sync failed'):
+                        destination.chmod(stat.S_IWRITE | stat.S_IREAD)
+                        archive._copy(source, destination)
+                self.assertFalse(destination.stat().st_mode & stat.S_IWUSR)
+            finally:
+                source.chmod(stat.S_IWRITE | stat.S_IREAD)
+                if destination.exists():
+                    destination.chmod(stat.S_IWRITE | stat.S_IREAD)
+
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
