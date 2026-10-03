@@ -132,6 +132,8 @@ def read_native_stats(
     Relevant semantic failures only affect state at or before the query. A later
     full snapshot replaces earlier values, exactly as native baseline assignment
     does. Missing baselines are never manufactured from zero.
+    EOF includes every record; RecordTime filters only on record timestamps.
+    First/last game times describe endpoints, not global interpolation extrema.
     """
     audit, parsed = _scan_clock(frames)
     requested = cutoff.seconds if isinstance(cutoff, GameTime) else None
@@ -142,9 +144,15 @@ def read_native_stats(
 
     if not audit.valid:
         return invalid(audit.status, audit.reason)
-    ids = sorted(set(player_ids))
-    if not ids:
+    supplied = tuple(player_ids)
+    if not supplied:
         return invalid('missing_baseline', 'no player identities supplied')
+    if any(not isinstance(entity, int) or isinstance(entity, bool)
+           or not 0 < entity <= 0xffffffff for entity in supplied):
+        return invalid('invalid_query', 'player identities must be positive unsigned 32-bit integers')
+    if len(set(supplied)) != len(supplied):
+        return invalid('invalid_query', 'player identities must be unique')
+    ids = sorted(supplied)
     if cutoff is not None and (not isinstance(cutoff, (GameTime, RecordTime))
                                or not math.isfinite(cutoff.seconds)):
         return invalid('invalid_query', 'cutoff must be a finite GameTime or RecordTime')
@@ -159,7 +167,7 @@ def read_native_stats(
     target = audit.last_game_time if cutoff is None else requested
     if target is None or audit.first_game_time is None or audit.last_game_time is None:
         return invalid('unsupported_clock', 'no game-time coverage')
-    if not audit.first_game_time <= target <= audit.last_game_time:
+    if isinstance(cutoff, GameTime) and not audit.first_game_time <= target <= audit.last_game_time:
         return invalid('out_of_coverage', 'game-time cutoff is outside recorded coverage')
 
     states: dict[int, list[int]] = {}
@@ -169,7 +177,7 @@ def read_native_stats(
     for frame in parsed:
         for record in frame.records:
             if (isinstance(cutoff, RecordTime) and record.timestamp > cutoff.seconds) or (
-                not isinstance(cutoff, RecordTime) and frame.game_time(record.timestamp) > target
+                isinstance(cutoff, GameTime) and frame.game_time(record.timestamp) > target
             ):
                 continue
             payload = record.payload

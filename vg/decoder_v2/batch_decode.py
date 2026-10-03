@@ -5,8 +5,10 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import sys
 from typing import Dict, List, Optional
 
+from vg.core.replay_output import ReplayOutputError, validate_replay_outputs, write_replay_outputs
 from .decode_match import decode_match
 
 
@@ -66,14 +68,22 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(argv)
 
-    report = decode_replay_batch(args.base_path)
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"decoder_v2 batch output saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        output_path = Path(args.output) if args.output else None
+        replays = find_replays(args.base_path) if output_path is not None else []
+        if output_path is not None:
+            validate_replay_outputs(replays, output_path)
+        report = decode_replay_batch(args.base_path)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if output_path is not None:
+            validate_replay_outputs(find_replays(args.base_path), output_path)
+            write_replay_outputs(replays, output_path, payload)
+            print(f"decoder_v2 batch output saved to {output_path}")
+        else:
+            print(payload)
+    except (OSError, ReplayOutputError) as error:
+        print(f"batch-decode: {error}", file=sys.stderr)
+        return 2
     return 0
 
 
