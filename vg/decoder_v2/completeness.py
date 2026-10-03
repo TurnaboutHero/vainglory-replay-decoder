@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import List, Sequence, Tuple
 
 from vg.core.kda_detector import KDADetector
-from vg.core.native_stats import inspect_native_clock
+from vg.core.stat_evidence import inspect_replay_evidence
 from vg.core.unified_decoder import _le_to_be
 from vg.core.vgr_parser import VGRParser
 from vg.core.vgr_records import VGRRecordError, iter_records
@@ -72,7 +72,8 @@ def extract_replay_signals(replay_file: str) -> ReplaySignalSummary:
         if player.get("entity_id")
     }
 
-    clock = inspect_native_clock(frames)
+    evidence = inspect_replay_evidence(frames)
+    clock = evidence.native_clock
     detector = KDADetector(valid_eids)
     if clock.status != "malformed_records":
         for frame_idx, data in frames:
@@ -101,6 +102,10 @@ def extract_replay_signals(replay_file: str) -> ReplaySignalSummary:
         native_clock_reason=clock.reason,
         first_game_time=clock.first_game_time,
         last_game_time=clock.last_game_time,
+        replay_scope=evidence.replay_scope,
+        recording_valid=evidence.recording_valid,
+        recording_reason=evidence.recording_reason,
+        terminal_requests=evidence.terminal_requests,
     )
 
 
@@ -131,8 +136,8 @@ def assess_completeness(signals: ReplaySignalSummary) -> CompletenessAssessment:
         and abs(crystal_ts - max_death_ts) <= 30
     ):
         return CompletenessAssessment(
-            status=CompletenessStatus.COMPLETE_CONFIRMED,
-            reason="Crystal death agrees with player-death tail within 30s.",
+            status=CompletenessStatus.COMPLETENESS_UNKNOWN,
+            reason="Terminal crystal candidate agrees with the player-death tail; this heuristic does not confirm completion.",
             signals=signals,
         )
 
@@ -147,8 +152,8 @@ def assess_completeness(signals: ReplaySignalSummary) -> CompletenessAssessment:
         and (max_death_ts is None or (crystal_ts - max_death_ts) >= 100)
     ):
         return CompletenessAssessment(
-            status=CompletenessStatus.COMPLETE_CONFIRMED,
-            reason="Late crystal, generic death-header, and item tails agree even though player-death tail appears stale.",
+            status=CompletenessStatus.COMPLETENESS_UNKNOWN,
+            reason="Late crystal candidate and activity tails agree; these heuristics do not confirm completion.",
             signals=signals,
         )
 

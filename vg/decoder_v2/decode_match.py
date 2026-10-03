@@ -9,184 +9,117 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 from vg.core.vgr_parser import VGRParser
+from vg.core.stat_evidence import final_field_reason, inspect_replay_evidence
+from vg.core.unified_decoder import _le_to_be
+from .completeness import load_frames
 from vg.core.replay_output import ReplayOutputError, validate_replay_output, write_replay_output
 
 from .gold import decode_gold_from_replay
 from .kda import decode_kda_from_replay
 from .minions import collect_minion_candidates
 from .models import (AcceptedPlayerFields, DecoderV2MatchOutput, FieldDecision,
-                     GoldExtractionResult, WinnerExtractionResult)
+                     )
 from .winner import decode_winner_from_replay
 
 
 def decode_match(replay_file: str, *, at_game_time: Optional[float] = None) -> DecoderV2MatchOutput:
-    """Decode a replay conservatively, only exporting accepted fields."""
-    parser = VGRParser(replay_file, auto_truth=False)
-    parsed = parser.parse()
+    """Export scoped native captures; final fields require independent validation."""
+    parsed = VGRParser(replay_file, auto_truth=False).parse()
     match_info = parsed["match_info"]
-
+    evidence = inspect_replay_evidence(load_frames(replay_file))
     capture = at_game_time is not None
-    if capture:
-        kda_result = decode_kda_from_replay(replay_file, at_game_time=at_game_time)
-        assessment = kda_result.assessment
-        reason = "Capture scope does not establish final winner, gold, or duration."
-        winner_result = WinnerExtractionResult(False, reason, assessment, kda_result.duration_estimate,
-                                               None, None, None)
-        gold_result = GoldExtractionResult(False, reason, assessment)
-    else:
+    kda_result = decode_kda_from_replay(replay_file, at_game_time=at_game_time)
+    assessment = kda_result.assessment
+    duration_estimate = kda_result.duration_estimate
+    if not capture:
         winner_result = decode_winner_from_replay(replay_file)
-        kda_result = decode_kda_from_replay(replay_file)
         assessment = winner_result.assessment
-        gold_result = decode_gold_from_replay(replay_file, assessment=assessment)
+        duration_estimate = winner_result.duration_estimate
 
+    roster = [player for side in ("left", "right") for player in parsed["teams"][side]]
+    ids = [player.get("entity_id") for player in roster]
+    valid_ids = all(isinstance(eid, int) and not isinstance(eid, bool) and 0 < eid <= 0xFFFF
+                    for eid in ids)
+    identity_ok = bool(ids) and valid_ids and len(set(ids)) == len(ids)
+    identity_reason = None if identity_ok else "Player IDs are missing, invalid or duplicated in this recording."
+    capture_ids = [row.entity_id_be for row in kda_result.players]
+    capture_ok = (
+        capture and identity_ok and evidence.recording_valid and evidence.native_clock.valid
+        and kda_result.accepted and kda_result.scope == "capture"
+        and kda_result.at_game_time == at_game_time
+        and kda_result.replay_scope == evidence.replay_scope
+        and len(capture_ids) == len(ids) and len(set(capture_ids)) == len(capture_ids)
+        and set(capture_ids) == {_le_to_be(eid) for eid in ids}
+        and all(row.replay_scope == evidence.replay_scope for row in kda_result.players)
+    )
+    kda_by_id = {row.entity_id_be: row for row in kda_result.players} if capture_ok else {}
     players: List[AcceptedPlayerFields] = []
-    if kda_result.accepted:
-        kda_by_name = {player.player_name: player for player in kda_result.players}
-    else:
-        kda_by_name = {}
-    gold_by_name = {player.player_name: player for player in gold_result.players}
+    for player in roster:
+        eid = player.get("entity_id")
+        eid_be = _le_to_be(eid) if isinstance(eid, int) and not isinstance(eid, bool) and 0 < eid <= 0xFFFF else None
+        native = kda_by_id.get(eid_be)
+        players.append(AcceptedPlayerFields(
+            name=player["name"], team=player.get("team", "unknown"),
+            entity_id=eid, hero_name=player.get("hero_name", "Unknown"),
+            kills=native.kills if native else None,
+            deaths=native.deaths if native else None,
+            assists=native.assists if native else None,
+            gold=None, gold_status=None if capture else "withheld_final_validation_missing",
+            entity_id_be=eid_be, replay_scope=evidence.replay_scope,
+            identity_status="recording_scoped" if identity_ok else "invalid",
+            identity_reason=identity_reason,
+        ))
 
-    for team_label in ("left", "right"):
-        for player in parsed["teams"][team_label]:
-            accepted = AcceptedPlayerFields(
-                name=player["name"],
-                team=player.get("team", team_label),
-                entity_id=player.get("entity_id"),
-                hero_name=player.get("hero_name", "Unknown"),
-                kills=kda_by_name.get(player["name"]).kills if player["name"] in kda_by_name else None,
-                deaths=kda_by_name.get(player["name"]).deaths if player["name"] in kda_by_name else None,
-                assists=kda_by_name.get(player["name"]).assists if player["name"] in kda_by_name else None,
-                gold=gold_by_name.get(player["name"]).gold if player["name"] in gold_by_name else None,
-                gold_status=gold_by_name.get(player["name"]).gold_status if player["name"] in gold_by_name else None,
-            )
-            players.append(accepted)
-
-    accepted_fields: Dict[str, FieldDecision] = {
-        "hero": FieldDecision(
-            value="accepted",
-            claim_status="confirmed",
-            accepted_for_index=True,
-            claim_id="player_block.hero_id",
-        ),
-        "team_grouping": FieldDecision(
-            value="accepted",
-            claim_status="confirmed",
-            accepted_for_index=True,
-            claim_id="player_block.team_byte",
-        ),
-        "entity_id": FieldDecision(
-            value="accepted",
-            claim_status="confirmed",
-            accepted_for_index=True,
-            claim_id="player_block.entity_id",
-        ),
+    accepted_fields: Dict[str, FieldDecision] = {}
+    withheld_fields: Dict[str, FieldDecision] = {}
+    metadata = {
+        "hero": identity_ok and all(p.hero_name != "Unknown" for p in players),
+        "team_grouping": identity_ok and all(p.team in ("left", "right") for p in players),
+        "entity_id": identity_ok,
     }
-    withheld_fields: Dict[str, FieldDecision] = {
-        "minion_kills": FieldDecision(
-            value=None,
-            claim_status="partial",
-            accepted_for_index=False,
-            claim_id="minion_kills.complete_match",
-            reason="Withheld: field is still partial in decoder_v2.",
-        ),
-        "duration_seconds": FieldDecision(
-            value=None if capture else winner_result.duration_estimate.estimate_seconds,
-            claim_status="partial",
-            accepted_for_index=False,
-            claim_id="duration.approximate",
-            reason="Withheld: duration is still approximate in decoder_v2.",
-        ),
-    }
-
-    if winner_result.accepted and winner_result.winner is not None:
-        accepted_fields["winner"] = FieldDecision(
-            value=winner_result.winner,
-            claim_status="strong",
-            accepted_for_index=True,
-            claim_id="winner.complete_match",
+    for field, valid in metadata.items():
+        target = accepted_fields if valid else withheld_fields
+        target[field] = FieldDecision(
+            value="accepted" if valid else None, claim_status="confirmed" if valid else "unknown",
+            accepted_for_index=valid, claim_id=f"player_block.{field}",
+            reason=None if valid else (identity_reason or "Player metadata is unknown."),
+            evidence_status="recorded_player_block" if valid else "unverified", scope="identity",
         )
-    else:
-        withheld_fields["winner"] = FieldDecision(
-            value=winner_result.winner,
-            claim_status="strong",
-            accepted_for_index=False,
-            claim_id="winner.complete_match",
-            reason=winner_result.reason,
+    for field in ("winner", "gold"):
+        withheld_fields[field] = FieldDecision(
+            value=None, claim_status="unknown", accepted_for_index=False,
+            claim_id=f"{field}.complete_match", reason=final_field_reason(field),
         )
-
-    if kda_result.accepted:
-        accepted_fields["kills"] = FieldDecision(
-            value="accepted",
-            claim_status="strong",
-            accepted_for_index=not capture,
-            claim_id="kills.capture" if capture else "kills.complete_match",
+    for field in ("kills", "deaths", "assists"):
+        target = accepted_fields if capture_ok else withheld_fields
+        target[field] = FieldDecision(
+            value="accepted" if capture_ok else None,
+            claim_status="strong" if capture_ok else "unknown", accepted_for_index=False,
+            claim_id=f"{field}.capture" if capture else f"{field}.complete_match",
+            reason=None if capture_ok else (
+                "Capture withheld: native evidence, unique entity IDs and recording scope must agree."
+                if capture else final_field_reason(field)),
+            evidence_status="native_capture_observed" if capture_ok else "unverified",
+            scope="capture" if capture else "final",
         )
-        accepted_fields["deaths"] = FieldDecision(
-            value="accepted",
-            claim_status="strong",
-            accepted_for_index=not capture,
-            claim_id="deaths.capture" if capture else "deaths.complete_match",
-        )
-        accepted_fields["assists"] = FieldDecision(
-            value="accepted",
-            claim_status="strong",
-            accepted_for_index=not capture,
-            claim_id="assists.capture" if capture else "assists.complete_match",
-        )
-    else:
-        withheld_fields["kills"] = FieldDecision(
-            value=None,
-            claim_status="strong",
-            accepted_for_index=False,
-            claim_id="kills.complete_match",
-            reason=kda_result.reason,
-        )
-        withheld_fields["deaths"] = FieldDecision(
-            value=None,
-            claim_status="strong",
-            accepted_for_index=False,
-            claim_id="deaths.complete_match",
-            reason=kda_result.reason,
-        )
-        withheld_fields["assists"] = FieldDecision(
-            value=None,
-            claim_status="strong",
-            accepted_for_index=False,
-            claim_id="assists.complete_match",
-            reason=kda_result.reason,
-        )
-
-    if gold_result.accepted:
-        accepted_fields["gold"] = FieldDecision(
-            value="accepted",
-            claim_status="strong",
-            accepted_for_index=True,
-            claim_id="gold.credit_action_06_complete_match",
-        )
-    else:
-        withheld_fields["gold"] = FieldDecision(
-            value=None if capture else "partial",
-            claim_status="strong",
-            accepted_for_index=False,
-            claim_id="gold.credit_action_06_complete_match",
-            reason=gold_result.reason,
-        )
-
+    withheld_fields["minion_kills"] = FieldDecision(
+        None, "partial", False, "minion_kills.complete_match",
+        "Withheld: field is still partial in decoder_v2.",
+    )
+    withheld_fields["duration_seconds"] = FieldDecision(
+        None if capture else duration_estimate.estimate_seconds, "partial", False,
+        "duration.approximate", "Withheld: duration is still approximate in decoder_v2.",
+    )
     return DecoderV2MatchOutput(
-        schema_version="decoder_v2.capture.v1" if capture else "decoder_v2.match.v1",
-        replay_name=parsed["replay_name"],
-        replay_file=parsed["replay_file"],
-        game_mode=match_info["mode"],
-        map_name=match_info["map_name"],
-        team_size=match_info["team_size"],
-        completeness_status=assessment.status.value,
-        completeness_reason=assessment.reason,
-        accepted_fields=accepted_fields,
-        withheld_fields=withheld_fields,
-        players=tuple(players),
-        scope="capture" if capture else "final",
-        at_game_time=at_game_time,
-        as_of_game_time=kda_result.as_of_game_time,
+        schema_version="decoder_v2.capture.v2" if capture else "decoder_v2.match.v2",
+        replay_name=parsed["replay_name"], replay_file=parsed["replay_file"],
+        game_mode=match_info["mode"], map_name=match_info["map_name"],
+        team_size=match_info["team_size"], completeness_status=assessment.status.value,
+        completeness_reason=assessment.reason, accepted_fields=accepted_fields,
+        withheld_fields=withheld_fields, players=tuple(players),
+        scope="capture" if capture else "final", at_game_time=at_game_time,
+        as_of_game_time=kda_result.as_of_game_time if capture_ok else None,
+        replay_scope=evidence.replay_scope, evidence=evidence,
     )
 
 
@@ -196,7 +129,7 @@ def decode_match_debug(replay_file: str, *, at_game_time: Optional[float] = None
         safe_output = decode_match(replay_file, at_game_time=at_game_time)
         kda_result = decode_kda_from_replay(replay_file, at_game_time=at_game_time)
         return {
-            "schema_version": "decoder_v2.debug_capture.v1",
+            "schema_version": "decoder_v2.debug_capture.v2",
             "safe_output": safe_output.to_dict(),
             "completeness": kda_result.assessment.to_dict(),
             "duration": None,
@@ -212,7 +145,7 @@ def decode_match_debug(replay_file: str, *, at_game_time: Optional[float] = None
     minion_candidates = collect_minion_candidates(replay_file)
 
     return {
-        "schema_version": "decoder_v2.debug_match.v1",
+        "schema_version": "decoder_v2.debug_match.v2",
         "safe_output": safe_output.to_dict(),
         "completeness": winner_result.assessment.to_dict(),
         "duration": winner_result.duration_estimate.to_dict(),

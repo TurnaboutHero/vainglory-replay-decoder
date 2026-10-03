@@ -5,7 +5,7 @@ Unified Replay Decoder - Single entry point for complete VGR replay analysis.
 Combines all solved detection modules:
   - VGRParser: players, teams, heroes, game mode (100% accuracy)
   - KDADetector: kills 99.0%, deaths 98.0%, assists 98.0% (combined 98.3%)
-  - Gold earned: 600 starting + action 0x06 (sell_flag!=0x01). ±5% 98.0%, ±10% 100%
+  - Gold: strict action 0x06 partial observations; final earned gold is withheld.
   - WinLossDetector: crystal destruction detection (100% accuracy)
   - Item-Player Mapping: [10 04 3D] acquire events → per-player item builds
   - Crystal Death Detection: eid 2000-2005 death → game duration & winner
@@ -56,6 +56,8 @@ from collections import Counter, defaultdict
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
+from vg.core.stat_evidence import final_field_reason, inspect_replay_evidence
+from vg.core.vgr_records import VGRRecordError, iter_records
 
 # Local imports with fallback for both package and direct execution
 try:
@@ -245,7 +247,7 @@ def _assess_core_completeness(
         and duration_est is not None
         and abs(crystal_ts - duration_est) <= 30
     ):
-        return True, "Terminal crystal candidate agrees with the player-death tail."
+        return None, "Terminal crystal candidate agrees with the player-death tail; this heuristic does not confirm completion."
     return None, "Recording coverage alone does not confirm a terminal match end."
 
 
@@ -608,8 +610,7 @@ class DecodedPlayer:
     hero_name: str
     hero_id: Optional[int]
     entity_id: int                     # Little Endian (original)
-    # Observed native counters at as_of_game_time, only final when completion
-    # is confirmed. Missing or unsupported state is None, never a zero guess.
+    # Final native counters require source-bound final-screen validation.
     kills: Optional[int] = None
     deaths: Optional[int] = None
     assists: Optional[int] = None
@@ -625,7 +626,11 @@ class DecodedPlayer:
     # column in a screenshot.
     map_side: str = ""
     gold_spent: int = 0
-    gold_earned: int = 0  # 600 starting + 0x06 income (sell_flag!=0x01). ±5% 98.0%, ±10% 100%
+    gold_earned: Optional[int] = None
+    observed_gold_estimate: Optional[int] = None
+    gold_status: str = "partial_final_validation_missing"
+    entity_id_be: Optional[int] = None
+    replay_scope: Optional[str] = None
     items: List[str] = field(default_factory=list)  # Final build (after upgrade tree filtering)
     # Raw acquire log, kept unfiltered. Includes the STARTER_IDS items every
     # player is handed at match start, so subtract those before reading it as
@@ -680,6 +685,9 @@ class DecodedMatch:
     win_detection_used: bool = False
     item_detection_used: bool = False
     team_labels_reliable: bool = False  # left/right labels may not match API convention
+    final_validation_status: str = "unverified"
+    final_stats_reason: str = ""
+    recording_evidence: Optional[Dict] = None
 
     @property
     def all_players(self) -> List[DecodedPlayer]:
@@ -795,8 +803,9 @@ class UnifiedDecoder:
         all_data = b"".join(data for _, data in frames) if frames else b""
         if all_data and all_players:
             eid_map_be = {}
+            identity_counts = Counter(player.entity_id for player in all_players)
             for player in all_players:
-                if player.entity_id:
+                if isinstance(player.entity_id, int) and not isinstance(player.entity_id, bool) and 0 < player.entity_id <= 0xFFFF and identity_counts[player.entity_id] == 1:
                     eid_be = _le_to_be(player.entity_id)
                     eid_map_be[eid_be] = player
             if eid_map_be:
@@ -836,8 +845,8 @@ class UnifiedDecoder:
 
         # --- Step 7a: Completeness ---
         # The event stream ending long before the recording does means the tail
-        # was not captured. High recording coverage is necessary, while only
-        # terminal crystal evidence can establish completion. See
+        # was not captured. Coverage and terminal candidates do not establish
+        # final-screen validation. See
         # vg/docs/COMPLETENESS_EVIDENCE_2026-09-06.md.
         completeness = None
         if duration and recorded_seconds:
@@ -846,27 +855,22 @@ class UnifiedDecoder:
             duration, recorded_seconds, crystal_ts, duration_est,
         )
 
-        # Native state is observed at a record-clock cutoff, not a count of messages.
-        from vg.core.native_stats import RecordTime, inspect_native_clock, read_native_stats
-        clock = inspect_native_clock(frames)
+        from vg.core.native_stats import read_native_stats
+        evidence = inspect_replay_evidence(frames)
+        clock = evidence.native_clock
         native = read_native_stats(
             frames, {_le_to_be(p.entity_id) for p in all_players if p.entity_id},
-            cutoff=RecordTime(duration) if duration is not None else None,
         )
         if not clock.valid:
             data_complete = None
             completeness_reason = f"Native clock integrity failed ({clock.status}): {clock.reason}"
-        native_by_id = {p.entity_id: p for p in native.players}
-        kda_used = bool(data_complete is True and native.valid and all_players and all(
-            p.entity_id and _le_to_be(p.entity_id) in native_by_id for p in all_players
-        ))
-        if kda_used:
-            for player in all_players:
-                stats = native_by_id[_le_to_be(player.entity_id)]
-                player.kills = stats.kills
-                player.deaths = stats.deaths
-                player.assists = stats.assists
-                player.minion_kills = stats.minion_kills
+        kda_used = False
+        for player in all_players:
+            player.entity_id_be = _le_to_be(player.entity_id) if player.entity_id else None
+            player.replay_scope = evidence.replay_scope
+            player.observed_gold_estimate = player.gold_earned
+            player.gold_earned = None
+            player.kills = player.deaths = player.assists = player.minion_kills = None
 
         # --- Step 8: Objective event detection ---
         # 3v3: Kraken / Gold Mine.  5v5: Blackclaw / Ghostwing
@@ -899,6 +903,8 @@ class UnifiedDecoder:
             native_stats_status=native.status,
             native_stats_reason=native.reason,
             as_of_game_time=native.as_of_game_time,
+            final_stats_reason=final_field_reason('statistics'),
+            recording_evidence=asdict(evidence),
             objective_events=objective_events,
             mythic_captures=mythic_captures,
             turret_kills=turret_kills,
@@ -1427,67 +1433,43 @@ class UnifiedDecoder:
 
     def _detect_gold_per_player(
         self,
-        frames: List[tuple],
+        frames: List[Tuple[int, bytes]],
         eid_map: Dict[int, 'DecodedPlayer'],
     ) -> None:
-        """
-        Detect gold earned/spent via [10 04 1D] action=0x06.
-        Frames are independent (not cumulative), so sum across all frames.
-
-        Sell-back filtering: the byte at offset +12 (right after action byte)
-        distinguishes income (0x00) from item sell-back refunds (0x01).
-        Excluding 0x01 records eliminates sell-back gold overcounting.
-
-        Args:
-            frames: List of (frame_idx, data) tuples, sorted by frame index.
-            eid_map: {BE entity ID: DecodedPlayer} mapping.
-        """
-        valid_eids = set(eid_map.keys())
-        gold_spent: Dict[int, float] = defaultdict(float)
-        gold_earned: Dict[int, float] = defaultdict(float)
-        jungle_kills: Dict[int, int] = defaultdict(int)
-
-        for frame_idx, data in frames:
-            pos = 0
-            while True:
-                pos = data.find(_CREDIT_HEADER, pos)
-                if pos == -1:
-                    break
-                if pos + 13 > len(data):
-                    pos += 1
-                    continue
-                if data[pos + 3:pos + 5] != b'\x00\x00':
-                    pos += 1
-                    continue
-
-                eid = struct.unpack_from(">H", data, pos + 5)[0]
-                if eid not in valid_eids:
-                    pos += 3
-                    continue
-
-                value = struct.unpack_from(">f", data, pos + 7)[0]
-                action = data[pos + 11]
-                sell_flag = data[pos + 12]
-
-                if not math.isnan(value) and not math.isinf(value):
-                    if action == 0x06:
-                        if value < 0:
-                            gold_spent[eid] += abs(value)
-                        elif value > 0 and sell_flag != 0x01:
-                            gold_earned[eid] += value
-                    elif action == 0x0D:
-                        jungle_kills[eid] += 1
-
-                pos += 3
-
-        for eid in valid_eids:
-            player = eid_map.get(eid)
-            if player:
-                if eid in gold_spent:
-                    player.gold_spent = round(gold_spent[eid])
-                player.gold_earned = 600 + round(gold_earned.get(eid, 0))
-                if eid in jungle_kills:
-                    player.jungle_kills = jungle_kills[eid]
+        """Keep partial gold estimates inside exact, supported credit records."""
+        income: Dict[int, float] = defaultdict(float)
+        spent: Dict[int, float] = defaultdict(float)
+        count: Dict[int, int] = defaultdict(int)
+        invalid: Set[int] = set()
+        malformed = False
+        for _, data in frames:
+            try:
+                for record in iter_records(data):
+                    if record.opcode != 0x041D:
+                        continue
+                    if record.content_length != 16:
+                        malformed = True
+                        continue
+                    eid, value, action, operation = struct.unpack_from(">IfBB", record.payload)
+                    if eid not in eid_map or action != 6:
+                        continue
+                    if not math.isfinite(value) or operation not in (0, 1):
+                        invalid.add(eid)
+                        continue
+                    count[eid] += 1
+                    if value < 0:
+                        spent[eid] += abs(value)
+                    elif operation == 0:
+                        income[eid] += value
+            except VGRRecordError:
+                malformed = True
+        for eid, player in eid_map.items():
+            supported = not malformed and eid not in invalid and count[eid] > 0
+            player.gold_earned = 600 + round(income[eid]) if supported else None
+            player.gold_status = ("partial_final_validation_missing" if supported else
+                                  "partial_unsupported_or_missing_credit_records")
+            if supported:
+                player.gold_spent = round(spent[eid])
 
     def _detect_objective_events(
         self,

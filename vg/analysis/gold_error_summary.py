@@ -48,7 +48,9 @@ def main():
             if truth_gold is None:
                 continue
 
-            det_gold = detected.get(pname, {}).get('gold_earned', 0)
+            det_gold = detected.get(pname, {}).get('gold_earned')
+            if det_gold is None:
+                continue
             hero = detected.get(pname, {}).get('hero', '?')
 
             if truth_gold > 0:
@@ -67,8 +69,10 @@ def main():
         errors_by_match.append((mi + 1, match_errors))
 
     # Print summary
-    print(f"Overall: ±5% {total_5pct}/{total_players} ({total_5pct/total_players*100:.1f}%), "
-          f"±10% {total_10pct}/{total_players} ({total_10pct/total_players*100:.1f}%)")
+    rate_5 = total_5pct / total_players * 100 if total_players else 0
+    rate_10 = total_10pct / total_players * 100 if total_players else 0
+    print(f"Overall: ±5% {total_5pct}/{total_players} ({rate_5:.1f}%), "
+          f"±10% {total_10pct}/{total_players} ({rate_10:.1f}%)")
 
     print(f"\nPer-match breakdown:")
     for mi, errors in errors_by_match:

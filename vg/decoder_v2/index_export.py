@@ -1,74 +1,96 @@
-"""Export only index-safe fields from decoder_v2 outputs."""
+"""Export metadata while withholding unvalidated final match statistics."""
 
 from __future__ import annotations
 
 import argparse
+from dataclasses import asdict, dataclass
 import json
 from pathlib import Path
-from typing import Dict, List, Optional
+import sys
+from typing import Dict, Final, List, Optional, assert_never, override
 
+from vg.core.stat_evidence import FINAL_VALIDATION_STATUS, final_field_reason
 from .batch_decode import decode_replay_batch
-from .minion_policy import (
-    MINION_POLICY_CHOICES,
-    MINION_POLICY_NONE,
-    evaluate_minion_policy,
-    evaluate_player_minion_policy,
-)
-from vg.tools.result_screen_kda_correction_inventory import build_result_screen_kda_correction_inventory
+from .minion_policy import MINION_POLICY_CHOICES, MINION_POLICY_NONE, evaluate_minion_policy
+from .models import FieldDecision
+
+type JSONValue = None | bool | int | float | str | list[JSONValue] | dict[str, JSONValue]
+FINAL_FIELDS: Final = ("kills", "deaths", "assists", "gold", "minion_kills", "winner")
+CORRECTION_NAMES: Final = frozenset((
+    "result_screen_kda_correction_merge.json", "target_replay_corrected_kda_rows.json",
+))
 
 
-def _load_kda_correction_map(kda_correction_path: Optional[str]) -> Dict[str, Dict[str, object]]:
+@dataclass(frozen=True, slots=True)
+class CorrectionInputError(ValueError):
+    path: Path
+    reason: str
+
+    @override
+    def __str__(self) -> str:
+        return f"{self.path}: {self.reason}"
+
+
+@dataclass(frozen=True, slots=True)
+class CorrectionSummary:
+    path: str | None
+    status: str
+    reason: str | None
+    withheld_documents: int = 0
+    withheld_rows: int = 0
+    ignored_noncorrection_documents: int = 0
+    corrected_matches: int = 0
+    corrected_rows: int = 0
+
+
+def _correction_rows(path: Path, payload: JSONValue, required: bool) -> int | None:
+    """Parse correction document shape without trusting its declared provenance."""
+    match payload:
+        case dict() as document:
+            if "players" not in document and not required:
+                return None
+            players = document.get("players")
+        case None | bool() | int() | float() | str() | list():
+            raise CorrectionInputError(path, "correction document must be a JSON object")
+        case unreachable:
+            assert_never(unreachable)
+    match players:
+        case list() as rows:
+            for row in rows:
+                match row:
+                    case dict():
+                        continue
+                    case None | bool() | int() | float() | str() | list():
+                        raise CorrectionInputError(path, "each correction player must be an object")
+                    case unreachable:
+                        assert_never(unreachable)
+            return len(rows)
+        case None | bool() | int() | float() | str() | dict():
+            raise CorrectionInputError(path, "correction players must be a JSON array")
+        case unreachable:
+            assert_never(unreachable)
+
+
+def _load_corrections(kda_correction_path: str | None) -> CorrectionSummary:
+    """Read supplied files, surface errors, and count corrections held at the boundary."""
     if not kda_correction_path:
-        return {}
-
+        return CorrectionSummary(None, "not_requested", None)
     path = Path(kda_correction_path)
-    payloads: List[Dict[str, object]] = []
-    if path.is_dir():
-        inventory = build_result_screen_kda_correction_inventory(str(path))
-        candidate_files = [Path(entry["path"]) for entry in inventory["preferred_entries"]]
-        for candidate in candidate_files:
-            try:
-                payload = json.loads(candidate.read_text(encoding="utf-8"))
-            except Exception:
-                continue
-            payloads.append(payload)
-    else:
-        try:
-            payload = json.loads(path.read_text(encoding="utf-8"))
-        except Exception:
-            return {}
-        payloads.append(payload)
-
-    corrections: Dict[str, Dict[str, object]] = {}
-    for payload in payloads:
-        if not isinstance(payload, dict):
-            continue
-        players = payload.get("players")
-        replay_name = payload.get("replay_name")
-        replay_file = payload.get("replay_file")
-        if not isinstance(players, list):
-            continue
-        if replay_name:
-            corrections[f"name:{replay_name}"] = payload
-        if replay_file:
-            corrections[f"file:{Path(replay_file).resolve()}"] = payload
-    return corrections
-
-
-def _extract_corrected_kda(correction_row: Dict[str, object]) -> Optional[tuple[int, int, int, Optional[str]]]:
-    corrected_kda = correction_row.get("corrected_kda")
-    if corrected_kda:
-        kills, deaths, assists = [int(part) for part in str(corrected_kda).split("/")]
-        return kills, deaths, assists, correction_row.get("kda_correction_status")
-
-    if all(key in correction_row for key in ("kills", "deaths", "assists")):
-        return (
-            int(correction_row["kills"]),
-            int(correction_row["deaths"]),
-            int(correction_row["assists"]),
-            correction_row.get("kda_correction_status"),
-        )
-    return None
+    directory = path.is_dir()
+    candidates = sorted(path.rglob("*.json")) if directory else [path]
+    documents = rows = ignored = 0
+    for candidate in candidates:
+        payload: JSONValue = json.loads(candidate.read_text(encoding="utf-8"))
+        count = _correction_rows(candidate, payload, not directory or candidate.name in CORRECTION_NAMES)
+        if count is None:
+            ignored += 1
+        else:
+            documents += 1
+            rows += count
+    return CorrectionSummary(
+        str(path.resolve()), "withheld", final_field_reason("result-screen KDA correction"),
+        documents, rows, ignored,
+    )
 
 
 def build_index_ready_export(
@@ -77,122 +99,67 @@ def build_index_ready_export(
     *,
     kda_correction_path: Optional[str] = None,
 ) -> Dict[str, object]:
-    """Build an export containing only currently accepted fields."""
-    batch = decode_replay_batch(base_path)
-    kda_corrections = _load_kda_correction_map(kda_correction_path)
-    matches = []
-    minion_policy_summary = {
-        "policy": minion_policy,
-        "accepted_matches": 0,
-        "withheld_matches": 0,
-    }
-    kda_correction_summary = {
-        "path": str(Path(kda_correction_path).resolve()) if kda_correction_path else None,
-        "corrected_matches": 0,
-        "corrected_rows": 0,
-    }
-    for match in batch["matches"]:
-        accepted = match["accepted_fields"]
-        correction_payload = (
-            kda_corrections.get(f"file:{Path(match['replay_file']).resolve()}")
-            or kda_corrections.get(f"name:{match['replay_name']}")
-        )
-        correction_by_name = {
-            row["name"]: row for row in correction_payload.get("players", [])
-        } if correction_payload else {}
-        minion_allowed, minion_reason = evaluate_minion_policy(
-            minion_policy,
-            match["replay_file"],
-            match["completeness_status"],
-        )
-        player_minion_decisions = evaluate_player_minion_policy(
-            minion_policy,
-            match["replay_file"],
-            match["completeness_status"],
-        )
-        accepted_player_minions = sum(1 for decision in player_minion_decisions.values() if decision.accepted)
-        if accepted_player_minions:
-            minion_policy_summary["accepted_matches"] += 1
-        else:
-            minion_policy_summary["withheld_matches"] += 1
+    """Preserve metadata; current code has no source-bound final-stat validator.
 
+    Legacy flags, capture observations, name-bound corrections and experimental
+    minion policies cannot authorize a final field, independently of each other.
+    """
+    corrections = _load_corrections(kda_correction_path)
+    batch = decode_replay_batch(base_path)
+    matches = []
+    for match in batch["matches"]:
+        decisions = {
+            name: FieldDecision(None, "unknown", False, f"{name}.final_validation",
+                                final_field_reason(name), FINAL_VALIDATION_STATUS, "final").to_dict()
+            for name in FINAL_FIELDS
+        }
+        candidate_allowed, candidate_reason = evaluate_minion_policy(
+            minion_policy, match["replay_file"], match["completeness_status"],
+        )
         players = []
-        match_corrected_rows = 0
-        parser_rows = 0
-        unresolved_rows = 0
         for player in match["players"]:
             row = {
-                "name": player["name"],
-                "team": player["team"],
-                "entity_id": player["entity_id"],
-                "hero_name": player["hero_name"],
+                key: player.get(key)
+                for key in ("name", "team", "entity_id", "hero_name", "entity_id_be",
+                            "replay_scope", "identity_reason")
             }
-            if accepted.get("kills", {}).get("accepted_for_index"):
-                correction_row = correction_by_name.get(player["name"])
-                corrected = _extract_corrected_kda(correction_row) if correction_row else None
-                if corrected:
-                    kills, deaths, assists, correction_status = corrected
-                    row["kills"] = kills
-                    row["deaths"] = deaths
-                    row["assists"] = assists
-                    row["kda_correction_status"] = correction_status
-                    row["kda_source"] = "result_screen"
-                    match_corrected_rows += 1
-                else:
-                    row["kills"] = player["kills"]
-                    row["deaths"] = player["deaths"]
-                    row["assists"] = player["assists"]
-                    row["kda_source"] = "parser"
-                    parser_rows += 1
-            else:
-                unresolved_rows += 1
-            if accepted.get("gold", {}).get("accepted_for_index"):
-                row["gold"] = player.get("gold")
-                row["gold_status"] = player.get("gold_status")
-            player_decision = player_minion_decisions.get(player["name"])
-            if player_decision:
-                row["minion_policy"] = player_decision.to_dict()
-                if player_decision.accepted:
-                    row["minion_kills"] = player_decision.baseline_0e
+            row["identity_status"] = player.get("identity_status", "unverified")
+            row["withheld_fields"] = {key: decisions[key] for key in FINAL_FIELDS if key != "winner"}
+            row["minion_policy"] = {
+                "policy": minion_policy, "accepted": False,
+                "reason": final_field_reason("minion_kills"),
+            }
             players.append(row)
-
-        match_row = {
-            "replay_name": match["replay_name"],
-            "replay_file": match["replay_file"],
-            "game_mode": match["game_mode"],
-            "map_name": match["map_name"],
-            "team_size": match["team_size"],
-            "completeness_status": match["completeness_status"],
+        matches.append({
+            key: match[key] for key in ("replay_name", "replay_file", "game_mode", "map_name",
+                                       "team_size", "completeness_status")
+        } | {
+            "replay_scope": match.get("replay_scope"),
+            "source_scope": match.get("scope", "final"),
+            "withheld_fields": decisions,
             "minion_policy": {
-                "policy": minion_policy,
-                "accepted_match": minion_allowed,
-                "accepted_player_count": accepted_player_minions,
-                "reason": minion_reason,
+                "policy": minion_policy, "accepted_match": False, "accepted_player_count": 0,
+                "reason": final_field_reason("minion_kills"),
+                "candidate_match_eligible": candidate_allowed, "candidate_reason": candidate_reason,
+                "player_candidate_status": "not_joined_without_scoped_identity_and_final_validation",
             },
             "players": players,
             "kda_source_summary": {
-                "parser_rows": parser_rows,
-                "result_screen_rows": match_corrected_rows,
-                "unresolved_rows": unresolved_rows,
+                "parser_rows": 0, "result_screen_rows": 0, "unresolved_rows": len(players),
             },
-        }
-        if accepted.get("winner", {}).get("accepted_for_index"):
-            match_row["winner"] = accepted["winner"]["value"]
-        if match_corrected_rows:
-            match_row["kda_correction"] = {
-                "applied": True,
-                "corrected_rows": match_corrected_rows,
-            }
-            kda_correction_summary["corrected_matches"] += 1
-            kda_correction_summary["corrected_rows"] += match_corrected_rows
-        matches.append(match_row)
-
+            "kda_correction": {
+                "applied": False, "status": corrections.status, "reason": corrections.reason,
+                "corrected_rows": 0,
+            },
+        })
     return {
-        "schema_version": "decoder_v2.index_export.v2",
+        "schema_version": "decoder_v2.index_export.v3",
         "base_path": str(Path(base_path).resolve()),
         "minion_policy": minion_policy,
-        "minion_policy_summary": minion_policy_summary,
-        "kda_correction_summary": kda_correction_summary,
+        "minion_policy_summary": {
+            "policy": minion_policy, "accepted_matches": 0, "withheld_matches": len(matches),
+        },
+        "kda_correction_summary": asdict(corrections),
         "total_replays": batch["total_replays"],
         "completeness_summary": batch["completeness_summary"],
         "matches": matches,
@@ -210,16 +177,20 @@ def main(argv: Optional[List[str]] = None) -> int:
     )
     parser.add_argument(
         "--kda-correction-path",
-        help="Optional result-screen KDA correction JSON file or directory",
+        help="Inspect legacy correction JSON files; final KDA remains withheld",
     )
     parser.add_argument("-o", "--output", help="Optional output path")
     args = parser.parse_args(argv)
 
-    report = build_index_ready_export(
-        args.base_path,
-        minion_policy=args.minion_policy,
-        kda_correction_path=args.kda_correction_path,
-    )
+    try:
+        report = build_index_ready_export(
+            args.base_path,
+            minion_policy=args.minion_policy,
+            kda_correction_path=args.kda_correction_path,
+        )
+    except (OSError, UnicodeError, json.JSONDecodeError, CorrectionInputError) as error:
+        print(f"index-export: {error}", file=sys.stderr)
+        return 2
     payload = json.dumps(report, indent=2, ensure_ascii=False)
     if args.output:
         output_path = Path(args.output)

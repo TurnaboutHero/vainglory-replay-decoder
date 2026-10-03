@@ -33,6 +33,17 @@ PARSED = {'replay_name':'x', 'replay_file':'x.0.vgr',
 
 
 class NativeCallerBoundaryTests(unittest.TestCase):
+    def test_direct_capture_rejects_series_missing_section_zero(self):
+        frames = [(1, anchor(0,100) + snapshot(0) + packet(10,1))]
+        with patch('vg.decoder_v2.kda.extract_replay_signals', return_value=self.signals()), \
+             patch('vg.decoder_v2.kda.VGRParser') as parser, \
+             patch('vg.decoder_v2.kda.load_frames',return_value=frames):
+            parser.return_value.parse.return_value=PARSED
+            result=decode_kda_from_replay('x.0.vgr',at_game_time=105)
+        self.assertFalse(result.accepted)
+        self.assertEqual(result.players,())
+        self.assertIn('section zero',result.reason)
+
     def signals(self, complete=False):
         return ReplaySignalSummary('x','x.0.vgr',100 if complete else 1,99 if complete else 0,
                                    5. if complete else None,None,5. if complete else None,None,None)
@@ -45,9 +56,8 @@ class NativeCallerBoundaryTests(unittest.TestCase):
             parser.return_value.parse.return_value=PARSED
             final=decode_kda_from_replay('x.0.vgr')
             capture=decode_kda_from_replay('x.0.vgr',at_game_time=109)
-        self.assertTrue(final.accepted,final.reason)
-        self.assertEqual(final.players[0].kills,7)
-        self.assertEqual(final.as_of_game_time,105)
+        self.assertFalse(final.accepted)
+        self.assertEqual(final.players,())
         self.assertEqual(capture.players[0].kills,8)
         self.assertEqual(capture.as_of_game_time,109)
 
@@ -56,7 +66,7 @@ class NativeCallerBoundaryTests(unittest.TestCase):
              patch('vg.decoder_v2.kda.VGRParser') as parser, \
              patch('vg.decoder_v2.kda.load_frames',return_value=[(0,anchor(0,100)+attribute(2)+packet(10,1))]):
             parser.return_value.parse.return_value=PARSED
-            result=decode_kda_from_replay('x.0.vgr')
+            result=decode_kda_from_replay('x.0.vgr',at_game_time=109)
         self.assertFalse(result.accepted)
         self.assertEqual(result.players,())
         self.assertIn('missing_baseline',result.reason)
@@ -69,10 +79,14 @@ class NativeCallerBoundaryTests(unittest.TestCase):
         reader.assert_not_called()
 
     def test_capture_never_runs_final_decoders_or_exports_final_claims(self):
+        from vg.core.stat_evidence import frame_scope
+        frames = [(0, anchor(0,100) + snapshot(0) + packet(10,1))]
+        scope = frame_scope(frames)
         assessment=assess_completeness(self.signals())
         result=KDAExtractionResult(True,'capture',assessment,DurationEstimate(None,'unknown',assessment),
-                                  (KDAPlayerSummary('p','left','Alpha',6,2,3,100),),'capture',105,105)
+                                  (KDAPlayerSummary('p','left','Alpha',6,2,3,100,7,scope),),'capture',105,105,scope)
         with patch('vg.decoder_v2.decode_match.VGRParser') as parser, \
+             patch('vg.decoder_v2.decode_match.load_frames', return_value=frames), \
              patch('vg.decoder_v2.decode_match.decode_kda_from_replay',return_value=result), \
              patch('vg.decoder_v2.decode_match.decode_winner_from_replay') as winner, \
              patch('vg.decoder_v2.decode_match.decode_gold_from_replay') as gold, \
@@ -81,7 +95,7 @@ class NativeCallerBoundaryTests(unittest.TestCase):
             safe=decode_match('x.0.vgr',at_game_time=105)
             debug=decode_match_debug('x.0.vgr',at_game_time=105)
         winner.assert_not_called(); gold.assert_not_called(); minions.assert_not_called()
-        self.assertEqual(safe.schema_version,'decoder_v2.capture.v1')
+        self.assertEqual(safe.schema_version,'decoder_v2.capture.v2')
         self.assertEqual(safe.scope,'capture')
         self.assertEqual(safe.players[0].kills,6)
         self.assertIsNone(safe.players[0].gold)
@@ -91,7 +105,7 @@ class NativeCallerBoundaryTests(unittest.TestCase):
             self.assertIsNone(safe.withheld_fields[key].value)
         self.assertIsNone(debug['duration']); self.assertIsNone(debug['winner_debug'])
 
-    def test_unified_assigns_native_counters_at_record_time_cutoff(self):
+    def test_unified_observes_eof_without_adopting_final_counters(self):
         data = anchor(0, 500) + snapshot(0)
         data += attribute(2) + attribute(3, 2, index=42)
         data += resource(4, 4) + resource(5, 5, index=14)
@@ -107,11 +121,11 @@ class NativeCallerBoundaryTests(unittest.TestCase):
         player = result.left_team[0]
         self.assertEqual(player.entity_id, 1792)
         self.assertEqual((player.kills, player.deaths, player.assists, player.minion_kills),
-                         (7, 4, 7, 105))
-        self.assertTrue(result.kda_detection_used)
+                         (None, None, None, None))
+        self.assertFalse(result.kda_detection_used)
         self.assertEqual(result.native_stats_status, 'accepted')
         self.assertEqual(result.duration_seconds, 9)
-        self.assertEqual(result.as_of_game_time, 509)
+        self.assertEqual(result.as_of_game_time, 510)
 
     def test_unified_real_mixed_frames_override_terminal_and_withhold_stats(self):
         with patch('vg.core.unified_decoder.VGRParser') as parser, \

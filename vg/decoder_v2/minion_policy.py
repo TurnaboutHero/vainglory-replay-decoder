@@ -45,7 +45,7 @@ class MinionPolicyPlayerDecision:
 
 
 def _is_finals_series(replay_file: str) -> bool:
-    return "Law Enforcers (Finals)" in str(Path(replay_file).parent.parent)
+    return "Law Enforcers (Finals)" in str(Path(replay_file.replace("\\", "/")).parent.parent)
 
 
 def collect_player_minion_policy_context(replay_file: str) -> Dict[str, Dict[str, float]]:

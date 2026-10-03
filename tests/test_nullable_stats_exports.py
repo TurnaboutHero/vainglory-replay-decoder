@@ -25,6 +25,22 @@ def match(*players):
 
 
 class NullableStatsExportsTests(unittest.TestCase):
+    def test_unverified_winner_is_not_a_loss_or_zero_win_rate(self):
+        decoded = match(player())
+        self.assertIsNone(match_to_csv_rows(decoded)[0]['is_winner'])
+        self.assertIsNone(generate_report([decoded])['hero_stats'][0]['win_rate'])
+        decoded.winner = 'left'
+        self.assertEqual(match_to_csv_rows(decoded)[0]['is_winner'],1)
+        self.assertEqual(generate_report([decoded])['hero_stats'][0]['win_rate'],100.)
+
+    def test_missing_gold_is_not_a_partial_total_or_average(self):
+        decoded = match(player(gold_earned=5600), player('unknown',gold_earned=None))
+        self.assertIsNone(match_to_summary_row(decoded)['left_gold'])
+        report = generate_report([decoded])
+        self.assertIsNone(report['hero_stats'][0]['avg_gold'])
+        self.assertIsNone(report['match_stats']['avg_gold_per_player'])
+        self.assertEqual(match_to_summary_row(match(player(gold_earned=5600)))['left_gold'],5600)
+
     def test_known_stats_unchanged(self):
         decoded = match(player())
         self.assertEqual(match_to_csv_rows(decoded)[0]['kda_ratio'], 5.0)

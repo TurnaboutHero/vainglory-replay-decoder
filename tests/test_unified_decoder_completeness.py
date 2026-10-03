@@ -20,9 +20,9 @@ class TestCoreCompletenessPolicy(unittest.TestCase):
         complete, _ = _assess_core_completeness(100, 100, None, 100.0)
         self.assertIsNone(complete)
 
-    def test_aligned_terminal_candidate_is_complete(self) -> None:
+    def test_aligned_terminal_candidate_is_unknown(self) -> None:
         complete, reason = _assess_core_completeness(100, 100, 100.0, 100.0)
-        self.assertTrue(complete)
+        self.assertIsNone(complete)
         self.assertIn("terminal", reason.lower())
 
     def test_missing_timing_is_unknown(self) -> None:
@@ -35,13 +35,13 @@ class TestCoreCompletenessPolicy(unittest.TestCase):
         self.assertFalse(complete)
         self.assertIn("falls short", reason.lower())
 
-    def test_exact_ratio_boundary_can_be_complete(self) -> None:
+    def test_exact_ratio_boundary_is_not_terminal_proof(self) -> None:
         complete, _ = _assess_core_completeness(90, 100, 90.0, 90.0)
-        self.assertTrue(complete)
+        self.assertIsNone(complete)
 
-    def test_exact_crystal_alignment_boundary_is_complete(self) -> None:
+    def test_exact_crystal_alignment_boundary_is_not_terminal_proof(self) -> None:
         complete, _ = _assess_core_completeness(100, 100, 70.0, 100.0)
-        self.assertTrue(complete)
+        self.assertIsNone(complete)
 
     def test_decode_aggregates_reason_into_public_json(self) -> None:
         parsed = {
@@ -59,7 +59,7 @@ class TestCoreCompletenessPolicy(unittest.TestCase):
             UnifiedDecoder, "_scan_kda_events", return_value=(None, {}, {}, 1000.0)
         ), patch.object(
             UnifiedDecoder, "_detect_crystal_death", return_value=(700.0, 2000)
-        ), patch("vg.core.native_stats.inspect_native_clock", return_value=ClockAudit(True, "accepted", "valid")), patch("vg.core.unified_decoder.WinLossDetector") as win_cls:
+        ), patch("vg.core.stat_evidence.inspect_native_clock", return_value=ClockAudit(True, "accepted", "valid")), patch("vg.core.unified_decoder.WinLossDetector") as win_cls:
             parser_cls.return_value.parse.return_value = parsed
             win_cls.return_value.detect_winner.return_value = None
             result = UnifiedDecoder("synthetic.0.vgr").decode()
