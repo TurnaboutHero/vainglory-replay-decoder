@@ -4,7 +4,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
+
+from vg.core.replay_output import validate_report_outputs, write_report_output
+from .report_inputs import prepare_truth_inputs, require_truth_match, truth_replay_files
 from typing import Dict, List, Optional
 
 from .minion_hero_compare import build_minion_hero_compare
@@ -89,19 +93,35 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(argv)
 
-    report = build_minion_action_value_compare(
-        truth_path=args.truth,
-        target_replay_name=args.replay_name,
-        action_hex=args.action,
-        top_pattern_limit=args.top_pattern_limit,
-    )
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Minion action value compare saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        documents = prepare_truth_inputs(args.truth)
+        validate_report_outputs(documents.inputs, [args.output] if args.output else [])
+        selected = [row for row in documents.matches if "Incomplete" not in Path(row.get("replay_file", "")).parent.name]
+        candidates = [row for row in selected if row.get("replay_name") == args.replay_name]
+        if len(candidates) > 1:
+            raise ValueError(f"{args.truth}: ambiguous replay name {args.replay_name!r}; scoped choices: {[row.get('replay_file') for row in candidates]}")
+        require_truth_match(selected, args.truth, args.replay_name)
+        replays = truth_replay_files(selected, args.truth)
+        prepared = prepare_truth_inputs(args.truth, replays)
+        documents.inputs.recheck()
+        validate_report_outputs(prepared.inputs, [args.output] if args.output else [])
+        report = build_minion_action_value_compare(
+            truth_path=args.truth,
+            target_replay_name=args.replay_name,
+            action_hex=args.action,
+            top_pattern_limit=args.top_pattern_limit,
+        )
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            output_path = Path(args.output)
+            write_report_output(prepared.inputs, output_path, payload)
+            print(f"Minion action value compare saved to {output_path}")
+        else:
+            prepared.inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"minion_action_value_compare: {exc}", file=sys.stderr)
+        return 2
     return 0
 
 

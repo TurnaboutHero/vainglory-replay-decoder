@@ -4,7 +4,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
+
+from vg.core.replay_output import validate_report_outputs, write_report_output
+from .report_inputs import load_research_truth, prepare_truth_inputs, require_truth_match, truth_replay_files
 from typing import Dict, List, Optional
 
 from .minion_action_self_vs_team import build_minion_action_self_vs_team_per_player
@@ -23,7 +27,7 @@ def build_minion_action_relation_compare(
         target_replay_name=target_replay_name,
         top_pattern_limit=top_pattern_limit,
     )
-    matches = json.loads(Path(truth_path).read_text(encoding="utf-8")).get("matches", [])
+    matches = load_research_truth(truth_path)
     complete_matches = [match for match in matches if "Incomplete" not in Path(match["replay_file"]).parent.name]
     target_match = next(match for match in complete_matches if match["replay_name"] == target_replay_name)
     replay_by_name = {match["replay_name"]: match["replay_file"] for match in complete_matches}
@@ -105,19 +109,39 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(argv)
 
-    report = build_minion_action_relation_compare(
-        truth_path=args.truth,
-        target_replay_name=args.replay_name,
-        action_hex=args.action,
-        top_pattern_limit=args.top_pattern_limit,
-    )
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Minion action relation compare saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        documents = prepare_truth_inputs(args.truth)
+        validate_report_outputs(documents.inputs, [args.output] if args.output else [])
+        selected = [row for row in documents.matches if "Incomplete" not in Path(row.get("replay_file", "")).parent.name]
+        candidates = [row for row in selected if row.get("replay_name") == args.replay_name]
+        if len(candidates) > 1:
+            raise ValueError(f"{args.truth}: ambiguous replay name {args.replay_name!r}; scoped choices: {[row.get('replay_file') for row in candidates]}")
+        require_truth_match(selected, args.truth, args.replay_name)
+        for row in selected:
+            peers = [candidate for candidate in selected if candidate.get("replay_name") == row.get("replay_name")]
+            if len(peers) > 1:
+                raise ValueError(f"{args.truth}: ambiguous peer name; scoped choices: {[peer.get('replay_file') for peer in peers]}")
+        replays = truth_replay_files(selected, args.truth)
+        prepared = prepare_truth_inputs(args.truth, replays)
+        documents.inputs.recheck()
+        validate_report_outputs(prepared.inputs, [args.output] if args.output else [])
+        report = build_minion_action_relation_compare(
+            truth_path=args.truth,
+            target_replay_name=args.replay_name,
+            action_hex=args.action,
+            top_pattern_limit=args.top_pattern_limit,
+        )
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            output_path = Path(args.output)
+            write_report_output(prepared.inputs, output_path, payload)
+            print(f"Minion action relation compare saved to {output_path}")
+        else:
+            prepared.inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"minion_action_relation_compare: {exc}", file=sys.stderr)
+        return 2
     return 0
 
 
