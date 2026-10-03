@@ -4,8 +4,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional
+
+from vg.core.truth_input import TruthInputError
+from vg.core.replay_output import validate_report_outputs, write_report_output
+from .report_inputs import prepare_truth_inputs, truth_replay_files, require_truth_match
 
 from .minion_research import _load_truth_matches
 from .minion_window_research import DEFAULT_HEADER_HEXES, build_minion_window_report
@@ -60,7 +65,7 @@ def build_minion_outlier_compare(
     """Compare a target outlier replay against other complete fixtures."""
     matches = _load_truth_matches(truth_path)
     complete_matches = [match for match in matches if "Incomplete" not in Path(match["replay_file"]).parent.name]
-    target_match = next(match for match in complete_matches if match["replay_name"] == target_replay_name)
+    target_match = require_truth_match(complete_matches, truth_path, target_replay_name)
 
     target_report = build_minion_window_report(
         replay_file=target_match["replay_file"],
@@ -152,18 +157,35 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(argv)
 
-    report = build_minion_outlier_compare(
-        truth_path=args.truth,
-        target_replay_name=args.replay_name,
-        byte_window=args.byte_window,
-    )
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Minion outlier compare saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        documents = prepare_truth_inputs(args.truth)
+        validate_report_outputs(documents.inputs, [args.output] if args.output else [])
+        selected = [row for row in documents.matches if "Incomplete" not in Path(row.get("replay_file", "")).parent.name]
+        candidates = [row for row in selected if row.get("replay_name") == args.replay_name]
+        if len(candidates) > 1:
+            choices = '\n'.join(str(row.get('replay_file')) for row in candidates)
+            raise TruthInputError("truth_ambiguous", Path(args.truth), f"ambiguous replay name {args.replay_name!r}; scoped choices:\n{choices}")
+        require_truth_match(selected, args.truth, args.replay_name)
+        replays = truth_replay_files(selected, args.truth)
+        prepared = prepare_truth_inputs(args.truth, replays)
+        documents.inputs.recheck()
+        validate_report_outputs(prepared.inputs, [args.output] if args.output else [])
+        report = build_minion_outlier_compare(
+            truth_path=args.truth,
+            target_replay_name=args.replay_name,
+            byte_window=args.byte_window,
+        )
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            output_path = Path(args.output)
+            write_report_output(prepared.inputs, output_path, payload)
+            print(f"Minion outlier compare saved to {output_path}")
+        else:
+            prepared.inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"minion_outlier_compare: {exc}", file=sys.stderr)
+        return 2
     return 0
 
 

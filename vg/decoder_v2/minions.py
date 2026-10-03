@@ -107,14 +107,12 @@ def compare_minion_candidates_to_truth(
     truth_path: str,
 ) -> Dict[str, object]:
     """Compare current minion candidate counts to truth for a replay."""
-    truth_data = json_load(truth_path)
+    from .report_inputs import load_research_truth
+    from vg.core.truth_input import select_truth_match
+    truth_matches = load_research_truth(truth_path)
     replay_name = Path(replay_file).stem.rsplit(".", 1)[0]
-    truth_match = next(
-        (match for match in truth_data["matches"] if match["replay_name"] == replay_name),
-        None,
-    )
-    if truth_match is None:
-        raise ValueError(f"Replay not found in truth: {replay_name}")
+    truth_match = select_truth_match(tuple(truth_matches), truth_path,
+                                    replay_name=replay_name, replay_file=str(Path(replay_file).absolute()))
 
     signals = extract_replay_signals(replay_file)
     assessment = assess_completeness(signals)

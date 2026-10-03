@@ -4,12 +4,42 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from typing import TypedDict
 from unittest.mock import patch
 
 from vg.core.vgr_database import VGDatabase
 
 
-def make_parsed_replay(replay_name: str) -> dict:
+class PlayerFixture(TypedDict, total=False):
+    name: str
+    uuid: str
+    team: str
+    team_id: int
+    hero_name: str
+    hero_id: int
+    items: list[str]
+    kills: int | None
+    deaths: int | None
+    assists: int | None
+    minion_kills: int | None
+    gold: int | None
+
+
+class MatchFixture(TypedDict):
+    mode: str
+    total_frames: int
+    duration_seconds: int | None
+    winner: str | None
+
+
+class ReplayFixture(TypedDict):
+    replay_name: str
+    parsed_at: str
+    match_info: MatchFixture
+    teams: dict[str, list[PlayerFixture]]
+
+
+def make_parsed_replay(replay_name: str) -> ReplayFixture:
     return {
         "replay_name": replay_name,
         "parsed_at": "2026-03-21T12:00:00",
@@ -56,12 +86,17 @@ class TestVGDatabase(unittest.TestCase):
 
     def test_import_replay_uses_parser_fields_and_skips_duplicates(self) -> None:
         parsed = make_parsed_replay("sample-replay")
+        source = Path(self.temp_dir.name) / 'sample-replay.0.vgr'
+        block = bytearray(0xE2)
+        block[:3] = b'\xda\x03\xee'
+        block[3:12] = b'PlayerOne'
+        source.write_bytes(block)
 
         with patch("vg.core.vgr_database.VGRParser") as parser_cls:
             parser_cls.return_value.parse.return_value = parsed
 
-            self.assertTrue(self.db.import_replay("sample-replay.0.vgr"))
-            self.assertFalse(self.db.import_replay("sample-replay.0.vgr"))
+            self.assertTrue(self.db.import_replay(str(source)))
+            self.assertFalse(self.db.import_replay(str(source)))
 
         cursor = self.db.conn.cursor()
         match_row = cursor.execute(

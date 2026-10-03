@@ -5,14 +5,16 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import sys
 from typing import Dict, Iterable, List, Optional
 
 from .truth_stubs import build_truth_stub_report
+from .truth_inventory import inventory_inputs
+from vg.core.replay_output import validate_report_outputs, write_report_output
 
 
 def _score_stub(stub: Dict[str, object]) -> Dict[str, object]:
     match_info = stub["match_info"]
-    accepted_fields = stub.get("accepted_fields", {})
 
     score = 0
     tags: List[str] = []
@@ -43,10 +45,10 @@ def _score_stub(stub: Dict[str, object]) -> Dict[str, object]:
         score += 5
         tags.append("5v5_casual")
 
-    if "winner" in accepted_fields:
+    if _accepted_final(stub, 'winner'):
         score += 10
         tags.append("winner_accepted")
-    if "kills" in accepted_fields:
+    if all(_accepted_final(stub, field) for field in ('kills', 'deaths', 'assists')):
         score += 10
         tags.append("kda_accepted")
 
@@ -58,6 +60,13 @@ def _score_stub(stub: Dict[str, object]) -> Dict[str, object]:
         "score": score,
         "tags": tags,
     }
+
+
+def _accepted_final(stub: Dict[str, object], field: str) -> bool:
+    decision = stub.get('accepted_fields', {}).get(field)
+    return (isinstance(decision, dict) and decision.get('accepted_for_index') is True
+            and decision.get('scope', 'final') == 'final'
+            and field not in stub.get('withheld_fields', {}))
 
 
 def build_truth_labeling_queue(base_path: str, truth_path: str) -> Dict[str, object]:
@@ -77,6 +86,8 @@ def build_truth_labeling_queue(base_path: str, truth_path: str) -> Dict[str, obj
                 "completeness_status": stub["match_info"]["completeness_status"],
                 "manifest_linked": stub.get("manifest") is not None,
                 "accepted_fields": sorted(stub.get("accepted_fields", {}).keys()),
+                "accepted_decisions": stub.get("accepted_fields", {}),
+                "withheld_fields": stub.get("withheld_fields", {}),
             }
         )
 
@@ -115,14 +126,20 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(list(argv) if argv is not None else None)
 
-    report = build_truth_labeling_queue(args.base, args.truth)
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Truth labeling queue saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        inputs = inventory_inputs(args.base, args.truth)
+        if args.output:
+            validate_report_outputs(inputs, (Path(args.output),))
+        report = build_truth_labeling_queue(args.base, args.truth)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            write_report_output(inputs, Path(args.output), payload)
+            print(f"Truth labeling queue saved to {args.output}")
+        else:
+            print(payload)
+    except (OSError, ValueError, TypeError) as error:
+        print(f'truth-labeling-queue: {args.output or args.truth}: {error}', file=sys.stderr)
+        return 2
     return 0
 
 

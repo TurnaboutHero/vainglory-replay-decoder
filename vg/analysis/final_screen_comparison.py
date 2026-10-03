@@ -6,7 +6,7 @@ from pathlib import Path
 import re
 
 from vg.core.native_stats import read_native_stats
-from vg.core.replay_output import validate_replay_output, write_replay_output
+from vg.core.replay_output import ReportInputs, validate_report_outputs, write_report_output
 from vg.core.stat_evidence import frame_scope, inspect_replay_evidence
 from vg.core.unified_decoder import _le_to_be
 from vg.core.vgr_parser import VGRParser
@@ -128,10 +128,13 @@ def compare_final_screen(replay_file: str, observation_file: str, screenshot_fil
                         'team': roster[eid][0], 'screen_side': row['screen_side'], 'fields': fields,
                         'gold': {'display': row['gold_display'], 'exact_value': None, 'status': 'observation_only'}})
     total = len(players) * len(FIELDS)
-    status = 'unavailable' if not native.valid else ('matched' if matched == total else 'mismatch')
+    status = 'unavailable' if not native.valid or total == 0 else ('matched' if matched == total else 'mismatch')
     winner_side = observation['winner_screen_side']
     return {'schema_version': 'vg.final-screen-comparison.v1',
             'scope': 'recording_specific_final_screen', 'accepted_for_index': False,
+            'compared_field_names': list(FIELDS.values()),
+            'observation_only_fields': ['gold', 'winner', 'duration', 'result'],
+            'comparison_scope': 'K/D/A/CS counters for this recording and the supplied hash-bound screenshot and manual transcription.',
             'comparison_status': status, 'matched_fields': matched, 'compared_fields': total,
             'replay_scope': evidence.replay_scope, 'screenshot_sha256': screenshot_hash,
             'observation_sha256': hashlib.sha256(raw_observation).hexdigest(),
@@ -148,24 +151,22 @@ def compare_final_screen(replay_file: str, observation_file: str, screenshot_fil
 
 
 def main(argv=None) -> int:
-    parser = argparse.ArgumentParser(description='Compare native EOF counters with one hash-bound, manually transcribed final screen.')
+    parser = argparse.ArgumentParser(description='Compare only native EOF K/D/A/CS counters with one hash-bound, manually transcribed final screen. Gold, winner, duration and result remain observations; a match does not authorize final index statistics.')
     parser.add_argument('replay', help='Explicit numbered .0.vgr file')
     parser.add_argument('--observation', required=True)
     parser.add_argument('--screenshot', required=True)
     parser.add_argument('-o', '--output')
     args = parser.parse_args(argv)
     try:
+        inputs = ReportInputs(files=(Path(args.observation), Path(args.screenshot)), replays=(Path(args.replay),))
         if args.output:
-            output = Path(args.output)
-            validate_replay_output(Path(args.replay), output)
-            for path in (Path(args.observation), Path(args.screenshot)):
-                if output.resolve() == path.resolve() or (output.exists() and output.samefile(path)):
-                    raise ValueError('Output aliases an observation or screenshot input')
+            validate_report_outputs(inputs, (Path(args.output),))
         result = compare_final_screen(args.replay, args.observation, args.screenshot)
         payload = json.dumps(result, indent=2, ensure_ascii=False) + '\n'
         if args.output:
-            write_replay_output(Path(args.replay), Path(args.output), payload)
+            write_report_output(inputs, Path(args.output), payload)
         else:
+            inputs.recheck()
             print(payload, end='')
     except (OSError, ValueError) as exc:
         parser.error(str(exc))

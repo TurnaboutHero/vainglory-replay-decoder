@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 from vg.analysis.decode_tournament import _resolve_truth_player_name
-from vg.decoder_v2.kda_postgame_audit import _load_truth_matches
+from vg.decoder_v2.report_inputs import load_research_truth
 
 from .result_screen_kda_correction_inventory import build_result_screen_kda_correction_inventory
 from .result_screen_kda_correction_readiness import _discover_decoded_payloads
@@ -32,7 +32,7 @@ def build_result_screen_kda_validation(
     inventory = build_result_screen_kda_correction_inventory(str(root))
     decoded_payloads = _discover_decoded_payloads(output_root_path)
     truth_matches = {
-        str(match["replay_name"]): match for match in _load_truth_matches(truth_path)
+        str(match["replay_name"]): match for match in load_research_truth(truth_path)
     }
 
     rows = []

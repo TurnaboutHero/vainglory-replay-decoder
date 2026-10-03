@@ -3,38 +3,72 @@
 from __future__ import annotations
 
 import argparse
+from dataclasses import dataclass
 import json
 from pathlib import Path
 import sys
 from typing import Dict, List, Optional
 
-from vg.core.replay_output import ReplayOutputError, validate_replay_outputs, write_replay_outputs
+from vg.core.batch_result import InputResult, batch_report
+from vg.core.replay_input import ReplayInputError, discover_replay_files, replay_input_id
+from vg.core.replay_output import ReplayOutputError, ReportInputs, validate_report_outputs, write_report_output
 from .decode_match import decode_match
 
 
 def find_replays(base_path: str) -> List[Path]:
     """Find all `.0.vgr` replay files under a directory tree."""
-    base = Path(base_path)
-    replays = []
-    for replay in sorted(base.rglob("*.0.vgr")):
-        if "__MACOSX" in replay.parts or replay.name.startswith("._"):
-            continue
-        replays.append(replay)
-    return replays
+    return list(discover_replay_files(base_path))
 
 
-def decode_replay_batch(base_path: str) -> Dict[str, object]:
+@dataclass(frozen=True, slots=True)
+class BatchInputs:
+    replays: tuple[Path, ...]
+    report_inputs: ReportInputs
+    errors: dict[Path, ReplayOutputError]
+
+
+def prepare_batch_inputs(base_path: str, *, files: tuple[Path, ...] = ()) -> BatchInputs:
+    replays = tuple(find_replays(base_path))
+    readable = []
+    errors = {}
+    for replay in replays:
+        try:
+            ReportInputs(replays=(replay,))
+        except ReplayOutputError as error:
+            if error.code != 'input_unreadable':
+                raise
+            errors[replay] = error
+        else:
+            readable.append(replay)
+    return BatchInputs(replays, ReportInputs(files=files, replays=readable, reserved_replays=tuple(errors)), errors)
+
+
+def decode_replay_batch(base_path: str, *, inputs: BatchInputs | None = None) -> Dict[str, object]:
     """Decode a replay tree using conservative v2 policy."""
-    replays = find_replays(base_path)
+    if inputs is None:
+        inputs = prepare_batch_inputs(base_path)
+    replays = inputs.replays
     matches = []
+    results: list[InputResult] = []
     completeness_counter: Dict[str, int] = {}
     accepted_field_counter: Dict[str, int] = {}
     withheld_field_counter: Dict[str, int] = {}
 
     for replay in replays:
-        decoded = decode_match(str(replay))
-        payload = decoded.to_dict()
+        input_id = replay_input_id(replay, base_path)
+        try:
+            if replay in inputs.errors:
+                raise inputs.errors[replay]
+            decoded = decode_match(str(replay))
+            payload = decoded.to_dict() | {'input_id': input_id}
+        except (OSError, ValueError) as error:
+            results.append({'input_id': input_id, 'replay_file': str(replay),
+                            'status': 'failed', 'error_code': getattr(error, 'code', 'decode_failed'),
+                            'error': str(error)})
+            continue
         matches.append(payload)
+        results.append({'input_id': input_id, 'replay_file': str(replay),
+                        'status': 'complete', 'error_code': None, 'error': None})
 
         completeness_status = payload["completeness_status"]
         completeness_counter[completeness_status] = completeness_counter.get(completeness_status, 0) + 1
@@ -52,6 +86,7 @@ def decode_replay_batch(base_path: str) -> Dict[str, object]:
             withheld_field_counter[key] = withheld_field_counter.get(key, 0) + 1
 
     return {
+        **batch_report(results),
         "schema_version": "decoder_v2.batch.v2",
         "base_path": str(Path(base_path).resolve()),
         "total_replays": len(replays),
@@ -70,21 +105,21 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     try:
         output_path = Path(args.output) if args.output else None
-        replays = find_replays(args.base_path) if output_path is not None else []
+        inputs = prepare_batch_inputs(args.base_path)
         if output_path is not None:
-            validate_replay_outputs(replays, output_path)
-        report = decode_replay_batch(args.base_path)
+            validate_report_outputs(inputs.report_inputs, (output_path,))
+        report = decode_replay_batch(args.base_path, inputs=inputs)
         payload = json.dumps(report, indent=2, ensure_ascii=False)
         if output_path is not None:
-            validate_replay_outputs(find_replays(args.base_path), output_path)
-            write_replay_outputs(replays, output_path, payload)
+            write_report_output(inputs.report_inputs, output_path, payload)
             print(f"decoder_v2 batch output saved to {output_path}")
         else:
+            inputs.report_inputs.recheck()
             print(payload)
-    except (OSError, ReplayOutputError) as error:
+    except (OSError, ReplayInputError, ReplayOutputError) as error:
         print(f"batch-decode: {error}", file=sys.stderr)
         return 2
-    return 0
+    return 1 if report.get('failed', 0) else 0
 
 
 if __name__ == "__main__":

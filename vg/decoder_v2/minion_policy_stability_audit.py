@@ -4,8 +4,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional
+
+from vg.core.replay_output import validate_report_outputs, write_report_output
+from .report_inputs import prepare_truth_inputs, truth_replay_files
 
 from .minion_policy import (
     MINION_POLICY_CHOICES,
@@ -23,6 +27,8 @@ def _score_rows(rows: List[Dict[str, object]]) -> Dict[str, object]:
     coverage = len(accepted_rows) / len(rows) if rows else 0.0
     return {
         "player_rows": len(rows),
+        "research_status": "research_only" if rows else "unavailable",
+        "research_reason": None if rows else "Policy disabled or no truth-covered player decisions.",
         "accepted_rows": len(accepted_rows),
         "accepted_exact": accepted_exact,
         "accepted_error": accepted_error,
@@ -104,6 +110,9 @@ def build_minion_policy_stability_audit(truth_path: str) -> Dict[str, object]:
     return {
         "truth_path": str(Path(truth_path).resolve()),
         "policies": policies,
+        "research_status": "research_only" if any(value["rows"] for value in policies.values()) else "unavailable",
+        "research_reason": None if any(value["rows"] for value in policies.values()) else "No truth-covered player decisions.",
+        "research_coverage": {"policy_player_rows": {name: len(value["rows"]) for name, value in policies.items()}},
         "recommended_default": MINION_POLICY_NONE,
     }
 
@@ -114,14 +123,26 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(list(argv) if argv is not None else None)
 
-    report = build_minion_policy_stability_audit(args.truth)
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Minion policy stability audit saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        documents = prepare_truth_inputs(args.truth)
+        validate_report_outputs(documents.inputs, [args.output] if args.output else [])
+        selected = documents.matches
+        replays = truth_replay_files(selected, args.truth)
+        inputs = prepare_truth_inputs(args.truth, replays).inputs
+        documents.inputs.recheck()
+        validate_report_outputs(inputs, [args.output] if args.output else [])
+        report = build_minion_policy_stability_audit(args.truth)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            output_path = Path(args.output)
+            write_report_output(inputs, output_path, payload)
+            print(f"Minion policy stability audit saved to {output_path}")
+        else:
+            inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"minion_policy_stability_audit: {exc}", file=sys.stderr)
+        return 2
     return 0
 
 

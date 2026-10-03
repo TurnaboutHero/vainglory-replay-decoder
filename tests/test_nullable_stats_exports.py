@@ -7,6 +7,7 @@ from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
+from tests.test_product_duration_provenance import replay_bytes
 from vg.core.unified_decoder import DecodedMatch, DecodedPlayer
 from vg.core.export_matches import match_to_csv_rows, match_to_summary_row, export_single
 from vg.analysis.batch_report import generate_report, print_report
@@ -72,7 +73,9 @@ class NullableStatsExportsTests(unittest.TestCase):
         decoded = match(player(kills=None, deaths=None, assists=None, minion_kills=None,
                                truth_kills=0, truth_deaths=0))
         with tempfile.TemporaryDirectory() as tmp:
-            json_path, csv_path = export_single(Path('sample.0.vgr'), decoded, str(Path(tmp) / 'out.json'))
+            replay = Path(tmp) / 'sample.0.vgr'
+            replay.write_bytes(replay_bytes())
+            json_path, csv_path = export_single(replay, decoded, str(Path(tmp) / 'out.json'))
             self.assertIsNone(json.loads(json_path.read_text())['left_team'][0]['kills'])
             with csv_path.open(encoding='utf-8-sig', newline='') as stream:
                 row = next(csv.DictReader(stream))

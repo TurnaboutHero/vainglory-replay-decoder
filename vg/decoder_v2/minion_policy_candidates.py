@@ -4,8 +4,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 from typing import Dict, List, Optional
+
+from vg.core.replay_output import validate_report_outputs, write_report_output
+from .report_inputs import prepare_truth_inputs, truth_replay_files
 
 from .minion_ratio_profile import build_minion_ratio_profile
 
@@ -86,6 +90,9 @@ def build_minion_policy_candidates(truth_path: str) -> Dict[str, object]:
         return {
             "truth_path": str(Path(truth_path).resolve()),
             "row_count": 0,
+            "research_status": "unavailable",
+            "research_reason": "No truth-covered baseline player samples.",
+            "research_coverage": {"player_rows": 0},
             "top_policies": [],
         }
     metrics = ["solo_ratio", "mixed_ratio"] + [
@@ -149,6 +156,9 @@ def build_minion_policy_candidates(truth_path: str) -> Dict[str, object]:
     return {
         "truth_path": str(Path(truth_path).resolve()),
         "row_count": len(rows),
+        "research_status": "research_only",
+        "research_reason": None,
+        "research_coverage": {"player_rows": len(rows)},
         "top_policies": raw_ranked[:40],
         "recommended_policies": recommended_ranked[:20],
     }
@@ -160,14 +170,26 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(argv)
 
-    report = build_minion_policy_candidates(args.truth)
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Minion policy candidates saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        documents = prepare_truth_inputs(args.truth)
+        validate_report_outputs(documents.inputs, [args.output] if args.output else [])
+        selected = [row for row in documents.matches if "Incomplete" not in Path(row.get("replay_file", "")).parent.name]
+        replays = truth_replay_files(selected, args.truth)
+        inputs = prepare_truth_inputs(args.truth, replays).inputs
+        documents.inputs.recheck()
+        validate_report_outputs(inputs, [args.output] if args.output else [])
+        report = build_minion_policy_candidates(args.truth)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            output_path = Path(args.output)
+            write_report_output(inputs, output_path, payload)
+            print(f"Minion policy candidates saved to {output_path}")
+        else:
+            inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"minion_policy_candidates: {exc}", file=sys.stderr)
+        return 2
     return 0
 
 

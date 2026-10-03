@@ -1,4 +1,6 @@
 import unittest
+import tempfile
+from pathlib import Path
 from unittest.mock import patch
 
 from vg.decoder_v2.completeness import assess_completeness
@@ -85,15 +87,18 @@ class NativeCallerBoundaryTests(unittest.TestCase):
         assessment=assess_completeness(self.signals())
         result=KDAExtractionResult(True,'capture',assessment,DurationEstimate(None,'unknown',assessment),
                                   (KDAPlayerSummary('p','left','Alpha',6,2,3,100,7,scope),),'capture',105,105,scope)
-        with patch('vg.decoder_v2.decode_match.VGRParser') as parser, \
+        with tempfile.TemporaryDirectory() as temporary, \
+             patch('vg.decoder_v2.decode_match.VGRParser') as parser, \
              patch('vg.decoder_v2.decode_match.load_frames', return_value=frames), \
              patch('vg.decoder_v2.decode_match.decode_kda_from_replay',return_value=result), \
              patch('vg.decoder_v2.decode_match.decode_winner_from_replay') as winner, \
              patch('vg.decoder_v2.decode_match.decode_gold_from_replay') as gold, \
              patch('vg.decoder_v2.decode_match.collect_minion_candidates') as minions:
             parser.return_value.parse.return_value=PARSED
-            safe=decode_match('x.0.vgr',at_game_time=105)
-            debug=decode_match_debug('x.0.vgr',at_game_time=105)
+            replay = Path(temporary) / 'x.0.vgr'
+            replay.write_bytes(frames[0][1])
+            safe=decode_match(str(replay),at_game_time=105)
+            debug=decode_match_debug(str(replay),at_game_time=105)
         winner.assert_not_called(); gold.assert_not_called(); minions.assert_not_called()
         self.assertEqual(safe.schema_version,'decoder_v2.capture.v2')
         self.assertEqual(safe.scope,'capture')

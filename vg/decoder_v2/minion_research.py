@@ -15,10 +15,11 @@ from vg.core.vgr_parser import VGRParser
 
 from .credit_events import iter_credit_events
 from .minions import compare_minion_candidates_to_truth, collect_minion_candidates
+from .report_inputs import load_research_truth
 
 
 def _load_truth_matches(truth_path: str) -> List[Dict]:
-    return json.loads(Path(truth_path).read_text(encoding="utf-8")).get("matches", [])
+    return load_research_truth(truth_path)
 
 
 def _load_player_credit_counters(replay_file: str) -> Dict[str, Counter]:

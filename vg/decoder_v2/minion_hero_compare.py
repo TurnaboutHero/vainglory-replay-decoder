@@ -4,7 +4,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
+
+from vg.core.replay_output import validate_report_outputs, write_report_output
+from vg.core.truth_input import TruthInputError
+from .report_inputs import prepare_truth_inputs, require_truth_match, truth_replay_files
 from typing import Dict, List, Optional
 
 from vg.core.vgr_parser import VGRParser
@@ -38,9 +43,11 @@ def build_minion_hero_compare(
     target_heroes = _load_player_heroes(target_match["replay_file"])
 
     target_rows = []
-    for player_name, player_truth in target_match["players"].items():
+    for player_name, player_truth in target_match.get("players", {}).items():
         if player_name not in target_counters:
             continue
+        if player_truth.get("minion_kills") is None:
+            raise ValueError(f"{truth_path}: target player {player_name!r} requires minion_kills for comparison")
         baseline_0e = target_counters[player_name][(0x0E, 1.0)]
         residual = player_truth["minion_kills"] - baseline_0e
         if residual <= 0:
@@ -53,7 +60,7 @@ def build_minion_hero_compare(
                 continue
             heroes = _load_player_heroes(match["replay_file"])
             counters = _load_player_credit_counters(match["replay_file"])
-            for peer_name, peer_truth in match["players"].items():
+            for peer_name, peer_truth in match.get("players", {}).items():
                 peer_mk = peer_truth.get("minion_kills")
                 if heroes.get(peer_name) != hero_name or peer_name not in counters or peer_mk is None:
                     continue
@@ -110,18 +117,35 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(argv)
 
-    report = build_minion_hero_compare(
-        truth_path=args.truth,
-        target_replay_name=args.replay_name,
-        top_pattern_limit=args.top_pattern_limit,
-    )
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Minion hero compare saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        documents = prepare_truth_inputs(args.truth)
+        validate_report_outputs(documents.inputs, [args.output] if args.output else [])
+        selected = [row for row in documents.matches if "Incomplete" not in Path(row.get("replay_file", "")).parent.name]
+        candidates = [row for row in selected if row.get("replay_name") == args.replay_name]
+        if len(candidates) > 1:
+            choices = '\n'.join(str(row.get('replay_file')) for row in candidates)
+            raise TruthInputError("truth_ambiguous", Path(args.truth), f"ambiguous replay name {args.replay_name!r}; scoped choices:\n{choices}")
+        require_truth_match(selected, args.truth, args.replay_name)
+        replays = truth_replay_files(selected, args.truth)
+        prepared = prepare_truth_inputs(args.truth, replays)
+        documents.inputs.recheck()
+        validate_report_outputs(prepared.inputs, [args.output] if args.output else [])
+        report = build_minion_hero_compare(
+            truth_path=args.truth,
+            target_replay_name=args.replay_name,
+            top_pattern_limit=args.top_pattern_limit,
+        )
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            output_path = Path(args.output)
+            write_report_output(prepared.inputs, output_path, payload)
+            print(f"Minion hero compare saved to {output_path}")
+        else:
+            prepared.inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"minion_hero_compare: {exc}", file=sys.stderr)
+        return 2
     return 0
 
 

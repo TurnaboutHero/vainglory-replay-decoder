@@ -7,6 +7,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
+from tests.test_native_stats import packet
 
 from vg.decoder_v2.decode_match import main
 
@@ -18,7 +19,8 @@ class MatchOutputSafetyTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         self.replay = self.root / "match.0.vgr"
         self.sibling = self.root / "match.1.vgr"
-        self.replay.write_bytes(b"private replay metadata")
+        self.replay_data = packet(0, 1, b"private replay metadata")
+        self.replay.write_bytes(self.replay_data)
         self.sibling.write_bytes(b"private replay section")
 
     def assert_rejected(self, output: Path, replay: Path | None = None) -> None:
@@ -93,7 +95,7 @@ class MatchOutputSafetyTests(unittest.TestCase):
             code = main([str(self.replay), "--format", "debug-json", "-o", str(output)])
         self.assertEqual(code, 0)
         self.assertEqual(json.loads(output.read_text(encoding="utf-8")), {"scope": "capture"})
-        self.assertEqual(self.replay.read_bytes(), b"private replay metadata")
+        self.assertEqual(self.replay.read_bytes(), self.replay_data)
 
     def test_decode_failure_preserves_existing_output(self) -> None:
         output = self.root / "report.json"

@@ -5,11 +5,13 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import sys
 from typing import Dict, List, Optional
 
 from .decode_match import decode_match
-from .manifest import parse_replay_manifest
-from .truth_inventory import build_truth_inventory
+from .manifest import parse_replay_manifest, UUID_PAIR_PATTERN
+from .truth_inventory import build_truth_inventory, inventory_inputs
+from vg.core.replay_output import validate_report_outputs, write_report_output
 
 
 def find_replay_files(directory: str) -> List[Path]:
@@ -67,13 +69,11 @@ def build_truth_stub_report(base_path: str, truth_path: str) -> Dict[str, object
     stubs = []
 
     for row in inventory["missing"]:
-        directory = row["directory"]
-        replay_files = find_replay_files(directory)
-        manifest_candidates = sorted(Path(directory).glob("replayManifest-*.txt"))
-        manifest_path = str(manifest_candidates[0]) if manifest_candidates else None
-
-        for replay_file in replay_files:
-            stubs.append(build_truth_stub_for_replay(str(replay_file), manifest_path))
+        replay_file = Path(row["replay_file"])
+        manifest_path, manifest_reason = associated_manifest(replay_file)
+        stub = build_truth_stub_for_replay(str(replay_file), str(manifest_path) if manifest_path else None)
+        stub['manifest_reason'] = manifest_reason
+        stubs.append(stub)
 
     return {
         "schema_version": "decoder_v2.truth_stub_report.v1",
@@ -82,6 +82,21 @@ def build_truth_stub_report(base_path: str, truth_path: str) -> Dict[str, object
         "stub_count": len(stubs),
         "stubs": stubs,
     }
+
+
+def associated_manifest(replay_file: Path) -> tuple[Path | None, str]:
+    family = replay_file.name[:-len('.0.vgr')]
+    identifiers = {family}
+    pair = UUID_PAIR_PATTERN.fullmatch(family)
+    if pair:
+        identifiers.update((pair.group('match_uuid'), pair.group('session_uuid')))
+    candidates = sorted(replay_file.parent.glob('replayManifest-*.txt'))
+    exact = [path for path in candidates if path.name[len('replayManifest-'):-len('.txt')] in identifiers]
+    if len(exact) == 1:
+        return exact[0], 'exact_family_association'
+    if len(exact) > 1 or len(candidates) > 1:
+        return None, 'manifest_ambiguous'
+    return None, 'manifest_unassociated' if candidates else 'manifest_missing'
 
 
 def main(argv: Optional[List[str]] = None) -> int:
@@ -97,19 +112,25 @@ def main(argv: Optional[List[str]] = None) -> int:
         help="Truth JSON path",
     )
     parser.add_argument(
-        "--output",
+        "-o", "--output",
         help="Optional output path",
     )
     args = parser.parse_args(argv)
 
-    report = build_truth_stub_report(args.base, args.truth)
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Truth stubs saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        inputs = inventory_inputs(args.base, args.truth)
+        if args.output:
+            validate_report_outputs(inputs, (Path(args.output),))
+        report = build_truth_stub_report(args.base, args.truth)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            write_report_output(inputs, Path(args.output), payload)
+            print(f"Truth stubs saved to {args.output}")
+        else:
+            print(payload)
+    except (OSError, ValueError, TypeError) as error:
+        print(f'truth-stubs: {args.output or args.truth}: {error}', file=sys.stderr)
+        return 2
     return 0
 
 

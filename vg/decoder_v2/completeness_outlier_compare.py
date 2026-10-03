@@ -4,10 +4,14 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 from typing import Dict, List, Optional
 
 from .completeness_audit import build_completeness_audit
+from .batch_decode import find_replays
+from vg.core.replay_input import ReplayInputError
+from vg.core.replay_output import ReportInputs, validate_report_outputs, write_report_output
 
 
 def _derived_metrics(row: Dict[str, object]) -> Dict[str, Optional[float]]:
@@ -46,7 +50,11 @@ def build_completeness_outlier_compare(base_path: str, target_replay_name: str) 
     """Compare one target replay against accepted long-tail complete cohorts."""
     audit = build_completeness_audit(base_path)
     rows = audit["rows"]
-    target = next(row for row in rows if row["replay_name"] == target_replay_name)
+    candidates = [row for row in rows if row["replay_name"] == target_replay_name]
+    if len(candidates) != 1:
+        raise ReplayInputError('replay_ambiguous' if candidates else 'input_missing', Path(base_path),
+                               f'Expected one target {target_replay_name!r}; choices: {[row["replay_file"] for row in candidates]}')
+    target = candidates[0]
 
     accepted_stale_tail = [
         row for row in rows
@@ -91,14 +99,25 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(argv)
 
-    report = build_completeness_outlier_compare(args.base, args.replay_name)
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Completeness outlier compare saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        replays = find_replays(args.base)
+        inputs = ReportInputs(replays=replays)
+        validate_report_outputs(inputs, [args.output] if args.output else [])
+        candidates = [replay for replay in replays if replay.name == f'{args.replay_name}.0.vgr']
+        if len(candidates) != 1:
+            raise ReplayInputError('replay_ambiguous' if candidates else 'input_missing', Path(args.base),
+                                   f'Expected one target {args.replay_name!r}; choices: {candidates}')
+        report = build_completeness_outlier_compare(args.base, args.replay_name)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            write_report_output(inputs, Path(args.output), payload)
+            print(f"Completeness outlier compare saved to {args.output}")
+        else:
+            inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as error:
+        print(f'completeness-outlier: {args.base}: {error}', file=sys.stderr)
+        return 2
     return 0
 
 

@@ -4,8 +4,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional
+
+from vg.core.replay_output import validate_report_outputs, write_report_output
+from .report_inputs import prepare_truth_inputs, truth_replay_files
 
 from .minion_research import _load_truth_matches
 from .minion_window_research import DEFAULT_HEADER_HEXES, build_minion_window_report
@@ -29,6 +33,7 @@ def build_minion_window_fixture_report(
 
     global_positive_target_samples = 0
     global_nonpositive_target_samples = 0
+    comparison_truth_samples = 0
     positive_header_counts: Dict[str, int] = {}
     nonpositive_header_counts: Dict[str, int] = {}
     positive_pattern_counts: Dict[str, int] = {}
@@ -45,6 +50,7 @@ def build_minion_window_fixture_report(
         aggregate = report["aggregate"]
         global_positive_target_samples += aggregate["positive_target_samples"]
         global_nonpositive_target_samples += aggregate["nonpositive_target_samples"]
+        comparison_truth_samples += report.get("research_coverage", {}).get("comparison_truth_samples", 0)
 
         for item in aggregate["positive_header_summary"]:
             key = str(item["header_hex"])
@@ -111,6 +117,10 @@ def build_minion_window_fixture_report(
     return {
         "truth_path": str(Path(truth_path).resolve()),
         "complete_fixture_matches": len(complete_matches),
+        "research_status": "research_only" if global_positive_target_samples and comparison_truth_samples else "unavailable",
+        "research_reason": None if global_positive_target_samples and comparison_truth_samples else "Missing truth-covered positive or comparison target samples.",
+        "research_coverage": {"fixtures": len(complete_matches), "positive_samples": global_positive_target_samples,
+                              "comparison_samples": comparison_truth_samples},
         "byte_window": byte_window,
         "global_positive_target_samples": global_positive_target_samples,
         "global_nonpositive_target_samples": global_nonpositive_target_samples,
@@ -139,17 +149,29 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(argv)
 
-    report = build_minion_window_fixture_report(
-        truth_path=args.truth,
-        byte_window=args.byte_window,
-    )
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Minion window fixture report saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        documents = prepare_truth_inputs(args.truth)
+        validate_report_outputs(documents.inputs, [args.output] if args.output else [])
+        selected = [row for row in documents.matches if "Incomplete" not in Path(row.get("replay_file", "")).parent.name]
+        replays = truth_replay_files(selected, args.truth)
+        inputs = prepare_truth_inputs(args.truth, replays).inputs
+        documents.inputs.recheck()
+        validate_report_outputs(inputs, [args.output] if args.output else [])
+        report = build_minion_window_fixture_report(
+            truth_path=args.truth,
+            byte_window=args.byte_window,
+        )
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            output_path = Path(args.output)
+            write_report_output(inputs, output_path, payload)
+            print(f"Minion window fixture report saved to {output_path}")
+        else:
+            inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"minion_window_fixture_research: {exc}", file=sys.stderr)
+        return 2
     return 0
 
 

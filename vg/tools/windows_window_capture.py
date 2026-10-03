@@ -5,13 +5,11 @@ from __future__ import annotations
 import argparse
 import ctypes
 import json
+import sys
 from ctypes import wintypes
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, Optional, Tuple
-
-from PIL import ImageGrab
-
 
 def normalize_window_rect(left: int, top: int, right: int, bottom: int) -> Tuple[int, int, int, int]:
     if right <= left or bottom <= top:
@@ -111,6 +109,12 @@ def _get_window_rect(hwnd: int) -> Tuple[int, int, int, int]:
 
 
 def capture_window_by_process_name(process_name: str, output_path: str) -> Dict[str, object]:
+    if sys.platform != "win32":
+        raise RuntimeError("Window capture requires Windows; metadata helpers are available on every platform.")
+    try:
+        from PIL import ImageGrab
+    except ImportError as exc:
+        raise RuntimeError("Window capture requires the optional Pillow package; install Pillow in the capture environment.") from exc
     pid = _find_pid_by_name(process_name)
     if pid is None:
         raise FileNotFoundError(f"Process not found: {process_name}")

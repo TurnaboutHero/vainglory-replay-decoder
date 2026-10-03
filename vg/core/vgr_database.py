@@ -7,211 +7,26 @@ import sqlite3
 import json
 from pathlib import Path
 from typing import List, Dict, Optional
-from datetime import datetime
+
+from vg.core.vgr_mapping import normalize_hero_name
+from vg.core.replay_input import replay_sections, select_replay
+from vg.core.vgr_catalog import HEROES_DATA, ITEMS_DATA, KOREAN_NAMES, resolve_hero_to_catalog
+from vg.core.replay_output import ReportInputs, validate_report_outputs, write_report_output
+from vg.core.stat_evidence import frame_scope
 
 try:
     from vgr_parser import VGRParser
 except ImportError:
     from .vgr_parser import VGRParser
 
-# All heroes from VaingloryFire wiki
-HEROES_DATA = [
-    # name, role, attack_type
-    ("Adagio", "Captain", "Ranged"),
-    ("Alpha", "Warrior", "Melee"),
-    ("Amael", "Mage", "Ranged"),
-    ("Anka", "Assassin", "Melee"),
-    ("Ardan", "Captain", "Melee"),
-    ("Baptiste", "Mage", "Ranged"),
-    ("Baron", "Sniper", "Ranged"),
-    ("Blackfeather", "Assassin", "Melee"),
-    ("Caine", "Sniper", "Ranged"),
-    ("Catherine", "Captain", "Melee"),
-    ("Celeste", "Mage", "Ranged"),
-    ("Churnwalker", "Captain", "Melee"),
-    ("Flicker", "Captain", "Melee"),
-    ("Fortress", "Captain", "Melee"),
-    ("Glaive", "Warrior", "Melee"),
-    ("Grace", "Captain", "Melee"),
-    ("Grumpjaw", "Warrior", "Melee"),
-    ("Gwen", "Sniper", "Ranged"),
-    ("Idris", "Assassin", "Melee"),
-    ("Inara", "Warrior", "Melee"),
-    ("Ishtar", "Sniper", "Ranged"),
-    ("Joule", "Warrior", "Melee"),
-    ("Karas", "Assassin", "Melee"),
-    ("Kensei", "Warrior", "Melee"),
-    ("Kestrel", "Sniper", "Ranged"),
-    ("Kinetic", "Sniper", "Ranged"),
-    ("Koshka", "Assassin", "Melee"),
-    ("Krul", "Warrior", "Melee"),
-    ("Lance", "Captain", "Melee"),
-    ("Leo", "Warrior", "Melee"),
-    ("Lorelai", "Captain", "Ranged"),
-    ("Lyra", "Captain", "Ranged"),
-    ("Magnus", "Mage", "Ranged"),
-    ("Malene", "Mage", "Ranged"),
-    ("Miho", "Assassin", "Melee"),
-    ("Ozo", "Warrior", "Melee"),
-    ("Petal", "Mage", "Ranged"),
-    ("Phinn", "Captain", "Melee"),
-    ("Reim", "Mage", "Melee"),
-    ("Reza", "Assassin", "Melee"),
-    ("Ringo", "Sniper", "Ranged"),
-    ("Rona", "Warrior", "Melee"),
-    ("Samuel", "Mage", "Ranged"),
-    ("San Feng", "Warrior", "Melee"),
-    ("SAW", "Sniper", "Ranged"),
-    ("Shin", "Captain", "Melee"),
-    ("Silvernail", "Sniper", "Ranged"),
-    ("Skaarf", "Mage", "Ranged"),
-    ("Skye", "Mage", "Ranged"),
-    ("Taka", "Assassin", "Melee"),
-    ("Tony", "Warrior", "Melee"),
-    ("Varya", "Mage", "Ranged"),
-    ("Viola", "Captain", "Ranged"),
-    ("Vox", "Sniper", "Ranged"),
-    ("Warhawk", "Sniper", "Ranged"),
-    ("Yates", "Captain", "Melee"),
-    ("Ylva", "Assassin", "Melee"),
-]
 
-# Korean names mapping (official translations from Namu Wiki)
-KOREAN_NAMES = {
-    "Adagio": "아다지오",
-    "Alpha": "알파",
-    "Amael": "아마엘",
-    "Anka": "앙카",
-    "Ardan": "아단",
-    "Baptiste": "바티스트",
-    "Baron": "바론",
-    "Blackfeather": "흑깃",
-    "Caine": "케인",
-    "Catherine": "캐서린",
-    "Celeste": "셀레스트",
-    "Churnwalker": "어둠추적자",
-    "Flicker": "플리커",
-    "Fortress": "포트리스",
-    "Glaive": "글레이브",
-    "Grace": "그레이스",
-    "Grumpjaw": "사슬니",
-    "Gwen": "그웬",
-    "Idris": "이드리스",
-    "Inara": "이나라",
-    "Ishtar": "이슈타르",
-    "Joule": "쥴",
-    "Karas": "카라스",
-    "Kensei": "켄세이",
-    "Kestrel": "케스트럴",
-    "Kinetic": "키네틱",
-    "Koshka": "코쉬카",
-    "Krul": "크럴",
-    "Lance": "랜스",
-    "Leo": "레오",
-    "Lorelai": "로렐라이",
-    "Lyra": "라이라",
-    "Magnus": "마그누스",
-    "Malene": "말렌",
-    "Miho": "미호",
-    "Ozo": "오조",
-    "Petal": "페탈",
-    "Phinn": "핀",
-    "Reim": "라임",
-    "Reza": "레자",
-    "Ringo": "링고",
-    "Rona": "로나",
-    "Samuel": "사무엘",
-    "San Feng": "삼봉",
-    "SAW": "쏘우",
-    "Shin": "신",
-    "Silvernail": "실버네일",
-    "Skaarf": "스카프",
-    "Skye": "스카이",
-    "Taka": "타카",
-    "Tony": "토니",
-    "Varya": "바리야",
-    "Viola": "비올라",
-    "Vox": "복스",
-    "Warhawk": "워호크",
-    "Yates": "예이츠",
-    "Ylva": "일바",
-}
 
-# Item categories
-ITEMS_DATA = [
-    # Weapon items
-    ("Weapon Blade", "Weapon", "Basic", 1),
-    ("Book of Eulogies", "Weapon", "Basic", 1),
-    ("Swift Shooter", "Weapon", "Basic", 1),
-    ("Minion's Foot", "Weapon", "Basic", 1),
-    ("Heavy Steel", "Weapon", "Tier 2", 2),
-    ("Six Sins", "Weapon", "Tier 2", 2),
-    ("Blazing Salvo", "Weapon", "Tier 2", 2),
-    ("Lucky Strike", "Weapon", "Tier 2", 2),
-    ("Piercing Spear", "Weapon", "Tier 2", 2),
-    ("Barbed Needle", "Weapon", "Tier 2", 2),
-    ("Sorrowblade", "Weapon", "Tier 3", 3),
-    ("Serpent Mask", "Weapon", "Tier 3", 3),
-    ("Tornado Trigger", "Weapon", "Tier 3", 3),
-    ("Tyrant's Monocle", "Weapon", "Tier 3", 3),
-    ("Bonesaw", "Weapon", "Tier 3", 3),
-    ("Poisoned Shiv", "Weapon", "Tier 3", 3),
-    ("Breaking Point", "Weapon", "Tier 3", 3),
-    ("Tension Bow", "Weapon", "Tier 3", 3),
-    ("Spellsword", "Weapon", "Tier 3", 3),
-    
-    # Crystal items
-    ("Crystal Bit", "Crystal", "Basic", 1),
-    ("Energy Battery", "Crystal", "Basic", 1),
-    ("Hourglass", "Crystal", "Basic", 1),
-    ("Eclipse Prism", "Crystal", "Tier 2", 2),
-    ("Heavy Prism", "Crystal", "Tier 2", 2),
-    ("Piercing Shard", "Crystal", "Tier 2", 2),
-    ("Chronograph", "Crystal", "Tier 2", 2),
-    ("Void Battery", "Crystal", "Tier 2", 2),
-    ("Shatterglass", "Crystal", "Tier 3", 3),
-    ("Frostburn", "Crystal", "Tier 3", 3),
-    ("Eve of Harvest", "Crystal", "Tier 3", 3),
-    ("Broken Myth", "Crystal", "Tier 3", 3),
-    ("Clockwork", "Crystal", "Tier 3", 3),
-    ("Alternating Current", "Crystal", "Tier 3", 3),
-    ("Dragon's Eye", "Crystal", "Tier 3", 3),
-    ("Spellfire", "Crystal", "Tier 3", 3),
-    
-    # Defense items  
-    ("Light Shield", "Defense", "Basic", 1),
-    ("Light Armor", "Defense", "Basic", 1),
-    ("Oakheart", "Defense", "Basic", 1),
-    ("Kinetic Shield", "Defense", "Tier 2", 2),
-    ("Coat of Plates", "Defense", "Tier 2", 2),
-    ("Dragonheart", "Defense", "Tier 2", 2),
-    ("Reflex Block", "Defense", "Tier 2", 2),
-    ("Aegis", "Defense", "Tier 3", 3),
-    ("Metal Jacket", "Defense", "Tier 3", 3),
-    ("Fountain of Renewal", "Defense", "Tier 3", 3),
-    ("Crucible", "Defense", "Tier 3", 3),
-    ("Atlas Pauldron", "Defense", "Tier 3", 3),
-    ("Slumbering Husk", "Defense", "Tier 3", 3),
-    ("Pulseweave", "Defense", "Tier 3", 3),
-    ("Capacitor Plate", "Defense", "Tier 3", 3),
-    
-    # Utility items
-    ("Sprint Boots", "Utility", "Basic", 1),
-    ("Travel Boots", "Utility", "Tier 2", 2),
-    ("Journey Boots", "Utility", "Tier 3", 3),
-    ("Halcyon Chargers", "Utility", "Tier 3", 3),
-    ("War Treads", "Utility", "Tier 3", 3),
-    ("Teleport Boots", "Utility", "Tier 3", 3),
-    ("Flare", "Utility", "Consumable", 1),
-    ("Scout Trap", "Utility", "Consumable", 1),
-    ("Flare Gun", "Utility", "Tier 2", 2),
-    ("Contraption", "Utility", "Tier 3", 3),
-    ("Superscout 2000", "Utility", "Tier 3", 3),
-    ("Nullwave Gauntlet", "Utility", "Tier 3", 3),
-    ("Echo", "Utility", "Tier 3", 3),
-    ("Stormcrown", "Utility", "Tier 3", 3),
-    ("Aftershock", "Crystal", "Tier 3", 3),
-]
+class VGDatabaseError(ValueError):
+    def __init__(self, code: str, path: Path, reason: str):
+        self.code = code
+        self.path = path
+        self.reason = reason
+        super().__init__(f"{code}: {path}: {reason}")
 
 
 class VGDatabase:
@@ -225,6 +40,8 @@ class VGDatabase:
         """Connect to database"""
         self.conn = sqlite3.connect(self.db_path)
         self.conn.row_factory = sqlite3.Row
+        self.conn.execute("PRAGMA foreign_keys=ON")
+        self.foreign_key_violations = [tuple(row) for row in self.conn.execute("PRAGMA foreign_key_check")]
         
     def close(self):
         """Close database connection"""
@@ -309,6 +126,16 @@ class VGDatabase:
             )
         ''')
         
+        additions = {
+            'matches': {'source_replay_name': 'TEXT', 'replay_scope': 'TEXT', 'provenance_json': 'TEXT'},
+            'match_players': {'source_hero_id': 'INTEGER', 'source_hero_namespace': 'TEXT'},
+        }
+        for table, columns in additions.items():
+            existing = {row['name'] for row in cursor.execute(f'PRAGMA table_info({table})')}
+            for name, declaration in columns.items():
+                if name not in existing:
+                    cursor.execute(f'ALTER TABLE {table} ADD COLUMN {name} {declaration}')
+        cursor.execute('CREATE UNIQUE INDEX IF NOT EXISTS matches_replay_scope ON matches(replay_scope) WHERE replay_scope IS NOT NULL')
         self.conn.commit()
         
     def populate_heroes(self):
@@ -320,8 +147,9 @@ class VGDatabase:
             wiki_url = f"https://www.vaingloryfire.com/vainglory/wiki/heroes/{name.lower().replace(' ', '-')}"
             
             cursor.execute('''
-                INSERT OR REPLACE INTO heroes (name, name_ko, role, attack_type, wiki_url)
+                INSERT INTO heroes (name, name_ko, role, attack_type, wiki_url)
                 VALUES (?, ?, ?, ?, ?)
+                ON CONFLICT(name) DO NOTHING
             ''', (name, name_ko, role, attack_type, wiki_url))
         
         self.conn.commit()
@@ -333,8 +161,9 @@ class VGDatabase:
         
         for name, category, tier_name, tier in ITEMS_DATA:
             cursor.execute('''
-                INSERT OR REPLACE INTO items (name, category, tier_name, tier)
+                INSERT INTO items (name, category, tier_name, tier)
                 VALUES (?, ?, ?, ?)
+                ON CONFLICT(name) DO NOTHING
             ''', (name, category, tier_name, tier))
         
         self.conn.commit()
@@ -363,195 +192,100 @@ class VGDatabase:
         return [dict(row) for row in cursor.fetchall()]
     
     def export_json(self, output_path: str):
-        """Export database to JSON"""
+        """Export hero and item catalogs with explicit coverage metadata."""
+        output = Path(output_path)
+        reserved = (self.db_path, *(Path(str(self.db_path) + suffix) for suffix in ('-wal', '-shm', '-journal')))
+        inputs = ReportInputs(files=reserved)
+        validate_report_outputs(inputs, (output,))
         data = {
+            'schema_version': 'vg.catalog-export.v1',
+            'coverage': 'catalog_only',
+            'included_tables': ['heroes', 'items'],
+            'excluded_tables': ['skins', 'matches', 'match_players'],
             'heroes': self.get_heroes(),
             'items': self.get_items(),
         }
-        with open(output_path, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=2, ensure_ascii=False)
+        write_report_output(inputs, output, json.dumps(data, indent=2, ensure_ascii=False))
         return output_path
-
-    @staticmethod
-    def _winner_to_team_value(winner: Optional[str]) -> int:
-        """Convert parser winner label to DB team integer."""
-        if winner == 'left':
-            return 1
-        if winner == 'right':
-            return 2
-        return 0
 
     def import_replay(self, file_path: str):
         """Parse and import a replay file into the database"""
-        try:
-            parser = VGRParser(file_path)
-            data = parser.parse()
-            
-            cursor = self.conn.cursor()
-            match_info = data['match_info']
-            replay_name = data['replay_name']
-
-            existing = cursor.execute(
-                "SELECT id FROM matches WHERE replay_name=?",
-                (replay_name,),
-            ).fetchone()
-            if existing:
-                print(f"  Skipping existing replay: {replay_name}")
-                return False
-
-            cursor.execute('''
-                INSERT INTO matches 
-                (replay_name, game_mode, frame_count, duration, winning_team, match_date, file_path)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
-            ''', (
-                replay_name,
-                match_info['mode'],
-                match_info['total_frames'],
-                match_info.get('duration_seconds') or 0,
-                self._winner_to_team_value(match_info.get('winner')),
-                data.get('parsed_at'),
-                file_path
-            ))
-
-            match_id = cursor.execute(
-                "SELECT id FROM matches WHERE replay_name=?",
-                (replay_name,),
-            ).fetchone()
-            if not match_id:
-                raise RuntimeError(f"Failed to insert match row for {replay_name}")
-            match_id = match_id[0]
-                
-            # Insert Players
-            all_players = data['teams']['left'] + data['teams']['right']
-            for p in all_players:
-                team_value = p.get('team_id')
-                if team_value is None:
-                    team_label = p.get('team')
-                    if team_label == 'left':
-                        team_value = 1
-                    elif team_label == 'right':
-                        team_value = 2
-                    else:
-                        team_value = 0
-
-                # Find Hero ID if not set (fallback)
-                hero_id = p.get('hero_id')
-                if not hero_id and p.get('hero_name') != 'Unknown':
-                    # Look up by name
-                    h_res = cursor.execute("SELECT id FROM heroes WHERE name=?", (p['hero_name'],)).fetchone()
-                    if h_res:
-                        hero_id = h_res[0]
-                
-                cursor.execute('''
-                    INSERT INTO match_players 
-                    (match_id, player_name, player_uuid, team, hero_id, kills, deaths, assists, minion_kills, gold, items)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                ''', (
-                    match_id,
-                    p['name'],
-                    p['uuid'],
-                    team_value,
-                    hero_id,
-                    p.get('kills', 0),
-                    p.get('deaths', 0),
-                    p.get('assists', 0),
-                    p.get('minion_kills', 0),
-                    p.get('gold', 0),
-                    json.dumps(p.get('items', []))
-                ))
-            
-            self.conn.commit()
-            return True
-            
-        except Exception as e:
-            if self.conn:
-                self.conn.rollback()
-            print(f"Error importing {file_path}: {e}")
-            import traceback
-            traceback.print_exc()
+        self.foreign_key_violations = [tuple(row) for row in self.conn.execute('PRAGMA foreign_key_check')]
+        if self.foreign_key_violations:
+            raise VGDatabaseError('foreign_key_violation', self.db_path,
+                                  f'{len(self.foreign_key_violations)} existing foreign-key violations; no import was attempted.')
+        first = select_replay(file_path)
+        inputs = ReportInputs(replays=(first,))
+        sections = replay_sections(first)
+        scope = frame_scope([(number, path.read_bytes()) for number, path in sections])
+        data = VGRParser(str(first)).parse()
+        inputs.recheck()
+        self.create_tables()
+        existing = self.conn.execute('SELECT id FROM matches WHERE replay_scope=?', (scope,)).fetchone()
+        if existing:
             return False
 
+        name = data['replay_name']
+        collision = self.conn.execute('SELECT replay_scope FROM matches WHERE replay_name=?', (name,)).fetchone()
+        if collision and collision['replay_scope'] is None:
+            raise VGDatabaseError('legacy_identity_unknown', self.db_path,
+                                  f'Existing replay {name!r} has no content identity; use a separate database until explicitly migrated.')
+        storage_name = f'{name}#{scope}' if collision else name
+        info = data['match_info']
+        truth_source = data.get('truth_source')
+        provenance = {
+            'accepted_for_index': False,
+            'replay_scope': scope,
+            'truth_source': truth_source,
+            'duration': data.get('duration_provenance') or {
+                'status': 'supplied_truth' if truth_source and info.get('duration_seconds') is not None else 'unknown',
+                'source': truth_source,
+                'reason': 'Legacy parser values have no independently accepted final-screen validation.',
+                'accepted_for_index': False,
+                'replay_scope': scope,
+            },
+            'players': [],
+        }
+        catalog = {normalize_hero_name(row['name']).casefold(): row['id'] for row in self.get_heroes()}
+        players = []
+        for player in data['teams']['left'] + data['teams']['right']:
+            hero, source_id, namespace, reason = resolve_hero_to_catalog(player, catalog)
+            team = player.get('team_id')
+            if team is None:
+                team = {'left': 1, 'right': 2}.get(player.get('team'))
+            players.append((player, team, hero, source_id, namespace))
+            provenance['players'].append({'player_name': player['name'], 'hero_resolution_reason': reason})
+        inputs.recheck()
+        try:
+            with self.conn:
+                cursor = self.conn.execute('''
+                    INSERT INTO matches
+                    (replay_name, game_mode, frame_count, duration, winning_team, match_date, file_path,
+                     source_replay_name, replay_scope, provenance_json)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ''', (storage_name, info['mode'], len(sections), info.get('duration_seconds'),
+                      {'left': 1, 'right': 2}.get(info.get('winner')), data.get('parsed_at'), str(first),
+                      name, scope, json.dumps(provenance, ensure_ascii=False)))
+                for player, team, hero, source_id, namespace in players:
+                    self.conn.execute('''
+                        INSERT INTO match_players
+                        (match_id,player_name,player_uuid,team,hero_id,kills,deaths,assists,minion_kills,gold,items,
+                         source_hero_id,source_hero_namespace)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    ''', (cursor.lastrowid, player['name'], player.get('uuid'), team, hero,
+                          player.get('kills'), player.get('deaths'), player.get('assists'),
+                          player.get('minion_kills'), player.get('gold'), json.dumps(player.get('items', [])),
+                          source_id, namespace))
+                inputs.recheck()
+            return True
+        except sqlite3.Error as error:
+            raise VGDatabaseError('import_failed', first, str(error)) from error
 
-def main():
-    import argparse
-    
-    parser = argparse.ArgumentParser(description='VGR Database Builder')
-    parser.add_argument('command', choices=['init', 'heroes', 'items', 'search', 'export', 'import'],
-                        help='Command to run')
-    parser.add_argument('-q', '--query', help='Search query')
-    parser.add_argument('-i', '--input', help='Input directory or file for import')
-    parser.add_argument('-o', '--output', default='vg_data.json', help='Output file for export')
-    parser.add_argument('--db', default='vainglory.db', help='Database file path')
-    
-    args = parser.parse_args()
-    
-    db = VGDatabase(args.db)
-    db.connect()
-    
-    if args.command == 'init':
-        db.create_tables()
-        hero_count = db.populate_heroes()
-        item_count = db.populate_items()
-        print("Database initialized.")
-        print(f"  Heroes: {hero_count}")
-        print(f"  Items: {item_count}")
-        print(f"  Path: {db.db_path}")
-        
-    elif args.command == 'heroes':
-        heroes = db.get_heroes()
-        for h in heroes:
-            print(f"{h['name']:15} ({h['name_ko']}) - {h['role']}")
-            
-    elif args.command == 'items':
-        items = db.get_items()
-        current_category = None
-        for item in items:
-            if item['category'] != current_category:
-                current_category = item['category']
-                print(f"\n=== {current_category} ===")
-            print(f"  [{item['tier']}] {item['name']}")
-            
-    elif args.command == 'search':
-        if not args.query:
-            print("Specify a search term with -q <query>.")
-        else:
-            results = db.search_hero(args.query)
-            if results:
-                for h in results:
-                    print(f"{h['name']} ({h['name_ko']}) - {h['role']}, {h['attack_type']}")
-            else:
-                print("No results found.")
-                
-    elif args.command == 'export':
-        output = db.export_json(args.output)
-        print(f"Exported JSON: {output}")
-        
-    elif args.command == 'import':
-        if not args.input:
-            print("Specify an input path with --input <path>.")
-        else:
-            path = Path(args.input)
-            files = []
-            if path.is_file():
-                files = [path]
-            elif path.is_dir():
-                # Find .vgr files (first segment only to avoid duplicates if split)
-                # Use rglob for recursive search
-                files = list(path.rglob('*.0.vgr'))
-                if not files: # Maybe not numbered?
-                    files = list(path.rglob('*.vgr'))
-            
-            print(f"Found {len(files)} replays to import...")
-            success_count = 0
-            for f in files:
-                print(f"Importing {f.name}...")
-                if db.import_replay(str(f)):
-                    success_count += 1
-            
-            print(f"Import complete: {success_count}/{len(files)} succeeded")
-    
-    db.close()
+
+def main(argv=None) -> int:
+    from vg.core.vgr_database_cli import main as database_main
+    return database_main(argv)
 
 
 if __name__ == '__main__':
-    main()
+    raise SystemExit(main())

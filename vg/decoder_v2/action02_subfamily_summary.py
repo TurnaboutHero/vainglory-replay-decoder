@@ -4,7 +4,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
+from vg.core.replay_output import validate_report_outputs, write_report_output
+from .report_inputs import prepare_truth_inputs, truth_replay_files
 from typing import Dict, List, Optional
 
 from .action02_sharing_profile import build_action02_sharing_profile
@@ -58,14 +61,28 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(argv)
 
-    report = build_action02_subfamily_summary(args.truth)
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Action02 subfamily summary saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        documents = prepare_truth_inputs(args.truth)
+        if args.output:
+            validate_report_outputs(documents.inputs, (Path(args.output),))
+        selected = [row for row in documents.matches
+                    if "Incomplete" not in Path(row.get("replay_file", "")).parent.name]
+        replays = truth_replay_files(selected, args.truth)
+        prepared = prepare_truth_inputs(args.truth, replays)
+        documents.inputs.recheck()
+        if args.output:
+            validate_report_outputs(prepared.inputs, (Path(args.output),))
+        report = build_action02_subfamily_summary(args.truth)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            write_report_output(prepared.inputs, Path(args.output), payload)
+            print(f"Action02 subfamily summary saved to {args.output}")
+        else:
+            prepared.inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as error:
+        print(f"action02_subfamily_summary: {args.output or args.truth}: {error}", file=sys.stderr)
+        return 2
     return 0
 
 

@@ -4,8 +4,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Sequence, Tuple
+
+from vg.core.replay_output import validate_report_outputs, write_report_output
+from .report_inputs import prepare_truth_inputs, truth_replay_files
 
 from .minion_policy_candidates import _policy_complexity
 from .minion_ratio_profile import build_minion_ratio_profile
@@ -133,6 +137,9 @@ def _cross_validate_group(rows: Sequence[Dict[str, object]], group_key: str) -> 
         results.append(
             {
                 "held_group": held_group,
+                "research_status": "research_only" if train_rows and test_rows else "unavailable",
+                "research_reason": None if train_rows and test_rows else "No training or held-out samples.",
+                "research_coverage": {"training_rows": len(train_rows), "test_rows": len(test_rows)},
                 "train_policy": best_train,
                 "test_score": test_score,
             }
@@ -144,6 +151,8 @@ def _summarize_cv(results: Sequence[Dict[str, object]]) -> Dict[str, object]:
     if not results:
         return {
             "folds": 0,
+            "research_status": "unavailable",
+            "available_folds": 0,
             "mean_test_precision": 0.0,
             "mean_test_coverage": 0.0,
             "failed_folds": 0,
@@ -153,6 +162,8 @@ def _summarize_cv(results: Sequence[Dict[str, object]]) -> Dict[str, object]:
     failed_folds = sum(int(float(row["test_score"]["precision"]) < 1.0) for row in results)
     return {
         "folds": len(results),
+        "research_status": "research_only" if all(row["research_status"] == "research_only" for row in results) else "unavailable",
+        "available_folds": sum(row["research_status"] == "research_only" for row in results),
         "mean_test_precision": mean_precision,
         "mean_test_coverage": mean_coverage,
         "failed_folds": failed_folds,
@@ -168,6 +179,9 @@ def build_minion_policy_cross_validation(truth_path: str) -> Dict[str, object]:
     return {
         "truth_path": str(Path(truth_path).resolve()),
         "row_count": len(rows),
+        "research_status": "research_only" if len({str(row["replay_name"]) for row in rows}) > 1 else "unavailable",
+        "research_reason": None if len({str(row["replay_name"]) for row in rows}) > 1 else "Need at least two replay groups for held-out validation.",
+        "research_coverage": {"player_rows": len(rows), "series_folds": len(loso), "replay_folds": len(loro)},
         "series_count": len({str(row["series"]) for row in rows}),
         "replay_count": len({str(row["replay_name"]) for row in rows}),
         "fixed_policy_reference": fixed_reference,
@@ -188,14 +202,26 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(list(argv) if argv is not None else None)
 
-    report = build_minion_policy_cross_validation(args.truth)
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Minion policy cross-validation saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        documents = prepare_truth_inputs(args.truth)
+        validate_report_outputs(documents.inputs, [args.output] if args.output else [])
+        selected = [row for row in documents.matches if "Incomplete" not in Path(row.get("replay_file", "")).parent.name]
+        replays = truth_replay_files(selected, args.truth)
+        inputs = prepare_truth_inputs(args.truth, replays).inputs
+        documents.inputs.recheck()
+        validate_report_outputs(inputs, [args.output] if args.output else [])
+        report = build_minion_policy_cross_validation(args.truth)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            output_path = Path(args.output)
+            write_report_output(inputs, output_path, payload)
+            print(f"Minion policy cross-validation saved to {output_path}")
+        else:
+            inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"minion_policy_cross_validation: {exc}", file=sys.stderr)
+        return 2
     return 0
 
 

@@ -8,6 +8,7 @@ import json
 import sys
 from collections import Counter
 from pathlib import Path
+from typing import NotRequired, TypedDict
 
 try:
     from vg.core.vgr_parser import VGRParser
@@ -16,7 +17,36 @@ except ImportError:
     from vg.core.vgr_parser import VGRParser
 
 
-def parse_replay(vgr_path: Path) -> dict:
+from vg.core.batch_result import BatchReport, InputResult, batch_report
+from vg.core.legacy_inputs import prepare_legacy_batch
+from vg.core.replay_input import replay_input_id
+from vg.core.replay_output import ReportInputs, validate_report_outputs, write_report_output
+
+
+class ReplaySummary(TypedDict):
+    file: str
+    success: bool
+    error: NotRequired[str]
+    error_code: NotRequired[str]
+    game_mode: NotRequired[str]
+    map_name: NotRequired[str]
+    map_mode: NotRequired[str]
+    players: NotRequired[list[dict]]
+    player_count: NotRequired[int]
+    input_id: NotRequired[str]
+    status: NotRequired[str]
+
+
+class ParserBatchReport(BatchReport):
+    total_replays: int
+    successful: int
+    unique_players: int
+    game_modes: dict
+    hero_picks: dict
+    replays: list[ReplaySummary]
+
+
+def parse_replay(vgr_path: Path) -> ReplaySummary:
     """Parse a single replay and return summary."""
     try:
         parser = VGRParser(str(vgr_path), auto_truth=False)
@@ -41,20 +71,24 @@ def parse_replay(vgr_path: Path) -> dict:
             "player_count": len(players),
             "success": True,
         }
-    except Exception as e:
+    except (OSError, ValueError) as e:
         return {
             "file": str(vgr_path),
             "error": str(e),
+            "error_code": getattr(e, "code", "decode_failed"),
             "success": False,
         }
 
 
-def batch_parse(replay_dir: Path) -> dict:
+def batch_parse(replay_dir: Path, *, inputs: ReportInputs | None = None) -> ParserBatchReport:
     """Parse all replays in directory."""
-    vgr_files = sorted(replay_dir.rglob("*.0.vgr"))
+    if inputs is None:
+        inputs = prepare_legacy_batch(str(replay_dir), None, auto_truth=False)
+    vgr_files = sorted((*inputs.replays, *inputs.reserved_replays), key=lambda p: replay_input_id(p, replay_dir))
     print(f"Found {len(vgr_files)} replay files")
 
     results = []
+    outcomes: list[InputResult] = []
     hero_counter = Counter()
     mode_counter = Counter()
     player_set = set()
@@ -62,6 +96,11 @@ def batch_parse(replay_dir: Path) -> dict:
 
     for i, vgr in enumerate(vgr_files):
         result = parse_replay(vgr)
+        result['input_id'] = replay_input_id(vgr, replay_dir)
+        result['status'] = 'complete' if result['success'] else 'failed'
+        outcomes.append({'input_id': result['input_id'], 'replay_file': str(vgr),
+                         'status': result['status'], 'error_code': result.get('error_code'),
+                         'error': result.get('error')})
         results.append(result)
         if result["success"]:
             total_success += 1
@@ -72,7 +111,9 @@ def batch_parse(replay_dir: Path) -> dict:
         if (i + 1) % 10 == 0:
             print(f"  Parsed {i+1}/{len(vgr_files)}...")
 
-    summary = {
+    inputs.recheck()
+    summary: ParserBatchReport = {
+        **batch_report(outcomes),
         "total_replays": len(vgr_files),
         "successful": total_success,
         "failed": len(vgr_files) - total_success,
@@ -84,31 +125,26 @@ def batch_parse(replay_dir: Path) -> dict:
     return summary
 
 
-def main():
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Batch parse VGR replay files")
     parser.add_argument("replay_dir", help="Directory containing replay files")
     parser.add_argument("--output", "-o", default=None, help="Output JSON path")
-    args = parser.parse_args()
-
-    replay_dir = Path(args.replay_dir)
-    if not replay_dir.exists():
-        print(f"Error: {replay_dir} not found")
-        sys.exit(1)
-
-    summary = batch_parse(replay_dir)
-
-    print(f"\n{'='*50}")
-    print(f"Total replays: {summary['total_replays']}")
-    print(f"Successful: {summary['successful']}")
-    print(f"Unique players: {summary['unique_players']}")
-    print(f"Hero picks: {len(summary['hero_picks'])} unique heroes")
-    print(f"Top heroes: {dict(list(summary['hero_picks'].items())[:10])}")
-
-    output_path = args.output or str(Path(__file__).parent.parent / "output" / "batch_parse_results.json")
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(summary, f, indent=2, ensure_ascii=False)
-    print(f"Saved to: {output_path}")
+    args = parser.parse_args(argv)
+    output = Path(args.output) if args.output else Path(__file__).parent.parent / "output" / "batch_parse_results.json"
+    try:
+        inputs = prepare_legacy_batch(args.replay_dir, None, auto_truth=False)
+        validate_report_outputs(inputs, (output,))
+        summary = batch_parse(Path(args.replay_dir), inputs=inputs)
+        payload = json.dumps(summary, indent=2, ensure_ascii=False)
+        output.parent.mkdir(parents=True, exist_ok=True)
+        write_report_output(inputs, output, payload)
+        print(f"Saved to: {output}")
+        print(f"Batch status: {summary['status']} ({summary['successful']}/{summary['total_replays']})")
+    except (OSError, ValueError) as error:
+        print(f'replay-batch-parser: {error}', file=sys.stderr)
+        return 2
+    return 1 if summary['failed'] else 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

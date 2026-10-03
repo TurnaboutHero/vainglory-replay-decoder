@@ -4,8 +4,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 from typing import Dict, List, Optional
+
+from vg.core.replay_output import validate_report_outputs, write_report_output
+from .report_inputs import prepare_truth_inputs, truth_replay_files
 
 from .minion_policy import (
     MINION_POLICY_CHOICES,
@@ -18,7 +22,9 @@ from .minion_research import _load_truth_matches
 def validate_minion_policy(truth_path: str, policy: str) -> Dict[str, object]:
     """Validate one optional minion policy against truth-covered complete fixtures."""
     matches = _load_truth_matches(truth_path)
-    complete_matches = [match for match in matches if "Incomplete" not in Path(match["replay_file"]).parent.name]
+    complete_matches = [] if policy == MINION_POLICY_NONE else [
+        match for match in matches if "Incomplete" not in Path(match["replay_file"]).parent.name
+    ]
 
     rows = []
     accepted_rows = 0
@@ -63,6 +69,9 @@ def validate_minion_policy(truth_path: str, policy: str) -> Dict[str, object]:
         "truth_path": str(Path(truth_path).resolve()),
         "policy": policy,
         "player_rows": len(rows),
+        "research_status": "research_only" if rows else "unavailable",
+        "research_reason": None if rows else "Policy disabled or no truth-covered player decisions.",
+        "research_coverage": {"player_rows": len(rows), "accepted_rows": accepted_rows},
         "accepted_rows": accepted_rows,
         "accepted_exact": accepted_exact,
         "accepted_error": accepted_error,
@@ -84,14 +93,28 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(argv)
 
-    report = validate_minion_policy(args.truth, args.policy)
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Minion policy validation saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        documents = prepare_truth_inputs(args.truth)
+        validate_report_outputs(documents.inputs, [args.output] if args.output else [])
+        selected = [row for row in documents.matches if "Incomplete" not in Path(row.get("replay_file", "")).parent.name]
+        if args.policy == MINION_POLICY_NONE:
+            selected = []
+        replays = truth_replay_files(selected, args.truth)
+        inputs = prepare_truth_inputs(args.truth, replays).inputs
+        documents.inputs.recheck()
+        validate_report_outputs(inputs, [args.output] if args.output else [])
+        report = validate_minion_policy(args.truth, args.policy)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            output_path = Path(args.output)
+            write_report_output(inputs, output_path, payload)
+            print(f"Minion policy validation saved to {output_path}")
+        else:
+            inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"minion_policy_validation: {exc}", file=sys.stderr)
+        return 2
     return 0
 
 
