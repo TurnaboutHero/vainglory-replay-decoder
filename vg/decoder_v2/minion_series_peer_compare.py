@@ -7,12 +7,13 @@ import json
 from pathlib import Path
 from typing import Dict, List, Optional
 
+from vg.core.stored_paths import stored_parent, stored_path_key
+
 from .minion_hero_compare import build_minion_hero_compare
 
 
 def _series_key(directory: str) -> str:
-    path = Path(directory)
-    return str(path.parent) if path.parent != path else str(path)
+    return stored_parent(directory)
 
 
 def build_minion_series_peer_compare(
@@ -27,7 +28,7 @@ def build_minion_series_peer_compare(
     )
     matches = json.loads(Path(truth_path).read_text(encoding="utf-8")).get("matches", [])
     target_match = next(match for match in matches if match["replay_name"] == target_replay_name)
-    target_series = _series_key(str(Path(target_match["replay_file"]).parent.resolve()))
+    target_series = _series_key(stored_parent(target_match["replay_file"]))
 
     rows = []
     for row in compare["rows"]:
@@ -35,7 +36,7 @@ def build_minion_series_peer_compare(
         other_series = []
         for peer in row["same_hero_peers"]:
             peer_series = _series_key(peer["fixture_directory"])
-            if peer_series == target_series:
+            if stored_path_key(peer_series) == stored_path_key(target_series):
                 same_series.append(peer)
             else:
                 other_series.append(peer)

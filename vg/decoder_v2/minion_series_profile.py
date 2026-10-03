@@ -8,12 +8,13 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Optional
 
+from vg.core.stored_paths import stored_parent, stored_path_key
+
 from .minion_outlier_risk_report import build_minion_outlier_risk_report
 
 
 def _series_key(directory: str) -> str:
-    path = Path(directory)
-    return str(path.parent) if path.parent != path else str(path)
+    return stored_parent(directory)
 
 
 def build_minion_series_profile(truth_path: str) -> Dict[str, object]:
@@ -33,9 +34,11 @@ def build_minion_series_profile(truth_path: str) -> Dict[str, object]:
     all_rows = risk["all_rows"]
 
     for row in all_rows:
-        key = _series_key(row["fixture_directory"])
+        display_series = _series_key(row["fixture_directory"])
+        key = stored_path_key(display_series)
         series = series_rows[key]
-        series["series"] = key
+        if not series["player_rows"]:
+            series["series"] = display_series
         series["player_rows"] += 1
         if row["residual_vs_0e"] > 0:
             series["positive_residual_rows"] += 1
