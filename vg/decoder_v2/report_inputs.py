@@ -2,6 +2,7 @@
 
 from collections.abc import Collection
 from dataclasses import dataclass
+import os
 from pathlib import Path, PureWindowsPath
 
 from vg.core.replay_output import ReportInputs
@@ -16,10 +17,12 @@ class PreparedTruth:
 
 
 def truth_reference_key(reference: str, document: str | Path) -> str:
-    if PureWindowsPath(reference).drive or '\\' in reference:
+    windows = PureWindowsPath(reference)
+    if (windows.drive or '\\' in reference) and (os.name != 'nt' or windows.is_absolute()):
         return stored_path_key(reference)
     path = Path(reference)
-    return str((path if path.is_absolute() else Path(document).parent / path).resolve())
+    resolved = str((path if path.is_absolute() else Path(document).parent / path).resolve())
+    return stored_path_key(resolved) if os.name == 'nt' else resolved
 
 
 def load_research_truth(truth_path: str | Path) -> list[TruthMatch]:
@@ -30,8 +33,9 @@ def load_research_truth(truth_path: str | Path) -> list[TruthMatch]:
         row.setdefault('players', {})
         row.setdefault('match_info', {})
         reference = row.get('replay_file')
-        if isinstance(reference, str) and not (PureWindowsPath(reference).drive or '\\' in reference):
-            row['replay_file'] = truth_reference_key(reference, truth_path)
+        if isinstance(reference, str) and (os.name == 'nt' or not (PureWindowsPath(reference).drive or '\\' in reference)):
+            path = Path(reference)
+            row['replay_file'] = str(path if path.is_absolute() else (Path(truth_path).parent / path).resolve())
         rows.append(row)
     return rows
 

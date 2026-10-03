@@ -3,6 +3,7 @@
 from collections.abc import Mapping
 import json
 import math
+import os
 from pathlib import Path, PureWindowsPath
 from typing import Final, assert_never
 
@@ -103,17 +104,18 @@ def load_truth_matches(path: Path | str, *, require_replay_file: bool = False) -
 
 def _reference_key(reference: str, document: Path) -> str:
     windows = PureWindowsPath(reference)
-    if windows.drive or '\\' in reference:
+    if (windows.drive or '\\' in reference) and (os.name != 'nt' or windows.is_absolute()):
         return windows.as_posix().casefold()
     path = Path(reference)
-    return str((path if path.is_absolute() else document.parent / path).resolve())
+    resolved = (path if path.is_absolute() else document.parent / path).resolve()
+    return resolved.as_posix().casefold() if os.name == 'nt' else str(resolved)
 
 
 def resolve_truth_reference(reference: str, document: Path | str) -> Path:
     """Resolve local disk references, refusing to reinterpret foreign drive paths."""
     document = Path(document)
     windows = PureWindowsPath(reference)
-    if (windows.drive or '\\' in reference) and Path(reference).anchor != windows.anchor:
+    if (windows.drive or '\\' in reference) and os.name != 'nt':
         raise TruthInputError('truth_unreadable', document, f'Foreign filesystem reference: {reference}')
     path = Path(reference)
     return path if path.is_absolute() else document.parent / path
