@@ -44,8 +44,13 @@ def _validate_observation(observation: dict) -> None:
             or not all(isinstance(value, str) for value in mapping.values())
             or set(mapping.values()) != {'left', 'right'}):
         raise ValueError('screen_side_to_team must map blue/orange to distinct left/right teams')
-    if not isinstance(observation.get('winner_screen_side'), str) or observation['winner_screen_side'] not in mapping:
-        raise ValueError('winner_screen_side must identify an observed screen side')
+    winner = observation.get('winner_screen_side')
+    if 'winner_screen_side' not in observation or (winner is not None and (
+            not isinstance(winner, str) or winner not in mapping)):
+        raise ValueError('winner_screen_side must be an observed side or explicit null')
+    if 'result_display' in observation and (
+            not isinstance(observation['result_display'], str) or not observation['result_display'].strip()):
+        raise ValueError('result_display must retain nonempty displayed text')
     duration = observation.get('duration_display')
     if not isinstance(duration, str) or not re.fullmatch(r'[0-9]+:[0-5][0-9]', duration):
         raise ValueError('duration_display must retain the displayed minutes:seconds')
@@ -135,7 +140,10 @@ def compare_final_screen(replay_file: str, observation_file: str, screenshot_fil
             'native_status': native.status, 'native_reason': native.reason,
             'as_of_game_time': native.as_of_game_time, 'recording_evidence': asdict(evidence),
             'players': players,
-            'observed_winner': {'screen_side': winner_side, 'recorded_team': mapping[winner_side], 'status': 'observation_only'},
+            'observed_winner': {'screen_side': winner_side, 'recorded_team': mapping.get(winner_side),
+                                'status': 'observation_only' if winner_side is not None else 'not_observed'},
+            'observed_result': {'display': observation.get('result_display'),
+                                'status': 'observation_only' if 'result_display' in observation else 'not_observed'},
             'observed_duration': {'display': observation['duration_display'], 'native_seconds': None, 'status': 'observation_only'}}
 
 

@@ -44,4 +44,6 @@ Winner, duration and gold display remain `observation_only`. No kill-lead infere
 
 The output is a separate `recording_specific_final_screen` report with `accepted_for_index=false`. Default match decoding and index gates remain unchanged. Private screenshots, player handles, replay bytes and machine paths do not belong in Git.
 
+When a final screen shows a surrender or another result without identifying a winner, supply `"winner_screen_side": null` explicitly. The counter comparison still runs; `observed_winner` retains null sides with `status="not_observed"`. The optional `result_display` preserves the actual nonempty result text as `observation_only`. No winner is inferred from that text, roster presence, team kills or a queued end request. Omitting `winner_screen_side` remains an input error.
+
 Exit codes:0 for complete counter agreement;1 for a written mismatch/unavailable report;2 for invalid inputs or failed output. Output paths cannot alias numbered replay sections, the observation or screenshot, including symlinks and hard links. Reports use the existing atomic replay output writer.
