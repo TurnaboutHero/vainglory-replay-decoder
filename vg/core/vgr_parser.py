@@ -68,11 +68,11 @@ class PlayerData:
     hero_confidence: float = 0.0  # NEW: Confidence score
     skin_id: Optional[int] = None
     # Stats
-    kills: int = 0
-    deaths: int = 0
-    assists: int = 0
-    minion_kills: Optional[int] = 0
-    gold: int = 0
+    kills: Optional[int] = None
+    deaths: Optional[int] = None
+    assists: Optional[int] = None
+    minion_kills: Optional[int] = None
+    gold: Optional[int] = None
     bounty: Optional[int] = None
     items: List[str] = field(default_factory=list)
 
