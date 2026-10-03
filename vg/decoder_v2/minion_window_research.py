@@ -4,9 +4,14 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Tuple
+
+from vg.core.replay_output import ReportInputs, validate_report_outputs, write_report_output
+from vg.core.truth_input import TruthInputError, select_truth_match
+from .report_inputs import prepare_truth_inputs
 
 from vg.core.unified_decoder import _le_to_be
 from vg.core.vgr_parser import VGRParser
@@ -102,10 +107,14 @@ def build_minion_window_report(
 
     truth_players: Dict[str, Dict[str, object]] = {}
     if truth_path:
-        for match in _load_truth_matches(truth_path):
-            if match["replay_name"] == replay_name:
-                truth_players = match.get("players", {})
-                break
+        matches = tuple(_load_truth_matches(truth_path))
+        try:
+            match = select_truth_match(matches, truth_path, replay_name=replay_name, replay_file=replay_file)
+        except TruthInputError as exc:
+            if exc.code != "truth_no_match":
+                raise
+        else:
+            truth_players = match.get("players", {})
 
     all_credit_events = list(iter_credit_events(replay_file))
     frame_entity_events: Dict[Tuple[int, int], List[object]] = defaultdict(list)
@@ -198,10 +207,18 @@ def build_minion_window_report(
             }
         )
 
+    comparison_samples = sum(row["target_0e_samples"] + row["target_0f_samples"] for row in player_output
+                             if row["residual_vs_0e"] is not None and row["residual_vs_0e"] <= 0)
+    comparable = bool(positive_target_samples and comparison_samples)
     return {
         "replay_name": replay_name,
         "replay_file": str(Path(replay_file).resolve()),
         "byte_window": byte_window,
+        "research_status": "research_only" if comparable else "unavailable",
+        "research_reason": None if comparable else "Missing truth-covered positive or comparison target samples.",
+        "research_coverage": {"target_samples": positive_target_samples + nonpositive_target_samples,
+                              "truth_player_rows": sum(row["residual_vs_0e"] is not None for row in player_output),
+                              "comparison_truth_samples": comparison_samples},
         "candidate_headers": list(header_hexes),
         "aggregate": {
             "players": len(player_output),
@@ -248,18 +265,27 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(argv)
 
-    report = build_minion_window_report(
-        replay_file=args.replay_file,
-        truth_path=args.truth,
-        byte_window=args.byte_window,
-    )
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Minion window report saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        inputs = ReportInputs(files=(Path(args.truth),) if args.truth else (), replays=(Path(args.replay_file),))
+        validate_report_outputs(inputs, [args.output] if args.output else [])
+        if args.truth:
+            prepare_truth_inputs(args.truth)
+        report = build_minion_window_report(
+            replay_file=args.replay_file,
+            truth_path=args.truth,
+            byte_window=args.byte_window,
+        )
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            output_path = Path(args.output)
+            write_report_output(inputs, output_path, payload)
+            print(f"Minion window report saved to {output_path}")
+        else:
+            inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"minion_window_research: {exc}", file=sys.stderr)
+        return 2
     return 0
 
 

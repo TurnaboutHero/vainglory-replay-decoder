@@ -4,8 +4,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 from typing import Dict, List, Optional
+
+from vg.core.replay_output import validate_report_outputs, write_report_output
+from .report_inputs import prepare_truth_inputs, truth_replay_files
 
 from vg.core.vgr_parser import VGRParser
 
@@ -123,6 +127,9 @@ def build_minion_series_bucket_rule_research(truth_path: str) -> Dict[str, objec
     return {
         "truth_path": str(Path(truth_path).resolve()),
         "rows": result_rows,
+        "research_status": "research_only" if result_rows else "unavailable",
+        "research_reason": None if result_rows else "No buckets with both positive and zero residual samples.",
+        "research_coverage": {"player_rows": len(rows), "comparable_buckets": len(result_rows)},
     }
 
 
@@ -132,14 +139,26 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(argv)
 
-    report = build_minion_series_bucket_rule_research(args.truth)
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Minion series bucket rule research saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        documents = prepare_truth_inputs(args.truth)
+        validate_report_outputs(documents.inputs, [args.output] if args.output else [])
+        selected = [row for row in documents.matches if "Incomplete" not in Path(row.get("replay_file", "")).parent.name]
+        replays = truth_replay_files(selected, args.truth)
+        inputs = prepare_truth_inputs(args.truth, replays).inputs
+        documents.inputs.recheck()
+        validate_report_outputs(inputs, [args.output] if args.output else [])
+        report = build_minion_series_bucket_rule_research(args.truth)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            output_path = Path(args.output)
+            write_report_output(inputs, output_path, payload)
+            print(f"Minion series bucket rule research saved to {output_path}")
+        else:
+            inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"minion_series_bucket_rule_research: {exc}", file=sys.stderr)
+        return 2
     return 0
 
 
