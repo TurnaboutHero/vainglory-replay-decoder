@@ -63,7 +63,7 @@ def build_truth_inventory(base_path: str, truth_path: str) -> Dict[str, object]:
                   if isinstance(match.get('replay_file'), str)}
     covered, missing = [], []
     for row in rows:
-        truth_entry = references.get(row['replay_file'])
+        truth_entry = references.get(truth_reference_key(row['replay_file'], truth_path))
         merged = {**row, 'covered_by_truth': truth_entry is not None}
         if truth_entry is not None:
             merged['is_incomplete_fixture'] = 'Incomplete' in row['directory']

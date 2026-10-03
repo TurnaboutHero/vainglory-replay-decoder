@@ -1,4 +1,5 @@
 import contextlib
+import hashlib
 import io
 import json
 from pathlib import Path
@@ -113,6 +114,30 @@ class ProductTruthResearch(unittest.TestCase):
         with self.assertRaises(TruthInputError) as error:
             require_truth_match(rows, self.truth, 'same')
         self.assertEqual(error.exception.code, 'truth_ambiguous')
+
+    def test_windows_inventory_coverage_uses_canonical_scoped_keys(self) -> None:
+        references = [r'C:\Replay Library\SeriesA\match.0.vgr',
+                      r'\\Server\Share\SeriesB\match.0.vgr',
+                      r'C:\Replay Library\SeriesC\match.0.vgr']
+        rows = [{'directory': reference.rsplit('\\', 1)[0], 'replay_file': reference,
+                 'replay_name': 'match', 'replay_file_count': 1,
+                 'has_result_image': False, 'has_manifest': False} for reference in references]
+        self.truth.write_text(json.dumps({'matches': [
+            {'replay_name': 'match', 'replay_file': 'c:/replay library/seriesa/MATCH.0.VGR'},
+            {'replay_name': 'match', 'replay_file': '//server/share/seriesb/MATCH.0.VGR'},
+        ]}))
+        before = hashlib.sha256(self.truth.read_bytes()).hexdigest()
+        with patch.object(truth_inventory, 'scan_replay_directories', return_value=rows), patch.object(
+            Path, 'read_bytes', side_effect=AssertionError('Metadata inventory must not open replay bytes')
+        ):
+            report = truth_inventory.build_truth_inventory(str(self.base), str(self.truth))
+        self.assertEqual((report['total_families'], report['covered_families'], report['missing_families']), (3, 2, 1))
+        self.assertEqual([row['replay_file'] for row in report['covered']], references[:2])
+        self.assertEqual([row['replay_file'] for row in report['missing']], references[2:])
+        after = hashlib.sha256(self.truth.read_bytes()).hexdigest()
+        self.assertEqual(after, before)
+        print(json.dumps({'scenario': 'windows_metadata_identity', 'covered': references[:2],
+                          'missing': references[2:], 'truth_sha256_before': before, 'truth_sha256_after': after}))
 
 
 if __name__ == '__main__':
