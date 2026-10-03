@@ -283,11 +283,13 @@ class GoldPlayerSummary:
     gold: Optional[int]
     gold_status: str
     action_06_income: float
-    action_06_sellback_refund: float
+    action_06_sellback_refund: Optional[float]
     action_06_spent: float
     entity_id_be: Optional[int] = None
     replay_scope: Optional[str] = None
     record_count: int = 0
+    action_06_last_set_value: Optional[float] = None
+    action_06_set_count: int = 0
 
     def to_dict(self) -> Dict[str, object]:
         return asdict(self)

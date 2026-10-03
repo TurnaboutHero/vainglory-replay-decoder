@@ -44,9 +44,41 @@ class TestDecoderV2Gold(unittest.TestCase):
         self.assertFalse(result.accepted)
         self.assertEqual(by_name["p1"].gold, 5600)
         self.assertEqual(by_name["p1"].gold_status, "partial_final_validation_missing")
-        self.assertEqual(by_name["p1"].action_06_sellback_refund, 1000.0)
+        self.assertIsNone(by_name["p1"].action_06_sellback_refund)
+        self.assertEqual(by_name["p1"].action_06_last_set_value, 1000.0)
+        self.assertEqual(by_name["p1"].action_06_set_count, 1)
         self.assertEqual(by_name["p1"].action_06_spent, 300.0)
         self.assertEqual(by_name["p2"].gold, 6700)
+
+    def test_resource_set_is_never_a_refund_or_spending_delta(self) -> None:
+        parsed = {"teams": {"left": [{"name": "p", "entity_id": 0x3412}], "right": []}}
+        for final_set in (0.0, -30.0, 1100.0):
+            data = b''.join([
+                _credit(0x1234, 100.0, 6),
+                _credit(0x1234, 1200.0, 6, sell_flag=1),
+                _credit(0x1234, final_set, 6, sell_flag=1),
+                _credit(0x1234, -20.0, 6),
+            ])
+            with self.subTest(final_set=final_set), patch('vg.decoder_v2.gold.VGRParser') as parser, patch(
+                    'vg.decoder_v2.gold.load_frames', return_value=[(0, data)]):
+                parser.return_value.parse.return_value = parsed
+                result = decode_gold_from_replay('x.0.vgr', make_assessment(CompletenessStatus.COMPLETE_CONFIRMED))
+            player = result.players[0]
+            self.assertIsNone(player.action_06_sellback_refund)
+            self.assertEqual(player.action_06_last_set_value, final_set)
+            self.assertEqual(player.action_06_set_count, 2)
+            self.assertEqual(player.action_06_income, 100.0)
+            self.assertEqual(player.action_06_spent, 20.0)
+            self.assertFalse(result.accepted)
+
+    def test_no_set_record_is_not_a_zero_balance_observation(self) -> None:
+        parsed = {"teams": {"left": [{"name": "p", "entity_id": 0x3412}], "right": []}}
+        with patch('vg.decoder_v2.gold.VGRParser') as parser, patch(
+                'vg.decoder_v2.gold.load_frames', return_value=[(0, _credit(0x1234, 100.0, 6))]):
+            parser.return_value.parse.return_value = parsed
+            result = decode_gold_from_replay('x.0.vgr', make_assessment(CompletenessStatus.COMPLETE_CONFIRMED))
+        self.assertIsNone(result.players[0].action_06_last_set_value)
+        self.assertEqual(result.players[0].action_06_set_count, 0)
 
     def test_unrelated_payload_cannot_inflate_credit_income(self) -> None:
         parsed = {"teams": {"left": [{"name": "p", "entity_id": 0x3412}], "right": []}}

@@ -71,6 +71,28 @@ class FinalScreenComparisonTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'screenshot'):
             self.run_comparison()
 
+    def test_surrender_screen_can_compare_counters_without_inventing_winner(self):
+        payload = copy.deepcopy(self.payload)
+        payload['winner_screen_side'] = None
+        payload['result_display'] = 'surrender'
+        result = self.run_comparison(payload)
+        self.assertEqual(result['comparison_status'], 'matched')
+        self.assertEqual(result['observed_winner'], {'screen_side': None, 'recorded_team': None, 'status': 'not_observed'})
+        self.assertEqual(result['observed_result'], {'display': 'surrender', 'status': 'observation_only'})
+        self.assertFalse(result['accepted_for_index'])
+
+    def test_winner_must_be_explicit_even_when_unobserved(self):
+        payload = copy.deepcopy(self.payload)
+        del payload['winner_screen_side']
+        with self.assertRaisesRegex(ValueError, 'winner_screen_side'):
+            self.run_comparison(payload)
+
+    def test_result_display_preserves_text_and_rejects_nontext(self):
+        for value in ('', [], True, 12):
+            payload = copy.deepcopy(self.payload)
+            payload['result_display'] = value
+            with self.subTest(value=value), self.assertRaisesRegex(ValueError, 'result_display'):
+                self.run_comparison(payload)
     def test_section_gap_cannot_be_accepted_with_a_fresh_hash(self):
         tail = anchor(20, 120) + packet(21, 1)
         (self.root / 'match.2.vgr').write_bytes(tail)
