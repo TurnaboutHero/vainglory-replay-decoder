@@ -180,8 +180,8 @@ Python 3.12 is the syntax floor. The full suite was executed on **macOS 26.7 arm
 | --- | --- | --- |
 | Pre-change macOS baseline | `python -X utf8 -B -m unittest discover -s tests -q`; pre-change baseline recorded in the approved reliability work plan | Historical baseline: 499 tests, two path failures and two private-fixture/Pillow errors; exit 1 |
 | Offline quickstart | `python -B -m unittest discover -s tests -p 'test_product_quickstart.py' -v` | macOS Python 3.14.7: six maintained tests passed; 40 module help/option checks, executable examples and two recovery paths. Evidence: `.omo/evidence/task-19-vg-product-journey-20261003-{happy,failure}.log` and `.omo/evidence/product-quickstart/` |
-| Verified macOS suite | `python -X utf8 -B -m unittest discover -s tests -q`; `.omo/evidence/F3-macos-suite.log` | Commit above: 625 tests passed in 12.158s; exit 0 |
-| Verified isolated Windows suite | Same command and commit; `.omo/evidence/F3-windows-suite.log`, `.omo/evidence/F3-windows-receipt.json` | 625 tests passed in 61.130s; exit 0. Receipt confirms tested source and protected checkouts remained unchanged |
+| Verified macOS suite | `python -X utf8 -B -m unittest discover -s tests -q`; `.omo/evidence/F3-attempt-2/F3-macos-suite.log` | Commit above: 625 tests passed in 12.158s; exit 0 |
+| Verified isolated Windows suite | Same command and commit; `.omo/evidence/F3-attempt-2/F3-windows-suite.log`, `.omo/evidence/F3-attempt-2/F3-windows-receipt.json` | 625 tests passed in 61.130s; exit 0. Receipt confirms tested source and protected checkouts remained unchanged |
 | Static type checking | basedpyright | Not installed in the implementation environment; no type-check PASS claimed and no installation performed |
 
 Final acceptance must account for all original 499 tests plus maintained additions, with no silent removal of coverage. Local task evidence is retained under `.omo/evidence/`; ignored evidence is not distributed as a promise to new checkout users. The smoke command is the reproducible entry point. Actual game playback, private corpus observations and source-bound software regression tests remain separate evidence.
