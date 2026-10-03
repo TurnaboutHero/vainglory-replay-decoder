@@ -128,10 +128,13 @@ def compare_final_screen(replay_file: str, observation_file: str, screenshot_fil
                         'team': roster[eid][0], 'screen_side': row['screen_side'], 'fields': fields,
                         'gold': {'display': row['gold_display'], 'exact_value': None, 'status': 'observation_only'}})
     total = len(players) * len(FIELDS)
-    status = 'unavailable' if not native.valid else ('matched' if matched == total else 'mismatch')
+    status = 'unavailable' if not native.valid or total == 0 else ('matched' if matched == total else 'mismatch')
     winner_side = observation['winner_screen_side']
     return {'schema_version': 'vg.final-screen-comparison.v1',
             'scope': 'recording_specific_final_screen', 'accepted_for_index': False,
+            'compared_field_names': list(FIELDS.values()),
+            'observation_only_fields': ['gold', 'winner', 'duration', 'result'],
+            'comparison_scope': 'K/D/A/CS counters for this recording and the supplied hash-bound screenshot and manual transcription.',
             'comparison_status': status, 'matched_fields': matched, 'compared_fields': total,
             'replay_scope': evidence.replay_scope, 'screenshot_sha256': screenshot_hash,
             'observation_sha256': hashlib.sha256(raw_observation).hexdigest(),
@@ -148,7 +151,7 @@ def compare_final_screen(replay_file: str, observation_file: str, screenshot_fil
 
 
 def main(argv=None) -> int:
-    parser = argparse.ArgumentParser(description='Compare native EOF counters with one hash-bound, manually transcribed final screen.')
+    parser = argparse.ArgumentParser(description='Compare only native EOF K/D/A/CS counters with one hash-bound, manually transcribed final screen. Gold, winner, duration and result remain observations; a match does not authorize final index statistics.')
     parser.add_argument('replay', help='Explicit numbered .0.vgr file')
     parser.add_argument('--observation', required=True)
     parser.add_argument('--screenshot', required=True)
