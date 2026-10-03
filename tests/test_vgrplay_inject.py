@@ -5,10 +5,11 @@ from pathlib import Path
 from unittest.mock import patch
 
 from vg.tools.vgrplay_inject import find_live_temp_replay, inject_replay_with_vgrplay
+from vg.core.replay_archive import ArchiveError
 
 
 class TestVgrplayInject(unittest.TestCase):
-    def test_find_live_temp_replay_picks_latest_frame0_group(self) -> None:
+    def test_find_live_temp_replay_requires_explicit_group_when_ambiguous(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             old_frame0 = Path(tmp) / "old.0.vgr"
             old_latest = Path(tmp) / "old.9.vgr"
@@ -19,10 +20,12 @@ class TestVgrplayInject(unittest.TestCase):
             os.utime(old_frame0, (1, 1))
             os.utime(new_frame0, (2, 2))
             os.utime(old_latest, (3, 3))
-            result = find_live_temp_replay(tmp)
+            with self.assertRaises(ArchiveError):
+                find_live_temp_replay(tmp)
+            result = find_live_temp_replay(tmp, 'new')
         self.assertTrue(result["latest_file"].endswith("new.0.vgr"))
         self.assertEqual(result["oname"], "new")
-        self.assertEqual(result["selected_by"], "latest_frame0_mtime")
+        self.assertEqual(result["selected_by"], "explicit_replay_name")
 
     def test_inject_replay_with_vgrplay_reports_changed_files(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -36,7 +39,9 @@ class TestVgrplayInject(unittest.TestCase):
             before = temp / "slot.0.vgr"
             before.write_bytes(b"before")
 
-            def fake_run(cmd, capture_output, text):
+            def fake_run(cmd, capture_output, text, timeout):
+                self.assertEqual(cmd, ['C:/tools/vgrplay.exe', '-source', str(source), '-sname',
+                                      'demo-replay', '-overwrite', str(temp), '-oname', 'slot'])
                 before.write_bytes((source / "demo-replay.0.vgr").read_bytes())
                 (temp / "slot.1.vgr").write_bytes((source / "demo-replay.1.vgr").read_bytes())
                 return type("Completed", (), {"returncode": 0, "stdout": "ok", "stderr": ""})()

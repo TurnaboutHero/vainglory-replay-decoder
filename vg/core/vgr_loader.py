@@ -1,246 +1,137 @@
-#!/usr/bin/env python3
-"""
-VGR Replay Loader - Load saved Vainglory replays into the game
-Replaces the current practice match replay with a saved replay.
-"""
-
-import os
-import sys
-import shutil
-import json
+"""Load a saved replay into an explicitly selected, quiescent filesystem slot."""
 import argparse
-from pathlib import Path
 from datetime import datetime
-from typing import Optional, List, Tuple
+from enum import StrEnum
+import json
+import os
+from pathlib import Path
+from typing import TypedDict, assert_never
+
+from vg.core.replay_archive import inventory, recover, replacement, select_family, snapshot
+from vg.core.replay_input import ReplayInputError, discover_replay_files
+
+
+class LoadResult(TypedDict, total=False):
+    success: bool
+    source_replay: str
+    source_dir: str
+    source_frames: int
+    target_replay: str
+    target_dir: str
+    frames_copied: int
+    source_scope: str
+    recovery: str
+    message: str
+    error_code: str
+    error: str
+
+
+class SavedReplay(TypedDict):
+    name: str
+    path: str
+    frames: int
+    size_mb: float
+    modified: str
+
+
+class Command(StrEnum):
+    LOAD = 'load'
+    LIST = 'list'
+    RECOVER = 'recover'
+    STATUS = 'status'
 
 
 class VGRLoader:
-    """Loads saved .vgr replay files into Vainglory game"""
-    
-    # Default paths
     DEFAULT_TEMP_PATH = Path(os.environ.get('TEMP', os.environ.get('TMP', 'C:\\Temp')))
-    
-    def __init__(self, temp_path: Optional[str] = None):
-        """
-        Initialize the loader.
-        
-        Args:
-            temp_path: Path to Temp directory where Vainglory stores replays.
-                      Defaults to system TEMP.
-        """
+
+    def __init__(self, temp_path: str | None = None):
         self.temp_path = Path(temp_path) if temp_path else self.DEFAULT_TEMP_PATH
-        
-    def find_active_replay(self) -> Optional[Tuple[str, Path]]:
-        """
-        Find the currently active replay in the Temp directory.
-        
-        Returns:
-            Tuple of (replay_name, first_frame_path) or None if not found
-        """
-        # Look for .0.vgr files in temp
-        for vgr_file in self.temp_path.glob('*.0.vgr'):
-            replay_name = vgr_file.stem.rsplit('.', 1)[0]
-            return (replay_name, vgr_file)
-        return None
-    
+
+    def find_active_replay(self, target_name: str | None = None) -> tuple[str, Path] | None:
+        try:
+            path = select_family(self.temp_path, target_name, recursive=False)
+        except ReplayInputError as error:
+            if error.code == 'input_missing':
+                return None
+            raise
+        return path.name[:-6], path
+
     def count_frames(self, directory: Path, replay_name: str) -> int:
-        """Count the number of frames for a replay"""
-        return len(list(directory.glob(f"{replay_name}.*.vgr")))
-    
-    def backup_active_replay(self, backup_dir: Optional[str] = None) -> Optional[Path]:
-        """
-        Backup the currently active replay.
-        
-        Args:
-            backup_dir: Directory to store backup. Defaults to temp_path/vgr_backups
-            
-        Returns:
-            Path to backup directory or None if no active replay
-        """
-        active = self.find_active_replay()
-        if not active:
+        return len(inventory(directory / f'{replay_name}.0.vgr').entries)
+
+    def backup_active_replay(self, backup_dir: str | None = None, target_name: str | None = None) -> Path | None:
+        active = self.find_active_replay(target_name)
+        if active is None:
             return None
-            
-        replay_name, first_frame = active
-        backup_path = Path(backup_dir) if backup_dir else self.temp_path / 'vgr_backups' / datetime.now().strftime('%Y%m%d_%H%M%S')
-        backup_path.mkdir(parents=True, exist_ok=True)
-        
-        # Copy all frames
-        for vgr_file in self.temp_path.glob(f"{replay_name}.*.vgr"):
-            shutil.copy2(vgr_file, backup_path / vgr_file.name)
-        
-        # Copy manifest if exists
-        manifest = self.temp_path / f"replayManifest-{replay_name.split('-')[0]}.txt"
-        if manifest.exists():
-            shutil.copy2(manifest, backup_path / manifest.name)
-            
-        return backup_path
-    
-    def load_replay(self, source_dir: str, source_name: Optional[str] = None) -> dict:
-        """
-        Load a saved replay into the game's temp directory.
-        
-        IMPORTANT: You must first start a Solo Practice match and surrender,
-        then stay on the results screen before running this.
-        
-        Args:
-            source_dir: Directory containing the saved replay files
-            source_name: Name of the replay to load. If None, uses most recent.
-            
-        Returns:
-            Dictionary with load results
-        """
-        source_path = Path(source_dir)
-        
-        # Find the active replay to overwrite
-        active = self.find_active_replay()
-        if not active:
-            return {
-                'success': False,
-                'error': 'No active replay found in temp directory. Please start a Solo Practice match and surrender first.',
-                'temp_path': str(self.temp_path)
-            }
-        
-        target_name, _ = active
-        
-        # Find source replay
-        if source_name:
-            source_first_frame = source_path / f"{source_name}.0.vgr"
-            if not source_first_frame.exists():
-                # Search in subdirectories
-                for frame in source_path.rglob(f"{source_name}.0.vgr"):
-                    source_first_frame = frame
-                    source_path = frame.parent
-                    break
-        else:
-            # Find most recent
-            source_first_frame = None
-            for frame in source_path.rglob('*.0.vgr'):
-                if source_first_frame is None or frame.stat().st_mtime > source_first_frame.stat().st_mtime:
-                    source_first_frame = frame
-            if source_first_frame:
-                source_path = source_first_frame.parent
-                source_name = source_first_frame.stem.rsplit('.', 1)[0]
-        
-        if not source_first_frame or not source_first_frame.exists():
-            return {
-                'success': False,
-                'error': f'Source replay not found in {source_dir}'
-            }
-        
-        # Count frames
-        source_frame_count = self.count_frames(source_path, source_name)
-        target_frame_count = self.count_frames(self.temp_path, target_name)
-        
-        # Delete old frames
-        for vgr_file in self.temp_path.glob(f"{target_name}.*.vgr"):
-            vgr_file.unlink()
-        
-        # Copy new frames with target name
-        copied = 0
-        for i in range(source_frame_count):
-            src = source_path / f"{source_name}.{i}.vgr"
-            dst = self.temp_path / f"{target_name}.{i}.vgr"
-            if src.exists():
-                shutil.copy2(src, dst)
-                copied += 1
-        
-        return {
-            'success': True,
-            'source_replay': source_name,
-            'source_dir': str(source_path),
-            'source_frames': source_frame_count,
-            'target_replay': target_name,
-            'target_dir': str(self.temp_path),
-            'frames_copied': copied,
-            'message': 'Replay loaded! Click "Watch Replay" in the game now.'
-        }
-    
-    def list_saved_replays(self, search_dir: str) -> List[dict]:
-        """
-        List all saved replays in a directory.
-        
-        Args:
-            search_dir: Directory to search
-            
-        Returns:
-            List of replay info dictionaries
-        """
-        replays = []
-        search_path = Path(search_dir)
-        
-        seen = set()
-        for vgr_file in search_path.rglob('*.0.vgr'):
-            replay_name = vgr_file.stem.rsplit('.', 1)[0]
-            if replay_name in seen:
+        name, frame0 = active
+        destination = Path(backup_dir) if backup_dir else self.temp_path / 'vgr_backups' / datetime.now().strftime('%Y%m%d_%H%M%S_%f') / name
+        snapshot(frame0, destination)
+        return destination
+
+    def load_replay(self, source_dir: str, source_name: str | None = None, target_name: str | None = None) -> LoadResult:
+        try:
+            source = select_family(Path(source_dir), source_name)
+            target = select_family(self.temp_path, target_name, recursive=False)
+            with replacement(source, target) as transaction:
+                transaction.promote()
+                transaction.commit()
+                return {'success': True, 'source_replay': source.name[:-6], 'source_dir': str(source.parent),
+                        'source_frames': len(transaction.expected), 'target_replay': target.name[:-6],
+                        'target_dir': str(target.parent), 'frames_copied': len(transaction.expected),
+                        'source_scope': transaction.source.scope, 'recovery': str(transaction.operation),
+                        'message': 'Filesystem replacement verified; playback is not verified.'}
+        except (ReplayInputError, OSError, ValueError) as error:
+            return {'success': False, 'error_code': getattr(error, 'code', 'archive_failed'),
+                    'error': str(error), 'recovery': str(getattr(error, 'recovery', '') or '')}
+
+    def list_saved_replays(self, search_dir: str) -> list[SavedReplay]:
+        results: list[SavedReplay] = []
+        for frame0 in discover_replay_files(Path(search_dir)):
+            if any(part.startswith(('.snapshot-', '.vgr-recovery-')) for part in frame0.relative_to(search_dir).parts):
                 continue
-            seen.add(replay_name)
-            
-            frame_count = self.count_frames(vgr_file.parent, replay_name)
-            file_stat = vgr_file.stat()
-            
-            replays.append({
-                'name': replay_name,
-                'path': str(vgr_file.parent),
-                'frames': frame_count,
-                'size_mb': round(sum(f.stat().st_size for f in vgr_file.parent.glob(f"{replay_name}.*.vgr")) / 1024 / 1024, 2),
-                'modified': datetime.fromtimestamp(file_stat.st_mtime).isoformat()
-            })
-        
-        return sorted(replays, key=lambda x: x['modified'], reverse=True)
+            details = inventory(frame0)
+            results.append({'name': frame0.name[:-6], 'path': str(frame0.parent),
+                            'frames': len(details.entries), 'size_mb': round(sum(e.size for e in details.entries) / 1024 / 1024, 2),
+                            'modified': datetime.fromtimestamp(frame0.stat().st_mtime).isoformat()})
+        return sorted(results, key=lambda row: row['modified'], reverse=True)
 
 
-def main():
-    parser = argparse.ArgumentParser(
-        description='VGR Replay Loader - Load saved Vainglory replays into the game'
-    )
-    subparsers = parser.add_subparsers(dest='command', help='Commands')
-    
-    # List command
-    list_parser = subparsers.add_parser('list', help='List saved replays')
-    list_parser.add_argument('directory', help='Directory to search for replays')
-    
-    # Load command
-    load_parser = subparsers.add_parser('load', help='Load a replay into the game')
-    load_parser.add_argument('source', help='Source directory containing replay files')
-    load_parser.add_argument('-n', '--name', help='Specific replay name to load')
-    load_parser.add_argument('-t', '--temp', help='Override temp directory path')
-    
-    # Status command
-    status_parser = subparsers.add_parser('status', help='Check current replay status')
-    status_parser.add_argument('-t', '--temp', help='Override temp directory path')
-    
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    commands = parser.add_subparsers(dest='command', required=True)
+    listing = commands.add_parser('list')
+    listing.add_argument('directory')
+    loading = commands.add_parser('load')
+    loading.add_argument('source')
+    loading.add_argument('-n', '--name')
+    loading.add_argument('-t', '--temp')
+    loading.add_argument('--target-name')
+    status = commands.add_parser('status')
+    status.add_argument('-t', '--temp')
+    status.add_argument('--target-name')
+    recovery = commands.add_parser('recover')
+    recovery.add_argument('operation')
     args = parser.parse_args()
-    
-    if args.command == 'list':
-        loader = VGRLoader()
-        replays = loader.list_saved_replays(args.directory)
-        print(json.dumps(replays, indent=2, ensure_ascii=False))
-        
-    elif args.command == 'load':
-        loader = VGRLoader(args.temp)
-        result = loader.load_replay(args.source, args.name)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-        
-    elif args.command == 'status':
-        loader = VGRLoader(args.temp)
-        active = loader.find_active_replay()
-        if active:
-            name, path = active
-            frames = loader.count_frames(path.parent, name)
-            print(json.dumps({
-                'active_replay': name,
-                'path': str(path.parent),
-                'frames': frames
-            }, indent=2))
-        else:
-            print(json.dumps({
-                'active_replay': None,
-                'message': 'No active replay. Start a practice match and surrender first.'
-            }, indent=2))
-    else:
-        parser.print_help()
+    try:
+        match Command(args.command):
+            case Command.LOAD:
+                result = VGRLoader(args.temp).load_replay(args.source, args.name, args.target_name)
+                print(json.dumps(result, indent=2))
+                return 0 if result['success'] else 2
+            case Command.LIST:
+                print(json.dumps(VGRLoader().list_saved_replays(args.directory), indent=2))
+            case Command.RECOVER:
+                print(json.dumps({'restored': str(recover(Path(args.operation)))}))
+            case Command.STATUS:
+                active = VGRLoader(args.temp).find_active_replay(args.target_name)
+                print(json.dumps({'active_replay': active[0] if active else None}))
+            case unreachable:
+                assert_never(unreachable)
+        return 0
+    except (ValueError, OSError) as error:
+        print(json.dumps({'success': False, 'error_code': getattr(error, 'code', 'archive_failed'), 'error': str(error)}))
+        return 2
 
 
 if __name__ == '__main__':
-    main()
+    raise SystemExit(main())
