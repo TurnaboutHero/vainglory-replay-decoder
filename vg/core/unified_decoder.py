@@ -55,7 +55,7 @@ import sys
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
-from typing import Dict, List, Optional, Set, Tuple
+from typing import Dict, List, Literal, NotRequired, Optional, Set, Tuple, TypedDict
 from vg.core.stat_evidence import final_field_reason, inspect_replay_evidence
 from vg.core.vgr_records import VGRRecordError, iter_records
 
@@ -644,6 +644,21 @@ class DecodedPlayer:
         return asdict(self)
 
 
+class DurationProvenance(TypedDict):
+    status: Literal['unknown', 'estimated', 'supplied_truth']
+    source: str | None
+    reason: str
+    accepted_for_index: Literal[False]
+    replay_scope: str | None
+    selected_match: NotRequired[dict[str, str]]
+
+
+def _unknown_duration_provenance() -> DurationProvenance:
+    return {'status': 'unknown', 'source': None,
+            'reason': 'No duration provenance was supplied.',
+            'accepted_for_index': False, 'replay_scope': None}
+
+
 @dataclass
 class DecodedMatch:
     """Complete decoded match data."""
@@ -688,6 +703,7 @@ class DecodedMatch:
     final_validation_status: str = "unverified"
     final_stats_reason: str = ""
     recording_evidence: Optional[Dict] = None
+    duration_provenance: DurationProvenance = field(default_factory=_unknown_duration_provenance)
 
     @property
     def all_players(self) -> List[DecodedPlayer]:
@@ -831,17 +847,22 @@ class UnifiedDecoder:
         # Crystal death is preferred but eid 2000-2005 can be turrets.
         # If crystal is much earlier than max player death, it's a FP.
         duration = None
+        duration_source = None
         if crystal_ts is not None and duration_est is not None:
             if crystal_ts >= duration_est - 30:
                 # Crystal death is at or after last player death → valid
                 duration = int(crystal_ts)
+                duration_source = 'crystal_death_candidate'
             else:
                 # Crystal death is much earlier → false positive turret
                 duration = int(duration_est)
+                duration_source = 'last_player_death'
         elif crystal_ts is not None:
             duration = int(crystal_ts)
+            duration_source = 'crystal_death_candidate'
         elif duration_est is not None:
             duration = int(duration_est)
+            duration_source = 'last_player_death'
 
         # --- Step 7a: Completeness ---
         # The event stream ending long before the recording does means the tail
@@ -890,6 +911,14 @@ class UnifiedDecoder:
             map_name=match_info.get("map_name", "Unknown"),
             team_size=match_info.get("team_size", 3),
             duration_seconds=duration,
+            duration_provenance={
+                'status': 'estimated' if duration is not None else 'unknown',
+                'source': duration_source,
+                'reason': ('Legacy event timing estimates duration without final-screen validation.'
+                           if duration is not None else 'No duration estimate is available.'),
+                'accepted_for_index': False,
+                'replay_scope': evidence.replay_scope,
+            },
             winner=winner,
             left_team=left_team,
             right_team=right_team,
@@ -932,6 +961,14 @@ class UnifiedDecoder:
         truth_info = truth.get("match_info", {})
         if truth_info.get("duration_seconds") is not None:
             match.duration_seconds = truth_info["duration_seconds"]
+            match.duration_provenance = {
+                'status': 'supplied_truth',
+                'source': str(truth_path),
+                'reason': 'Duration was supplied by the selected truth record; final validation is not established.',
+                'accepted_for_index': False,
+                'replay_scope': match.duration_provenance['replay_scope'],
+                'selected_match': {key: truth[key] for key in ('replay_name', 'replay_file') if key in truth},
+            }
         if truth_info.get("winner"):
             # Keep detected winner, truth is for comparison
 
