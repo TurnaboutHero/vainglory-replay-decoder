@@ -32,10 +32,8 @@ Team label limitation:
   game, which is what teams switching map sides looks like. The part that is
   a match property is recorded as DecodedPlayer.map_side. Worked through in
   vg/docs/TEAM_LABEL_2026-08-10.md.
-  Winner detection via kill count asymmetry is 100% accurate (the winning
-  GROUP is always correctly identified), but its "left"/"right" label may
-  not match the API convention. Use truth_comparison.py auto-swap correction
-  when validating against API telemetry data.
+  Kill totals do not establish a terminal winner. Winner output is withheld
+  until terminal winner evidence and its team mapping are validated.
 
 Usage:
     from vg.core.unified_decoder import UnifiedDecoder
@@ -772,13 +770,10 @@ class UnifiedDecoder:
             kda_used = kda_detector is not None
 
         # --- Step 4: Win/Loss Detection ---
-        # Strategy: WinLossDetector for crystal destruction detection,
-        # then KDA-based team mapping to determine which side won.
-        # WinLossDetector's left/right label is unreliable due to
-        # entity ID mapping issues, so we cross-check with kill totals.
+        # Observe the legacy terminal candidate. Its team label is unverified
+        # and does not authorize winner output.
         win_used = False
         winner = None
-        crystal_detected = False
         try:
             import io
             detector = WinLossDetector(str(self.replay_path))
@@ -789,7 +784,6 @@ class UnifiedDecoder:
             finally:
                 sys.stdout = old_stdout
             if outcome:
-                crystal_detected = True
                 win_used = True
         except Exception:
             pass
@@ -873,19 +867,6 @@ class UnifiedDecoder:
                 player.deaths = stats.deaths
                 player.assists = stats.assists
                 player.minion_kills = stats.minion_kills
-
-        # KDA-based winner: team with more kills wins (consistent
-        # with VGRParser's team label convention).
-        if kda_used and clock.valid and data_complete is True:
-            left_kills = sum(p.kills for p in left_team)
-            right_kills = sum(p.kills for p in right_team)
-            if left_kills > right_kills:
-                winner = "left"
-            elif right_kills > left_kills:
-                winner = "right"
-            # Tie: use WinLossDetector's label as fallback
-            elif crystal_detected and outcome:
-                winner = outcome.winner
 
         # --- Step 8: Objective event detection ---
         # 3v3: Kraken / Gold Mine.  5v5: Blackclaw / Ghostwing

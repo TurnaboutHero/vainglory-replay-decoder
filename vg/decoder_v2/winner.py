@@ -7,7 +7,7 @@ from .models import CompletenessStatus, WinnerExtractionResult
 
 
 def decode_winner_from_replay(replay_file: str) -> WinnerExtractionResult:
-    """Decode winner conservatively from gated K/D/A output."""
+    """Retain kill totals without treating them as terminal winner evidence."""
     kda_result = decode_kda_from_replay(replay_file)
     if (not kda_result.accepted or kda_result.scope != "final"
             or kda_result.assessment.status != CompletenessStatus.COMPLETE_CONFIRMED):
@@ -23,18 +23,12 @@ def decode_winner_from_replay(replay_file: str) -> WinnerExtractionResult:
 
     left_kills = sum(player.kills for player in kda_result.players if player.team == "left")
     right_kills = sum(player.kills for player in kda_result.players if player.team == "right")
-    winner = None
-    if left_kills > right_kills:
-        winner = "left"
-    elif right_kills > left_kills:
-        winner = "right"
-
     return WinnerExtractionResult(
-        accepted=winner is not None,
-        reason="Winner derived from K/D kill asymmetry on a completeness-confirmed replay." if winner else "Winner tie or unavailable.",
+        accepted=False,
+        reason="Winner export is withheld: kill totals do not establish a terminal winner or its team mapping.",
         assessment=kda_result.assessment,
         duration_estimate=kda_result.duration_estimate,
-        winner=winner,
+        winner=None,
         left_kills=left_kills,
         right_kills=right_kills,
     )
