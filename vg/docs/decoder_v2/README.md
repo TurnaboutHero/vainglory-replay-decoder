@@ -1,140 +1,83 @@
-# Decoder V2 Docs
+# Decoder v2 capability guide
 
-이 디렉터리는 `decoder_v2`의 정식 문서 세트다.
+Use [the offline quickstart](../PRODUCT_RELIABILITY.md#offline-quickstart) to generate a disposable fixture and run safe JSON, capture, debug, batch/index, truth and research examples. Python 3.12 is the syntax minimum; the [runtime ledger](../PRODUCT_RELIABILITY.md#runtime-and-verification) separates actual tested versions from requirements.
 
-## 목표
+## Current evidence contract
 
-- 전적검색 시스템에 필요한 필드를 프로토콜 수준에서 증명한다.
-- 직접 저장된 값과 추론된 값을 분리한다.
-- fixture 기반 검증 없이 production claim을 하지 않는다.
+`decode_match` defaults to `safe-json`. Final output is `decoder_v2.match.v2`; game-time capture is `decoder_v2.capture.v2`; debug wrappers are `decoder_v2.debug_match.v2` and `decoder_v2.debug_capture.v2`.
 
-## 문서 안내
+Validated player-block identity can support hero, team grouping and entity ID decisions. Final K/D/A, minion kills, gold, winner and exact duration remain withheld. A duration candidate may still be carried as a non-indexable estimate. `claim_status` describes evidence; `accepted_for_index` is a separate decision. Neither a completeness label nor a promising research policy authorizes final acceptance.
 
-- `architecture.md`
-  - v2의 계층 구조와 책임 분리
-- `protocol-registry.md`
-  - 바이트 오프셋 / 이벤트 헤더 카탈로그
-- `claim-ledger.md`
-  - 의미 주장과 현재 판정
-- `validation-matrix.md`
-  - fixture 기준 성능 수치
-- `open-questions.md`
-  - 아직 모르는 것과 다음 실험
+At a supported game time, captured K/D/A is tied to content scope, requested/observed clock and roster identity. Captured counters retain `accepted_for_index=false`. Recording/clock/identity/baseline/coverage errors preserve their specific reason; unknown values are null. Debug capture omits whole-recording winner/gold/duration candidates. Successful decoding of unavailable statistics is not successful field validation.
 
-## 현재 상태 요약
+Batch and index outputs retain ordered results with scoped path `input_id`, `status`, `discovered`, `succeeded` and `failed`. Empty existing roots are explicit, missing roots fail, and index keeps duration's withheld decision at match level. Correction inputs are protected and do not bypass final withholding.
 
-- production-ready에 가장 가까운 필드
-  - hero
-  - team grouping
-  - entity id
-- strong but still derived
-  - winner on complete fixtures
-  - kills / deaths / assists on complete fixtures
-- not production-ready
-  - duration exact value
-  - minion kills
-  - incomplete replay handling
+## Command capability matrix
 
-## Current CLI
+There are **40 documented v2 command modules**: the three decode/batch/index entry points and 37 research/report commands. Invoke a row with `python -B -m vg.decoder_v2.MODULE --help`. All accept `-o`/`--output`; omitting output prints a report without writing one. Paths below identify consumed inputs, not merely filenames mentioned by metadata.
 
-- safe output
-  - `python -m vg.decoder_v2.decode_match <replay.0.vgr> --format safe-json`
-- debug output
-  - `python -m vg.decoder_v2.decode_match <replay.0.vgr> --format debug-json`
-- fixture validation
-  - `python -m vg.decoder_v2.validation --truth vg/output/tournament_truth.json`
-- KDA / team / post-game tail audit
-  - `python -m vg.decoder_v2.kda_postgame_audit --truth vg/output/tournament_truth.json -o kda-postgame.json`
-- sparse residual signal research
-  - `python -m vg.decoder_v2.residual_signal_research --truth vg/output/tournament_truth.json -o residual.json`
-- same-frame minion window research
-  - `python -m vg.decoder_v2.minion_window_research <replay.0.vgr> --truth vg/output/tournament_truth.json -o window.json`
-- complete-fixture minion window research
-  - `python -m vg.decoder_v2.minion_window_fixture_research --truth vg/output/tournament_truth.json -o complete-window.json`
-- HackedGlory-style minion validation summary
-  - `python -m vg.decoder_v2.hackedglory_minion_validation --truth vg/output/tournament_truth.json -o hackedglory-minion-validation.json`
-- target-vs-baseline minion outlier compare
-  - `python -m vg.decoder_v2.minion_outlier_compare --truth vg/output/tournament_truth.json --replay-name <replay_name> -o outlier.json`
-- same-hero minion outlier compare
-  - `python -m vg.decoder_v2.minion_hero_compare --truth vg/output/tournament_truth.json --replay-name <replay_name> -o hero-compare.json`
-- same-hero minion outlier score
-  - `python -m vg.decoder_v2.minion_hero_outlier_score --truth vg/output/tournament_truth.json --replay-name <replay_name> -o hero-score.json`
-- action-family minion outlier compare
-  - `python -m vg.decoder_v2.minion_pattern_family_compare --truth vg/output/tournament_truth.json --replay-name <replay_name> -o family-compare.json`
-- action-value minion compare for one family
-  - `python -m vg.decoder_v2.minion_action_value_compare --truth vg/output/tournament_truth.json --replay-name <replay_name> --action 0x02 -o action-compare.json`
-- action-family cluster compare
-  - `python -m vg.decoder_v2.minion_action_cluster_compare --truth vg/output/tournament_truth.json --replay-name <replay_name> --action 0x02 -o action-clusters.json`
-- action-family context profile
-  - `python -m vg.decoder_v2.action02_value_context_profile --truth vg/output/tournament_truth.json -o action02-context.json`
-- action-family sharing profile
-  - `python -m vg.decoder_v2.action02_sharing_profile --truth vg/output/tournament_truth.json -o action02-sharing.json`
-- action02 hero affinity
-  - `python -m vg.decoder_v2.action02_hero_affinity --truth vg/output/tournament_truth.json -o action02-heroes.json`
-- action-family subfamily summary
-  - `python -m vg.decoder_v2.action02_subfamily_summary --truth vg/output/tournament_truth.json --replay-name <replay_name> -o action02-subfamilies.json`
-- HackedGlory-style XP/level validation summary
-  - `python -m vg.decoder_v2.hackedglory_xp_level_validation --truth vg/output/tournament_truth.json -o hackedglory-xp-level-validation.json`
-- target replay provenance trace
-  - `python -m vg.decoder_v2.minion_action_provenance --truth vg/output/tournament_truth.json --replay-name <replay_name> --action 0x02 -o provenance.json`
-- minion outlier risk report
-  - `python -m vg.decoder_v2.minion_outlier_risk_report --truth vg/output/tournament_truth.json -o risk.json`
-- minion acceptance gate research
-  - `python -m vg.decoder_v2.minion_acceptance_gate_research --truth vg/output/tournament_truth.json -o acceptance-gates.json`
-- minion policy candidate search
-  - `python -m vg.decoder_v2.minion_policy_candidates --truth vg/output/tournament_truth.json -o policy-candidates.json`
-- minion policy cross-validation
-  - `python -m vg.decoder_v2.minion_policy_cross_validation --truth vg/output/tournament_truth.json -o policy-cv.json`
-- minion policy stability audit
-  - `python -m vg.decoder_v2.minion_policy_stability_audit --truth vg/output/tournament_truth.json -o policy-stability.json`
-- minion policy validation
-  - `python -m vg.decoder_v2.minion_policy_validation --truth vg/output/tournament_truth.json --policy nonfinals-baseline-0e -o policy-validation.json`
-- minion series profile
-  - `python -m vg.decoder_v2.minion_series_profile --truth vg/output/tournament_truth.json -o series.json`
-- minion same-series peer compare
-  - `python -m vg.decoder_v2.minion_series_peer_compare --truth vg/output/tournament_truth.json --replay-name <replay_name> -o series-peers.json`
-- minion same-series bucket rule research
-  - `python -m vg.decoder_v2.minion_series_bucket_rule_research --truth vg/output/tournament_truth.json -o series-bucket-rules.json`
-- minion self-vs-team linkage compare
-  - `python -m vg.decoder_v2.minion_action_self_vs_team --truth vg/output/tournament_truth.json --replay-name <replay_name> --action 0x02 -o self-vs-team.json`
-- minion relation compare
-  - `python -m vg.decoder_v2.minion_action_relation_compare --truth vg/output/tournament_truth.json --replay-name <replay_name> --action 0x02 -o relation.json`
-- truth coverage inventory
-  - `python -m vg.decoder_v2.truth_inventory --truth vg/output/tournament_truth.json`
-- truth source priority
-  - `python -m vg.decoder_v2.truth_source_priority --truth vg/output/tournament_truth.json -o truth-priority.json`
-- truth labeling queue
-  - `python -m vg.decoder_v2.truth_labeling_queue --truth vg/output/tournament_truth.json -o truth-labeling-queue.json`
-- truth capture pack
-  - `python -m vg.decoder_v2.truth_capture_pack --truth vg/output/tournament_truth.json --limit 20 -o truth-capture-pack.json`
-- batch conservative export
-  - `python -m vg.decoder_v2.batch_decode <replay_root> -o batch.json`
-- broader completeness audit
-  - `python -m vg.decoder_v2.completeness_audit -o completeness-audit.json`
-- completeness outlier compare
-  - `python -m vg.decoder_v2.completeness_outlier_compare --replay-name <replay_name> -o completeness-outlier.json`
-- truth stub generation
-  - `python -m vg.decoder_v2.truth_stubs --truth vg/output/tournament_truth.json -o stubs.json`
-- truth audit
-  - `python -m vg.decoder_v2.truth_audit --truth vg/output/tournament_truth.json --ocr <ocr_truth.json> -o audit.json`
-- index-safe export
-  - `python -m vg.decoder_v2.index_export <replay_root> -o index.json`
-  - optional partial minion policy:
-    - `python -m vg.decoder_v2.index_export <replay_root> --minion-policy nonfinals-baseline-0e -o index.json`
-    - `python -m vg.decoder_v2.index_export <replay_root> --minion-policy nonfinals-or-low-mixed-ratio-experimental -o index.json`
+- **R**: one selected numbered replay family, including its read sections.
+- **T**: supplied truth JSON normalized and validated for the fields the command uses. Locally referenced replay paths resolve relative to that document. Legacy parser Markdown support is separate; these research truth commands use JSON.
+- **O**: OCR-derived truth JSON, not an OCR engine or raw screenshot.
+- **M**: exactly associated replay manifest actually parsed; inventory-only metadata rows do not claim content decoding.
+- **C**: an explicit correction JSON file or a directory whose JSON files are inspected.
 
-## Safe Output Policy
+For T-based analytical rows, R includes selected truth matches and any comparison baselines actually decoded. Foreign path strings can remain metadata in inventory workflows; analytical decoding requires accessible local files. Always provide your paths where historical defaults refer to a private dataset.
 
-- `claim_status`는 과학적 판정이다.
-- `accepted_for_index`는 제품 정책이다.
-- 즉 `strong`이라도 incomplete replay면 `accepted_for_index = false`일 수 있다.
+| Module | Supported/consumed inputs | Selection options | Result scope |
+| --- | --- | --- | --- |
+| `vg.decoder_v2.decode_match` | R; positional replay | `--format` `--at-game-time` | Safe final or scoped capture; debug retains candidates. |
+| `vg.decoder_v2.validation` | T plus decoded referenced R; optional root inventory | `--truth` `--base` | --base adds explicit inventory; omitted means no machine-specific inventory scan. |
+| `vg.decoder_v2.kda_postgame_audit` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.residual_signal_research` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_window_research` | Explicit positional R; optional matching T | `--truth` | Does not decode unrelated truth references. |
+| `vg.decoder_v2.minion_window_fixture_research` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.hackedglory_minion_validation` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_outlier_compare` | T + referenced R, including decoded comparison baselines | `--truth` `--replay-name` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_hero_compare` | T + referenced R, including decoded comparison baselines | `--truth` `--replay-name` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_hero_outlier_score` | T + referenced R, including decoded comparison baselines | `--truth` `--replay-name` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_pattern_family_compare` | T + referenced R, including decoded comparison baselines | `--truth` `--replay-name` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_action_value_compare` | T + referenced R, including decoded comparison baselines | `--truth` `--replay-name` `--action` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_action_cluster_compare` | T + referenced R, including decoded comparison baselines | `--truth` `--replay-name` `--action` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.action02_value_context_profile` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.action02_sharing_profile` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.action02_hero_affinity` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.action02_subfamily_summary` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.hackedglory_xp_level_validation` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_action_provenance` | T + referenced R, including decoded comparison baselines | `--truth` `--replay-name` `--action` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_outlier_risk_report` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_acceptance_gate_research` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_policy_candidates` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_policy_cross_validation` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_policy_stability_audit` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_policy_validation` | T + referenced R, including decoded comparison baselines | `--truth` `--policy` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_series_profile` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_series_peer_compare` | T + referenced R, including decoded comparison baselines | `--truth` `--replay-name` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_series_bucket_rule_research` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_action_self_vs_team` | T + referenced R, including decoded comparison baselines | `--truth` `--replay-name` `--action` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.minion_action_relation_compare` | T + referenced R, including decoded comparison baselines | `--truth` `--replay-name` `--action` | Research candidates/fixture comparisons; no final-index promotion. |
+| `vg.decoder_v2.truth_inventory` | T + root family/image/manifest inventory metadata | `--truth` `--base` | No screenshot/image or manifest-content decoding; family schema v2. |
+| `vg.decoder_v2.truth_source_priority` | T + root family/image/manifest inventory metadata | `--truth` `--base` | No screenshot/image or manifest-content decoding. |
+| `vg.decoder_v2.truth_labeling_queue` | T + root-selected uncovered R + associated M | `--truth` `--base` | Uncovered families stay separately identified. |
+| `vg.decoder_v2.truth_capture_pack` | T + root-selected uncovered R + associated M | `--truth` `--base` `--limit` | Capture requirements follow actual accepted/withheld decisions. |
+| `vg.decoder_v2.batch_decode` | R; positional recursive root | — | Per-input statuses and safe match payloads. |
+| `vg.decoder_v2.completeness_audit` | R from explicit root | `--base` | All discovered families, including comparison baselines. |
+| `vg.decoder_v2.completeness_outlier_compare` | R from explicit root | `--base` `--replay-name` | Selected replay plus comparison baselines. |
+| `vg.decoder_v2.truth_stubs` | T + root-selected uncovered R + associated M | `--truth` `--base` | Only exact family/identifier manifest association; ambiguity is reported. |
+| `vg.decoder_v2.truth_audit` | T + O; R for their matched intersection | `--truth` `--ocr` | Unmatched metadata rows do not require replay bytes. |
+| `vg.decoder_v2.index_export` | R; positional recursive root; optional C | `--kda-correction-path` `--minion-policy` | Final field decisions remain conservative; experimental policy is not proof. |
 
-## Truth Coverage Snapshot
+All rows protect their actual inputs and output aliases before report publication. Their output is staged and replaced after a final identity check; errors preserve the prior report. See [publication and exit semantics](../PRODUCT_RELIABILITY.md#status-selection-and-publication). Metadata-only inventory does not require every referenced replay to exist, while a command that decodes a selected reference reports unreadable/missing input precisely.
 
-- 현재 로컬 replay 디렉터리: 56개
-- truth로 연결된 디렉터리: 11개
-- truth coverage: 약 19.6%
-- result image가 있는 디렉터리: 11개
+## Research documents
 
-즉 fixture 기반 검증은 tournament set에 강하게 걸려 있지만,
-전체 로컬 replay 풀 대비 truth coverage는 아직 낮다.
+- [Architecture](architecture.md): layers and responsibilities.
+- [Protocol registry](protocol-registry.md): offsets and event catalog.
+- [Claim ledger](claim-ledger.md): semantic claims and their judgments.
+- [Validation matrix](validation-matrix.md): dated fixture results.
+- [Open questions](open-questions.md): unresolved evidence and experiments.
+- [Native integration history](../NATIVE_STATS_INTEGRATION_2026-09-07.md) and [October runtime display evidence](../RUNTIME_DISPLAY_2026-10-03.md): scoped capture/clock/gold findings.
+
+The earlier local inventory reported 56 replay directories, 11 truth-linked directories and 19.6% directory coverage. That was a historical private-corpus snapshot, not current global coverage. Current truth inventory uses `decoder_v2.truth_inventory.v2`, counts individual replay families and retains separate directory summaries; two families in one directory do not inherit each other's truth coverage.
+
+Final gold display can depend on retained UI formatter inputs. General end-time semantics, replay-clock history and broad corpus compatibility remain unresolved. A narrow K/D/A/CS match is not a match for gold, winner or duration.
