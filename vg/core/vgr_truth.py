@@ -10,6 +10,7 @@ import json
 import re
 from pathlib import Path
 from typing import Any, Dict, Optional
+from vg.core.truth_input import TruthInputError, load_truth_matches, normalize_truth, select_truth_match
 
 UUID_PAIR_PATTERN = re.compile(
     r'([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
@@ -20,41 +21,39 @@ TIME_PATTERN = re.compile(r'(\d+)\s*분\s*(\d+)\s*초')
 SCORE_PATTERN = re.compile(r'(\d+)\s*vs\s*(\d+)', re.IGNORECASE)
 
 
-def load_truth_data(path: str, replay_name: Optional[str] = None) -> Optional[Dict[str, Any]]:
+def load_truth_data(path: str, replay_name: Optional[str] = None, *,
+                    replay_file: Optional[str] = None) -> Dict[str, Any]:
     """Load truth data from JSON or markdown. Returns a dict for a single replay."""
     truth_path = Path(path)
-    if not truth_path.exists():
-        return None
-
     if truth_path.suffix.lower() == ".json":
-        data = json.loads(truth_path.read_text(encoding="utf-8"))
-        return _select_truth_match(data, replay_name)
+        matches = load_truth_matches(truth_path)
+        return select_truth_match(matches, truth_path, replay_name=replay_name, replay_file=replay_file)
 
     if truth_path.suffix.lower() in {".md", ".txt"}:
-        text = truth_path.read_text(encoding="utf-8", errors="replace")
-        return _parse_truth_markdown(text, replay_name)
+        try:
+            text = truth_path.read_text(encoding="utf-8")
+        except (OSError, UnicodeError) as error:
+            raise TruthInputError('truth_unreadable', truth_path, str(error)) from error
+        if len(set(UUID_PAIR_PATTERN.findall(text))) > 1:
+            raise TruthInputError('truth_ambiguous', truth_path, 'Markdown contains multiple replay identities')
+        row = _parse_truth_markdown(text, replay_name)
+        if row is None:
+            raise TruthInputError('truth_no_match', truth_path, 'Markdown identifies another replay')
+        if not row['players'] and all(value is None for value in row['match_info'].values()):
+            raise TruthInputError('truth_invalid', truth_path, 'No supported truth table or match values')
+        if row['replay_name'] is None:
+            if replay_name:
+                row['replay_name'] = replay_name
+            else:
+                del row['replay_name']
+        return select_truth_match(normalize_truth(row, truth_path), truth_path, replay_name=replay_name)
 
-    return None
+    raise TruthInputError('truth_invalid', truth_path, 'Use JSON, Markdown or text truth data')
 
 
 def _select_truth_match(data: Dict[str, Any], replay_name: Optional[str]) -> Optional[Dict[str, Any]]:
     """Select a single match from JSON data."""
-    if not replay_name:
-        return data
-
-    if isinstance(data, dict):
-        if data.get("replay_name") == replay_name:
-            return data
-
-        matches = data.get("matches")
-        if isinstance(matches, dict):
-            return matches.get(replay_name)
-        if isinstance(matches, list):
-            for match in matches:
-                if match.get("replay_name") == replay_name:
-                    return match
-
-    return None
+    return select_truth_match(normalize_truth(data, Path('<truth>')), Path('<truth>'), replay_name=replay_name)
 
 
 def _parse_truth_markdown(text: str, replay_name: Optional[str]) -> Optional[Dict[str, Any]]:

@@ -52,6 +52,10 @@ import math
 import statistics
 import struct
 import sys
+from vg.core.legacy_inputs import prepare_legacy_inputs
+from vg.core.replay_input import replay_sections
+from vg.core.replay_output import validate_report_outputs, write_report_output
+from vg.core.vgr_truth import load_truth_data
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
@@ -904,6 +908,7 @@ class UnifiedDecoder:
             )
 
         # --- Step 9: Assemble result ---
+        parser.report_inputs.recheck()
         return DecodedMatch(
             replay_name=replay_name,
             replay_path=str(replay_file),
@@ -952,10 +957,9 @@ class UnifiedDecoder:
         Returns:
             DecodedMatch with truth_kills/truth_deaths populated.
         """
+        replay, inputs = prepare_legacy_inputs(str(self.replay_path), truth_path)
         match = self.decode()
-        truth = self._load_truth(truth_path, match.replay_name)
-        if not truth:
-            return match
+        truth = load_truth_data(truth_path, match.replay_name, replay_file=str(replay.absolute()))
 
         # Apply truth duration/winner
         truth_info = truth.get("match_info", {})
@@ -986,6 +990,7 @@ class UnifiedDecoder:
         # duration estimate (from crystal death / max death timestamp)
         # provides better post-game filtering.
 
+        inputs.recheck()
         return match
 
     def _make_player(self, p: Dict) -> DecodedPlayer:
@@ -1000,18 +1005,7 @@ class UnifiedDecoder:
 
     def _load_frames(self, frame_dir: Path, replay_name: str) -> List[tuple]:
         """Load all frame files as (frame_idx, data) tuples."""
-        frame_files = list(frame_dir.glob(f"{replay_name}.*.vgr"))
-        if not frame_files:
-            return []
-
-        def _idx(p: Path) -> int:
-            try:
-                return int(p.stem.split('.')[-1])
-            except ValueError:
-                return 0
-
-        frame_files.sort(key=_idx)
-        return [(_idx(f), f.read_bytes()) for f in frame_files]
+        return [(index, path.read_bytes()) for index, path in replay_sections(frame_dir / f'{replay_name}.0.vgr')]
 
     def _scan_kda_events(
         self,
@@ -1687,18 +1681,10 @@ class UnifiedDecoder:
 
     def _load_truth(self, truth_path: str, replay_name: str) -> Optional[Dict]:
         """Load truth data for a specific replay."""
-        try:
-            with open(truth_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            for m in data.get("matches", []):
-                if m.get("replay_name") == replay_name:
-                    return m
-            return None
-        except (FileNotFoundError, json.JSONDecodeError):
-            return None
+        return load_truth_data(truth_path, replay_name)
 
 
-def main():
+def main(argv=None) -> int:
     import argparse
 
     arg_parser = argparse.ArgumentParser(
@@ -1722,23 +1708,25 @@ def main():
         help='Output JSON file path (default: stdout)'
     )
 
-    args = arg_parser.parse_args()
-
-    decoder = UnifiedDecoder(args.path)
-    if args.truth:
-        match = decoder.decode_with_truth(args.truth)
-    else:
-        match = decoder.decode(detect_items=args.items)
-
-    output = match.to_json()
-
-    if args.output:
-        with open(args.output, 'w', encoding='utf-8') as f:
-            f.write(output)
-        print(f"Result saved to {args.output}", file=sys.stderr)
-    else:
-        print(output)
+    args = arg_parser.parse_args(argv)
+    try:
+        replay, inputs = prepare_legacy_inputs(args.path, args.truth)
+        if args.output:
+            validate_report_outputs(inputs, (Path(args.output),))
+        decoder = UnifiedDecoder(str(replay))
+        match = decoder.decode_with_truth(args.truth) if args.truth else decoder.decode(detect_items=args.items)
+        output = match.to_json()
+        if args.output:
+            write_report_output(inputs, Path(args.output), output)
+            print(f"Result saved to {args.output}", file=sys.stderr)
+        else:
+            inputs.recheck()
+            print(output)
+    except (OSError, ValueError) as error:
+        print(f'unified-decoder: {args.path}: {error}', file=sys.stderr)
+        return 2
+    return 0
 
 
 if __name__ == '__main__':
-    main()
+    raise SystemExit(main())

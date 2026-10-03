@@ -9,12 +9,18 @@ import re
 import json
 import struct
 import argparse
+import sys
 import difflib
 from collections import Counter
 from pathlib import Path
 from datetime import datetime
 from dataclasses import dataclass, asdict, field
 from typing import List, Dict, Any, Optional, Tuple
+from vg.core.batch_result import PartialBatchError, batch_report
+from vg.core.legacy_inputs import prepare_legacy_batch, prepare_legacy_inputs, truth_candidates
+from vg.core.replay_input import discover_replay_files, replay_input_id, replay_sections, select_replay
+from vg.core.replay_output import ReportInputs, validate_report_outputs, write_report_output
+from vg.core.truth_input import TruthInputError
 
 # Import mapping module
 try:
@@ -144,14 +150,7 @@ class VGRParser:
         
     def _find_first_frame(self) -> Optional[Path]:
         """Find the .0.vgr file (first frame with metadata)"""
-        if self.replay_path.is_file() and str(self.replay_path).endswith('.0.vgr'):
-            return self.replay_path
-            
-        # Search for .0.vgr file in directory
-        if self.replay_path.is_dir():
-            for file in self.replay_path.rglob('*.0.vgr'):
-                return file
-        return None
+        return select_replay(self.replay_path)
 
     def _team_label_from_id(self, team_id: Optional[int]) -> str:
         """Map team byte to label."""
@@ -446,14 +445,7 @@ class VGRParser:
 
     def _read_all_frames(self, frame_dir: Path, replay_name: str) -> bytes:
         """Read all frames for a replay in order."""
-        frames = list(frame_dir.glob(f"{replay_name}.*.vgr"))
-        def _frame_index(path: Path) -> int:
-            try:
-                return int(path.stem.split('.')[-1])
-            except ValueError:
-                return 0
-        frames.sort(key=_frame_index)
-        return b"".join(frame.read_bytes() for frame in frames)
+        return b"".join(path.read_bytes() for _, path in replay_sections(frame_dir / f'{replay_name}.0.vgr'))
 
     def _scan_entity_actions(self, data: bytes, entity_id: int) -> Dict[str, int]:
         """Count action types for a given entity id using [id][00 00][action]."""
@@ -473,15 +465,20 @@ class VGRParser:
         """Find matching truth data in the current working directory."""
         if not TRUTH_AVAILABLE:
             return None, None
-        candidates = []
-        cwd = Path.cwd()
-        for pattern in ("MATCH_DATA_*.md", "MATCH_DATA_*.txt", "match_truth*.json", "truth*.json"):
-            candidates.extend(cwd.glob(pattern))
-        for path in candidates:
-            truth = load_truth_data(str(path), replay_name)
-            if truth:
-                return truth, str(path)
-        return None, None
+        matches = []
+        for path in self.report_inputs.files:
+            try:
+                truth = load_truth_data(str(path), replay_name, replay_file=str(self.selected_replay.absolute()))
+            except TruthInputError as error:
+                self.truth_attempts.append({'path': str(path), 'status': error.code, 'reason': str(error)})
+                if error.code == 'truth_ambiguous':
+                    raise
+            else:
+                self.truth_attempts.append({'path': str(path), 'status': 'matched'})
+                matches.append((truth, str(path)))
+        if len(matches) > 1:
+            raise TruthInputError('truth_ambiguous', Path.cwd(), 'Multiple automatic truth documents match; specify --truth')
+        return matches[0] if matches else (None, None)
 
     def _apply_truth_data(self, truth: Dict[str, Any], players: List[PlayerData], match_info: MatchInfo) -> None:
         """Apply truth data to players and match info."""
@@ -586,7 +583,7 @@ class VGRParser:
             if i < len(uuids):
                 player.uuid = uuids[i]
     
-    def parse(self) -> Dict[str, Any]:
+    def parse(self, *, report_inputs: Optional[ReportInputs] = None) -> Dict[str, Any]:
         """
         Parse the replay file and extract data.
         
@@ -594,13 +591,15 @@ class VGRParser:
             Dictionary containing extracted data
         """
         first_frame = self._find_first_frame()
-        if not first_frame:
-            raise FileNotFoundError(f"No .0.vgr file found in {self.replay_path}")
+        self.selected_replay = first_frame
+        self.report_inputs = report_inputs or ReportInputs(
+            files=truth_candidates(self.truth_path, self.auto_truth), replays=(first_frame,))
+        self.truth_attempts = []
         
         # Count total frames
         frame_dir = first_frame.parent
         replay_name = first_frame.stem.rsplit('.', 1)[0]  # Remove .0 suffix
-        frame_count = len(list(frame_dir.glob(f"{replay_name}.*.vgr")))
+        frame_count = len(replay_sections(first_frame))
         
         # Read first frame
         with open(first_frame, 'rb') as f:
@@ -652,10 +651,11 @@ class VGRParser:
         truth = None
         truth_source = None
         if self.truth_path and TRUTH_AVAILABLE:
-            truth = load_truth_data(self.truth_path, replay_name)
+            truth = load_truth_data(self.truth_path, replay_name, replay_file=str(first_frame.absolute()))
+            self.truth_attempts.append({'path': str(self.truth_path), 'status': 'matched'})
             if truth:
                 truth_source = self.truth_path
-        if not truth and self.auto_truth:
+        if not self.truth_path and self.auto_truth:
             truth, truth_source = self._find_truth_data(replay_name)
         if truth:
             self._apply_truth_data(truth, all_players, match_info)
@@ -675,6 +675,12 @@ class VGRParser:
             },
             'detected_heroes': detected_heroes,  # NEW: Heroes detected by event analysis
             'truth_source': truth_source,
+            'truth_provenance': {
+                'status': 'supplied_truth' if truth_source else 'unmatched_automatic' if self.truth_attempts else 'absent',
+                'source': truth_source, 'attempts': self.truth_attempts,
+                'selected_match': {key: truth[key] for key in ('replay_name', 'replay_file') if key in truth} if truth else None,
+                'accepted_for_index': False,
+            },
             # Legacy fields for backwards compatibility
             'frame_count': frame_count,
             'file_size_bytes': len(data),
@@ -693,6 +699,7 @@ class VGRParser:
                 event_debug[player.name] = self._scan_entity_actions(all_data, player.entity_id)
             self.data['event_debug'] = event_debug
         
+        self.report_inputs.recheck()
         return self.data
     
     def _friendly_game_mode(self, mode: Optional[str]) -> str:
@@ -715,13 +722,15 @@ class VGRParser:
         return json.dumps(self.data, indent=indent, ensure_ascii=False)
 
 
-def scan_replay_folders(
+def scan_replay_report(
     base_path: str,
     detect_heroes: bool = False,
     debug_events: bool = False,
     truth_path: Optional[str] = None,
     auto_truth: bool = True,
-) -> List[Dict[str, Any]]:
+    *,
+    report_inputs: Optional[ReportInputs] = None,
+) -> Dict[str, Any]:
     """
     Scan all replay folders and extract data from each.
     
@@ -731,13 +740,11 @@ def scan_replay_folders(
     Returns:
         List of parsed replay data dictionaries
     """
-    base = Path(base_path)
-    results = []
+    results, matches = [], []
     
     # Find all .0.vgr files
-    for vgr_file in base.rglob('*.0.vgr'):
-        if vgr_file.name.startswith("._") or "__MACOSX" in vgr_file.parts:
-            continue
+    for vgr_file in discover_replay_files(base_path):
+        input_id = replay_input_id(vgr_file, base_path)
         try:
             parser = VGRParser(
                 str(vgr_file),
@@ -746,16 +753,25 @@ def scan_replay_folders(
                 truth_path=truth_path,
                 auto_truth=auto_truth,
             )
-            data = parser.parse()
-            results.append(data)
-            print(f"[OK] Parsed: {vgr_file.parent.name}/{vgr_file.name}")
-        except Exception as e:
-            print(f"[ERR] Error parsing {vgr_file}: {e}")
-    
-    return results
+            data = parser.parse(report_inputs=report_inputs)
+            matches.append(data | {'input_id': input_id})
+            results.append({'input_id': input_id, 'replay_file': str(vgr_file), 'status': 'complete',
+                            'error_code': None, 'error': None})
+        except (OSError, ValueError) as error:
+            results.append({'input_id': input_id, 'replay_file': str(vgr_file), 'status': 'failed',
+                            'error_code': getattr(error, 'code', 'parse_failed'), 'error': str(error)})
+    return batch_report(results) | {'matches': matches}
 
 
-def main():
+def scan_replay_folders(base_path: str, detect_heroes: bool = False, debug_events: bool = False,
+                        truth_path: Optional[str] = None, auto_truth: bool = True) -> List[Dict[str, Any]]:
+    report = scan_replay_report(base_path, detect_heroes, debug_events, truth_path, auto_truth)
+    if report['failed']:
+        raise PartialBatchError(report)
+    return report['matches']
+
+
+def main(argv=None) -> int:
     parser = argparse.ArgumentParser(
         description='VGR Replay Parser - Extract data from Vainglory replay files'
     )
@@ -798,35 +814,33 @@ def main():
         help='Disable automatic MATCH_DATA_*.md lookup'
     )
     
-    args = parser.parse_args()
-    
-    if args.batch:
-        results = scan_replay_folders(
-            args.path,
-            detect_heroes=args.detect_heroes,
-            debug_events=args.debug_events,
-            truth_path=args.truth,
-            auto_truth=not args.no_auto_truth,
-        )
-        output = json.dumps(results, indent=2 if args.pretty else None, ensure_ascii=False)
-    else:
-        vgr_parser = VGRParser(
-            args.path,
-            detect_heroes=args.detect_heroes,
-            debug_events=args.debug_events,
-            truth_path=args.truth,
-            auto_truth=not args.no_auto_truth,
-        )
-        data = vgr_parser.parse()
+    args = parser.parse_args(argv)
+    try:
+        if args.batch:
+            inputs = prepare_legacy_batch(args.path, args.truth, auto_truth=not args.no_auto_truth)
+        else:
+            _, inputs = prepare_legacy_inputs(args.path, args.truth, auto_truth=not args.no_auto_truth)
+        if args.output:
+            validate_report_outputs(inputs, (Path(args.output),))
+        if args.batch:
+            data = scan_replay_report(args.path, args.detect_heroes, args.debug_events,
+                                     args.truth, not args.no_auto_truth, report_inputs=inputs)
+        else:
+            vgr_parser = VGRParser(args.path, args.detect_heroes, args.debug_events,
+                                   args.truth, not args.no_auto_truth)
+            data = vgr_parser.parse(report_inputs=inputs)
         output = json.dumps(data, indent=2 if args.pretty else None, ensure_ascii=False)
-    
-    if args.output:
-        with open(args.output, 'w', encoding='utf-8') as f:
-            f.write(output)
-        print(f"\n결과가 {args.output}에 저장되었습니다.")
-    else:
-        print(output)
+        if args.output:
+            write_report_output(inputs, Path(args.output), output)
+            print(f"결과가 {args.output}에 저장되었습니다.")
+        else:
+            inputs.recheck()
+            print(output)
+    except (OSError, ValueError) as error:
+        print(f'vgr-parser: {args.path}: {error}', file=sys.stderr)
+        return 2
+    return 1 if args.batch and data['failed'] else 0
 
 
 if __name__ == '__main__':
-    main()
+    raise SystemExit(main())

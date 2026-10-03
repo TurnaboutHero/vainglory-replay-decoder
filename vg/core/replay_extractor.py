@@ -11,6 +11,9 @@ from dataclasses import dataclass, field, asdict
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 from datetime import datetime
+from vg.core.legacy_inputs import prepare_legacy_inputs
+from vg.core.replay_input import replay_sections
+from vg.core.vgr_truth import load_truth_data
 
 # Local imports
 try:
@@ -125,7 +128,7 @@ class ReplayExtractor:
 
         # Get replay name and frames
         replay_name = parsed.get("replay_name", "")
-        frame_dir = self.replay_path.parent if self.replay_path.is_file() else self.replay_path
+        frame_dir = Path(parsed['replay_file']).parent
 
         # Read all frames for hero matching
         all_data = self._read_all_frames(frame_dir, replay_name)
@@ -142,6 +145,7 @@ class ReplayExtractor:
 
         # Build result
         match_info = parsed.get("match_info", {})
+        parser.report_inputs.recheck()
         return ExtractedMatch(
             replay_name=replay_name,
             replay_file=parsed.get("replay_file", str(self.replay_path)),
@@ -166,36 +170,22 @@ class ReplayExtractor:
         Returns:
             ExtractedMatch with hybrid (binary + truth) data
         """
-        # First extract binary data
+        replay, inputs = prepare_legacy_inputs(str(self.replay_path), truth_path)
         match = self.extract()
 
         # Load truth data
-        truth_data = self._load_truth(truth_path, match.replay_name)
-        if not truth_data:
-            return match
+        truth_data = load_truth_data(truth_path, match.replay_name, replay_file=str(replay.absolute()))
 
         # Merge truth data
         self._apply_truth(match, truth_data)
         match.extraction_method = "hybrid"
         match.truth_source = truth_path
-
+        inputs.recheck()
         return match
 
     def _read_all_frames(self, frame_dir: Path, replay_name: str) -> bytes:
         """Read all replay frames in order."""
-        frames = list(frame_dir.glob(f"{replay_name}.*.vgr"))
-        if not frames:
-            # Try without pattern (single folder structure)
-            frames = list(frame_dir.glob("*.vgr"))
-
-        def frame_index(path: Path) -> int:
-            try:
-                return int(path.stem.split('.')[-1])
-            except ValueError:
-                return 0
-
-        frames.sort(key=frame_index)
-        return b"".join(f.read_bytes() for f in frames)
+        return b"".join(path.read_bytes() for _, path in replay_sections(frame_dir / f'{replay_name}.0.vgr'))
 
     def _convert_players(self, player_dicts: List[Dict]) -> List[ExtractedPlayer]:
         """Convert parser player dicts to ExtractedPlayer objects."""
@@ -241,17 +231,7 @@ class ReplayExtractor:
 
     def _load_truth(self, truth_path: str, replay_name: str) -> Optional[Dict]:
         """Load truth data for specific replay."""
-        try:
-            with open(truth_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-
-            matches = data.get("matches", [])
-            for match in matches:
-                if match.get("replay_name") == replay_name:
-                    return match
-            return None
-        except (FileNotFoundError, json.JSONDecodeError):
-            return None
+        return load_truth_data(truth_path, replay_name)
 
     def _apply_truth(self, match: ExtractedMatch, truth: Dict) -> None:
         """Apply truth data to extracted match."""
@@ -302,15 +282,21 @@ def extract_replay(
     return extractor.extract()
 
 
-if __name__ == "__main__":
+def main(argv=None) -> int:
+    import argparse
     import sys
+    parser = argparse.ArgumentParser(description='Extract legacy replay metadata with optional supplied truth.')
+    parser.add_argument('replay_path')
+    parser.add_argument('truth_path', nargs='?')
+    args = parser.parse_args(argv)
+    try:
+        match = extract_replay(args.replay_path, args.truth_path)
+        print(match.to_json())
+    except (OSError, ValueError) as error:
+        print(f'extract-replay: {error}', file=sys.stderr)
+        return 2
+    return 0
 
-    if len(sys.argv) < 2:
-        print("Usage: python replay_extractor.py <replay_path> [truth_path]")
-        sys.exit(1)
 
-    replay_path = sys.argv[1]
-    truth_path = sys.argv[2] if len(sys.argv) > 2 else None
-
-    match = extract_replay(replay_path, truth_path)
-    print(match.to_json())
+if __name__ == "__main__":
+    raise SystemExit(main())

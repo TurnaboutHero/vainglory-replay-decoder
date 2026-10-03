@@ -6,7 +6,7 @@ from pathlib import Path
 import re
 
 from vg.core.native_stats import read_native_stats
-from vg.core.replay_output import validate_replay_output, write_replay_output
+from vg.core.replay_output import ReportInputs, validate_report_outputs, write_report_output
 from vg.core.stat_evidence import frame_scope, inspect_replay_evidence
 from vg.core.unified_decoder import _le_to_be
 from vg.core.vgr_parser import VGRParser
@@ -158,17 +158,15 @@ def main(argv=None) -> int:
     parser.add_argument('-o', '--output')
     args = parser.parse_args(argv)
     try:
+        inputs = ReportInputs(files=(Path(args.observation), Path(args.screenshot)), replays=(Path(args.replay),))
         if args.output:
-            output = Path(args.output)
-            validate_replay_output(Path(args.replay), output)
-            for path in (Path(args.observation), Path(args.screenshot)):
-                if output.resolve() == path.resolve() or (output.exists() and output.samefile(path)):
-                    raise ValueError('Output aliases an observation or screenshot input')
+            validate_report_outputs(inputs, (Path(args.output),))
         result = compare_final_screen(args.replay, args.observation, args.screenshot)
         payload = json.dumps(result, indent=2, ensure_ascii=False) + '\n'
         if args.output:
-            write_replay_output(Path(args.replay), Path(args.output), payload)
+            write_report_output(inputs, Path(args.output), payload)
         else:
+            inputs.recheck()
             print(payload, end='')
     except (OSError, ValueError) as exc:
         parser.error(str(exc))
