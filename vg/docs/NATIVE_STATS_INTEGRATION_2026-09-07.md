@@ -16,6 +16,14 @@ unsupported layers/counts/layouts, and out-of-coverage queries withhold state.
 A later full snapshot replaces earlier state; unsupported layers not reset by
 the native snapshot remain tainted. Invalid state never becomes zero.
 
+Omitting the core reader cutoff consumes every record through EOF, including
+updates whose interpolated game time exceeds the final endpoint after a paused
+clock anchor. `RecordTime` is bounded and filtered by record timestamps;
+`GameTime` retains its game-clock coverage and filtering. First/last game times
+describe recording endpoints, not interpolation extrema. Requested actor IDs
+must be unique positive uint32 integers; booleans and coerced numeric IDs are
+rejected as `invalid_query`.
+
 Both `UnifiedDecoder` and `decoder_v2` consume this reader. Unified output
 includes `native_stats_status`, `native_stats_reason`, and `as_of_game_time`.
 Its existing duration estimate selects a record-time cutoff. Unknown player
