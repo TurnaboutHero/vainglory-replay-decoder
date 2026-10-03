@@ -7,44 +7,33 @@ import struct
 from collections import defaultdict
 from typing import Dict, Iterable, List
 
-from vg.core.unified_decoder import _CREDIT_HEADER
+from vg.core.vgr_records import VGRRecord, VGRRecordError, iter_records
 
 from .completeness import load_frames
 from .models import CreditEventRecord
 
 
+def credit_event_from_record(record: VGRRecord, frame_idx: int) -> CreditEventRecord:
+    """Decode an exact native resource record; preserve both legacy and owning offsets."""
+    if record.opcode != 0x041D or record.content_length != 16:
+        raise VGRRecordError(f"frame {frame_idx}: unsupported credit opcode/length {record.opcode:04x}/{record.content_length}", record.offset)
+    entity_id = struct.unpack_from(">I", record.payload)[0]
+    raw_value = struct.unpack_from(">f", record.payload, 4)[0]
+    finite = math.isfinite(raw_value)
+    return CreditEventRecord(
+        frame_idx, entity_id, record.payload[8], raw_value if finite else None,
+        record.offset + 7,
+        (struct.pack(">BH", record.content_length, record.opcode) + record.payload[:9].tobytes()).hex(),
+        entity_id <= 0xFFFF, finite, record.payload[9], record.offset,
+    )
+
+
 def iter_credit_events(replay_file: str) -> Iterable[CreditEventRecord]:
-    """Yield raw credit events for a replay."""
+    """Yield strict owning 041d records, never signatures embedded in another payload."""
     for frame_idx, data in load_frames(replay_file):
-        pos = 0
-        while True:
-            pos = data.find(_CREDIT_HEADER, pos)
-            if pos == -1:
-                break
-            if pos + 12 > len(data):
-                pos += 1
-                continue
-            if data[pos + 3:pos + 5] != b"\x00\x00":
-                pos += 1
-                continue
-
-            entity_id_be = struct.unpack_from(">H", data, pos + 5)[0]
-            raw_value = struct.unpack_from(">f", data, pos + 7)[0]
-            action = data[pos + 11]
-            value_is_finite = not (math.isnan(raw_value) or math.isinf(raw_value))
-            value = raw_value if value_is_finite else None
-
-            yield CreditEventRecord(
-                frame_idx=frame_idx,
-                entity_id_be=entity_id_be,
-                action=action,
-                value=value,
-                file_offset=pos,
-                raw_record_hex=data[pos:pos + 12].hex(),
-                padding_ok=True,
-                value_is_finite=value_is_finite,
-            )
-            pos += 1
+        for record in iter_records(data):
+            if record.opcode == 0x041D:
+                yield credit_event_from_record(record, frame_idx)
 
 
 def collect_credit_events_by_entity(replay_file: str) -> Dict[int, List[CreditEventRecord]]:

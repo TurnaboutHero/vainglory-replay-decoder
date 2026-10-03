@@ -18,12 +18,7 @@ def _heartbeat(entity_id_be: int, byte15: int, timestamp: float) -> bytes:
 
 
 def _credit(entity_id_be: int, value: float, action: int) -> bytes:
-    return (
-        bytes.fromhex("10041d0000")
-        + entity_id_be.to_bytes(2, "big")
-        + struct.pack(">f", value)
-        + bytes([action])
-    )
+    return struct.pack(">fIHIfBB4x", 0.,16,0x041D,entity_id_be,value,action,0)
 
 
 class TestLevelSignalProbe(unittest.TestCase):
@@ -47,7 +42,7 @@ class TestLevelSignalProbe(unittest.TestCase):
             return_value=frames,
         ), patch(
             "vg.decoder_v2.credit_events.load_frames",
-            return_value=frames,
+            return_value=[frames[3]],
         ):
             parser_cls.return_value.parse.return_value = parsed
             report = build_level_signal_probe("sample.0.vgr")

@@ -16,7 +16,7 @@ class TestDecoderV2Completeness(unittest.TestCase):
         self.assertEqual(value, (None, None, None))
         self.assertEqual(_scan_record_tails([(0, frame_a + frame_b)]), (100.0, None, 100.0))
 
-    def test_complete_confirmed_from_crystal_and_death_alignment(self) -> None:
+    def test_crystal_and_death_alignment_cannot_confirm_completion(self) -> None:
         signals = ReplaySignalSummary(
             replay_name="match",
             replay_file="match.0.vgr",
@@ -31,7 +31,7 @@ class TestDecoderV2Completeness(unittest.TestCase):
 
         assessment = assess_completeness(signals)
 
-        self.assertEqual(assessment.status, CompletenessStatus.COMPLETE_CONFIRMED)
+        self.assertEqual(assessment.status, CompletenessStatus.COMPLETENESS_UNKNOWN)
 
     def test_incomplete_confirmed_from_short_tail_gap_pattern(self) -> None:
         signals = ReplaySignalSummary(
@@ -177,7 +177,7 @@ class TestDecoderV2Completeness(unittest.TestCase):
 
         self.assertEqual(assessment.status, CompletenessStatus.COMPLETENESS_UNKNOWN)
 
-    def test_complete_confirmed_from_stale_player_death_tail(self) -> None:
+    def test_stale_player_death_tail_cannot_confirm_completion(self) -> None:
         signals = ReplaySignalSummary(
             replay_name="match",
             replay_file="match.0.vgr",
@@ -192,7 +192,7 @@ class TestDecoderV2Completeness(unittest.TestCase):
 
         assessment = assess_completeness(signals)
 
-        self.assertEqual(assessment.status, CompletenessStatus.COMPLETE_CONFIRMED)
+        self.assertEqual(assessment.status, CompletenessStatus.COMPLETENESS_UNKNOWN)
 
     def test_completeness_unknown_from_slightly_early_crystal(self) -> None:
         signals = ReplaySignalSummary(

@@ -6,6 +6,8 @@ from dataclasses import dataclass, asdict, field
 from enum import Enum
 from typing import Dict, List, Optional, Tuple
 
+from vg.core.stat_evidence import EndMatchObservation, ReplayEvidence
+
 
 class ClaimStatus(str, Enum):
     CONFIRMED = "confirmed"
@@ -143,6 +145,10 @@ class ReplaySignalSummary:
     native_clock_reason: Optional[str] = None
     first_game_time: Optional[float] = None
     last_game_time: Optional[float] = None
+    replay_scope: Optional[str] = None
+    recording_valid: Optional[bool] = None
+    recording_reason: Optional[str] = None
+    terminal_requests: Tuple[EndMatchObservation, ...] = ()
 
     def to_dict(self) -> Dict[str, object]:
         return asdict(self)
@@ -160,6 +166,8 @@ class CreditEventRecord:
     raw_record_hex: str
     padding_ok: bool
     value_is_finite: bool
+    operation: Optional[int] = None
+    native_record_offset: Optional[int] = None
 
     def to_dict(self) -> Dict[str, object]:
         return asdict(self)
@@ -235,6 +243,8 @@ class KDAPlayerSummary:
     deaths: int
     assists: int
     minion_kills: int
+    entity_id_be: Optional[int] = None
+    replay_scope: Optional[str] = None
 
     def to_dict(self) -> Dict[str, object]:
         return asdict(self)
@@ -252,6 +262,8 @@ class KDAExtractionResult:
     scope: str = "final"
     at_game_time: Optional[float] = None
     as_of_game_time: Optional[float] = None
+    replay_scope: Optional[str] = None
+    final_validation_status: str = "unverified"
 
     def to_dict(self) -> Dict[str, object]:
         result = asdict(self)
@@ -268,11 +280,14 @@ class GoldPlayerSummary:
     player_name: str
     team: str
     hero_name: str
-    gold: int
+    gold: Optional[int]
     gold_status: str
     action_06_income: float
     action_06_sellback_refund: float
     action_06_spent: float
+    entity_id_be: Optional[int] = None
+    replay_scope: Optional[str] = None
+    record_count: int = 0
 
     def to_dict(self) -> Dict[str, object]:
         return asdict(self)
@@ -286,6 +301,9 @@ class GoldExtractionResult:
     reason: str
     assessment: CompletenessAssessment
     players: Tuple[GoldPlayerSummary, ...] = ()
+    replay_scope: Optional[str] = None
+    final_validation_status: str = "unverified"
+    record_issues: Tuple[str, ...] = ()
 
     def to_dict(self) -> Dict[str, object]:
         result = asdict(self)
@@ -326,6 +344,10 @@ class AcceptedPlayerFields:
     assists: Optional[int] = None
     gold: Optional[int] = None
     gold_status: Optional[str] = None
+    entity_id_be: Optional[int] = None
+    replay_scope: Optional[str] = None
+    identity_status: str = "unverified"
+    identity_reason: Optional[str] = None
 
     def to_dict(self) -> Dict[str, object]:
         return asdict(self)
@@ -340,6 +362,8 @@ class FieldDecision:
     accepted_for_index: bool
     claim_id: str
     reason: Optional[str] = None
+    evidence_status: str = "unverified"
+    scope: str = "final"
 
     def to_dict(self) -> Dict[str, object]:
         return asdict(self)
@@ -363,6 +387,8 @@ class DecoderV2MatchOutput:
     scope: str = "final"
     at_game_time: Optional[float] = None
     as_of_game_time: Optional[float] = None
+    replay_scope: Optional[str] = None
+    evidence: Optional[ReplayEvidence] = None
 
     def to_dict(self) -> Dict[str, object]:
         result = asdict(self)

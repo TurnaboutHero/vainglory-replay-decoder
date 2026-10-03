@@ -51,7 +51,7 @@ def match_to_csv_rows(match: DecodedMatch, match_idx: int = 0) -> List[Dict]:
         kda_ratio = None
         if all(value is not None for value in (player.kills, player.deaths, player.assists)):
             kda_ratio = round((player.kills + player.assists) / max(player.deaths, 1), 2)
-        is_winner = 1 if match.winner and player.team == match.winner else 0
+        is_winner = None if match.winner is None else int(player.team == match.winner)
         row = {
             'match_idx': match_idx,
             'replay_name': match.replay_name,
@@ -91,8 +91,8 @@ def match_to_summary_row(match: DecodedMatch, match_idx: int = 0) -> Dict:
     right_kills = _complete_sum(p.kills for p in match.right_team)
     left_deaths = _complete_sum(p.deaths for p in match.left_team)
     right_deaths = _complete_sum(p.deaths for p in match.right_team)
-    left_gold = sum(p.gold_earned for p in match.left_team)
-    right_gold = sum(p.gold_earned for p in match.right_team)
+    left_gold = _complete_sum(p.gold_earned for p in match.left_team)
+    right_gold = _complete_sum(p.gold_earned for p in match.right_team)
 
     obj_counts = {}
     for evt in match.objective_events:

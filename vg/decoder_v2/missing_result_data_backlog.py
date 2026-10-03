@@ -26,7 +26,9 @@ def _discover_corrected_exports(output_root: Path) -> Dict[str, str]:
             payload = json.loads(candidate.read_text(encoding="utf-8"))
         except Exception:
             continue
-        if not isinstance(payload, dict) or payload.get("schema_version") != "decoder_v2.index_export.v2":
+        if not isinstance(payload, dict) or payload.get("schema_version") not in (
+            "decoder_v2.index_export.v2", "decoder_v2.index_export.v3",
+        ):
             continue
         matches = payload.get("matches")
         if not isinstance(matches, list):

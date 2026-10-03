@@ -238,7 +238,7 @@ def compare_all(truth_path: str):
 
             # Gold (gold_earned = positive action 0x06 only, truth = total gold)
             truth_gold = tp.get("gold")
-            if truth_gold is not None and not is_incomplete:
+            if truth_gold is not None and not is_incomplete and dp.gold_earned is not None:
                 if dp.gold_spent == truth_gold:
                     stats['gold'] += 1
                 earned_err = abs(dp.gold_earned - truth_gold) / truth_gold if truth_gold else 1
