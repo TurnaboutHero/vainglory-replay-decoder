@@ -6,6 +6,7 @@ from collections import Counter, defaultdict
 from typing import Dict, Optional, assert_never
 
 from vg.core.stat_evidence import final_field_reason, frame_scope
+from vg.core.native_gold import read_native_gold
 from vg.core.unified_decoder import _le_to_be
 from vg.core.vgr_parser import VGRParser
 from vg.core.vgr_records import VGRRecordError, iter_records
@@ -114,4 +115,5 @@ def decode_gold_from_replay(
         players=tuple(players),
         replay_scope=replay_scope,
         record_issues=tuple(issues),
+        native_observation=read_native_gold(frames, valid_ids),
     )

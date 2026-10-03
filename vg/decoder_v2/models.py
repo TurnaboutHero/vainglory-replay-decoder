@@ -7,6 +7,7 @@ from enum import Enum
 from typing import Dict, List, Optional, Tuple
 
 from vg.core.stat_evidence import EndMatchObservation, ReplayEvidence
+from vg.core.native_gold import NativeGoldResult
 
 
 class ClaimStatus(str, Enum):
@@ -306,6 +307,7 @@ class GoldExtractionResult:
     replay_scope: Optional[str] = None
     final_validation_status: str = "unverified"
     record_issues: Tuple[str, ...] = ()
+    native_observation: Optional[NativeGoldResult] = None
 
     def to_dict(self) -> Dict[str, object]:
         result = asdict(self)
