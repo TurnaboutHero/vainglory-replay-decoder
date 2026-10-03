@@ -4,9 +4,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Optional
+
+from vg.core.replay_output import validate_report_outputs, write_report_output
+from .report_inputs import prepare_truth_inputs, truth_replay_files
 
 from vg.core.vgr_parser import VGRParser
 
@@ -42,7 +46,7 @@ def build_minion_outlier_risk_report(truth_path: str) -> Dict[str, object]:
     for match in complete_matches:
         counters = _load_player_credit_counters(match["replay_file"])
         heroes = _load_player_heroes(match["replay_file"])
-        for player_name, player_truth in match["players"].items():
+        for player_name, player_truth in match.get("players", {}).items():
             if player_name not in counters or player_truth.get("minion_kills") is None:
                 continue
             baseline_0e = counters[player_name][(0x0E, 1.0)]
@@ -135,14 +139,26 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(argv)
 
-    report = build_minion_outlier_risk_report(args.truth)
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Minion outlier risk report saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        documents = prepare_truth_inputs(args.truth)
+        validate_report_outputs(documents.inputs, [args.output] if args.output else [])
+        selected = [row for row in documents.matches if "Incomplete" not in Path(row.get("replay_file", "")).parent.name]
+        replays = truth_replay_files(selected, args.truth)
+        prepared = prepare_truth_inputs(args.truth, replays)
+        documents.inputs.recheck()
+        validate_report_outputs(prepared.inputs, [args.output] if args.output else [])
+        report = build_minion_outlier_risk_report(args.truth)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            output_path = Path(args.output)
+            write_report_output(prepared.inputs, output_path, payload)
+            print(f"Minion outlier risk report saved to {output_path}")
+        else:
+            prepared.inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"minion_outlier_risk_report: {exc}", file=sys.stderr)
+        return 2
     return 0
 
 

@@ -4,9 +4,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from collections import Counter
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional
+
+from vg.core.replay_output import validate_report_outputs, write_report_output
+from .report_inputs import prepare_truth_inputs, truth_replay_files
 
 from .action02_subfamily_summary import build_action02_subfamily_summary
 from .level_signal_probe import build_level_signal_batch
@@ -121,14 +125,36 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(list(argv) if argv is not None else None)
 
-    report = build_hackedglory_xp_level_validation(args.truth, limit=args.limit)
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"HackedGlory XP/level validation saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        documents = prepare_truth_inputs(args.truth)
+        validate_report_outputs(documents.inputs, [args.output] if args.output else [])
+        selected = [row for row in documents.matches if "Incomplete" not in Path(row.get("replay_file", "")).parent.name]
+        level_count = 0
+        for row in documents.matches:
+            reference = row.get("replay_file")
+            if not reference or not Path(reference).exists():
+                continue
+            if row not in selected:
+                selected.append(row)
+            level_count += 1
+            if args.limit is not None and level_count >= args.limit:
+                break
+        replays = truth_replay_files(selected, args.truth)
+        prepared = prepare_truth_inputs(args.truth, replays)
+        documents.inputs.recheck()
+        validate_report_outputs(prepared.inputs, [args.output] if args.output else [])
+        report = build_hackedglory_xp_level_validation(args.truth, limit=args.limit)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            output_path = Path(args.output)
+            write_report_output(prepared.inputs, output_path, payload)
+            print(f"HackedGlory XP/level validation saved to {output_path}")
+        else:
+            prepared.inputs.recheck()
+            print(payload)
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"hackedglory_xp_level_validation: {exc}", file=sys.stderr)
+        return 2
     return 0
 
 
