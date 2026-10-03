@@ -5,9 +5,11 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import sys
 from typing import Dict, List, Optional
 
-from .truth_inventory import build_truth_inventory
+from .truth_inventory import build_truth_inventory, inventory_inputs
+from vg.core.replay_output import validate_report_outputs, write_report_output
 
 
 def _collection_key(directory: str, base_path: str) -> str:
@@ -29,6 +31,7 @@ def build_truth_source_priority_from_inventory(
     missing = inventory["missing"]
 
     collections: Dict[str, Dict[str, object]] = {}
+    directory_sets = {}
     for row in covered + missing:
         key = _collection_key(str(row["directory"]), base_path)
         collection = collections.setdefault(
@@ -36,6 +39,9 @@ def build_truth_source_priority_from_inventory(
             {
                 "collection": key,
                 "total_directories": 0,
+                "total_families": 0,
+                "covered_families": 0,
+                "missing_families": 0,
                 "covered_directories": 0,
                 "missing_directories": 0,
                 "missing_with_result_image": 0,
@@ -43,17 +49,25 @@ def build_truth_source_priority_from_inventory(
                 "missing_raw_only": 0,
             },
         )
-        collection["total_directories"] += 1
+        directories, missing_directories = directory_sets.setdefault(key, (set(), set()))
+        directories.add(row['directory'])
+        collection["total_families"] += 1
         if row.get("covered_by_truth"):
-            collection["covered_directories"] += 1
+            collection["covered_families"] += 1
         else:
-            collection["missing_directories"] += 1
+            missing_directories.add(row['directory'])
+            collection["missing_families"] += 1
             if row.get("has_result_image"):
                 collection["missing_with_result_image"] += 1
             elif row.get("has_manifest"):
                 collection["missing_manifest_only"] += 1
             else:
                 collection["missing_raw_only"] += 1
+
+    for key, (directories, missing_directories) in directory_sets.items():
+        collections[key]['total_directories'] = len(directories)
+        collections[key]['missing_directories'] = len(missing_directories)
+        collections[key]['covered_directories'] = len(directories - missing_directories)
 
     collection_rows = sorted(
         collections.values(),
@@ -116,6 +130,9 @@ def build_truth_source_priority_from_inventory(
             "covered_directories": inventory["covered_directories"],
             "missing_directories": inventory["missing_directories"],
             "coverage_pct": inventory["coverage_pct"],
+            "total_families": inventory.get("total_families", len(covered) + len(missing)),
+            "covered_families": inventory.get("covered_families", len(covered)),
+            "missing_families": inventory.get("missing_families", len(missing)),
             "immediately_labelable": len(immediately_labelable),
             "manifest_only": len(manifest_only),
             "raw_only": len(raw_only),
@@ -146,14 +163,20 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(argv)
 
-    report = build_truth_source_priority(args.base, args.truth)
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Truth source priority saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        inputs = inventory_inputs(args.base, args.truth)
+        if args.output:
+            validate_report_outputs(inputs, (Path(args.output),))
+        report = build_truth_source_priority(args.base, args.truth)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            write_report_output(inputs, Path(args.output), payload)
+            print(f"Truth source priority saved to {args.output}")
+        else:
+            print(payload)
+    except (OSError, ValueError, TypeError) as error:
+        print(f'truth-source-priority: {args.output or args.truth}: {error}', file=sys.stderr)
+        return 2
     return 0
 
 

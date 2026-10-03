@@ -51,7 +51,7 @@ class TestDecoderV2TruthStubs(unittest.TestCase):
             truth_path.write_text(json.dumps({"matches": []}), encoding="utf-8")
 
             inventory = {
-                "missing": [{"directory": str(missing_dir)}],
+                "missing": [{"directory": str(missing_dir), "replay_file": str(replay)}],
             }
 
             with patch("vg.decoder_v2.truth_stubs.build_truth_inventory", return_value=inventory), patch(

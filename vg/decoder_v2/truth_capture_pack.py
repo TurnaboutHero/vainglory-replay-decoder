@@ -5,10 +5,13 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import sys
 from typing import Dict, Iterable, List, Optional
 
 from .truth_labeling_queue import build_truth_labeling_queue
 from .truth_stubs import build_truth_stub_report
+from .truth_inventory import inventory_inputs
+from vg.core.replay_output import validate_report_outputs, write_report_output
 
 
 def _capture_track(queue_row: Dict[str, object]) -> str:
@@ -28,15 +31,17 @@ def _capture_track(queue_row: Dict[str, object]) -> str:
 
 
 def _capture_reason(queue_row: Dict[str, object]) -> str:
-    completeness = str(queue_row["completeness_status"])
-    game_mode = str(queue_row["game_mode"])
-    if completeness != "complete_confirmed":
-        return "Replay is not yet confidently complete, so truth capture mainly helps resolve completeness and unsupported-tail behavior."
-    if game_mode == "GameMode_5v5_Ranked":
-        return "Highest-value unlabeled fixture type: complete-confirmed 5v5 ranked replay with winner/KDA already accepted, so new truth directly stress-tests minion and index policy."
-    if game_mode == "GameMode_5v5_Casual":
-        return "Complete-confirmed 5v5 replay with accepted winner/KDA; adds non-tournament generalization for safe decoder fields."
-    return "Useful unlabeled replay that can widen truth coverage outside the current tournament validation set."
+    decisions = queue_row.get('accepted_decisions', {})
+    withheld = queue_row.get('withheld_fields', {})
+    final_fields = ('winner', 'kills', 'deaths', 'assists')
+    accepted = [field for field in final_fields if isinstance(decisions.get(field), dict)
+                and decisions[field].get('accepted_for_index') is True
+                and decisions[field].get('scope', 'final') == 'final' and field not in withheld]
+    pending = [field for field in final_fields if field not in accepted]
+    reasons = [str(withheld[field].get('reason')) for field in pending
+               if isinstance(withheld.get(field), dict) and withheld[field].get('reason')]
+    return (f"Final fields requiring source-bound truth: {', '.join(pending) or 'none'}. "
+            f"Accepted final decisions: {', '.join(accepted) or 'none'}. " + ' '.join(dict.fromkeys(reasons)))
 
 
 def _capture_requirements(queue_row: Dict[str, object]) -> List[str]:
@@ -103,14 +108,20 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(list(argv) if argv is not None else None)
 
-    report = build_truth_capture_pack(args.base, args.truth, limit=args.limit)
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Truth capture pack saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        inputs = inventory_inputs(args.base, args.truth)
+        if args.output:
+            validate_report_outputs(inputs, (Path(args.output),))
+        report = build_truth_capture_pack(args.base, args.truth, limit=args.limit)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            write_report_output(inputs, Path(args.output), payload)
+            print(f"Truth capture pack saved to {args.output}")
+        else:
+            print(payload)
+    except (OSError, ValueError, TypeError) as error:
+        print(f'truth-capture-pack: {args.output or args.truth}: {error}', file=sys.stderr)
+        return 2
     return 0
 
 

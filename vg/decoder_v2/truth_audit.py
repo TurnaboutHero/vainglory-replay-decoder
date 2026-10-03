@@ -6,14 +6,33 @@ import argparse
 import difflib
 import json
 from pathlib import Path
+import sys
 from typing import Dict, List, Optional
 
 from .decode_match import decode_match
+from .report_inputs import load_research_truth, truth_replay_files
+from vg.core.replay_output import ReportInputs, validate_report_outputs, write_report_output
+from vg.core.truth_input import TruthInputError
 
 
-def _load_matches(path: str) -> Dict[str, Dict]:
-    data = json.loads(Path(path).read_text(encoding="utf-8"))
-    return {match["replay_name"]: match for match in data.get("matches", [])}
+def _matched_rows(truth_path: str, ocr_path: str) -> List[tuple[Dict, Dict]]:
+    truth, ocr = load_research_truth(truth_path), load_research_truth(ocr_path)
+    pairs = []
+    for row in truth:
+        scoped = [other for other in ocr if row.get('replay_file')
+                  and row.get('replay_file') == other.get('replay_file')]
+        named = [other for other in ocr if row.get('replay_name')
+                 and row.get('replay_name') == other.get('replay_name')
+                 and (not row.get('replay_file') or not other.get('replay_file'))]
+        candidates = scoped or named
+        if len(candidates) > 1 or (named and sum(other.get('replay_name') == row.get('replay_name') for other in truth) > 1):
+            raise TruthInputError('truth_ambiguous', Path(truth_path), 'Audit requires unique scoped truth/OCR matches')
+        if candidates:
+            if not isinstance(row.get('replay_name'), str):
+                raise TruthInputError('truth_invalid', Path(truth_path), 'Matched row requires replay_name')
+            truth_replay_files((row,), truth_path)
+            pairs.append((row, candidates[0]))
+    return sorted(pairs, key=lambda pair: (pair[0]['replay_name'], pair[0].get('replay_file', '')))
 
 
 def _resolve_name(name: str, players: Dict[str, Dict]) -> Optional[str]:
@@ -34,9 +53,7 @@ def audit_truth(
     truth_path: str,
     ocr_truth_path: str,
 ) -> Dict[str, object]:
-    truth_matches = _load_matches(truth_path)
-    ocr_matches = _load_matches(ocr_truth_path)
-    replay_names = sorted(set(truth_matches) & set(ocr_matches))
+    matched_rows = _matched_rows(truth_path, ocr_truth_path)
 
     report_rows = []
     summary = {
@@ -48,9 +65,8 @@ def audit_truth(
         "death_mismatches": 0,
         "assist_mismatches": 0,
     }
-    for replay_name in replay_names:
-        truth_match = truth_matches[replay_name]
-        ocr_match = ocr_matches[replay_name]
+    for truth_match, ocr_match in matched_rows:
+        replay_name = truth_match['replay_name']
         safe = decode_match(truth_match["replay_file"]).to_dict()
 
         if (
@@ -66,10 +82,10 @@ def audit_truth(
 
         player_rows = []
         for player in safe["players"]:
-            truth_name = _resolve_name(player["name"], truth_match["players"])
-            ocr_name = _resolve_name(player["name"], ocr_match["players"])
-            truth_player = truth_match["players"].get(truth_name) if truth_name else None
-            ocr_player = ocr_match["players"].get(ocr_name) if ocr_name else None
+            truth_name = _resolve_name(player["name"], truth_match.get("players", {}))
+            ocr_name = _resolve_name(player["name"], ocr_match.get("players", {}))
+            truth_player = truth_match.get("players", {}).get(truth_name) if truth_name else None
+            ocr_player = ocr_match.get("players", {}).get(ocr_name) if ocr_name else None
             summary["player_rows"] += 1
             if (truth_player.get("minion_kills") if truth_player else None) != (ocr_player.get("minion_kills") if ocr_player else None):
                 summary["mk_mismatches"] += 1
@@ -130,14 +146,26 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     args = parser.parse_args(argv)
 
-    report = audit_truth(args.truth, args.ocr)
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Truth audit saved to {output_path}")
-    else:
-        print(payload)
+    try:
+        documents = ReportInputs(files=(Path(args.truth), Path(args.ocr)))
+        if args.output:
+            validate_report_outputs(documents, (Path(args.output),))
+        pairs = _matched_rows(args.truth, args.ocr)
+        replays = truth_replay_files(tuple(row for row, _ in pairs), args.truth)
+        inputs = ReportInputs(files=documents.files, replays=replays)
+        documents.recheck()
+        if args.output:
+            validate_report_outputs(inputs, (Path(args.output),))
+        report = audit_truth(args.truth, args.ocr)
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if args.output:
+            write_report_output(inputs, Path(args.output), payload)
+            print(f"Truth audit saved to {args.output}")
+        else:
+            print(payload)
+    except (OSError, ValueError, TypeError) as error:
+        print(f'truth-audit: {args.output or args.truth}: {error}', file=sys.stderr)
+        return 2
     return 0
 
 
