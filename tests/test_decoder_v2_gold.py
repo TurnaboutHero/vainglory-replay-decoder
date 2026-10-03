@@ -6,6 +6,7 @@ from vg.decoder_v2.gold import decode_gold_from_replay
 from vg.decoder_v2.models import CompletenessStatus
 
 from tests.test_decoder_v2_decode_match import make_assessment
+from tests.test_native_stats import anchor, packet, resource
 
 
 def _credit(entity_id_be: int, value: float, action: int, sell_flag: int = 0) -> bytes:
@@ -13,6 +14,38 @@ def _credit(entity_id_be: int, value: float, action: int, sell_flag: int = 0) ->
 
 
 class TestDecoderV2Gold(unittest.TestCase):
+    def test_native_observation_uses_practice_baseline_and_survives_json(self) -> None:
+        import json
+        payload = bytearray(746)
+        struct.pack_into('>I', payload, 8, 0x1234)
+        struct.pack_into('>ff', payload, 286, 30000.0, 30000.0)
+        data = anchor(0, 0) + packet(0, 0x03f3, payload)
+        data += resource(1, 3, index=6, entity=0x1234)
+        data += resource(2, -1000, index=6, entity=0x1234)
+        parsed = {'teams': {'left': [{'name': 'p', 'entity_id': 0x3412}], 'right': []}}
+        with patch('vg.decoder_v2.gold.VGRParser') as parser, patch(
+                'vg.decoder_v2.gold.load_frames', return_value=[(0, data)]):
+            parser.return_value.parse.return_value = parsed
+            result = decode_gold_from_replay('x.0.vgr', make_assessment(CompletenessStatus.COMPLETE_CONFIRMED))
+        output = json.loads(json.dumps(result.to_dict()))
+        self.assertTrue(output['native_observation']['valid'])
+        self.assertEqual(output['native_observation']['players'], [
+            {'entity_id': 0x1234, 'gold_balance': 29003.0, 'net_worth': 30003.0}])
+        self.assertEqual(output['native_observation']['as_of_game_time'], 2.0)
+        self.assertFalse(output['accepted'])
+        self.assertEqual(output['final_validation_status'], 'unverified')
+
+    def test_credit_records_without_native_baseline_withhold_observation(self) -> None:
+        parsed = {'teams': {'left': [{'name': 'p', 'entity_id': 0x3412}], 'right': []}}
+        data = anchor(0, 0) + resource(1, 100, index=6, entity=0x1234)
+        with patch('vg.decoder_v2.gold.VGRParser') as parser, patch(
+                'vg.decoder_v2.gold.load_frames', return_value=[(0, data)]):
+            parser.return_value.parse.return_value = parsed
+            result = decode_gold_from_replay('x.0.vgr', make_assessment(CompletenessStatus.COMPLETE_CONFIRMED))
+        self.assertFalse(result.native_observation.valid)
+        self.assertEqual(result.native_observation.players, ())
+        self.assertFalse(result.accepted)
+
     def test_decode_gold_observes_income_without_adopting_final_gold(self) -> None:
         parsed = {
             "teams": {

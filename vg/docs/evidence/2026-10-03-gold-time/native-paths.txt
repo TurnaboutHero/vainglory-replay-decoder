@@ -1,0 +1,1514 @@
+Windows preferred VA; executable SHA256 659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642
+Ghidra12.1.3 read-only existing analysis. Decompiler names and inferred types are not debug symbols.
+
+SOURCE native9/function-004d5930.c sha256:3039747ae51722d0d2c1a5e8e42d4b89429c3f6b216390db162cf9bef9556033 lines 1-269
+1: // 004d5930 FUN_004d5930
+2:
+3: void FUN_004d5930(undefined4 *param_1)
+4:
+5: {
+6:   int iVar1;
+7:   undefined4 uVar2;
+8:   undefined4 uVar3;
+9:   int iVar4;
+10:   undefined3 uVar6;
+11:   undefined4 *puVar5;
+12:   undefined4 local_8bc;
+13:   undefined4 local_8b8;
+14:   undefined4 local_8b4;
+15:   undefined4 local_8b0;
+16:   undefined4 local_8ac;
+17:   undefined4 local_8a8;
+18:   undefined4 local_8a4;
+19:   undefined4 local_8a0;
+20:   int local_89c;
+21:   undefined4 local_898;
+22:   undefined4 local_894;
+23:   undefined4 local_890;
+24:   undefined4 local_88c;
+25:   undefined4 local_888;
+26:   undefined4 local_884;
+27:   undefined4 local_880;
+28:   undefined4 local_87c;
+29:   undefined4 local_878;
+30:   int local_874;
+31:   undefined4 *local_870;
+32:   undefined1 local_86a;
+33:   undefined1 local_869;
+34:   undefined1 local_868 [12];
+35:   undefined1 local_85c;
+36:   undefined4 local_360 [2];
+37:   undefined4 local_358;
+38:   undefined4 local_350;
+39:   undefined4 local_34c;
+40:   undefined4 local_348;
+41:   undefined4 local_344;
+42:   undefined4 local_340;
+43:   undefined4 local_33c;
+44:   undefined4 local_338;
+45:   undefined4 local_334;
+46:   undefined4 local_330;
+47:   undefined4 local_324;
+48:   undefined4 local_318;
+49:   undefined4 local_2fc;
+50:   undefined4 local_2ec;
+51:   undefined4 local_2e8;
+52:   undefined4 local_2e4;
+53:   undefined4 local_2e0;
+54:   undefined4 local_2c4;
+55:   undefined4 local_2c0;
+56:   undefined4 local_2bc;
+57:   undefined4 local_2b8;
+58:   undefined4 local_2b4;
+59:   undefined4 local_2b0;
+60:   undefined4 local_2ac;
+61:   undefined4 local_2a4;
+62:   undefined4 local_29c;
+63:   undefined4 local_298;
+64:   undefined4 local_294;
+65:   undefined4 local_290;
+66:   undefined4 local_28c;
+67:   undefined4 local_288;
+68:   undefined4 local_284;
+69:   undefined4 local_280;
+70:   undefined4 local_27c;
+71:   undefined4 local_270;
+72:   undefined4 local_264;
+73:   undefined4 local_248;
+74:   undefined4 local_234;
+75:   undefined4 local_230;
+76:   undefined4 local_200;
+77:   undefined4 local_1fc;
+78:   undefined4 local_1f8;
+79:   undefined4 local_1f0;
+80:   undefined4 local_1e8;
+81:   undefined4 local_1e4;
+82:   undefined4 local_1e0;
+83:   undefined4 local_1dc;
+84:   undefined4 local_1d8;
+85:   undefined4 local_1d4;
+86:   undefined4 local_1d0;
+87:   undefined4 local_1cc;
+88:   undefined4 local_1c8;
+89:   undefined4 local_1bc;
+90:   undefined4 local_1b0;
+91:   undefined4 local_194;
+92:   undefined4 local_180;
+93:   undefined4 local_17c;
+94:   undefined4 local_14c;
+95:   undefined4 local_148;
+96:   undefined4 local_90;
+97:   undefined4 local_8c;
+98:   undefined4 local_88;
+99:   undefined4 local_84;
+100:   undefined4 local_80;
+101:   undefined4 local_7c;
+102:   undefined4 local_78;
+103:   undefined4 local_74;
+104:   undefined4 local_70;
+105:   undefined4 local_64;
+106:   undefined4 local_58;
+107:   uint local_50;
+108:   uint local_4c;
+109:   undefined4 local_48;
+110:   undefined4 local_44;
+111:   undefined4 uStack_40;
+112:   undefined4 uStack_3c;
+113:   undefined4 uStack_38;
+114:   undefined4 local_34;
+115:   undefined4 uStack_30;
+116:   undefined4 uStack_2c;
+117:   undefined4 uStack_28;
+118:   undefined4 local_24;
+119:   undefined4 local_20;
+120:   undefined8 local_1c;
+121:   uint local_14;
+122:   void *local_10;
+123:   undefined1 *puStack_c;
+124:   undefined4 local_8;
+125:
+126:   local_8 = 0xffffffff;
+127:   puStack_c = &LAB_011c64fb;
+128:   local_10 = ExceptionList;
+129:   local_14 = DAT_01e44f28 ^ (uint)&stack0xfffffffc;
+130:   ExceptionList = &local_10;
+131:   local_870 = param_1;
+132:   FUN_0081c640(local_14);
+133:   if (*(int *)((int)param_1 + 0x146) == 0) {
+134:     local_360[0] = *(undefined4 *)((int)param_1 + 0x2e);
+135:     local_2ac = *(undefined4 *)((int)param_1 + 0x32);
+136:     local_1f8 = *(undefined4 *)((int)param_1 + 0x36);
+137:     local_2b0 = *(undefined4 *)((int)param_1 + 0x3e);
+138:     local_1fc = *(undefined4 *)((int)param_1 + 0x42);
+139:     local_148 = *(undefined4 *)((int)param_1 + 0x46);
+140:     local_318 = *(undefined4 *)((int)param_1 + 0x4a);
+141:     local_264 = *(undefined4 *)((int)param_1 + 0x4e);
+142:     local_1b0 = *(undefined4 *)((int)param_1 + 0x52);
+143:     local_324 = *(undefined4 *)((int)param_1 + 0x62);
+144:     local_270 = *(undefined4 *)((int)param_1 + 0x66);
+145:     local_1bc = *(undefined4 *)((int)param_1 + 0x6a);
+146:     local_2e8 = *(undefined4 *)((int)param_1 + 0x6e);
+147:     local_234 = *(undefined4 *)((int)param_1 + 0x72);
+148:     local_180 = *(undefined4 *)((int)param_1 + 0x76);
+149:     local_358 = *(undefined4 *)((int)param_1 + 0x7e);
+150:     local_2a4 = *(undefined4 *)((int)param_1 + 0x82);
+151:     local_1f0 = *(undefined4 *)((int)param_1 + 0x86);
+152:     local_2b4 = *(undefined4 *)((int)param_1 + 0x8e);
+153:     local_200 = *(undefined4 *)((int)param_1 + 0x92);
+154:     local_14c = *(undefined4 *)((int)param_1 + 0x96);
+155:     local_34c = *(undefined4 *)((int)param_1 + 0x9a);
+156:     local_298 = *(undefined4 *)((int)param_1 + 0x9e);
+157:     local_1e4 = *(undefined4 *)((int)param_1 + 0xa2);
+158:     local_348 = *(undefined4 *)((int)param_1 + 0xa6);
+159:     local_294 = *(undefined4 *)((int)param_1 + 0xaa);
+160:     local_1e0 = *(undefined4 *)((int)param_1 + 0xae);
+161:     local_2fc = *(undefined4 *)((int)param_1 + 0xb2);
+162:     local_248 = *(undefined4 *)((int)param_1 + 0xb6);
+163:     local_194 = *(undefined4 *)((int)param_1 + 0xba);
+164:     local_344 = *(undefined4 *)((int)param_1 + 0xbe);
+165:     local_290 = *(undefined4 *)((int)param_1 + 0xc2);
+166:     local_1dc = *(undefined4 *)((int)param_1 + 0xc6);
+167:     local_340 = *(undefined4 *)((int)param_1 + 0xca);
+168:     local_28c = *(undefined4 *)((int)param_1 + 0xce);
+169:     local_1d8 = *(undefined4 *)((int)param_1 + 0xd2);
+170:     local_350 = *(undefined4 *)((int)param_1 + 0xd6);
+171:     local_29c = *(undefined4 *)((int)param_1 + 0xda);
+172:     local_1e8 = *(undefined4 *)((int)param_1 + 0xde);
+173:     local_2e4 = *(undefined4 *)((int)param_1 + 0xe2);
+174:     local_230 = *(undefined4 *)((int)param_1 + 0xe6);
+175:     local_17c = *(undefined4 *)((int)param_1 + 0xea);
+176:     local_33c = *(undefined4 *)((int)param_1 + 0xee);
+177:     local_288 = *(undefined4 *)((int)param_1 + 0xf2);
+178:     local_1d4 = *(undefined4 *)((int)param_1 + 0xf6);
+179:     local_338 = *(undefined4 *)((int)param_1 + 0xfa);
+180:     local_284 = *(undefined4 *)((int)param_1 + 0xfe);
+181:     local_1d0 = *(undefined4 *)((int)param_1 + 0x102);
+182:     local_334 = *(undefined4 *)((int)param_1 + 0x106);
+183:     local_280 = *(undefined4 *)((int)param_1 + 0x10a);
+184:     local_1cc = *(undefined4 *)((int)param_1 + 0x10e);
+185:     local_330 = *(undefined4 *)((int)param_1 + 0x112);
+186:     local_27c = *(undefined4 *)((int)param_1 + 0x116);
+187:     local_1c8 = *(undefined4 *)((int)param_1 + 0x11a);
+188:     local_2c0 = *(undefined4 *)((int)param_1 + 0x126);
+189:     local_2bc = *(undefined4 *)((int)param_1 + 0x12a);
+190:     local_2b8 = *(undefined4 *)((int)param_1 + 0x12e);
+191:     local_2ec = *(undefined4 *)((int)param_1 + 0x13a);
+192:     local_2c4 = *(undefined4 *)((int)param_1 + 0x142);
+193:     local_2e0 = *(undefined4 *)((int)param_1 + 0x156);
+194:     local_90 = *(undefined4 *)((int)param_1 + 0x2a);
+195:     local_8c = *(undefined4 *)((int)param_1 + 0x3a);
+196:     local_80 = *(undefined4 *)((int)param_1 + 0x152);
+197:     local_50 = local_50 | 0xe2049ff5;
+198:     local_4c = local_4c | 0x1f81;
+199:     local_7c = *(undefined4 *)((int)param_1 + 0x15a);
+200:     local_88 = *(undefined4 *)((int)param_1 + 0x7a);
+201:     local_84 = *(undefined4 *)((int)param_1 + 0x8a);
+202:     local_78 = *(undefined4 *)((int)param_1 + 0x11e);
+203:     local_74 = *(undefined4 *)((int)param_1 + 0x122);
+204:     local_70 = *(undefined4 *)((int)param_1 + 0x13e);
+205:     local_64 = *(undefined4 *)((int)param_1 + 0x132);
+206:     local_58 = *(undefined4 *)((int)param_1 + 0x136);
+207:   }
+208:   iVar1 = param_1[2];
+209:   local_874 = iVar1;
+210:   iVar4 = FUN_00939790();
+211:   if (iVar1 == iVar4) {
+212:     FUN_0095e9f0(iVar1,*(undefined1 *)(param_1 + 3));
+213:     local_874 = param_1[2];
+214:   }
+215:   local_20 = 0;
+216:   local_48 = 0;
+217:   local_1c = 0;
+218:   local_44 = 0;
+219:   uStack_40 = 0;
+220:   uStack_3c = 0;
+221:   uStack_38 = 0;
+222:   local_24 = 0;
+223:   local_34 = 0;
+224:   uStack_30 = 0;
+225:   uStack_2c = 0;
+226:   uStack_28 = 0;
+227:   memmove(&local_20,(void *)((int)param_1 + 0x242),0xc);
+228:   memmove(&local_48,(void *)((int)param_1 + 0x1da),0x28);
+229:   local_8b0 = *(undefined4 *)((int)param_1 + 0x1e);
+230:   local_8ac = *(undefined4 *)((int)param_1 + 0x22);
+231:   local_8a8 = *(undefined4 *)((int)param_1 + 0x26);
+232:   local_878 = *(undefined4 *)((int)local_870 + 0x2bd);
+233:   local_87c = *(undefined4 *)((int)local_870 + 0x2b9);
+234:   local_880 = *(undefined4 *)((int)local_870 + 0x255);
+235:   uVar2 = *(undefined4 *)((int)param_1 + 0x2e1);
+236:   local_884 = *(undefined4 *)((int)local_870 + 0x2c1);
+237:   local_888 = *(undefined4 *)((int)local_870 + 0x2c5);
+238:   local_88c = *(undefined4 *)((int)local_870 + 0x251);
+239:   local_890 = *(undefined4 *)((int)local_870 + 0x15e);
+240:   local_898 = *(undefined4 *)((int)local_870 + 0x14a);
+241:   local_89c = *(int *)((int)local_870 + 0x146);
+242:   local_869 = *(undefined1 *)((int)local_870 + 0x11);
+243:   uVar6 = (undefined3)((uint)local_89c >> 8);
+244:   local_86a = *(undefined1 *)(local_870 + 4);
+245:   local_8bc = *(undefined4 *)((int)param_1 + 0x12);
+246:   local_8a0 = CONCAT31(uVar6,*(undefined1 *)(local_870 + 3));
+247:   local_8b8 = *(undefined4 *)((int)param_1 + 0x16);
+248:   local_8b4 = *(undefined4 *)((int)param_1 + 0x1a);
+249:   uVar3 = *(undefined4 *)((int)param_1 + 0x2e5);
+250:   local_894 = *(undefined4 *)((int)local_870 + 0x14e);
+251:   local_8a4 = CONCAT31(uVar6,*(undefined1 *)((int)local_870 + 0x2e9));
+252:   puVar5 = (undefined4 *)FUN_0081e800(local_870[1]);
+253:   FUN_0081ac20(*local_870,*puVar5,local_874,local_8a4,local_8a0,local_86a,local_869,&local_8bc,
+254:                &local_8b0,local_360,local_89c != 0,0,local_898,local_894,(int)local_870 + 0x162,
+255:                (int)local_870 + 0x18a,(int)local_870 + 0x1b2,&local_48,(int)local_870 + 0x202,
+256:                local_890,(int)local_870 + 0x22a,(int)local_870 + 0x236,&local_20,
+257:                (int)local_870 + 0x24e,local_88c,local_888,local_884,0,0xff,0,local_880,
+258:                (int)local_870 + 0x259,(int)local_870 + 0x279,(int)local_870 + 0x299,local_87c,
+259:                local_878,(int)local_870 + 0x2c9,(int)local_870 + 0x2d1,(int)local_870 + 0x2d9,uVar3,
+260:                uVar2,FUN_005488b0,DAT_01265f20);
+261:   local_8 = 0;
+262:   local_85c = 1;
+263:   FUN_0092c240(local_868);
+264:   ExceptionList = local_10;
+265:   __security_check_cookie(local_14 ^ (uint)&stack0xfffffffc);
+266:   return;
+267: }
+268:
+269:
+
+SOURCE native10/function-0081ac20.c sha256:3e63a63c3aaf9c5a9732248f395a65c743efc416b6964f931da877e50bdda41b lines 1-82
+1: // 0081ac20 FUN_0081ac20
+2:
+3: undefined4 * __thiscall
+4: FUN_0081ac20(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4,
+5:             undefined4 param_5,undefined1 param_6,undefined4 param_7,undefined4 param_8,
+6:             undefined8 *param_9,undefined8 *param_10,undefined4 param_11,undefined1 param_12,
+7:             undefined1 param_13,undefined4 param_14,undefined4 param_15,undefined4 *param_16,
+8:             undefined4 *param_17,undefined4 *param_18,undefined4 *param_19,undefined4 *param_20,
+9:             int param_21,undefined4 *param_22,undefined4 *param_23,undefined4 *param_24,
+10:             undefined1 *param_25,undefined4 param_26,undefined4 param_27,undefined4 param_28,
+11:             undefined4 param_29,undefined1 param_30,undefined4 param_31,undefined4 param_32,
+12:             undefined4 *param_33,undefined4 *param_34,undefined4 *param_35,undefined4 param_36,
+13:             undefined4 param_37,undefined1 *param_38,undefined1 *param_39,undefined1 *param_40,
+14:             undefined4 param_41,undefined4 param_42,undefined4 param_43,undefined4 param_44)
+15:
+16: {
+17:   byte bVar1;
+18:   char cVar2;
+19:   uint uVar3;
+20:   byte *pbVar4;
+21:   uint uVar5;
+22:   undefined4 local_20;
+23:   undefined4 local_1c;
+24:   undefined4 local_18;
+25:   undefined4 *local_14;
+26:   void *local_10;
+27:   undefined1 *puStack_c;
+28:   undefined4 local_8;
+29:
+30:   puStack_c = &LAB_011f6aa8;
+31:   local_10 = ExceptionList;
+32:   uVar3 = DAT_01e44f28 ^ (uint)&stack0xfffffffc;
+33:   ExceptionList = &local_10;
+34:   param_1[1] = 0;
+35:   param_1[2] = 0;
+36:   *(undefined1 *)(param_1 + 3) = 0;
+37:   param_1[4] = param_2;
+38:   param_1[5] = param_3;
+39:   param_1[6] = param_4;
+40:   *(undefined1 *)(param_1 + 7) = (undefined1)param_5;
+41:   *(undefined1 *)((int)param_1 + 0x1d) = param_6;
+42:   param_1[8] = param_7;
+43:   param_1[9] = param_8;
+44:   *param_1 = Nuo::Kindred::ActionHeroSpawn::vftable;
+45:   local_8 = 0;
+46:   *(undefined8 *)(param_1 + 10) = *param_9;
+47:   param_1[0xc] = *(undefined4 *)(param_9 + 1);
+48:   *(undefined8 *)(param_1 + 0xd) = *param_10;
+49:   param_1[0xf] = *(undefined4 *)(param_10 + 1);
+50:   local_14 = param_1;
+51:   FUN_0081f5d0(param_11);
+52:   *(undefined1 *)(param_1 + 0xd6) = param_12;
+53:   *(undefined1 *)((int)param_1 + 0x359) = param_13;
+54:   param_1[0xd8] = param_14;
+55:   param_1[0x116] = param_26;
+56:   param_1[0x118] = param_27;
+57:   param_1[0x119] = param_28;
+58:   param_1[0x120] = param_42;
+59:   param_1[0x121] = param_41;
+60:   param_1[0x122] = param_43;
+61:   param_1[0x123] = param_44;
+62:   param_1[0x124] = param_29;
+63:   *(undefined1 *)(param_1 + 0x125) = param_30;
+64:   param_1[0x126] = param_31;
+65:   param_1[0x127] = param_32;
+66:   param_1[0x140] = param_36;
+67:   param_1[0x117] = param_21;
+68:   param_1[0xd7] = 0;
+69:   param_1[0xd9] = param_15;
+70:   param_1[0x141] = param_37;
+71:   if (param_21 == 0) {
+72:     param_1[0xda] = 0xffff;
+73:     param_1[0xe4] = 0xffffffff;
+74:     param_1[0xee] = 0;
+75:     param_1[0x102] = 0;
+76:     param_1[0xf8] = 0;
+77:   }
+78:   else {
+79:     param_1[0xda] = *param_16;
+80:     param_1[0xe4] = *param_17;
+81:     param_1[0xee] = *param_18;
+82:     param_1[0x102] = *param_19;
+
+SOURCE native11/function-0081f5d0.c sha256:c66ecd122eda07e823fc4ff59845a7c71a45fd01ab87f6d364c22235f01eb24f lines 1-43
+1: // 0081f5d0 FUN_0081f5d0
+2:
+3: int __thiscall FUN_0081f5d0(int param_1,int param_2)
+4:
+5: {
+6:   int iVar1;
+7:   undefined4 *puVar2;
+8:   undefined4 *puVar3;
+9:
+10:   *(undefined4 *)(param_1 + 0x310) = *(undefined4 *)(param_2 + 0x310);
+11:   *(undefined4 *)(param_1 + 0x314) = *(undefined4 *)(param_2 + 0x314);
+12:   iVar1 = 0x2d;
+13:   puVar2 = (undefined4 *)(param_1 + 0xb4);
+14:   puVar3 = (undefined4 *)(param_2 + 0x21c);
+15:   do {
+16:     puVar2[-0x2d] = puVar3[-0x87];
+17:     *puVar2 = *(undefined4 *)((param_2 - param_1) + -4 + (int)(puVar2 + 1));
+18:     puVar2[0x2d] = puVar3[-0x2d];
+19:     puVar2[0x5a] = *puVar3;
+20:     iVar1 = iVar1 + -1;
+21:     puVar2 = puVar2 + 1;
+22:     puVar3 = puVar3 + 1;
+23:   } while (iVar1 != 0);
+24:   iVar1 = 2;
+25:   puVar2 = (undefined4 *)(param_1 + 0x2d0);
+26:   puVar3 = (undefined4 *)(param_2 + 0x2d8);
+27:   do {
+28:     *puVar2 = *(undefined4 *)((param_2 - param_1) + (int)puVar2);
+29:     puVar2[1] = puVar3[-1];
+30:     puVar2[2] = *puVar3;
+31:     puVar2[3] = puVar3[1];
+32:     puVar2[4] = puVar3[2];
+33:     puVar2[5] = puVar3[3];
+34:     puVar2[6] = puVar3[4];
+35:     puVar2[7] = puVar3[5];
+36:     iVar1 = iVar1 + -1;
+37:     puVar2 = puVar2 + 8;
+38:     puVar3 = puVar3 + 8;
+39:   } while (iVar1 != 0);
+40:   return param_1;
+41: }
+42:
+43:
+
+SOURCE native11/function-0092e320.c sha256:1de4e3f662ae8ff9777d30c533cb636b70323fd62ef9182486eba11c7367bcb5 lines 1-32
+1: // 0092e320 FUN_0092e320
+2:
+3: void __fastcall FUN_0092e320(int param_1)
+4:
+5: {
+6:   undefined4 uVar1;
+7:   undefined4 uVar2;
+8:   undefined4 uVar3;
+9:   undefined4 *puVar4;
+10:
+11:   puVar4 = (undefined4 *)FUN_00859670(0x508,8);
+12:   *puVar4 = Nuo::Kindred::IGameAction::vftable;
+13:   puVar4[1] = *(undefined4 *)(param_1 + 4);
+14:   puVar4[2] = *(undefined4 *)(param_1 + 8);
+15:   *(undefined1 *)(puVar4 + 3) = *(undefined1 *)(param_1 + 0xc);
+16:   *puVar4 = Nuo::Kindred::ActionHeroSpawn::vftable;
+17:   puVar4[4] = *(undefined4 *)(param_1 + 0x10);
+18:   puVar4[5] = *(undefined4 *)(param_1 + 0x14);
+19:   puVar4[6] = *(undefined4 *)(param_1 + 0x18);
+20:   *(undefined1 *)(puVar4 + 7) = *(undefined1 *)(param_1 + 0x1c);
+21:   *(undefined1 *)((int)puVar4 + 0x1d) = *(undefined1 *)(param_1 + 0x1d);
+22:   puVar4[8] = *(undefined4 *)(param_1 + 0x20);
+23:   puVar4[9] = *(undefined4 *)(param_1 + 0x24);
+24:   *(undefined8 *)(puVar4 + 10) = *(undefined8 *)(param_1 + 0x28);
+25:   puVar4[0xc] = *(undefined4 *)(param_1 + 0x30);
+26:   *(undefined8 *)(puVar4 + 0xd) = *(undefined8 *)(param_1 + 0x34);
+27:   puVar4[0xf] = *(undefined4 *)(param_1 + 0x3c);
+28:   FUN_0081f5d0(param_1 + 0x40);
+29:   *(undefined1 *)(puVar4 + 0xd6) = *(undefined1 *)(param_1 + 0x358);
+30:   *(undefined1 *)((int)puVar4 + 0x359) = *(undefined1 *)(param_1 + 0x359);
+31:   puVar4[0xd7] = *(undefined4 *)(param_1 + 0x35c);
+32:   puVar4[0xd8] = *(undefined4 *)(param_1 + 0x360);
+
+SOURCE native11/function-0094e170.c sha256:6aa3e6e8026fd5477a8c3dddccc019707dd36b92f1af1474e0c0f8469a18ff67 lines 120-134
+120:           uVar9 = uVar9 + 1;
+121:           iVar4 = iVar4 + 0xb8;
+122:         } while (uVar9 < uVar6);
+123:       }
+124:     }
+125:   }
+126:   FUN_0093fba0(*(undefined4 *)(param_1 + 0x360),param_1 + 0x14,*(undefined4 *)(param_1 + 0x480),
+127:                param_1 + 0x28,param_1 + 0x34);
+128:   FUN_009419d0();
+129:   if (*(int *)(param_1 + 0x360) == 0) {
+130:     FUN_00941ac0();
+131:   }
+132:   if (*(char *)(param_1 + 0x358) == '\0') {
+133:     FUN_0095c940(param_1 + 0x40);
+134:   }
+
+SOURCE native12/function-0095c940.c sha256:e7a18c63ebec88d1c555998af740f7105afd1906c9ae3c53065c6f67af67c9ef lines 1-63
+1: // 0095c940 FUN_0095c940
+2:
+3: void __thiscall FUN_0095c940(int param_1,int param_2)
+4:
+5: {
+6:   int iVar1;
+7:   uint uVar2;
+8:   undefined4 *puVar3;
+9:   undefined4 *puVar4;
+10:   uint uVar5;
+11:   int iVar6;
+12:   uint uVar7;
+13:   uint local_c;
+14:
+15:   iVar1 = *(int *)(param_1 + 0x20);
+16:   uVar7 = 0x168;
+17:   puVar4 = (undefined4 *)(param_2 + 0x168);
+18:   local_c = 0;
+19:   do {
+20:     uVar2 = 1 << (local_c & 0x1f);
+21:     uVar5 = 0;
+22:     if (0x1f < local_c) {
+23:       uVar5 = uVar2;
+24:     }
+25:     uVar2 = uVar2 ^ uVar5;
+26:     if (0x3f < local_c) {
+27:       uVar5 = uVar2;
+28:     }
+29:     if ((uVar2 & *(uint *)(param_2 + 0x310)) != 0 || (uVar5 & *(uint *)(param_2 + 0x314)) != 0) {
+30:       *(undefined4 *)((int)puVar4 + iVar1 + (-0x148 - param_2)) = puVar4[-0x5a];
+31:       *(uint *)(iVar1 + 0x330) = *(uint *)(iVar1 + 0x330) | uVar2;
+32:       *(uint *)(iVar1 + 0x334) = *(uint *)(iVar1 + 0x334) | uVar5;
+33:       *(undefined4 *)((int)puVar4 + iVar1 + (-0x94 - param_2)) = puVar4[-0x2d];
+34:       *(uint *)(iVar1 + 0x330) = *(uint *)(iVar1 + 0x330) | uVar2;
+35:       *(uint *)(iVar1 + 0x334) = *(uint *)(iVar1 + 0x334) | uVar5;
+36:       *(undefined4 *)(uVar7 + 0x20 + iVar1) = *puVar4;
+37:       *(uint *)(iVar1 + 0x330) = *(uint *)(iVar1 + 0x330) | uVar2;
+38:       *(uint *)(iVar1 + 0x334) = *(uint *)(iVar1 + 0x334) | uVar5;
+39:     }
+40:     uVar7 = uVar7 + 4;
+41:     local_c = local_c + 1;
+42:     puVar4 = puVar4 + 1;
+43:   } while (uVar7 < 0x21c);
+44:   iVar6 = 2;
+45:   puVar4 = (undefined4 *)(iVar1 + 0x2f4);
+46:   puVar3 = (undefined4 *)(param_2 + 0x2d4);
+47:   do {
+48:     puVar4[-1] = puVar3[-1];
+49:     *puVar4 = *puVar3;
+50:     puVar4[1] = puVar3[1];
+51:     puVar4[2] = puVar3[2];
+52:     puVar4[3] = puVar3[3];
+53:     puVar4[4] = puVar3[4];
+54:     puVar4[5] = puVar3[5];
+55:     puVar4[6] = puVar3[6];
+56:     iVar6 = iVar6 + -1;
+57:     puVar4 = puVar4 + 8;
+58:     puVar3 = puVar3 + 8;
+59:   } while (iVar6 != 0);
+60:   return;
+61: }
+62:
+63:
+
+SOURCE native/function-0094f210.c sha256:998196bed06bfe93e99535103bd9660641527544edc6faeeb5722981d5d13829 lines 1-43
+1: // 0094f210 FUN_0094f210
+2:
+3: void __fastcall FUN_0094f210(int param_1)
+4:
+5: {
+6:   int *piVar1;
+7:   char cVar2;
+8:   char cVar3;
+9:   int iVar4;
+10:   undefined4 uVar5;
+11:
+12:   iVar4 = FUN_00857970(*(undefined4 *)(param_1 + 0x10));
+13:   if (iVar4 == 0) {
+14:     return;
+15:   }
+16:   piVar1 = *(int **)(iVar4 + 0x28);
+17:   if ((piVar1 == (int *)0x0) || (*(int *)(param_1 + 0x14) != 6)) goto LAB_0094f282;
+18:   if ((*(char *)(param_1 + 0x1d) == '\0') ||
+19:      (cVar2 = FUN_00944350(*(undefined4 *)(param_1 + 0x10)), cVar2 == '\0')) {
+20:     if (*(char *)(param_1 + 0x1e) == '\0') goto LAB_0094f282;
+21:     uVar5 = FUN_00939790();
+22:     cVar2 = FUN_0093b1d0(uVar5);
+23:     cVar3 = FUN_0093b1d0(*(undefined4 *)(param_1 + 0x10));
+24:     if (cVar2 != cVar3) goto LAB_0094f282;
+25:   }
+26:   (**(code **)(*piVar1 + 0x8c))(*(undefined4 *)(param_1 + 0x18));
+27: LAB_0094f282:
+28:   iVar4 = FUN_00857970(*(undefined4 *)(param_1 + 0x10));
+29:   if (iVar4 != 0) {
+30:     if (*(char *)(param_1 + 0x1c) == '\0') {
+31:       if ((*(int *)(param_1 + 0x14) != 0) || (0.0 < *(float *)(*(int *)(iVar4 + 0x20) + 0x2f0))) {
+32:         FUN_0093ead0(*(int *)(param_1 + 0x14),*(undefined4 *)(param_1 + 0x18));
+33:         return;
+34:       }
+35:     }
+36:     else {
+37:       FUN_0095f160(*(undefined4 *)(param_1 + 0x14),*(undefined4 *)(param_1 + 0x18));
+38:     }
+39:   }
+40:   return;
+41: }
+42:
+43:
+
+SOURCE native2/function-0093ead0.c sha256:0fd73b5b083c05cbbb545e4407d9ab6dc7c29f1c422571161e860cd1dd6a89c2 lines 1-36
+1: // 0093ead0 FUN_0093ead0
+2:
+3: void __thiscall FUN_0093ead0(int param_1,int param_2,float param_3)
+4:
+5: {
+6:   int iVar1;
+7:   uint uVar2;
+8:   uint uVar3;
+9:   uint uVar4;
+10:   uint uVar5;
+11:   uint uVar6;
+12:   uint uVar7;
+13:   uint uVar8;
+14:   uint uVar9;
+15:
+16:   uVar2 = *(uint *)(param_1 + 0x48) & 0x1f;
+17:   if (((uVar2 == 0x1f) ||
+18:       ((*(short *)(uVar2 * 0x20 + 0x50 + param_1) != 3 &&
+19:        ((uVar2 == 0x1f || (*(short *)(uVar2 * 0x20 + 0x50 + param_1) != 4)))))) ||
+20:      ((param_2 != 0 && (param_2 != 2)))) {
+21:     iVar1 = *(int *)(param_1 + 0x20);
+22:     if ((param_2 == 6) && (DAT_01213f98 < param_3)) {
+23:       *(float *)(iVar1 + 0x30c) = param_3 + *(float *)(iVar1 + 0x30c);
+24:     }
+25:     FUN_0095f270(param_2,*(float *)(iVar1 + 0x2f0 + param_2 * 4) + param_3);
+26:     if (*(int *)(param_1 + 0x30) != 0) {
+27:       FUN_0086f300(PTR_s_onActorResourcesChangedName_01a73050,param_2,&param_3);
+28:     }
+29:     uVar9 = 0;
+30:     uVar2 = 1;
+31:     uVar8 = 0;
+32:     do {
+33:       uVar3 = ((int)"onActorResourcesChanged"[uVar8] + uVar2) % 0xfff1;
+34:       uVar4 = ((int)"onActorResourcesChanged"[uVar8 + 1] + uVar3) % 0xfff1;
+35:       uVar5 = ((int)"onActorResourcesChanged"[uVar8 + 2] + uVar4) % 0xfff1;
+36:       uVar6 = ((int)"onActorResourcesChanged"[uVar8 + 3] + uVar5) % 0xfff1;
+
+SOURCE native2/function-0095f160.c sha256:c466003a5c3e9e834f6ed9b9c507445ba4c22688f31f1ee8d5a53744c7515a08 lines 1-39
+1: // 0095f160 FUN_0095f160
+2:
+3: void __thiscall FUN_0095f160(int param_1,undefined4 param_2,undefined4 param_3)
+4:
+5: {
+6:   int iVar1;
+7:   uint uVar2;
+8:   uint uVar3;
+9:   uint uVar4;
+10:   uint uVar5;
+11:   uint uVar6;
+12:   uint uVar7;
+13:   uint uVar8;
+14:   uint uVar9;
+15:
+16:   FUN_0095f270(param_2,param_3);
+17:   if (*(int *)(param_1 + 0x30) != 0) {
+18:     FUN_0086f300(PTR_s_onActorResourcesChangedName_01a73050,param_2,&param_3);
+19:   }
+20:   uVar9 = 0;
+21:   uVar2 = 1;
+22:   uVar8 = 0;
+23:   do {
+24:     uVar3 = ((int)"onActorResourcesChanged"[uVar8] + uVar2) % 0xfff1;
+25:     uVar4 = ((int)"onActorResourcesChanged"[uVar8 + 1] + uVar3) % 0xfff1;
+26:     uVar5 = ((int)"onActorResourcesChanged"[uVar8 + 2] + uVar4) % 0xfff1;
+27:     uVar6 = ((int)"onActorResourcesChanged"[uVar8 + 3] + uVar5) % 0xfff1;
+28:     uVar7 = ((int)"onActorResourcesChanged"[uVar8 + 4] + uVar6) % 0xfff1;
+29:     iVar1 = uVar8 + 5;
+30:     uVar8 = uVar8 + 6;
+31:     uVar2 = ((int)"onActorResourcesChanged"[iVar1] + uVar7) % 0xfff1;
+32:     uVar9 = ((((((uVar9 + uVar3) % 0xfff1 + uVar4) % 0xfff1 + uVar5) % 0xfff1 + uVar6) % 0xfff1 +
+33:              uVar7) % 0xfff1 + uVar2) % 0xfff1;
+34:   } while (uVar8 < 0x18);
+35:   FUN_00539400(0,0,uVar9 << 0x10 | uVar2);
+36:   return;
+37: }
+38:
+39:
+
+SOURCE native/function-0095f270.c sha256:d2d00cb8495865551d152dff241570f6320e2abf6c94fc7567726fe320abeac5 lines 1-19
+1: // 0095f270 FUN_0095f270
+2:
+3: void __thiscall FUN_0095f270(int param_1,int param_2,float param_3)
+4:
+5: {
+6:   float fVar1;
+7:   float fVar2;
+8:
+9:   if (param_3 <= 0.0) {
+10:     param_3 = 0.0;
+11:   }
+12:   *(float *)(param_1 + 0x2f0 + param_2 * 4) = param_3;
+13:   if (param_2 == 0) {
+14:     fVar2 = ((*(float *)(param_1 + 0x23c) + DAT_012142c4) * *(float *)(param_1 + 0xd4) +
+15:             *(float *)(param_1 + 0x20)) * (*(float *)(param_1 + 0x188) + DAT_012142c4);
+16:     fVar1 = DAT_020e7348;
+17:     if (fVar2 <= DAT_020e7348) {
+18:       fVar1 = fVar2;
+19:     }
+
+SOURCE native/function-004c13b0.c sha256:59c4793817c50720610993376bbdadb23507a14a2ecadde10d96dd6cde118eff lines 700-800
+700:   FUN_009bed80(fVar23);
+701:   fVar23 = (float)local_c8 - local_e0;
+702:   local_b8 = "firstInnerTurretToArmoryKillTime";
+703:   FUN_004a97e0(&local_b8);
+704:   FUN_009bed80(fVar23);
+705:   fVar23 = 0.0;
+706:   if (0.0 < (float)local_c8) {
+707:     fVar23 = local_fc - (float)local_c8;
+708:   }
+709:   local_b8 = "firstArmoryToVainCrystalKillTime";
+710:   FUN_004a97e0(&local_b8);
+711:   FUN_009bed80(fVar23);
+712:   iVar18 = *(int *)((int)local_e4 + 0x20);
+713:   local_ec = *(int **)(iVar18 + 0x31c);
+714:   fVar23 = ((*(float *)(iVar18 + 0x2e0) + DAT_012142c4) * *(float *)(iVar18 + 0x178) +
+715:            *(float *)(iVar18 + 0xc4)) * (*(float *)(iVar18 + 0x22c) + DAT_012142c4);
+716:   if (DAT_01e6eed4 <= fVar23) {
+717:     fVar23 = DAT_01e6eed4;
+718:   }
+719:   local_bc = (char *)(((*(float *)(iVar18 + 0x2e4) + DAT_012142c4) * *(float *)(iVar18 + 0x17c) +
+720:                       *(float *)(iVar18 + 200)) * (*(float *)(iVar18 + 0x230) + DAT_012142c4));
+721:   if (fVar23 <= DAT_018fed44) {
+722:     fVar23 = DAT_018fed44;
+723:   }
+724:   local_e4 = *(float *)(iVar18 + 0x30c);
+725:   if ((float)DAT_01e6eed8 <= (float)local_bc) {
+726:     local_bc = DAT_01e6eed8;
+727:   }
+728:   if ((float)local_bc <= (float)DAT_018fed48) {
+729:     local_bc = DAT_018fed48;
+730:   }
+731:   local_dc = (float)local_bc + fVar23;
+732:   local_e0 = local_dc + (float)local_ec;
+733:   local_cc = 0.0;
+734:   if (0.0 < local_e0) {
+735:     local_cc = ((float)local_ec + fVar23) / local_e0;
+736:   }
+737:   local_b8 = "myKills";
+738:   local_e8 = fVar23;
+739:   FUN_004a97e0(&local_b8);
+740:   FUN_009bed80(fVar23);
+741:   local_b8 = "myDeaths";
+742:   pcVar26 = local_bc;
+743:   FUN_004a97e0(&local_b8);
+744:   FUN_009bed80(pcVar26);
+745:   local_b8 = "myKills";
+746:   fVar23 = local_e8;
+747:   FUN_004a97e0(&local_b8);
+748:   FUN_009bed80(fVar23);
+749:   local_b8 = "myDeaths";
+750:   pcVar26 = local_bc;
+751:   FUN_004a97e0(&local_b8);
+752:   FUN_009bed80(pcVar26);
+753:   local_b8 = "myAssists";
+754:   piVar19 = local_ec;
+755:   FUN_004a97e0(&local_b8);
+756:   FUN_009bed80(piVar19);
+757:   local_b8 = "myAssists";
+758:   piVar19 = local_ec;
+759:   FUN_004a97e0(&local_b8);
+760:   FUN_009bed80(piVar19);
+761:   local_b8 = "myKDApct";
+762:   fVar23 = local_cc;
+763:   FUN_004a97e0(&local_b8);
+764:   FUN_009bed80(fVar23);
+765:   local_b8 = "myTotalKDA";
+766:   fVar23 = local_e0;
+767:   FUN_004a97e0(&local_b8);
+768:   FUN_009bed80(fVar23);
+769:   fVar23 = 0.0;
+770:   if (0.0 < local_dc) {
+771:     fVar23 = local_e8 / local_dc;
+772:   }
+773:   local_b8 = "myKDpct";
+774:   FUN_004a97e0(&local_b8);
+775:   FUN_009bed80(fVar23);
+776:   local_b8 = "myTotalKD";
+777:   fVar23 = local_dc;
+778:   FUN_004a97e0(&local_b8);
+779:   FUN_009bed80(fVar23);
+780:   local_b8 = "myNW";
+781:   fVar23 = local_e4;
+782:   FUN_004a97e0(&local_b8);
+783:   FUN_009bed80(fVar23);
+784:   fVar23 = DAT_012112a0;
+785:   if ((0.0 < local_f8) && (local_104 != 0)) {
+786:     fVar23 = ((float)((double)local_104 + (double)(&DAT_012122c0)[-(local_104 >> 0x1f)]) * local_e4)
+787:              / local_f8;
+788:   }
+789:   local_b8 = "myNWvsMyTeamAvg";
+790:   FUN_004a97e0(&local_b8);
+791:   FUN_009bed80(fVar23);
+792:   fVar23 = DAT_012112a0;
+793:   if ((0.0 < local_100) && (fVar22 != 0.0)) {
+794:     fVar23 = ((float)((double)(int)fVar22 + (double)(&DAT_012122c0)[-((int)fVar22 >> 0x1f)]) *
+795:              local_e4) / local_100;
+796:   }
+797:   local_b8 = "myNWvsTheirTeamAvg";
+798:   FUN_004a97e0(&local_b8);
+799:   FUN_009bed80(fVar23);
+800:   fVar22 = (float)piVar17[0x12] / local_e4;
+
+SOURCE tables/function-006f6fd0.c sha256:6eeadb0e2728553cf4de6e509e9e9da12c3222a4658b68f0b60cd44ce64c7396 lines 1-82
+1: // 006f6fd0 FUN_006f6fd0
+2:
+3: /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+4:
+5: void __fastcall FUN_006f6fd0(int param_1)
+6:
+7: {
+8:   float fVar1;
+9:   int iVar2;
+10:   byte bVar3;
+11:   char cVar4;
+12:   undefined4 uVar5;
+13:   int iVar6;
+14:   ConnectionBase *this;
+15:   int iVar7;
+16:   char *pcVar8;
+17:   undefined4 uVar9;
+18:   int *piVar10;
+19:   uint uVar11;
+20:   undefined4 *puVar12;
+21:   int *piVar13;
+22:   bool bVar14;
+23:   float10 fVar15;
+24:   int local_10;
+25:   uint local_c;
+26:   uint local_8;
+27:
+28:   piVar13 = *(int **)(param_1 + 0xc);
+29:   piVar10 = (int *)(param_1 + 0xc);
+30:   if (piVar13 != (int *)0x0) {
+31:     if (*(int *)(param_1 + 0x10) == piVar13[1]) {
+32:       iVar6 = (**(code **)(*piVar13 + 8))();
+33:       if (iVar6 != 0) {
+34:         if ((((*(byte *)(param_1 + 0x108) & 8) != 0) || (cVar4 = FUN_009448b0(), cVar4 != '\0')) ||
+35:            ((*(byte *)(param_1 + 0x108) & 0x10) == 0)) {
+36: LAB_006f7056:
+37:           *(undefined4 *)(param_1 + 0x34) = DAT_01265f28;
+38:           *(undefined4 *)(param_1 + 0x38) = DAT_01265f24;
+39:           *(undefined4 *)(param_1 + 0x54) = DAT_01265f28;
+40:           *(undefined4 *)(param_1 + 0x58) = DAT_01265f24;
+41:           *(undefined4 *)(param_1 + 0x74) = DAT_01265f28;
+42:           *(undefined4 *)(param_1 + 0x78) = DAT_01265f24;
+43:           *(undefined4 *)(param_1 + 0x94) = DAT_01265f28;
+44:           *(undefined4 *)(param_1 + 0x98) = DAT_01265f24;
+45:           *(undefined4 *)(param_1 + 0xb4) = DAT_01265f28;
+46:           *(undefined4 *)(param_1 + 0xb8) = DAT_01265f24;
+47:           *(undefined4 *)(param_1 + 0xd4) = DAT_01265f28;
+48:           *(undefined4 *)(param_1 + 0xd8) = DAT_01265f24;
+49:           piVar13 = (int *)*piVar10;
+50:           if (piVar13 == (int *)0x0) {
+51: LAB_006f70e8:
+52:             iVar6 = 0;
+53:           }
+54:           else {
+55:             if (*(int *)(param_1 + 0x10) != piVar13[1]) {
+56:               *piVar10 = 0;
+57:               *(undefined4 *)(param_1 + 0x10) = DAT_020ec6fc;
+58:               goto LAB_006f70e8;
+59:             }
+60:             iVar6 = (**(code **)(*piVar13 + 8))();
+61:           }
+62:           fVar1 = *(float *)(*(int *)(iVar6 + 0x20) + 0x30c);
+63:           iVar6 = (int)(fVar1 * _DAT_0121cce0);
+64:           if (*(int *)(param_1 + 0xf4) < iVar6) {
+65:             *(int *)(param_1 + 0xf4) = iVar6;
+66:             FUN_00740390(fVar1);
+67:           }
+68:           local_c = 0;
+69:           puVar12 = (undefined4 *)(param_1 + 0x38);
+70:           local_8 = 0;
+71:           while( true ) {
+72:             piVar10 = *(int **)(param_1 + 0x14);
+73:             if (piVar10 != (int *)0x0) {
+74:               if (*(int *)(param_1 + 0x18) == piVar10[1]) {
+75:                 (**(code **)(*piVar10 + 8))();
+76:               }
+77:               else {
+78:                 *(undefined4 *)(param_1 + 0x14) = 0;
+79:                 *(undefined4 *)(param_1 + 0x18) = DAT_020ec6fc;
+80:               }
+81:             }
+82:             uVar11 = FUN_0093a6f0();
+
+SOURCE native7/function-00740390.c sha256:82a564d1971aaf458ed3aee2599a553630b4c8dddd2bca147beaf7062f0a6c81 lines 1-13
+1: // 00740390 FUN_00740390
+2:
+3: void __thiscall FUN_00740390(int param_1,float param_2)
+4:
+5: {
+6:   FUN_0096db20(param_1 + 0x758c,"%.1fk",(double)(param_2 * DAT_0121cc60));
+7:   FUN_007a84e0();
+8:   *(float *)(param_1 + 0x75a8) = param_2;
+9:   FUN_0073e2f0();
+10:   return;
+11: }
+12:
+13:
+
+SOURCE native6/function-006f4fb0.c sha256:599a8bb60f0062adf64e2a6eaea0d76b72a2580738d60c241d071e97e63cfac9 lines 1-27
+1: // 006f4fb0 FUN_006f4fb0
+2:
+3: void __thiscall FUN_006f4fb0(int param_1,undefined4 param_2,uint param_3)
+4:
+5: {
+6:   char cVar1;
+7:   undefined4 uVar2;
+8:   int iVar3;
+9:
+10:   *(uint *)(param_1 + 0x11a4) =
+11:        *(uint *)(param_1 + 0x11a4) ^ (*(uint *)(param_1 + 0x11a4) ^ param_3) & 1;
+12:   *(byte *)(param_1 + 0x11a8) = *(byte *)(param_1 + 0x11a8) & 0xfd | (char)param_2 * '\x02' | 1;
+13:   FUN_0073af90(param_2,param_3);
+14:   uVar2 = FUN_00938fb0();
+15:   cVar1 = FUN_00936170(uVar2);
+16:   FUN_0073b1c0(cVar1 == '\0');
+17:   iVar3 = 0x10;
+18:   do {
+19:     FUN_006f6cc0(1);
+20:     FUN_006f6fd0();
+21:     FUN_006f6e20(0);
+22:     iVar3 = iVar3 + -1;
+23:   } while (iVar3 != 0);
+24:   return;
+25: }
+26:
+27:
+
+SOURCE native7/function-006f6cc0.c sha256:98832fde7981c64108093ea6eb7653a685bd3bbf3ba9becb47facd874b4ddc7f lines 1-63
+1: // 006f6cc0 FUN_006f6cc0
+2:
+3: void __thiscall FUN_006f6cc0(int param_1,char param_2)
+4:
+5: {
+6:   int *piVar1;
+7:   char cVar2;
+8:   undefined4 uVar3;
+9:   int iVar4;
+10:   undefined4 uVar5;
+11:   uint uVar6;
+12:
+13:   *(byte *)(param_1 + 0x108) = *(byte *)(param_1 + 0x108) & 0xf7 | param_2 << 3;
+14:   uVar6 = 0;
+15:   *(char *)(*(int *)(param_1 + 4) + 0x75b5) = param_2;
+16:   do {
+17:     FUN_00740750(uVar6,0);
+18:     uVar6 = uVar6 + 1;
+19:   } while (uVar6 < 10);
+20:   FUN_00740580(0,1);
+21:   if (param_2 == '\0') {
+22:     return;
+23:   }
+24:   uVar3 = FUN_00938fb0();
+25:   cVar2 = FUN_00936300(uVar3);
+26:   if (cVar2 != '\0') {
+27:     return;
+28:   }
+29:   if ((*(byte *)(param_1 + 0x108) & 0x10) == 0) {
+30:     return;
+31:   }
+32:   piVar1 = *(int **)(param_1 + 0xc);
+33:   if (piVar1 == (int *)0x0) {
+34:     return;
+35:   }
+36:   if (*(int *)(param_1 + 0x10) != piVar1[1]) {
+37:     *(undefined4 *)(param_1 + 0xc) = 0;
+38:     *(undefined4 *)(param_1 + 0x10) = DAT_020ec6fc;
+39:     return;
+40:   }
+41:   iVar4 = (**(code **)(*piVar1 + 8))();
+42:   if (iVar4 == 0) {
+43:     return;
+44:   }
+45:   piVar1 = *(int **)(param_1 + 0xc);
+46:   if (piVar1 != (int *)0x0) {
+47:     if (*(int *)(param_1 + 0x10) == piVar1[1]) {
+48:       iVar4 = (**(code **)(*piVar1 + 8))();
+49:       goto LAB_006f6d7e;
+50:     }
+51:     *(undefined4 *)(param_1 + 0xc) = 0;
+52:     *(undefined4 *)(param_1 + 0x10) = DAT_020ec6fc;
+53:   }
+54:   iVar4 = 0;
+55: LAB_006f6d7e:
+56:   uVar3 = *(undefined4 *)(iVar4 + 0x178);
+57:   uVar5 = FUN_0093ae50(uVar3);
+58:   uVar3 = FUN_0093aea0(uVar3,uVar5);
+59:   FUN_00740a00(uVar3,uVar5);
+60:   return;
+61: }
+62:
+63:
+
+SOURCE native8/function-00565f90.c sha256:ef9e65cf5a4f794c647961a8a0f5b9ac0ef411012591936fb25b3261897c8a93 lines 1-15
+1: // 00565f90 FUN_00565f90
+2:
+3: void __thiscall FUN_00565f90(int param_1,undefined4 param_2,undefined4 param_3)
+4:
+5: {
+6:   FUN_005661b0(0,0);
+7:   FUN_00541b90();
+8:   FUN_006f4f00(1,0,0x3e4ccccd);
+9:   FUN_006f4fb0(param_2,param_3);
+10:   FUN_005ec9f0();
+11:   *(undefined4 *)(param_1 + 0xb168) = 2;
+12:   return;
+13: }
+14:
+15:
+
+SOURCE native8/function-006f4f00.c sha256:f11d083a87eae90330037e665c6a258b06e4aa2e734ecf8cb522e2a82035881a lines 1-35
+1: // 006f4f00 FUN_006f4f00
+2:
+3: void __thiscall FUN_006f4f00(int param_1,undefined4 param_2,char param_3,undefined4 param_4)
+4:
+5: {
+6:   undefined4 uVar1;
+7:   undefined4 uVar2;
+8:   int local_c;
+9:   code *local_8;
+10:
+11:   local_c = param_1;
+12:   if ((char)param_2 == '\0') {
+13:     local_8 = FUN_006f2d60;
+14:     FUN_009fe060(&local_c);
+15:   }
+16:   else {
+17:     if (param_3 == '\0') {
+18:       FUN_0073b110();
+19:     }
+20:     else {
+21:       FUN_0073b200();
+22:     }
+23:     local_8 = FUN_006f2d60;
+24:     FUN_009fd980(&local_c,0,0xbf800000,1);
+25:     FUN_006f5050(0);
+26:   }
+27:   uVar1 = DAT_01a3e194;
+28:   uVar2 = param_2;
+29:   FUN_0057b560(DAT_01a3e194,param_2);
+30:   FUN_0057b520(uVar1,uVar2);
+31:   (**(code **)(**(int **)(param_1 + 4) + 0x98))(param_2,4,param_4,1);
+32:   return;
+33: }
+34:
+35:
+
+SOURCE native8/function-006f5050.c sha256:e54b0f61afdf372c24adb2a6270cd9f830d6acfc504965e61345cb0dae154a22 lines 1-29
+1: // 006f5050 FUN_006f5050
+2:
+3: void __thiscall FUN_006f5050(int param_1,float param_2)
+4:
+5: {
+6:   uint uVar1;
+7:   float fVar2;
+8:
+9:   FUN_006f50e0();
+10:   uVar1 = 0;
+11:   if (*(char *)(param_1 + 0x1114) != '\0') {
+12:     do {
+13:       FUN_006f6e20(param_2);
+14:       uVar1 = uVar1 + 1;
+15:     } while (uVar1 < *(byte *)(param_1 + 0x1114));
+16:   }
+17:   fVar2 = *(float *)(param_1 + 0x11a0);
+18:   if (0.0 < fVar2) {
+19:     fVar2 = fVar2 - param_2;
+20:     *(float *)(param_1 + 0x11a0) = fVar2;
+21:   }
+22:   if (((*(byte *)(param_1 + 0x11a8) & 4) != 0) && (fVar2 <= 0.0)) {
+23:     FUN_00549e20();
+24:     FUN_00549ca0();
+25:   }
+26:   return;
+27: }
+28:
+29:
+
+SOURCE native9/function-006f2d60.c sha256:0c5664e521f9170c8955e7cffe5f3f6b607b913c698f16c9cbc4864a5c522c60 lines 1-10
+1: // 006f2d60 FUN_006f2d60
+2:
+3: void FUN_006f2d60(undefined4 param_1,undefined4 param_2)
+4:
+5: {
+6:   FUN_006f5050(param_2);
+7:   return;
+8: }
+9:
+10:
+
+SOURCE native8/function-006f50e0.c sha256:7e53d3c4d6e43d36394647d292eb4ca907115c91e2bc0c904a889f592089b0c2 lines 165-195
+165:       else {
+166:         local_65c = fVar9 + local_65c;
+167:       }
+168:       uVar10 = uVar10 + 1;
+169:     } while (uVar10 < uVar4);
+170:   }
+171:   if ((float)*(int *)(param_1 + 0x1190) != local_658) {
+172:     FUN_0073a9a0(local_658);
+173:     *(int *)(param_1 + 0x1190) = (int)local_658;
+174:   }
+175:   if ((float)*(int *)(param_1 + 0x1194) != local_65c) {
+176:     FUN_0073abd0(local_65c);
+177:     *(int *)(param_1 + 0x1194) = (int)local_65c;
+178:   }
+179:   FUN_00549e20();
+180:   fVar11 = (float10)FUN_00548870();
+181:   local_660 = (float)fVar11;
+182:   if (*(int *)(param_1 + 0x1184) != (int)fVar11 % 0x3c) {
+183:     FUN_0073a770(local_660);
+184:     *(int *)(param_1 + 0x1184) = (int)fVar11 % 0x3c;
+185:   }
+186:   uVar3 = FUN_00938fb0();
+187:   cVar1 = FUN_00935f20(uVar3);
+188:   if (cVar1 == '\0') {
+189:     fVar9 = *(float *)(param_1 + 0x119c);
+190:   }
+191:   else {
+192:     *(undefined4 *)(param_1 + 0x119c) = 0;
+193:     fVar9 = 0.0;
+194:   }
+195:   iVar5 = (int)(fVar9 - local_660);
+
+SOURCE native2/function-0073a770.c sha256:6c873ed0f4a15599e33d4c745f2496b730da1d0baa62306446d8b3410f9ff252 lines 1-14
+1: // 0073a770 FUN_0073a770
+2:
+3: void __fastcall FUN_0073a770(int param_1)
+4:
+5: {
+6:   uint uVar1;
+7:
+8:   uVar1 = FUN_011b8a40();
+9:   FUN_0096db20(param_1 + 0x13ba8,"%d:%02d",uVar1 / 0x3c,uVar1 % 0x3c);
+10:   (**(code **)(*(int *)(param_1 + 0x10dc) + 0x98))(param_1 + 0x13ba8);
+11:   return;
+12: }
+13:
+14:
+
+SOURCE native/function-005483c0.c sha256:18b8c8c3aee7b7f3e9ddc7e1f8b731da637cf3f5c811f834f79a81366cb94e58 lines 1-97
+1: // 005483c0 FUN_005483c0
+2:
+3: undefined4 * __fastcall FUN_005483c0(undefined4 *param_1)
+4:
+5: {
+6:   uint uVar1;
+7:   void *local_10;
+8:   undefined1 *puStack_c;
+9:   undefined4 local_8;
+10:
+11:   puStack_c = &LAB_011cd458;
+12:   local_10 = ExceptionList;
+13:   uVar1 = DAT_01e44f28 ^ (uint)&stack0xfffffffc;
+14:   ExceptionList = &local_10;
+15:   *param_1 = Nuo::Game::Component::vftable;
+16:   local_8 = 0;
+17:   FUN_01129bb0(uVar1);
+18:   param_1[5] = Nuo::Game::Referenceable<Nuo::Kindred::CKinClientGameSession>::vftable;
+19:   *param_1 = Nuo::Kindred::CKinClientGameSession::vftable;
+20:   param_1[5] = Nuo::Kindred::CKinClientGameSession::vftable;
+21:   param_1[0x2a] = param_1;
+22:   param_1[8] = param_1[8] & 0xffff83ff | 0x3ff;
+23:   param_1[10] = 0;
+24:   param_1[0x60] = param_1;
+25:   param_1[0x61] = param_1[0x61] & 0xffff83ff | 0x3ff;
+26:   param_1[0x30] = 0;
+27:   param_1[0x2c] = 0;
+28:   param_1[0x2d] = 0;
+29:   param_1[0x2e] = 0;
+30:   *(byte *)((int)param_1 + 0x19d) = *(byte *)((int)param_1 + 0x19d) & 0xf8;
+31:   param_1[0x62] = 0;
+32:   param_1[99] = 0;
+33:   param_1[0x65] = 0;
+34:   uVar1 = (uint)param_1[8] >> 10 & 0x1f;
+35:   param_1[uVar1 * 8 + 10] = 0;
+36:   param_1[uVar1 * 8 + 0xd] = 0;
+37:   param_1[uVar1 * 8 + 0xf] = 0;
+38:   param_1[uVar1 * 8 + 0x11] = 0;
+39:   param_1[uVar1 * 8 + 0xc] = FUN_00549750;
+40:   param_1[uVar1 * 8 + 0xe] = FUN_00548bd0;
+41:   param_1[uVar1 * 8 + 0x10] = FUN_00549160;
+42:   uVar1 = param_1[8];
+43:   uVar1 = ((uVar1 & 0xfffffc00) + 0x400 ^ uVar1) & 0x7c00 ^ uVar1;
+44:   param_1[8] = uVar1;
+45:   uVar1 = uVar1 >> 10 & 0x1f;
+46:   param_1[uVar1 * 8 + 10] = 1;
+47:   param_1[uVar1 * 8 + 0xc] = FUN_005497a0;
+48:   param_1[uVar1 * 8 + 0xd] = 0;
+49:   param_1[uVar1 * 8 + 0xe] = &LAB_00548c60;
+50:   param_1[uVar1 * 8 + 0xf] = 0;
+51:   param_1[uVar1 * 8 + 0x10] = &LAB_005491a0;
+52:   param_1[uVar1 * 8 + 0x11] = 0;
+53:   uVar1 = param_1[8];
+54:   uVar1 = ((uVar1 & 0xfffffc00) + 0x400 ^ uVar1) & 0x7c00 ^ uVar1;
+55:   param_1[8] = uVar1;
+56:   uVar1 = uVar1 >> 10 & 0x1f;
+57:   param_1[uVar1 * 8 + 10] = 2;
+58:   param_1[uVar1 * 8 + 0xc] = 0;
+59:   param_1[uVar1 * 8 + 0xd] = 0;
+60:   param_1[uVar1 * 8 + 0xe] = FUN_00548c90;
+61:   param_1[uVar1 * 8 + 0xf] = 0;
+62:   param_1[uVar1 * 8 + 0x10] = FUN_005491b0;
+63:   param_1[uVar1 * 8 + 0x11] = 0;
+64:   uVar1 = param_1[8];
+65:   uVar1 = ((uVar1 & 0xfffffc00) + 0x400 ^ uVar1) & 0x7c00 ^ uVar1;
+66:   param_1[8] = uVar1;
+67:   uVar1 = uVar1 >> 10 & 0x1f;
+68:   param_1[uVar1 * 8 + 10] = 3;
+69:   param_1[uVar1 * 8 + 0xc] = 0;
+70:   param_1[uVar1 * 8 + 0xd] = 0;
+71:   param_1[uVar1 * 8 + 0xe] = 0;
+72:   param_1[uVar1 * 8 + 0xf] = 0;
+73:   param_1[uVar1 * 8 + 0x10] = 0;
+74:   param_1[uVar1 * 8 + 0x11] = 0;
+75:   uVar1 = param_1[8];
+76:   param_1[8] = ((uVar1 & 0xfffffc00) + 0x400 ^ uVar1) & 0x7c00 ^ uVar1;
+77:   FUN_00549b00(0,1);
+78:   FUN_00549b00(0,2);
+79:   FUN_00549b00(1,0);
+80:   FUN_00549b00(1,2);
+81:   FUN_00549b00(1,3);
+82:   FUN_00549b00(2,3);
+83:   FUN_00549a70(0,0,0,&LAB_00548c40,0,0,0);
+84:   FUN_00549a70(1,0,0,&LAB_00548bc0,0,0,0);
+85:   FUN_00549a70(2,0,0,0,0,0,0);
+86:   FUN_00549a70(3,0,0,0,0,0,0);
+87:   FUN_00549b80(0,1);
+88:   FUN_00549b80(1,2);
+89:   FUN_00549b80(1,0);
+90:   FUN_00549b80(2,0);
+91:   FUN_00549b80(2,3);
+92:   DAT_02091c24 = param_1;
+93:   ExceptionList = local_10;
+94:   return param_1;
+95: }
+96:
+97:
+
+SOURCE native2/function-00549620.c sha256:9641d301b1edcb81cb045e812a734fb44b4d6bbd172fabf26b6e8c1084d42679 lines 1-37
+1: // 00549620 FUN_00549620
+2:
+3: void __thiscall FUN_00549620(int param_1,char param_2,undefined4 param_3)
+4:
+5: {
+6:   char cVar1;
+7:   undefined4 uVar2;
+8:
+9:   *(char *)(param_1 + 0x19c) = param_2;
+10:   *(undefined4 *)(param_1 + 400) = param_3;
+11:   cVar1 = FUN_009448b0();
+12:   if (cVar1 == '\0') {
+13:     uVar2 = FUN_00938fb0();
+14:     cVar1 = FUN_009360d0(uVar2);
+15:     if (cVar1 == '\0') {
+16:       uVar2 = FUN_00938fb0();
+17:       cVar1 = FUN_00936170(uVar2);
+18:       if (cVar1 == '\0') {
+19:         uVar2 = FUN_00939790();
+20:         FUN_00857970(uVar2);
+21:         cVar1 = FUN_0093c830();
+22:         if (param_2 != cVar1) {
+23:           FUN_004a49e0();
+24:           goto LAB_0054968b;
+25:         }
+26:       }
+27:     }
+28:   }
+29:   FUN_004a4a50();
+30: LAB_0054968b:
+31:   FUN_004b4420();
+32:   FUN_00549f60(2,0,0);
+33:   FUN_0054a030(3);
+34:   return;
+35: }
+36:
+37:
+
+SOURCE native/function-005497a0.c sha256:bf1c204f0eea02e09a9ee94f905acde8a59d3428dd5919822904bb22aba2bbbf lines 1-24
+1: // 005497a0 FUN_005497a0
+2:
+3: void __fastcall FUN_005497a0(int param_1)
+4:
+5: {
+6:   char cVar1;
+7:   float10 fVar2;
+8:   float10 fVar3;
+9:
+10:   cVar1 = FUN_009448b0();
+11:   if (cVar1 != '\0') {
+12:     FUN_0054a210();
+13:   }
+14:   if ((*(byte *)(param_1 + 0x19d) & 1) == 0) {
+15:     fVar2 = (float10)FUN_0112a7a0();
+16:     fVar3 = (float10)FUN_0093ba70();
+17:     *(float *)(param_1 + 0x194) =
+18:          *(float *)(param_1 + 0x194) + (float)(fVar3 * (float10)(double)fVar2);
+19:   }
+20:   FUN_004eef20();
+21:   return;
+22: }
+23:
+24:
+
+ROOT 01213f98 null
+BYTES [0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 64, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 94, 64, 35, 0, 0, 0, 116, 101, 97, 109, 108, 101, 102, 116, 0, 0, 0, 0, 116, 101, 97, 109, 114, 105, 103, 104, 116, 0, 0, 0, 116, -17, -122, 1, -48, -20, 69, 0, -48, -20, 69, 0, -96, -24, 69, 0, 16, 115, 75, 0, 32, 115, 75, 0, 48, 112, 75, 0, 48, 112, 75, 0, -68, -17, -122, 1, -80, 112, 75, 0, -48, -20, 69, 0]
+
+ROOT 0121cce0 null
+BYTES [10, -41, 35, 60, 89, 111, 117, 114, 75, 105, 108, 108, 0, 0, 0, 0, 72, 101, 114, 111, 75, 105, 108, 108, 101, 100, 0, 0, 72, 101, 114, 111, 75, 105, 108, 108, 115, 95, 68, 111, 117, 98, 108, 101, 95, 75, 105, 108, 108, 0, 0, 0, 72, 101, 114, 111, 75, 105, 108, 108, 115, 95, 84, 114, 105, 112, 108, 101, 95, 75, 105, 108, 108, 0, 0, 0, 72, 101, 114, 111, 75, 105, 108, 108, 115, 95, 81, 117, 97, 100, 114, 97, 95, 75, 105, 108]
+
+ROOT 0121cc60 null
+BYTES [111, 18, -125, 58, -51, -52, 76, 63, 0, 0, 41, 67, 20, -118, -121, 1, 48, -31, 83, 0, 16, 9, 69, 0, 16, 9, 69, 0, 69, 102, 102, 101, 99, 116, 95, 84, 117, 114, 114, 101, 116, 76, 97, 115, 101, 114, 95, 53, 118, 53, 0, 0, 69, 102, 102, 101, 99, 116, 95, 84, 117, 114, 114, 101, 116, 76, 97, 115, 101, 114, 0, 0, 66, 111, 110, 101, 95, 67, 101, 110, 116, 101, 114, 77, 97, 115, 115, 0, 66, 111, 110, 101, 95, 83, 101, 97]
+
+PROGRAM Vainglory.exe SHA256 659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642
+HERO_VTABLE 0127c914 Nuo::Kindred::ActionHeroSpawn::vftable
+ SLOT 0 00820210 FUN_00820210
+ SLOT 4 0094ae20 FUN_0094ae20
+ SLOT 8 0094e170 FUN_0094e170
+ SLOT c 0092e320 FUN_0092e320
+ SLOT 10 01897020 null
+
+PROGRAM Vainglory.exe SHA256 659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642
+ASM_ROOT asm:0081acc0
+ ASM 0081acae MOV EAX,dword ptr [EBP + 0x28]
+ ASM 0081acb1 MOVQ XMM0,qword ptr [EAX]
+ ASM 0081acb5 MOVQ qword ptr [ESI + 0x34],XMM0
+ ASM 0081acba MOV EAX,dword ptr [EAX + 0x8]
+ ASM 0081acbd MOV dword ptr [ESI + 0x3c],EAX
+ ASM 0081acc0 CALL 0x0081f5d0
+ ASM 0081acc5 MOV AL,byte ptr [EBP + 0x30]
+ ASM 0081acc8 MOV byte ptr [ESI + 0x358],AL
+ ASM 0081acce MOV AL,byte ptr [EBP + 0x34]
+ ASM 0081acd1 MOV byte ptr [ESI + 0x359],AL
+ ASM 0081acd7 MOV EAX,dword ptr [EBP + 0x38]
+ ASM 0081acda MOV dword ptr [ESI + 0x360],EAX
+ ASM 0081ace0 MOV EAX,dword ptr [EBP + 0x68]
+ ASM 0081ace3 MOV dword ptr [ESI + 0x458],EAX
+ ASM 0081ace9 MOV EAX,dword ptr [EBP + 0x6c]
+ ASM 0081acec MOV ECX,dword ptr [EBP + 0x54]
+ ASM 0081acef TEST ECX,ECX
+ ASM 0081acf1 MOVSS XMM0,dword ptr [EBP + 0x3c]
+ ASM 0081acf6 MOV dword ptr [ESI + 0x460],EAX
+ ASM 0081acfc MOV EAX,dword ptr [EBP + 0x70]
+ ASM 0081acff MOV EDX,dword ptr [EBP + 0x4c]
+ ASM 0081ad02 MOV EDI,dword ptr [EBP + 0x48]
+ ASM 0081ad05 MOV EBX,dword ptr [EBP + 0x44]
+ ASM 0081ad08 MOV dword ptr [ESI + 0x464],EAX
+ ASM 0081ad0e MOV EAX,dword ptr [EBP + 0xa8]
+ASM_ROOT asm:0092e3a9
+ ASM 0092e39a MOVQ qword ptr [ESI + 0x34],XMM0
+ ASM 0092e39f MOV EAX,dword ptr [EBX + 0x3c]
+ ASM 0092e3a2 MOV dword ptr [ESI + 0x3c],EAX
+ ASM 0092e3a5 LEA EAX,[EBX + 0x40]
+ ASM 0092e3a8 PUSH EAX
+ ASM 0092e3a9 CALL 0x0081f5d0
+ ASM 0092e3ae MOVZX EAX,byte ptr [EBX + 0x358]
+ ASM 0092e3b5 MOV byte ptr [ESI + 0x358],AL
+ ASM 0092e3bb MOVZX EAX,byte ptr [EBX + 0x359]
+ ASM 0092e3c2 MOV byte ptr [ESI + 0x359],AL
+ ASM 0092e3c8 MOV EAX,dword ptr [EBX + 0x35c]
+ ASM 0092e3ce MOV dword ptr [ESI + 0x35c],EAX
+ ASM 0092e3d4 MOV EAX,dword ptr [EBX + 0x360]
+ ASM 0092e3da MOV dword ptr [ESI + 0x360],EAX
+ ASM 0092e3e0 MOV EAX,dword ptr [EBX + 0x364]
+ ASM 0092e3e6 MOV dword ptr [ESI + 0x364],EAX
+ ASM 0092e3ec MOVUPS XMM0,xmmword ptr [EBX + 0x368]
+ ASM 0092e3f3 MOVUPS xmmword ptr [ESI + 0x368],XMM0
+ ASM 0092e3fa MOVUPS XMM0,xmmword ptr [EBX + 0x378]
+ ASM 0092e401 MOVUPS xmmword ptr [ESI + 0x378],XMM0
+ ASM 0092e408 MOVQ XMM0,qword ptr [EBX + 0x388]
+ ASM 0092e410 MOVQ qword ptr [ESI + 0x388],XMM0
+ ASM 0092e418 MOVUPS XMM0,xmmword ptr [EBX + 0x390]
+ ASM 0092e41f MOVUPS xmmword ptr [ESI + 0x390],XMM0
+ ASM 0092e426 MOVUPS XMM0,xmmword ptr [EBX + 0x3a0]
+ASM_ROOT asm:0094e408
+ ASM 0094e3f9 CMP byte ptr [ESI + 0x358],0x0
+ ASM 0094e400 JNZ 0x0094e40d
+ ASM 0094e402 LEA EAX,[ESI + 0x40]
+ ASM 0094e405 MOV ECX,EDI
+ ASM 0094e407 PUSH EAX
+ ASM 0094e408 CALL 0x0095c940
+ ASM 0094e40d CMP dword ptr [ESI + 0x498],0x0
+ ASM 0094e414 JNZ 0x0094e4e9
+ ASM 0094e41a MOV ECX,dword ptr [EDI + 0xc]
+ ASM 0094e41d MOV EAX,dword ptr [ESI + 0x49c]
+ ASM 0094e423 MOV dword ptr [EBP + 0xfffffcbc],EAX
+ ASM 0094e429 TEST ECX,ECX
+ ASM 0094e42b JZ 0x0094e4cd
+ ASM 0094e431 MOV EDX,dword ptr [0x01ef0b48]
+ ASM 0094e437 MOV EAX,dword ptr [ECX + 0x4]
+ ASM 0094e43a CMP dword ptr [EAX + 0x54],EDX
+ ASM 0094e43d JZ 0x0094e44b
+ ASM 0094e43f MOV ECX,dword ptr [ECX + 0x10]
+ ASM 0094e442 TEST ECX,ECX
+ ASM 0094e444 JNZ 0x0094e437
+ ASM 0094e446 JMP 0x0094e4cd
+ ASM 0094e44b PUSH dword ptr [0x020e9cc8]
+ ASM 0094e451 XORPS XMM0,XMM0
+ ASM 0094e454 LEA EAX,[EBP + 0xfffffcc4]
+ ASM 0094e45a PUSH 0x8
+
+PROGRAM Vainglory.exe SHA256 659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642
+ASM_ROOT asm:0081acc0
+ ASM 0081ac77 MOV byte ptr [ESI + 0x1c],AL
+ ASM 0081ac7a MOV AL,byte ptr [EBP + 0x18]
+ ASM 0081ac7d PUSH dword ptr [EBP + 0x2c]
+ ASM 0081ac80 MOV byte ptr [ESI + 0x1d],AL
+ ASM 0081ac83 MOV EAX,dword ptr [EBP + 0x1c]
+ ASM 0081ac86 MOV dword ptr [ESI + 0x20],EAX
+ ASM 0081ac89 MOV EAX,dword ptr [EBP + 0x20]
+ ASM 0081ac8c MOV dword ptr [ESI + 0x24],EAX
+ ASM 0081ac8f MOV EAX,dword ptr [EBP + 0x24]
+ ASM 0081ac92 MOV dword ptr [ESI],0x127c914
+ ASM 0081ac98 MOV dword ptr [EBP + -0x4],0x0
+ ASM 0081ac9f MOVQ XMM0,qword ptr [EAX]
+ ASM 0081aca3 MOVQ qword ptr [ESI + 0x28],XMM0
+ ASM 0081aca8 MOV EAX,dword ptr [EAX + 0x8]
+ ASM 0081acab MOV dword ptr [ESI + 0x30],EAX
+ ASM 0081acae MOV EAX,dword ptr [EBP + 0x28]
+ ASM 0081acb1 MOVQ XMM0,qword ptr [EAX]
+ ASM 0081acb5 MOVQ qword ptr [ESI + 0x34],XMM0
+ ASM 0081acba MOV EAX,dword ptr [EAX + 0x8]
+ ASM 0081acbd MOV dword ptr [ESI + 0x3c],EAX
+ ASM 0081acc0 CALL 0x0081f5d0
+ ASM 0081acc5 MOV AL,byte ptr [EBP + 0x30]
+ ASM 0081acc8 MOV byte ptr [ESI + 0x358],AL
+ ASM 0081acce MOV AL,byte ptr [EBP + 0x34]
+ ASM 0081acd1 MOV byte ptr [ESI + 0x359],AL
+ASM_ROOT asm:0092e3a9
+ ASM 0092e365 MOV EAX,dword ptr [EBX + 0x18]
+ ASM 0092e368 MOV dword ptr [ESI + 0x18],EAX
+ ASM 0092e36b MOVZX EAX,byte ptr [EBX + 0x1c]
+ ASM 0092e36f MOV byte ptr [ESI + 0x1c],AL
+ ASM 0092e372 MOVZX EAX,byte ptr [EBX + 0x1d]
+ ASM 0092e376 MOV byte ptr [ESI + 0x1d],AL
+ ASM 0092e379 MOV EAX,dword ptr [EBX + 0x20]
+ ASM 0092e37c MOV dword ptr [ESI + 0x20],EAX
+ ASM 0092e37f MOV EAX,dword ptr [EBX + 0x24]
+ ASM 0092e382 MOV dword ptr [ESI + 0x24],EAX
+ ASM 0092e385 MOVQ XMM0,qword ptr [EBX + 0x28]
+ ASM 0092e38a MOVQ qword ptr [ESI + 0x28],XMM0
+ ASM 0092e38f MOV EAX,dword ptr [EBX + 0x30]
+ ASM 0092e392 MOV dword ptr [ESI + 0x30],EAX
+ ASM 0092e395 MOVQ XMM0,qword ptr [EBX + 0x34]
+ ASM 0092e39a MOVQ qword ptr [ESI + 0x34],XMM0
+ ASM 0092e39f MOV EAX,dword ptr [EBX + 0x3c]
+ ASM 0092e3a2 MOV dword ptr [ESI + 0x3c],EAX
+ ASM 0092e3a5 LEA EAX,[EBX + 0x40]
+ ASM 0092e3a8 PUSH EAX
+ ASM 0092e3a9 CALL 0x0081f5d0
+ ASM 0092e3ae MOVZX EAX,byte ptr [EBX + 0x358]
+ ASM 0092e3b5 MOV byte ptr [ESI + 0x358],AL
+ ASM 0092e3bb MOVZX EAX,byte ptr [EBX + 0x359]
+ ASM 0092e3c2 MOV byte ptr [ESI + 0x359],AL
+
+PROGRAM Vainglory.exe SHA256 659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642
+ASM_ROOT asm:0081acc0
+ ASM 0081ac35 PUSH ESI
+ ASM 0081ac36 PUSH EDI
+ ASM 0081ac37 MOV EAX,[0x01e44f28]
+ ASM 0081ac3c XOR EAX,EBP
+ ASM 0081ac3e PUSH EAX
+ ASM 0081ac3f LEA EAX,[EBP + -0xc]
+ ASM 0081ac42 MOV FS:[0x0],EAX
+ ASM 0081ac48 MOV ESI,ECX
+ ASM 0081ac4a MOV dword ptr [EBP + -0x10],ESI
+ ASM 0081ac4d MOV dword ptr [ESI + 0x4],0x0
+ ASM 0081ac54 MOV dword ptr [ESI + 0x8],0x0
+ ASM 0081ac5b MOV byte ptr [ESI + 0xc],0x0
+ ASM 0081ac5f MOV EAX,dword ptr [EBP + 0x8]
+ ASM 0081ac62 LEA ECX,[ESI + 0x40]
+ ASM 0081ac65 MOV dword ptr [ESI + 0x10],EAX
+ ASM 0081ac68 MOV EAX,dword ptr [EBP + 0xc]
+ ASM 0081ac6b MOV dword ptr [ESI + 0x14],EAX
+ ASM 0081ac6e MOV EAX,dword ptr [EBP + 0x10]
+ ASM 0081ac71 MOV dword ptr [ESI + 0x18],EAX
+ ASM 0081ac74 MOV AL,byte ptr [EBP + 0x14]
+ ASM 0081ac77 MOV byte ptr [ESI + 0x1c],AL
+ ASM 0081ac7a MOV AL,byte ptr [EBP + 0x18]
+ ASM 0081ac7d PUSH dword ptr [EBP + 0x2c]
+ ASM 0081ac80 MOV byte ptr [ESI + 0x1d],AL
+ ASM 0081ac83 MOV EAX,dword ptr [EBP + 0x1c]
+ ASM 0081ac86 MOV dword ptr [ESI + 0x20],EAX
+ ASM 0081ac89 MOV EAX,dword ptr [EBP + 0x20]
+ ASM 0081ac8c MOV dword ptr [ESI + 0x24],EAX
+ ASM 0081ac8f MOV EAX,dword ptr [EBP + 0x24]
+ ASM 0081ac92 MOV dword ptr [ESI],0x127c914
+ ASM 0081ac98 MOV dword ptr [EBP + -0x4],0x0
+ ASM 0081ac9f MOVQ XMM0,qword ptr [EAX]
+ ASM 0081aca3 MOVQ qword ptr [ESI + 0x28],XMM0
+ ASM 0081aca8 MOV EAX,dword ptr [EAX + 0x8]
+ ASM 0081acab MOV dword ptr [ESI + 0x30],EAX
+ ASM 0081acae MOV EAX,dword ptr [EBP + 0x28]
+ ASM 0081acb1 MOVQ XMM0,qword ptr [EAX]
+ ASM 0081acb5 MOVQ qword ptr [ESI + 0x34],XMM0
+ ASM 0081acba MOV EAX,dword ptr [EAX + 0x8]
+ ASM 0081acbd MOV dword ptr [ESI + 0x3c],EAX
+ ASM 0081acc0 CALL 0x0081f5d0
+ ASM 0081acc5 MOV AL,byte ptr [EBP + 0x30]
+ ASM 0081acc8 MOV byte ptr [ESI + 0x358],AL
+ ASM 0081acce MOV AL,byte ptr [EBP + 0x34]
+ ASM 0081acd1 MOV byte ptr [ESI + 0x359],AL
+ASM_ROOT asm:0092e3a9
+ ASM 0092e324 PUSH ESI
+ ASM 0092e325 PUSH 0x8
+ ASM 0092e327 MOV EBX,ECX
+ ASM 0092e329 MOV ECX,dword ptr [EBP + 0x8]
+ ASM 0092e32c PUSH 0x508
+ ASM 0092e331 CALL 0x00859670
+ ASM 0092e336 MOV ESI,EAX
+ ASM 0092e338 MOV dword ptr [ESI],0x1215f08
+ ASM 0092e33e MOV EDX,dword ptr [EBX + 0x4]
+ ASM 0092e341 MOV dword ptr [ESI + 0x4],EDX
+ ASM 0092e344 MOV ECX,dword ptr [EBX + 0x8]
+ ASM 0092e347 MOV dword ptr [ESI + 0x8],ECX
+ ASM 0092e34a MOV CL,byte ptr [EBX + 0xc]
+ ASM 0092e34d MOV byte ptr [ESI + 0xc],CL
+ ASM 0092e350 MOV dword ptr [ESI],0x127c914
+ ASM 0092e356 MOV ECX,dword ptr [EBX + 0x10]
+ ASM 0092e359 MOV dword ptr [ESI + 0x10],ECX
+ ASM 0092e35c LEA ECX,[ESI + 0x40]
+ ASM 0092e35f MOV EAX,dword ptr [EBX + 0x14]
+ ASM 0092e362 MOV dword ptr [ESI + 0x14],EAX
+ ASM 0092e365 MOV EAX,dword ptr [EBX + 0x18]
+ ASM 0092e368 MOV dword ptr [ESI + 0x18],EAX
+ ASM 0092e36b MOVZX EAX,byte ptr [EBX + 0x1c]
+ ASM 0092e36f MOV byte ptr [ESI + 0x1c],AL
+ ASM 0092e372 MOVZX EAX,byte ptr [EBX + 0x1d]
+ ASM 0092e376 MOV byte ptr [ESI + 0x1d],AL
+ ASM 0092e379 MOV EAX,dword ptr [EBX + 0x20]
+ ASM 0092e37c MOV dword ptr [ESI + 0x20],EAX
+ ASM 0092e37f MOV EAX,dword ptr [EBX + 0x24]
+ ASM 0092e382 MOV dword ptr [ESI + 0x24],EAX
+ ASM 0092e385 MOVQ XMM0,qword ptr [EBX + 0x28]
+ ASM 0092e38a MOVQ qword ptr [ESI + 0x28],XMM0
+ ASM 0092e38f MOV EAX,dword ptr [EBX + 0x30]
+ ASM 0092e392 MOV dword ptr [ESI + 0x30],EAX
+ ASM 0092e395 MOVQ XMM0,qword ptr [EBX + 0x34]
+ ASM 0092e39a MOVQ qword ptr [ESI + 0x34],XMM0
+ ASM 0092e39f MOV EAX,dword ptr [EBX + 0x3c]
+ ASM 0092e3a2 MOV dword ptr [ESI + 0x3c],EAX
+ ASM 0092e3a5 LEA EAX,[EBX + 0x40]
+ ASM 0092e3a8 PUSH EAX
+ ASM 0092e3a9 CALL 0x0081f5d0
+ ASM 0092e3ae MOVZX EAX,byte ptr [EBX + 0x358]
+ ASM 0092e3b5 MOV byte ptr [ESI + 0x358],AL
+ ASM 0092e3bb MOVZX EAX,byte ptr [EBX + 0x359]
+ ASM 0092e3c2 MOV byte ptr [ESI + 0x359],AL
