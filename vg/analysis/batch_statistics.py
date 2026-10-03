@@ -190,5 +190,3 @@ def print_report(report: StatisticsReport) -> None:
 
     if len(heroes) > 20:
         print(f"  ... and {len(heroes) - 20} more heroes")
-
-

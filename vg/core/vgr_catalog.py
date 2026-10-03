@@ -171,7 +171,7 @@ ITEMS_DATA = [
     ("Breaking Point", "Weapon", "Tier 3", 3),
     ("Tension Bow", "Weapon", "Tier 3", 3),
     ("Spellsword", "Weapon", "Tier 3", 3),
-    
+
     # Crystal items
     ("Crystal Bit", "Crystal", "Basic", 1),
     ("Energy Battery", "Crystal", "Basic", 1),
@@ -189,8 +189,8 @@ ITEMS_DATA = [
     ("Alternating Current", "Crystal", "Tier 3", 3),
     ("Dragon's Eye", "Crystal", "Tier 3", 3),
     ("Spellfire", "Crystal", "Tier 3", 3),
-    
-    # Defense items  
+
+    # Defense items
     ("Light Shield", "Defense", "Basic", 1),
     ("Light Armor", "Defense", "Basic", 1),
     ("Oakheart", "Defense", "Basic", 1),
@@ -206,7 +206,7 @@ ITEMS_DATA = [
     ("Slumbering Husk", "Defense", "Tier 3", 3),
     ("Pulseweave", "Defense", "Tier 3", 3),
     ("Capacitor Plate", "Defense", "Tier 3", 3),
-    
+
     # Utility items
     ("Sprint Boots", "Utility", "Basic", 1),
     ("Travel Boots", "Utility", "Tier 2", 2),

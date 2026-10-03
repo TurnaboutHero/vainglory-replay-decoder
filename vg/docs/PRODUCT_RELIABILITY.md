@@ -174,14 +174,14 @@ In order, expect exits **2, 2, 1, 0, 0**. The missing/ambiguous cases have an ac
 | Native clock/gold probes | Windows game process plus separately specified observer environment; clock probe pins Frida 17.17.0 | Bounded runtime observations; no general client compatibility promise |
 | `vgrplay_inject` external injector | Explicit external `vgrplay` executable and suitable target slot | Filesystem verification is separate from actual game playback |
 
-Python 3.12 is the syntax floor. The implementation environment used **macOS Python 3.14.7** (`Clang 22.1.3`). The final Windows runtime and source-bound full-suite results are recorded separately below; this guide does not claim that an unexecuted runtime passed. Optional instrumentation packages are not prerequisites for offline smoke tests.
+Python 3.12 is the syntax floor. The full suite was executed on **macOS 26.7 arm64 with Python 3.14.7** (`Clang 22.1.3`) and **native Windows 11, build 10.0.22631, with Python 3.13.2** (64-bit). Both runs tested commit `9c28d88fd549de8c52c537b6f940046b889bbc0e`; each passed all 625 tests with exit 0. This records those runtimes and that source revision, not unexecuted Python versions. Optional instrumentation packages are not prerequisites for offline smoke tests.
 
 | Verification | Command/evidence | Current recorded scope |
 | --- | --- | --- |
 | Pre-change macOS baseline | `python -X utf8 -B -m unittest discover -s tests -q`; pre-change baseline recorded in the approved reliability work plan | Historical baseline: 499 tests, two path failures and two private-fixture/Pillow errors; exit 1 |
 | Offline quickstart | `python -B -m unittest discover -s tests -p 'test_product_quickstart.py' -v` | macOS Python 3.14.7: six maintained tests passed; 40 module help/option checks, executable examples and two recovery paths. Evidence: `.omo/evidence/task-19-vg-product-journey-20261003-{happy,failure}.log` and `.omo/evidence/product-quickstart/` |
-| Final macOS suite | `python -X utf8 -B -m unittest discover -s tests -q` | Pending the final combined source verification |
-| Final isolated Windows suite | Same command and same committed source | Pending the final combined source verification; never overwrite an unrelated dirty checkout |
+| Verified macOS suite | `python -X utf8 -B -m unittest discover -s tests -q`; `.omo/evidence/F3-macos-suite.log` | Commit above: 625 tests passed in 12.158s; exit 0 |
+| Verified isolated Windows suite | Same command and commit; `.omo/evidence/F3-windows-suite.log`, `.omo/evidence/F3-windows-receipt.json` | 625 tests passed in 61.130s; exit 0. Receipt confirms tested source and protected checkouts remained unchanged |
 | Static type checking | basedpyright | Not installed in the implementation environment; no type-check PASS claimed and no installation performed |
 
 Final acceptance must account for all original 499 tests plus maintained additions, with no silent removal of coverage. Local task evidence is retained under `.omo/evidence/`; ignored evidence is not distributed as a promise to new checkout users. The smoke command is the reproducible entry point. Actual game playback, private corpus observations and source-bound software regression tests remain separate evidence.

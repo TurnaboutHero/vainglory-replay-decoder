@@ -19,7 +19,7 @@ class DatabaseCommand(StrEnum):
 
 def main(argv=None) -> int:
     import argparse
-    
+
     parser = argparse.ArgumentParser(description='VGR Database Builder')
     parser.add_argument('command', choices=list(DatabaseCommand), type=DatabaseCommand,
                         help='Command to run')
@@ -27,13 +27,13 @@ def main(argv=None) -> int:
     parser.add_argument('-i', '--input', help='Input directory or file for import')
     parser.add_argument('-o', '--output', default='vg_data.json', help='Output file for export')
     parser.add_argument('--db', default='vainglory.db', help='Database file path')
-    
+
     args = parser.parse_args(argv)
     if args.command == 'import' and not args.input:
         parser.error('import requires --input')
     if args.command == 'search' and not args.query:
         parser.error('search requires --query')
-    
+
     db = VGDatabase(args.db)
     try:
         db.connect()
