@@ -52,7 +52,8 @@ def decode_gold_from_replay(
     valid_ids = {_le_to_be(eid) for eid in ids}
 
     income: Dict[int, float] = defaultdict(float)
-    sellback_refund: Dict[int, float] = defaultdict(float)
+    last_set: Dict[int, float] = {}
+    set_counts: Counter[int] = Counter()
     spent: Dict[int, float] = defaultdict(float)
     counts: Counter[int] = Counter()
     invalid_ids: set[int] = set()
@@ -77,10 +78,11 @@ def decode_gold_from_replay(
                     issues.append(f"frame {frame_idx} offset {record.offset}: unsupported gold value/operation.")
                     continue
                 counts[event.entity_id_be] += 1
-                if event.value > 0 and event.operation == 0:
-                    income[event.entity_id_be] += event.value
+                if event.operation == 1:
+                    last_set[event.entity_id_be] = event.value
+                    set_counts[event.entity_id_be] += 1
                 elif event.value > 0:
-                    sellback_refund[event.entity_id_be] += event.value
+                    income[event.entity_id_be] += event.value
                 elif event.value < 0:
                     spent[event.entity_id_be] += abs(event.value)
         except VGRRecordError as exc:
@@ -98,9 +100,11 @@ def decode_gold_from_replay(
             gold=600 + round(income[eid]) if supported else None,
             gold_status=gold_status if supported else "partial_unsupported_credit_records",
             action_06_income=round(income[eid], 4),
-            action_06_sellback_refund=round(sellback_refund[eid], 4),
+            action_06_sellback_refund=None,
             action_06_spent=round(spent[eid], 4),
             entity_id_be=eid, replay_scope=replay_scope, record_count=counts[eid],
+            action_06_last_set_value=last_set.get(eid),
+            action_06_set_count=set_counts[eid],
         ))
 
     return GoldExtractionResult(
