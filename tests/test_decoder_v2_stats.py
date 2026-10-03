@@ -1,4 +1,5 @@
 import unittest
+from dataclasses import replace
 from unittest.mock import patch
 
 from vg.decoder_v2.kda import decode_kda_from_replay
@@ -7,6 +8,7 @@ from vg.decoder_v2.models import (
     CompletenessStatus,
     DurationEstimate,
     KDAExtractionResult,
+    KDAPlayerSummary,
     ReplaySignalSummary,
 )
 from vg.decoder_v2.winner import decode_winner_from_replay
@@ -44,6 +46,23 @@ def incomplete_result() -> KDAExtractionResult:
 
 
 class TestDecoderV2Stats(unittest.TestCase):
+    def test_complete_kill_lead_does_not_establish_winner(self) -> None:
+        base = incomplete_result()
+        assessment = replace(base.assessment, status=CompletenessStatus.COMPLETE_CONFIRMED)
+        for left, right in ((10, 20), (20, 10), (10, 10)):
+            with self.subTest(left=left, right=right):
+                kda = replace(
+                    base, accepted=True, assessment=assessment,
+                    duration_estimate=replace(base.duration_estimate, assessment=assessment),
+                    players=(KDAPlayerSummary("a", "left", "Alpha", left, 0, 0, 0),
+                             KDAPlayerSummary("b", "right", "Beta", right, 0, 0, 0)),
+                )
+                with patch("vg.decoder_v2.winner.decode_kda_from_replay", return_value=kda):
+                    result = decode_winner_from_replay("match.0.vgr")
+                self.assertFalse(result.accepted)
+                self.assertIsNone(result.winner)
+                self.assertEqual((result.left_kills, result.right_kills), (left, right))
+
     def test_decode_winner_rejects_incomplete_replay(self) -> None:
         with patch("vg.decoder_v2.winner.decode_kda_from_replay", return_value=incomplete_result()):
             result = decode_winner_from_replay("match.0.vgr")

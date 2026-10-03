@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 from vg.core.vgr_parser import VGRParser
+from vg.core.replay_output import ReplayOutputError, validate_replay_output, write_replay_output
 
 from .gold import decode_gold_from_replay
 from .kda import decode_kda_from_replay
@@ -236,6 +237,11 @@ def main(argv: Optional[List[str]] = None) -> int:
     args = parser.parse_args(argv)
     if args.at_game_time is not None and (not math.isfinite(args.at_game_time) or args.at_game_time < 0):
         parser.error("--at-game-time must be finite and non-negative")
+    if args.output:
+        try:
+            validate_replay_output(Path(args.replay_file), Path(args.output))
+        except (ReplayOutputError, OSError) as error:
+            parser.error(str(error))
 
     if args.format == "debug-json":
         payload_obj = decode_match_debug(args.replay_file, at_game_time=args.at_game_time)
@@ -244,7 +250,10 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     payload = json.dumps(payload_obj, indent=2, ensure_ascii=False)
     if args.output:
-        Path(args.output).write_text(payload, encoding="utf-8")
+        try:
+            write_replay_output(Path(args.replay_file), Path(args.output), payload)
+        except (ReplayOutputError, OSError) as error:
+            parser.error(str(error))
         print(f"decoder_v2 output saved to {args.output}")
     else:
         print(payload)
