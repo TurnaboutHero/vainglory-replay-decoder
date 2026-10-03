@@ -12,7 +12,7 @@ from unittest.mock import patch
 from tests.test_product_duration_provenance import replay_bytes
 from vg.analysis import batch_report as analysis
 from vg.core.batch_result import PartialBatchError
-from vg.core.unified_decoder import UnifiedDecoder
+from vg.core.unified_decoder import DecodedMatch, DecodedPlayer, UnifiedDecoder
 from vg.tools import replay_batch_parser as parser
 
 
@@ -176,3 +176,91 @@ class ProductBatchReportsTests(unittest.TestCase):
             self.output.unlink()
         self.assertEqual((self.replay.read_bytes(), truth.read_bytes()), before)
         self.assertFalse((self.inputs / 'good.5.vgr').exists())
+
+    def test_roster_coverage_mixed_known_and_absent_in_both_orders(self):
+        # Given one observed player and a real decoded recording with no roster.
+        absent_file = self.inputs / 'absent.0.vgr'
+        absent_file.write_bytes(replay_bytes(roster=False))
+        absent = UnifiedDecoder(str(absent_file)).decode()
+        self.assertEqual(absent.all_players, [])
+        for kills, gold in ((4, 100), (0, 0)):
+            player = DecodedPlayer('Known', 'left', 'Hero', 1, 1, kills=kills,
+                                   deaths=0, assists=0, minion_kills=0, gold_earned=gold)
+            known = DecodedMatch('known', str(self.replay), 'mode', 'map', 1, left_team=[player])
+            for matches in ([known, absent], [absent, known]):
+                with self.subTest(kills=kills, order=[m.replay_name for m in matches]):
+                    # When the public aggregate is serialized and rendered.
+                    report = json.loads(json.dumps(analysis.generate_report(matches)))
+                    print(json.dumps({'scenario': 'mixed_roster', 'kills': kills, 'report': report}))
+                    rendered = io.StringIO()
+                    with redirect_stdout(rendered):
+                        analysis.print_report(report)
+                    # Then missing roster data cannot become a known denominator.
+                    stats, hero = report['match_stats'], report['hero_stats'][0]
+                    for field in ('total_players', 'total_kills', 'avg_kills_per_match', 'avg_gold_per_player'):
+                        self.assertIsNone(stats[field], field)
+                    self.assertEqual((stats['roster_known_samples'], stats['roster_total_samples'],
+                                      stats['observed_player_samples']), (1, 2, 1))
+                    self.assertEqual(stats['known_player_samples']['kills'], 1)
+                    self.assertEqual(stats['known_player_samples']['gold_earned'], 1)
+                    self.assertIsNone(hero['pick_rate'])
+                    self.assertEqual((hero['picks'], hero['total_samples'], hero['known_samples']['kills']), (1, 1, 1))
+                    self.assertEqual((hero['avg_kills'], hero['avg_gold']), (kills, gold))
+                    for label in ('Total players:', 'Avg kills/match:', 'Avg gold/player:'):
+                        self.assertIn('N/A', next(line for line in rendered.getvalue().splitlines() if label in line))
+                    self.assertIn('N/A', next(line for line in rendered.getvalue().splitlines() if 'Hero' in line and 'Picks' not in line and 'Statistics' not in line))
+
+    def test_roster_coverage_all_known_retains_zero_and_numeric_averages(self):
+        # Given complete observed rosters with actual zero and nonzero counters.
+        matches = [DecodedMatch(str(kills), str(self.replay), 'mode', 'map', 1,
+                    left_team=[DecodedPlayer('Known', 'left', 'Hero', 1, 1, kills=kills,
+                    deaths=0, assists=0, minion_kills=0, gold_earned=gold)]) for kills, gold in ((0, 0), (4, 100))]
+        for selected, expected in ((matches[:1], (1, 0, 0, 0)), (matches, (2, 4, 2, 50))):
+            with self.subTest(count=len(selected)):
+                # When known-only values pass through public aggregation and JSON.
+                report = json.loads(json.dumps(analysis.generate_report(selected)))
+                # Then zero is numeric and ordinary full-roster averages are retained.
+                stats = report['match_stats']
+                self.assertEqual(tuple(stats[k] for k in ('total_players', 'total_kills',
+                    'avg_kills_per_match', 'avg_gold_per_player')), expected)
+                self.assertEqual((stats['roster_known_samples'], stats['roster_total_samples'],
+                                  stats['observed_player_samples']), (len(selected),) * 3)
+                self.assertEqual(report['hero_stats'][0]['pick_rate'], 100)
+
+    def test_roster_coverage_empty_dataset_has_no_observed_samples(self):
+        # Given an intentionally empty dataset.
+        # When its public aggregate is serialized and rendered.
+        report = json.loads(json.dumps(analysis.generate_report([])))
+        rendered = io.StringIO()
+        with redirect_stdout(rendered):
+            analysis.print_report(report)
+        # Then no aggregate implies observed roster data.
+        stats = report['match_stats']
+        self.assertEqual(stats['total_matches'], 0)
+        self.assertEqual(stats['total_players'], 0)
+        self.assertEqual((stats['roster_known_samples'], stats['roster_total_samples'], stats['observed_player_samples']), (0, 0, 0))
+        for field in ('total_kills', 'avg_kills_per_match', 'avg_gold_per_player'):
+            self.assertIsNone(stats[field], field)
+        self.assertEqual(report['hero_stats'], [])
+        self.assertTrue(all(count == 0 for count in stats['known_player_samples'].values()))
+        self.assertIn('N/A', rendered.getvalue())
+
+    def test_roster_coverage_cli_publishes_mixed_coverage(self):
+        # Given real framed roster and no-roster recordings in one batch.
+        (self.inputs / 'absent.0.vgr').write_bytes(replay_bytes(roster=False))
+        before = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in self.inputs.iterdir()}
+        # When the actual command publishes its statistics JSON.
+        result = self.cli('vg.analysis.batch_report', self.inputs, '-o', self.output)
+        # Then the successful batch exposes missing roster coverage without changing inputs.
+        self.assertEqual(result.returncode, 0, result.stderr)
+        report = json.loads(self.output.read_text())
+        stats = report['match_stats']
+        print(json.dumps({'scenario': 'mixed_roster_cli', 'exit_code': result.returncode, 'report': report,
+                          'source_hashes_before': before, 'source_hashes_after': {
+                              p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in self.inputs.iterdir()}}))
+        self.assertEqual((report['status'], report['discovered'], report['succeeded'], report['failed']), ('complete', 2, 2, 0))
+        self.assertEqual((stats['roster_known_samples'], stats['roster_total_samples'], stats['observed_player_samples']), (1, 2, 1))
+        self.assertIsNone(stats['total_players'])
+        self.assertIsNone(report['hero_stats'][0]['pick_rate'])
+        self.assertIn('N/A', result.stdout)
+        self.assertEqual({p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in self.inputs.iterdir()}, before)

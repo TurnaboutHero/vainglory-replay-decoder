@@ -48,6 +48,8 @@ The legacy parser can automatically look for local truth candidates. Use `--no-a
 
 CSV is UTF-8 with BOM. Text that could begin a spreadsheet formula receives an apostrophe only in CSV; JSON keeps the original text. Numeric negatives remain numbers. Null statistics become blank CSV cells, while known zero is `0`. `duration_status`, `duration_source`, native/final status fields and sample counts preserve evidence scope. Batch `match_idx` is the discovered ordinal and may have gaps after failures; `input_id` is the relative POSIX frame-zero path and is identical across player, summary and JSON artifacts.
 
+Batch statistics report `roster_known_samples` / `roster_total_samples` and `observed_player_samples`. If any selected match has no roster, total players, total kills, the global kill/gold averages and hero pick rates remain null; the terminal displays N/A. Observed per-hero samples remain visible. An explicitly empty dataset has zero selected matches and players, while its averages remain unavailable. Known zero counters in available rosters remain zero.
+
 ### Catalog, snapshots and a disposable replay slot
 
 <!-- offline-commands:start -->

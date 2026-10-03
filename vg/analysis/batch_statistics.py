@@ -44,6 +44,8 @@ def generate_report(matches: list[DecodedMatch]) -> StatisticsReport:
             h['gold_earned'] = _complete_sum((h['gold_earned'], player.gold_earned))
 
     total_matches = len(matches)
+    roster_known_samples = sum(bool(match.all_players) for match in matches)
+    all_rosters_known = roster_known_samples == total_matches
     hero_table = []
     for name, s in sorted(hero_stats.items(), key=lambda x: -x[1]['picks']):
         n = s['picks']
@@ -52,7 +54,7 @@ def generate_report(matches: list[DecodedMatch]) -> StatisticsReport:
             'picks': n,
             'total_samples': n,
             'known_samples': dict(s['known_samples']),
-            'pick_rate': round(n / total_matches * 100, 1),
+            'pick_rate': round(n / total_matches * 100, 1) if all_rosters_known else None,
             'win_rate': round(s['wins'] / n * 100, 1) if n and s['wins'] is not None else None,
             'avg_kills': round(s['kills'] / n, 1) if s['kills'] is not None else None,
             'avg_deaths': round(s['deaths'] / n, 1) if s['deaths'] is not None else None,
@@ -64,12 +66,15 @@ def generate_report(matches: list[DecodedMatch]) -> StatisticsReport:
     # === Match Statistics ===
     durations = [m.duration_seconds for m in matches if m.duration_seconds is not None]
     all_players = [p for m in matches for p in m.all_players]
-    total_kills = _complete_sum(p.kills for p in all_players)
-    total_gold = _complete_sum(p.gold_earned for p in all_players)
+    total_kills = _complete_sum(_complete_sum(p.kills for p in match.all_players) for match in matches)
+    total_gold = _complete_sum(_complete_sum(p.gold_earned for p in match.all_players) for match in matches)
 
     match_stats = {
         'total_matches': total_matches,
-        'total_players': len(all_players),
+        'total_players': len(all_players) if all_rosters_known else None,
+        'observed_player_samples': len(all_players),
+        'roster_known_samples': roster_known_samples,
+        'roster_total_samples': total_matches,
         'total_kills': total_kills,
         'duration_known_samples': len(durations),
         'duration_total_samples': total_matches,
@@ -151,11 +156,13 @@ def print_report(report: StatisticsReport) -> None:
     print(f"\n  Match Statistics:")
     print(f"  {'─'*50}")
     print(f"  Total matches:       {ms.get('total_matches', 0)}")
-    print(f"  Total players:       {ms.get('total_players', 0)}")
+    print(f"  Total players:       {ms['total_players'] if ms.get('total_players') is not None else 'N/A'}")
+    print(f"  Known rosters:       {ms.get('roster_known_samples', 0)}/{ms.get('roster_total_samples', 0)}")
+    print(f"  Observed players:    {ms.get('observed_player_samples', 0)}")
     print(f"  Avg duration (observed): {_duration_text(ms.get('avg_duration_s'))}")
     print(f"  Duration range:      {_duration_text(ms.get('min_duration_s'))} - {_duration_text(ms.get('max_duration_s'))}")
-    print(f"  Avg kills/match:     {ms.get('avg_kills_per_match', 0)}")
-    print(f"  Avg gold/player:     {ms.get('avg_gold_per_player', 0)}")
+    print(f"  Avg kills/match:     {ms['avg_kills_per_match'] if ms.get('avg_kills_per_match') is not None else 'N/A'}")
+    print(f"  Avg gold/player:     {ms['avg_gold_per_player'] if ms.get('avg_gold_per_player') is not None else 'N/A'}")
     print(f"  Winners (L/R/none):  {ms.get('left_wins',0)}/{ms.get('right_wins',0)}/{ms.get('no_winner',0)}")
     print(f"    (Note: left/right labels are non-deterministic)")
 
@@ -184,7 +191,7 @@ def print_report(report: StatisticsReport) -> None:
     print(f"  {'Hero':20s} {'Picks':>5s} {'Pick%':>6s} {'Win%':>6s} {'K':>5s} {'D':>5s} {'A':>5s} {'MK':>6s} {'Gold':>7s}")
     print(f"  {'─'*80}")
     for h in heroes[:20]:
-        print(f"  {h['hero']:20s} {h['picks']:5d} {h['pick_rate']:5.1f}% {_stat_text(h['win_rate'], 5)}%"
+        print(f"  {h['hero']:20s} {h['picks']:5d} {_stat_text(h['pick_rate'], 5)}% {_stat_text(h['win_rate'], 5)}%"
               f" {_stat_text(h['avg_kills'], 5)} {_stat_text(h['avg_deaths'], 5)} {_stat_text(h['avg_assists'], 5)}"
               f" {_stat_text(h['avg_minion_kills'], 6)} {_stat_text(h['avg_gold'], 7)}")
 
