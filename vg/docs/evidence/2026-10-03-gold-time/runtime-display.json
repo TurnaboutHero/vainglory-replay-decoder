@@ -1,0 +1,380 @@
+{
+  "schema_version": "vg.runtime-display-evidence.v1",
+  "recorded_at_utc": "2026-10-03T12:14:49.084375+00:00",
+  "scope": "observed_playback_paths_only",
+  "accepted_for_index": false,
+  "probe_source_sha256": "f8b68ab8802ff2e35851e5c311a86605a29ee8601a5f7c960ba1e66fa075e1a2",
+  "probe_guard_manifest_sha256": "60753d3b9ea5760d48a2e8620cb29a9a508c563b6a31668661e43093126dec59",
+  "prior_decoder_validation_receipt_sha256": "4dc79e7f72ea37fc74a4233b4779855397ba53cbedcd4ec351079d5f189ec5d0",
+  "excluded_fields": {
+    "sample.time_labels": "Shared UI formatting scratch, overwritten by team gold.",
+    "state.record_clock": "Stale recording-side observation; playback meaning unproven."
+  },
+  "scenarios": [
+    {
+      "recording": "normal17",
+      "replay_scope": "sha256:2bf4fa8d455b6dd53afd3b1ecc3f02abe3735f432574358f0f7fdc690433dde7",
+      "sections": 17,
+      "trace_sha256": "f67cfd0bf4079ba13cf9381fd038c377e5fee1cb7279532f28288279c3fe6afa",
+      "screenshot_sha256": "dcb4bc69ff3a4fba47277d30deb3e8a461d31644463aa3eab551f38f7932efa6",
+      "client_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "hook_counts": {
+        "hooks_installed": 1,
+        "sample": 1790,
+        "anchor": 17,
+        "gold_row": 129,
+        "gold_format": 4,
+        "gold_label": 4,
+        "terminal": 1,
+        "final": 1,
+        "time_format": 1
+      },
+      "observation_start_utc": "2026-10-03T11:49:46.895664+00:00",
+      "detached_utc": "2026-10-03T11:52:47.851384+00:00",
+      "file_eof_seconds": 164.07888793945312,
+      "last_anchor": {
+        "tag": "anchor",
+        "seq": 1745,
+        "utc_ms": 1791028348388,
+        "input": {
+          "value": 158.67494201660156,
+          "bits": 1126083785
+        },
+        "clock": {
+          "value": 158.66021728515625,
+          "bits": 1126082820
+        },
+        "section_index": 16,
+        "multiplier": 1
+      },
+      "last_time_formatter": {
+        "tag": "time_format",
+        "seq": 1808,
+        "utc_ms": 1791028353788,
+        "input": {
+          "value": 164.07742309570312,
+          "bits": 1126437842
+        },
+        "clock": {
+          "value": 164.07742309570312,
+          "bits": 1126437842
+        },
+        "section_index": 17,
+        "multiplier": 1
+      },
+      "terminal": {
+        "tag": "terminal",
+        "seq": 1806,
+        "utc_ms": 1791028353787,
+        "clock": {
+          "value": 164.07742309570312,
+          "bits": 1126437842
+        },
+        "section_index": 17,
+        "multiplier": 1
+      },
+      "final": {
+        "tag": "final",
+        "seq": 1807,
+        "utc_ms": 1791028353788,
+        "clock": {
+          "value": 164.07742309570312,
+          "bits": 1126437842
+        },
+        "section_index": 17,
+        "multiplier": 1
+      },
+      "runtime_minus_file_seconds": -0.00146484375,
+      "manually_observed_duration_display": "2:44",
+      "players": [
+        {
+          "actor_ref_178": 1500,
+          "latest_native7": {
+            "value": 30372,
+            "bits": 1189955584
+          },
+          "cache_bucket": 303,
+          "retained_formatter_input": {
+            "value": 30300,
+            "bits": 1189918720
+          },
+          "label": "30.3k",
+          "row_sequence": 1804,
+          "formatter_sequence": 1538,
+          "label_sequence": 1539,
+          "sample_before_terminal_ms": 103
+        }
+      ],
+      "trace_completed_without_error": true,
+      "latest_samples_match_prior_eof_native7": true
+    },
+    {
+      "recording": "C16",
+      "replay_scope": "sha256:f911831716116f4d539537c3f7087bdc61af456fc758af99f9a5e82bbb1b3159",
+      "sections": 171,
+      "trace_sha256": "41d4805b699544f48fdf9a23aee992ececbd1cfcc06c1dc929b45e99d0785c6b",
+      "screenshot_sha256": "a39f476b24be26c7a1378fefcbd4812131a78f24bc28153de2924627c0dc2a96",
+      "client_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "hook_counts": {
+        "hooks_installed": 1,
+        "gold_row": 1506,
+        "sample": 1790,
+        "anchor": 14,
+        "gold_format": 85,
+        "gold_label": 85,
+        "time_format": 63,
+        "terminal": 1,
+        "final": 1
+      },
+      "observation_start_utc": "2026-10-03T12:06:25.377825+00:00",
+      "detached_utc": "2026-10-03T12:09:26.304825+00:00",
+      "file_eof_seconds": 1675.6412353515625,
+      "last_anchor": {
+        "tag": "anchor",
+        "seq": 3039,
+        "utc_ms": 1791029320321,
+        "input": {
+          "value": 1671.967529296875,
+          "bits": 1154547446
+        },
+        "clock": {
+          "value": 1671.9552001953125,
+          "bits": 1154547345
+        },
+        "section_index": 170,
+        "multiplier": 1
+      },
+      "last_time_formatter": {
+        "tag": "time_format",
+        "seq": 3107,
+        "utc_ms": 1791029323358,
+        "input": {
+          "value": 1675.0020751953125,
+          "bits": 1154572305
+        },
+        "clock": {
+          "value": 1675.0020751953125,
+          "bits": 1154572305
+        },
+        "section_index": 170,
+        "multiplier": 1
+      },
+      "terminal": {
+        "tag": "terminal",
+        "seq": 3124,
+        "utc_ms": 1791029323995,
+        "clock": {
+          "value": 1675.6392822265625,
+          "bits": 1154577525
+        },
+        "section_index": 171,
+        "multiplier": 1
+      },
+      "final": {
+        "tag": "final",
+        "seq": 3125,
+        "utc_ms": 1791029323995,
+        "clock": {
+          "value": 1675.6392822265625,
+          "bits": 1154577525
+        },
+        "section_index": 171,
+        "multiplier": 1
+      },
+      "runtime_minus_file_seconds": -0.001953125,
+      "manually_observed_duration_display": "27:55",
+      "players": [
+        {
+          "actor_ref_178": 1500,
+          "latest_native7": {
+            "value": 11195.3017578125,
+            "bits": 1177480501
+          },
+          "cache_bucket": 111,
+          "retained_formatter_input": {
+            "value": 11177.3017578125,
+            "bits": 1177462069
+          },
+          "label": "11.2k",
+          "row_sequence": 3117,
+          "formatter_sequence": 2990,
+          "label_sequence": 2991,
+          "sample_before_terminal_ms": 594
+        },
+        {
+          "actor_ref_178": 1501,
+          "latest_native7": {
+            "value": 13540.34375,
+            "bits": 1179881824
+          },
+          "cache_bucket": 135,
+          "retained_formatter_input": {
+            "value": 13501.34375,
+            "bits": 1179841888
+          },
+          "label": "13.5k",
+          "row_sequence": 3116,
+          "formatter_sequence": 2822,
+          "label_sequence": 2823,
+          "sample_before_terminal_ms": 594
+        },
+        {
+          "actor_ref_178": 1502,
+          "latest_native7": {
+            "value": 19710.677734375,
+            "bits": 1184496987
+          },
+          "cache_bucket": 197,
+          "retained_formatter_input": {
+            "value": 19701.677734375,
+            "bits": 1184492379
+          },
+          "label": "19.7k",
+          "row_sequence": 3115,
+          "formatter_sequence": 3050,
+          "label_sequence": 3051,
+          "sample_before_terminal_ms": 594
+        },
+        {
+          "actor_ref_178": 1503,
+          "latest_native7": {
+            "value": 15820.3330078125,
+            "bits": 1182216533
+          },
+          "cache_bucket": 158,
+          "retained_formatter_input": {
+            "value": 15802.3330078125,
+            "bits": 1182198101
+          },
+          "label": "15.8k",
+          "row_sequence": 3114,
+          "formatter_sequence": 2973,
+          "label_sequence": 2974,
+          "sample_before_terminal_ms": 594
+        },
+        {
+          "actor_ref_178": 1504,
+          "latest_native7": {
+            "value": 14220.46875,
+            "bits": 1180578272
+          },
+          "cache_bucket": 142,
+          "retained_formatter_input": {
+            "value": 14202.46875,
+            "bits": 1180559840
+          },
+          "label": "14.2k",
+          "row_sequence": 3113,
+          "formatter_sequence": 2987,
+          "label_sequence": 2988,
+          "sample_before_terminal_ms": 594
+        },
+        {
+          "actor_ref_178": 1505,
+          "latest_native7": {
+            "value": 15881.759765625,
+            "bits": 1182279434
+          },
+          "cache_bucket": 158,
+          "retained_formatter_input": {
+            "value": 15804.759765625,
+            "bits": 1182200586
+          },
+          "label": "15.8k",
+          "row_sequence": 3112,
+          "formatter_sequence": 2547,
+          "label_sequence": 2548,
+          "sample_before_terminal_ms": 594
+        },
+        {
+          "actor_ref_178": 1506,
+          "latest_native7": {
+            "value": 16532.23046875,
+            "bits": 1182869622
+          },
+          "cache_bucket": 165,
+          "retained_formatter_input": {
+            "value": 16502.23046875,
+            "bits": 1182854262
+          },
+          "label": "16.5k",
+          "row_sequence": 3111,
+          "formatter_sequence": 2885,
+          "label_sequence": 2886,
+          "sample_before_terminal_ms": 594
+        },
+        {
+          "actor_ref_178": 1507,
+          "latest_native7": {
+            "value": 12175.7509765625,
+            "bits": 1178484481
+          },
+          "cache_bucket": 121,
+          "retained_formatter_input": {
+            "value": 12109.7509765625,
+            "bits": 1178416897
+          },
+          "label": "12.1k",
+          "row_sequence": 3110,
+          "formatter_sequence": 2635,
+          "label_sequence": 2636,
+          "sample_before_terminal_ms": 595
+        },
+        {
+          "actor_ref_178": 1508,
+          "latest_native7": {
+            "value": 16467.78125,
+            "bits": 1182836624
+          },
+          "cache_bucket": 164,
+          "retained_formatter_input": {
+            "value": 16401.78125,
+            "bits": 1182802832
+          },
+          "label": "16.4k",
+          "row_sequence": 3109,
+          "formatter_sequence": 2608,
+          "label_sequence": 2609,
+          "sample_before_terminal_ms": 595
+        },
+        {
+          "actor_ref_178": 1509,
+          "latest_native7": {
+            "value": 10691.978515625,
+            "bits": 1176965098
+          },
+          "cache_bucket": 106,
+          "retained_formatter_input": {
+            "value": 10616.978515625,
+            "bits": 1176888298
+          },
+          "label": "10.6k",
+          "row_sequence": 3108,
+          "formatter_sequence": 2535,
+          "label_sequence": 2536,
+          "sample_before_terminal_ms": 595
+        }
+      ],
+      "trace_completed_without_error": true,
+      "latest_samples_match_prior_eof_native7": true
+    }
+  ],
+  "cleanup": [
+    {
+      "restored_frames": 23,
+      "all_backup_hashes_match": true,
+      "archived_substitution_frames": 0,
+      "other_groups_touched": false,
+      "trial": "normal17-v2",
+      "utc": "2026-10-03T12:11:01.0969369+00:00"
+    },
+    {
+      "restored_frames": 10,
+      "all_backup_hashes_match": true,
+      "archived_substitution_frames": 171,
+      "other_groups_touched": false,
+      "trial": "c16-min",
+      "utc": "2026-10-03T12:10:49.8531409+00:00"
+    }
+  ]
+}

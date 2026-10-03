@@ -24,7 +24,7 @@ Final-screen function006f4fb0 enables final flags, shows the banner and refreshe
 
 Scoreboard006f50e0 reads the game clock through00548880/00548870, compares integer seconds modulo60 to cache+1184, and passes the clock to0073a770, which formats minutes and seconds with `%d:%02d`. Importantly replay final entry00565f90 calls006f4f00(1,...) before006f4fb0.006f4f00 registers006f2d60 and immediately calls006f5050, which calls006f50e0. Thus final entry DOES refresh the time through its parent path. No final-flag guard was found in006f5050 or006f50e0.
 
-The file's anchor-interpolated terminal-request time equals EOF in all3 checked recordings:
+The file's anchor-interpolated terminal-request time equals EOF in all3 checked recordings. The table preserves the captures available to this static audit; the later [runtime follow-up](RUNTIME_DISPLAY_2026-10-03.md) observed C16 at27:55 with its terminal clock within1.953125 milliseconds of file interpolation:
 
 | Recording | EOF/request seconds | Previously captured display |
 | --- | ---: | --- |
@@ -32,7 +32,7 @@ The file's anchor-interpolated terminal-request time equals EOF in all3 checked 
 | C34 |39.87332534790039|0:39|
 | C16 |1675.6412353515625|27:53|
 
-Choosing03f1 instead of EOF does not resolve C16. The missing evidence is the actual client clock value and callback timing at final entry during replay, compared with the file's anchor interpolation. A scheduler/clock discrepancy is not proven by static code alone. No universal offset, final duration claim, or UI cache simulation is added.
+Choosing03f1 instead of EOF does not explain the earlier C16 capture. The later runtime measurement supplies the actual terminal/final clock and cached gold inputs for one successful path; the earlier27:53 cause remains unresolved. A scheduler/clock discrepancy is not proven by static code alone. No universal offset, final duration claim, or UI cache simulation is added.
 
 ## Export boundary
 
