@@ -10,15 +10,16 @@ import sys
 from typing import Dict, Final, List, Optional, assert_never, override
 
 from vg.core.replay_output import (
-    ReplayOutputError, validate_output_sources, validate_replay_outputs, write_replay_outputs,
+    ReplayOutputError, validate_output_sources, validate_report_outputs, write_report_output,
 )
+from vg.core.replay_input import ReplayInputError
 from vg.core.stat_evidence import FINAL_VALIDATION_STATUS, final_field_reason
-from .batch_decode import decode_replay_batch, find_replays
+from .batch_decode import BatchInputs, decode_replay_batch, prepare_batch_inputs
 from .minion_policy import MINION_POLICY_CHOICES, MINION_POLICY_NONE, evaluate_minion_policy
 from .models import FieldDecision
 
 type JSONValue = None | bool | int | float | str | list[JSONValue] | dict[str, JSONValue]
-FINAL_FIELDS: Final = ("kills", "deaths", "assists", "gold", "minion_kills", "winner")
+FINAL_FIELDS: Final = ("kills", "deaths", "assists", "gold", "minion_kills", "winner", "duration_seconds")
 CORRECTION_NAMES: Final = frozenset((
     "result_screen_kda_correction_merge.json", "target_replay_corrected_kda_rows.json",
 ))
@@ -109,6 +110,7 @@ def build_index_ready_export(
     minion_policy: str = MINION_POLICY_NONE,
     *,
     kda_correction_path: Optional[str] = None,
+    inputs: BatchInputs | None = None,
 ) -> Dict[str, object]:
     """Preserve metadata; current code has no source-bound final-stat validator.
 
@@ -116,7 +118,7 @@ def build_index_ready_export(
     minion policies cannot authorize a final field, independently of each other.
     """
     corrections = _load_corrections(kda_correction_path)
-    batch = decode_replay_batch(base_path)
+    batch = decode_replay_batch(base_path, inputs=inputs)
     matches = []
     for match in batch["matches"]:
         decisions = {
@@ -124,6 +126,11 @@ def build_index_ready_export(
                                 final_field_reason(name), FINAL_VALIDATION_STATUS, "final").to_dict()
             for name in FINAL_FIELDS
         }
+        duration = match.get('withheld_fields', {}).get('duration_seconds')
+        if duration is not None:
+            decisions['duration_seconds'] = {
+                **duration, 'accepted_for_index': False, 'scope': 'final',
+            }
         candidate_allowed, candidate_reason = evaluate_minion_policy(
             minion_policy, match["replay_file"], match["completeness_status"],
         )
@@ -135,7 +142,8 @@ def build_index_ready_export(
                             "replay_scope", "identity_reason")
             }
             row["identity_status"] = player.get("identity_status", "unverified")
-            row["withheld_fields"] = {key: decisions[key] for key in FINAL_FIELDS if key != "winner"}
+            row["withheld_fields"] = {key: decisions[key] for key in FINAL_FIELDS
+                                      if key not in ("winner", "duration_seconds")}
             row["minion_policy"] = {
                 "policy": minion_policy, "accepted": False,
                 "reason": final_field_reason("minion_kills"),
@@ -145,6 +153,7 @@ def build_index_ready_export(
             key: match[key] for key in ("replay_name", "replay_file", "game_mode", "map_name",
                                        "team_size", "completeness_status")
         } | {
+            'input_id': match.get('input_id'),
             "replay_scope": match.get("replay_scope"),
             "source_scope": match.get("scope", "final"),
             "withheld_fields": decisions,
@@ -164,6 +173,7 @@ def build_index_ready_export(
             },
         })
     return {
+        **{key: batch[key] for key in ('status', 'discovered', 'succeeded', 'failed', 'results') if key in batch},
         "schema_version": "decoder_v2.index_export.v3",
         "base_path": str(Path(base_path).resolve()),
         "minion_policy": minion_policy,
@@ -195,28 +205,28 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     try:
         output_path = Path(args.output) if args.output else None
-        replays = find_replays(args.base_path) if output_path is not None else []
-        corrections = _correction_paths(args.kda_correction_path) if output_path is not None else ()
+        corrections = _correction_paths(args.kda_correction_path)
+        inputs = prepare_batch_inputs(args.base_path, files=corrections)
         if output_path is not None:
-            validate_replay_outputs(replays, output_path)
-            validate_output_sources(corrections, output_path)
+            validate_report_outputs(inputs.report_inputs, (output_path,))
         report = build_index_ready_export(
             args.base_path,
             minion_policy=args.minion_policy,
             kda_correction_path=args.kda_correction_path,
+            inputs=inputs,
         )
         payload = json.dumps(report, indent=2, ensure_ascii=False)
         if output_path is not None:
-            validate_replay_outputs(find_replays(args.base_path), output_path)
             validate_output_sources((*corrections, *_correction_paths(args.kda_correction_path)), output_path)
-            write_replay_outputs(replays, output_path, payload)
+            write_report_output(inputs.report_inputs, output_path, payload)
             print(f"Index-safe export saved to {output_path}")
         else:
+            inputs.report_inputs.recheck()
             print(payload)
-    except (OSError, UnicodeError, json.JSONDecodeError, CorrectionInputError, ReplayOutputError) as error:
+    except (OSError, UnicodeError, json.JSONDecodeError, CorrectionInputError, ReplayInputError, ReplayOutputError) as error:
         print(f"index-export: {error}", file=sys.stderr)
         return 2
-    return 0
+    return 1 if report.get('failed', 0) else 0
 
 
 if __name__ == "__main__":

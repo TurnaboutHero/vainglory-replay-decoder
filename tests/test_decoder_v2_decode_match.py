@@ -45,6 +45,11 @@ def make_assessment(status: CompletenessStatus) -> CompletenessAssessment:
 class TestDecoderV2DecodeMatch(unittest.TestCase):
     def setUp(self) -> None:
         self.frames = [(0, anchor(0, 100) + snapshot(0) + packet(10, 1))]
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        for name in ('match', 'synthetic', 'x'):
+            (self.root / f'{name}.0.vgr').write_bytes(self.frames[0][1])
         loader = patch("vg.decoder_v2.decode_match.load_frames", return_value=self.frames, create=True)
         loader.start()
         self.addCleanup(loader.stop)
@@ -99,7 +104,7 @@ class TestDecoderV2DecodeMatch(unittest.TestCase):
                 ),
             )
 
-            output = decode_match("match.0.vgr")
+            output = decode_match(str(self.root / "match.0.vgr"))
 
         self.assertEqual(output.completeness_status, "incomplete_confirmed")
         self.assertIn("winner", output.withheld_fields)
@@ -169,7 +174,7 @@ class TestDecoderV2DecodeMatch(unittest.TestCase):
                     ),
                 ),
             )
-            output = decode_match("synthetic.0.vgr")
+            output = decode_match(str(self.root / "synthetic.0.vgr"))
 
         self.assertEqual(output.completeness_status, "completeness_unknown")
         self.assertEqual(output.players[0].hero_name, "Alpha")
@@ -241,7 +246,7 @@ class TestDecoderV2DecodeMatch(unittest.TestCase):
                 ),
             )
 
-            output = decode_match("match.0.vgr")
+            output = decode_match(str(self.root / "match.0.vgr"))
 
         self.assertFalse(output.withheld_fields["winner"].accepted_for_index)
         self.assertIsNone(output.withheld_fields["winner"].value)
@@ -269,7 +274,7 @@ class TestDecoderV2DecodeMatch(unittest.TestCase):
                  patch("vg.decoder_v2.kda.extract_replay_signals", return_value=signals):
                 initial.return_value.parse.return_value = parsed
                 capture.return_value.parse.return_value = kda_parsed
-                output = decode_match("x.0.vgr", at_game_time=105)
+                output = decode_match(str(self.root / "x.0.vgr"), at_game_time=105)
             self.assertEqual([p.kills for p in output.players], [6, 11])
             self.assertEqual([p.entity_id_be for p in output.players], [7, 8])
             self.assertTrue(all(p.replay_scope == frame_scope(frames) for p in output.players))
@@ -286,7 +291,7 @@ class TestDecoderV2DecodeMatch(unittest.TestCase):
             "vg.decoder_v2.decode_match.decode_kda_from_replay", return_value=foreign,
         ):
             parser.return_value.parse.return_value = PARSED
-            output = decode_match("x.0.vgr", at_game_time=105)
+            output = decode_match(str(self.root / "x.0.vgr"), at_game_time=105)
         self.assertIsNone(output.players[0].kills)
         self.assertIn("kills", output.withheld_fields)
 
@@ -304,7 +309,7 @@ class TestDecoderV2DecodeMatch(unittest.TestCase):
             "vg.decoder_v2.decode_match.decode_kda_from_replay", return_value=result,
         ):
             parser.return_value.parse.return_value = duplicate
-            output = decode_match("x.0.vgr", at_game_time=105)
+            output = decode_match(str(self.root / "x.0.vgr"), at_game_time=105)
         self.assertTrue(all(p.kills is None for p in output.players))
         self.assertFalse(output.withheld_fields["entity_id"].accepted_for_index)
 
@@ -346,7 +351,7 @@ class TestDecoderV2DecodeMatch(unittest.TestCase):
             )
             minion_mock.return_value = []
 
-            payload = decode_match_debug("match.0.vgr")
+            payload = decode_match_debug(str(self.root / "match.0.vgr"))
 
         self.assertEqual(payload["schema_version"], "decoder_v2.debug_match.v2")
         self.assertIn("completeness", payload)
@@ -360,7 +365,7 @@ class TestDecoderV2DecodeMatch(unittest.TestCase):
             return_value={"schema_version": "decoder_v2.debug_match.v1"},
         ):
             output_path = Path(temp_dir) / "debug.json"
-            exit_code = main(["match.0.vgr", "--format", "debug-json", "-o", str(output_path)])
+            exit_code = main([str(self.root / "match.0.vgr"), "--format", "debug-json", "-o", str(output_path)])
             saved = json.loads(output_path.read_text(encoding="utf-8"))
 
         self.assertEqual(exit_code, 0)

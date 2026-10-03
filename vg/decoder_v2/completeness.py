@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import List, Sequence, Tuple
 
 from vg.core.kda_detector import KDADetector
+from vg.core.replay_input import replay_sections, select_replay
 from vg.core.stat_evidence import inspect_replay_evidence
 from vg.core.unified_decoder import _le_to_be
 from vg.core.vgr_parser import VGRParser
@@ -17,13 +18,8 @@ from .models import CompletenessAssessment, CompletenessStatus, ReplaySignalSumm
 
 def load_frames(replay_file: str) -> List[Tuple[int, bytes]]:
     """Load replay frames as `(frame_index, bytes)` tuples."""
-    replay_path = Path(replay_file)
-    frame_dir = replay_path.parent
-    replay_name = replay_path.stem.rsplit(".", 1)[0]
-    return [
-        (int(frame.stem.split(".")[-1]), frame.read_bytes())
-        for frame in sorted(frame_dir.glob(f"{replay_name}.*.vgr"), key=lambda p: int(p.stem.split(".")[-1]))
-    ]
+    return [(number, path.read_bytes())
+            for number, path in replay_sections(select_replay(replay_file))]
 
 
 def _scan_record_tails(

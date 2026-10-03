@@ -39,33 +39,42 @@ def file_identity(path: Path) -> FileIdentity:
     return FileIdentity(path, path.resolve(), stat.st_dev, stat.st_ino, digest)
 
 
+def _input_sources(files: Collection[Path], replays: Collection[Path]) -> tuple[Path, ...]:
+    sources = list(files)
+    for replay in replays:
+        pattern = f"{replay.stem.rsplit('.', 1)[0]}.*.vgr"
+        sources.append(replay)
+        if replay.parent.exists():
+            sources.extend(path for path in sorted(replay.parent.iterdir()) if fnmatch(path.name, pattern))
+    return tuple(dict.fromkeys(sources))
+
+
 @dataclass(frozen=True, slots=True)
 class ReportInputs:
-    """Capture consumed file identities without interpreting opaque replay bytes."""
+    """Snapshot consumed bytes; reserved unreadable inputs receive alias protection only."""
 
     files: Collection[Path] = ()
     replays: Collection[Path] = ()
+    reserved_files: Collection[Path] = ()
+    reserved_replays: Collection[Path] = ()
     identities: tuple[FileIdentity | None, ...] = field(init=False, repr=False)
 
     def __post_init__(self) -> None:
         object.__setattr__(self, 'files', tuple(Path(path) for path in self.files))
         object.__setattr__(self, 'replays', tuple(Path(path) for path in self.replays))
+        object.__setattr__(self, 'reserved_files', tuple(Path(path) for path in self.reserved_files))
+        object.__setattr__(self, 'reserved_replays', tuple(Path(path) for path in self.reserved_replays))
         try:
             object.__setattr__(self, 'identities', self._snapshot())
         except OSError as error:
             raise ReplayOutputError(Path(error.filename or '.'), str(error), 'input_unreadable') from error
 
     def sources(self) -> tuple[Path, ...]:
-        sources = list(self.files)
-        for replay in self.replays:
-            pattern = f"{replay.stem.rsplit('.', 1)[0]}.*.vgr"
-            sources.append(replay)
-            if replay.parent.exists():
-                sources.extend(path for path in sorted(replay.parent.iterdir()) if fnmatch(path.name, pattern))
-        return tuple(dict.fromkeys(sources))
+        return _input_sources((*self.files, *self.reserved_files), (*self.replays, *self.reserved_replays))
 
     def _snapshot(self) -> tuple[FileIdentity | None, ...]:
-        return tuple(file_identity(path) if path.exists() else None for path in self.sources())
+        return tuple(file_identity(path) if path.exists() else None
+                     for path in _input_sources(self.files, self.replays))
 
     def recheck(self) -> None:
         try:
@@ -119,7 +128,7 @@ def validate_report_outputs(inputs: ReportInputs, outputs: Collection[Path]) -> 
         if output.is_symlink():
             raise ReplayOutputError(output, 'Output must not be a symbolic link')
         validate_output_sources(inputs.sources(), output)
-        validate_replay_outputs(inputs.replays, output)
+        validate_replay_outputs((*inputs.replays, *inputs.reserved_replays), output)
         validate_output_sources(previous, output)
         previous.append(output)
 

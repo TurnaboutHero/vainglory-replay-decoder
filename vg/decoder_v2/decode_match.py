@@ -9,10 +9,15 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 from vg.core.vgr_parser import VGRParser
+from vg.core.replay_input import ReplayInputError, select_replay
+from vg.core.vgr_records import VGRRecordError
 from vg.core.stat_evidence import final_field_reason, inspect_replay_evidence
 from vg.core.unified_decoder import _le_to_be
 from .completeness import load_frames
-from vg.core.replay_output import ReplayOutputError, validate_replay_output, write_replay_output
+from vg.core.replay_output import (
+    ReplayOutputError, ReportInputs, validate_replay_output,
+    validate_report_outputs, write_report_output,
+)
 
 from .gold import decode_gold_from_replay
 from .kda import decode_kda_from_replay
@@ -24,6 +29,7 @@ from .winner import decode_winner_from_replay
 
 def decode_match(replay_file: str, *, at_game_time: Optional[float] = None) -> DecoderV2MatchOutput:
     """Export scoped native captures; final fields require independent validation."""
+    replay_file = str(select_replay(replay_file))
     parsed = VGRParser(replay_file, auto_truth=False).parse()
     match_info = parsed["match_info"]
     evidence = inspect_replay_evidence(load_frames(replay_file))
@@ -52,6 +58,18 @@ def decode_match(replay_file: str, *, at_game_time: Optional[float] = None) -> D
         and set(capture_ids) == {_le_to_be(eid) for eid in ids}
         and all(row.replay_scope == evidence.replay_scope for row in kda_result.players)
     )
+    capture_reason = None
+    if capture and not capture_ok:
+        if not evidence.recording_valid:
+            capture_reason = evidence.recording_reason
+        elif not evidence.native_clock.valid:
+            capture_reason = evidence.native_clock.reason
+        elif not identity_ok:
+            capture_reason = identity_reason
+        elif not kda_result.accepted:
+            capture_reason = kda_result.reason
+        else:
+            capture_reason = 'Capture scope, requested time or player roster does not match this recording.'
     kda_by_id = {row.entity_id_be: row for row in kda_result.players} if capture_ok else {}
     players: List[AcceptedPlayerFields] = []
     for player in roster:
@@ -96,9 +114,7 @@ def decode_match(replay_file: str, *, at_game_time: Optional[float] = None) -> D
             value="accepted" if capture_ok else None,
             claim_status="strong" if capture_ok else "unknown", accepted_for_index=False,
             claim_id=f"{field}.capture" if capture else f"{field}.complete_match",
-            reason=None if capture_ok else (
-                "Capture withheld: native evidence, unique entity IDs and recording scope must agree."
-                if capture else final_field_reason(field)),
+            reason=None if capture_ok else (capture_reason if capture else final_field_reason(field)),
             evidence_status="native_capture_observed" if capture_ok else "unverified",
             scope="capture" if capture else "final",
         )
@@ -108,7 +124,9 @@ def decode_match(replay_file: str, *, at_game_time: Optional[float] = None) -> D
     )
     withheld_fields["duration_seconds"] = FieldDecision(
         None if capture else duration_estimate.estimate_seconds, "partial", False,
-        "duration.approximate", "Withheld: duration is still approximate in decoder_v2.",
+        "duration.approximate",
+        ('Withheld: a capture does not establish final duration.' if capture else
+         f'Withheld: duration is still approximate in decoder_v2 (source: {duration_estimate.source}).'),
     )
     return DecoderV2MatchOutput(
         schema_version="decoder_v2.capture.v2" if capture else "decoder_v2.match.v2",
@@ -125,6 +143,7 @@ def decode_match(replay_file: str, *, at_game_time: Optional[float] = None) -> D
 
 def decode_match_debug(replay_file: str, *, at_game_time: Optional[float] = None) -> Dict[str, object]:
     """Decode a replay with research/debug details included."""
+    replay_file = str(select_replay(replay_file))
     if at_game_time is not None:
         safe_output = decode_match(replay_file, at_game_time=at_game_time)
         kda_result = decode_kda_from_replay(replay_file, at_game_time=at_game_time)
@@ -170,26 +189,27 @@ def main(argv: Optional[List[str]] = None) -> int:
     args = parser.parse_args(argv)
     if args.at_game_time is not None and (not math.isfinite(args.at_game_time) or args.at_game_time < 0):
         parser.error("--at-game-time must be finite and non-negative")
-    if args.output:
-        try:
-            validate_replay_output(Path(args.replay_file), Path(args.output))
-        except (ReplayOutputError, OSError) as error:
-            parser.error(str(error))
-
-    if args.format == "debug-json":
-        payload_obj = decode_match_debug(args.replay_file, at_game_time=args.at_game_time)
-    else:
-        payload_obj = decode_match(args.replay_file, at_game_time=args.at_game_time).to_dict()
-
-    payload = json.dumps(payload_obj, indent=2, ensure_ascii=False)
-    if args.output:
-        try:
-            write_replay_output(Path(args.replay_file), Path(args.output), payload)
-        except (ReplayOutputError, OSError) as error:
-            parser.error(str(error))
-        print(f"decoder_v2 output saved to {args.output}")
-    else:
-        print(payload)
+    try:
+        output = Path(args.output) if args.output else None
+        if output is not None and not Path(args.replay_file).is_dir():
+            validate_replay_output(Path(args.replay_file), output)
+        replay = select_replay(args.replay_file)
+        inputs = ReportInputs(replays=(replay,))
+        if output is not None:
+            validate_report_outputs(inputs, (output,))
+        if args.format == "debug-json":
+            payload_obj = decode_match_debug(str(replay), at_game_time=args.at_game_time)
+        else:
+            payload_obj = decode_match(str(replay), at_game_time=args.at_game_time).to_dict()
+        payload = json.dumps(payload_obj, indent=2, ensure_ascii=False)
+        if output is not None:
+            write_report_output(inputs, output, payload)
+            print(f"decoder_v2 output saved to {output}")
+        else:
+            inputs.recheck()
+            print(payload)
+    except (ReplayInputError, ReplayOutputError, VGRRecordError, OSError) as error:
+        parser.error(str(error))
     return 0
 
 
