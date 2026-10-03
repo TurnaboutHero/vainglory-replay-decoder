@@ -103,6 +103,8 @@ class ProductComparisonResearch(unittest.TestCase):
             result = run_report(relation, relation.output)
             self.assertEqual(result.code, 2)
             self.assertIn('ambiguous peer', result.stderr)
+            self.assertIn(duplicate_peers['matches'][1]['replay_file'], result.stderr)
+            self.assertIn(duplicate_peers['matches'][2]['replay_file'], result.stderr)
             builder.assert_not_called()
         self.truth.write_bytes(original)
         missing_value = json.loads(original)
@@ -117,6 +119,30 @@ class ProductComparisonResearch(unittest.TestCase):
         self.sources[-2].unlink()
         for case in self.cases:
             self.assertEqual(run_report(case, case.output).code, 2)
+
+
+    def test_windows_paths_are_literal_in_ambiguity_diagnostics(self) -> None:
+        # Given duplicate selectors whose scoped paths contain Windows separators.
+        paths = (r'Z:\Team A\one\match.0.vgr', r'Z:\Team B\two\match.0.vgr')
+        self.truth.write_text(json.dumps({'matches': [
+            {'replay_name': 'match-0', 'replay_file': path, 'players': {}} for path in paths]}))
+        before = self.truth.read_bytes()
+        # When real command preflight rejects the ambiguous name before decoding.
+        for case in self.cases:
+            case.output.write_bytes(b'prior report')
+            with self.subTest(module=case.module.__name__):
+                result = run_report(case, case.output)
+                # Then each complete candidate path can be copied without unescaping.
+                self.assertEqual(result.code, 2)
+                self.assertEqual(result.stdout, '')
+                self.assertIn(str(self.truth), result.stderr)
+                self.assertIn('truth_ambiguous', result.stderr)
+                for path in paths:
+                    self.assertIn(path, result.stderr)
+                self.assertEqual(case.output.read_bytes(), b'prior report')
+                self.assertEqual(self.truth.read_bytes(), before)
+                print(json.dumps({'module': case.module.__name__, 'scenario': 'literal_windows_candidates',
+                                  'exit_code': result.code, 'stderr': result.stderr, 'paths': paths}))
 
 
 if __name__ == '__main__':

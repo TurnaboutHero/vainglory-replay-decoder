@@ -119,7 +119,9 @@ class ProductSeriesResearch(unittest.TestCase):
                 result = run_report(case, case.output)
                 self.assertEqual(result.code, 2)
                 self.assertEqual(result.stdout, '')
-                self.assertIn('Z:/foreign/SeriesA/match.0.vgr', result.stderr)
+                foreign_path = Path('Z:/foreign/SeriesA/match.0.vgr')
+                self.assertIn(str(foreign_path), result.stderr)
+                self.assertIn('input_missing' if foreign_path.is_absolute() else 'truth_unreadable', result.stderr)
         self.truth.write_bytes(original)
 
     def test_cli_subprocess(self) -> None:
@@ -165,6 +167,30 @@ class ProductSeriesResearch(unittest.TestCase):
         result = run_report(self.cases[-1])
         self.assertEqual(result.code, 0, result.stderr)
         self.assertEqual(json.loads(result.stdout)['assessment']['xp_total_export_status'], 'not_safe')
+
+
+    def test_windows_paths_are_literal_in_ambiguity_diagnostics(self) -> None:
+        # Given duplicate selectors whose scoped paths contain Windows separators.
+        paths = (r'Z:\Team A\one\match.0.vgr', r'Z:\Team B\two\match.0.vgr')
+        self.truth.write_text(json.dumps({'matches': [
+            {'replay_name': 'match-0', 'replay_file': path, 'players': {}} for path in paths]}))
+        before = self.truth.read_bytes()
+        # When real command preflight rejects the ambiguous name before decoding.
+        for case in (self.cases[0], self.cases[2], self.cases[3]):
+            case.output.write_bytes(b'prior report')
+            with self.subTest(module=case.module.__name__):
+                result = run_report(case, case.output)
+                # Then each complete candidate path can be copied without unescaping.
+                self.assertEqual(result.code, 2)
+                self.assertEqual(result.stdout, '')
+                self.assertIn(str(self.truth), result.stderr)
+                self.assertIn('truth_ambiguous', result.stderr)
+                for path in paths:
+                    self.assertIn(path, result.stderr)
+                self.assertEqual(case.output.read_bytes(), b'prior report')
+                self.assertEqual(self.truth.read_bytes(), before)
+                print(json.dumps({'module': case.module.__name__, 'scenario': 'literal_windows_candidates',
+                                  'exit_code': result.code, 'stderr': result.stderr, 'paths': paths}))
 
 
 if __name__ == '__main__':

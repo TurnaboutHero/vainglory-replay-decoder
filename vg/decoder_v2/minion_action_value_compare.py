@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 
 from vg.core.replay_output import validate_report_outputs, write_report_output
+from vg.core.truth_input import TruthInputError
 from .report_inputs import prepare_truth_inputs, require_truth_match, truth_replay_files
 from typing import Dict, List, Optional
 
@@ -99,7 +100,8 @@ def main(argv: Optional[List[str]] = None) -> int:
         selected = [row for row in documents.matches if "Incomplete" not in Path(row.get("replay_file", "")).parent.name]
         candidates = [row for row in selected if row.get("replay_name") == args.replay_name]
         if len(candidates) > 1:
-            raise ValueError(f"{args.truth}: ambiguous replay name {args.replay_name!r}; scoped choices: {[row.get('replay_file') for row in candidates]}")
+            choices = '\n'.join(str(row.get('replay_file')) for row in candidates)
+            raise TruthInputError("truth_ambiguous", Path(args.truth), f"ambiguous replay name {args.replay_name!r}; scoped choices:\n{choices}")
         require_truth_match(selected, args.truth, args.replay_name)
         replays = truth_replay_files(selected, args.truth)
         prepared = prepare_truth_inputs(args.truth, replays)
