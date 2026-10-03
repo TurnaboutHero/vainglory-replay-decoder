@@ -9,8 +9,11 @@ from pathlib import Path
 import sys
 from typing import Dict, Final, List, Optional, assert_never, override
 
+from vg.core.replay_output import (
+    ReplayOutputError, validate_output_sources, validate_replay_outputs, write_replay_outputs,
+)
 from vg.core.stat_evidence import FINAL_VALIDATION_STATUS, final_field_reason
-from .batch_decode import decode_replay_batch
+from .batch_decode import decode_replay_batch, find_replays
 from .minion_policy import MINION_POLICY_CHOICES, MINION_POLICY_NONE, evaluate_minion_policy
 from .models import FieldDecision
 
@@ -71,13 +74,21 @@ def _correction_rows(path: Path, payload: JSONValue, required: bool) -> int | No
             assert_never(unreachable)
 
 
+def _correction_paths(kda_correction_path: str | None) -> tuple[Path, ...]:
+    """Enumerate exactly the correction files consumed by this export."""
+    if not kda_correction_path:
+        return ()
+    path = Path(kda_correction_path)
+    return tuple(sorted(path.rglob("*.json"))) if path.is_dir() else (path,)
+
+
 def _load_corrections(kda_correction_path: str | None) -> CorrectionSummary:
     """Read supplied files, surface errors, and count corrections held at the boundary."""
     if not kda_correction_path:
         return CorrectionSummary(None, "not_requested", None)
     path = Path(kda_correction_path)
     directory = path.is_dir()
-    candidates = sorted(path.rglob("*.json")) if directory else [path]
+    candidates = _correction_paths(kda_correction_path)
     documents = rows = ignored = 0
     for candidate in candidates:
         payload: JSONValue = json.loads(candidate.read_text(encoding="utf-8"))
@@ -183,21 +194,28 @@ def main(argv: Optional[List[str]] = None) -> int:
     args = parser.parse_args(argv)
 
     try:
+        output_path = Path(args.output) if args.output else None
+        replays = find_replays(args.base_path) if output_path is not None else []
+        corrections = _correction_paths(args.kda_correction_path) if output_path is not None else ()
+        if output_path is not None:
+            validate_replay_outputs(replays, output_path)
+            validate_output_sources(corrections, output_path)
         report = build_index_ready_export(
             args.base_path,
             minion_policy=args.minion_policy,
             kda_correction_path=args.kda_correction_path,
         )
-    except (OSError, UnicodeError, json.JSONDecodeError, CorrectionInputError) as error:
+        payload = json.dumps(report, indent=2, ensure_ascii=False)
+        if output_path is not None:
+            validate_replay_outputs(find_replays(args.base_path), output_path)
+            validate_output_sources((*corrections, *_correction_paths(args.kda_correction_path)), output_path)
+            write_replay_outputs(replays, output_path, payload)
+            print(f"Index-safe export saved to {output_path}")
+        else:
+            print(payload)
+    except (OSError, UnicodeError, json.JSONDecodeError, CorrectionInputError, ReplayOutputError) as error:
         print(f"index-export: {error}", file=sys.stderr)
         return 2
-    payload = json.dumps(report, indent=2, ensure_ascii=False)
-    if args.output:
-        output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Index-safe export saved to {output_path}")
-    else:
-        print(payload)
     return 0
 
 

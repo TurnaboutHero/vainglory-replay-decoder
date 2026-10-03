@@ -110,6 +110,15 @@ integrity failures produce unavailable statistics (`null`), never guessed zeros.
 
 See [native integration evidence and limits](vg/docs/NATIVE_STATS_INTEGRATION_2026-09-07.md).
 
+### Batch and index output safety
+
+`python -m vg.decoder_v2.batch_decode` and `python -m vg.decoder_v2.index_export`
+reject output paths that name a discovered replay section, alias one through
+a symbolic or hard link, or introduce another section into a replay family.
+Index export also protects supplied correction JSON files. These errors return
+exit status 2 before writing. Reports are published atomically, preserving an
+existing report if publication fails.
+
 ## VGR Binary Format
 
 ### File Structure
