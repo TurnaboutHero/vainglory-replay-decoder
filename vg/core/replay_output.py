@@ -1,5 +1,6 @@
 """Protect numbered replay inputs when publishing a decoder result."""
 from collections.abc import Collection, Mapping
+from vg.core.batch_result import BatchReport
 from dataclasses import dataclass, field
 from fnmatch import fnmatch
 import hashlib
@@ -168,10 +169,10 @@ def write_report_output(inputs: ReportInputs, output: Path, payload: str | bytes
             temporary.unlink(missing_ok=True)
 
 
-def publish_report_set(inputs: ReportInputs, outputs: Mapping[Path, str | bytes], receipt: Path) -> 'ReportReceipt':
+def publish_report_set(inputs: ReportInputs, outputs: Mapping[Path, str | bytes], receipt: Path, *, batch: BatchReport | None = None) -> 'ReportReceipt':
     """Publish a recoverable generation, with the complete receipt written last."""
     from vg.core.report_transaction import publish_report_set as publish
-    return publish(inputs, outputs, Path(receipt))
+    return publish(inputs, outputs, Path(receipt), batch=batch)
 
 
 def recover_report_set(receipt: Path) -> 'ReportReceipt':

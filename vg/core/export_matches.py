@@ -1,319 +1,183 @@
-#!/usr/bin/env python3
-"""
-Match Export Tool - Export decoded VGR replays to JSON and CSV formats.
+"""Export decoded replay families as recoverable JSON and CSV report sets."""
 
-Supports:
-  - Single replay → JSON
-  - Batch (directory of replays) → combined JSON + CSV
-  - Tournament mode → JSON + CSV with truth comparison columns
-
-Usage:
-    # Single replay
-    python -m vg.core.export_matches /path/to/replay.0.vgr
-
-    # Batch (all replays in a directory)
-    python -m vg.core.export_matches /path/to/replays/ --batch
-
-    # Tournament with truth data
-    python -m vg.core.export_matches /path/to/replays/ --batch --truth tournament_truth.json
-
-    # Output to specific directory
-    python -m vg.core.export_matches /path/to/replays/ --batch -o /output/dir/
-"""
-
-import csv
+import argparse
 import json
-import sys
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+import sys
+from typing import TypedDict
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+from vg.core.batch_result import BatchReport, InputResult, PartialBatchError, batch_report
+from vg.core.export_rows import (
+    CsvRow, _complete_sum, match_to_csv_rows, match_to_summary_row, serialize_csv,
+)
+from vg.core.replay_input import discover_replay_files, replay_input_id, select_replay
+from vg.core.replay_output import (
+    ReplayOutputError, ReportInputs, publish_report_set, validate_report_outputs,
+    write_report_output,
+)
+from vg.core.unified_decoder import DecodedMatch, UnifiedDecoder
 
-from vg.core.unified_decoder import UnifiedDecoder, DecodedMatch
 
-
-def _complete_sum(values):
-    """A total is unavailable if any of its components is unavailable."""
-    values = list(values)
-    return None if any(value is None for value in values) else sum(values)
+class ExportReport(BatchReport):
+    total_matches: int
+    matches: list[dict]
+    publication_status: str
+    receipt: str
 
 
 def export_match_json(match: DecodedMatch, output_path: Path) -> None:
-    """Export a single decoded match to JSON."""
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(match.to_json(indent=2))
+    inputs = ReportInputs(replays=(Path(match.replay_path),),
+                          files=(Path(match.truth_source),) if match.truth_source else ())
+    write_report_output(inputs, output_path, match.to_json(indent=2))
 
 
-def match_to_csv_rows(match: DecodedMatch, match_idx: int = 0) -> List[Dict]:
-    """Convert a decoded match to flat CSV rows (one row per player)."""
-    rows = []
-    for player in match.all_players:
-        kda_ratio = None
-        if all(value is not None for value in (player.kills, player.deaths, player.assists)):
-            kda_ratio = round((player.kills + player.assists) / max(player.deaths, 1), 2)
-        is_winner = None if match.winner is None else int(player.team == match.winner)
-        row = {
-            'match_idx': match_idx,
-            'replay_name': match.replay_name,
-            'game_mode': match.game_mode,
-            'map': match.map_name,
-            'team_size': match.team_size,
-            'duration_s': match.duration_seconds or '',
-            'winner': match.winner or '',
-            'player_name': player.name,
-            'team': player.team,
-            'is_winner': is_winner,
-            'hero': player.hero_name,
-            'kills': player.kills,
-            'deaths': player.deaths,
-            'assists': player.assists if player.assists is not None else '',
-            'kda_ratio': kda_ratio,
-            'minion_kills': player.minion_kills,
-            'jungle_kills': player.jungle_kills,
-            'gold_spent': player.gold_spent,
-            'gold_earned': player.gold_earned,
-            'items': ' | '.join(player.items) if player.items else '',
-            'item_count': len(player.items),
-        }
-        if player.truth_kills is not None:
-            row['truth_kills'] = player.truth_kills
-            row['kill_match'] = None if player.kills is None else int(player.kills == player.truth_kills)
-        if player.truth_deaths is not None:
-            row['truth_deaths'] = player.truth_deaths
-            row['death_match'] = None if player.deaths is None else int(player.deaths == player.truth_deaths)
-        rows.append(row)
-    return rows
+def export_csv(rows: list[CsvRow], output_path: Path) -> None:
+    write_report_output(ReportInputs(), output_path, serialize_csv(rows, ('match_idx', 'input_id') if not rows else ()))
 
 
-def match_to_summary_row(match: DecodedMatch, match_idx: int = 0) -> Dict:
-    """Convert a decoded match to a single summary row."""
-    left_kills = _complete_sum(p.kills for p in match.left_team)
-    right_kills = _complete_sum(p.kills for p in match.right_team)
-    left_deaths = _complete_sum(p.deaths for p in match.left_team)
-    right_deaths = _complete_sum(p.deaths for p in match.right_team)
-    left_gold = _complete_sum(p.gold_earned for p in match.left_team)
-    right_gold = _complete_sum(p.gold_earned for p in match.right_team)
-
-    obj_counts = {}
-    for evt in match.objective_events:
-        obj_counts[evt.event_type] = obj_counts.get(evt.event_type, 0) + 1
-
-    return {
-        'match_idx': match_idx,
-        'replay_name': match.replay_name,
-        'game_mode': match.game_mode,
-        'map': match.map_name,
-        'team_size': match.team_size,
-        'duration_s': match.duration_seconds or '',
-        'winner': match.winner or '',
-        'left_kills': left_kills,
-        'right_kills': right_kills,
-        'left_deaths': left_deaths,
-        'right_deaths': right_deaths,
-        'left_gold': left_gold,
-        'right_gold': right_gold,
-        'gold_mine_captures': obj_counts.get('GOLD_MINE_CAPTURE', 0),
-        'kraken_deaths': obj_counts.get('KRAKEN_DEATH', 0),
-        'kraken_waves': obj_counts.get('KRAKEN_WAVE', 0),
-        'crystal_death_ts': match.crystal_death_ts or '',
-        'total_frames': match.total_frames,
-    }
+def find_replays(directory: Path) -> list[Path]:
+    return list(discover_replay_files(directory))
 
 
-def export_csv(rows: List[Dict], output_path: Path) -> None:
-    """Export flat rows to CSV."""
-    if not rows:
-        return
-    fieldnames = []
-    seen = set()
-    for row in rows:
-        for key in row.keys():
-            if key not in seen:
-                seen.add(key)
-                fieldnames.append(key)
-    with open(output_path, 'w', encoding='utf-8-sig', newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(rows)
+def decode_single(replay_path: str, truth_path: str | None = None) -> DecodedMatch:
+    decoder = UnifiedDecoder(str(select_replay(replay_path)))
+    return decoder.decode_with_truth(truth_path) if truth_path else decoder.decode()
 
 
-def find_replays(directory: Path) -> List[Path]:
-    """Find all .0.vgr replay files in a directory (recursive, skip macOS ._)."""
-    replays = []
-    for f in sorted(directory.rglob('*.0.vgr')):
-        if f.name.startswith('._'):
-            continue
-        replays.append(f)
-    return replays
-
-
-def decode_single(replay_path: str, truth_path: Optional[str] = None) -> DecodedMatch:
-    """Decode a single replay file."""
-    decoder = UnifiedDecoder(replay_path)
-    if truth_path:
-        return decoder.decode_with_truth(truth_path)
-    return decoder.decode()
-
-
-def decode_batch(
-    directory: str,
-    truth_path: Optional[str] = None,
-    output_dir: Optional[str] = None,
-    csv_only: bool = False,
-) -> List[DecodedMatch]:
-    """Decode all replays in a directory."""
-    dir_path = Path(directory)
-    replays = find_replays(dir_path)
-
-    if not replays:
-        print(f"No .0.vgr files found in {directory}")
-        return []
-
-    print(f"Found {len(replays)} replay files")
-    out = Path(output_dir) if output_dir else dir_path
-    out.mkdir(parents=True, exist_ok=True)
-
-    matches = []
-    all_csv_rows = []
-
-    for i, replay in enumerate(replays):
-        print(f"  [{i+1}/{len(replays)}] {replay.stem}...", end=' ')
+def _batch_inputs(replays: list[Path], truth_path: str | None) -> tuple[ReportInputs, dict[Path, ReplayOutputError]]:
+    readable = []
+    errors = {}
+    for replay in replays:
         try:
+            ReportInputs(replays=(replay,))
+        except ReplayOutputError as error:
+            if error.code != 'input_unreadable':
+                raise
+            errors[replay] = error
+        else:
+            readable.append(replay)
+    files = (Path(truth_path),) if truth_path else ()
+    return ReportInputs(files=files, replays=readable, reserved_replays=tuple(errors)), errors
+
+
+def _decode_batch(directory: str, truth_path: str | None, output_dir: str | None,
+                  csv_only: bool) -> tuple[ExportReport, list[DecodedMatch]]:
+    replays = find_replays(Path(directory))
+    inputs, errors = _batch_inputs(replays, truth_path)
+    out = Path(output_dir) if output_dir else Path(directory)
+    receipt = out / 'export_receipt.json'
+    json_paths = [] if csv_only else [out / 'all_matches.json', *(out / f'match_{i}.json' for i in range(1, len(replays) + 1))]
+    validate_report_outputs(inputs, (*json_paths, out / 'all_matches.csv', out / 'match_summary.csv', receipt))
+    results: list[InputResult] = []
+    matches = []
+    payloads = []
+    rows = []
+    summaries = []
+    outputs = {}
+    for ordinal, replay in enumerate(replays, 1):
+        input_id = replay_input_id(replay, directory)
+        result = {'input_id': input_id, 'replay_file': str(replay), 'match_idx': ordinal,
+                  'status': 'complete', 'error_code': None, 'error': None}
+        try:
+            if replay in errors:
+                raise errors[replay]
+            select_replay(replay)
             match = decode_single(str(replay), truth_path)
-            matches.append(match)
+        except (OSError, ValueError) as error:
+            result.update(status='failed', error_code=getattr(error, 'code', 'decode_failed'), error=str(error))
+            results.append(result)
+            continue
+        results.append(result)
+        matches.append(match)
+        payload = match.to_dict() | {'input_id': input_id, 'match_idx': ordinal}
+        payloads.append(payload)
+        if not csv_only:
+            outputs[out / f'match_{ordinal}.json'] = json.dumps(payload, indent=2, ensure_ascii=False)
+        rows.extend(match_to_csv_rows(match, ordinal, input_id))
+        summaries.append(match_to_summary_row(match, ordinal, input_id))
+    report: ExportReport = {**batch_report(results), 'total_matches': len(matches), 'matches': payloads,
+                            'publication_status': 'complete', 'receipt': str(receipt.absolute())}
+    if not csv_only:
+        outputs[out / 'all_matches.json'] = json.dumps(report, indent=2, ensure_ascii=False)
+    empty_match = DecodedMatch('', '', '', '', 0)
+    outputs[out / 'all_matches.csv'] = serialize_csv(rows, ('match_idx', 'input_id', 'replay_name', 'player_name', 'kills', 'duration_s', 'duration_status'))
+    outputs[out / 'match_summary.csv'] = serialize_csv(summaries, match_to_summary_row(empty_match))
+    out.mkdir(parents=True, exist_ok=True)
+    publish_report_set(inputs, outputs, receipt, batch=batch_report(results))
+    return report, matches
 
-            if not csv_only:
-                json_path = out / f"match_{i+1}.json"
-                export_match_json(match, json_path)
 
-            # Collect CSV rows
-            csv_rows = match_to_csv_rows(match, match_idx=i+1)
-            all_csv_rows.extend(csv_rows)
+def decode_batch_report(directory: str, truth_path: str | None = None,
+                        output_dir: str | None = None, csv_only: bool = False) -> ExportReport:
+    """Return every input outcome only after publishing the current generation."""
+    return _decode_batch(directory, truth_path, output_dir, csv_only)[0]
 
-            n_players = len(match.all_players)
-            print(f"OK ({n_players} players, winner={match.winner})")
 
-        except Exception as e:
-            print(f"ERROR: {e}")
-
-    # Combined JSON
-    if matches and not csv_only:
-        combined = {
-            'total_matches': len(matches),
-            'matches': [m.to_dict() for m in matches],
-        }
-        combined_path = out / 'all_matches.json'
-        with open(combined_path, 'w', encoding='utf-8') as f:
-            json.dump(combined, f, indent=2, ensure_ascii=False)
-        print(f"\nCombined JSON: {combined_path}")
-
-    # Combined CSV
-    if all_csv_rows:
-        csv_path = out / 'all_matches.csv'
-        export_csv(all_csv_rows, csv_path)
-        print(f"Combined CSV:  {csv_path}")
-
-    # Match summary CSV
-    if matches:
-        summary_rows = [match_to_summary_row(m, i+1) for i, m in enumerate(matches)]
-        summary_path = out / 'match_summary.csv'
-        export_csv(summary_rows, summary_path)
-        print(f"Summary CSV:   {summary_path}")
-
-    # Summary
-    if matches:
-        total_players = sum(len(m.all_players) for m in matches)
-        total_kills = _complete_sum(p.kills for m in matches for p in m.all_players)
-        total_deaths = _complete_sum(p.deaths for m in matches for p in m.all_players)
-        print(f"\nSummary: {len(matches)} matches, {total_players} players")
-        print(f"  Total K/D: {total_kills}/{total_deaths}")
-        winners = [m.winner for m in matches if m.winner]
-        left_wins = sum(1 for w in winners if w == 'left')
-        right_wins = sum(1 for w in winners if w == 'right')
-        print(f"  Winners: left={left_wins}, right={right_wins}, unknown={len(matches)-left_wins-right_wins}")
-
+def decode_batch(directory: str, truth_path: str | None = None,
+                 output_dir: str | None = None, csv_only: bool = False) -> list[DecodedMatch]:
+    """Preserve list compatibility without hiding failed inputs."""
+    report, matches = _decode_batch(directory, truth_path, output_dir, csv_only)
+    if report['failed']:
+        raise PartialBatchError(report)
     return matches
 
 
-def resolve_single_output_paths(
-    replay_path: Path,
-    output: Optional[str] = None,
-    csv_only: bool = False,
-) -> Tuple[Optional[Path], Path]:
-    """Resolve output paths for single-replay export."""
-    if output:
-        out = Path(output)
-        if out.is_dir():
-            base = out / f"{replay_path.stem}_decoded"
-            return (None if csv_only else base.with_suffix('.json'), base.with_suffix('.csv'))
-        if csv_only:
-            csv_path = out if out.suffix else out.with_suffix('.csv')
-            return (None, csv_path)
-        return (out, out.with_suffix('.csv'))
-
-    base = replay_path.parent / f"{replay_path.stem}_decoded"
-    return (None if csv_only else base.with_suffix('.json'), base.with_suffix('.csv'))
+def resolve_single_output_paths(replay_path: Path, output: str | None = None,
+                                csv_only: bool = False) -> tuple[Path | None, Path]:
+    out = Path(output) if output else replay_path.parent
+    if out.is_dir():
+        out = out / f'{replay_path.stem}_decoded'
+        return (None if csv_only else out.with_suffix('.json'), out.with_suffix('.csv'))
+    if csv_only:
+        return None, out if out.suffix else out.with_suffix('.csv')
+    if out.suffix and out.suffix.lower() not in ('.json', '.csv'):
+        raise ReplayOutputError(out, 'Use .json, .csv, a suffixless name, or an existing directory', 'output_ambiguous')
+    return out.with_suffix('.json'), out.with_suffix('.csv')
 
 
-def export_single(
-    replay_path: Path,
-    match: DecodedMatch,
-    output: Optional[str] = None,
-    csv_only: bool = False,
-) -> Tuple[Optional[Path], Path]:
-    """Export a single decoded match and return created paths."""
+def export_single(replay_path: Path, match: DecodedMatch, output: str | None = None,
+                  csv_only: bool = False, *, truth_path: str | None = None,
+                  inputs: ReportInputs | None = None) -> tuple[Path | None, Path]:
+    replay_path = select_replay(replay_path)
+    if inputs is None:
+        files = tuple(Path(source) for source in (truth_path, match.truth_source) if source)
+        inputs = ReportInputs(replays=(replay_path,), files=files)
     json_path, csv_path = resolve_single_output_paths(replay_path, output, csv_only)
+    receipt = csv_path.with_name(csv_path.name + '.receipt.json')
+    outputs = {csv_path: serialize_csv(match_to_csv_rows(match, input_id=replay_path.name), ('match_idx', 'input_id', 'player_name'))}
     if json_path is not None:
-        export_match_json(match, json_path)
-    export_csv(match_to_csv_rows(match), csv_path)
+        outputs[json_path] = json.dumps(match.to_dict() | {'input_id': replay_path.name, 'match_idx': 0}, indent=2, ensure_ascii=False)
+    result: InputResult = {'input_id': replay_path.name, 'replay_file': str(replay_path),
+                           'status': 'complete', 'error_code': None, 'error': None}
+    publish_report_set(inputs, outputs, receipt, batch=batch_report([result]))
     return json_path, csv_path
 
 
-def main(argv: Optional[List[str]] = None) -> int:
-    import argparse
-
-    parser = argparse.ArgumentParser(
-        description='Export decoded VGR replays to JSON/CSV'
-    )
-    parser.add_argument(
-        'path',
-        help='Path to replay file (.0.vgr) or directory (with --batch)'
-    )
-    parser.add_argument(
-        '--batch',
-        action='store_true',
-        help='Batch mode: decode all replays in directory'
-    )
-    parser.add_argument(
-        '--truth',
-        help='Path to tournament_truth.json for comparison'
-    )
-    parser.add_argument(
-        '-o', '--output',
-        help='Output directory (default: same as input)'
-    )
-    parser.add_argument(
-        '--csv-only',
-        action='store_true',
-        help='Only output CSV (skip per-match JSON files)'
-    )
-
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description='Export decoded VGR replays to JSON/CSV')
+    parser.add_argument('path', help='Replay .0.vgr file or batch directory')
+    parser.add_argument('--batch', action='store_true')
+    parser.add_argument('--truth')
+    parser.add_argument('-o', '--output')
+    parser.add_argument('--csv-only', action='store_true')
     args = parser.parse_args(argv)
     path = Path(args.path)
-
-    if args.batch or path.is_dir():
-        decode_batch(str(path), args.truth, args.output, csv_only=args.csv_only)
-    else:
-        match = decode_single(str(path), args.truth)
-        json_path, csv_path = export_single(
-            path,
-            match,
-            output=args.output,
-            csv_only=args.csv_only,
-        )
-        if json_path is not None:
-            print(f"Exported: {json_path}")
-        print(f"CSV:      {csv_path}")
+    try:
+        if args.batch or path.is_dir():
+            report = decode_batch_report(str(path), args.truth, args.output, args.csv_only)
+            print(json.dumps({key: value for key, value in report.items() if key != 'matches'}))
+            return 1 if report['failed'] else 0
+        replay = select_replay(path)
+        inputs = ReportInputs(replays=(replay,), files=(Path(args.truth),) if args.truth else ())
+        json_path, csv_path = resolve_single_output_paths(replay, args.output, args.csv_only)
+        destinations = (csv_path, csv_path.with_name(csv_path.name + '.receipt.json'))
+        validate_report_outputs(inputs, destinations + ((json_path,) if json_path else ()))
+        match = decode_single(str(replay), args.truth)
+        export_single(replay, match, args.output, args.csv_only, truth_path=args.truth, inputs=inputs)
+        print(f'Exported: {csv_path}')
+    except (OSError, ValueError, TypeError) as error:
+        print(f'export-matches: {error}', file=sys.stderr)
+        return 2
     return 0
 
 

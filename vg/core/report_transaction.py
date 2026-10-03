@@ -1,5 +1,6 @@
 """Stage report sets, retain rollback data and publish a final receipt last."""
 
+from vg.core.batch_result import BatchReport
 from collections.abc import Mapping
 import json
 import os
@@ -37,7 +38,7 @@ def _receipt_payload(data: ReportReceipt) -> str:
     return json.dumps(data, ensure_ascii=False, sort_keys=True, indent=2) + '\n'
 
 
-def publish_report_set(inputs: ReportInputs, outputs: Mapping[Path, str | bytes], receipt: Path) -> ReportReceipt:
+def publish_report_set(inputs: ReportInputs, outputs: Mapping[Path, str | bytes], receipt: Path, *, batch: BatchReport | None = None) -> ReportReceipt:
     """Handled failures restore prior bytes or leave a pending, recoverable receipt."""
     receipt = receipt.absolute()
     validate_report_outputs(inputs, (*outputs, receipt))
@@ -57,6 +58,8 @@ def publish_report_set(inputs: ReportInputs, outputs: Mapping[Path, str | bytes]
         'prior_receipt_identity': digest(receipt), 'entries': entries,
         'receipt_backup': None, 'protected_inputs': [str(path.resolve()) for path in inputs.sources()],
     }
+    if batch is not None:
+        data['batch'] = batch
     pending = False
     try:
         for target, payload in outputs.items():

@@ -4,7 +4,9 @@ import json
 import os
 from pathlib import Path
 import re
-from typing import TypedDict
+from typing import NotRequired, TypedDict
+
+from vg.core.batch_result import BatchReport
 
 from vg.core.replay_output import ReplayOutputError, file_identity, stage_payload, validate_output_sources
 
@@ -19,6 +21,7 @@ class ReportEntry(TypedDict):
 
 
 class ReportReceipt(TypedDict):
+    batch: NotRequired[BatchReport]
     schema: str
     transaction_id: str
     status: str

@@ -708,6 +708,7 @@ class DecodedMatch:
     final_stats_reason: str = ""
     recording_evidence: Optional[Dict] = None
     duration_provenance: DurationProvenance = field(default_factory=_unknown_duration_provenance)
+    truth_source: Optional[str] = None
 
     @property
     def all_players(self) -> List[DecodedPlayer]:
@@ -960,6 +961,7 @@ class UnifiedDecoder:
         replay, inputs = prepare_legacy_inputs(str(self.replay_path), truth_path)
         match = self.decode()
         truth = load_truth_data(truth_path, match.replay_name, replay_file=str(replay.absolute()))
+        match.truth_source = str(Path(truth_path).absolute())
 
         # Apply truth duration/winner
         truth_info = truth.get("match_info", {})

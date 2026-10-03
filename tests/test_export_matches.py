@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
+from tests.test_product_duration_provenance import replay_bytes
 from vg.core.export_matches import decode_batch, export_csv, export_single
 from vg.core.unified_decoder import DecodedMatch, DecodedPlayer
 
@@ -47,7 +48,7 @@ class TestExportMatches(unittest.TestCase):
 
         with tempfile.TemporaryDirectory() as temp_dir:
             replay_path = Path(temp_dir) / "replay.0.vgr"
-            replay_path.touch()
+            replay_path.write_bytes(replay_bytes())
 
             json_path, csv_path = export_single(
                 replay_path,
@@ -66,7 +67,7 @@ class TestExportMatches(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp_dir:
             replay_dir = Path(temp_dir) / "replays"
             replay_dir.mkdir()
-            (replay_dir / "sample.0.vgr").touch()
+            (replay_dir / "sample.0.vgr").write_bytes(replay_bytes())
             output_dir = Path(temp_dir) / "out"
 
             with patch("vg.core.export_matches.decode_single", return_value=match):
