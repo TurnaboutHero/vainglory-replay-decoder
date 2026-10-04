@@ -144,6 +144,38 @@ class AccuracyTests(unittest.TestCase):
             actual.update(patch)
             self.assertFalse(self.compare(ref, actual, sources)['ok'])
 
+    def test_record_time_requires_exact_requested_clock_and_boundary(self):
+        ref, actual, sources = fixture()
+        ref.update(clock_kind='record_time', record_time=12, observed_game_time=10)
+        del ref['game_time']
+        actual.update(query_clock='record_time', requested_record_time=12)
+        self.assertTrue(self.compare(ref, actual, sources)['ok'])
+        for patch in ({'query_clock': 'game_time'}, {'query_clock': None}, {'requested_record_time': 10},
+                      {'record_boundary': {'section': 1, 'record_offset': 21}}):
+            with self.subTest(patch=patch):
+                self.assertFalse(self.compare(ref, dict(actual, **patch), sources)['ok'])
+        for time in (None, True, -1, float('nan'), float('inf')):
+            with self.subTest(time=time):
+                changed = dict(ref, record_time=time)
+                self.assertFalse(self.compare(changed, dict(actual, requested_record_time=time), sources)['ok'])
+
+    def test_record_time_decoder_invokes_public_cli_and_rejects_legacy_surface(self):
+        from tests.test_player_state_service import recording
+        with tempfile.TemporaryDirectory() as tmp:
+            replay = Path(tmp) / 'match.0.vgr'
+            replay.write_bytes(recording())
+            source = {'source_files': [{'section': 0, 'path': str(replay)}]}
+            observation = {'clock_kind': 'record_time', 'record_time': 0, 'observed_game_time': 100}
+            actual, receipt = decode(source, observation, Path(tmp), 'default-cli', None)
+            self.assertEqual(receipt['returncode'], 0, receipt['stderr'])
+            self.assertIn('--at-record-time', receipt['command'])
+            self.assertNotIn('--at-game-time', receipt['command'])
+            self.assertEqual(actual['requested_record_time'], 0)
+            self.assertEqual(actual['query_clock'], 'record_time')
+            legacy, receipt = decode(source, observation, Path(tmp), 'legacy-cli', None)
+            self.assertEqual(legacy['support_status'], 'unsupported_query_clock')
+            self.assertFalse(receipt['invoked'])
+
     def test_display_gold_not_native_bits(self):
         ref, actual, sources = fixture()
         ref['players'][0]['fields']['gold_balance']['value'] = 1.0

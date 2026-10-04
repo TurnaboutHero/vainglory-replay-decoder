@@ -99,7 +99,7 @@ def verify_alignment(capture, native, artifacts, base):
     if alignment.get('kind') == 'unverified':
         return None
     require(native['sample'] is not None, 'boundary_unproved', 'Inventory event traces are not whole-state boundaries')
-    require(alignment.get('kind') in {'exact_record_boundary', 'recorded_end_paused', 'recorded_end_native'},
+    require(alignment.get('kind') in {'exact_record_boundary', 'recorded_end_paused', 'recorded_end_native', 'stable_future_pending_buffer'},
             'boundary_unproved', 'Unsupported native boundary proof')
     proof_ref = artifacts.get(alignment.get('artifact_id'))
     require(proof_ref is not None and proof_ref.get('role') == 'native_boundary',
@@ -110,7 +110,11 @@ def verify_alignment(capture, native, artifacts, base):
         from .alignment import reader_boundary
         require(proof == reader_boundary(capture, native, artifacts, base),
                 'boundary_unproved', 'Native reader boundary proof changed')
+        require(alignment['kind'] == ('recorded_end_native' if proof['native_recorded_end'] else 'stable_future_pending_buffer'),
+                'boundary_unproved', 'Capture alignment kind disagrees with native reader boundary')
         return proof
+    require(alignment['kind'] != 'stable_future_pending_buffer', 'boundary_unproved',
+            'Stable reader boundaries require independently recomputed native reader proof')
     boundary_fields = ('pid', 'create_time', 'sample_sequence', 'loaded_source_files', 'record_boundary',
                        'phase', 'native_paused', 'native_recorded_end', 'game_clock_bits')
     boundary_events = [r['payload'] for r in native['rows']
@@ -278,7 +282,8 @@ def counter(value):
     return int(value)
 
 
-def export_reference(capture_dir, manifest_path, output_dir):
+def export_reference(capture_dir, manifest_path, output_dir, *, query_clock='game_time'):
+    require(query_clock in {'game_time', 'record_time'}, 'unsupported_query_clock', 'Unsupported reference query clock')
     base, manifest_path, output = Path(capture_dir).resolve(), Path(manifest_path).resolve(), Path(output_dir).resolve()
     result = verify_capture(base, require_restored=True)
     require(result['ok'], 'capture_invalid', json.dumps(result['errors']))
@@ -329,11 +334,29 @@ def export_reference(capture_dir, manifest_path, output_dir):
                         'native_actor_id': row['native_actor_id'],
                         'actor_link': {'status': 'observed', 'source_refs': [source_id]}, 'fields': fields})
     eof = capture['alignment']['kind'] in {'recorded_end_paused', 'recorded_end_native'}
-    observation = {'observation_id': capture['capture_id'], 'clock_kind': 'recorded_end' if eof else 'game_time',
+    require(query_clock != 'record_time' or capture['alignment']['kind'] == 'stable_future_pending_buffer',
+            'boundary_unproved', 'Record-time export requires verified stable native pending-buffer alignment')
+    observation = {'observation_id': capture['capture_id'], 'clock_kind': 'recorded_end' if eof else query_clock,
                    'record_boundary': result['record_boundary'], 'source_refs': [source_id], 'players': players,
                    'replay_scope': capture.get('replay_scope', recording.get('replay_scope'))}
     if not eof:
-        observation['game_time'] = native_float(sample['game_clock'])['value']
+        from vg.core.native_query import GameTime, RecordTime, select_native_query
+        game_clock = native_float(sample['game_clock'])
+        if query_clock == 'record_time':
+            observation['record_time'] = native_float(sample['replay_reader_before']['playback_time'])['value']
+            observation['observed_game_time'] = game_clock['value']
+            observation['observed_game_time_bits'] = game_clock['float32_bits']
+            cutoff = RecordTime(observation['record_time'])
+        else:
+            observation['game_time'] = game_clock['value']
+            cutoff = GameTime(observation['game_time'])
+        query = select_native_query([(r['section'], ref_path(base, r).read_bytes()) for r in capture['source_files']],
+                                    cutoff)
+        boundary = result['record_boundary']
+        require(query.valid and query.record_boundary == (boundary['section'], boundary['record_offset']),
+                f'unsupported_{query_clock}_boundary',
+                f'Native {query_clock} clock does not select the proven applied boundary: {query.status}; '
+                f'query={query.record_boundary}, native={boundary}')
     require(not any(r.get('observation_id') == observation['observation_id'] for r in recording.get('observations', [])),
             'duplicate_observation', 'Observation ID already exists')
     recording.setdefault('observations', []).append(observation)

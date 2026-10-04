@@ -19,6 +19,7 @@ Run from the repository root with Python 3.10 or newer:
 ```sh
 python3 -m vg.decoder_v2.decode_match /path/to/match.0.vgr
 python3 -m vg.decoder_v2.decode_match /path/to/match.0.vgr --at-game-time 900
+python3 -m vg.decoder_v2.decode_match /path/to/match.0.vgr --at-record-time 894.6184692382812
 python3 -m vg.decoder_v2.decode_match /path/to/match.0.vgr --format safe-json
 ```
 
@@ -29,6 +30,14 @@ selection is rejected; EOF applies the actual recording order. `--format
 safe-json` preserves the previous v2 final/capture output. Python callers use
 `vg.decoder_v2.decode_player_state`; the existing `decode_match` API retains its
 older contract.
+
+`--at-record-time` selects seconds in the recorded replay stream and requires
+`state-json`. It is mutually exclusive with `--at-game-time`; Python callers use
+`at_record_time`. GameTime is a projection from recorded clock anchors. A native
+game clock between anchors can differ because the original client advances it
+with runtime ticks. Exact native comparisons must therefore verify the selected
+section and record offset independently, as described in the
+[midpoint follow-up](PLAYER_STATE_MIDPOINT_2026-10-04.md).
 
 Check `support_status`, per-field provenance, `replay_scope`, and the section and
 record offset. Names are associated with recording-scoped 32-bit native actor
@@ -140,7 +149,7 @@ the 56-recording corpus. See the exact [acceptance scope](TASK8_ACCEPTANCE_SCOPE
 
 ## Validation and restoration
 
-The final implementation passed **832 tests on macOS/Python 3.14.7** and **832
+The initial EOF implementation passed **832 tests on macOS/Python 3.14.7** and **832
 tests on Windows/Python 3.13.2**, with no errors, failures or skipped tests.
 Both hosts used identical hashes for the 607 Python/core-definition source files.
 The Windows bundle's 1,055 files also matched the exported snapshot and remained
@@ -150,11 +159,13 @@ installed; no LSP success is claimed.
 
 Review findings about null inventory export, unknown-team win statistics,
 nullable hero rendering, repeated native lifetimes and legacy comparison fields
-were corrected and verified. The final audit was performed by the root executor:
-parallel final reviewers could not run because of account usage limits. Their
-earlier findings and the root's closure evidence are retained; there is no claim
-of a new independent reviewer approval. Nonblocking test-helper and module-size
-maintenance observations remain outside this change.
+were corrected and verified. The initial audit was performed by the root executor
+when reviewer account limits prevented another independent pass. The subsequent
+independent gate approved commit `d4faf76d267f3d5643f23b9afe5cc147f006116b` for
+the documented EOF scope, independently rechecking 113 focused tests and 154/154
+fresh comparison groups. Midpoint support and its additional verification are
+reported separately in the linked follow-up. Nonblocking test-helper and
+module-size maintenance observations remain outside this change.
 
 All four owned runtime sessions ended. The final readback verified **274 original
 temporary-slot files** across 12 trials, including byte hashes and timestamps.

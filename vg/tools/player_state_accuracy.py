@@ -252,17 +252,21 @@ def compare_observation(observation, actual, *, fields=FIELDS, reference_sources
     sources = {s['source_id']: s for s in reference_sources}
     def issue(code, **details):
         issues.append({'code': code, **details})
-    if observation.get('clock_kind') == 'game_time':
-        time = observation.get('game_time')
-        if isinstance(time, bool) or not isinstance(time, (int, float)) or not math.isfinite(time):
-            issue('incompatible_clock', reason='finite observed GameTime required')
-    if observation.get('clock_kind') not in ('recorded_end', 'game_time'):
-        issue('incompatible_clock', expected=observation.get('clock_kind'))
+    clock = observation.get('clock_kind')
+    if clock in ('game_time', 'record_time'):
+        time = observation.get(clock)
+        if isinstance(time, bool) or not isinstance(time, (int, float)) or not math.isfinite(time) or time < 0:
+            issue('incompatible_clock', reason=f'finite nonnegative observed {clock} required')
+    if clock not in ('recorded_end', 'game_time', 'record_time'):
+        issue('incompatible_clock', expected=clock)
     else:
-        scope = 'recorded_end' if observation['clock_kind'] == 'recorded_end' else 'capture'
-        if actual.get('scope') != scope or (scope == 'capture' and actual.get('requested_game_time') != observation.get('game_time')):
-            issue('incompatible_clock', expected={'scope': scope, 'game_time': observation.get('game_time')},
-                  actual={'scope': actual.get('scope'), 'game_time': actual.get('requested_game_time')})
+        scope = 'recorded_end' if clock == 'recorded_end' else 'capture'
+        if (actual.get('scope') != scope
+                or (scope == 'capture' and actual.get('requested_' + clock) != observation.get(clock))
+                or (clock == 'record_time' and actual.get('query_clock') != clock)):
+            issue('incompatible_clock', expected={'scope': scope, 'clock': clock, 'time': observation.get(clock)},
+                  actual={'scope': actual.get('scope'), 'clock': actual.get('query_clock'),
+                          'time': actual.get('requested_' + clock)})
     boundary = observation.get('record_boundary')
     if not isinstance(boundary, dict) or any(type(boundary.get(k)) is not int or boundary[k] < 0 for k in ('section', 'record_offset')):
         issue('boundary_unobserved')
@@ -337,7 +341,7 @@ def compare_observation(observation, actual, *, fields=FIELDS, reference_sources
             if not equal:
                 issue('field_mismatch', actor=actor, field=field, expected=expected, actual=observed)
     return {'ok': not issues, 'observation_id': observation.get('observation_id'),
-            'query': {k: observation.get(k) for k in ('clock_kind', 'game_time', 'record_boundary')},
+            'query': {k: observation.get(k) for k in ('clock_kind', 'game_time', 'record_time', 'record_boundary')},
             'required': len(reference) * len(fields), 'matched': sum(c['matched'] for c in comparisons),
             'required_missing': sorted({f for i in issues for f in i.get('required_missing', [])}),
             'issues': issues, 'comparisons': comparisons}
@@ -385,9 +389,11 @@ def decode(recording, observation, base, surface, reader):
     if reader:
         from vg.decoder_v2.completeness import load_frames
         from vg.core.native_roster import read_native_roster
-        from vg.core.native_stats import GameTime, read_native_stats
+        from vg.core.native_query import GameTime, RecordTime
+        from vg.core.native_stats import read_native_stats
         frames = load_frames(str(replay))
-        cutoff = GameTime(observation['game_time']) if observation.get('clock_kind') == 'game_time' else None
+        cutoff = (GameTime(observation['game_time']) if observation.get('clock_kind') == 'game_time' else
+                  RecordTime(observation['record_time']) if observation.get('clock_kind') == 'record_time' else None)
         roster = read_native_roster(frames, cutoff=cutoff)
         if reader == 'roster':
             result = roster
@@ -400,12 +406,20 @@ def decode(recording, observation, base, surface, reader):
         for player in raw['players']:
             player['native_actor_id'] = player.pop('entity_id')
         # Readers must expose their real applied boundary; never copy the expected boundary.
-        raw.update(scope='capture' if cutoff else 'recorded_end', requested_game_time=cutoff.seconds if cutoff else None,
+        raw.update(scope='capture' if cutoff else 'recorded_end', query_clock=observation['clock_kind'],
+                   requested_game_time=cutoff.seconds if isinstance(cutoff, GameTime) else None,
+                   requested_record_time=cutoff.seconds if isinstance(cutoff, RecordTime) else None,
                    support_status='supported' if result.valid else result.status)
         return raw, {'reader': reader, 'replay': str(replay)}
+    if observation.get('clock_kind') == 'record_time' and surface == 'legacy-cli':
+        return {'support_status': 'unsupported_query_clock', 'players': []}, {
+            'surface': surface, 'query_clock': 'record_time', 'invoked': False,
+            'reason': 'Legacy CLI does not expose replay-record time queries'}
     command = [sys.executable, '-B', '-m', 'vg.core.unified_decoder' if surface == 'legacy-cli' else 'vg.decoder_v2.decode_match', str(replay)]
     if observation.get('clock_kind') == 'game_time':
         command += ['--at-game-time', str(observation['game_time'])]
+    elif observation.get('clock_kind') == 'record_time':
+        command += ['--at-record-time', str(observation['record_time'])]
     run = subprocess.run(command, capture_output=True, text=True, timeout=180)
     receipt = {'command': command, 'returncode': run.returncode, 'stdout': run.stdout, 'stderr': run.stderr}
     if run.returncode:

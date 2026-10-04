@@ -186,10 +186,15 @@ def main(argv: Optional[List[str]] = None) -> int:
         help="state-json (default) reports native recorded state; safe-json retains conservative final decisions",
     )
     parser.add_argument("-o", "--output", help="Optional output JSON path")
-    parser.add_argument("--at-game-time", type=float, help="Capture all supported fields at game-clock seconds; does not assert match completion.")
+    time_query = parser.add_mutually_exclusive_group()
+    time_query.add_argument("--at-game-time", type=float, help="Capture all supported fields at game-clock seconds; does not assert match completion.")
+    time_query.add_argument("--at-record-time", type=float, help="Capture native state through replay-record seconds; distinct from game time and supported only by state-json.")
     args = parser.parse_args(argv)
-    if args.at_game_time is not None and (not math.isfinite(args.at_game_time) or args.at_game_time < 0):
-        parser.error("--at-game-time must be finite and non-negative")
+    for name, value in (("--at-game-time", args.at_game_time), ("--at-record-time", args.at_record_time)):
+        if value is not None and (not math.isfinite(value) or value < 0):
+            parser.error(f"{name} must be finite and non-negative")
+    if args.at_record_time is not None and args.format != "state-json":
+        parser.error("--at-record-time requires --format state-json")
     try:
         output = Path(args.output) if args.output else None
         if output is not None and not Path(args.replay_file).is_dir():
@@ -207,7 +212,8 @@ def main(argv: Optional[List[str]] = None) -> int:
         if args.format == "debug-json":
             payload_obj = decode_match_debug(str(replay), at_game_time=args.at_game_time)
         elif args.format == "state-json":
-            payload_obj = decode_player_state(str(replay), at_game_time=args.at_game_time).to_dict()
+            payload_obj = decode_player_state(str(replay), at_game_time=args.at_game_time,
+                                               at_record_time=args.at_record_time).to_dict()
         else:
             payload_obj = decode_match(str(replay), at_game_time=args.at_game_time).to_dict()
         if replay_sections(replay) != sections:

@@ -1,0 +1,292 @@
+{
+  "schema_version": "player_state.accuracy_followup.v1",
+  "date": "2026-10-04",
+  "scope": "One additional native C16 interior boundary; prior EOF results remain separate.",
+  "baseline_commit": "d4faf76d267f3d5643f23b9afe5cc147f006116b",
+  "capture": {
+    "recording": "C16",
+    "partition": "development",
+    "players": 10,
+    "complete_stable_samples": 20,
+    "source_sections": 171,
+    "trace": {
+      "path": "work/accuracy-followup-20261004/runtime-f1-complete/c16-midpoint-state.jsonl",
+      "sha256": "a126eaadcce4cce3759752dd09561df60aa14c44db10bc73f19f54fe2fb28b54",
+      "bytes": 347485
+    },
+    "query_clock": "record_time",
+    "query_time": 894.6184692382812,
+    "observed_game_time": 866.5531616210938,
+    "record_boundary": {
+      "section": 89,
+      "record_offset": 79842
+    },
+    "pending_record_boundary": {
+      "section": 89,
+      "record_offset": 79866
+    },
+    "native_reader_mode": 1,
+    "native_paused": false,
+    "native_recorded_end": false
+  },
+  "accuracy": {
+    "required_groups_per_surface": 70,
+    "surfaces": [
+      {
+        "surface": "public-api",
+        "ok": true,
+        "required": 70,
+        "matched": 70
+      },
+      {
+        "surface": "default-cli",
+        "ok": true,
+        "required": 70,
+        "matched": 70
+      }
+    ],
+    "matched": 140,
+    "required": 140,
+    "independent_groups": 70,
+    "additional_distinct_recordings": 0,
+    "additional_distinct_players": 0
+  },
+  "registry_audit": {
+    "ok": true,
+    "counts": {
+      "corpus": 56,
+      "tournament": 109,
+      "item_count": 60
+    }
+  },
+  "root_public_qa": [
+    {
+      "artifact": {
+        "path": ".omo/evidence/accuracy-followup-20261004/root-cli-midpoint.json",
+        "sha256": "93b6d9f3283e89c045ef6b2500f1dbbcd3917993650cc6afbb9d0fb0084f6dd7",
+        "bytes": 4003696
+      },
+      "comparison_ok": true,
+      "exit_code": 0,
+      "denominator": {
+        "recordings": 1,
+        "observations": 1,
+        "required_player_fields": 70,
+        "matched_player_fields": 70
+      },
+      "expected_outcome_observed": true
+    },
+    {
+      "artifact": {
+        "path": ".omo/evidence/accuracy-followup-20261004/root-cli-gold-bit-negative.json",
+        "sha256": "4f96aec7fd0339dc711d071a213632140fe529fcd0e3b96f3dd33daf1bafb763",
+        "bytes": 4003897
+      },
+      "comparison_ok": false,
+      "exit_code": 1,
+      "denominator": {
+        "recordings": 1,
+        "observations": 1,
+        "required_player_fields": 70,
+        "matched_player_fields": 69
+      },
+      "expected_outcome_observed": true
+    },
+    {
+      "artifact": {
+        "path": ".omo/evidence/accuracy-followup-20261004/root-cli-c48-eof.json",
+        "sha256": "d49fbeb99a9118c06b9203dea6b91354f33228802cea52e38a2f3fe2f20f75a4",
+        "bytes": 4398084
+      },
+      "comparison_ok": true,
+      "exit_code": 0,
+      "denominator": {
+        "recordings": 1,
+        "observations": 1,
+        "required_player_fields": 42,
+        "matched_player_fields": 42
+      },
+      "expected_outcome_observed": true
+    }
+  ],
+  "root_api_and_guard_qa": {
+    "ok": true,
+    "rows": 4,
+    "inputs_unchanged": true,
+    "artifact": {
+      "path": ".omo/evidence/accuracy-followup-20261004/root-qa/report.json",
+      "sha256": "780679be8e3eb9c3f8bc876d2fb21523de104f4d92eb6b4de44d8221456bf34e",
+      "bytes": 43127
+    }
+  },
+  "platforms": [
+    {
+      "platform": "macOS",
+      "python": "3.14.7 (main, Sep 29 2026, 14:50:11) [Clang 22.1.3 ]",
+      "tests": 852,
+      "exit_code": 0,
+      "failures": 0,
+      "skips": 0,
+      "source_unchanged": true,
+      "log": {
+        "path": ".omo/evidence/accuracy-followup-20261004/platform/mac-unittest.txt",
+        "sha256": "c7e61875dd8e1a16bf956f17d32bbdfb29b9b306ffe37f8ef28e666fc82986ad",
+        "bytes": 330718
+      }
+    },
+    {
+      "platform": "Windows",
+      "python": "3.13.2 (tags/v3.13.2:4f8bb39, Feb  4 2025, 15:23:48) [MSC v.1942 64 bit (AMD64)]",
+      "tests": 852,
+      "exit_code": 0,
+      "failures": 0,
+      "skips": 0,
+      "source_unchanged": true,
+      "log": {
+        "path": ".omo/evidence/accuracy-followup-20261004/platform/windows-followup-unittest.txt",
+        "sha256": "1fc0bde9b5cd89289b2c250d8d3d30705de86a570b9fcc214a7823c516689f89",
+        "bytes": 296803
+      }
+    }
+  ],
+  "source_identity": {
+    "files": 607,
+    "python_files_compiled": 605,
+    "both_hosts_match_current": true,
+    "digest_algorithm": "SHA256 of sorted compact JSON path-to-SHA256 mapping",
+    "sha256": "a3ae58ecd64dd437d9296c44f66dc14db06b16efb14df24b1f36a7c0cb31be85"
+  },
+  "restoration": {
+    "files": 13,
+    "hashes_and_timestamps_verified": true,
+    "owned_processes_and_task_absent": true,
+    "artifact": {
+      "path": "work/accuracy-followup-20261004/runtime-f1-complete/restoration-readback.json",
+      "sha256": "f72ed241a9437326df748c6916fb9170b4c1244eee177b694f31e60073d06bce",
+      "bytes": 10808
+    }
+  },
+  "limitations": [
+    "Native GameTime selects 89:78602 instead of proven 89:79842; default export rejects unsupported_game_time_boundary without writing.",
+    "Legacy CLI has no record-time query; its explicit unsupported result is not accuracy certification.",
+    "Record-time export rejects any query/boundary mismatch, including partial equal-timestamp groups.",
+    "Nine strict per-opcode runtime controls remain pending; this observation does not satisfy their causal/variant requirements.",
+    "Observed pinned-build boundaries do not establish universal replay compatibility or match-final scores."
+  ],
+  "review": {
+    "baseline_eof_gate": "APPROVE",
+    "final_gate_ledger": ".omo/evidence/accuracy-followup-20261004/ledger.md"
+  },
+  "artifacts": [
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/timed-alignment/integration-record-time-v2/integration-result.json",
+      "sha256": "c7681f7108bfa0594f1f1b4ef964b02961f8c0e5ee704e7354b145e4a732f232",
+      "bytes": 3409
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/timed-alignment/integration-record-time-v2/native-truth.json",
+      "sha256": "11a3e0dc7d8899b7ae7beb7ea6f72038a92b169e2d2d29c2e40cbe6e946f1cfb",
+      "bytes": 143724
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/timed-alignment/integration-record-time-v2/native-truth.freeze.json",
+      "sha256": "734dc25e270af57fe84ae026c4133441dc2c4967e6b61dc400c327e395f58d0a",
+      "bytes": 299
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/timed-alignment/integration-record-time-v2/native-assets.json",
+      "sha256": "2958560a42892715053cda68f15a3f3335d4d7ca01ce607fb41399b09539c765",
+      "bytes": 38039
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/timed-alignment/integration-record-time-v2/native-assets.freeze.json",
+      "sha256": "3d91f6d2437db84ffc730a56382185c7230f66c067bde143b64aa2e27c7746d4",
+      "bytes": 299
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/timed-alignment/integration-record-time-v2/reference/manifest.json",
+      "sha256": "cbebd98da297a998651d97ab09431e4f7e32b40fa453235aa42111823105ce8c",
+      "bytes": 4324439
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/timed-alignment/integration-record-time-v2/reference/freeze.json",
+      "sha256": "cae422826688a01218a1ce15ef76f6e0c2ba8780b078feecc8b964dadc84e3ad",
+      "bytes": 332
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/timed-alignment/integration-record-time-v2/reference-cli-audit.json",
+      "sha256": "f968cf8560733b4ebddefc97ae74936149231737f7bfc04d836a736eacd4ce18",
+      "bytes": 3245901
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/timed-alignment/integration-record-time-v2/restoration.json",
+      "sha256": "431b924fdc159271bb231305297e05eae3332615762cec5f714a125d5fe48a68",
+      "bytes": 146458
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/timed-alignment/integration-record-time-v2/aligned/verification.json",
+      "sha256": "da71268cea81677e3b261a8e8b47d2f69b660f65a63ae533e925a1d57adc05f5",
+      "bytes": 146916
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/timed-alignment/integration-record-time-v2/aligned-alignment/boundary.json",
+      "sha256": "0352bd888cded3bc3eec98c97aa4015d205161f3c255e7825b8315b04736811d",
+      "bytes": 21318
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/timed-alignment/integration-record-time-v2/public-api.json",
+      "sha256": "6a7be9c54e28de0b6bf459d4773de7e42e7595dccbfb4bc4e5b693527a016fc6",
+      "bytes": 738926
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/timed-alignment/integration-record-time-v2/default-cli.json",
+      "sha256": "bbb91245bf7c1ecd33a0f8a7f544e14dc746d705c322dba7f44023b892546c61",
+      "bytes": 1440711
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/timed-alignment/integration-record-time-v2/legacy-cli-unsupported.json",
+      "sha256": "c2fda3bf195c020f2091fe75bbb2bf8dd72681be2eeb0742e79d90dd68d2fc1c",
+      "bytes": 298
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/root-qa/report.json",
+      "sha256": "780679be8e3eb9c3f8bc876d2fb21523de104f4d92eb6b4de44d8221456bf34e",
+      "bytes": 43127
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/root-qa/game-time-rejection.json",
+      "sha256": "d155edbc1101ac58cf81b54033c0b4367cb05f91f3b2a17dac2330ca674c1e91",
+      "bytes": 233
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/root-qa/clock-mix.json",
+      "sha256": "eafb5ea7d8c65b1f64ff7c97815ca15229979d3ce0b081d159a02132fe72fac5",
+      "bytes": 42165
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/platform/mac-verification.json",
+      "sha256": "4f081df7224fb01779f1602fcee83c26e501a350cea8c51794adc7afe22591a1",
+      "bytes": 138229
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/platform/windows-followup-verification.json",
+      "sha256": "d0fc77ea0a4a6a53f84d7d2de9d89b211ee5e5e2089a441adaa03be481a5d04c",
+      "bytes": 256798
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/timed-alignment/record-time-tests.log",
+      "sha256": "49e85ccd91a1a8845b186107b9056eabf07563d80715a8ca7f27cae2b6d1ddfe",
+      "bytes": 17350
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/remaining-controls.md",
+      "sha256": "0b003b34bba4ebb3a6f32b30c61ed3c3e037787acc7b98988f262cc5dbde3a39",
+      "bytes": 4076
+    },
+    {
+      "path": ".omo/evidence/accuracy-followup-20261004/gate-d4faf76.md",
+      "sha256": "d7db3b3f058b077c86a6b59d45337cb0cb0c9c5d797768e1a257e39d80b8a6eb",
+      "bytes": 12343
+    }
+  ]
+}

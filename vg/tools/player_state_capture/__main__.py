@@ -41,6 +41,7 @@ def main(argv=None):
     p.add_argument('--capture-dir', type=Path, required=True)
     p.add_argument('--manifest', type=Path, required=True)
     p.add_argument('--output-dir', type=Path, required=True)
+    p.add_argument('--query-clock', choices=('game_time', 'record_time'), default='game_time')
     p = sub.add_parser('align')
     p.add_argument('--capture-dir', type=Path, required=True)
     p.add_argument('--sample-sequence', type=int, required=True)
@@ -66,7 +67,7 @@ def main(argv=None):
         elif args.command == 'import':
             result = import_capture(args.spec, args.output_dir)
         elif args.command == 'export-reference':
-            result = export_reference(args.capture_dir, args.manifest, args.output_dir)
+            result = export_reference(args.capture_dir, args.manifest, args.output_dir, query_clock=args.query_clock)
         elif args.command == 'align':
             from .alignment import align_capture
             result = align_capture(args.capture_dir, args.output_dir, args.sample_sequence)

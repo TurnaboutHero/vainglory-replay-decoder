@@ -48,6 +48,42 @@ class PlayerStateCliTests(unittest.TestCase):
         self.assertEqual(state['replay_scope'], payload['replay_scope'])
         self.assertEqual(self.replay.read_bytes(), self.data)
 
+    def test_record_time_cli_uses_exact_record_prefix(self):
+        from vg.decoder_v2.player_state import decode_player_state
+        process = self.cli(self.replay, '--at-record-time', '1')
+        self.assertEqual(process.returncode, 0, process.stderr)
+        actual = json.loads(process.stdout)
+        expected = decode_player_state(self.replay, at_record_time=1).to_dict()
+        self.assertEqual(actual, json.loads(json.dumps(expected)))
+        self.assertEqual(actual['query_clock'], 'record_time')
+        self.assertEqual(actual['requested_record_time'], 1)
+        self.assertEqual(actual['scope'], 'capture')
+        self.assertEqual(actual['players'][0]['items'], [])
+        self.assertEqual(self.replay.read_bytes(), self.data)
+
+    def test_record_time_cli_rejects_conflicting_clock_and_unsupported_formats(self):
+        self.output.write_text('previous result')
+        for arguments in (('--at-record-time', '1', '--at-game-time', '101'),
+                          ('--at-record-time', '1', '--format', 'safe-json'),
+                          ('--at-record-time', '1', '--format', 'debug-json'),
+                          ('--at-record-time', 'nan'), ('--at-record-time', '-1'),
+                          ('--at-record-time', 'inf')):
+            with self.subTest(arguments=arguments):
+                process = self.cli(self.replay, '-o', self.output, *arguments)
+                self.assertEqual(process.returncode, 2)
+                self.assertTrue(process.stderr)
+                self.assertEqual(self.output.read_text(), 'previous result')
+        self.assertEqual(self.replay.read_bytes(), self.data)
+
+    def test_record_time_out_of_coverage_remains_explicit(self):
+        process = self.cli(self.replay, '--at-record-time', '11')
+        self.assertEqual(process.returncode, 0, process.stderr)
+        actual = json.loads(process.stdout)
+        self.assertEqual(actual['support_status'], 'out_of_coverage')
+        self.assertEqual(actual['query_clock'], 'record_time')
+        self.assertEqual(actual['requested_record_time'], 11)
+        self.assertEqual(actual['players'], [])
+
     def test_explicit_safe_debug_and_python_decode_match_keep_old_contracts(self):
         safe = decode_match.decode_match(str(self.replay))
         self.assertEqual(safe.schema_version, 'decoder_v2.match.v2')

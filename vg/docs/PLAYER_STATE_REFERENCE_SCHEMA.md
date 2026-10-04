@@ -69,12 +69,22 @@ Decoder output is never an independent source. These tags identify evidence
 provenance, not automatic proof: the capture author must establish independence
 and the actor/clock boundary against actual client or static evidence.
 
-An observation has `observation_id`, `clock_kind` (`recorded_end` or `game_time`),
-`game_time` for a timed capture, `record_boundary` (`section`, `record_offset`),
-`replay_scope`, `source_refs`, and `players`. EOF is never converted to the last
-GameTime. Decoder output must return `scope` (`recorded_end` or `capture`),
-`requested_game_time`, `record_boundary`, `support_status`, and `players`.
-A different time, replay scope or boundary fails comparison.
+An observation has `observation_id`, `clock_kind` (`recorded_end`, `game_time`,
+or `record_time`), `record_boundary` (`section`, `record_offset`), `replay_scope`,
+`source_refs`, and `players`. A timed capture supplies the finite nonnegative
+`game_time` or `record_time` selected by `clock_kind`. EOF is never converted to
+the last GameTime. Decoder output must return `scope` (`recorded_end` or
+`capture`), the matching `requested_game_time` or `requested_record_time`,
+`record_boundary`, `support_status`, and `players`. RecordTime additionally
+requires `query_clock: record_time`. A different time, replay scope or boundary
+fails comparison.
+
+Record-time references can retain `observed_game_time` and its float32 bits as
+independent native metadata. These values do not replace the record-time query.
+The default CLI and component readers support this clock; the legacy CLI reports
+`unsupported_query_clock` without being invoked. Such a rejection is not an
+accuracy PASS. Native export requires the strict reader proof documented in
+[player-state capture](PLAYER_STATE_CAPTURE_2026-10-04.md).
 
 Each reference player has an independent `reference_player_id`, positive
 unsigned 32-bit `native_actor_id`, `actor_link` with `status: observed` and

@@ -128,8 +128,8 @@ def decode_player_state(
     """Decode every field at one inclusive native boundary.
 
     The ordinary query traverses every record, even when paused-clock events
-    project past the last frame's game time. RecordTime is an internal comparison
-    facility; the CLI exposes only GameTime. Numeric values describe recorded
+    project past the last frame's game time. RecordTime selects replay-record
+    seconds; GameTime selects game-clock seconds. Numeric values describe recorded
     native resources, not cached final-screen labels or completed gameplay.
     ``items`` filters native HUD-hidden definitions; ``native_items`` retains
     them. Item array indices are provenance, not rendered slot positions.

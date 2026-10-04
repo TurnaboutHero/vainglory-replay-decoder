@@ -65,7 +65,7 @@ its recorded time, not perpetual absence of all future games.
 ## Alignment and independent export
 
 Export requires successful restoration and a proven native boundary. The `align`
-command supports version 2's passive native reader snapshots at EOF. It
+command supports version 2's passive native reader snapshots at EOF. That path
 requires unchanged reader state across the player reads, either a native pause
 flag or an exhausted reader (final section plus one, file handle closed),
 the post-dispatch `needs_record` state, native slot-name/injection correspondence,
@@ -88,8 +88,49 @@ Version 2 includes the native reader buffer before and after those reads.
 EOF can be certified through the above independent byte match. The exhausted
 reader case records the actual pause state as false; a running playback timer
 does not create another source record after the final applied buffer.
-Version 1 and interior samples remain observation-only. Timed native
-reader alignment is explicitly unsupported by `align` at this stage.
+Version 1 samples remain observation-only.
+
+An interior sample can instead establish `stable_future_pending_buffer`. This
+requires five verified native guards, mode 1 or 2, an open reader with
+`needs_record: 0`, and finite playback time strictly before the buffered record's
+time. Two consecutive complete samples must be identical except their sequence
+and increasing UTC values. Both reader snapshots, the clock and every player
+field participate in this check. A unique exact buffered byte/time match in the
+original section identifies the pending record; its immediate predecessor is
+the applied boundary, including across a section transition. Missing,
+ambiguous, unstable or first-record samples cannot establish this proof.
+
+The complete contiguous original recording must match either the injection's
+numbered-series `source_scope` or all actual injected files supplied as
+`injected_section` artifacts. The latter path requires one file for every
+original section, exact observed slot filenames and matching original hashes,
+plus the original verified injection and substituted-slot restoration receipt.
+A missing source fingerprint is never filled into an old injection receipt.
+
+This proof follows the strict future-record return in native `004eb4a0`, before
+dispatch. It can certify a stable mode-1 sample without claiming mode-2 or
+manager-bit pause. `native_paused` retains the observed value; the internal GUI
+pause mechanism is not inferred. The asynchronous sampler still reports
+`atomic_record_boundary: false`; alignment is separately derived from the
+native reader and source bytes. A screenshot alone cannot establish it.
+
+Timed reference export uses the native game-clock value without rounding or
+fitting. The public GameTime query must select exactly the independently proven
+predecessor. Otherwise export fails with `unsupported_game_time_boundary` before
+writing a reference. A verified reader boundary alone does not certify that
+the existing GameTime mapping supports that observation.
+
+For a verified `stable_future_pending_buffer` observation, explicitly select
+`export-reference --query-clock record_time` to use the sampled reader playback
+time. Export requires the existing RecordTime query to select exactly the proven
+predecessor; otherwise it fails with `unsupported_record_time_boundary`. A
+boundary inside an equal-timestamp group is not rounded to fit. The reference
+retains the native clock as `observed_game_time` and `observed_game_time_bits`,
+separate from its `record_time` query. The default CLI exposes this query as
+`--at-record-time SECONDS` with `state-json`; the Python API accepts
+`at_record_time=SECONDS`. It is mutually exclusive with `--at-game-time`.
+The legacy CLI does not expose record-time queries and cannot certify this
+observation. EOF export keeps its original `recorded_end` scope.
 
 Export creates a new frozen reference registry and preserves the original
 development/holdout split. It copies native names, actor links, KDA, exact gold
