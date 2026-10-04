@@ -73,7 +73,9 @@ class AtlasTests(unittest.TestCase):
         self.assertIn('certainty_without_evidence', [i['code'] for i in self.check(atlas)['issues']])
 
     def test_high_value_unknown_blocks_acceptance(self):
-        result = self.check(require_reviewed=True, require_player_state_semantics=True)
+        atlas, row = self.changed('0x043d')
+        row['player_state_gate']['status'] = 'pending'
+        result = self.check(atlas, require_reviewed=True, require_player_state_semantics=True)
         self.assertFalse(result['ok'])
         self.assertIn('player_state_gate_pending', [i['code'] for i in result['issues']])
         self.assertTrue(any(i.get('opcode') == '0x043d' for i in result['issues']))
@@ -94,7 +96,10 @@ class AtlasTests(unittest.TestCase):
                 reports.append(report['issues'])
         self.assertEqual(reports[0], reports[1])
         self.assertEqual({i['opcode'] for i in reports[0]},
-                         {r['opcode'] for r in self.atlas['events'] if r['player_state_required']})
+                         {'0x03ee'})
+        self.assertEqual({r['opcode'] for r in self.atlas['events']
+                          if r['player_state_required'] and r['player_state_gate']['status'] == 'verified'},
+                         {'0x03f2', '0x03f3', '0x041c', '0x041d', '0x043d', '0x0444', '0x044b', '0x046f'})
         self.assertTrue(all(i['code'] == 'player_state_gate_pending' for i in reports[0]))
 
     def test_receiver_proof_cannot_become_application_proof(self):
@@ -158,7 +163,8 @@ class AtlasTests(unittest.TestCase):
         self.assertEqual(row['player_state_required'], [])
         result = self.check(atlas, require_player_state_semantics=True)
         self.assertFalse(any(i.get('opcode') == '0x0448' for i in result['issues']))
-        self.assertEqual(sum(i['code'] == 'player_state_gate_pending' for i in result['issues']), 9)
+        self.assertEqual({i['opcode'] for i in result['issues'] if i['code'] == 'player_state_gate_pending'},
+                         {'0x03ee'})
 
     def test_reader_policy_must_match_current_sources(self):
         atlas = deepcopy(self.atlas)

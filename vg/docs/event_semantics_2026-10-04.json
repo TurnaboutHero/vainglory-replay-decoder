@@ -1087,6 +1087,86 @@
       "path": "evidence/2026-10-04-atlas/c16-final-field-match.json",
       "sha256": "d3c8ee0be7ef600dd68f6f1478fe2193a8fe1fe8c28e870091724e4b58271b97",
       "kind": "runtime_capture"
+    },
+    "opcode-controls-20261004": {
+      "path": "evidence/2026-10-04-opcode-controls/controls.json",
+      "sha256": "b07e76cdf0c3fc35128ac751e0eb7ab39f054e9c787bb573de852c50b5ce4519",
+      "kind": "runtime_capture",
+      "verified_variants": [
+        {
+          "opcode": "0x03f2",
+          "domain": "recorded",
+          "payload_bytes": 122
+        },
+        {
+          "opcode": "0x03f2",
+          "domain": "recorded",
+          "payload_bytes": 126
+        },
+        {
+          "opcode": "0x03f3",
+          "domain": "recorded",
+          "payload_bytes": 746
+        },
+        {
+          "opcode": "0x03f3",
+          "domain": "recorded",
+          "payload_bytes": 750
+        },
+        {
+          "opcode": "0x046f",
+          "domain": "recorded",
+          "payload_bytes": 69
+        }
+      ]
+    },
+    "inventory-controls-20261004": {
+      "path": "evidence/2026-10-04-opcode-controls/inventory/controls.json",
+      "sha256": "e54d1f3029b150eb359163d465ca6354d53ec09d7bd9a709504c839b25967416",
+      "kind": "runtime_capture",
+      "scope": "Synthetic consumer controls only: 043d fourteen-byte grant, 0444 twelve-byte SET and 044b fourteen-byte consume. Source-native emission remains unverified."
+    },
+    "inventory-controls-audit-20261004": {
+      "path": "evidence/2026-10-04-opcode-controls/inventory/audit.py",
+      "sha256": "86f36129514466d1d838b2aeb09b173522f78d83ce2db88cf9e45d0997e30742",
+      "kind": "native_review"
+    },
+    "inventory-controls-report-20261004": {
+      "path": "INVENTORY_CONTROLS_2026-10-04.md",
+      "sha256": "b3442740e67766d07ee8b699a64f3da85136c6e79b6ea1b6273fb793faaa2806",
+      "kind": "native_review"
+    },
+    "counter-ui-controls-20261004": {
+      "path": "evidence/2026-10-04-opcode-controls/counter-ui.json",
+      "sha256": "54ba952a12ca20360644f954e1a4deaf4d1b2ec14ac35c49ee2c2bc7ab451c23",
+      "kind": "runtime_capture",
+      "verified_variants": [
+        {
+          "opcode": "0x041c",
+          "domain": "recorded",
+          "payload_bytes": 22
+        }
+      ]
+    },
+    "counter-ui-screen-20261004": {
+      "path": "evidence/2026-10-04-opcode-controls/counter-ui-board.png",
+      "sha256": "4deedb9d8c2eb9a11f5472daa350233b848cd92b1532d3d1dc62e5e8a834570b",
+      "kind": "runtime_capture"
+    },
+    "resource-controls-20261004": {
+      "path": "evidence/2026-10-04-opcode-controls/resources/controls.json",
+      "sha256": "ab9bd132788225998512b3f540de9c8e91d5d057c927f84de999deced6bb0f98",
+      "kind": "runtime_capture"
+    },
+    "resource-controls-audit-20261004": {
+      "path": "evidence/2026-10-04-opcode-controls/resources/audit.py",
+      "sha256": "7d0c943833ebf576813fe1c1ff9d5163b5d975919f4aef4d2d2827ef9287bef8",
+      "kind": "native_review"
+    },
+    "resource-controls-report-20261004": {
+      "path": "evidence/2026-10-04-opcode-controls/resources/validation.md",
+      "sha256": "847dc323906b9c80131e51d38db8f077c303d87c7b35c2aaa13aeb284bc1f6cc",
+      "kind": "native_review"
     }
   },
   "events": [
@@ -2849,7 +2929,8 @@
         "atlas:0081a750",
         "spawn-apply",
         "atlas:0081a750",
-        "spawn-apply"
+        "spawn-apply",
+        "opcode-controls-20261004"
       ],
       "player_state_required": [
         "identity",
@@ -2857,9 +2938,11 @@
         "inventory"
       ],
       "player_state_gate": {
-        "status": "pending",
-        "reason": "Capture122 and126 receiver→constructor→apply with exact payload and actor identity; verify absent/existing actor guards, without inferring player membership from spawn.",
-        "evidence": []
+        "status": "verified",
+        "reason": "C08/C03 original replay:60 exact source-matched receiver/queued constructor/apply controls;122-byte existing14 and126-byte absent46 verify first actor-resolution guards. Spawn does not establish player membership; no claim of all four length/presence combinations or unsampled actor fields.",
+        "evidence": [
+          "opcode-controls-20261004"
+        ]
       },
       "review": {
         "status": "bounded_unknown",
@@ -2878,12 +2961,18 @@
           ]
         },
         "passive": {
-          "status": "unavailable_matched_variant",
-          "finding": "No delivered passive before/after trace aligned to this opcode and recorded payload variant establishes its full effect. Existing class/corpus observations are not application proof."
+          "status": "matched_scoped_controls",
+          "finding": "C08/C03 original replay:60 exact source-matched receiver/queued constructor/apply controls;122-byte existing14 and126-byte absent46 verify first actor-resolution guards. Spawn does not establish player membership; no claim of all four length/presence combinations or unsampled actor fields.",
+          "evidence": [
+            "opcode-controls-20261004"
+          ]
         },
         "controlled": {
-          "status": "requires_owned_runtime",
-          "finding": "Next native target0094d480. Root owns runtime; establish trigger and acceptance/rejection guards before one-action/matched-state capture. Do not manufacture a scenario from the class name alone."
+          "status": "original_replay_controls",
+          "finding": "Bounded original replay section/seek observations; no synthetic payload for these controls. See passive scope and preserved variant unknowns.",
+          "evidence": [
+            "opcode-controls-20261004"
+          ]
         }
       },
       "uncertainty": [
@@ -3337,7 +3426,8 @@
         "catalog",
         "receiver:03f3",
         "classes",
-        "census"
+        "census",
+        "opcode-controls-20261004"
       ],
       "player_state_required": [
         "identity",
@@ -3347,9 +3437,11 @@
         "inventory"
       ],
       "player_state_gate": {
-        "status": "pending",
-        "reason": "C33 baseline observations already match746/750 inventory only. Need new-actor/seek baseline, allsixfields snapshot and independently matched record boundary.",
-        "evidence": []
+        "status": "verified",
+        "reason": "C03 fresh750-byte baseline10 actors:definition/skin/roster, masked K/D layers0..2, assists/resource14/gold/net-worth bits and56 inventory tuples match the native action. C03/C08 existing746-byte baselines50 preserve full sampled players. Exact source/queue/apply linkage; non-atomic snapshots, raw14 is not certified lane-only CS.",
+        "evidence": [
+          "opcode-controls-20261004"
+        ]
       },
       "review": {
         "status": "bounded_unknown",
@@ -3364,15 +3456,18 @@
           ]
         },
         "passive": {
-          "status": "partial_matched_variants",
-          "finding": "C33 exact framed payloads and native array transitions matched only for listed opcode/domain/length. Component ownership links consume traces; atomic six-field clock alignment remains unproved.",
+          "status": "matched_scoped_controls",
+          "finding": "C03 fresh750-byte baseline10 actors:definition/skin/roster, masked K/D layers0..2, assists/resource14/gold/net-worth bits and56 inventory tuples match the native action. C03/C08 existing746-byte baselines50 preserve full sampled players. Exact source/queue/apply linkage; non-atomic snapshots, raw14 is not certified lane-only CS.",
           "evidence": [
-            "c33-inventory-matches"
+            "opcode-controls-20261004"
           ]
         },
         "controlled": {
-          "status": "requires_owned_runtime",
-          "finding": "Next native target0094e170. Root owns runtime; establish trigger and acceptance/rejection guards before one-action/matched-state capture. Do not manufacture a scenario from the class name alone."
+          "status": "original_replay_controls",
+          "finding": "Bounded original replay section/seek observations; no synthetic payload for these controls. See passive scope and preserved variant unknowns.",
+          "evidence": [
+            "opcode-controls-20261004"
+          ]
         }
       },
       "uncertainty": [
@@ -7945,15 +8040,20 @@
         "atlas:0093e850",
         "atlas:0095c710",
         "atlas:0093e940",
-        "atlas:0095c590"
+        "atlas:0095c590",
+        "counter-ui-controls-20261004",
+        "counter-ui-screen-20261004"
       ],
       "player_state_required": [
         "counters"
       ],
       "player_state_gate": {
-        "status": "pending",
-        "reason": "Capture22-byte record at receiver plus action/layer before/after; verify indices41/42 and layer0 ADD/SET, then independently rendered K/D at the same boundary.",
-        "evidence": []
+        "status": "verified",
+        "reason": "Eight explicitly synthetic22-byte attribute controls verify indices41/42,layer0 ADD/SET,constructor/queued action and native layer stores. At a later exact stable replay boundary6:135307,39unchanged native samples bracket the screenshot and all10 rendered K/D values match; no intervening target K/D041c mutations after the final SETs. This is resulting-state UI proof, not a screenshot after each action; non-atomic sampling and synthetic origin remain explicit.",
+        "evidence": [
+          "counter-ui-controls-20261004",
+          "counter-ui-screen-20261004"
+        ]
       },
       "review": {
         "status": "bounded_unknown",
@@ -7983,12 +8083,20 @@
           ]
         },
         "passive": {
-          "status": "unavailable_matched_variant",
-          "finding": "No delivered passive before/after trace aligned to this opcode and recorded payload variant establishes its full effect. Existing class/corpus observations are not application proof."
+          "status": "matched_resulting_ui_boundary",
+          "finding": "Screenshot PID/time interval is bracketed by identical native snapshots at the uniquely matched future-pending source predecessor. Player1509 8815_h renders3/3/0; current raw14 icon6 is observed but no natural lane/jungle semantic proof is claimed.",
+          "evidence": [
+            "counter-ui-controls-20261004",
+            "counter-ui-screen-20261004"
+          ]
         },
         "controlled": {
-          "status": "requires_owned_runtime",
-          "finding": "Next native target0094f1d0. Root owns runtime; establish trigger and acceptance/rejection guards before one-action/matched-state capture. Do not manufacture a scenario from the class name alone."
+          "status": "synthetic_controls_and_bracketed_ui",
+          "finding": "Eight explicitly synthetic22-byte attribute controls verify indices41/42,layer0 ADD/SET,constructor/queued action and native layer stores. At a later exact stable replay boundary6:135307,39unchanged native samples bracket the screenshot and all10 rendered K/D values match; no intervening target K/D041c mutations after the final SETs. This is resulting-state UI proof, not a screenshot after each action; non-atomic sampling and synthetic origin remain explicit.",
+          "evidence": [
+            "counter-ui-controls-20261004",
+            "counter-ui-screen-20261004"
+          ]
         }
       },
       "uncertainty": [
@@ -8319,9 +8427,15 @@
         "gold"
       ],
       "player_state_gate": {
-        "status": "pending",
-        "reason": "Capture14-byte record→12-byte native buffer plus resource ADD/SET before/after float32 bits, including6/7/11/14; establish CS visible label and lane-versus-jungle controls.",
-        "evidence": []
+        "status": "verified",
+        "reason": "Fixed-build replay controls capture50 original14-byte payloads and their actual12-byte receiver buffers before conversion; these index2/3 ADD observations retain all ambiguous source offsets. Separately,48 exact synthetic resource6/7/11/14 ADD/SET controls cover positive,zero,negative float32 outcomes and clamp/credit effects. Natural lane10 and jungle3 unit increments match resource14; full screenshots bracket the first isolated death in each and show the same minion-icon counter0 to1. The visible label is an icon, not literal CS text; both lane and jungle count. No whole-event, atomic live-dispatch, unique raw-copy source offset, victim taxonomy or cross-build claim.",
+        "original_required_experiment": "Capture14-byte record→12-byte native buffer plus resource ADD/SET before/after float32 bits, including6/7/11/14; establish CS visible label and lane-versus-jungle controls.",
+        "evidence": [
+          "resource-controls-20261004",
+          "resource-controls-audit-20261004",
+          "resource-controls-report-20261004",
+          "counter-ui-controls-20261004"
+        ]
       },
       "review": {
         "status": "bounded_unknown",
@@ -12254,15 +12368,23 @@
         "receiver:043d",
         "classes",
         "emitters",
-        "census"
+        "census",
+        "inventory-controls-20261004",
+        "inventory-controls-audit-20261004",
+        "inventory-controls-report-20261004",
+        "opcode-controls-20261004"
       ],
       "player_state_required": [
         "inventory"
       ],
       "player_state_gate": {
-        "status": "pending",
-        "reason": "C33eight14-byte grants are matched. Need capacity/stack/duplicate/order boundaries at independently aligned allsixfields snapshot, plus baseline semantics.",
-        "evidence": []
+        "status": "verified",
+        "reason": "Bounded synthetic consumer controls verify distinct same-definition instances, sentinel selection of the first of two nonfull stacks, eight occupied slots with rejection of a ninth grant, and first-vacancy native array order. The original five-item inventory and its removals are captured; separately reviewed fresh/existing 03f3 controls supply baseline semantics. Captured six-field native statistics and other-player state remain unchanged. Native slot order is not HUD order; snapshots are not atomic rendered acceptance; natural emission and universal guards remain unproved.",
+        "original_required_experiment": "C33eight14-byte grants are matched. Need capacity/stack/duplicate/order boundaries at independently aligned allsixfields snapshot, plus baseline semantics.",
+        "evidence": [
+          "inventory-controls-20261004",
+          "opcode-controls-20261004"
+        ]
       },
       "review": {
         "status": "bounded_unknown",
@@ -12285,8 +12407,12 @@
           ]
         },
         "controlled": {
-          "status": "requires_owned_runtime",
-          "finding": "Next native target0094e070. Root owns runtime; establish trigger and acceptance/rejection guards before one-action/matched-state capture. Do not manufacture a scenario from the class name alone."
+          "status": "synthetic_inventory_boundary_controls",
+          "finding": "Fourteen-byte synthetic grants link exact source, constructor, queue, apply and resolved actor to captured inventory states. Same-definition instances remain distinct; sentinel selects the first nonfull stack; eight slots fill and the ninth grant is rejected; new instances use the first vacancy. Six native statistics and other-player states remain unchanged. Native slot order only; no natural emission or universal guard claim.",
+          "evidence": [
+            "inventory-controls-20261004",
+            "opcode-controls-20261004"
+          ]
         }
       },
       "uncertainty": [
@@ -13197,15 +13323,21 @@
         "catalog",
         "receiver:0444",
         "classes",
-        "emitters"
+        "emitters",
+        "inventory-controls-20261004",
+        "inventory-controls-audit-20261004",
+        "inventory-controls-report-20261004"
       ],
       "player_state_required": [
         "inventory"
       ],
       "player_state_gate": {
-        "status": "pending",
-        "reason": "Capture supported12-byte quantity assignment and exact framing; verify0094f6f0 instance lookup and low16-bit SET including zero without pointer removal.",
-        "evidence": []
+        "status": "verified",
+        "reason": "Bounded twelve-byte synthetic SET controls link exact source, constructor, queue, apply and resolved actor to the original instance pointer: 65538 becomes 2 and 65536 becomes 0 through low16 narrowing. Quantity zero remains live and occupied until the later consume. Separate missing-actor SET is a no-op. Captured six-field native statistics and other-player state remain unchanged. Resolved-actor missing-instance SET, natural emission and atomic rendered acceptance remain unproved.",
+        "original_required_experiment": "Capture supported12-byte quantity assignment and exact framing; verify0094f6f0 instance lookup and low16-bit SET including zero without pointer removal.",
+        "evidence": [
+          "inventory-controls-20261004"
+        ]
       },
       "review": {
         "status": "bounded_unknown",
@@ -13224,8 +13356,11 @@
           "finding": "No delivered passive before/after trace aligned to this opcode and recorded payload variant establishes its full effect. Existing class/corpus observations are not application proof."
         },
         "controlled": {
-          "status": "requires_owned_runtime",
-          "finding": "Next native target0094f6f0. Root owns runtime; establish trigger and acceptance/rejection guards before one-action/matched-state capture. Do not manufacture a scenario from the class name alone."
+          "status": "synthetic_quantity_assignment_controls",
+          "finding": "Twelve-byte SET controls verify original-instance pointer identity, low16 65538-to-2 and 65536-to-0 with live pointer retention, and a separate missing-actor no-op. Six native statistics and other-player states remain unchanged. No resolved-actor missing-instance control or natural emission is claimed.",
+          "evidence": [
+            "inventory-controls-20261004"
+          ]
         }
       },
       "uncertainty": [
@@ -14388,15 +14523,27 @@
         "receiver:044b",
         "classes",
         "emitters",
-        "census"
+        "census",
+        "inventory-controls-20261004",
+        "inventory-controls-audit-20261004",
+        "inventory-controls-report-20261004"
       ],
       "player_state_required": [
         "inventory"
       ],
       "player_state_gate": {
-        "status": "pending",
-        "reason": "C33three14-byte consumes are matched. Need stack decrement/removal, quantity rejection guards, and an independently aligned allsixfields snapshot.",
-        "evidence": []
+        "status": "verified",
+        "reason": "Bounded fourteen-byte synthetic consumer controls verify stack 2-to-1 pointer retention, 1-to-0 removal into deferred storage, missing-instance no-op and zero-quantity removal without underflow. Captured six-field native statistics and other-player state remain unchanged. The tested zero-rejection hypothesis is falsified; no quantity-rejection branch was observed. Alternate flags, natural producer rejection, universal guards, atomic rendered acceptance and eventual destruction remain unproved.",
+        "original_required_experiment": "C33three14-byte consumes are matched. Need stack decrement/removal, quantity rejection guards, and an independently aligned allsixfields snapshot.",
+        "resolved_hypothesis": {
+          "hypothesis": "Zero quantity rejects consumption.",
+          "status": "refuted",
+          "observation": "Quantity zero removes the live pointer into deferred storage without underflow; no quantity-rejection branch was proved."
+        },
+        "acceptance_interpretation": "The runtime owner clarified that the original quantity rejection guards clause was a zero-rejection hypothesis to test. The sampled quantity-boundary inquiry is resolved by falsification together with decrement, terminal removal and missing-instance controls; verified does not mean a rejection branch or universal guard coverage was established.",
+        "evidence": [
+          "inventory-controls-20261004"
+        ]
       },
       "review": {
         "status": "bounded_unknown",
@@ -14419,8 +14566,11 @@
           ]
         },
         "controlled": {
-          "status": "requires_owned_runtime",
-          "finding": "Next native target0094cfb0. Root owns runtime; establish trigger and acceptance/rejection guards before one-action/matched-state capture. Do not manufacture a scenario from the class name alone."
+          "status": "synthetic_quantity_boundary_controls",
+          "finding": "Bounded consumer control verified: 2-to-1 stack decrement with pointer retention, 1-to-0 terminal removal and missing-instance no-op are observed; the tested zero-rejection hypothesis is falsified by zero-quantity removal without underflow. Six native statistics and other-player states remain unchanged. This resolves the sampled quantity-boundary control, not proof of a quantity-rejection branch or exhaustive guards.",
+          "evidence": [
+            "inventory-controls-20261004"
+          ]
         }
       },
       "uncertainty": [
@@ -17659,15 +17809,18 @@
         "clock-instructions",
         "atlas:00549470",
         "atlas:00549e20",
-        "clock-instructions"
+        "clock-instructions",
+        "opcode-controls-20261004"
       ],
       "player_state_required": [
         "time"
       ],
       "player_state_gate": {
-        "status": "pending",
-        "reason": "Verify69-byte replay section transitions/seek against native manager+194 float32 and exact framed boundary; asynchronous record_clock is insufficient.",
-        "evidence": []
+        "status": "verified",
+        "reason": "13 exact original69-byte records across C08 sections49,50,0,1,2 and C03 sections0..7:payload+64 big-endian float bits equal native00549470 argument and manager+194 after apply, including backwards seek. Outer timestamp and asynchronous record_clock are not used as manager clock.",
+        "evidence": [
+          "opcode-controls-20261004"
+        ]
       },
       "review": {
         "status": "bounded_unknown",
@@ -17687,12 +17840,18 @@
           ]
         },
         "passive": {
-          "status": "unavailable_matched_variant",
-          "finding": "No delivered passive before/after trace aligned to this opcode and recorded payload variant establishes its full effect. Existing class/corpus observations are not application proof."
+          "status": "matched_scoped_controls",
+          "finding": "13 exact original69-byte records across C08 sections49,50,0,1,2 and C03 sections0..7:payload+64 big-endian float bits equal native00549470 argument and manager+194 after apply, including backwards seek. Outer timestamp and asynchronous record_clock are not used as manager clock.",
+          "evidence": [
+            "opcode-controls-20261004"
+          ]
         },
         "controlled": {
-          "status": "requires_owned_runtime",
-          "finding": "Next native targetFUN_00456d80, FUN_00457390, FUN_004cfda0, FUN_00549470, FUN_00549e20. Root owns runtime; establish trigger and acceptance/rejection guards before one-action/matched-state capture. Do not manufacture a scenario from the class name alone."
+          "status": "original_replay_controls",
+          "finding": "Bounded original replay section/seek observations; no synthetic payload for these controls. See passive scope and preserved variant unknowns.",
+          "evidence": [
+            "opcode-controls-20261004"
+          ]
         }
       },
       "uncertainty": [

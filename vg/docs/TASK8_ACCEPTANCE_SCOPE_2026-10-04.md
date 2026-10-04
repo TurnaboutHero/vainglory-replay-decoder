@@ -86,13 +86,18 @@ python3.14 -B -m vg.tools.event_semantics_atlas validate \
   --output .omo/evidence/accuracy-20261004/task-8-final-controls.json
 ```
 
-This currently exits1 with nine pending primary-opcode control checks. The old
+This currently exits1 with one pending primary-opcode control check,03ee. Eight
+gates have bounded fixed-build runtime controls; see
+[the opcode control report](OPCODE_CONTROLS_2026-10-04.md). The remaining03ee
+condition is literal rendered hero-name text at an independently matched native
+boundary. Native216/222 identity and skin comparisons alone do not meet it. The old
 `--require-player-state-semantics` spelling is an exact alias, covered by a CLI
 regression test. Neither its implementation nor its required proof was weakened.
 These checks describe more controlled per-opcode coverage than the observed
 six-field EOF workflow requires. In particular0444 has zero observed records in
-the56 corpus: its native assignment is statically proven, while a controlled
-modify-stack run would add extension coverage rather than repair C16 evidence.
+the56 corpus: the new synthetic modify-stack controls establish native consumer
+behavior, while natural emission remains unproved. This adds extension coverage
+and does not replace C16 evidence.
 
 The justified Task8 refinement is to require all161 bounded reviews, all56 strict
 framing results and exact independent six-field agreement for each accepted

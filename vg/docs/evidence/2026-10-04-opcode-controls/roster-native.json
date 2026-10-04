@@ -1,0 +1,1128 @@
+{
+  "schema_version": 1,
+  "claim": "Partial native roster proof; the strict 03ee gate remains pending rendered literal hero-name text.",
+  "capture": {
+    "path": "work/opcode-controls-20261004/runtime-o3/c08-hero2-observation.jsonl",
+    "sha256": "897e989eac03f9ae7b4498d9b2d8370bc74ca8d3d66ecd904623274a63a9bd57"
+  },
+  "probe_source_sha256": "e9156365bac339c9da9d37c17d8aed4319d705bbbaa37b4642ddc8bdc514fe5e",
+  "summary": {
+    "native_roster_controls": 50,
+    "payload_lengths": {
+      "216": 40,
+      "222": 10
+    },
+    "source_offsets_unique": true,
+    "rendered_hero_label_verified": false,
+    "raw_skin_interpretation": "Native row value and identity wrapper passthrough; not independent skin-index resolution."
+  },
+  "source_files": {
+    "0": {
+      "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+      "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+    },
+    "1": {
+      "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.1.vgr",
+      "sha256": "a0ad2022a3436facf7ed2e9a019060eb069346a077da3fc0d98865bed01042d8"
+    },
+    "2": {
+      "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.2.vgr",
+      "sha256": "72545c356092d28ec8bdc7124907d8bec07135f6841220fb5184f79623beeae5"
+    },
+    "3": {
+      "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.3.vgr",
+      "sha256": "ee6c18616373fd41b13ea693ff47a99dddf58385a954bcbc06b1468c67793ba9"
+    }
+  },
+  "controls": [
+    {
+      "dispatch_id": 1,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          0
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 216,
+      "actor": 1508,
+      "name": "815_SuperHero_KR",
+      "definition": 403,
+      "skin": 3824786302,
+      "dispatch_line": 10,
+      "consumer_after_line": 15,
+      "wrapper_line": 13
+    },
+    {
+      "dispatch_id": 2,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          226
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 216,
+      "actor": 1500,
+      "name": "815_Lamy_KR",
+      "definition": 257,
+      "skin": 3836149698,
+      "dispatch_line": 17,
+      "consumer_after_line": 22,
+      "wrapper_line": 20
+    },
+    {
+      "dispatch_id": 3,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          452
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 216,
+      "actor": 1501,
+      "name": "Guest",
+      "definition": 246,
+      "skin": 2899818972,
+      "dispatch_line": 24,
+      "consumer_after_line": 29,
+      "wrapper_line": 27
+    },
+    {
+      "dispatch_id": 4,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          678
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 216,
+      "actor": 1502,
+      "name": "Guest",
+      "definition": 275,
+      "skin": 3301891249,
+      "dispatch_line": 31,
+      "consumer_after_line": 36,
+      "wrapper_line": 34
+    },
+    {
+      "dispatch_id": 5,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          904
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 216,
+      "actor": 1503,
+      "name": "815_KTH",
+      "definition": 276,
+      "skin": 824587150,
+      "dispatch_line": 38,
+      "consumer_after_line": 43,
+      "wrapper_line": 41
+    },
+    {
+      "dispatch_id": 6,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          1130
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 216,
+      "actor": 1504,
+      "name": "Rimmy",
+      "definition": 915,
+      "skin": 1173411252,
+      "dispatch_line": 45,
+      "consumer_after_line": 50,
+      "wrapper_line": 48
+    },
+    {
+      "dispatch_id": 7,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          1356
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 216,
+      "actor": 1505,
+      "name": "777_iLove815mu",
+      "definition": 279,
+      "skin": 2731441060,
+      "dispatch_line": 52,
+      "consumer_after_line": 57,
+      "wrapper_line": 55
+    },
+    {
+      "dispatch_id": 8,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          1582
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 216,
+      "actor": 1506,
+      "name": "月无云我操你妈",
+      "definition": 926,
+      "skin": 389808851,
+      "dispatch_line": 59,
+      "consumer_after_line": 64,
+      "wrapper_line": 62
+    },
+    {
+      "dispatch_id": 9,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          1808
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 216,
+      "actor": 1507,
+      "name": "815_LeeJiEun",
+      "definition": 258,
+      "skin": 827126513,
+      "dispatch_line": 66,
+      "consumer_after_line": 71,
+      "wrapper_line": 69
+    },
+    {
+      "dispatch_id": 10,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          2034
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 216,
+      "actor": 1509,
+      "name": "815_mu",
+      "definition": 396,
+      "skin": 3155516911,
+      "dispatch_line": 73,
+      "consumer_after_line": 78,
+      "wrapper_line": 76
+    },
+    {
+      "dispatch_id": 11,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          2461
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 222,
+      "actor": 1500,
+      "name": "815_Lamy_KR",
+      "definition": 257,
+      "skin": 3836149698,
+      "dispatch_line": 106,
+      "consumer_after_line": 111,
+      "wrapper_line": 109
+    },
+    {
+      "dispatch_id": 12,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          2693
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 222,
+      "actor": 1501,
+      "name": "Guest",
+      "definition": 246,
+      "skin": 2899818972,
+      "dispatch_line": 113,
+      "consumer_after_line": 118,
+      "wrapper_line": 116
+    },
+    {
+      "dispatch_id": 13,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          2925
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 222,
+      "actor": 1502,
+      "name": "Guest",
+      "definition": 275,
+      "skin": 3301891249,
+      "dispatch_line": 120,
+      "consumer_after_line": 125,
+      "wrapper_line": 123
+    },
+    {
+      "dispatch_id": 14,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          3157
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 222,
+      "actor": 1503,
+      "name": "815_KTH",
+      "definition": 276,
+      "skin": 824587150,
+      "dispatch_line": 127,
+      "consumer_after_line": 132,
+      "wrapper_line": 130
+    },
+    {
+      "dispatch_id": 15,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          3389
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 222,
+      "actor": 1504,
+      "name": "Rimmy",
+      "definition": 915,
+      "skin": 1173411252,
+      "dispatch_line": 134,
+      "consumer_after_line": 139,
+      "wrapper_line": 137
+    },
+    {
+      "dispatch_id": 16,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          3621
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 222,
+      "actor": 1505,
+      "name": "777_iLove815mu",
+      "definition": 279,
+      "skin": 2731441060,
+      "dispatch_line": 141,
+      "consumer_after_line": 146,
+      "wrapper_line": 144
+    },
+    {
+      "dispatch_id": 17,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          3853
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 222,
+      "actor": 1506,
+      "name": "月无云我操你妈",
+      "definition": 926,
+      "skin": 389808851,
+      "dispatch_line": 148,
+      "consumer_after_line": 153,
+      "wrapper_line": 151
+    },
+    {
+      "dispatch_id": 18,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          4085
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 222,
+      "actor": 1507,
+      "name": "815_LeeJiEun",
+      "definition": 258,
+      "skin": 827126513,
+      "dispatch_line": 155,
+      "consumer_after_line": 160,
+      "wrapper_line": 158
+    },
+    {
+      "dispatch_id": 19,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          4317
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 222,
+      "actor": 1508,
+      "name": "815_SuperHero_KR",
+      "definition": 403,
+      "skin": 3824786302,
+      "dispatch_line": 162,
+      "consumer_after_line": 167,
+      "wrapper_line": 165
+    },
+    {
+      "dispatch_id": 20,
+      "source": {
+        "section": 0,
+        "candidate_offsets": [
+          4549
+        ],
+        "time_bits": 0,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.0.vgr",
+        "sha256": "ba97deb0182177a30c02fff67a59b76b1419d543839ab9d4e572b082773d30ad"
+      },
+      "payload_length": 222,
+      "actor": 1509,
+      "name": "815_mu",
+      "definition": 396,
+      "skin": 3155516911,
+      "dispatch_line": 169,
+      "consumer_after_line": 174,
+      "wrapper_line": 172
+    },
+    {
+      "dispatch_id": 71,
+      "source": {
+        "section": 1,
+        "candidate_offsets": [
+          0
+        ],
+        "time_bits": 1092620347,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.1.vgr",
+        "sha256": "a0ad2022a3436facf7ed2e9a019060eb069346a077da3fc0d98865bed01042d8"
+      },
+      "payload_length": 216,
+      "actor": 1508,
+      "name": "815_SuperHero_KR",
+      "definition": 403,
+      "skin": 3824786302,
+      "dispatch_line": 1309,
+      "consumer_after_line": 1314,
+      "wrapper_line": 1312
+    },
+    {
+      "dispatch_id": 72,
+      "source": {
+        "section": 1,
+        "candidate_offsets": [
+          226
+        ],
+        "time_bits": 1092620347,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.1.vgr",
+        "sha256": "a0ad2022a3436facf7ed2e9a019060eb069346a077da3fc0d98865bed01042d8"
+      },
+      "payload_length": 216,
+      "actor": 1500,
+      "name": "815_Lamy_KR",
+      "definition": 257,
+      "skin": 3836149698,
+      "dispatch_line": 1316,
+      "consumer_after_line": 1321,
+      "wrapper_line": 1319
+    },
+    {
+      "dispatch_id": 73,
+      "source": {
+        "section": 1,
+        "candidate_offsets": [
+          452
+        ],
+        "time_bits": 1092620347,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.1.vgr",
+        "sha256": "a0ad2022a3436facf7ed2e9a019060eb069346a077da3fc0d98865bed01042d8"
+      },
+      "payload_length": 216,
+      "actor": 1501,
+      "name": "Guest",
+      "definition": 246,
+      "skin": 2899818972,
+      "dispatch_line": 1323,
+      "consumer_after_line": 1328,
+      "wrapper_line": 1326
+    },
+    {
+      "dispatch_id": 74,
+      "source": {
+        "section": 1,
+        "candidate_offsets": [
+          678
+        ],
+        "time_bits": 1092620347,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.1.vgr",
+        "sha256": "a0ad2022a3436facf7ed2e9a019060eb069346a077da3fc0d98865bed01042d8"
+      },
+      "payload_length": 216,
+      "actor": 1502,
+      "name": "Guest",
+      "definition": 275,
+      "skin": 3301891249,
+      "dispatch_line": 1330,
+      "consumer_after_line": 1335,
+      "wrapper_line": 1333
+    },
+    {
+      "dispatch_id": 75,
+      "source": {
+        "section": 1,
+        "candidate_offsets": [
+          904
+        ],
+        "time_bits": 1092620347,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.1.vgr",
+        "sha256": "a0ad2022a3436facf7ed2e9a019060eb069346a077da3fc0d98865bed01042d8"
+      },
+      "payload_length": 216,
+      "actor": 1503,
+      "name": "815_KTH",
+      "definition": 276,
+      "skin": 824587150,
+      "dispatch_line": 1337,
+      "consumer_after_line": 1342,
+      "wrapper_line": 1340
+    },
+    {
+      "dispatch_id": 76,
+      "source": {
+        "section": 1,
+        "candidate_offsets": [
+          1130
+        ],
+        "time_bits": 1092620347,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.1.vgr",
+        "sha256": "a0ad2022a3436facf7ed2e9a019060eb069346a077da3fc0d98865bed01042d8"
+      },
+      "payload_length": 216,
+      "actor": 1504,
+      "name": "Rimmy",
+      "definition": 915,
+      "skin": 1173411252,
+      "dispatch_line": 1344,
+      "consumer_after_line": 1349,
+      "wrapper_line": 1347
+    },
+    {
+      "dispatch_id": 77,
+      "source": {
+        "section": 1,
+        "candidate_offsets": [
+          1356
+        ],
+        "time_bits": 1092620347,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.1.vgr",
+        "sha256": "a0ad2022a3436facf7ed2e9a019060eb069346a077da3fc0d98865bed01042d8"
+      },
+      "payload_length": 216,
+      "actor": 1505,
+      "name": "777_iLove815mu",
+      "definition": 279,
+      "skin": 2731441060,
+      "dispatch_line": 1351,
+      "consumer_after_line": 1356,
+      "wrapper_line": 1354
+    },
+    {
+      "dispatch_id": 78,
+      "source": {
+        "section": 1,
+        "candidate_offsets": [
+          1582
+        ],
+        "time_bits": 1092620347,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.1.vgr",
+        "sha256": "a0ad2022a3436facf7ed2e9a019060eb069346a077da3fc0d98865bed01042d8"
+      },
+      "payload_length": 216,
+      "actor": 1506,
+      "name": "月无云我操你妈",
+      "definition": 926,
+      "skin": 389808851,
+      "dispatch_line": 1358,
+      "consumer_after_line": 1363,
+      "wrapper_line": 1361
+    },
+    {
+      "dispatch_id": 79,
+      "source": {
+        "section": 1,
+        "candidate_offsets": [
+          1808
+        ],
+        "time_bits": 1092620347,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.1.vgr",
+        "sha256": "a0ad2022a3436facf7ed2e9a019060eb069346a077da3fc0d98865bed01042d8"
+      },
+      "payload_length": 216,
+      "actor": 1507,
+      "name": "815_LeeJiEun",
+      "definition": 258,
+      "skin": 827126513,
+      "dispatch_line": 1365,
+      "consumer_after_line": 1370,
+      "wrapper_line": 1368
+    },
+    {
+      "dispatch_id": 80,
+      "source": {
+        "section": 1,
+        "candidate_offsets": [
+          2034
+        ],
+        "time_bits": 1092620347,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.1.vgr",
+        "sha256": "a0ad2022a3436facf7ed2e9a019060eb069346a077da3fc0d98865bed01042d8"
+      },
+      "payload_length": 216,
+      "actor": 1509,
+      "name": "815_mu",
+      "definition": 396,
+      "skin": 3155516911,
+      "dispatch_line": 1372,
+      "consumer_after_line": 1377,
+      "wrapper_line": 1375
+    },
+    {
+      "dispatch_id": 81,
+      "source": {
+        "section": 2,
+        "candidate_offsets": [
+          0
+        ],
+        "time_bits": 1101006493,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.2.vgr",
+        "sha256": "72545c356092d28ec8bdc7124907d8bec07135f6841220fb5184f79623beeae5"
+      },
+      "payload_length": 216,
+      "actor": 1508,
+      "name": "815_SuperHero_KR",
+      "definition": 403,
+      "skin": 3824786302,
+      "dispatch_line": 1417,
+      "consumer_after_line": 1422,
+      "wrapper_line": 1420
+    },
+    {
+      "dispatch_id": 82,
+      "source": {
+        "section": 2,
+        "candidate_offsets": [
+          226
+        ],
+        "time_bits": 1101006493,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.2.vgr",
+        "sha256": "72545c356092d28ec8bdc7124907d8bec07135f6841220fb5184f79623beeae5"
+      },
+      "payload_length": 216,
+      "actor": 1500,
+      "name": "815_Lamy_KR",
+      "definition": 257,
+      "skin": 3836149698,
+      "dispatch_line": 1424,
+      "consumer_after_line": 1429,
+      "wrapper_line": 1427
+    },
+    {
+      "dispatch_id": 83,
+      "source": {
+        "section": 2,
+        "candidate_offsets": [
+          452
+        ],
+        "time_bits": 1101006493,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.2.vgr",
+        "sha256": "72545c356092d28ec8bdc7124907d8bec07135f6841220fb5184f79623beeae5"
+      },
+      "payload_length": 216,
+      "actor": 1501,
+      "name": "Guest",
+      "definition": 246,
+      "skin": 2899818972,
+      "dispatch_line": 1431,
+      "consumer_after_line": 1436,
+      "wrapper_line": 1434
+    },
+    {
+      "dispatch_id": 84,
+      "source": {
+        "section": 2,
+        "candidate_offsets": [
+          678
+        ],
+        "time_bits": 1101006493,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.2.vgr",
+        "sha256": "72545c356092d28ec8bdc7124907d8bec07135f6841220fb5184f79623beeae5"
+      },
+      "payload_length": 216,
+      "actor": 1502,
+      "name": "Guest",
+      "definition": 275,
+      "skin": 3301891249,
+      "dispatch_line": 1438,
+      "consumer_after_line": 1443,
+      "wrapper_line": 1441
+    },
+    {
+      "dispatch_id": 85,
+      "source": {
+        "section": 2,
+        "candidate_offsets": [
+          904
+        ],
+        "time_bits": 1101006493,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.2.vgr",
+        "sha256": "72545c356092d28ec8bdc7124907d8bec07135f6841220fb5184f79623beeae5"
+      },
+      "payload_length": 216,
+      "actor": 1503,
+      "name": "815_KTH",
+      "definition": 276,
+      "skin": 824587150,
+      "dispatch_line": 1445,
+      "consumer_after_line": 1450,
+      "wrapper_line": 1448
+    },
+    {
+      "dispatch_id": 86,
+      "source": {
+        "section": 2,
+        "candidate_offsets": [
+          1130
+        ],
+        "time_bits": 1101006493,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.2.vgr",
+        "sha256": "72545c356092d28ec8bdc7124907d8bec07135f6841220fb5184f79623beeae5"
+      },
+      "payload_length": 216,
+      "actor": 1504,
+      "name": "Rimmy",
+      "definition": 915,
+      "skin": 1173411252,
+      "dispatch_line": 1452,
+      "consumer_after_line": 1457,
+      "wrapper_line": 1455
+    },
+    {
+      "dispatch_id": 87,
+      "source": {
+        "section": 2,
+        "candidate_offsets": [
+          1356
+        ],
+        "time_bits": 1101006493,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.2.vgr",
+        "sha256": "72545c356092d28ec8bdc7124907d8bec07135f6841220fb5184f79623beeae5"
+      },
+      "payload_length": 216,
+      "actor": 1505,
+      "name": "777_iLove815mu",
+      "definition": 279,
+      "skin": 2731441060,
+      "dispatch_line": 1459,
+      "consumer_after_line": 1464,
+      "wrapper_line": 1462
+    },
+    {
+      "dispatch_id": 88,
+      "source": {
+        "section": 2,
+        "candidate_offsets": [
+          1582
+        ],
+        "time_bits": 1101006493,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.2.vgr",
+        "sha256": "72545c356092d28ec8bdc7124907d8bec07135f6841220fb5184f79623beeae5"
+      },
+      "payload_length": 216,
+      "actor": 1506,
+      "name": "月无云我操你妈",
+      "definition": 926,
+      "skin": 389808851,
+      "dispatch_line": 1466,
+      "consumer_after_line": 1471,
+      "wrapper_line": 1469
+    },
+    {
+      "dispatch_id": 89,
+      "source": {
+        "section": 2,
+        "candidate_offsets": [
+          1808
+        ],
+        "time_bits": 1101006493,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.2.vgr",
+        "sha256": "72545c356092d28ec8bdc7124907d8bec07135f6841220fb5184f79623beeae5"
+      },
+      "payload_length": 216,
+      "actor": 1507,
+      "name": "815_LeeJiEun",
+      "definition": 258,
+      "skin": 827126513,
+      "dispatch_line": 1473,
+      "consumer_after_line": 1478,
+      "wrapper_line": 1476
+    },
+    {
+      "dispatch_id": 90,
+      "source": {
+        "section": 2,
+        "candidate_offsets": [
+          2034
+        ],
+        "time_bits": 1101006493,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.2.vgr",
+        "sha256": "72545c356092d28ec8bdc7124907d8bec07135f6841220fb5184f79623beeae5"
+      },
+      "payload_length": 216,
+      "actor": 1509,
+      "name": "815_mu",
+      "definition": 396,
+      "skin": 3155516911,
+      "dispatch_line": 1480,
+      "consumer_after_line": 1485,
+      "wrapper_line": 1483
+    },
+    {
+      "dispatch_id": 91,
+      "source": {
+        "section": 3,
+        "candidate_offsets": [
+          0
+        ],
+        "time_bits": 1106247760,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.3.vgr",
+        "sha256": "ee6c18616373fd41b13ea693ff47a99dddf58385a954bcbc06b1468c67793ba9"
+      },
+      "payload_length": 216,
+      "actor": 1508,
+      "name": "815_SuperHero_KR",
+      "definition": 403,
+      "skin": 3824786302,
+      "dispatch_line": 1525,
+      "consumer_after_line": 1530,
+      "wrapper_line": 1528
+    },
+    {
+      "dispatch_id": 92,
+      "source": {
+        "section": 3,
+        "candidate_offsets": [
+          226
+        ],
+        "time_bits": 1106247760,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.3.vgr",
+        "sha256": "ee6c18616373fd41b13ea693ff47a99dddf58385a954bcbc06b1468c67793ba9"
+      },
+      "payload_length": 216,
+      "actor": 1500,
+      "name": "815_Lamy_KR",
+      "definition": 257,
+      "skin": 3836149698,
+      "dispatch_line": 1532,
+      "consumer_after_line": 1537,
+      "wrapper_line": 1535
+    },
+    {
+      "dispatch_id": 93,
+      "source": {
+        "section": 3,
+        "candidate_offsets": [
+          452
+        ],
+        "time_bits": 1106247760,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.3.vgr",
+        "sha256": "ee6c18616373fd41b13ea693ff47a99dddf58385a954bcbc06b1468c67793ba9"
+      },
+      "payload_length": 216,
+      "actor": 1501,
+      "name": "Guest",
+      "definition": 246,
+      "skin": 2899818972,
+      "dispatch_line": 1539,
+      "consumer_after_line": 1544,
+      "wrapper_line": 1542
+    },
+    {
+      "dispatch_id": 94,
+      "source": {
+        "section": 3,
+        "candidate_offsets": [
+          678
+        ],
+        "time_bits": 1106247760,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.3.vgr",
+        "sha256": "ee6c18616373fd41b13ea693ff47a99dddf58385a954bcbc06b1468c67793ba9"
+      },
+      "payload_length": 216,
+      "actor": 1502,
+      "name": "Guest",
+      "definition": 275,
+      "skin": 3301891249,
+      "dispatch_line": 1546,
+      "consumer_after_line": 1551,
+      "wrapper_line": 1549
+    },
+    {
+      "dispatch_id": 95,
+      "source": {
+        "section": 3,
+        "candidate_offsets": [
+          904
+        ],
+        "time_bits": 1106247760,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.3.vgr",
+        "sha256": "ee6c18616373fd41b13ea693ff47a99dddf58385a954bcbc06b1468c67793ba9"
+      },
+      "payload_length": 216,
+      "actor": 1503,
+      "name": "815_KTH",
+      "definition": 276,
+      "skin": 824587150,
+      "dispatch_line": 1553,
+      "consumer_after_line": 1558,
+      "wrapper_line": 1556
+    },
+    {
+      "dispatch_id": 96,
+      "source": {
+        "section": 3,
+        "candidate_offsets": [
+          1130
+        ],
+        "time_bits": 1106247760,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.3.vgr",
+        "sha256": "ee6c18616373fd41b13ea693ff47a99dddf58385a954bcbc06b1468c67793ba9"
+      },
+      "payload_length": 216,
+      "actor": 1504,
+      "name": "Rimmy",
+      "definition": 915,
+      "skin": 1173411252,
+      "dispatch_line": 1560,
+      "consumer_after_line": 1566,
+      "wrapper_line": 1564
+    },
+    {
+      "dispatch_id": 97,
+      "source": {
+        "section": 3,
+        "candidate_offsets": [
+          1356
+        ],
+        "time_bits": 1106247760,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.3.vgr",
+        "sha256": "ee6c18616373fd41b13ea693ff47a99dddf58385a954bcbc06b1468c67793ba9"
+      },
+      "payload_length": 216,
+      "actor": 1505,
+      "name": "777_iLove815mu",
+      "definition": 279,
+      "skin": 2731441060,
+      "dispatch_line": 1568,
+      "consumer_after_line": 1573,
+      "wrapper_line": 1571
+    },
+    {
+      "dispatch_id": 98,
+      "source": {
+        "section": 3,
+        "candidate_offsets": [
+          1582
+        ],
+        "time_bits": 1106247760,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.3.vgr",
+        "sha256": "ee6c18616373fd41b13ea693ff47a99dddf58385a954bcbc06b1468c67793ba9"
+      },
+      "payload_length": 216,
+      "actor": 1506,
+      "name": "月无云我操你妈",
+      "definition": 926,
+      "skin": 389808851,
+      "dispatch_line": 1575,
+      "consumer_after_line": 1580,
+      "wrapper_line": 1578
+    },
+    {
+      "dispatch_id": 99,
+      "source": {
+        "section": 3,
+        "candidate_offsets": [
+          1808
+        ],
+        "time_bits": 1106247760,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.3.vgr",
+        "sha256": "ee6c18616373fd41b13ea693ff47a99dddf58385a954bcbc06b1468c67793ba9"
+      },
+      "payload_length": 216,
+      "actor": 1507,
+      "name": "815_LeeJiEun",
+      "definition": 258,
+      "skin": 827126513,
+      "dispatch_line": 1582,
+      "consumer_after_line": 1587,
+      "wrapper_line": 1585
+    },
+    {
+      "dispatch_id": 100,
+      "source": {
+        "section": 3,
+        "candidate_offsets": [
+          2034
+        ],
+        "time_bits": 1106247760,
+        "path": "work/accuracy-20261004/corpus/C08/8fc12404-6151-11eb-afe2-061b3d1d141d-a0c258e0-bbe1-4252-832a-f15a23b19f96.3.vgr",
+        "sha256": "ee6c18616373fd41b13ea693ff47a99dddf58385a954bcbc06b1468c67793ba9"
+      },
+      "payload_length": 216,
+      "actor": 1509,
+      "name": "815_mu",
+      "definition": 396,
+      "skin": 3155516911,
+      "dispatch_line": 1589,
+      "consumer_after_line": 1594,
+      "wrapper_line": 1592
+    }
+  ],
+  "native_reader_roster_plateaus": [
+    {
+      "first_line": 1855,
+      "last_line": 2139,
+      "begin": "2026-10-04T12:14:32.116590+00:00",
+      "end": "2026-10-04T12:15:47.042693+00:00",
+      "count": 285,
+      "reader": {
+        "kind": "replay",
+        "object": "0xd868bb0",
+        "mode": 1,
+        "playback_time": {
+          "value": 1180.0003662109375,
+          "bits": 1150517251
+        },
+        "buffered_record_time": {
+          "value": 1180.0601806640625,
+          "bits": 1150517741
+        },
+        "needs_record": 0,
+        "content_length": 8,
+        "content_hex": "0424000076130100",
+        "section": 118,
+        "file_open": true,
+        "slot_name": "a8d06624-352e-4897-b920-2cdbafdb48ab-7f6b11cc-0576-40a8-bba6-c9eb7ee3b9cd"
+      },
+      "reader_before_after_equal": true
+    },
+    {
+      "first_line": 1757,
+      "last_line": 1854,
+      "begin": "2026-10-04T12:14:06.543229+00:00",
+      "end": "2026-10-04T12:14:31.861624+00:00",
+      "count": 98,
+      "reader": {
+        "kind": "replay",
+        "object": "0xd868bb0",
+        "mode": 1,
+        "playback_time": {
+          "value": 72.37315368652344,
+          "bits": 1116782350
+        },
+        "buffered_record_time": {
+          "value": 72.4000473022461,
+          "bits": 1116785875
+        },
+        "needs_record": 0,
+        "content_length": 16,
+        "content_hex": "03f8103f8245af4240f33e0000000000",
+        "section": 7,
+        "file_open": true,
+        "slot_name": "a8d06624-352e-4897-b920-2cdbafdb48ab-7f6b11cc-0576-40a8-bba6-c9eb7ee3b9cd"
+      },
+      "reader_before_after_equal": true
+    },
+    {
+      "first_line": 81,
+      "last_line": 104,
+      "begin": "2026-10-04T12:12:48.922813+00:00",
+      "end": "2026-10-04T12:12:54.908811+00:00",
+      "count": 24,
+      "reader": {
+        "kind": "replay",
+        "object": "0xd868bb0",
+        "mode": 2,
+        "playback_time": {
+          "value": 0.007540800143033266,
+          "bits": 1006049489
+        },
+        "buffered_record_time": {
+          "value": 0,
+          "bits": 0
+        },
+        "needs_record": 1,
+        "content_length": 103,
+        "content_hex": "03e9000005e4000000000000000000000000000000000000000000000000000000002a47616d654d6f64655f3576355f43617375616c2a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "section": 0,
+        "file_open": true,
+        "slot_name": "a8d06624-352e-4897-b920-2cdbafdb48ab-7f6b11cc-0576-40a8-bba6-c9eb7ee3b9cd"
+      },
+      "reader_before_after_equal": true
+    }
+  ],
+  "limitations": [
+    "Native snapshots are non-atomic.",
+    "The immutable capture is external; line numbers are 1-based.",
+    "The later labels-only attempt ended when the owned game was stopped; it is not a clean completed observation and is excluded from this proof.",
+    "Both Guest identities match native rows in both payload lengths, but portraits and native fields are not literal rendered hero labels."
+  ]
+}
