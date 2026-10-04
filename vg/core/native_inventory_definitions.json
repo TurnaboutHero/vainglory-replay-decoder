@@ -1,0 +1,1456 @@
+{
+  "schema_version": "native-item-definitions.v1",
+  "build_sha256": "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+  "manifest_sha256": "7292b885378be83cb8596601bad7d0c7adfaab1e91e23f8ea65601f03136755c",
+  "localization_sha256": "209df4c745201dec58bd5ef2497f1835298b21cbc8f23bd1bb1669589462d8d4",
+  "source": "Original Item CFF symbol type0xfc7583e1; definition native offsets +1c/+20/+125/+12c and original item-name localization pointer +8. No price fitting.",
+  "definitions": {
+    "457": {
+      "definition_name": "Item_HealingFlask",
+      "name": "Healing Flask",
+      "native_name": "Healing Flask",
+      "hud_hidden": true,
+      "name_key": "STORE_ITEM_HEALING_FLASK_NAME",
+      "resource_sha256": "98161865da473019a7d707db40d2fa2f83303a95eb0863d5b0380e63b5bd21f1",
+      "resource_name": "AFE27DA418272F58FF795339B0DE791F",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": true
+    },
+    "458": {
+      "definition_name": "Item_WeaponBlade",
+      "name": "Weapon Blade",
+      "native_name": "Weapon Blade",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_WEAPON_1_NAME",
+      "resource_sha256": "f3cf9f206855f2269c8fb5c6f3f35fc02c1511bedd85357f6a1220aea8f57876",
+      "resource_name": "D1A5F3CCB64928EA2B673AC8196ECAFC",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "459": {
+      "definition_name": "Item_CrystalBit",
+      "name": "Crystal Bit",
+      "native_name": "Crystal Bit",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_CRYSTAL_1_NAME",
+      "resource_sha256": "b96304fc7c6057ec30c9899f7475bab93bc7fa669852a159c28c674ab0e7f058",
+      "resource_name": "2888F1D265ECA3AB4A259D81D14034BA",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "460": {
+      "definition_name": "Item_SwiftShooter",
+      "name": "Swift Shooter",
+      "native_name": "Swift Shooter",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_ATTACK_SPEED_1_NAME",
+      "resource_sha256": "b63214f2045163f22a9c4d40c6c05ad51819c7bcb1c7474ec7fc27b0ec986c5b",
+      "resource_name": "5A349BA50E28D14674A460B2CC78CC7C",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "461": {
+      "definition_name": "Item_SixSins",
+      "name": "Six Sins",
+      "native_name": "Six Sins",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_WEAPON_2_NAME",
+      "resource_sha256": "0d843d05dc29f3ae9d3e20eb7f107d75e2ef2be85390a18d08c881d7b04a59cf",
+      "resource_name": "37E0690F48754A5D1034AC4CB576DB4E",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "462": {
+      "definition_name": "Item_EclipsePrism",
+      "name": "Eclipse Prism",
+      "native_name": "Eclipse Prism",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_CRYSTAL2_NAME",
+      "resource_sha256": "242b6a6aab7593378e6dc15b15027f87af7fb1b19f84d76ee52103d2a2674611",
+      "resource_name": "2FA50101EEAD18B8CBC2BDE147C2D2B1",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "463": {
+      "definition_name": "Item_BlazingSalvo",
+      "name": "Blazing Salvo",
+      "native_name": "Blazing Salvo",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_ATTACK_SPEED_2_NAME",
+      "resource_sha256": "50ab51aba5866082c3f806aab14d3815d1fc13d94e0b7fbac4920208431c17d2",
+      "resource_name": "81A9C11EBF7815DA14F12EBB2D274E30",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "464": {
+      "definition_name": "Item_Sorrowblade",
+      "name": "Sorrowblade",
+      "native_name": "Sorrowblade",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_WEAPON_3_NAME",
+      "resource_sha256": "b4227a2b0f783a537263646e51a487e0fa4394c8920ac8c62d8f86832a207e66",
+      "resource_name": "FF43B0229CE335A1C2398566D8E400F7",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "465": {
+      "definition_name": "Item_Shatterglass",
+      "name": "Shatterglass",
+      "native_name": "Shatterglass",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_CRYSTAL_3_NAME",
+      "resource_sha256": "298ea29eed3ada3d7d5e57b3b61b41e4105d442c3d6f5fb8c6c8d1d78cc623dd",
+      "resource_name": "9301E2661C72451ABE093064F9086094",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "466": {
+      "definition_name": "Item_TornadoTrigger",
+      "name": "Tornado Trigger",
+      "native_name": "Tornado Trigger",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_ATTACK_SPEED_3_NAME",
+      "resource_sha256": "752914aa0348ca246b3ad6996a099f077d7197ba22199577a52651776881d330",
+      "resource_name": "E657F4B20BD9A5D37800590A4905C282",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "467": {
+      "definition_name": "Item_Oakheart",
+      "name": "Oakheart",
+      "native_name": "Oakheart",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_HEALTH_1_NAME",
+      "resource_sha256": "03e8a0fd21685d8e39c9a0afd8205e24bd21202d14a6fe995c8e1bd48a6f8d93",
+      "resource_name": "35E84498C4DE5BDB96E9C3E8AF1A49FD",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "468": {
+      "definition_name": "Item_Dragonheart",
+      "name": "Dragonheart",
+      "native_name": "Dragonheart",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_HEALTH_2_NAME",
+      "resource_sha256": "eeaac9bc418dc8b3012b17c3494d11ae92621b6d7e09266083047eaa64bd7bbe",
+      "resource_name": "80C4E8CBD09D5BD1DA7C633865DEFA87",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "469": {
+      "definition_name": "Item_LightArmor",
+      "name": "Light Armor",
+      "native_name": "Light Armor",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_ARMOR_1_NAME",
+      "resource_sha256": "1f1da678acfdbe39da304a2da99938ab8d0072db1caac032205cbf997711e864",
+      "resource_name": "D340B7892F72B2938BC0744EF25AA677",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "470": {
+      "definition_name": "Item_CoatOfPlates",
+      "name": "Coat of Plates",
+      "native_name": "Coat Of Plates",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_ARMOR_2_NAME",
+      "resource_sha256": "e96efd4fecb22b781d0c59f8c058961051057dd475df97840ce6316e4376b534",
+      "resource_name": "F77D1040EBEC89C9AC3CEEC59507997D",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "471": {
+      "definition_name": "Item_MetalJacket",
+      "name": "Metal Jacket",
+      "native_name": "Metal Jacket",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_ARMOR_3_NAME",
+      "resource_sha256": "1deaf422e7b3020fd07ffb817cd60e413c8598e09b5459c3ce7c290136db329c",
+      "resource_name": "57A1F08B38C7F550FC00A1150E9DD794",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "472": {
+      "definition_name": "Item_EnergyBattery",
+      "name": "Energy Battery",
+      "native_name": "Energy Battery",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_ENERGY_1_NAME",
+      "resource_sha256": "28e13c57f0127cf8738dd7c25af2feaf6681d2901e588fdd758dd34465a2e83a",
+      "resource_name": "D7749281BC837F60816ABA3B3C0D48C2",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "473": {
+      "definition_name": "Item_Hourglass",
+      "name": "Hourglass",
+      "native_name": "Hourglass",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_COOLDOWN_1_NAME",
+      "resource_sha256": "866ef90a9f0f6f5e3039c4368c5dfcde9d605d8f608d701a83b0d40843140076",
+      "resource_name": "ED5D152EC883D1706C6F8842E2E8A30F",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "474": {
+      "definition_name": "Item_VoidBattery",
+      "name": "Void Battery",
+      "native_name": "Void Battery",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_ENERGY_2_NAME",
+      "resource_sha256": "3fa94594875ef44f263a53910153144e594261e617809fa82cccc2bcb1db66b9",
+      "resource_name": "8C781FF49D5EBEEE52CE416B906E68FA",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "475": {
+      "definition_name": "Item_Chronograph",
+      "name": "Chronograph",
+      "native_name": "Chronograph",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_COOLDOWN_2_NAME",
+      "resource_sha256": "ae93c926bf933c3cbcfa00dbd8b72f6380481b30becfd3bf903e8873d880d831",
+      "resource_name": "D2E88E4BBF3D443BA8CCE897AF1ECE64",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "476": {
+      "definition_name": "Item_Clockwork",
+      "name": "Clockwork",
+      "native_name": "Clockwork",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_CLOCKWORK_NAME",
+      "resource_sha256": "6c29e47028ace0ab0002113a6a14c1e43380b8448a8f6831c5dafae80d3bbf33",
+      "resource_name": "21C0A6C42DFFDC17562EB889EC3D9151",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "477": {
+      "definition_name": "Item_SprintBoots",
+      "name": "Sprint Boots",
+      "native_name": "Sprint Boots",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_BOOTS_1_NAME",
+      "resource_sha256": "e5fb7e46a1b9ef5aa66db386a34ed0aa4e16f4ed481610b33a2089940a6b9f0c",
+      "resource_name": "DCC1C968EBDBADF3DBF0D3C6F3B578F3",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "478": {
+      "definition_name": "Item_TravelBoots",
+      "name": "Travel Boots",
+      "native_name": "Travel Boots",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_BOOTS_2_NAME",
+      "resource_sha256": "c5fb84064d242cf72c020e893303f3cb07085bfc6fae220114238d0725e2d989",
+      "resource_name": "40CFE5C9860B38921165A2F89933236A",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "479": {
+      "definition_name": "Item_SerpentMask",
+      "name": "Serpent Mask",
+      "native_name": "Serpent Mask",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_SERPENT_MASK_NAME",
+      "resource_sha256": "02aae9198736394ede481b527137c640ca41886527dafb1d1b3cced2684cea0d",
+      "resource_name": "1CDE66CE2915BAE2CEE39077344885DB",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "480": {
+      "definition_name": "Item_TensionBow",
+      "name": "Tension Bow",
+      "native_name": "Tension Bow",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_TENSION_BOW_NAME",
+      "resource_sha256": "cbc45369f566d9f049d91b0ae7f754bec9e8d3b2739d6cf8119009278e49e4c9",
+      "resource_name": "7BFDD848F7B92E9391BF99BB499B0110",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "481": {
+      "definition_name": "Item_Flare",
+      "name": "Flare",
+      "native_name": "Flare",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_FLARE_NAME",
+      "resource_sha256": "7393c8cb8922da2f806561fbcb2da62926fc71934752b38b3b2d7f9dd83dfd0e",
+      "resource_name": "80374601C79195E39D230047AAB884E8",
+      "stackable": true,
+      "max_stack": 5,
+      "grant_skip": false,
+      "unique": false
+    },
+    "482": {
+      "definition_name": "Item_Bonesaw",
+      "name": "Bonesaw",
+      "native_name": "Bonesaw",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_BONESAW_NAME",
+      "resource_sha256": "9ebd8b1a6e0ec873e3f5e2477086f56857bb1f2d90b273b924d62677dcbaa8bc",
+      "resource_name": "BBB2B75EDB5B7BF1903527D074EA4414",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "483": {
+      "definition_name": "Item_MinionCandy",
+      "name": "Minion Candy",
+      "native_name": "Minion Candy",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_MINION_CANDY_NAME",
+      "resource_sha256": "dc61396dedc6b645960b1afd0b78f89878ccf1a1008f1f3c392d4783b9d18e78",
+      "resource_name": "2BF5C73A36832F63217BE13A24745EA0",
+      "stackable": true,
+      "max_stack": 5,
+      "grant_skip": false,
+      "unique": false
+    },
+    "484": {
+      "definition_name": "Item_Shiversteel",
+      "name": "Shiversteel",
+      "native_name": "Shiversteel",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_SHIVERSTEEL_NAME",
+      "resource_sha256": "d44aee39c49a4f76efc95185cc20bb6c32c56d7e7b8a6caec368ba3cce0be732",
+      "resource_name": "C5586391278F5D8E4DD62C1DEEE6F762",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "485": {
+      "definition_name": "Item_ReflexBlock",
+      "name": "Reflex Block",
+      "native_name": "Reflex Block",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_REFLEX_BLOCK_NAME",
+      "resource_sha256": "246384648cd5b6facbbb4a9866339079d1dc0cb832c5de3b88ea0a023f8d75c2",
+      "resource_name": "ABE806121DAD85A8E299F01E58AE9C51",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "486": {
+      "definition_name": "Item_Frostburn",
+      "name": "Frostburn",
+      "native_name": "Frostburn",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_FROSTBURN_NAME",
+      "resource_sha256": "27718fd2589a2554e0313c6d4f327f19e5b593ed39b8b600fa51f595ffd9eda5",
+      "resource_name": "6B555C87AD5B6DB9FA8282988A23C8CC",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "487": {
+      "definition_name": "Item_FountainOfRenewal",
+      "name": "Fountain of Renewal",
+      "native_name": "Fountain of Renewal",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_FOUNTAIN_NAME",
+      "resource_sha256": "4f367432f83f947b6446c2f083d0d1de81d0c6ab678bfe3202140088cdb32c37",
+      "resource_name": "3A4A448F2A4B2A65D84997E8DBC3784A",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "488": {
+      "definition_name": "Item_Crucible",
+      "name": "Crucible",
+      "native_name": "Crucible",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_TEAM_BLOCK_NAME",
+      "resource_sha256": "c24706505293f06fd1c63dc45e226f8aec345afcbb67a003b4a81af0b9e58fd2",
+      "resource_name": "2E729BE9B5F19D6BCDCDE778A0A70442",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "489": {
+      "definition_name": "Item_JourneyBoots",
+      "name": "Journey Boots",
+      "native_name": "Journey Boots",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_JOURNEY_BOOTS_NAME",
+      "resource_sha256": "70373c15f3961075ed4e688e1d1f38ebf08139e1d8aed2b63a8fef4facc72f2c",
+      "resource_name": "A685734E67DE1E01D89BDF3826EAAA77",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "490": {
+      "definition_name": "Item_HalcyonChargers",
+      "name": "Halcyon Chargers",
+      "native_name": "Halcyon Chargers",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_HALCYON_CHARGERS_NAME",
+      "resource_sha256": "02907bad8782e4f8da08e3879a8fa770e7413a50efde9112ccf538a14a8d6099",
+      "resource_name": "6D88622FFB87BF474FADF47E0BE08A8E",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "491": {
+      "definition_name": "Item_TyrantsMonocle",
+      "name": "Tyrant's Monocle",
+      "native_name": "Tyrants Monocle",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_CRITICAL_NAME",
+      "resource_sha256": "0cc19e6b2e4f8350cab116f842982c6b29243fa0ebb87be435889975f0ce991d",
+      "resource_name": "C38E3F0CAA4E565A07749048AB86DA18",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "492": {
+      "definition_name": "Item_Aftershock",
+      "name": "Aftershock",
+      "native_name": "Aftershock",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_AFTERSHOCK_NAME",
+      "resource_sha256": "b6e18c5cd958cee3bbd1b0b7d54505c81831195ec31b066423b13477b250214b",
+      "resource_name": "9C3D878940AD124EE6B2061782ED5F44",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "493": {
+      "definition_name": "Item_WeaponInfusion",
+      "name": "Weapon Infusion",
+      "native_name": "Weapon Infusion",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_CRISIS_WEAPON_NAME",
+      "resource_sha256": "4ec71fc08c4934d92a7281cecd99f0b523874e9d023f527687e89027ba54ada1",
+      "resource_name": "3A97D8A73EF77D688FF42FB6E9510928",
+      "stackable": true,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "494": {
+      "definition_name": "Item_CrystalInfusion",
+      "name": "Crystal Infusion",
+      "native_name": "Crystal Infusion",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_CRISIS_CRYSTAL_NAME",
+      "resource_sha256": "8508005e9eb471b5dc4fbe7c0ebab05c9bf3d76da4ac4537e85646678fa03528",
+      "resource_name": "FB67EB98A35AC85FC276DC7363983A0E",
+      "stackable": true,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "495": {
+      "definition_name": "Item_ScoutTrap",
+      "name": "Scout Trap",
+      "native_name": "Scout Trap",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_SCOUT_TRAP_NAME",
+      "resource_sha256": "8dd2a23b351a5ba89594585efb40169954215d1c49ae2f406600ba1ba2788839",
+      "resource_name": "D6F1AAC42ED17ADA68C6067B4441B599",
+      "stackable": true,
+      "max_stack": 5,
+      "grant_skip": false,
+      "unique": false
+    },
+    "496": {
+      "definition_name": "Item_BrokenMyth",
+      "name": "Broken Myth",
+      "native_name": "Broken Myth",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_BROKEN_MYTH_NAME",
+      "resource_sha256": "642dfffda76b6feb32e6a411ffd489fe73d0d1b4765c2586de65cd0dfcbf9a2e",
+      "resource_name": "55B2FED986781AD263FCC54084156A1F",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "497": {
+      "definition_name": "Item_WarTreads",
+      "name": "War Treads",
+      "native_name": "War Treads",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_WAR_TREADS_NAME",
+      "resource_sha256": "48d93ffbbe4c855c02835b01b3ddbb387231007bf3f5a704dabf22216b8ba645",
+      "resource_name": "41FDBF5A5B14790853F419D420A34DFD",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "498": {
+      "definition_name": "Item_AtlasPauldron",
+      "name": "Atlas Pauldron",
+      "native_name": "Atlas Pauldron",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_ATLAS_PAULDRON_NAME",
+      "resource_sha256": "f0c52b2c0a1fa104a707d0d12c36bc5ede3a8cd9ea80d4ef9e096a0665623ede",
+      "resource_name": "F3C4F656562D438BA2A391D3D0C57E20",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "499": {
+      "definition_name": "Item_BookOfEulogies",
+      "name": "Book of Eulogies",
+      "native_name": "Book Of Eulogies",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_BOOK_OF_EULOGIES_NAME",
+      "resource_sha256": "11df72fda7091fa44283bdbe905e380583edbde1977d5a2a4f26ac433e75a2d2",
+      "resource_name": "89541A997F5C9392C625C8179B0D6813",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "500": {
+      "definition_name": "Item_BarbedNeedle",
+      "name": "Barbed Needle",
+      "native_name": "Barbed Needle",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_BARBED_NEEDLE_NAME",
+      "resource_sha256": "ef80a278f77868032e64ac89f67211c2fd93c5f2c797706376f0fc0ff0ea2e76",
+      "resource_name": "9D94489421923C2EA4A67E569D5FC9A0",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "501": {
+      "definition_name": "Item_LightShield",
+      "name": "Light Shield",
+      "native_name": "Light Shield",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_SHIELD_1_NAME",
+      "resource_sha256": "2e284eee855bbf9180fc43cf4d30b29cf205f8eb865898e203b8b328dd20b8f4",
+      "resource_name": "B5BBA5C2A27ACED680429668BCAED20A",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "502": {
+      "definition_name": "Item_KineticShield",
+      "name": "Kinetic Shield",
+      "native_name": "Kinetic Shield",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_SHIELD_2_NAME",
+      "resource_sha256": "c252f556731e1158a862c8a7ebc5b422b678df1ae64ec5c4760f61d9b89e503f",
+      "resource_name": "495123D6CD8D3D212859992A415B165F",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "503": {
+      "definition_name": "Item_Aegis",
+      "name": "Aegis",
+      "native_name": "Aegis",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_CRYSTAL_MATRIX_NAME",
+      "resource_sha256": "91d507970760fcd7f9636c361bb012ad7a57617fd983048967e9e039a9c6c036",
+      "resource_name": "E97E12703EFAFFD78A101D8F433A53B5",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "504": {
+      "definition_name": "Item_Lifespring",
+      "name": "Lifespring",
+      "native_name": "Lifespring",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_LIFEWELL_NAME",
+      "resource_sha256": "313469cc650b03374b1f9e0a5d7527166c6071d4ee3695f6a1e7a1f96ecb243f",
+      "resource_name": "6DDEBC81D54A151903FD8ED28295DD87",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "505": {
+      "definition_name": "Item_HeavySteel",
+      "name": "Heavy Steel",
+      "native_name": "Heavy Steel",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_WIELDERS_EDGE_NAME",
+      "resource_sha256": "bcf2bfbf23c955b96e67a8814c0d39e18c42b2c7f7a32d09fceb32f7bed3c22d",
+      "resource_name": "D18B30344106454DAF7BB6DD0DCC82E9",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "506": {
+      "definition_name": "Item_PiercingSpear",
+      "name": "Piercing Spear",
+      "native_name": "Piercing Spear",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_PIERCING_SPEAR_NAME",
+      "resource_sha256": "ba5671f3c0df64e7fd3b62ddddfdb29f3e5abd33110af0f0ceee2381dd9262b2",
+      "resource_name": "66D56F1624A8244CF0D292B7FA17ABD1",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "507": {
+      "definition_name": "Item_BreakingPoint",
+      "name": "Breaking Point",
+      "native_name": "Breaking Point",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_BREAKING_POINT_NAME",
+      "resource_sha256": "ed79bfe973981d4ef7b2a9a8f00abe869e742c286b0781dd30efa2ac80940f10",
+      "resource_name": "81D672663AD8EB563BA61C69DF2589F7",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "508": {
+      "definition_name": "Item_LuckyStrike",
+      "name": "Lucky Strike",
+      "native_name": "Lucky Strike",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_LUCKY_STRIKE_NAME",
+      "resource_sha256": "aaae54fd5d322a1ecf77c43a449d90ebcaa4baff1b5d8966f3af8597c1baee1c",
+      "resource_name": "CB7070A4EA66C21E87F738A3ED818C59",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "509": {
+      "definition_name": "Item_AlternatingCurrent",
+      "name": "Alternating Current",
+      "native_name": "Alternating Current",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_ALTERNATING_CURRENT_NAME",
+      "resource_sha256": "4b73c93534f2c5f8651dee6ef69c57ea5ea03d64ca4b2ad56c6b269b566e6ec5",
+      "resource_name": "96E46D8E7727145F8ACC52C392016E94",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "510": {
+      "definition_name": "Item_PiercingShard",
+      "name": "Piercing Shard",
+      "native_name": "Piercing Shard",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_PIERCING_SHARD_NAME",
+      "resource_sha256": "20734acf2ec5fbcf38bec0e2222fed95686e4402e72d5702c28f52d588b3fefc",
+      "resource_name": "AEF53C0E52BE9F13E2C0AA877A2EF8E8",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "511": {
+      "definition_name": "Item_EveOfHarvest",
+      "name": "Eve of Harvest",
+      "native_name": "Eve Of Harvest",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_EVE_OF_HARVEST_NAME",
+      "resource_sha256": "93e86d6d04d71e333c6467ddd3efcf6b5f8ce065acfb2c87ded968cb7ddbe84a",
+      "resource_name": "0782A90C151BBBF8DE24BD16FC238AD6",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "512": {
+      "definition_name": "Item_HeavyPrism",
+      "name": "Heavy Prism",
+      "native_name": "Heavy Prism",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_ECLIPSE_PRISM_NAME",
+      "resource_sha256": "3ba357334cc826f0649381642a386c9ff8f36a4000eeb669058ab305b8374a39",
+      "resource_name": "8084ECAB6EDA8E78FBDCBD3280561321",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "513": {
+      "definition_name": "Item_StormguardBanner",
+      "name": "Stormguard Banner",
+      "native_name": "Stormguard Banner",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_STORMGUARD_BANNER_NAME",
+      "resource_sha256": "5e11d4eba4235d4f62a4caa554a873a364bac867e09a2952d6a82cf5a7bcb59e",
+      "resource_name": "2DE4C81B67EFEF50DA7E650E7204FE19",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "514": {
+      "definition_name": "Item_GoldCandy",
+      "name": "Pot of Gold",
+      "native_name": "Pot Of Gold",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_GOLD_CANDY_NAME",
+      "resource_sha256": "fe2a9030783a9f572123923874a2ae9b1dbfab376791e7a2db401b5fbce5d69a",
+      "resource_name": "A3EE9C7ED569C46BF7A1D5E6C8E91038",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "515": {
+      "definition_name": "Item_LevelCandy",
+      "name": "Level Juice",
+      "native_name": "Level Juice",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_LEVEL_CANDY_NAME",
+      "resource_sha256": "6808f3493b90c657fd29313bf75a25f603c66b7e4a281498360fb1e8d60b71af",
+      "resource_name": "31D8D03B4A54DA83B34EAC005025E594",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "516": {
+      "definition_name": "Item_Contraption",
+      "name": "Contraption",
+      "native_name": "Contraption",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_CONTRAPTION_NAME",
+      "resource_sha256": "df7e2a5909a35c5bf8469a06953b296b17d29d4c7bdf21ac85844abf7865b387",
+      "resource_name": "9BBD4599C8983A9CB4266EA53B9370F8",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "517": {
+      "definition_name": "Item_MinionsFoot",
+      "name": "Minion's Foot",
+      "native_name": "Minions Foot",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_MINIONS_FOOT_NAME",
+      "resource_sha256": "735c2c217723e97b34a5461c1f180656b92ea1c0e1092e763fd090b1b0774e48",
+      "resource_name": "5143574F596D5E7EBF8791A874B513CB",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "518": {
+      "definition_name": "Item_Flaregun",
+      "name": "Flare Gun",
+      "native_name": "Flaregun",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_FLARE_GUN_NAME",
+      "resource_sha256": "2567be8498352540e25c80408dfde76476720858c92abad9189fa359bea5b70a",
+      "resource_name": "960159621536E079EC2D064B3D8DA088",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "519": {
+      "definition_name": "Item_Stormcrown",
+      "name": "Stormcrown",
+      "native_name": "Stormcrown",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_STORMCROWN_NAME",
+      "resource_sha256": "4c35617ef34b131d5cb4daf7696963d691f1a1be00e592bdc5b49a1d1e5f47d1",
+      "resource_name": "E1D0C0D09FB37AC3F0C6AF400BE562EF",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "520": {
+      "definition_name": "Item_PoisonedShiv",
+      "name": "Poisoned Shiv",
+      "native_name": "Poisoned Shiv",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_POISONED_SHIV_NAME",
+      "resource_sha256": "caabdb31018b31f412d8e6dcd246e17e246e0c9ede5bf9903f94cbdecf7e08c8",
+      "resource_name": "C004022B19B8B95312D035BB04DEDB4F",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "521": {
+      "definition_name": "Item_NullwaveGauntlet",
+      "name": "Nullwave Gauntlet",
+      "native_name": "Nullwave Gauntlet",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_NULLWAVE_GAUNTLET_NAME",
+      "resource_sha256": "7d6674ff6cad4beea788a6c5d5015df909dc409bf8fa6954c5c3ec7b605800a7",
+      "resource_name": "8208DDB97AFC248D2FB0DDE2E1C1687B",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "522": {
+      "definition_name": "Item_Spellfire",
+      "name": "Spellfire",
+      "native_name": "Spellfire",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_SPELLFIRE_NAME",
+      "resource_sha256": "f72c9f58f3275a5c0ca97830b6b1c65ad6d76717be69347ff66d0bd63a2e3311",
+      "resource_name": "CD09B7C1BE6E33393BB6BA3BFEDF3433",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "523": {
+      "definition_name": "Item_DragonsEye",
+      "name": "Dragon's Eye",
+      "native_name": "Dragon's Eye",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_DRAGONS_EYE_NAME",
+      "resource_sha256": "d3edad89a9234cd21408a0c3a5fbc2b3fcaa7041754ba305a9bf6e5141649bf6",
+      "resource_name": "21C204A34AAEF1A634F9D2430A7F820A",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "524": {
+      "definition_name": "Item_Spellsword",
+      "name": "Spellsword",
+      "native_name": "Spellsword",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_SPELLSWORD_NAME",
+      "resource_sha256": "792b6fdf0b7aa56b99b37f12c13a491cc94c418acada39a04ca0601146ad4c01",
+      "resource_name": "BEFCACD8526E4A0A8845A71A04584491",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "525": {
+      "definition_name": "Item_SlumberingHusk",
+      "name": "Slumbering Husk",
+      "native_name": "Slumbering Husk",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_SLUMBERING_HUSK_NAME",
+      "resource_sha256": "c8621d33f3908a55747310e834674ef3863854c11325e87162768b7e021f7b4a",
+      "resource_name": "ABFF72F05789D6566BD2389BFD300BFC",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "526": {
+      "definition_name": "Item_VisionTotem",
+      "name": "Scout Cam",
+      "native_name": "Vision Totem",
+      "hud_hidden": true,
+      "name_key": "STORE_ITEM_VISION_TOTEM_NAME",
+      "resource_sha256": "33ec118565a65072d3bc3b9ab07dca48bfae1db90134a7e95bac8cee639a5842",
+      "resource_name": "74B1975A1D1590FA748ADD33740A56B4",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": true
+    },
+    "527": {
+      "definition_name": "Item_SuperScout2000",
+      "name": "SuperScout 2000",
+      "native_name": "SuperScout 2000",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_TOTEM_ENHANCER_NAME",
+      "resource_sha256": "9e73d43a9d55e30052bfa6364ebad12f0c3ce22af83db74abd150eab97f4c491",
+      "resource_name": "93601510E97FDC428C8E1AC0C9FBD8F0",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "528": {
+      "definition_name": "Item_ScoutTuff",
+      "name": "ScoutTuff",
+      "native_name": "ScoutTuff",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_TOTEM_BUFFER_NAME",
+      "resource_sha256": "1ed6b70591f55db620db689be13a3d038b6b41d582ca02572a81056d7d9a9372",
+      "resource_name": "014658D2B59D0CCAA7FE1276E9776EAF",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "529": {
+      "definition_name": "Item_ScoutPak",
+      "name": "ScoutPak",
+      "native_name": "ScoutPak",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_TOTEM_MULTIPLIER_NAME",
+      "resource_sha256": "65b8f0094ebe225f47dd6c015c3e84dd02066bf467cf265b1fe9d49ae719a294",
+      "resource_name": "02A1263AE478386A3154B9BAD76CDB7A",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "530": {
+      "definition_name": "Item_TeleportBoots",
+      "name": "Teleport Boots ",
+      "native_name": "Teleport Boots",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_WARP_GENERATOR_NAME",
+      "resource_sha256": "3137224c047f2b5f1470f5c1e146a150971841520d266a53de0b7a583b415998",
+      "resource_name": "AC0C0AF4EEEFD14CF449C14D23B69320",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "531": {
+      "definition_name": "Item_RooksDecree",
+      "name": "Rook's Decree",
+      "native_name": "Rook's Decree",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_ROOKS_DECREE_NAME",
+      "resource_sha256": "f332aea67b16b4fa84f664cf20047b140ee1c96cac25b1b9bc0384b05579c3fc",
+      "resource_name": "1FD1BD03669F6F58728A2C5A47DB3B1E",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "532": {
+      "definition_name": "Item_FlareLoader",
+      "name": "Flare Loader",
+      "native_name": "FlareLoader",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_FLARE_GUN_BETA_NAME",
+      "resource_sha256": "e51e319f4e90f353d19c4918862a4aebf339c1f64b8e58cb5ac23d57637b76f3",
+      "resource_name": "0A9CFD175450A80B73DA06312E6E8C42",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "533": {
+      "definition_name": "Item_Pulseweave",
+      "name": "Pulseweave",
+      "native_name": "Pulseweave",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_PULSEWEAVE_NAME",
+      "resource_sha256": "96ef2b64541b626bf5596f96a4f70a7aeee43628c0dfed49d32458c7e5755991",
+      "resource_name": "6DA6C7A7489D1681EC0D2C5A7866D2B8",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "534": {
+      "definition_name": "Item_CapacitorPlate",
+      "name": "Capacitor Plate",
+      "native_name": "Capacitor Plate",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_CAPACITOR_PLATE_NAME",
+      "resource_sha256": "826ad9643e0412a9f8c8f1e94accb2fa156d5321a355eb507e715066c9e00468",
+      "resource_name": "BC0C89FE5C550B32C501FACA5E276BEA",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "535": {
+      "definition_name": "Item_ProtectorContract",
+      "name": "Protector Contract",
+      "native_name": "Protector Contract",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_PROTECTOR_CONTRACT_NAME",
+      "resource_sha256": "d9aee60d624c91e57ad7fa1d7344e4f7e86ce3ba3ff587f7db1249c3083bebbb",
+      "resource_name": "7749ECB5692A34AFE30384C55144E61D",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "536": {
+      "definition_name": "Item_DragonbloodContract",
+      "name": "Dragonblood Contract",
+      "native_name": "Dragonblood Contract",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_DRAGONBLOOD_CONTRACT_NAME",
+      "resource_sha256": "28d37c3ecd20992ddbd62bd8f163d1aedd886384e1c20e8a87bcdfb165a9138f",
+      "resource_name": "8962683DBE229A96D2F42989D9C55CFC",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "537": {
+      "definition_name": "Item_IronguardContract",
+      "name": "Ironguard Contract",
+      "native_name": "Ironguard Contract",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_IRONGUARD_CONTRACT_NAME",
+      "resource_sha256": "8b9e8d8bb7bf448dbc53ddf7dc36f11e644de3aa1b9e569a340438134554dfbb",
+      "resource_name": "7D5BA7634519E7804A7A0E043563B920",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "538": {
+      "definition_name": "Item_Warmail",
+      "name": "Warmail",
+      "native_name": "Warmail",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_WARMAIL_NAME",
+      "resource_sha256": "16bd23e68a04725abda59fe055b08e31991ee62771440955fbf4db617260382a",
+      "resource_name": "C48C06A6D05D70C860E77D24C7C26AB4",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "539": {
+      "definition_name": "Item_SeraphicShell",
+      "name": "Celestial Shroud",
+      "native_name": "Seraphic Shell",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_SERAPHIC_SHELL_NAME",
+      "resource_sha256": "23ffe6385cfa9c9f568cf0564ec8110e56ae750d09b59d29ce26d4d3203192b6",
+      "resource_name": "5B4F38F9D21A2B81FB876171CE6B0F98",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "540": {
+      "definition_name": "Item_Cheater",
+      "name": "Cheater",
+      "native_name": "Cheater",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_CHEATER_NAME",
+      "resource_sha256": "76eb4d63141fa5c424b4086883a2d255575d40346f9d5e909932e655a3524301",
+      "resource_name": "412341C84DFFF5D3FFC86C83405A28E7",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "541": {
+      "definition_name": "Item_VideoHelper",
+      "name": "Video Helper",
+      "native_name": "VideoHelper",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_VIDEOHELPER_NAME",
+      "resource_sha256": "b7ff508f1d63eb87f58f7d7279c267f5c88456dc5a93b90b96fa263cb0656559",
+      "resource_name": "D5699DF092837C2053FD1929F43A91F2",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "542": {
+      "definition_name": "Item_CheaterLethal",
+      "name": "Cheater Lethal",
+      "native_name": "Cheater Lethal",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_CHEATER_LETHAL_NAME",
+      "resource_sha256": "90bbef68402acf98a516c639dffaf37cff17dab83f6360c08ffb5c0feaeffffd",
+      "resource_name": "214B894D2E3CC07471AB79F48E8E46F9",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "543": {
+      "definition_name": "Item_CheaterImmortality",
+      "name": "Cheater Immortality",
+      "native_name": "CheaterImmortality",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_CHEATER_IMMORTALITY_NAME",
+      "resource_sha256": "d3421946e3ddecab7bac6a3c1123cacbc7733415fb7b101b0d861ff4afb42990",
+      "resource_name": "65D6239E04CE720587663EC68D4A92F3",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "544": {
+      "definition_name": "Item_RefundAbilityPoint",
+      "name": "Refund Ability Point",
+      "native_name": "Refund Ability Point",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_REFUND_ABILITY_POINT_NAME",
+      "resource_sha256": "74c550a53a10c8fd8a35d314b7a4d88ec1dc9b5338867167abc57b5904da1ea2",
+      "resource_name": "42A2E93BC8F0DD1E9A2102F1044A49FF",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "545": {
+      "definition_name": "Item_GetRidOfGold",
+      "name": "Get Rid Of Gold",
+      "native_name": "Get Rid Of Gold",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_GET_RID_OF_GOLD_NAME",
+      "resource_sha256": "6732dc946980779797ab9a15b64e67042afca2f32b92d455148257d4e434c4ee",
+      "resource_name": "27E625AEFA8D27ACFE2FA81D82FF1441",
+      "stackable": true,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "546": {
+      "definition_name": "Item_ImmortalStunSelf",
+      "name": "Immortal and Stun Self",
+      "native_name": "ImmortalStunSelf",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_IMMORTAL_STUNSELF_NAME",
+      "resource_sha256": "7c9481865fa42dd59a32af673b8708a772e5f1cf90d428cdf3644bf723b9ccdb",
+      "resource_name": "A58352F1F5C57B71DAF5DF0D364CE97B",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "547": {
+      "definition_name": "Item_CooldownDamageSelf",
+      "name": "Cooldown and Damage Self",
+      "native_name": "CooldownDamageSelf",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_COOLDOWN_DAMAGESELF_NAME",
+      "resource_sha256": "823afce9a2d4a3f04aabbeaf38db217a7e5fc590d0fce1b182800391aeb12247",
+      "resource_name": "3BA5E287AB3A730DB259462CCF6C425E",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "548": {
+      "definition_name": "Item_Boombox",
+      "name": "Top Secret",
+      "native_name": "Boombox",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_BOOMBOX_NAME",
+      "resource_sha256": "c286b8c5fc8fc6a755e6c4f014f455566ebb352258cc1aacad1d68953a1737ff",
+      "resource_name": "A937FB3266C915645BB43371937F1872",
+      "stackable": true,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    },
+    "549": {
+      "definition_name": "Item_Template",
+      "name": "mLocName appears here",
+      "native_name": "Template",
+      "hud_hidden": false,
+      "name_key": "STORE_ITEM_TEMPLATE_NAME",
+      "resource_sha256": "800df01c414a56daf155c7352dc852294b39139378c2090c54c560817ef1ddff",
+      "resource_name": "67F69CFE382A9E14EEFF8DBB1C365D92",
+      "stackable": false,
+      "max_stack": 1,
+      "grant_skip": false,
+      "unique": false
+    }
+  },
+  "game_modes": {
+    "*GameMode_Blitz_Pure*": {
+      "capacity": 8,
+      "resource_sha256": "6fbc012995ba181775046b03e4b1baae81e630b020e41117df6424db293c64fa"
+    },
+    "*GameMode_Tutorial_Tutorial02*": {
+      "capacity": 6,
+      "resource_sha256": "7c7ec42947aa5b0950f22c3f566ce78016861fa8b9acdcc4a17b29328306bf7f"
+    },
+    "*GameMode_Blitz_Ranked*": {
+      "capacity": 8,
+      "resource_sha256": "a9a01ee6ac96177596d509b73ba8700a874726400b05a3cc5cd87747a0864df3"
+    },
+    "*GameMode_5v5_Ranked*": {
+      "capacity": 8,
+      "resource_sha256": "69f02653bf63b5f0ce7f5b6a5a641d1cfaf6401af868091411f1ccaa36e09795"
+    },
+    "*GameMode_HF_PrivateDraft*": {
+      "capacity": 8,
+      "resource_sha256": "1eb6bb068b7a510440edb92b89056a14d44c7ae75e6767036518de0c6abb4b87"
+    },
+    "*GameMode_5v5_Practice*": {
+      "capacity": 8,
+      "resource_sha256": "0c27884879e3641ebd8ed7a8eccffbea543a87e61c20855969458626b741021c"
+    },
+    "*GameMode_5v5_Casual*": {
+      "capacity": 8,
+      "resource_sha256": "22690dfef1b457d0eee372b36e1b8b5d66e69982f6aa5392bcb72033945cb6dc"
+    },
+    "*GameMode_Tutorial_Tutorial01_Joystick*": {
+      "capacity": 6,
+      "resource_sha256": "e7a65d6e23c6e57413fda5a66c75d197bcb61ba540c91f49a574e673db08477b"
+    },
+    "*GameMode_DevOnly_DesignTestingGrounds*": {
+      "capacity": 8,
+      "resource_sha256": "fc5a99907b11e3e6b2de454e2ee3ae9cb7f4d009636d3431c1d333b2eee54237"
+    },
+    "*GameMode_Blitz_HiddenBots*": {
+      "capacity": 8,
+      "resource_sha256": "da2457dcca44a5b626f0dfac2fc56f9214436ef77251ce0b38fd43004ad596d4"
+    },
+    "*GameMode_Experiment_OneForAll*": {
+      "capacity": 8,
+      "resource_sha256": "6e7dc72be97d55c1adcc99845aafe3aa52c4aee81ad90df81502acd689116374"
+    },
+    "*GameMode_Rumble_Casual*": {
+      "capacity": 8,
+      "resource_sha256": "54b566f7816c4f71aa27e198f1982042225a24613cffef5480c765fd44121d98"
+    },
+    "*GameMode_5v5_Base*": {
+      "capacity": 8,
+      "resource_sha256": "e901487b35cd3c382b7887eff477c4dde07d5424e1ca2661168eadd207aaf353"
+    },
+    "*GameMode_Aral_AllBots*": {
+      "capacity": 6,
+      "resource_sha256": "90fc2d8046a8d3a132d4542d903dc79d638f137484a399e9fa7ab6c3325d6999"
+    },
+    "*GameMode_Experiment_Aram*": {
+      "capacity": 8,
+      "resource_sha256": "679730afd0b24172d68f74a71ff9c72512b2bd8b7f19ab2eb13b4c6ce585bc3a"
+    },
+    "*GameMode_Blitz_Base*": {
+      "capacity": 8,
+      "resource_sha256": "38f5e8bfadaed6862fc76ab7f691d6ac5aa8c9deb5300cbc2468585bf51bd6c8"
+    },
+    "*GameMode_HF_SoloBots*": {
+      "capacity": 8,
+      "resource_sha256": "ee0e10cb86a39e50990fea3515966a2670d05d7369c3e7c3644928e9a444fe1f"
+    },
+    "*GameMode_Blitz_Private*": {
+      "capacity": 8,
+      "resource_sha256": "cd9066c15c0f5e605e690840dc1f8e1f7ce1a5c80e9518c926e376bb59f176f5"
+    },
+    "*GameMode_Blitz_Revamp*": {
+      "capacity": 8,
+      "resource_sha256": "84525ad759f228a21e667d255f6498cf831f23d3b694c27d10e19e3838891e8c"
+    },
+    "*GameMode_Aral_Private*": {
+      "capacity": 8,
+      "resource_sha256": "06ef0daa2c20ca171818175f5665fa591fc18a887dea154e0d05f81a5761b780"
+    },
+    "*GameMode_Aral_SoloBots*": {
+      "capacity": 8,
+      "resource_sha256": "7ac8c35536dca33194ede287b2703288728582c60988155081813d39f8fe71d3"
+    },
+    "*GameMode_HF_Base*": {
+      "capacity": 8,
+      "resource_sha256": "76601aa7ef36eff072bd940268c4d8cfefd22a61d79b2acade77475baa02db6b"
+    },
+    "*GameMode_Aral_Casual*": {
+      "capacity": 8,
+      "resource_sha256": "aa59efc4cdd352aece8e5261ad6c8bb1c4d7793fa0a39cf5959c7448a956bdca"
+    },
+    "*GameMode_Blitz_SoloBots*": {
+      "capacity": 8,
+      "resource_sha256": "1c1a0f7efe98ead7263dd4a647c6bfdd51e75690bbe299a399d5ef7ba8ec2388"
+    },
+    "*GameMode_Tutorial_Tutorial05_5v5*": {
+      "capacity": 8,
+      "resource_sha256": "c779e9143d00df6ee0190f32118ad16119e53f16781021345911483f56d52d4c"
+    },
+    "*GameMode_HF_PrivateBots*": {
+      "capacity": 8,
+      "resource_sha256": "2a64bff0763f3a1055c08154b1e8908ec4b87cfa3bd7e767305aa45599bf5a89"
+    },
+    "*GameMode_Aral_HiddenBots*": {
+      "capacity": 8,
+      "resource_sha256": "91327a131eb93ca347fab967dae504d6262ab93d8b8a64347b52863ef9014065"
+    },
+    "*GameMode_Horde_Casual*": {
+      "capacity": 6,
+      "resource_sha256": "62c9aaae41c5a104421ffb46634c511d9654b3b697eeca3389ccef23dbe56312"
+    },
+    "*GameMode_HF_Ranked*": {
+      "capacity": 8,
+      "resource_sha256": "d20bea2d81da7157e691e2fd30b426378a13074dc60a6ffd9f2357b0deac7530"
+    },
+    "*GameMode_HF_CoopBots*": {
+      "capacity": 8,
+      "resource_sha256": "a781bb1ac2d23e9d68a7a16acbb3cb32f8d52c87580156246e1c01dd19736e54"
+    },
+    "*GameMode_5v5_Private*": {
+      "capacity": 8,
+      "resource_sha256": "c36f5f2c5e0b8246c024b23439b90997edb148c97e2128a4295e81d45e2792a4"
+    },
+    "*GameMode_Blitz_CoopBots*": {
+      "capacity": 8,
+      "resource_sha256": "8645c1005dfcec81ce579b956ca04dac980b19002f84c605f947d5556a0f5254"
+    },
+    "*GameMode_HF_HiddenBots*": {
+      "capacity": 8,
+      "resource_sha256": "5be2b17292689f2e9d738702d5fd3f2c04af8cba8db8480290725b6158c1fe9d"
+    },
+    "*GameMode_5v5_AllBots*": {
+      "capacity": 8,
+      "resource_sha256": "725f51bfdd029c9ea3e99baaf57be08269c321e98f7ffa41dc1b7481c81ebebf"
+    },
+    "*GameMode_Experiment_LanceBall*": {
+      "capacity": 8,
+      "resource_sha256": "91f85b53401d517336706d5f4eea17e6e2285ee355aaf4702f7a7a76e6609fbe"
+    },
+    "*GameMode_Aral_PrivateBots*": {
+      "capacity": 8,
+      "resource_sha256": "57a7281327d761e1f2da8092b4028a5aca7d6196bbbb3a5b733980aaa9b44fce"
+    },
+    "*GameMode_Horde_Private*": {
+      "capacity": 6,
+      "resource_sha256": "e021978619c18941ced20d0ed173e5582c969fcc7e26cc4d68bb4c139d265a2f"
+    },
+    "*GameMode_5v5_PrivateDraft*": {
+      "capacity": 8,
+      "resource_sha256": "efd4480acda52c1ac49fc1ea5950278f738a57199e41ba9de46cbe4ddc9e2eb7"
+    },
+    "*GameMode_DevOnly_DesignTestingGrounds_5v5*": {
+      "capacity": 8,
+      "resource_sha256": "48d1bdbd0d528a62f88e98d1c3cb331213ddbaa9cc146c8c96b37ee2899c5468"
+    },
+    "*GameMode_Tutorial_Tutorial02_Joystick*": {
+      "capacity": 8,
+      "resource_sha256": "03b2014280a8da241004a9fc19c504c5a6f84032b770bcac9ec1f851b8a90d0d"
+    },
+    "*GameMode_HF_Practice*": {
+      "capacity": 8,
+      "resource_sha256": "494c94e441ce7bd584837f3b137ebf369bb0f5a23113b228b7088644367bfb32"
+    },
+    "*GameMode_Aral_CoopBots*": {
+      "capacity": 8,
+      "resource_sha256": "d75852b83f338969e49244b4837760d636b2dd34e42b4406d3fd8fd049790778"
+    },
+    "*GameMode_5v5_OneForAll*": {
+      "capacity": 8,
+      "resource_sha256": "ae9a612e18185305479458b81649108240b1ce3828906ecffb0eb9d52a72fcd0"
+    },
+    "*GameMode_5v5_PrivateBots*": {
+      "capacity": 8,
+      "resource_sha256": "4410a6fd706b71157c056115cfcfdefcfd20385bcc59fb53e4beb825cc4d57c5"
+    },
+    "*GameMode_5v5_CoopBots*": {
+      "capacity": 8,
+      "resource_sha256": "bdb7746037e0e40fab60a4706260e27e10bfae8e91664c6e7e84fd13985c5e20"
+    },
+    "*GameMode_5v5_MapViewer_Private*": {
+      "capacity": 8,
+      "resource_sha256": "7854935ba8a0732f21a8d42fecdbf754f2ada86bfc44e2b1022576e7631b2406"
+    },
+    "*GameMode_HF_Casual*": {
+      "capacity": 8,
+      "resource_sha256": "c68b12c1056a2afd6631a6020013918e7048f3a77ec9abd46abfcf4f1127fb14"
+    },
+    "*GameMode_Aram_Casual*": {
+      "capacity": 8,
+      "resource_sha256": "3c4c34c9d15d9f3f85b748ac9163e3d8387d1ea976c95bbfa13a8858e191b126"
+    },
+    "*GameMode_Blitz_PrivateBots*": {
+      "capacity": 8,
+      "resource_sha256": "f80f5e35a48624792cbb764b3f1d4c2875ba4fadf28ce5977c32de19d3d34300"
+    },
+    "*GameMode_HF_Private*": {
+      "capacity": 8,
+      "resource_sha256": "0a01c953471ece2ae907e0f14acf190e6e3f86713b1720f7dd3b2b3ac37be420"
+    },
+    "*GameMode_5v5_HiddenBots*": {
+      "capacity": 8,
+      "resource_sha256": "a0da16990382e523cd467599e58f1246cd65a1ba627eb666abe5a27b170a417d"
+    },
+    "*GameMode_Experiment_HalcyonFold5v5*": {
+      "capacity": 8,
+      "resource_sha256": "df0d5e973903d1ad4c47586230151eb45e5db2d672d34adde9cd698fcb591a52"
+    },
+    "*GameMode_Aral_Base*": {
+      "capacity": 8,
+      "resource_sha256": "7b3e18d59cba53e24999f462075c5507d2e01959ec1707e19a5042f4af516e73"
+    },
+    "*GameMode_PVE_KrakenRaidBoss*": {
+      "capacity": 6,
+      "resource_sha256": "46fe7e64c1fe4afb439f2db799bd24a4a6a6e9ffa763c606d00d6581178340c5"
+    },
+    "*GameMode_HF_AllBots*": {
+      "capacity": 8,
+      "resource_sha256": "e10ef0b7afb076bffa6ee6725117ff759aa0f7d794a0694da4e35564554223f0"
+    },
+    "*GameMode_Blitz_Revamp_Private*": {
+      "capacity": 8,
+      "resource_sha256": "e366599431e63a6241f4bcb338c766be03bc34e93c6e15a7673d481292445072"
+    },
+    "*GameMode_Tutorial_Tutorial01*": {
+      "capacity": 6,
+      "resource_sha256": "b4d10a0d9d4d886957b59a69fe3765cdf03a4f58633f0e22e74ca746ca68c68e"
+    },
+    "*GameMode_5v5_SoloBots*": {
+      "capacity": 8,
+      "resource_sha256": "fd30bbd70e43f5563eca48e219a1a08270f442ee6207fb630375ecb6d94b71be"
+    },
+    "*GameMode_Experiment_UltimateBravery*": {
+      "capacity": 8,
+      "resource_sha256": "adcae1732718298429badecea5fc69080af715b551627d539ea06c11e4981e56"
+    }
+  }
+}

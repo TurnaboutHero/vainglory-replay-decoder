@@ -1,0 +1,66 @@
+[
+  {
+    "name": "grant_action",
+    "rva": 5562480,
+    "bytes": "558bec5156578bf9ff7718e8f098f0ff8bf083c40485f60f84bf000000803d04e20902",
+    "relocations": [
+      31
+    ]
+  },
+  {
+    "name": "baseline_action",
+    "rva": 5562736,
+    "bytes": "558bec81ec54030000a1284fe40133c58945fc53568bf157ff7618e8e097f0ff",
+    "relocations": [
+      10
+    ]
+  },
+  {
+    "name": "actor_grant",
+    "rva": 5492864,
+    "bytes": "558bec51f30f104518535657ff751c8bd951f30f110424ff75148b4b34ff7510",
+    "relocations": []
+  },
+  {
+    "name": "grant",
+    "rva": 5492160,
+    "bytes": "558becb8d0120000e843bc8700a1284fe40133c58945fc837d0cff53568bd98b",
+    "relocations": [
+      14
+    ]
+  },
+  {
+    "name": "consume",
+    "rva": 4662080,
+    "bytes": "558bec6aff6890931f0164a1000000005083ec585657a1284fe40133c5508d45",
+    "relocations": [
+      6,
+      23
+    ]
+  },
+  {
+    "name": "stack",
+    "rva": 5568240,
+    "bytes": "568bf1ff7610e87582f0ff83c40485c074508b480c85c974168b15143f090290",
+    "relocations": [
+      27
+    ]
+  },
+  {
+    "name": "actor_resolve",
+    "rva": 4553072,
+    "bytes": "558bec81ec24030000a1284fe40133c58945fc568b750883feff74386a00ff35",
+    "relocations": [
+      10
+    ]
+  },
+  {
+    "name": "component_constructor",
+    "rva": 5604144,
+    "bytes": "558bec6aff6838d11c0164a10000000050515657a1284fe40133c5508d45f464",
+    "relocations": [
+      6,
+      21
+    ]
+  }
+]

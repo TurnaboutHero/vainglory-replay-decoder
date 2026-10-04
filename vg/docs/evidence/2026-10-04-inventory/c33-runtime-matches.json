@@ -1,0 +1,1254 @@
+{
+  "schema_version": "native-inventory-record-runtime-match.v1",
+  "recording_id": "C33",
+  "client_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "trace_sha256": "720dfb21f62bacd29cfea246b6f8d29245d68d0d95ce2631dbf570fc050de024",
+  "trace_detached": true,
+  "instruction_guards": 8,
+  "alignment": "Complete18-event sequence agrees on originalrecordsection, opcode-specificactor/instance/definition and baseline arrays. Nativeclockglobals were stale and are not used as replay-boundary evidence. Each match retains exact framedrecordoffset.",
+  "matches": [
+    {
+      "observation_id": "C33-inventory-2",
+      "operation": "baseline",
+      "opcode": "03f3",
+      "section": 0,
+      "record_offset": 659,
+      "record_timestamp": 0.0,
+      "payload_length": 750,
+      "payload_hex": "0000010b45f19f31000005dc00000001ffffc2b400003d75be29800000003f800000800000000000000044360000443600000000000000000000000000000000000000000000000000004066666600000000000000000000000000000000000000003f800000000000000000000000000000000000000000000043ca000043ca000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000041c80000000000000000000041a000000000000000000000428c000000000000000000003f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000046ea600046ea60003f800000000000000000000000000000000000003f80000000000000428800000000000000000000bf8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000020000000000000000000000000000000000000000000000000000000000000303000000489518b1f42c5f2b2b396abb000000000000000000000000000000000000000000000002000000020000000200000000000000000000000000000000000000000000000100000001000000010000000000000000000000000000000000000000000000000000000000000001ffffffff0101010101010101000f000000000000000000000000000000000000ffffffff0e00000000",
+      "source_sha256": "93f9fa2375ac9c33ee8c71b4d1d5ef9f57449b097568d9d36f68490222e15817",
+      "native_before_sequence": 2,
+      "native_after_sequence": 4,
+      "native_actor_id": 1500,
+      "before": null,
+      "after": {
+        "capacity": 8,
+        "occupied": 0,
+        "items": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    },
+    {
+      "observation_id": "C33-inventory-5",
+      "operation": "grant",
+      "opcode": "043d",
+      "section": 0,
+      "record_offset": 11451,
+      "record_timestamp": 1.1776787042617798,
+      "payload_length": 14,
+      "payload_hex": "000005dc000001c9000007d00000",
+      "source_sha256": "93f9fa2375ac9c33ee8c71b4d1d5ef9f57449b097568d9d36f68490222e15817",
+      "native_before_sequence": 5,
+      "native_after_sequence": 8,
+      "native_actor_id": 1500,
+      "before": {
+        "capacity": 8,
+        "occupied": 0,
+        "items": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "after": {
+        "capacity": 8,
+        "occupied": 1,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    },
+    {
+      "observation_id": "C33-inventory-11",
+      "operation": "grant",
+      "opcode": "043d",
+      "section": 0,
+      "record_offset": 11475,
+      "record_timestamp": 1.1776787042617798,
+      "payload_length": 14,
+      "payload_hex": "000005dc0000020e000007d10000",
+      "source_sha256": "93f9fa2375ac9c33ee8c71b4d1d5ef9f57449b097568d9d36f68490222e15817",
+      "native_before_sequence": 11,
+      "native_after_sequence": 14,
+      "native_actor_id": 1500,
+      "before": {
+        "capacity": 8,
+        "occupied": 1,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "after": {
+        "capacity": 8,
+        "occupied": 2,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    },
+    {
+      "observation_id": "C33-inventory-17",
+      "operation": "grant",
+      "opcode": "043d",
+      "section": 0,
+      "record_offset": 11499,
+      "record_timestamp": 1.1776787042617798,
+      "payload_length": 14,
+      "payload_hex": "000005dc00000203000007d20000",
+      "source_sha256": "93f9fa2375ac9c33ee8c71b4d1d5ef9f57449b097568d9d36f68490222e15817",
+      "native_before_sequence": 17,
+      "native_after_sequence": 20,
+      "native_actor_id": 1500,
+      "before": {
+        "capacity": 8,
+        "occupied": 2,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "after": {
+        "capacity": 8,
+        "occupied": 3,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    },
+    {
+      "observation_id": "C33-inventory-23",
+      "operation": "baseline",
+      "opcode": "03f3",
+      "section": 1,
+      "record_offset": 416,
+      "record_timestamp": 10.015349388122559,
+      "payload_length": 746,
+      "payload_hex": "0000010b45f19f31000005dc00000001ffffc2b400003d75be29800000003f800000800000000000000044360000443600000000000000000000000000000000000000000000000000004066666600000000000000000000000000000000000000003f800000000000000000000000000000000000000000000043ca000043ca000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000041c80000000000000000000041a000000000000000000000428c000000000000000000003f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000046ea600046ea60003f800000000000000000000000000000000000003f80000000000000428800000000000000000000bf80000000000000000000000000000000000003000001c90000020e0000020300000000000000000000000000000000000000000000000000000000000007d0000007d1000007d2000000000000000000000000000000000000000000000000000000000000000100000001000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000200000000000000000000000000000000000000000000000000000000000000000000000000000001000000020000000000000000000000000000000000000000000000000000000000000303000000489518b1f42c5f2b2b396abb000000000000000000000000000000000000000000000002000000020000000200000000000000000000000000000000000000000000000100000001000000010000000000000000000000000000000000000000000000000000000000000001ffffffff0101010101010101000f000000000000000000000000000000000000ffffffff0e",
+      "source_sha256": "83cc79f8d0427353bfecf877a1e47a9375b8ddfa9ad8bdb733a31f0ebc9930d9",
+      "native_before_sequence": 23,
+      "native_after_sequence": 24,
+      "native_actor_id": 1500,
+      "before": null,
+      "after": {
+        "capacity": 8,
+        "occupied": 3,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    },
+    {
+      "observation_id": "C33-inventory-25",
+      "operation": "grant",
+      "opcode": "043d",
+      "section": 1,
+      "record_offset": 17811,
+      "record_timestamp": 14.987913131713867,
+      "payload_length": 14,
+      "payload_hex": "000005dc000001ca000007d30000",
+      "source_sha256": "83cc79f8d0427353bfecf877a1e47a9375b8ddfa9ad8bdb733a31f0ebc9930d9",
+      "native_before_sequence": 25,
+      "native_after_sequence": 28,
+      "native_actor_id": 1500,
+      "before": {
+        "capacity": 8,
+        "occupied": 3,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "after": {
+        "capacity": 8,
+        "occupied": 4,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          {
+            "array_index": 3,
+            "definition_id": 458,
+            "instance_id": 2003,
+            "quantity": 1
+          },
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    },
+    {
+      "observation_id": "C33-inventory-31",
+      "operation": "grant",
+      "opcode": "043d",
+      "section": 1,
+      "record_offset": 27755,
+      "record_timestamp": 16.579275131225586,
+      "payload_length": 14,
+      "payload_hex": "000005dc000001f3000007d40000",
+      "source_sha256": "83cc79f8d0427353bfecf877a1e47a9375b8ddfa9ad8bdb733a31f0ebc9930d9",
+      "native_before_sequence": 31,
+      "native_after_sequence": 34,
+      "native_actor_id": 1500,
+      "before": {
+        "capacity": 8,
+        "occupied": 4,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          {
+            "array_index": 3,
+            "definition_id": 458,
+            "instance_id": 2003,
+            "quantity": 1
+          },
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "after": {
+        "capacity": 8,
+        "occupied": 5,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          {
+            "array_index": 3,
+            "definition_id": 458,
+            "instance_id": 2003,
+            "quantity": 1
+          },
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    },
+    {
+      "observation_id": "C33-inventory-37",
+      "operation": "baseline",
+      "opcode": "03f3",
+      "section": 2,
+      "record_offset": 416,
+      "record_timestamp": 20.02460289001465,
+      "payload_length": 746,
+      "payload_hex": "0000010b45f19f31000005dc00000001ffffc2b400003d75be29800000003f800000800000000000000044360000443600000000000000000000000000000000000000000000000000004066666600000000000000000000000000000000000000003f800000000000000000000000000000000000000000000043ca000043ca000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000041c80000000000000000000041a000000000000000000000428c000041700000000000003f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000046e5b00046ea60003f800000000000000000000000000000000000003f80000000000000428800000000000000000000bf80000000000000000000000000000000000005000001c90000020e00000203000001ca000001f30000000000000000000000000000000000000000000007d0000007d1000007d2000007d3000007d400000000000000000000000000000000000000000000000100000001000000010000000100000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000200000000000000000000000000000000000000000000000000000000000000000000000000000001000000020000000000000000000000000000000000000000000000000000000000000303000000489518b1f42c5f2b2b396abb000000000000000000000000000000000000000000000002000000020000000200000000000000000000000000000000000000000000000100000001000000010000000000000000000000000000000000000000000000000000000000000001ffffffff0101010101010101000f000000000000000000000000000000000000ffffffff0e",
+      "source_sha256": "1e4f0d4d27d7db04603f966a3c4dcf5eb055b78a8dd3e27c13181be405efde3d",
+      "native_before_sequence": 37,
+      "native_after_sequence": 38,
+      "native_actor_id": 1500,
+      "before": null,
+      "after": {
+        "capacity": 8,
+        "occupied": 5,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          {
+            "array_index": 3,
+            "definition_id": 458,
+            "instance_id": 2003,
+            "quantity": 1
+          },
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    },
+    {
+      "observation_id": "C33-inventory-39",
+      "operation": "consume",
+      "opcode": "044b",
+      "section": 2,
+      "record_offset": 29631,
+      "record_timestamp": 26.57306480407715,
+      "payload_length": 14,
+      "payload_hex": "000005dc000007d3000100000000",
+      "source_sha256": "1e4f0d4d27d7db04603f966a3c4dcf5eb055b78a8dd3e27c13181be405efde3d",
+      "native_before_sequence": 39,
+      "native_after_sequence": 40,
+      "native_actor_id": 1500,
+      "before": {
+        "capacity": 8,
+        "occupied": 5,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          {
+            "array_index": 3,
+            "definition_id": 458,
+            "instance_id": 2003,
+            "quantity": 1
+          },
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      "after": {
+        "capacity": 8,
+        "occupied": 4,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          null,
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    },
+    {
+      "observation_id": "C33-inventory-41",
+      "operation": "grant",
+      "opcode": "043d",
+      "section": 2,
+      "record_offset": 29655,
+      "record_timestamp": 26.57306480407715,
+      "payload_length": 14,
+      "payload_hex": "000005dc000001f9000007d50000",
+      "source_sha256": "1e4f0d4d27d7db04603f966a3c4dcf5eb055b78a8dd3e27c13181be405efde3d",
+      "native_before_sequence": 41,
+      "native_after_sequence": 44,
+      "native_actor_id": 1500,
+      "before": {
+        "capacity": 8,
+        "occupied": 4,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          null,
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      "after": {
+        "capacity": 8,
+        "occupied": 5,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          {
+            "array_index": 3,
+            "definition_id": 505,
+            "instance_id": 2005,
+            "quantity": 1
+          },
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    },
+    {
+      "observation_id": "C33-inventory-47",
+      "operation": "grant",
+      "opcode": "043d",
+      "section": 2,
+      "record_offset": 32967,
+      "record_timestamp": 28.980159759521484,
+      "payload_length": 14,
+      "payload_hex": "000005dc000001cd000007d60000",
+      "source_sha256": "1e4f0d4d27d7db04603f966a3c4dcf5eb055b78a8dd3e27c13181be405efde3d",
+      "native_before_sequence": 47,
+      "native_after_sequence": 50,
+      "native_actor_id": 1500,
+      "before": {
+        "capacity": 8,
+        "occupied": 5,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          {
+            "array_index": 3,
+            "definition_id": 505,
+            "instance_id": 2005,
+            "quantity": 1
+          },
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      "after": {
+        "capacity": 8,
+        "occupied": 6,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          {
+            "array_index": 3,
+            "definition_id": 505,
+            "instance_id": 2005,
+            "quantity": 1
+          },
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          {
+            "array_index": 5,
+            "definition_id": 461,
+            "instance_id": 2006,
+            "quantity": 1
+          },
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    },
+    {
+      "observation_id": "C33-inventory-53",
+      "operation": "baseline",
+      "opcode": "03f3",
+      "section": 3,
+      "record_offset": 416,
+      "record_timestamp": 30.009727478027344,
+      "payload_length": 746,
+      "payload_hex": "0000010b45f19f31000005dc00000001ffffc2b400003d75be29800000003f800000800000000000000044360000443600000000000000000000000000000000000000000000000000004066666600000000000000000000000000000000000000003f800000000000000000000000000000000000000000000043ca000043ca000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000041c80000000000000000000041a000000000000000000000428c000042960000000000003f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000046d9f80046ea60003f800000000000000000000000000000000000003f80000000000000428800000000000000000000bf80000000000000000000000000000000000006000001c90000020e00000203000001f9000001f3000001cd00000000000000000000000000000000000007d0000007d1000007d2000007d5000007d4000007d6000000000000000000000000000000000000000100000001000000010000000100000001000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000200000000000000000000000000000000000000000000000000000000000000000000000000000001000000020000000000000000000000000000000000000000000000000000000000000303000000489518b1f42c5f2b2b396abb000000000000000000000000000000000000000000000002000000020000000200000000000000000000000000000000000000000000000100000001000000010000000000000000000000000000000000000000000000000000000000000001ffffffff0101010101010101000f000000000000000000000000000000000000ffffffff0e",
+      "source_sha256": "c06466f2317400ceb57bc7774a84b127b90d4f47299200b0bce61b5a2d4fd94f",
+      "native_before_sequence": 53,
+      "native_after_sequence": 54,
+      "native_actor_id": 1500,
+      "before": null,
+      "after": {
+        "capacity": 8,
+        "occupied": 6,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          {
+            "array_index": 3,
+            "definition_id": 505,
+            "instance_id": 2005,
+            "quantity": 1
+          },
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          {
+            "array_index": 5,
+            "definition_id": 461,
+            "instance_id": 2006,
+            "quantity": 1
+          },
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    },
+    {
+      "observation_id": "C33-inventory-55",
+      "operation": "consume",
+      "opcode": "044b",
+      "section": 3,
+      "record_offset": 20893,
+      "record_timestamp": 30.76592254638672,
+      "payload_length": 14,
+      "payload_hex": "000005dc000007d6000100000000",
+      "source_sha256": "c06466f2317400ceb57bc7774a84b127b90d4f47299200b0bce61b5a2d4fd94f",
+      "native_before_sequence": 55,
+      "native_after_sequence": 56,
+      "native_actor_id": 1500,
+      "before": {
+        "capacity": 8,
+        "occupied": 6,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          {
+            "array_index": 3,
+            "definition_id": 505,
+            "instance_id": 2005,
+            "quantity": 1
+          },
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          {
+            "array_index": 5,
+            "definition_id": 461,
+            "instance_id": 2006,
+            "quantity": 1
+          },
+          null,
+          null
+        ]
+      },
+      "after": {
+        "capacity": 8,
+        "occupied": 5,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          {
+            "array_index": 3,
+            "definition_id": 505,
+            "instance_id": 2005,
+            "quantity": 1
+          },
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    },
+    {
+      "observation_id": "C33-inventory-57",
+      "operation": "consume",
+      "opcode": "044b",
+      "section": 3,
+      "record_offset": 20949,
+      "record_timestamp": 30.76592254638672,
+      "payload_length": 14,
+      "payload_hex": "000005dc000007d5000100000000",
+      "source_sha256": "c06466f2317400ceb57bc7774a84b127b90d4f47299200b0bce61b5a2d4fd94f",
+      "native_before_sequence": 57,
+      "native_after_sequence": 58,
+      "native_actor_id": 1500,
+      "before": {
+        "capacity": 8,
+        "occupied": 5,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          {
+            "array_index": 3,
+            "definition_id": 505,
+            "instance_id": 2005,
+            "quantity": 1
+          },
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      "after": {
+        "capacity": 8,
+        "occupied": 4,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          null,
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    },
+    {
+      "observation_id": "C33-inventory-59",
+      "operation": "grant",
+      "opcode": "043d",
+      "section": 3,
+      "record_offset": 20973,
+      "record_timestamp": 30.76592254638672,
+      "payload_length": 14,
+      "payload_hex": "000005dc000001d0000007d70000",
+      "source_sha256": "c06466f2317400ceb57bc7774a84b127b90d4f47299200b0bce61b5a2d4fd94f",
+      "native_before_sequence": 59,
+      "native_after_sequence": 62,
+      "native_actor_id": 1500,
+      "before": {
+        "capacity": 8,
+        "occupied": 4,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          null,
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      "after": {
+        "capacity": 8,
+        "occupied": 5,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          {
+            "array_index": 3,
+            "definition_id": 464,
+            "instance_id": 2007,
+            "quantity": 1
+          },
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    },
+    {
+      "observation_id": "C33-inventory-65",
+      "operation": "baseline",
+      "opcode": "03f3",
+      "section": 4,
+      "record_offset": 416,
+      "record_timestamp": 40.041595458984375,
+      "payload_length": 746,
+      "payload_hex": "0000010b45f19f31000005dc00000001ffffc2b919733d75be293e456cf0bf7ce599000000003e1ef49044360000443600000000000000000000000000000000000000000000000000004066666600000000000000000000000000000000000000003f800000000000000000000000000000000000000000000043ca000043ca000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000041c80000000000000000000041a000000000000000000000428c000042fa0000000000003f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000046cfd00046ea60003f800000000000000000000000000000000000000000000000000000428800000000000000000000bf80000000000000000000000000000000000005000001c90000020e00000203000001d0000001f30000000000000000000000000000000000000000000007d0000007d1000007d2000007d7000007d400000000000000000000000000000000000000000000000100000001000000010000000100000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000200000000000000000000000000000000000000000000000000000000000000000000000000000001000000020000000100000000000000000000000000000000000000000400000000000303000000489518b1f42c5f2b2b396abb000000000000000000000000000000000000000000000002000000020000000200000000000000000000000000000000000000000000000100000001000000010000000000000000000000000000000000000000000000000000000000000001ffffffff0101010101010101000f000000000000000000000000000000000000ffffffff0e",
+      "source_sha256": "ce5e3b0f6806e445aa42255d78612dd50b7e000dad8ad90b037eb5e545676f33",
+      "native_before_sequence": 65,
+      "native_after_sequence": 66,
+      "native_actor_id": 1500,
+      "before": null,
+      "after": {
+        "capacity": 8,
+        "occupied": 5,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          {
+            "array_index": 3,
+            "definition_id": 464,
+            "instance_id": 2007,
+            "quantity": 1
+          },
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    },
+    {
+      "observation_id": "C33-inventory-67",
+      "operation": "baseline",
+      "opcode": "03f3",
+      "section": 5,
+      "record_offset": 416,
+      "record_timestamp": 50.00743103027344,
+      "payload_length": 746,
+      "payload_hex": "0000010b45f19f31000005dc00000001ffffc2b919733d75be293e456cf0bf7ce599000000003e1ef49045063000450630000000000000000000000000000000000000000000000000004066666600000000000000000000000000000000000000003fae76c9000000000000000000000000000000000000000043f6000043f60000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000429603120000000000000000425c020c00000000000000004308000042fa0000000000003f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000046d0000046ea900041400000000000000000000000000000000000004100000040400000428800000000000000000000bf80000000000000000000000000000000000005000001c90000020e00000203000001d0000001f30000000000000000000000000000000000000000000007d0000007d1000007d2000007d7000007d400000000000000000000000000000000000000000000000100000001000000010000000100000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000200000000000000000000000000000000000000000000000000000000000000000000000000000001000000020000000300000001000000000000000000000000000000000401000000000303000000489518b1f42c5f2b2b396abb000000000000000000000000000000000000000000000002000000020000000200000000000000000000000000000000000000000000000100000001000000010000000000000000000000000000000000000000000000000000000000000001ffffffff0101010101010101000f000000000000000000000000000000000000ffffffff0e",
+      "source_sha256": "1021ab6d6a48b1af98ce12a7a69ab98e732185d3e5016487d5f32663c4eb92a2",
+      "native_before_sequence": 67,
+      "native_after_sequence": 68,
+      "native_actor_id": 1500,
+      "before": null,
+      "after": {
+        "capacity": 8,
+        "occupied": 5,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          {
+            "array_index": 3,
+            "definition_id": 464,
+            "instance_id": 2007,
+            "quantity": 1
+          },
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    },
+    {
+      "observation_id": "C33-inventory-69",
+      "operation": "baseline",
+      "opcode": "03f3",
+      "section": 6,
+      "record_offset": 416,
+      "record_timestamp": 60.00439453125,
+      "payload_length": 746,
+      "payload_hex": "0000010b45f19f31000005dc00000001ffffc2b919733d75be293e456cf0bf7ce599000000003e1ef49045063000450630000000000000000000000000000000000000000000000000004066666600000000000000000000000000000000000000003fae76c9000000000000000000000000000000000000000043f6000043f60000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000429603120000000000000000425c020c00000000000000004308000042fa0000000000003f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000046d03c0046eacc0041400000000000000000000000000000000000000000000041100000428800000000000000000000bf80000000000000000000000000000000000005000001c90000020e00000203000001d0000001f30000000000000000000000000000000000000000000007d0000007d1000007d2000007d7000007d400000000000000000000000000000000000000000000000100000001000000010000000100000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000200000000000000000000000000000000000000000000000000000000000000000000000000000001000000020000000500000005000000020000000000000000000000000401010000000303000000489518b1f42c5f2b2b396abb000000000000000000000000000000000000000000000002000000020000000200000000000000000000000000000000000000000000000100000001000000010000000000000000000000000000000000000000000000000000000000000001ffffffff0101010101010101000f000000000000000000000000000000000000ffffffff0e",
+      "source_sha256": "14b837a8c30b2635c164a7101d767ff858fd07c708b8bf6a6ed67c37c2d8ce9b",
+      "native_before_sequence": 69,
+      "native_after_sequence": 70,
+      "native_actor_id": 1500,
+      "before": null,
+      "after": {
+        "capacity": 8,
+        "occupied": 5,
+        "items": [
+          {
+            "array_index": 0,
+            "definition_id": 457,
+            "instance_id": 2000,
+            "quantity": 1
+          },
+          {
+            "array_index": 1,
+            "definition_id": 526,
+            "instance_id": 2001,
+            "quantity": 1
+          },
+          {
+            "array_index": 2,
+            "definition_id": 515,
+            "instance_id": 2002,
+            "quantity": 1
+          },
+          {
+            "array_index": 3,
+            "definition_id": 464,
+            "instance_id": 2007,
+            "quantity": 1
+          },
+          {
+            "array_index": 4,
+            "definition_id": 499,
+            "instance_id": 2004,
+            "quantity": 1
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      "match": "exact"
+    }
+  ]
+}

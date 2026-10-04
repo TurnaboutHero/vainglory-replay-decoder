@@ -101,6 +101,17 @@ class ProductQuickstartTests(unittest.TestCase):
         # When every remaining documented command runs in order on disposable paths.
         for command in commands[1:]:
             self.run_command(command)
+        self.run_command(['python', '-B', '-m', 'vg.decoder_v2.decode_match',
+                          '.quickstart/replays/demo.0.vgr', '-o', '.quickstart/reports/state.json'])
+        state = self.payload('state.json')
+        self.assertEqual(state['schema_version'], 'decoder_v2.player_state.v3')
+        self.assertEqual(state['scope'], 'recorded_end')
+        self.assertEqual(state['support_status'], 'supported')
+        player = state['players'][0]
+        self.assertEqual((player['native_actor_id'], player['name'], player['hero_name']), (7, 'PlayerOne', 'Ringo'))
+        self.assertEqual((player['kills'], player['deaths'], player['assists'], player['minion_kills']), (6, 2, 3, 100))
+        self.assertEqual((player['gold_balance'], player['net_worth'], player['items']), (25.5, 100.5, []))
+        self.assertIsNone(player['team'])
         # Then real schemas, evidence scope, catalogs and archives match the contract.
         safe, capture = self.payload('safe.json'), self.payload('capture.json')
         self.assertEqual(safe['schema_version'], 'decoder_v2.match.v2')
@@ -171,11 +182,14 @@ class ProductQuickstartTests(unittest.TestCase):
         self.assertEqual((partial['discovered'], partial['succeeded'], partial['failed']), (2, 1, 1))
         self.assertEqual(self.payload('empty.json')['status'], 'empty')
         unavailable = self.payload('unavailable.json')
-        self.assertIsNone(unavailable['players'][0]['kills'])
-        self.assertTrue(unavailable['withheld_fields']['kills']['reason'])
-        for field in ('winner', 'gold', 'duration_seconds'):
-            self.assertIsNone(unavailable['withheld_fields'][field]['value'])
-            self.assertFalse(unavailable['withheld_fields'][field]['accepted_for_index'])
+        self.assertEqual(unavailable['schema_version'], 'decoder_v2.player_state.v3')
+        self.assertEqual(unavailable['scope'], 'capture')
+        self.assertEqual(unavailable['support_status'], 'out_of_coverage')
+        self.assertEqual(unavailable['players'], [])
+        self.assertIsNone(unavailable['record_boundary'])
+        for field in ('name', 'hero', 'kda', 'minion_kills', 'items', 'gold_balance', 'net_worth'):
+            self.assertEqual(unavailable['field_status'][field]['status'], 'out_of_coverage')
+            self.assertTrue(unavailable['field_status'][field]['reason'])
         self.assertEqual(self.source_hashes(), before)
         self.run_command(['python', '-B', '-m', 'tests.test_product_quickstart', '--make-fixture', '.quickstart'], 2)
         self.assertEqual(self.source_hashes(), before)

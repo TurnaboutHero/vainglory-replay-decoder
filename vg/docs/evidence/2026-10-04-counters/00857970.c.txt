@@ -1,0 +1,26 @@
+// 00857970 FUN_00857970
+
+void FUN_00857970(int param_1)
+
+{
+  uint uVar1;
+  uint uVar2;
+  int local_328 [200];
+  uint local_8;
+  
+  local_8 = DAT_01e44f28 ^ (uint)&stack0xfffffffc;
+  if (param_1 != -1) {
+    uVar1 = FUN_0112ac50(local_328,200,DAT_01e6ee20,0);
+    uVar2 = 0;
+    if (uVar1 != 0) {
+      do {
+        if (*(int *)(local_328[uVar2] + 0x178) == param_1) break;
+        uVar2 = uVar2 + 1;
+      } while (uVar2 < uVar1);
+    }
+  }
+  __security_check_cookie(local_8 ^ (uint)&stack0xfffffffc);
+  return;
+}
+
+

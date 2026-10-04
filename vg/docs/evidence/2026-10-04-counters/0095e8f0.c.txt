@@ -1,0 +1,24 @@
+// 0095e8f0 FUN_0095e8f0
+
+void FUN_0095e8f0(int param_1,undefined4 param_2)
+
+{
+  uint uVar1;
+  int iVar2;
+  
+  if ((param_1 != -1) && (uVar1 = 0, iVar2 = DAT_020e7404, DAT_020e7408 != 0)) {
+    while (*(int *)(iVar2 + 4) != param_1) {
+      uVar1 = uVar1 + 1;
+      iVar2 = iVar2 + 0xb8;
+      if (DAT_020e7408 <= uVar1) {
+        return;
+      }
+    }
+    if (iVar2 != 0) {
+      FUN_004b53d0(param_2);
+    }
+  }
+  return;
+}
+
+

@@ -1,0 +1,22 @@
+// 005497a0 FUN_005497a0
+
+void __fastcall FUN_005497a0(int param_1)
+
+{
+  char cVar1;
+  float10 fVar2;
+  float10 fVar3;
+  
+  cVar1 = FUN_009448b0();
+  if (cVar1 != '\0') {
+    FUN_0054a210();
+  }
+  if ((*(byte *)(param_1 + 0x19d) & 1) == 0) {
+    fVar2 = (float10)FUN_0112a7a0();
+    fVar3 = (float10)FUN_0093ba70();
+    *(float *)(param_1 + 0x194) =
+         *(float *)(param_1 + 0x194) + (float)(fVar3 * (float10)(double)fVar2);
+  }
+  FUN_004eef20();
+  return;
+}

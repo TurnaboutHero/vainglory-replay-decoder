@@ -1,0 +1,16 @@
+  case 0x3ee:
+    memset(local_1d4,0,0xd8);
+    memmove(local_1d4,param_1,0xd8);
+    local_134 = (float)Ordinal_14(local_134);
+    uStack_130 = Ordinal_14(uStack_130);
+    uStack_12c = Ordinal_14();
+    uStack_128 = Ordinal_14(uStack_128);
+    uStack_124 = Ordinal_14(uStack_124);
+    uStack_120 = Ordinal_14();
+    local_11c = Ordinal_14(local_11c);
+    local_118 = Ordinal_14(local_118);
+    local_114 = Ordinal_14(local_114);
+    local_110 = Ordinal_14(local_110);
+    local_10c = Ordinal_14(local_10c);
+    FUN_004d52a0(local_1d4);
+    break;

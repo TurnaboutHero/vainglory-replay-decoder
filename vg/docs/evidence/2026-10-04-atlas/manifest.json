@@ -1,0 +1,116 @@
+{
+  "executable_sha256": "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+  "method": "Fresh Ghidra12.1.3 readOnly/noanalysis bounded function exports; actual body inspection",
+  "files": [
+    {
+      "path": "function-00549470.c",
+      "address": "00549470",
+      "sha256": "06e91870c15aa674f4ae7299522cd834a834fc60062e2bd4d4c05dddc45499cd"
+    },
+    {
+      "path": "function-00549e20.c",
+      "address": "00549e20",
+      "sha256": "ae9f998f0a722c913fa02a593e0cc39d0427f5ad2275d210f0f6c231077a25f9"
+    },
+    {
+      "path": "function-0081a750.c",
+      "address": "0081a750",
+      "sha256": "e3541e1b545013f7ccaa536b335ecf067f8b9d0fb9b03fb3c9b55df003812351"
+    },
+    {
+      "path": "function-0081b910.c",
+      "address": "0081b910",
+      "sha256": "639ac241de6f4a818f99ba88b8e207c2e9337ea309667722e252341abdf0b1cb"
+    },
+    {
+      "path": "function-0094f1d0.c",
+      "address": "0094f1d0",
+      "sha256": "7a34f8991f4c189b61ea9788b294d5560723d6de81c8a14502f5a197e4fd4329"
+    },
+    {
+      "path": "function-0093e850.c",
+      "address": "0093e850",
+      "sha256": "6effd229e486b5f5ade5da11c0b93b3ee1f831cd6382963792ef6fb54d227229"
+    },
+    {
+      "path": "function-0095c620.c",
+      "address": "0095c620",
+      "sha256": "cd400245e5fd7dada2837d56117e2a9aec0c56aba330e7647bf025b9505834fc"
+    },
+    {
+      "path": "function-0093e940.c",
+      "address": "0093e940",
+      "sha256": "b314c436056bbb6cb899fb3ddb57caa656fce231c356b3c1081d5c0466ed81ae"
+    },
+    {
+      "path": "function-0095c710.c",
+      "address": "0095c710",
+      "sha256": "13afecfa2325a8b210d5f09200fd1e1ca2891812f146de1707923aa1a3db3f53"
+    },
+    {
+      "path": "function-004cfec0.c",
+      "address": "004cfec0",
+      "sha256": "871d3ffdfa7d64a2e7e21fc1f68e049bcb83f4f510bee825057da7796bc40867"
+    },
+    {
+      "path": "function-0095c590.c",
+      "address": "0095c590",
+      "sha256": "7aa82cc2e03d648033e123e8a9c1c1c6d4657f2e4ee29986c9d32f831dee58c3"
+    },
+    {
+      "path": "function-004cb590.c",
+      "address": "004cb590",
+      "sha256": "7b860164df1d5774ec477f2262c31ed6f6908ed506655bb33b4d8c2b8f56407d"
+    },
+    {
+      "path": "function-004eb4a0.c",
+      "address": "004eb4a0",
+      "sha256": "34bafb7bb65bd42462f3d4f3c9c02b1798a10c14922c3668573bfc8f973d251d"
+    },
+    {
+      "path": "function-004eacf0.c",
+      "address": "004eacf0",
+      "sha256": "04d96c4038252aeae21d35ec7977a88001e9421b7e14d4372505d75d6a22fe6d"
+    },
+    {
+      "path": "function-004ca130.c",
+      "address": "004ca130",
+      "sha256": "f7f7a964709b8e5a2ef3953275631541cbade9b8de9eaed47eaf1742a591571c"
+    },
+    {
+      "path": "function-0096c2b0.c",
+      "address": "0096c2b0",
+      "sha256": "ba44e564f33302c03cf8432793828ea148003a870d7aa788a330166c5c1bd14d"
+    },
+    {
+      "path": "function-009546f0.c",
+      "address": "009546f0",
+      "sha256": "5d89e90f8d037e2daf047c4de4197a939ac146d497283b724bc9dfd78915515b"
+    },
+    {
+      "path": "function-004eb2d0.c",
+      "address": "004eb2d0",
+      "sha256": "9dcec1f1727e07d41458b2ebf54d8a70cf6eccc28a0cc7b30716aeca919b2bad"
+    },
+    {
+      "path": "function-004eb220.c",
+      "address": "004eb220",
+      "sha256": "490a4d74eac69d0617eb45f745ddf9f458c11c54c123a5b1d6c2130873f3021f"
+    },
+    {
+      "path": "function-004676f0.c",
+      "address": "004676f0",
+      "sha256": "f7f10856e9a2adabc59cdbbced54783c8fb171282aceef18e79ca751c98120d7"
+    },
+    {
+      "path": "function-004eab70.c",
+      "address": "004eab70",
+      "sha256": "531d8262cd09f6ff482e873d23e6d28dcffa75cdf9bc4023177026164a3725d1"
+    },
+    {
+      "path": "indirect-vtables.txt",
+      "address": "replay-vtable",
+      "sha256": "7e99d6b7b1866ec5c3ecfc7f57877696245503af1e1970f892911ffe0e2018f3"
+    }
+  ]
+}

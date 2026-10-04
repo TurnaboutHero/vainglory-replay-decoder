@@ -1,0 +1,537 @@
+{
+  "build_sha256": "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+  "source": "Native00958330 reads DAT0209e208+0x18;00940e40 loads named GameMode CFF resource passed by00549470 from clock046f. All available original GameMode symbols, independent of replay outcomes.",
+  "game_modes": [
+    {
+      "symbol": "*GameMode_Blitz_Pure*",
+      "resource_path": "03/03F9FD5125B875F5B51B599E3F5CEB4B",
+      "sha256": "6fbc012995ba181775046b03e4b1baae81e630b020e41117df6424db293c64fa",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "3a000000880000009f000000b3000000c2000000d00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Tutorial_Tutorial02*",
+      "resource_path": "16/16C1B14156F515CC1A257208793EE510",
+      "sha256": "7c7ec42947aa5b0950f22c3f566ce78016861fa8b9acdcc4a17b29328306bf7f",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 6,
+      "root_first32_hex": "040000008800000099000000ae000000c8000000d80000000600000006000000"
+    },
+    {
+      "symbol": "*GameMode_Blitz_Ranked*",
+      "resource_path": "19/19D4A6CA2D8786397A2CBC2A8CCB070E",
+      "sha256": "a9a01ee6ac96177596d509b73ba8700a874726400b05a3cc5cd87747a0864df3",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "1b000000880000009f000000b3000000c4000000d00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_5v5_Ranked*",
+      "resource_path": "25/25D3DA01A342BFE1367B0645B49FB1DE",
+      "sha256": "69f02653bf63b5f0ce7f5b6a5a641d1cfaf6401af868091411f1ccaa36e09795",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "25000000880000009d000000b1000000c0000000d00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_HF_PrivateDraft*",
+      "resource_path": "27/27DE02C0BFB4EFDFC4A36EFE91FF5246",
+      "sha256": "1eb6bb068b7a510440edb92b89056a14d44c7ae75e6767036518de0c6abb4b87",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "0a000000880000009c000000b0000000ca000000d80000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_5v5_Practice*",
+      "resource_path": "2A/2A150B473A41ACDB8AE2E3B3166617C5",
+      "sha256": "0c27884879e3641ebd8ed7a8eccffbea543a87e61c20855969458626b741021c",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "33000000880000009d000000b1000000be000000d00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_5v5_Casual*",
+      "resource_path": "2C/2C631B5C31252FCC008E0E264D587E6B",
+      "sha256": "22690dfef1b457d0eee372b36e1b8b5d66e69982f6aa5392bcb72033945cb6dc",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "26000000880000009d000000b1000000c0000000d00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Tutorial_Tutorial01_Joystick*",
+      "resource_path": "2D/2D9B6177E3659C5AC0F2F382A0411DCE",
+      "sha256": "e7a65d6e23c6e57413fda5a66c75d197bcb61ba540c91f49a574e673db08477b",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 6,
+      "root_first32_hex": "3400000088000000a2000000b7000000d1000000e80000000600000006000000"
+    },
+    {
+      "symbol": "*GameMode_DevOnly_DesignTestingGrounds*",
+      "resource_path": "30/30B1D90ABD1847DC04F67DF1402E1926",
+      "sha256": "fc5a99907b11e3e6b2de454e2ee3ae9cb7f4d009636d3431c1d333b2eee54237",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "1c000000880000009f000000b4000000cb000000e40000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Blitz_HiddenBots*",
+      "resource_path": "33/3365E3DFCD2ABE31BC1649EAF63B1014",
+      "sha256": "da2457dcca44a5b626f0dfac2fc56f9214436ef77251ce0b38fd43004ad596d4",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "20000000880000009f000000b3000000c5000000d40000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Experiment_OneForAll*",
+      "resource_path": "34/34C05B800D198E0B9C285C6B3A829DB6",
+      "sha256": "6e7dc72be97d55c1adcc99845aafe3aa52c4aee81ad90df81502acd689116374",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "38000000880000009d000000b1000000c9000000ec0000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Rumble_Casual*",
+      "resource_path": "36/36BCBCB1B04825E74B8E6A5492B718F4",
+      "sha256": "54b566f7816c4f71aa27e198f1982042225a24613cffef5480c765fd44121d98",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "3c00000088000000aa000000be000000d0000000f80000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_5v5_Base*",
+      "resource_path": "38/3855CA305CF15C7153FB4E9EB56056C7",
+      "sha256": "e901487b35cd3c382b7887eff477c4dde07d5424e1ca2661168eadd207aaf353",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "40000000880000009d000000b1000000b2000000c40000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Aral_AllBots*",
+      "resource_path": "3D/3D6407BBF343A47AB2E36F113184CC94",
+      "sha256": "90fc2d8046a8d3a132d4542d903dc79d638f137484a399e9fa7ab6c3325d6999",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 6,
+      "root_first32_hex": "15000000880000009e000000b3000000c1000000d40000000600000006000000"
+    },
+    {
+      "symbol": "*GameMode_Experiment_Aram*",
+      "resource_path": "3D/3DADDB8BFE7D4AB9006237AD3B37E1EC",
+      "sha256": "679730afd0b24172d68f74a71ff9c72512b2bd8b7f19ab2eb13b4c6ce585bc3a",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "3600000088000000a0000000b4000000c7000000e40000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Blitz_Base*",
+      "resource_path": "3E/3EA03E84ADC964D72B274130F25149CC",
+      "sha256": "38f5e8bfadaed6862fc76ab7f691d6ac5aa8c9deb5300cbc2468585bf51bd6c8",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "40000000880000009f000000b3000000b4000000c00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_HF_SoloBots*",
+      "resource_path": "45/45260F19BCA860932FDCC68F42B5C050",
+      "sha256": "ee0e10cb86a39e50990fea3515966a2670d05d7369c3e7c3644928e9a444fe1f",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "13000000880000009c000000b0000000ba000000c80000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Blitz_Private*",
+      "resource_path": "4A/4AA1D92DC1B08356B3CE3E9CACD3E5DD",
+      "sha256": "cd9066c15c0f5e605e690840dc1f8e1f7ce1a5c80e9518c926e376bb59f176f5",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "0c000000880000009f000000b3000000cd000000dc0000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Blitz_Revamp*",
+      "resource_path": "53/531ED4538B32C2321DF91F5C9829BBCF",
+      "sha256": "84525ad759f228a21e667d255f6498cf831f23d3b694c27d10e19e3838891e8c",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "3e000000880000009d000000b1000000c2000000d80000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Aral_Private*",
+      "resource_path": "53/5354EC63C1AF90DE54D82D23EA88650E",
+      "sha256": "06ef0daa2c20ca171818175f5665fa591fc18a887dea154e0d05f81a5761b780",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "0b000000880000009e000000b2000000cb000000e00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Aral_SoloBots*",
+      "resource_path": "5A/5A0940EBF187125FE6B950BE9E1D268D",
+      "sha256": "7ac8c35536dca33194ede287b2703288728582c60988155081813d39f8fe71d3",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "16000000880000009e000000b2000000ca000000e00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_HF_Base*",
+      "resource_path": "5D/5DBADD426D4244C1174199CA071384FA",
+      "sha256": "76601aa7ef36eff072bd940268c4d8cfefd22a61d79b2acade77475baa02db6b",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "40000000880000009c000000b0000000b1000000c00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Aral_Casual*",
+      "resource_path": "6B/6BACC83BD2E3A971C56B808B59EFE858",
+      "sha256": "aa59efc4cdd352aece8e5261ad6c8bb1c4d7793fa0a39cf5959c7448a956bdca",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "0f000000880000009e000000b2000000be000000d40000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Blitz_SoloBots*",
+      "resource_path": "6D/6D5C25845B6EA332B962158E43ACFCE1",
+      "sha256": "1c1a0f7efe98ead7263dd4a647c6bfdd51e75690bbe299a399d5ef7ba8ec2388",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "1e000000880000009f000000b3000000c3000000d00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Tutorial_Tutorial05_5v5*",
+      "resource_path": "6F/6F98AD7C581FFAE11D0B7C5B17FCE8AF",
+      "sha256": "c779e9143d00df6ee0190f32118ad16119e53f16781021345911483f56d52d4c",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "2d000000880000009d000000b1000000cf000000e00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_HF_PrivateBots*",
+      "resource_path": "74/7442DDB7011218CB5D6F782ACF5EE432",
+      "sha256": "2a64bff0763f3a1055c08154b1e8908ec4b87cfa3bd7e767305aa45599bf5a89",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "18000000880000009c000000b0000000c4000000d40000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Aral_HiddenBots*",
+      "resource_path": "75/7574990C730EB8E7D761CB0055C70C1D",
+      "sha256": "91327a131eb93ca347fab967dae504d6262ab93d8b8a64347b52863ef9014065",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "1a000000880000009e000000b2000000ca000000e00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Horde_Casual*",
+      "resource_path": "75/75E4C3443F9E466943F9B8EB3316EF91",
+      "sha256": "62c9aaae41c5a104421ffb46634c511d9654b3b697eeca3389ccef23dbe56312",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 6,
+      "root_first32_hex": "11000000880000009c000000b1000000be000000c80000000600000006000000"
+    },
+    {
+      "symbol": "*GameMode_HF_Ranked*",
+      "resource_path": "7E/7EBA799FE22CB95C9D86246812E54D0C",
+      "sha256": "d20bea2d81da7157e691e2fd30b426378a13074dc60a6ffd9f2357b0deac7530",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "00000000880000009c000000b0000000b7000000c80000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_HF_CoopBots*",
+      "resource_path": "7F/7F06CB30A5A5A0E5F91E5E7614877438",
+      "sha256": "a781bb1ac2d23e9d68a7a16acbb3cb32f8d52c87580156246e1c01dd19736e54",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "08000000880000009c000000b0000000b9000000c80000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_5v5_Private*",
+      "resource_path": "81/81877A486D839E8CEE76F9613543E745",
+      "sha256": "c36f5f2c5e0b8246c024b23439b90997edb148c97e2128a4295e81d45e2792a4",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "23000000880000009d000000b1000000c6000000d80000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Blitz_CoopBots*",
+      "resource_path": "83/8394EAE0D720DF9CF96C2501C42E2B28",
+      "sha256": "8645c1005dfcec81ce579b956ca04dac980b19002f84c605f947d5556a0f5254",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "21000000880000009f000000b3000000c3000000d00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_HF_HiddenBots*",
+      "resource_path": "8A/8A723595D50CAA861C832CC939155AC5",
+      "sha256": "5be2b17292689f2e9d738702d5fd3f2c04af8cba8db8480290725b6158c1fe9d",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "19000000880000009c000000b0000000c8000000d80000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_5v5_AllBots*",
+      "resource_path": "8E/8E72767676BA8CE0FA24188E75DC6A50",
+      "sha256": "725f51bfdd029c9ea3e99baaf57be08269c321e98f7ffa41dc1b7481c81ebebf",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "2c000000880000009d000000b1000000be000000d00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Experiment_LanceBall*",
+      "resource_path": "91/91F57213F90226D341E09F2485A401A6",
+      "sha256": "91f85b53401d517336706d5f4eea17e6e2285ee355aaf4702f7a7a76e6609fbe",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "3100000088000000a5000000ba000000d2000000f40000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Aral_PrivateBots*",
+      "resource_path": "93/93BE087CF7F45B0D206AA1D947D71A40",
+      "sha256": "57a7281327d761e1f2da8092b4028a5aca7d6196bbbb3a5b733980aaa9b44fce",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "17000000880000009e000000b2000000cb000000e00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Horde_Private*",
+      "resource_path": "97/97DF9FF915DEAED359BE2C3380984825",
+      "sha256": "e021978619c18941ced20d0ed173e5582c969fcc7e26cc4d68bb4c139d265a2f",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 6,
+      "root_first32_hex": "10000000880000009c000000b1000000cb000000d40000000600000006000000"
+    },
+    {
+      "symbol": "*GameMode_5v5_PrivateDraft*",
+      "resource_path": "99/995B24A99A581DC419EDA8347D33B2DB",
+      "sha256": "efd4480acda52c1ac49fc1ea5950278f738a57199e41ba9de46cbe4ddc9e2eb7",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "30000000880000009d000000b1000000cf000000e00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_DevOnly_DesignTestingGrounds_5v5*",
+      "resource_path": "9F/9FC85C51DF55E4C47408F984684D5017",
+      "sha256": "48d1bdbd0d528a62f88e98d1c3cb331213ddbaa9cc146c8c96b37ee2899c5468",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "1c00000088000000a3000000b8000000cf000000ec0000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Tutorial_Tutorial02_Joystick*",
+      "resource_path": "A0/A06B8E2DAA04AD5DF8BEF8F1F8CBA4FB",
+      "sha256": "03b2014280a8da241004a9fc19c504c5a6f84032b770bcac9ec1f851b8a90d0d",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "3500000088000000a2000000b6000000d0000000e80000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_HF_Practice*",
+      "resource_path": "A9/A9E46AD06A2C416A1A56862203C03B01",
+      "sha256": "494c94e441ce7bd584837f3b137ebf369bb0f5a23113b228b7088644367bfb32",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "02000000880000009c000000b0000000b9000000c80000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Aral_CoopBots*",
+      "resource_path": "AC/AC6382D84B9906565037B10A6F6DDF8F",
+      "sha256": "d75852b83f338969e49244b4837760d636b2dd34e42b4406d3fd8fd049790778",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "12000000880000009e000000b2000000bc000000d00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_5v5_OneForAll*",
+      "resource_path": "B4/B4BA748CD99F402D040E3EF2B1CCCE2E",
+      "sha256": "ae9a612e18185305479458b81649108240b1ce3828906ecffb0eb9d52a72fcd0",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "3b000000880000009d000000b1000000c3000000e40000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_5v5_PrivateBots*",
+      "resource_path": "B5/B5EFBE9BAD2E6855850C58B674130FFD",
+      "sha256": "4410a6fd706b71157c056115cfcfdefcfd20385bcc59fb53e4beb825cc4d57c5",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "2f000000880000009d000000b1000000c8000000d80000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_5v5_CoopBots*",
+      "resource_path": "B6/B6372AA449294D043E4F233A1E3C867C",
+      "sha256": "bdb7746037e0e40fab60a4706260e27e10bfae8e91664c6e7e84fd13985c5e20",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "32000000880000009d000000b1000000bf000000d00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_5v5_MapViewer_Private*",
+      "resource_path": "B9/B93E43ACA938002C6839AD774D9BCB4D",
+      "sha256": "7854935ba8a0732f21a8d42fecdbf754f2ada86bfc44e2b1022576e7631b2406",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "230000008800000098000000ac000000c1000000e40000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_HF_Casual*",
+      "resource_path": "BE/BE52CBF5CDEEA720382F63DA6D699D85",
+      "sha256": "c68b12c1056a2afd6631a6020013918e7048f3a77ec9abd46abfcf4f1127fb14",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "09000000880000009c000000b0000000b7000000c80000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Aram_Casual*",
+      "resource_path": "C4/C4E01E6BA5C1A7B417099B3D83CC8E75",
+      "sha256": "3c4c34c9d15d9f3f85b748ac9163e3d8387d1ea976c95bbfa13a8858e191b126",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "3d00000088000000a0000000b4000000c4000000e00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Blitz_PrivateBots*",
+      "resource_path": "CA/CA1570D81B413903CC38168D6062A763",
+      "sha256": "f80f5e35a48624792cbb764b3f1d4c2875ba4fadf28ce5977c32de19d3d34300",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "1f000000880000009f000000b3000000c4000000d00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_HF_Private*",
+      "resource_path": "CB/CB569B4B8FC41206CE7860386462FC03",
+      "sha256": "0a01c953471ece2ae907e0f14acf190e6e3f86713b1720f7dd3b2b3ac37be420",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "01000000880000009c000000b0000000b8000000c80000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_5v5_HiddenBots*",
+      "resource_path": "CD/CD09D70492D0E6056D336C2E1A7A98CC",
+      "sha256": "a0da16990382e523cd467599e58f1246cd65a1ba627eb666abe5a27b170a417d",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "27000000880000009d000000b1000000cc000000dc0000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Experiment_HalcyonFold5v5*",
+      "resource_path": "D2/D2C05868916E864CF056BC59FF14DCD5",
+      "sha256": "df0d5e973903d1ad4c47586230151eb45e5db2d672d34adde9cd698fcb591a52",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "3900000088000000aa000000be000000db000000000100000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Aral_Base*",
+      "resource_path": "D5/D5953950F638C097F0178087A3230680",
+      "sha256": "7b3e18d59cba53e24999f462075c5507d2e01959ec1707e19a5042f4af516e73",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "40000000880000009e000000b2000000b3000000c80000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_PVE_KrakenRaidBoss*",
+      "resource_path": "E4/E4BFF3DEE2002AFB250DAEB62E1AD9B3",
+      "sha256": "46fe7e64c1fe4afb439f2db799bd24a4a6a6e9ffa763c606d00d6581178340c5",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 6,
+      "root_first32_hex": "22000000880000009f000000b4000000c5000000e80000000600000006000000"
+    },
+    {
+      "symbol": "*GameMode_HF_AllBots*",
+      "resource_path": "E7/E776760F7CEB8A6D4D65EC96BD299A12",
+      "sha256": "e10ef0b7afb076bffa6ee6725117ff759aa0f7d794a0694da4e35564554223f0",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "14000000880000009c000000b0000000be000000cc0000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Blitz_Revamp_Private*",
+      "resource_path": "F4/F4AF18ADB4CB84EF774C28738DD7BC99",
+      "sha256": "e366599431e63a6241f4bcb338c766be03bc34e93c6e15a7673d481292445072",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "3f000000880000009d000000b1000000d2000000e80000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Tutorial_Tutorial01*",
+      "resource_path": "F4/F4F0A38CF0ADBA0861A7B597B4F935C6",
+      "sha256": "b4d10a0d9d4d886957b59a69fe3765cdf03a4f58633f0e22e74ca746ca68c68e",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 6,
+      "root_first32_hex": "030000008800000099000000ae000000c8000000d80000000600000006000000"
+    },
+    {
+      "symbol": "*GameMode_5v5_SoloBots*",
+      "resource_path": "F5/F5F2B8345A3213B5477A43939FA7C677",
+      "sha256": "fd30bbd70e43f5563eca48e219a1a08270f442ee6207fb630375ecb6d94b71be",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "29000000880000009d000000b1000000bf000000d00000000800000006000000"
+    },
+    {
+      "symbol": "*GameMode_Experiment_UltimateBravery*",
+      "resource_path": "FC/FCCD0B2ADCF80A7368403E38B5EB9088",
+      "sha256": "adcae1732718298429badecea5fc69080af715b551627d539ea06c11e4981e56",
+      "symbol_type": 1767399352,
+      "root": 0,
+      "capacity": 8,
+      "root_first32_hex": "37000000880000009d000000b1000000cf000000e00000000800000006000000"
+    }
+  ]
+}

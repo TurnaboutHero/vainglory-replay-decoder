@@ -1,0 +1,48 @@
+{
+  "schema": "native-final-field-comparison.v1",
+  "recording_id": "C16",
+  "partition": "development",
+  "boundary": {
+    "section": 170,
+    "record_offset": 92098
+  },
+  "sample_sequence": 631,
+  "denominator": {
+    "recordings": 1,
+    "observations": 1,
+    "required_player_fields": 70,
+    "matched_player_fields": 70
+  },
+  "scope": "Single native reader EOF snapshot, 10 players, six categories with two gold quantities. Final agreement is not per-event causal proof, intermediate timeline proof, rendered slot order, lane-only CS semantics or other recordings/builds.",
+  "artifacts": {
+    "truth": {
+      "path": "/Users/gimhunhui/Documents/Codex/2026-10-02/vg/work/final-validation-20261003/repo/.omo/evidence/accuracy-20261004/c16-native-truth.json",
+      "sha256": "e2894945438ff57766deee116cc358d2fd1ba849137e9fff7b25d589aa04f1b6"
+    },
+    "labels": {
+      "path": "/Users/gimhunhui/Documents/Codex/2026-10-02/vg/work/final-validation-20261003/repo/.omo/evidence/accuracy-20261004/c16-original-asset-labels.json",
+      "sha256": "048a09b5e0de51c50cc2bce1a6c9c0194fe765f15d7ff063ad9026eb382f5b6f"
+    },
+    "fresh_comparison": {
+      "path": "/Users/gimhunhui/Documents/Codex/2026-10-02/vg/work/final-validation-20261003/repo/.omo/evidence/accuracy-20261004/task-8-c16-after-lifetime-fix.json",
+      "sha256": "9fff52133f02dbc25446889b737fc568969a16a856ddc540ddc5d80a35adacd1"
+    }
+  },
+  "native_trace": {
+    "path": "/Users/gimhunhui/Documents/Codex/2026-10-02/vg/work/accuracy-20261004/runtime-a2/c16-state.jsonl",
+    "sha256": "cff1584cba1feda6f191ce3b6a499f55b0e79e78694745c63f53756611ee2d6f",
+    "size": 9378976,
+    "artifact_id": "native",
+    "role": "native"
+  },
+  "client_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "source_count": 171,
+  "asset_source_count": 47,
+  "direct_checks": [
+    "All frozen source/trace/injection/original asset hashes",
+    "Exact raw trace sample631 equality",
+    "Unchanged exhausted native reader171",
+    "Final original record170:92098 packet bytes equal native buffer",
+    "Fresh public CLI strict comparison70/70"
+  ]
+}

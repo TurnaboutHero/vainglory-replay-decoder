@@ -128,16 +128,37 @@ class NativeStatsTests(unittest.TestCase):
         self.assertTrue(result.valid, result.reason)
         self.assertEqual(result.players[0].kills, 2)
 
-    def test_late_invalid_snapshot_does_not_poison_early_capture(self):
+    def test_repeated_spawn_values_are_ignored_for_existing_actor(self):
         data = anchor(0, 100) + snapshot(0) + snapshot(6, (math.nan, 0, 0, 0)) + packet(10, 1)
         self.assertTrue(self.read(data, GameTime(105)).valid)
-        self.assertEqual(self.read(data).status, 'unsupported_state')
+        self.assertTrue(self.read(data).valid)
+        self.assertEqual(self.read(data).players[0].kills, 6)
 
-    def test_snapshot_replaces_previous_unsupported_state(self):
+    def test_repeated_spawn_does_not_clear_unsupported_state(self):
         data = anchor(0, 0) + snapshot(0) + attribute(1, layer=2) + snapshot(2, (3, 4, 5, 6))
         result = self.read(data)
+        self.assertFalse(result.valid)
+        self.assertEqual(result.status, 'unsupported_state')
+
+    def test_repeated_spawn_preserves_applied_updates(self):
+        data = anchor(0, 0) + snapshot(0, (1, 0, 0, 0)) + attribute(1, 1) + snapshot(2, (99, 9, 9, 9))
+        result = self.read(data)
         self.assertTrue(result.valid, result.reason)
-        self.assertEqual(result.players[0].kills, 3)
+        self.assertEqual(result.players[0].kills, 2)
+
+    def test_destroy_request_prevents_claiming_a_later_actor_lifetime(self):
+        data = anchor(0, 0) + snapshot(0) + packet(1, 0x040b, struct.pack('>I', 7)) + snapshot(2)
+        self.assertEqual(self.read(data).status, 'unsupported_state')
+
+    def test_existing_actor_without_baseline_cannot_be_recreated(self):
+        data = anchor(0, 0) + snapshot(0, flag=1) + snapshot(1)
+        self.assertEqual(self.read(data).status, 'missing_baseline')
+
+    def test_short_spawn_already_created_actor_before_full_spawn(self):
+        spawn = bytearray(122)
+        struct.pack_into('>I', spawn, 8, 7)
+        data = anchor(0, 0) + packet(0, 0x03f2, spawn) + snapshot(1)
+        self.assertEqual(self.read(data).status, 'missing_baseline')
 
     def test_layer_three_remains_unknown_after_later_snapshot(self):
         data = anchor(0, 0) + snapshot(0) + attribute(1, layer=3) + snapshot(2)

@@ -23,6 +23,7 @@ from .player_events import collect_player_events_by_entity, iter_player_events
 from .player_blocks import iter_player_blocks, parse_player_blocks
 from .registry import DECODER_FIELD_STATUSES, EVENT_HEADER_CLAIMS, OFFSET_CLAIMS
 from .winner import decode_winner_from_replay
+from .player_state import decode_player_state, PlayerState, PlayerStateResult
 
 __all__ = [
     "ClaimStatus",
@@ -48,6 +49,9 @@ __all__ = [
     "compare_minion_candidates_to_truth",
     "decode_kda_from_replay",
     "decode_winner_from_replay",
+    "decode_player_state",
+    "PlayerState",
+    "PlayerStateResult",
     "iter_player_events",
     "collect_player_events_by_entity",
     "iter_player_blocks",

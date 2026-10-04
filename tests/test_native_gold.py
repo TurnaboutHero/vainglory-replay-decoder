@@ -54,10 +54,24 @@ class NativeGoldTests(unittest.TestCase):
         with self.assertRaises(FrozenInstanceError):
             result.players[0].gold_balance = 600
 
-    def test_rebaseline_replaces_instead_of_accumulating(self):
+    def test_repeated_spawn_does_not_replace_existing_actor_resources(self):
         frames = [(0, anchor() + snapshot() + resource(value=100)),
                   (1, anchor(10, 110) + snapshot(10, 25000, 30100, extra=4) + resource(11, 20))]
-        self.assert_state(read_native_gold(frames, [7]), 25020, 30120)
+        self.assert_state(read_native_gold(frames, [7]), 30120, 30120)
+
+    def test_destroy_request_prevents_claiming_a_later_actor_lifetime(self):
+        data = anchor() + snapshot() + packet(1, 0x040b, struct.pack('>I', 7)) + snapshot(2, 999, 999)
+        self.assert_withheld(self.read(data), 'unsupported_state')
+
+    def test_existing_actor_without_baseline_cannot_be_recreated(self):
+        data = anchor() + snapshot(selector=1) + snapshot(1, 999, 999)
+        self.assert_withheld(self.read(data), 'missing_baseline')
+
+    def test_short_spawn_already_created_actor_before_full_spawn(self):
+        spawn = bytearray(122)
+        struct.pack_into('>I', spawn, 8, 7)
+        data = anchor() + packet(0, 0x03f2, spawn) + snapshot(1, 999, 999)
+        self.assert_withheld(self.read(data), 'missing_baseline')
 
     def test_positive_add_changes_balance_and_worth(self):
         self.assert_state(self.read(anchor() + snapshot(balance=600, worth=600) + resource(value=15.5)), 615.5, 615.5)
@@ -143,22 +157,24 @@ class NativeGoldTests(unittest.TestCase):
         self.assert_withheld(self.read(anchor() + snapshot(extra=1)), 'unsupported_state')
         self.assert_withheld(self.read(anchor() + snapshot() + packet(1, 0x041d, data)), 'unsupported_state')
 
-    def test_later_valid_baseline_restores_semantic_failure(self):
-        for bad in (snapshot(1, math.nan, 1), resource(1, math.inf), packet(1, 0x041d, b'')):
+    def test_later_spawn_does_not_restore_semantic_failure(self):
+        for bad in (resource(1, math.inf), packet(1, 0x041d, b'')):
             with self.subTest(bad=bad):
-                self.assert_state(self.read(anchor() + snapshot() + bad + snapshot(2, 12, 34)), 12, 34)
+                self.assert_withheld(self.read(anchor() + snapshot() + bad + snapshot(2, 12, 34)), 'unsupported_state')
+
+    def test_repeated_spawn_ignores_resource_values(self):
+        self.assert_state(self.read(anchor() + snapshot() + snapshot(1, math.nan, 1)), 30000, 30000)
 
     def test_resource_set_cannot_restore_unknown_state(self):
         data = anchor() + snapshot() + resource(1, math.nan) + resource(2, 1, mode=1)
         data += resource(3, 1, index=7, mode=1)
         self.assert_withheld(self.read(data), 'unsupported_state')
 
-    def test_unknown_actor_short_payload_requires_rebaseline_for_all(self):
+    def test_unknown_actor_short_payload_cannot_be_repaired_by_repeated_spawns(self):
         data = anchor() + snapshot(entity=7) + snapshot(entity=8) + packet(1, 0x041d, b'')
         self.assert_withheld(self.read(data + snapshot(2, entity=7), [7, 8]), 'unsupported_state')
         result = self.read(data + snapshot(2, entity=7) + snapshot(3, entity=8), [8, 7])
-        self.assertTrue(result.valid, result.reason)
-        self.assertEqual([player.entity_id for player in result.players], [7, 8])
+        self.assert_withheld(result, 'unsupported_state')
 
     def test_missing_one_actor_withholds_entire_result(self):
         self.assert_withheld(self.read(anchor() + snapshot(), [7, 8]), 'missing_baseline')

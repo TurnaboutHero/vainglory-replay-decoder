@@ -23,7 +23,8 @@ def match_to_csv_rows(match: DecodedMatch, match_idx: int = 0, input_id: str = '
         kda_ratio = None
         if all(value is not None for value in (player.kills, player.deaths, player.assists)):
             kda_ratio = round((player.kills + player.assists) / max(player.deaths, 1), 2)
-        is_winner = None if match.winner is None else int(player.team == match.winner)
+        is_winner = (None if match.winner is None or player.team is None
+                     else int(player.team == match.winner))
         row = {
             'match_idx': match_idx,
             'input_id': input_id,
@@ -41,6 +42,8 @@ def match_to_csv_rows(match: DecodedMatch, match_idx: int = 0, input_id: str = '
             'final_stats_reason': match.final_stats_reason,
             'winner': match.winner or '',
             'player_name': player.name,
+            'native_actor_id': player.native_actor_id,
+            'team_id': player.team_id,
             'team': player.team,
             'is_winner': is_winner,
             'hero': player.hero_name,
@@ -53,9 +56,15 @@ def match_to_csv_rows(match: DecodedMatch, match_idx: int = 0, input_id: str = '
             'gold_spent': player.gold_spent,
             'gold_earned': player.gold_earned,
             'gold_status': player.gold_status,
+            'gold_balance': player.gold_balance,
+            'net_worth': player.net_worth,
+            'state_scope': player.state_scope,
+            'as_of_game_time': player.as_of_game_time,
+            'state_section': (player.record_boundary or {}).get('section'),
+            'state_record_offset': (player.record_boundary or {}).get('record_offset'),
             'replay_scope': player.replay_scope,
             'items': ' | '.join(player.items) if player.items else '',
-            'item_count': len(player.items),
+            'item_count': len(player.items) if player.items is not None else None,
         }
         if player.truth_kills is not None:
             row['truth_kills'] = player.truth_kills

@@ -1,0 +1,277 @@
+[
+  {
+    "path": "c33-minimal-records.json",
+    "source_run": "accuracy-20261004-native-inventory",
+    "sha256": "cd9843124beaf7d1b095e00c47a9ed125ebb55ab601ba38d183e8caac8312291"
+  },
+  {
+    "path": "c33-reducer-fixture.json",
+    "source_run": "accuracy-20261004-native-inventory",
+    "sha256": "13c4405465ddd087193a94eef327b16d2196067014a38b452fa8f9f33f557d33"
+  },
+  {
+    "path": "c33-runtime-matches.json",
+    "source_run": "accuracy-20261004-native-inventory",
+    "sha256": "27bfc5f7eec40d6d89d5bb7e96acb62e5c15ae1b50cc09501ef4fe3eb1df9a4a"
+  },
+  {
+    "path": "c33-seek-runtime-matches.json",
+    "source_run": "accuracy-20261004-native-inventory",
+    "sha256": "cf2305cb20364f04af3711a66a20ab8a0c8ca39f0189a12818e62512598adee9"
+  },
+  {
+    "path": "definition-515.json",
+    "sha256": "369905b211340beb0d83ba73e3dee8d04b0283b2b95f4a426af9c505cf42fed7",
+    "source_run": "fresh original asset extraction"
+  },
+  {
+    "path": "function-004d5930.c",
+    "sha256": "3039747ae51722d0d2c1a5e8e42d4b89429c3f6b216390db162cf9bef9556033",
+    "source_run": "native-inventory-5"
+  },
+  {
+    "path": "function-00529e00.c",
+    "sha256": "3def993091c52010dde251bd59a7d78be1f62b1218044e93132ec27a982896fe",
+    "source_run": "native-inventory-3"
+  },
+  {
+    "path": "function-00549470.c",
+    "source_run": "accuracy-20261004-native-inventory",
+    "sha256": "06e91870c15aa674f4ae7299522cd834a834fc60062e2bd4d4c05dddc45499cd"
+  },
+  {
+    "path": "function-005a0790.c",
+    "source_run": "accuracy-20261004-native-inventory",
+    "sha256": "0834e218656713741f681312a8b02fac1495c960dd519db092db3b51e1adb9f2"
+  },
+  {
+    "path": "function-005c1bb0.c",
+    "source_run": "accuracy-20261004-native-inventory",
+    "sha256": "eb126c466e21d98d6f71481a8af881b2867c8a3ec7bc650262c3d200383e6749"
+  },
+  {
+    "path": "function-0081a3b0.c",
+    "sha256": "ddf0d17c42e3fab8a79f0d278afaffd9b0cb3d53810a30539fa938b9dcc5c965",
+    "source_run": "native-inventory-0"
+  },
+  {
+    "path": "function-0081abe0.c",
+    "sha256": "859b2011051a43017a3b02ef1069bdf29040f3d33cf9cbd641663982cb9d01ab",
+    "source_run": "native-inventory-0"
+  },
+  {
+    "path": "function-0081ac20.c",
+    "sha256": "3e63a63c3aaf9c5a9732248f395a65c743efc416b6964f931da877e50bdda41b",
+    "source_run": "native-inventory-6"
+  },
+  {
+    "path": "function-0081c200.c",
+    "sha256": "267e19bbd3bab35b4de4d0488a4304046715c4bf4ff901499fc8fc8392dfbd0a",
+    "source_run": "native-inventory-0"
+  },
+  {
+    "path": "function-0086fed0.c",
+    "sha256": "a99ae3a31560765816732cf1ccfe82d43d5b135d4a96eb00ace6727a4f520e3f",
+    "source_run": "native-inventory-3"
+  },
+  {
+    "path": "function-00872340.c",
+    "sha256": "7d198f414105938e9a716d60f496ff0005a691a1b5aec1079a8509fe74dbcc90",
+    "source_run": "native-inventory-1"
+  },
+  {
+    "path": "function-0092f980.c",
+    "sha256": "2b5fbb350527b086cb76c41e3790584c90ea09f931ac49de95ef906827ec4fa4",
+    "source_run": "native-inventory-3"
+  },
+  {
+    "path": "function-009392b0.c",
+    "source_run": "accuracy-20261004-native-inventory",
+    "sha256": "3bb57139536dc324f46ce080d1e52299725c44de1bf700c74eebef6ea38d037d"
+  },
+  {
+    "path": "function-0093cdc0.c",
+    "sha256": "04da24dedb27addd1e4c1c35465e33f5a84e4c17a00fbaf836de0c340d77e5aa",
+    "source_run": "native-inventory-2"
+  },
+  {
+    "path": "function-0093d080.c",
+    "sha256": "dca55faccfa484e6223bd684642a12790cbb42d74b13c67a27daf38599b088d2",
+    "source_run": "native-inventory-1"
+  },
+  {
+    "path": "function-0093d3d0.c",
+    "source_run": "accuracy-20261004-native-inventory",
+    "sha256": "ffe758fe8e99f718eb2e55fdc6e56da2fb936afefef3eab322a5257fd811565c"
+  },
+  {
+    "path": "function-00940230.c",
+    "sha256": "164ef0c61a379b0260293ea083f0e53e2810fd1ccd82ae5f4062bad72b0ec3d8",
+    "source_run": "native-inventory-3"
+  },
+  {
+    "path": "function-00940e40.c",
+    "source_run": "accuracy-20261004-native-inventory",
+    "sha256": "c70ea6e01a8ee752ce99912526596b28c6826001a8ac7811085a492d47585a82"
+  },
+  {
+    "path": "function-0094a400.c",
+    "sha256": "cb9c5ec77b52683d8db5c989e8791325f3ee2a12f2f3a19459034e8157a5db58",
+    "source_run": "native-inventory-3"
+  },
+  {
+    "path": "function-0094ade0.c",
+    "sha256": "7112cc5cf34b8ae7513a35248666a4217d9eb9927a537b48afbeeea8788c11e7",
+    "source_run": "native-inventory-3"
+  },
+  {
+    "path": "function-0094b7d0.c",
+    "sha256": "442a89dffbbd13db03d3fb343b6bbabdf57567668491109899d59f73250ffda7",
+    "source_run": "native-inventory-3"
+  },
+  {
+    "path": "function-0094c0b0.c",
+    "sha256": "52845fb909aa41fe87469df4e82b5ba2a604fd04768bd46ed03b55510817f684",
+    "source_run": "native-inventory-3"
+  },
+  {
+    "path": "function-0094ce20.c",
+    "sha256": "bb9ba83f9dbea6f10c47b6d350f6386b9d173b61b6c3ab7b77c0ff1fa11f0c7a",
+    "source_run": "native-inventory-3"
+  },
+  {
+    "path": "function-0094cfb0.c",
+    "sha256": "5002465d7c15c2e744be9c21328b18a98f0651d32fb5cd3ebfd1c19b4a7782f8",
+    "source_run": "native-inventory-0"
+  },
+  {
+    "path": "function-0094e070.c",
+    "sha256": "fd150ca41f7dd3035263a2a873c43fd0e00077de2a2d07e479b49e7a40add71d",
+    "source_run": "native-inventory-0"
+  },
+  {
+    "path": "function-0094e170.c",
+    "sha256": "6aa3e6e8026fd5477a8c3dddccc019707dd36b92f1af1474e0c0f8469a18ff67",
+    "source_run": "native-inventory-6"
+  },
+  {
+    "path": "function-0094ee90.c",
+    "sha256": "3290739f7374e80a6a2f5f3494122c2ce812bb5e826277cff8adba4ec347f788",
+    "source_run": "native-inventory-0"
+  },
+  {
+    "path": "function-0094f6f0.c",
+    "sha256": "3ce1d1df2407801bf928b3ca42b6498d57b0f70ea0eed33222909fb0e62315ef",
+    "source_run": "native-inventory-0"
+  },
+  {
+    "path": "function-009501d0.c",
+    "sha256": "af1d3337d821b778f8f557f088dd298545c305b49b455c5431c51cbf966aa5d1",
+    "source_run": "native-inventory-0"
+  },
+  {
+    "path": "function-00950240.c",
+    "sha256": "53cab48e7e047e5434eae8018f823e65920b4636321c2f0448376597dac4cb6b",
+    "source_run": "native-inventory-3"
+  },
+  {
+    "path": "function-009504f0.c",
+    "sha256": "8fa3e46f1713040516d4e6b80c476ceefe405afccf6fa79f413ac0dffa14db7a",
+    "source_run": "native-inventory-0"
+  },
+  {
+    "path": "function-00958330.c",
+    "sha256": "6944fddc10bd124e8c892792c473172be034dcc1323d3f255353372a64b35773",
+    "source_run": "native-inventory-6"
+  },
+  {
+    "path": "function-0095bda0.c",
+    "sha256": "46864ae9835c98b06b5d28b17cfdeb7b702f8de7d8c8464fbe03a053f96ef27e",
+    "source_run": "native-inventory-6"
+  },
+  {
+    "path": "function-0095bdd0.c",
+    "sha256": "95322083ccf00c27f05032837f4e86b1c282b51bee829d4f1cc029a9805d017d",
+    "source_run": "native-inventory-6"
+  },
+  {
+    "path": "function-0095bea0.c",
+    "sha256": "95b24c259e32905662a8cf6a44c596f03b25f891fef2f94ff79faff19a4b1522",
+    "source_run": "native-inventory-6"
+  },
+  {
+    "path": "game-mode-capacity.json",
+    "source_run": "accuracy-20261004-native-inventory",
+    "sha256": "7a2597ff33eaa064fdf2bce1c303c54d1ae834ef845f385e2075a1047467779b"
+  },
+  {
+    "path": "guards.json",
+    "sha256": "48c0774ff2d8bdbea948ca5a938584f87c2f5c597737f2ffa3c3cefc5aa6602a",
+    "source_run": "fresh original asset extraction"
+  },
+  {
+    "path": "index-4.txt",
+    "sha256": "b4b100b5667171282392ac30dedba127a45d8a96585711d76fd690234f4a7603",
+    "source_run": "native-inventory-4"
+  },
+  {
+    "path": "index-5.txt",
+    "sha256": "7888fcc113a874bf7cbc68f7da856b19194498f191bcb2472b70af989a171ec4",
+    "source_run": "native-inventory-5"
+  },
+  {
+    "path": "operations.json",
+    "source_run": "accuracy-20261004-native-inventory",
+    "sha256": "9a2d87f69052e58b8559b45031a27acffb3a5708559d63e7e6ca5a881ceefae6"
+  },
+  {
+    "path": "practice-grants.json",
+    "source_run": "accuracy-20261004-native-inventory",
+    "sha256": "85d8bb7078cc06aac58fbc784c04db1a4eebb0e4aa36a6f1581db80ee4c9b91f"
+  },
+  {
+    "path": "receiver-03f3.c.txt",
+    "sha256": "d6024b05dd305aa4368f1bf3566634c175f2c2303322f607247a5aa15ae87177",
+    "source_run": "native-inventory-1 fresh dispatcher cross-check"
+  },
+  {
+    "path": "receiver-0437.c.txt",
+    "sha256": "2c73d3fbf634bde8db460228ecaa2cd71b8fc2732d776bd5bd891e33a8db1566",
+    "source_run": "native-inventory-1 fresh dispatcher cross-check"
+  },
+  {
+    "path": "receiver-0439.c.txt",
+    "sha256": "b8c637e369accc63beb672a9c0a5b3e10d640428f820152fe9c524fa84d14a6e",
+    "source_run": "native-inventory-1 fresh dispatcher cross-check"
+  },
+  {
+    "path": "receiver-043d.c.txt",
+    "sha256": "515e4a3aa9bfa32b7b38e6dc59544a23ae64f2e6dedf6dbbd0b8af60da9181b1",
+    "source_run": "native-inventory-1 fresh dispatcher cross-check"
+  },
+  {
+    "path": "receiver-0444.c.txt",
+    "sha256": "9dcc1373dfb0217ca06939e9000756c948cff012bc5c5945537c27947f82121a",
+    "source_run": "native-inventory-1 fresh dispatcher cross-check"
+  },
+  {
+    "path": "receiver-044b.c.txt",
+    "sha256": "6b601eb089f7b97d25d73f388555c216e6818751def068d76c8b1b47adf827d1",
+    "source_run": "native-inventory-1 fresh dispatcher cross-check"
+  },
+  {
+    "path": "receiver-044c.c.txt",
+    "sha256": "dc6e513bb1106a543c3db40fb1905e967b21031c7327804b287737d156da2b78",
+    "source_run": "native-inventory-1 fresh dispatcher cross-check"
+  },
+  {
+    "path": "receiver-044d.c.txt",
+    "sha256": "b3ff53193747b66d74c83f4ea0cfb18077df7ad33be0fd259f1808ccb98c5158",
+    "source_run": "native-inventory-1 fresh dispatcher cross-check"
+  },
+  {
+    "path": "receiver-048f.c.txt",
+    "sha256": "9cfde1947f63b91a07b7b47aead3b9e80651c3bee5a2e2d0b38f0197d68ae67f",
+    "source_run": "native-inventory-1 fresh dispatcher cross-check"
+  }
+]

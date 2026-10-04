@@ -1,0 +1,20 @@
+{
+  "profile": {
+    "build_sha256": "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+    "manifest_sha256": "7292b885378be83cb8596601bad7d0c7adfaab1e91e23f8ea65601f03136755c",
+    "key_table_va": 31717752,
+    "version": 12,
+    "definition_count": 932,
+    "architecture": 0
+  },
+  "definition_count": 932,
+  "definitions": [
+    {
+      "index": 515,
+      "name": "Item_LevelCandy",
+      "kind": "unknown",
+      "serialized_name": "*Item_LevelCandy*",
+      "kind_evidence": null
+    }
+  ]
+}

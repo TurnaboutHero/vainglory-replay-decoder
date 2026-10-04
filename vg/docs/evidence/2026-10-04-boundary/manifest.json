@@ -1,0 +1,30 @@
+{
+  "executable_sha256": "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+  "method": "Fresh Ghidra12.1.3 readOnly/noanalysis exports 2026-10-04; no decoder numeric result used",
+  "files": [
+    {
+      "path": "004ca130.c.txt",
+      "sha256": "476de91cfffa3f4cada280341f7c6d02392fc9fe29b023574efc20866aeb6990"
+    },
+    {
+      "path": "004cb3e0.c.txt",
+      "sha256": "06c84cdd729e62aeb8ba91cef6a51d8a6e74154819ca7993fe8553dd9fefc038"
+    },
+    {
+      "path": "004cdbb0.c.txt",
+      "sha256": "6e5d360e5d521ef894026aba7c486c84ddf937f22724dc78910f2a5606720743"
+    },
+    {
+      "path": "004eb2d0.c.txt",
+      "sha256": "58434e51bffca82b577533a45f18b005b6ae5df6748aaaad7e9d059b9f8cd500"
+    },
+    {
+      "path": "004eb4a0.c.txt",
+      "sha256": "e7f00d33a041696273a3e3dac4dc8c68a0bc2cd01f360b224cd900554f4d49d2"
+    },
+    {
+      "path": "005497a0.c.txt",
+      "sha256": "223cd8dc4067bda9b86a518af732b109188ff4e189916e6c1e4ab7d4b5e20a35"
+    }
+  ]
+}

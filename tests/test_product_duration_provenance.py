@@ -5,7 +5,9 @@ import struct
 import tempfile
 import unittest
 
-from tests.test_native_stats import anchor, packet, snapshot
+from tests.test_native_inventory import anchor, packet
+from tests.test_native_roster import roster as native_roster
+from tests.test_player_state_service import state_snapshot
 from vg.core.stat_evidence import frame_scope
 from vg.core.unified_decoder import DecodedMatch, UnifiedDecoder
 
@@ -13,13 +15,7 @@ from vg.core.unified_decoder import DecodedMatch, UnifiedDecoder
 def replay_bytes(crystal=None, death=None, roster=True):
     data = anchor(0, 100)
     if roster:
-        block = bytearray(0xE2)
-        block[:3] = b'\xda\x03\xee'
-        block[3:12] = b'PlayerOne'
-        block[0xA5:0xA7] = (1792).to_bytes(2, 'little')
-        block[0xA9:0xAB] = (0xB801).to_bytes(2, 'little')
-        block[0xD5] = 1
-        data += packet(0, 1, block) + snapshot(0)
+        data += native_roster(7, b'PlayerOne') + state_snapshot(counters=(6, 2, 3, 100))
     events = []
     if crystal is not None:
         events.append((crystal, 2000))
@@ -60,10 +56,15 @@ class ProductDurationProvenanceTests(unittest.TestCase):
                     self.assertTrue(provenance['reason'])
                     self.assertEqual(provenance['replay_scope'], frame_scope([(0, data)]))
                     self.assertFalse(provenance['accepted_for_index'])
-                self.assertEqual(result.native_stats_status, 'accepted')
+                self.assertEqual(result.native_stats_status, 'supported')
                 self.assertIsNone(result.winner)
-                self.assertIsNone(result.left_team[0].gold_earned)
-                self.assertIsNone(result.left_team[0].kills)
+                self.assertEqual(len(result.all_players), 1)
+                player = result.all_players[0]
+                self.assertEqual(player.native_actor_id, 7)
+                self.assertIsNone(player.gold_earned)
+                self.assertEqual(player.kills, 6)
+                self.assertEqual(player.state_scope, 'recorded_end')
+                self.assertEqual(result.final_validation_status, 'unverified')
                 self.assertEqual(hashlib.sha256(self.replay.read_bytes()).hexdigest(), before)
 
     def test_duration_provenance_happy_truth_override_including_zero(self):
@@ -89,7 +90,8 @@ class ProductDurationProvenanceTests(unittest.TestCase):
                     self.assertEqual(provenance['replay_scope'], frame_scope([(0, data)]))
                     self.assertFalse(provenance['accepted_for_index'])
                 self.assertIsNone(result.winner)
-                self.assertIsNone(result.left_team[0].gold_earned)
+                self.assertIsNone(result.all_players[0].gold_earned)
+                self.assertEqual(result.all_players[0].kills, 6)
                 self.assertEqual((self.replay.read_bytes(), truth_path.read_bytes()), before)
 
     def test_duration_provenance_happy_legacy_positional_constructor(self):
@@ -124,7 +126,7 @@ class ProductDurationProvenanceTests(unittest.TestCase):
                 self.assertIsNone(result.winner)
                 for player in result.all_players:
                     self.assertIsNone(player.gold_earned)
-                    self.assertIsNone(player.kills)
+                    self.assertEqual(player.kills, 6)
                 if not roster:
                     self.assertEqual(result.all_players, [])
 
@@ -155,8 +157,8 @@ class ProductDurationProvenanceTests(unittest.TestCase):
         self.assertEqual(result.native_stats_status, 'mixed_segments')
         self.assertIsNone(result.data_complete)
         self.assertIsNone(result.winner)
-        self.assertIsNone(result.left_team[0].gold_earned)
-        self.assertIsNone(result.left_team[0].kills)
+        self.assertEqual(result.all_players, [])
+        self.assertEqual(result.player_state['support_status'], 'mixed_segments')
 
 
 if __name__ == '__main__':

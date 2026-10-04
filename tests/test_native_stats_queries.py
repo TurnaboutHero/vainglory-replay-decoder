@@ -35,29 +35,24 @@ class NativeStatsQueryTests(unittest.TestCase):
         self.assertFalse(result.valid)
         self.assertEqual(result.players, ())
 
-    def test_eof_applies_snapshot_and_update_in_record_order(self) -> None:
-        # Given a later snapshot before a paused anchor and a subsequent ADD.
+    def test_eof_ignores_repeated_spawn_and_applies_update(self) -> None:
         frames = [(0, anchor(0, 100) + snapshot(0)
                    + snapshot(10, values=(6, 2, 40, 100))),
                   (1, anchor(11, 100) + resource(12, value=2))]
 
-        # When restoring EOF.
         result = read_native_stats(frames, [7])
 
-        # Then the later snapshot replaces the baseline before the ADD.
         self.assertTrue(result.valid, result.reason)
-        self.assertEqual(result.players[0].assists, 42)
+        self.assertEqual(result.players[0].assists, 5)
 
-    def test_explicit_game_cutoff_keeps_game_time_filter(self) -> None:
-        # Given an update beyond the explicit game-time cutoff.
+    def test_explicit_game_cutoff_rejects_nonprefix_selection(self) -> None:
         frames = paused_frames(resource(10, value=9))
 
-        # When querying game time 101.
         result = read_native_stats(frames, [7], GameTime(101))
 
-        # Then the update at projected game time 110 remains excluded.
-        self.assertTrue(result.valid, result.reason)
-        self.assertEqual(result.players[0].assists, 3)
+        self.assertFalse(result.valid)
+        self.assertEqual(result.status, 'ambiguous_game_time')
+        self.assertEqual(result.players, ())
         self.assertEqual(result.requested_game_time, 101)
 
     def test_explicit_record_cutoff_keeps_record_time_filter(self) -> None:

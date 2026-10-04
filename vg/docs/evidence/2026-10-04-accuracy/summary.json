@@ -1,0 +1,734 @@
+{
+  "schema_version": "player_state.accuracy_summary.v1",
+  "date": "2026-10-04",
+  "scope": "Pinned Windows client, independently observed recorded EOF player state",
+  "original_client_sha256": "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+  "owned_laa_client_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "accuracy": {
+    "ok": true,
+    "recordings": 8,
+    "players": 37,
+    "groups_per_player": 7,
+    "groups": [
+      "name",
+      "hero",
+      "kda",
+      "items",
+      "gold_balance",
+      "net_worth",
+      "minion_kills"
+    ],
+    "unique_required_groups": 259,
+    "public_surfaces": 3,
+    "required": 777,
+    "matched": 777,
+    "mismatches": 0,
+    "missing_required": 0,
+    "holdouts": [
+      "C48",
+      "C50",
+      "C51"
+    ],
+    "holdout_players": 18,
+    "holdout_unique_groups": 126,
+    "holdout_comparisons_across_surfaces": 378,
+    "records": [
+      {
+        "recording_id": "C16",
+        "partition": "development",
+        "players": 10,
+        "record_boundary": {
+          "section": 170,
+          "record_offset": 92098
+        },
+        "source_sections": 171,
+        "source_sha256_list_digest": "80734d11af9e3a0b1e8f01ccc2f870f089a0ba4843f5f7ff32e9b3cef57f10ff",
+        "reference_manifest": {
+          "artifact": ".omo/evidence/accuracy-20261004/reference-c16/manifest.json",
+          "sha256": "9edcb20b66e42ed7abfb42857acd2b1d1269cce102827c8bbd7c3cff87b04d33",
+          "bytes": 4310889,
+          "committed": false
+        },
+        "surfaces": [
+          {
+            "surface": "default-cli",
+            "required": 70,
+            "matched": 70,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c16-default-cli.json",
+              "sha256": "e692854c2274cb28b5c7c6e39fc06ed972c8d40bde28ecf149b767545aa2088f",
+              "bytes": 4450323,
+              "committed": false
+            }
+          },
+          {
+            "surface": "api",
+            "required": 70,
+            "matched": 70,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c16-api.json",
+              "sha256": "e5b2387c922f6f63aa8e25265743946247ef0f30b55fd2c16f88e7e62f9ba252",
+              "bytes": 1192086,
+              "committed": false
+            }
+          },
+          {
+            "surface": "legacy-cli",
+            "required": 70,
+            "matched": 70,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c16-legacy-cli.json",
+              "sha256": "dd695df56fe65acd676ed15dbdd78d8f1b66c111a524c57146aaee814b895673",
+              "bytes": 5647329,
+              "committed": false
+            }
+          }
+        ]
+      },
+      {
+        "recording_id": "C48",
+        "partition": "holdout",
+        "players": 6,
+        "record_boundary": {
+          "section": 128,
+          "record_offset": 42500
+        },
+        "source_sections": 129,
+        "source_sha256_list_digest": "c65b785352b9e2920be311cabad79ccb36a0284e2642c101b857a9e06f84d278",
+        "reference_manifest": {
+          "artifact": ".omo/evidence/accuracy-20261004/reference-c48/manifest.json",
+          "sha256": "f85473c4c3bf4111f8bf61ea9b4b0850b7806994dacf8fef8f08f32aef5b7f4e",
+          "bytes": 4299048,
+          "committed": false
+        },
+        "surfaces": [
+          {
+            "surface": "default-cli",
+            "required": 42,
+            "matched": 42,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c48-default-cli.json",
+              "sha256": "8034815eec80ca1549ea5b7cd1fe2a84c079276e82f9ad6deb5454b3ddd05b34",
+              "bytes": 3836069,
+              "committed": false
+            }
+          },
+          {
+            "surface": "api",
+            "required": 42,
+            "matched": 42,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c48-api.json",
+              "sha256": "cdccdf6876bc6cecf05969fb32ed508b1daa8758dc0747ea104e597b72912427",
+              "bytes": 582360,
+              "committed": false
+            }
+          },
+          {
+            "surface": "legacy-cli",
+            "required": 42,
+            "matched": 42,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c48-legacy-cli.json",
+              "sha256": "a9de02db51472b8f5dafcac201ac485982e3cdea6352fc6b37c9a5c52ba6f644",
+              "bytes": 4398065,
+              "committed": false
+            }
+          }
+        ]
+      },
+      {
+        "recording_id": "C50",
+        "partition": "holdout",
+        "players": 6,
+        "record_boundary": {
+          "section": 134,
+          "record_offset": 32569
+        },
+        "source_sections": 135,
+        "source_sha256_list_digest": "0ac387be5e6992c2755cfca2939717f07b7cd696387549f804141dea1b563a18",
+        "reference_manifest": {
+          "artifact": ".omo/evidence/accuracy-20261004/reference-c50/manifest.json",
+          "sha256": "dde6445e8ccebd5893d190f487a0beeb9aa0150e99e664d48e0efca8d83aa6b3",
+          "bytes": 4299052,
+          "committed": false
+        },
+        "surfaces": [
+          {
+            "surface": "default-cli",
+            "required": 42,
+            "matched": 42,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c50-default-cli.json",
+              "sha256": "930943d95162a7b92cb226d4cbd3c2e058cd5bbcfd25ff09ffc6f68b3217f737",
+              "bytes": 3860657,
+              "committed": false
+            }
+          },
+          {
+            "surface": "api",
+            "required": 42,
+            "matched": 42,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c50-api.json",
+              "sha256": "f52868c45a4892439a7f11fa5ce7f24b3830af0249fd7c24f9fc1eef0e44aa5e",
+              "bytes": 606912,
+              "committed": false
+            }
+          },
+          {
+            "surface": "legacy-cli",
+            "required": 42,
+            "matched": 42,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c50-legacy-cli.json",
+              "sha256": "ae4610db6f9ca357608aa7e0b9b444033a3f60e853b91902b673a4fe3fc4d023",
+              "bytes": 4447446,
+              "committed": false
+            }
+          }
+        ]
+      },
+      {
+        "recording_id": "C51",
+        "partition": "holdout",
+        "players": 6,
+        "record_boundary": {
+          "section": 138,
+          "record_offset": 62789
+        },
+        "source_sections": 139,
+        "source_sha256_list_digest": "4a1bf8d25ee383eb4eb794ebfc33c204ff8e57b54cc785b18b8973b701a6edfd",
+        "reference_manifest": {
+          "artifact": ".omo/evidence/accuracy-20261004/reference-c51/manifest.json",
+          "sha256": "263e5a90929fba2b814476415a710cae3244d45dcc0b4cc94c147be5562443b8",
+          "bytes": 4299359,
+          "committed": false
+        },
+        "surfaces": [
+          {
+            "surface": "default-cli",
+            "required": 42,
+            "matched": 42,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c51-default-cli.json",
+              "sha256": "e87d96d8ae6165e5c2b56eba9aab269f98188de7a3e4e909f82e09c385276a24",
+              "bytes": 3875431,
+              "committed": false
+            }
+          },
+          {
+            "surface": "api",
+            "required": 42,
+            "matched": 42,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c51-api.json",
+              "sha256": "f2559d11a0bf5c9ee66dddc99e5d012d9433b6b1251174b79bbdf169c86372b3",
+              "bytes": 621662,
+              "committed": false
+            }
+          },
+          {
+            "surface": "legacy-cli",
+            "required": 42,
+            "matched": 42,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c51-legacy-cli.json",
+              "sha256": "715092bb27db98ac531c1b2c0de2c4256eab62de80b471c4b08bff8bc8114802",
+              "bytes": 4476447,
+              "committed": false
+            }
+          }
+        ]
+      },
+      {
+        "recording_id": "C52",
+        "partition": "development_after_clock_fix",
+        "players": 6,
+        "record_boundary": {
+          "section": 116,
+          "record_offset": 55834
+        },
+        "source_sections": 117,
+        "source_sha256_list_digest": "ddfc2b2762135de53803cf456ee2942ba5c8c1b51076059b9b57623c29356b8c",
+        "reference_manifest": {
+          "artifact": ".omo/evidence/accuracy-20261004/reference-c52/manifest.json",
+          "sha256": "49b77eb47ec29168d5bb2e4e2e90550c9eba8bb95a25e611120657ce4ef5be21",
+          "bytes": 4299130,
+          "committed": false
+        },
+        "surfaces": [
+          {
+            "surface": "default-cli",
+            "required": 42,
+            "matched": 42,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c52-default-cli.json",
+              "sha256": "6cf2b2026f9586497f3a419c673482fee608c9e43a9c513e36a0efffe2236d11",
+              "bytes": 3794346,
+              "committed": false
+            }
+          },
+          {
+            "surface": "api",
+            "required": 42,
+            "matched": 42,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c52-api.json",
+              "sha256": "3bea0eaa815062ed2df11dcacbd76195ff251f1f9c1c21d1b51a4194b028893a",
+              "bytes": 540773,
+              "committed": false
+            }
+          },
+          {
+            "surface": "legacy-cli",
+            "required": 42,
+            "matched": 42,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c52-legacy-cli.json",
+              "sha256": "c3281e62dd4e733b8cf3c8519da8e94c158879b4279d4165bfffbdc480276793",
+              "bytes": 4316594,
+              "committed": false
+            }
+          }
+        ]
+      },
+      {
+        "recording_id": "C33",
+        "partition": "control",
+        "players": 1,
+        "record_boundary": {
+          "section": 6,
+          "record_offset": 44185
+        },
+        "source_sections": 7,
+        "source_sha256_list_digest": "9f9a1e39b7bb6d8b8489b269ddbdbac2053fd80fd6a229189aabcf2880eb1900",
+        "reference_manifest": {
+          "artifact": ".omo/evidence/accuracy-20261004/reference-c33-v2/manifest.json",
+          "sha256": "c9081dff0fcb983edb6ce0a680737df5755f3bd003da2c492c9e801905fccdac",
+          "bytes": 4283761,
+          "committed": false
+        },
+        "surfaces": [
+          {
+            "surface": "default-cli",
+            "required": 7,
+            "matched": 7,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c33-v2-default-cli.json",
+              "sha256": "74a076dd39a219e3e85ee509f9a4d38036aa09177268004d0df178df0b970ccc",
+              "bytes": 3273365,
+              "committed": false
+            }
+          },
+          {
+            "surface": "api",
+            "required": 7,
+            "matched": 7,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c33-v2-api.json",
+              "sha256": "a6f0c738b021eb36482d588304f4c08e79ae5a0a05594b638bf0ed370dc158fe",
+              "bytes": 26091,
+              "committed": false
+            }
+          },
+          {
+            "surface": "legacy-cli",
+            "required": 7,
+            "matched": 7,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c33-v2-legacy-cli.json",
+              "sha256": "465563d95e41a6acbd9d911e8b7df6eac9e42d23ac59d1cc6362bbfbe07dba9f",
+              "bytes": 3296249,
+              "committed": false
+            }
+          }
+        ]
+      },
+      {
+        "recording_id": "normal17",
+        "partition": "control",
+        "players": 1,
+        "record_boundary": {
+          "section": 16,
+          "record_offset": 58543
+        },
+        "source_sections": 17,
+        "source_sha256_list_digest": "234720f1c31ca2d70003f118c230dba3f7ce45a0f49b4d3bda2be99f0a3bec2a",
+        "reference_manifest": {
+          "artifact": ".omo/evidence/accuracy-20261004/reference-normal17-v2/manifest.json",
+          "sha256": "e02def506557be4e912a5a61d2829e202a494b71f2c8d77dd37656aef38db23f",
+          "bytes": 4283585,
+          "committed": false
+        },
+        "surfaces": [
+          {
+            "surface": "default-cli",
+            "required": 7,
+            "matched": 7,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/normal17-v2-default-cli.json",
+              "sha256": "f5d190023d425c1ee88b4eb891b0e08d16a4c06c5edb960211234c702b4d294f",
+              "bytes": 3280578,
+              "committed": false
+            }
+          },
+          {
+            "surface": "api",
+            "required": 7,
+            "matched": 7,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/normal17-v2-api.json",
+              "sha256": "0a4ad3657304ffb5c8c5377fb6c5b2754f18c6aa45f886e927991b2e84b29d88",
+              "bytes": 33355,
+              "committed": false
+            }
+          },
+          {
+            "surface": "legacy-cli",
+            "required": 7,
+            "matched": 7,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/normal17-v2-legacy-cli.json",
+              "sha256": "b3c07d564e3eb0e15a1dc0e16cab26a2ed37d345fd25f75774f3991954787a9a",
+              "bytes": 3308101,
+              "committed": false
+            }
+          }
+        ]
+      },
+      {
+        "recording_id": "C34",
+        "partition": "control",
+        "players": 1,
+        "record_boundary": {
+          "section": 4,
+          "record_offset": 23281
+        },
+        "source_sections": 5,
+        "source_sha256_list_digest": "536e97ac790b07612ba9dd73a71aa1cd192122b3850c43ea611401edf8803de9",
+        "reference_manifest": {
+          "artifact": ".omo/evidence/accuracy-20261004/reference-c34-v2/manifest.json",
+          "sha256": "9cb303d2e7a8e57b745eac399c78b71fba2b25a4c0e9f06e1c5d37571418d77e",
+          "bytes": 4283511,
+          "committed": false
+        },
+        "surfaces": [
+          {
+            "surface": "default-cli",
+            "required": 7,
+            "matched": 7,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c34-v2-default-cli.json",
+              "sha256": "e4be556bf4a1009c0239738975e4ed993c161d1a76a5bd55101cc0cd36d772d6",
+              "bytes": 3269755,
+              "committed": false
+            }
+          },
+          {
+            "surface": "api",
+            "required": 7,
+            "matched": 7,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c34-v2-api.json",
+              "sha256": "6c356bb2a0e123834c18b528fbda28da05cabdf02f356571ba52b21aa0cb9cfc",
+              "bytes": 22629,
+              "committed": false
+            }
+          },
+          {
+            "surface": "legacy-cli",
+            "required": 7,
+            "matched": 7,
+            "exit_code": 0,
+            "evidence": {
+              "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/c34-v2-legacy-cli.json",
+              "sha256": "edd2062a37a01a8b8bcfe237cae0cc6ddd7ffd913a10689a28d1ec24d8214590",
+              "bytes": 3290274,
+              "committed": false
+            }
+          }
+        ]
+      }
+    ],
+    "report": {
+      "artifact": ".omo/evidence/accuracy-20261004/final-public-surfaces-v2/report.json",
+      "sha256": "2b32b249f55a9aa6d6548b57279e9ad264db696493a33c616e78a2ca109bfdb5",
+      "bytes": 24641,
+      "committed": false
+    }
+  },
+  "corpus_coverage": {
+    "accuracy_certified": false,
+    "recordings": 56,
+    "support_counts": {
+      "supported": 55,
+      "mixed_segments": 1
+    },
+    "supported_players": 504,
+    "supported_missing_required": 0,
+    "rejected": [
+      {
+        "recording_id": "C41",
+        "reason": "mixed_segments"
+      }
+    ],
+    "historical_rows_not_promoted_to_six_field_truth": {
+      "tournament": 109,
+      "item_count": 60
+    },
+    "report": {
+      "artifact": ".omo/evidence/accuracy-20261004/public-coverage-56-final/report.json",
+      "sha256": "c06d47dcafe8163f7935147d1ad6971203578e7bbaf27a1702490f41bbd9dcf2",
+      "bytes": 870611,
+      "committed": false
+    }
+  },
+  "framing": {
+    "recordings": 56,
+    "sections": 7870,
+    "records": 30729156,
+    "observed_opcodes": 85,
+    "recorded_variants": 93,
+    "historical_records": 30729156,
+    "all_historical_hashes_match": true,
+    "report": {
+      "artifact": ".omo/evidence/accuracy-20261004/task-8-atlas-corpus.json",
+      "sha256": "42c03951d60a744f8e7c796fd142a7a1ac70cd26e0856db615df8caf36b2bb3b",
+      "bytes": 2338118,
+      "committed": false
+    }
+  },
+  "atlas": {
+    "candidates": 161,
+    "receiver": 123,
+    "emitter": 111,
+    "observed": 85,
+    "observed_records": 30729156,
+    "recorded_variants": 93,
+    "serialized_variants": 111,
+    "multiple_recorded_variant_families": 8,
+    "semantic_status": {
+      "unknown": 38,
+      "layout_only": 12,
+      "applied_static": 14,
+      "class_only": 97
+    },
+    "bounded_validation_ok": true,
+    "all_meanings_decoded": false,
+    "per_opcode_runtime_controls_ok": false,
+    "pending_runtime_opcodes": [
+      "0x03ee",
+      "0x03f2",
+      "0x03f3",
+      "0x041c",
+      "0x041d",
+      "0x043d",
+      "0x0444",
+      "0x044b",
+      "0x046f"
+    ],
+    "report": {
+      "artifact": ".omo/evidence/accuracy-20261004/task-8-final-bounded-root.json",
+      "sha256": "a2ebd082e8f136e677fdcea8a5eac596eb5b92b5f511c46b011ec1cedcd9abd8",
+      "bytes": 1360,
+      "committed": false
+    },
+    "strict_controls_report": {
+      "artifact": ".omo/evidence/accuracy-20261004/task-8-final-controls.json",
+      "sha256": "623cff56682ca012931d89130fbe6d71c1a6b268ada76a5b5c9560516103391d",
+      "bytes": 3760,
+      "committed": false
+    }
+  },
+  "inventory_lifecycle": {
+    "c33_operations": 18,
+    "challenge_operations": 8,
+    "challenge_before_after_states": 16,
+    "seek_operations": 11,
+    "whole_state_interior_accuracy_certified": false,
+    "report": {
+      "artifact": ".omo/evidence/accuracy-20261004/inventory/task-7-final-native.json",
+      "sha256": "6480733b327b2e898f340d6246790fc8543252f989eb30fbfbd42d919a46d5b6",
+      "bytes": 59396,
+      "committed": false
+    }
+  },
+  "negative_controls": {
+    "duplicate_item_component": {
+      "ok": true,
+      "scope": "inventory component at action boundary",
+      "whole_state_cli_comparison": false,
+      "trace": "challenge-1.jsonl",
+      "sequence": 11,
+      "section": 16,
+      "record_offset": 36895,
+      "expected": [
+        [
+          457,
+          1
+        ],
+        [
+          458,
+          2
+        ],
+        [
+          515,
+          1
+        ],
+        [
+          526,
+          1
+        ]
+      ],
+      "actual": [
+        [
+          457,
+          1
+        ],
+        [
+          458,
+          2
+        ],
+        [
+          515,
+          1
+        ],
+        [
+          526,
+          1
+        ]
+      ],
+      "mutated": [
+        [
+          457,
+          1
+        ],
+        [
+          458,
+          1
+        ],
+        [
+          515,
+          1
+        ],
+        [
+          526,
+          1
+        ]
+      ]
+    },
+    "gold_bit_full_comparison": {
+      "recordings": 1,
+      "observations": 1,
+      "required_player_fields": 70,
+      "matched_player_fields": 69
+    },
+    "gold_bit_expected_exit_code": 1,
+    "roster_conflict": {
+      "support_status": "partial",
+      "hero_name": null,
+      "kills": null,
+      "conflicting_definition_index": 925,
+      "wrong_hero_not_certified": true
+    },
+    "gold_report": {
+      "artifact": ".omo/evidence/accuracy-20261004/native-final-source/c16-gold-bit-mutation.json",
+      "sha256": "7c1d7b66f04a32f3a56e8ecc70917aa01852d0123ecad74f420b96c47ba8bc76",
+      "bytes": 4450476,
+      "committed": false
+    },
+    "closure_report": {
+      "artifact": ".omo/evidence/accuracy-20261004/final-root-closure.json",
+      "sha256": "ba5f0ff9164e1868907fbbe5dc2d58e18f863fc55fb0fc3440dfb53f3c74033d",
+      "bytes": 1507,
+      "committed": false
+    }
+  },
+  "validation": {
+    "tested_source_files": 607,
+    "tested_source_digest": "f1f8278f4f0b10837097089bc921c3660c0815419d139c4185d4b76cb1282173",
+    "same_source_on_both_hosts": true,
+    "python_files_compiled": 605,
+    "macos": {
+      "python": "3.14.7",
+      "tests": 832,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "started_utc": "2026-10-04T04:10:06.089684+00:00",
+      "finished_utc": "2026-10-04T04:10:22.483135+00:00",
+      "report": {
+        "artifact": ".omo/evidence/accuracy-20261004/service/final-v2-full-unittest.json",
+        "sha256": "2d27a26ee2671d4ebeceee7f008b5e16705bae49ae224ca21aaf8da1a318704b",
+        "bytes": 138322,
+        "committed": false
+      }
+    },
+    "windows": {
+      "python": "3.13.2",
+      "tests": 832,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "started_utc": "2026-10-04T04:10:18.807726+00:00",
+      "finished_utc": "2026-10-04T04:12:19.741179+00:00",
+      "bundle_files": 1055,
+      "bundle_unchanged": true,
+      "report": {
+        "artifact": ".omo/evidence/accuracy-20261004/service/windows-v2-verification.json",
+        "sha256": "f31c9990b916be2f448fcbf0060416a97cd6e27ac8da8366cacb734ae6ae98b8",
+        "bytes": 256306,
+        "committed": false
+      }
+    },
+    "lsp": "unavailable; installation previously declined",
+    "final_review": "root closure of earlier independent findings; parallel final review unavailable"
+  },
+  "restoration": {
+    "ok": true,
+    "owned_runtime_sessions": 4,
+    "trials": 12,
+    "restored_files": 274,
+    "hashes_and_timestamps_match": true,
+    "owned_processes_and_tasks_absent": true,
+    "report": {
+      "artifact": ".omo/evidence/accuracy-20261004/final-capture-restoration.json",
+      "sha256": "a4fe856df8b1c8305e091e50ab53438cff0e98c4835c6e9bdb4bf779318b7a28",
+      "bytes": 7271,
+      "committed": false
+    }
+  },
+  "limitations": [
+    "Recorded EOF is not certified match-final state.",
+    "No all-version or all-event accuracy claim.",
+    "CS is the displayed counter, not a lane-only classification.",
+    "Gold means float32 balance/net worth, not gold earned or cached display text.",
+    "Rendered inventory slot order is unproved.",
+    "C52 became development evidence after a clock fix; C51 replaced it before first comparison.",
+    "Private recordings and large raw evidence are retained outside git; hashes index those inputs."
+  ]
+}

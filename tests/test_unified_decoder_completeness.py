@@ -1,6 +1,7 @@
 import json
 import unittest
 from unittest.mock import patch
+from types import SimpleNamespace
 from vg.core.native_stats import ClockAudit
 
 from vg.core.unified_decoder import (
@@ -59,7 +60,10 @@ class TestCoreCompletenessPolicy(unittest.TestCase):
             UnifiedDecoder, "_scan_kda_events", return_value=(None, {}, {}, 1000.0)
         ), patch.object(
             UnifiedDecoder, "_detect_crystal_death", return_value=(700.0, 2000)
-        ), patch("vg.core.stat_evidence.inspect_native_clock", return_value=ClockAudit(True, "accepted", "valid")), patch("vg.core.unified_decoder.WinLossDetector") as win_cls:
+        ), patch("vg.decoder_v2.player_state.decode_player_state", return_value=SimpleNamespace(
+            players=(), field_status={'kda': SimpleNamespace(status='unknown', reason='fixture')},
+            as_of_game_time=None, to_dict=lambda: {},
+        )), patch("vg.core.stat_evidence.inspect_native_clock", return_value=ClockAudit(True, "accepted", "valid")), patch("vg.core.unified_decoder.WinLossDetector") as win_cls:
             parser_cls.return_value.parse.return_value = parsed
             win_cls.return_value.detect_winner.return_value = None
             result = UnifiedDecoder("synthetic.0.vgr").decode()

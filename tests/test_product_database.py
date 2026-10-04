@@ -78,11 +78,11 @@ class TestProductDatabase(unittest.TestCase):
             provenance = json.loads(row['provenance_json'])
             self.assertEqual(provenance['duration']['status'], 'unknown')
             self.assertFalse(provenance['accepted_for_index'])
-        hero = self.db.conn.execute("SELECT id FROM heroes WHERE name='Inara'").fetchone()[0]
+        hero = self.db.conn.execute("SELECT id FROM heroes WHERE name='Ringo'").fetchone()[0]
         players = self.db.conn.execute('SELECT * FROM match_players').fetchall()
         for player in players:
             self.assertEqual(player['hero_id'], hero)
-            self.assertEqual(player['source_hero_id'], 0xB801)
+            self.assertEqual(player['source_hero_id'], 0xF300)
             self.assertEqual(player['source_hero_namespace'], 'binary')
             for stat in ('kills', 'deaths', 'assists', 'minion_kills', 'gold'):
                 self.assertIsNone(player[stat])
