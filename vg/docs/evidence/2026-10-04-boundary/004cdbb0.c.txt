@@ -1,0 +1,120 @@
+// 004cdbb0 FUN_004cdbb0
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_004cdbb0(void)
+
+{
+  bool bVar1;
+  char cVar2;
+  int iVar3;
+  undefined4 *puVar4;
+  uint uVar5;
+  undefined4 *puVar6;
+  uint uVar7;
+  uint uVar8;
+  undefined4 *puVar9;
+  undefined4 uVar10;
+  char *pcVar11;
+  undefined4 uVar12;
+  undefined4 local_810;
+  undefined4 local_80c;
+  undefined1 local_808 [2048];
+  uint local_8;
+  
+  local_8 = DAT_01e44f28 ^ (uint)&stack0xfffffffc;
+  if (DAT_01eb09e4 != (undefined4 *)0x0) {
+    DAT_01eb09dc = 0;
+  }
+  if (DAT_01ef0a74 != 0) {
+    DAT_01ef0a6c = 0;
+  }
+  FUN_004c7ff0();
+  uVar12 = 0;
+  pcVar11 = "*KindredManifest*";
+  uVar10 = 0;
+  DAT_01ef0b38 = 0;
+  DAT_01ef0b2c = 1;
+  FUN_0112a790(0,"*KindredManifest*",0);
+  iVar3 = FUN_0112ab50(uVar10,pcVar11,uVar12);
+  if (iVar3 == 0) {
+    FUN_0112b080(0,"build://Levels/DefinitionManifest.def");
+    FUN_01129ea0("*KindredManifest*",0,0xffffffff,0);
+    FUN_00940e40();
+  }
+  cVar2 = FUN_004cb3e0();
+  while (cVar2 != '\0') {
+    bVar1 = true;
+    cVar2 = FUN_004ca130(local_808,&local_810,&local_80c,0);
+    while (cVar2 != '\0') {
+      if (bVar1) {
+        if (DAT_01eb09dc == DAT_01eb09e0) {
+          uVar5 = DAT_01eb09e0 + 1;
+          if (DAT_01eb09e0 < 0x20) {
+            uVar8 = DAT_01eb09e0 * 2;
+          }
+          else {
+            uVar8 = uVar5;
+            if (uVar5 != 0) {
+              uVar8 = (uVar5 - (DAT_01eb09e0 & 0xf)) + 0xf;
+            }
+          }
+          if (uVar8 < uVar5) {
+            uVar8 = uVar5;
+          }
+          if (DAT_01eb09e0 < uVar8) {
+            puVar4 = (undefined4 *)FUN_011b8451(uVar8 * 4);
+            uVar7 = 0;
+            uVar5 = (uint)((int)(DAT_01eb09e4 + DAT_01eb09dc) + (3 - (int)DAT_01eb09e4)) >> 2;
+            if (DAT_01eb09e4 + DAT_01eb09dc < DAT_01eb09e4) {
+              uVar5 = 0;
+            }
+            puVar6 = DAT_01eb09e4;
+            puVar9 = puVar4;
+            if (uVar5 != 0) {
+              do {
+                uVar7 = uVar7 + 1;
+                *puVar9 = *puVar6;
+                puVar6 = puVar6 + 1;
+                puVar9 = puVar9 + 1;
+              } while (uVar7 != uVar5);
+            }
+            DAT_01eb09e0 = uVar8;
+            free(DAT_01eb09e4);
+            DAT_01eb09e4 = puVar4;
+          }
+        }
+        puVar4 = DAT_01eb09e4 + DAT_01eb09dc;
+        DAT_01eb09dc = DAT_01eb09dc + 1;
+        *puVar4 = local_80c;
+      }
+      FUN_004c8390(local_808,local_810,local_80c);
+      bVar1 = false;
+      cVar2 = FUN_004ca130(local_808,&local_810,&local_80c,0);
+    }
+    DAT_01ef0b38 = DAT_01ef0b38 + 1;
+    if (DAT_01eb09d8 != 0) {
+      FUN_0096c220(DAT_01eb09d8);
+      DAT_01eb09d8 = 0;
+    }
+    cVar2 = FUN_004cb3e0();
+  }
+  DAT_01ef0b38 = DAT_01eb09dc - 1;
+  cVar2 = FUN_004cb3e0();
+  uVar10 = _DAT_01ef0b34;
+  if (cVar2 != '\0') {
+    cVar2 = FUN_004ca130(local_808,&local_810,&local_80c,1);
+    uVar10 = _DAT_01ef0b34;
+    _DAT_01ef0b34 = local_80c;
+    while (cVar2 != '\0') {
+      local_80c = _DAT_01ef0b34;
+      cVar2 = FUN_004ca130(local_808,&local_810,&local_80c,1);
+      uVar10 = _DAT_01ef0b34;
+      _DAT_01ef0b34 = local_80c;
+    }
+  }
+  _DAT_01ef0b34 = uVar10;
+  DAT_01ef0b38 = 0;
+  __security_check_cookie(local_8 ^ (uint)&stack0xfffffffc);
+  return;
+}

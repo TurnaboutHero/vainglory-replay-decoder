@@ -1,0 +1,58 @@
+{
+  "executable_sha256": "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+  "method": "Fresh Ghidra readOnly noanalysis exports; decompiler types require instruction cross-check",
+  "files": [
+    {
+      "address": "004c13b0",
+      "path": "004c13b0.c.txt",
+      "sha256": "59c4793817c50720610993376bbdadb23507a14a2ecadde10d96dd6cde118eff"
+    },
+    {
+      "address": "006f7a80",
+      "path": "006f7a80.c.txt",
+      "sha256": "5649b7f1c38a7d644d470d5aa4257c09cce3b26b0d532ea3a82a5e484715a071"
+    },
+    {
+      "address": "006f6fd0",
+      "path": "006f6fd0.c.txt",
+      "sha256": "6eeadb0e2728553cf4de6e509e9e9da12c3222a4658b68f0b60cd44ce64c7396"
+    },
+    {
+      "address": "00740890",
+      "path": "00740890.c.txt",
+      "sha256": "3b431784298ec2b9bfb41d6a929c09f45ee54393eba223d52c277e2f5d77a2fb"
+    },
+    {
+      "address": "0073e2f0",
+      "path": "0073e2f0.c.txt",
+      "sha256": "dc6b80d4bcb27669d38abec3315a710d172a8ac39d19bc382da9147fffd1e5c9"
+    },
+    {
+      "address": "00857970",
+      "path": "00857970.c.txt",
+      "sha256": "79cfc873268fa46d02a2fd74c84e5d51184a85fa14ea7fac36384aac1850e3b2"
+    },
+    {
+      "address": "0112ac50",
+      "path": "0112ac50.c.txt",
+      "sha256": "67da150e167448346649a2398c65ef15630510b529ee6ef41a2e07055dfa5f2f"
+    },
+    {
+      "address": "0095e8f0",
+      "path": "0095e8f0.c.txt",
+      "sha256": "244d83a210e4507a0b4e0f509488891e1e78f36486f9f8ce0baa6d6317fab15b"
+    },
+    {
+      "address": "004b53d0",
+      "path": "004b53d0.disassembly.txt",
+      "sha256": "6a617f0fd36d0c84c54244f78c21cdc704eb6aa4631ba3223fb92e6c0b964252",
+      "method": "xcrun llvm-objdump -d --start-address --stop-address original executable"
+    },
+    {
+      "address": "0095e8f0",
+      "path": "0095e8f0.disassembly.txt",
+      "sha256": "5eaf099edd16cb0bac4539b4cd6fb06bf46ca4580b6430fa542f880ca86449bf",
+      "method": "xcrun llvm-objdump -d --start-address --stop-address original executable"
+    }
+  ]
+}

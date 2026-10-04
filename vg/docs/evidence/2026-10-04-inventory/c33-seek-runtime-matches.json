@@ -1,0 +1,809 @@
+{
+  "schema_version": "native-inventory-seek-accuracy.v1",
+  "pass": true,
+  "trace_sha256": "5700b791470cab0d890eea83400220d7714b8b0b00919a279184b5763cfaab85",
+  "trace_detached": true,
+  "instruction_guards": 8,
+  "seek_from_section": 5,
+  "seek_to_section": 2,
+  "new_component_constructor_sequence": 70,
+  "new_component_capacity": 8,
+  "native_baseline_sequence": 69,
+  "native_baseline_after_sequence": 91,
+  "match_count": 11,
+  "matches": [
+    {
+      "section": 2,
+      "record_offset": 416,
+      "opcode": "03f3",
+      "native_before_sequence": 69,
+      "native_after_sequence": 91,
+      "expected": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 458,
+          "instance_id": 2003,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "actual": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 458,
+          "instance_id": 2003,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "exact_match": true
+    },
+    {
+      "section": 2,
+      "record_offset": 29631,
+      "opcode": "044b",
+      "native_before_sequence": 92,
+      "native_after_sequence": 93,
+      "expected": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "actual": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "exact_match": true
+    },
+    {
+      "section": 2,
+      "record_offset": 29655,
+      "opcode": "043d",
+      "native_before_sequence": 94,
+      "native_after_sequence": 97,
+      "expected": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 505,
+          "instance_id": 2005,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "actual": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 505,
+          "instance_id": 2005,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "exact_match": true
+    },
+    {
+      "section": 2,
+      "record_offset": 32967,
+      "opcode": "043d",
+      "native_before_sequence": 100,
+      "native_after_sequence": 103,
+      "expected": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 505,
+          "instance_id": 2005,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        },
+        {
+          "array_index": 5,
+          "definition_id": 461,
+          "instance_id": 2006,
+          "quantity": 1
+        }
+      ],
+      "actual": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 505,
+          "instance_id": 2005,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        },
+        {
+          "array_index": 5,
+          "definition_id": 461,
+          "instance_id": 2006,
+          "quantity": 1
+        }
+      ],
+      "exact_match": true
+    },
+    {
+      "section": 3,
+      "record_offset": 416,
+      "opcode": "03f3",
+      "native_before_sequence": 106,
+      "native_after_sequence": 107,
+      "expected": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 505,
+          "instance_id": 2005,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        },
+        {
+          "array_index": 5,
+          "definition_id": 461,
+          "instance_id": 2006,
+          "quantity": 1
+        }
+      ],
+      "actual": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 505,
+          "instance_id": 2005,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        },
+        {
+          "array_index": 5,
+          "definition_id": 461,
+          "instance_id": 2006,
+          "quantity": 1
+        }
+      ],
+      "exact_match": true
+    },
+    {
+      "section": 3,
+      "record_offset": 20893,
+      "opcode": "044b",
+      "native_before_sequence": 108,
+      "native_after_sequence": 109,
+      "expected": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 505,
+          "instance_id": 2005,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "actual": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 505,
+          "instance_id": 2005,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "exact_match": true
+    },
+    {
+      "section": 3,
+      "record_offset": 20949,
+      "opcode": "044b",
+      "native_before_sequence": 110,
+      "native_after_sequence": 111,
+      "expected": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "actual": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "exact_match": true
+    },
+    {
+      "section": 3,
+      "record_offset": 20973,
+      "opcode": "043d",
+      "native_before_sequence": 112,
+      "native_after_sequence": 115,
+      "expected": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 464,
+          "instance_id": 2007,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "actual": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 464,
+          "instance_id": 2007,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "exact_match": true
+    },
+    {
+      "section": 4,
+      "record_offset": 416,
+      "opcode": "03f3",
+      "native_before_sequence": 118,
+      "native_after_sequence": 119,
+      "expected": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 464,
+          "instance_id": 2007,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "actual": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 464,
+          "instance_id": 2007,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "exact_match": true
+    },
+    {
+      "section": 5,
+      "record_offset": 416,
+      "opcode": "03f3",
+      "native_before_sequence": 120,
+      "native_after_sequence": 121,
+      "expected": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 464,
+          "instance_id": 2007,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "actual": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 464,
+          "instance_id": 2007,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "exact_match": true
+    },
+    {
+      "section": 6,
+      "record_offset": 416,
+      "opcode": "03f3",
+      "native_before_sequence": 122,
+      "native_after_sequence": 123,
+      "expected": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 464,
+          "instance_id": 2007,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "actual": [
+        {
+          "array_index": 0,
+          "definition_id": 457,
+          "instance_id": 2000,
+          "quantity": 1
+        },
+        {
+          "array_index": 1,
+          "definition_id": 526,
+          "instance_id": 2001,
+          "quantity": 1
+        },
+        {
+          "array_index": 2,
+          "definition_id": 515,
+          "instance_id": 2002,
+          "quantity": 1
+        },
+        {
+          "array_index": 3,
+          "definition_id": 464,
+          "instance_id": 2007,
+          "quantity": 1
+        },
+        {
+          "array_index": 4,
+          "definition_id": 499,
+          "instance_id": 2004,
+          "quantity": 1
+        }
+      ],
+      "exact_match": true
+    }
+  ],
+  "reader_source_sha256": "f9901f0ea1d98ab7126d4afa99afbcc2c4c89d468c8471191abc94205760844d"
+}

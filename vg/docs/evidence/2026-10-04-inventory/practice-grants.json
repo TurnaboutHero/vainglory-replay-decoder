@@ -1,0 +1,50 @@
+{
+  "schema_version": "native-inventory-runtime-excerpt.v1",
+  "source_snapshot_sha256": "7051b9aa320954ed8d02a0d6ebdc7d51057303e8ced91fed550bc2a285bd3861",
+  "client_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "kind": "original_client_practice_passive_grants",
+  "guard_count": 7,
+  "results": [
+    {
+      "instance_id": 2003,
+      "native_actor_id": 1500,
+      "definition_id": 458,
+      "quantity": 1,
+      "before_sequence": 4,
+      "after_sequence": 5,
+      "array_index": 3,
+      "occupied_before": 3,
+      "occupied_after": 4,
+      "clock": {
+        "game_time": 157.80320739746094,
+        "game_time_bits": 1126026655,
+        "record_clock_bits": 1126125279,
+        "record_index": 15
+      },
+      "exact_native_transition": true
+    },
+    {
+      "instance_id": 2004,
+      "native_actor_id": 1500,
+      "definition_id": 458,
+      "quantity": 1,
+      "before_sequence": 10,
+      "after_sequence": 11,
+      "array_index": 4,
+      "occupied_before": 4,
+      "occupied_after": 5,
+      "clock": {
+        "game_time": 160.22312927246094,
+        "game_time_bits": 1126185247,
+        "record_clock_bits": 1126283167,
+        "record_index": 16
+      },
+      "exact_native_transition": true
+    }
+  ],
+  "limitations": [
+    "Replay payload lengths not matched by this practice trace.",
+    "Initial spawn baseline was before observer attachment.",
+    "This is a frozen in-progress snapshot; parent owns full capture and cleanup receipt."
+  ]
+}

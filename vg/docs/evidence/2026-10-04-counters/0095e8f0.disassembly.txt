@@ -1,0 +1,46 @@
+
+/Users/gimhunhui/Documents/Codex/2026-09-05/ssh-winsrv-d-vg/work/windows-clock-runtime/Vainglory.exe:	file format coff-i386
+
+Disassembly of section .text:
+
+004a0950 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z>:
+  95e8f0: 55                           	pushl	%ebp
+  95e8f1: 8b ec                        	movl	%esp, %ebp
+  95e8f3: 8b 55 08                     	movl	0x8(%ebp), %edx
+  95e8f6: 83 fa ff                     	cmpl	$-0x1, %edx
+  95e8f9: 74 38                        	je	0x95e933 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x4bdfe3>
+  95e8fb: 56                           	pushl	%esi
+  95e8fc: 8b 35 08 74 0e 02            	movl	0x20e7408, %esi
+  95e902: 33 c0                        	xorl	%eax, %eax
+  95e904: 85 f6                        	testl	%esi, %esi
+  95e906: 74 2a                        	je	0x95e932 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x4bdfe2>
+  95e908: 8b 0d 04 74 0e 02            	movl	0x20e7404, %ecx
+  95e90e: 66 90                        	nop
+  95e910: 39 51 04                     	cmpl	%edx, 0x4(%ecx)
+  95e913: 74 0e                        	je	0x95e923 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x4bdfd3>
+  95e915: 40                           	incl	%eax
+  95e916: 81 c1 b8 00 00 00            	addl	$0xb8, %ecx
+  95e91c: 3b c6                        	cmpl	%esi, %eax
+  95e91e: 72 f0                        	jb	0x95e910 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x4bdfc0>
+  95e920: 5e                           	popl	%esi
+  95e921: 5d                           	popl	%ebp
+  95e922: c3                           	retl
+  95e923: 85 c9                        	testl	%ecx, %ecx
+  95e925: 74 0b                        	je	0x95e932 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x4bdfe2>
+  95e927: ff 75 0c                     	pushl	0xc(%ebp)
+  95e92a: 83 c1 08                     	addl	$0x8, %ecx
+  95e92d: e8 9e 6a b5 ff               	calll	0x4b53d0 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x14a80>
+  95e932: 5e                           	popl	%esi
+  95e933: 5d                           	popl	%ebp
+  95e934: c3                           	retl
+  95e935: cc                           	int3
+  95e936: cc                           	int3
+  95e937: cc                           	int3
+  95e938: cc                           	int3
+  95e939: cc                           	int3
+  95e93a: cc                           	int3
+  95e93b: cc                           	int3
+  95e93c: cc                           	int3
+  95e93d: cc                           	int3
+  95e93e: cc                           	int3
+  95e93f: cc                           	int3

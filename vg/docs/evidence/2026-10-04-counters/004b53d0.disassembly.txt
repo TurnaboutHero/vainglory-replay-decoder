@@ -1,0 +1,107 @@
+
+/Users/gimhunhui/Documents/Codex/2026-09-05/ssh-winsrv-d-vg/work/windows-clock-runtime/Vainglory.exe:	file format coff-i386
+
+Disassembly of section .text:
+
+004a0950 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z>:
+  4b53d0: 55                           	pushl	%ebp
+  4b53d1: 8b ec                        	movl	%esp, %ebp
+  4b53d3: 83 ec 0c                     	subl	$0xc, %esp
+  4b53d6: 53                           	pushl	%ebx
+  4b53d7: 8b 5d 08                     	movl	0x8(%ebp), %ebx
+  4b53da: 57                           	pushl	%edi
+  4b53db: 8b f9                        	movl	%ecx, %edi
+  4b53dd: 89 7d f4                     	movl	%edi, -0xc(%ebp)
+  4b53e0: 3b fb                        	cmpl	%ebx, %edi
+  4b53e2: 0f 84 e2 00 00 00            	je	0x4b54ca <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x14b7a>
+  4b53e8: 8b 47 08                     	movl	0x8(%edi), %eax
+  4b53eb: 85 c0                        	testl	%eax, %eax
+  4b53ed: 74 21                        	je	0x4b5410 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x14ac0>
+  4b53ef: 50                           	pushl	%eax
+  4b53f0: e8 65 30 d0 00               	calll	0x11b845a <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0xd17b0a>
+  4b53f5: 83 c4 04                     	addl	$0x4, %esp
+  4b53f8: c7 47 08 00 00 00 00         	movl	$0x0, 0x8(%edi)
+  4b53ff: c7 47 04 00 00 00 00         	movl	$0x0, 0x4(%edi)
+  4b5406: 33 c9                        	xorl	%ecx, %ecx
+  4b5408: c7 07 00 00 00 00            	movl	$0x0, (%edi)
+  4b540e: eb 03                        	jmp	0x4b5413 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x14ac3>
+  4b5410: 8b 4f 04                     	movl	0x4(%edi), %ecx
+  4b5413: 8b 03                        	movl	(%ebx), %eax
+  4b5415: 56                           	pushl	%esi
+  4b5416: 33 f6                        	xorl	%esi, %esi
+  4b5418: 89 45 fc                     	movl	%eax, -0x4(%ebp)
+  4b541b: 3b c1                        	cmpl	%ecx, %eax
+  4b541d: 76 65                        	jbe	0x4b5484 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x14b34>
+  4b541f: 03 c0                        	addl	%eax, %eax
+  4b5421: 50                           	pushl	%eax
+  4b5422: e8 2a 30 d0 00               	calll	0x11b8451 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0xd17b01>
+  4b5427: 8b 57 08                     	movl	0x8(%edi), %edx
+  4b542a: 8b f0                        	movl	%eax, %esi
+  4b542c: 8b 07                        	movl	(%edi), %eax
+  4b542e: 83 c4 04                     	addl	$0x4, %esp
+  4b5431: 03 c0                        	addl	%eax, %eax
+  4b5433: c7 45 f8 00 00 00 00         	movl	$0x0, -0x8(%ebp)
+  4b543a: 8b de                        	movl	%esi, %ebx
+  4b543c: 8d 0c 10                     	leal	(%eax,%edx), %ecx
+  4b543f: d1 e8                        	shrl	%eax
+  4b5441: 3b d1                        	cmpl	%ecx, %edx
+  4b5443: 0f 47 45 f8                  	cmoval	-0x8(%ebp), %eax
+  4b5447: 85 c0                        	testl	%eax, %eax
+  4b5449: 74 1d                        	je	0x4b5468 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x14b18>
+  4b544b: 33 ff                        	xorl	%edi, %edi
+  4b544d: 8b c8                        	movl	%eax, %ecx
+  4b544f: 90                           	nop
+  4b5450: 66 8b 02                     	movw	(%edx), %ax
+  4b5453: 8d 5b 02                     	leal	0x2(%ebx), %ebx
+  4b5456: 47                           	incl	%edi
+  4b5457: 66 89 43 fe                  	movw	%ax, -0x2(%ebx)
+  4b545b: 8d 52 02                     	leal	0x2(%edx), %edx
+  4b545e: 3b f9                        	cmpl	%ecx, %edi
+  4b5460: 75 ee                        	jne	0x4b5450 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x14b00>
+  4b5462: 8b 7d f4                     	movl	-0xc(%ebp), %edi
+  4b5465: 8b 57 08                     	movl	0x8(%edi), %edx
+  4b5468: 8b 45 fc                     	movl	-0x4(%ebp), %eax
+  4b546b: 52                           	pushl	%edx
+  4b546c: 89 47 04                     	movl	%eax, 0x4(%edi)
+  4b546f: e8 e6 2f d0 00               	calll	0x11b845a <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0xd17b0a>
+  4b5474: 8b 4d 08                     	movl	0x8(%ebp), %ecx
+  4b5477: 83 c4 04                     	addl	$0x4, %esp
+  4b547a: 89 77 08                     	movl	%esi, 0x8(%edi)
+  4b547d: 8b 01                        	movl	(%ecx), %eax
+  4b547f: 89 45 fc                     	movl	%eax, -0x4(%ebp)
+  4b5482: eb 02                        	jmp	0x4b5486 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x14b36>
+  4b5484: 8b cb                        	movl	%ebx, %ecx
+  4b5486: 8b 49 08                     	movl	0x8(%ecx), %ecx
+  4b5489: 8d 1c 00                     	leal	(%eax,%eax), %ebx
+  4b548c: 33 d2                        	xorl	%edx, %edx
+  4b548e: 8d 04 19                     	leal	(%ecx,%ebx), %eax
+  4b5491: d1 eb                        	shrl	%ebx
+  4b5493: 3b c8                        	cmpl	%eax, %ecx
+  4b5495: 0f 47 da                     	cmoval	%edx, %ebx
+  4b5498: 85 db                        	testl	%ebx, %ebx
+  4b549a: 74 28                        	je	0x4b54c4 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x14b74>
+  4b549c: 0f 1f 40 00                  	nopl	(%eax)
+  4b54a0: 66 8b 01                     	movw	(%ecx), %ax
+  4b54a3: 8d 76 02                     	leal	0x2(%esi), %esi
+  4b54a6: 42                           	incl	%edx
+  4b54a7: 66 89 46 fe                  	movw	%ax, -0x2(%esi)
+  4b54ab: 8d 49 02                     	leal	0x2(%ecx), %ecx
+  4b54ae: 3b d3                        	cmpl	%ebx, %edx
+  4b54b0: 75 ee                        	jne	0x4b54a0 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x14b50>
+  4b54b2: 8b 45 08                     	movl	0x8(%ebp), %eax
+  4b54b5: 5e                           	popl	%esi
+  4b54b6: 8b 00                        	movl	(%eax), %eax
+  4b54b8: 89 07                        	movl	%eax, (%edi)
+  4b54ba: 8b c7                        	movl	%edi, %eax
+  4b54bc: 5f                           	popl	%edi
+  4b54bd: 5b                           	popl	%ebx
+  4b54be: 8b e5                        	movl	%ebp, %esp
+  4b54c0: 5d                           	popl	%ebp
+  4b54c1: c2 04 00                     	retl	$0x4
+  4b54c4: 8b 45 fc                     	movl	-0x4(%ebp), %eax
+  4b54c7: 89 07                        	movl	%eax, (%edi)
+  4b54c9: 5e                           	popl	%esi
+  4b54ca: 8b c7                        	movl	%edi, %eax
+  4b54cc: 5f                           	popl	%edi
+  4b54cd: 5b                           	popl	%ebx
+  4b54ce: 8b e5                        	movl	%ebp, %esp

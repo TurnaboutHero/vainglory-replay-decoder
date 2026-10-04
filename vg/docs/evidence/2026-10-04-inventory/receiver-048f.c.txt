@@ -1,0 +1,25 @@
+  case 0x48f:
+    memmove((void *)((int)&local_e30 + 3),param_1,1);
+    uStack_e74 = 0;
+    fStack_e70 = 0.0;
+    ppuStack_e78 = Nuo::Kindred::ActionRejectBuyItem_Client::vftable;
+    local_8 = 0x69;
+    local_e6c = (float)CONCAT31(local_e6c._1_3_,1);
+    FUN_0092c240(&ppuStack_e78);
+LAB_004d4fe0:
+    local_3d6 = (float)CONCAT22(local_3d6._2_2_,(undefined2)local_3d6);
+    local_3ce = (float)CONCAT22(local_3ce._2_2_,(undefined2)local_3ce);
+    local_3ca = (float)CONCAT22(local_3ca._2_2_,(undefined2)local_3ca);
+    local_396 = (float)CONCAT22(local_396._2_2_,(undefined2)local_396);
+    local_392 = (float)CONCAT22(local_392._2_2_,(undefined2)local_392);
+    local_376 = (float)CONCAT22(local_376._2_2_,(undefined2)local_376);
+    local_372 = (float)CONCAT22(local_372._2_2_,(undefined2)local_372);
+    local_362 = (float)CONCAT22(local_362._2_2_,(undefined2)local_362);
+    local_35e = (float)CONCAT22(local_35e._2_2_,(undefined2)local_35e);
+    local_326 = (float)CONCAT22(local_326._2_2_,(undefined2)local_326);
+    local_322 = (float)CONCAT22(local_322._2_2_,(undefined2)local_322);
+    local_31a = (float)CONCAT22(local_31a._2_2_,(undefined2)local_31a);
+    local_316 = (float)CONCAT22(local_316._2_2_,(undefined2)local_316);
+    local_2ae = (float)CONCAT22(local_2ae._2_2_,(undefined2)local_2ae);
+    local_2aa = (float)CONCAT22(local_2aa._2_2_,(undefined2)local_2aa);
+    break;

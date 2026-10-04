@@ -26,6 +26,45 @@ def match(*players):
 
 
 class NullableStatsExportsTests(unittest.TestCase):
+    def test_native_unknown_team_is_not_a_loss(self):
+        unassigned = player()
+        unassigned.team = None
+        decoded = DecodedMatch('sample', 'sample.0.vgr', '5v5', 'Rise', 5,
+                               winner='left', unassigned_players=[unassigned])
+        self.assertIsNone(match_to_csv_rows(decoded)[0]['is_winner'])
+        hero = generate_report([decoded])['hero_stats'][0]
+        self.assertIsNone(hero['win_rate'])
+        self.assertEqual(hero['known_samples']['wins'], 0)
+
+    def test_native_export_preserves_unknown_inventory_and_actor_identity(self):
+        first = player('same', items=None, native_actor_id=70000, team_id=1,
+                       gold_balance=2.5, net_worth=1002.5, state_scope='recorded_end',
+                       as_of_game_time=25.0, record_boundary={'section': 2, 'record_offset': 80})
+        second = player('same', items=[], native_actor_id=70001, team_id=2)
+        decoded = match(first, second)
+        with tempfile.TemporaryDirectory() as tmp:
+            replay = Path(tmp) / 'sample.0.vgr'
+            replay.write_bytes(replay_bytes())
+            _, csv_path = export_single(replay, decoded, str(Path(tmp) / 'out.json'))
+            with csv_path.open(encoding='utf-8-sig', newline='') as stream:
+                rows = list(csv.DictReader(stream))
+        self.assertEqual([row['native_actor_id'] for row in rows], ['70000', '70001'])
+        self.assertEqual([row['item_count'] for row in rows], ['', '0'])
+        self.assertEqual(rows[0]['gold_balance'], '2.5')
+        self.assertEqual(rows[0]['net_worth'], '1002.5')
+        self.assertEqual(rows[0]['state_scope'], 'recorded_end')
+        self.assertEqual(rows[0]['state_record_offset'], '80')
+
+    def test_unknown_native_hero_remains_nullable_and_printable(self):
+        unknown = player()
+        unknown.hero_name = None
+        report = generate_report([match(unknown)])
+        self.assertIsNone(report['hero_stats'][0]['hero'])
+        output = io.StringIO()
+        with redirect_stdout(output):
+            print_report(report)
+        self.assertIn('N/A', output.getvalue())
+
     def test_unverified_winner_is_not_a_loss_or_zero_win_rate(self):
         decoded = match(player())
         self.assertIsNone(match_to_csv_rows(decoded)[0]['is_winner'])

@@ -2,6 +2,8 @@
 
 This guide covers inspecting one recording, capturing a scoreboard moment, exporting datasets and spreadsheets, maintaining a catalog, archiving files and contributing research. All examples run from the repository root. Choose a Python interpreter meeting the runtime requirements below and use that same interpreter throughout.
 
+The single-recording CLI now defaults to `state-json` (`decoder_v2.player_state.v3`) for native player state. The examples below explicitly select `safe-json` where they exercise the earlier conservative v2 contract. Python `decode_match(...)`, batch and index contracts retain their meanings; use `decode_player_state(...)` for the new API. See the [main usage guide](../../README.md#start-here) for field semantics and migration.
+
 ## Offline quickstart
 
 The maintained smoke test creates its own synthetic replay and truth data, runs the examples and checks that source bytes remain unchanged:
@@ -16,7 +18,7 @@ To inspect the generated artifacts yourself, create a **new or empty** disposabl
 ```sh
 python -B -m tests.test_product_quickstart --make-fixture ".quickstart"
 python -B -m vg.decoder_v2.decode_match ".quickstart/replays/demo.0.vgr" --format safe-json -o ".quickstart/reports/safe.json"
-python -B -m vg.decoder_v2.decode_match ".quickstart/replays/demo.0.vgr" --at-game-time 105 -o ".quickstart/reports/capture.json"
+python -B -m vg.decoder_v2.decode_match ".quickstart/replays/demo.0.vgr" --format safe-json --at-game-time 105 -o ".quickstart/reports/capture.json"
 python -B -m vg.decoder_v2.decode_match ".quickstart/replays/demo.0.vgr" --format debug-json -o ".quickstart/reports/debug.json"
 python -B -m vg.decoder_v2.batch_decode ".quickstart/replays" -o ".quickstart/reports/batch.json"
 python -B -m vg.decoder_v2.index_export ".quickstart/replays" -o ".quickstart/reports/index.json"

@@ -1,0 +1,851 @@
+{
+  "schema_version": "native-inventory-semantics.v1",
+  "client_sha256": "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+  "task_status": "baseline_grant_consume_and_seek_runtime_matched; multiplayer_control_comparisons_pending",
+  "operation_interpretation": "research evidence only; never evaluate prose as executable formulas",
+  "native_layout": {
+    "actor_inventory_pointer": 52,
+    "component_live_array": 28,
+    "component_deferred_array": 68,
+    "max_native_slots": 10,
+    "component_occupied_u8": 112,
+    "component_capacity_and_dirty_u8": 113,
+    "instance_definition_pointer": 20,
+    "instance_definition_id_u32": 44,
+    "instance_id_u32": 48,
+    "instance_quantity_u16": 52,
+    "definition_stackable_u8": 28,
+    "definition_max_stack_u32": 32,
+    "definition_grant_skip_flag_u8": 293,
+    "definition_unique_u8": 300,
+    "capacity_source": "Original GameMode CFF root+0x18; 046f name selects resource loaded by00549470\u21920095d910\u219200940e40"
+  },
+  "operations": [
+    {
+      "opcode": "03f3",
+      "name": "hero_spawn_inventory",
+      "native_payload_length": 746,
+      "fields": [
+        {
+          "name": "definition_id",
+          "offset": 0,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "actor_id",
+          "offset": 8,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "spawn_flag",
+          "offset": 326,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "item_count",
+          "offset": 350,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "definitions",
+          "offset": 354,
+          "width": 4,
+          "endian": "big",
+          "count": 10,
+          "stride": 4
+        },
+        {
+          "name": "instances",
+          "offset": 394,
+          "width": 4,
+          "endian": "big",
+          "count": 10,
+          "stride": 4
+        },
+        {
+          "name": "quantities",
+          "offset": 434,
+          "width": 4,
+          "endian": "big",
+          "count": 10,
+          "stride": 4
+        },
+        {
+          "name": "aux_float",
+          "offset": 474,
+          "width": 4,
+          "endian": "big",
+          "count": 10,
+          "stride": 4
+        },
+        {
+          "name": "aux_u32",
+          "offset": 514,
+          "width": 4,
+          "endian": "big",
+          "count": 10,
+          "stride": 4
+        }
+      ],
+      "evidence": [
+        "receiver-03f3.c.txt",
+        "function-004d5930.c",
+        "function-0081ac20.c",
+        "function-0094e170.c",
+        "function-00958330.c",
+        "c33-runtime-matches.json"
+      ],
+      "static_effect": "Existing actor lookup returns without replacing inventory. Missing actor creates component with zero slots; when spawn_flag==0, applies item_count grants in array order with quantity narrowed to uint16. Client spawn_flag!=0 does not run that item loop.",
+      "static_status": "traced",
+      "runtime_status": "verified",
+      "reducer_support": true,
+      "variants": [
+        {
+          "length": 746,
+          "status": "runtime_verified",
+          "runtime_observation": "C33-inventory-23"
+        },
+        {
+          "length": 750,
+          "status": "runtime_verified",
+          "runtime_observation": "C33-inventory-2"
+        }
+      ],
+      "guards": [
+        "actor_absent",
+        "item_count<=10",
+        "spawn_flag==0 for explicit item baseline"
+      ],
+      "before_after": "constructor clears 10 live/deferred pointers; explicit baseline loops actor grant"
+    },
+    {
+      "opcode": "043d",
+      "name": "grant",
+      "native_payload_length": 12,
+      "fields": [
+        {
+          "name": "actor_id",
+          "offset": 0,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "definition_id",
+          "offset": 4,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "instance_id",
+          "offset": 8,
+          "width": 4,
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        "receiver-043d.c.txt",
+        "function-0081abe0.c",
+        "function-0094ade0.c",
+        "function-0094e070.c",
+        "function-0093d080.c",
+        "function-0093cdc0.c",
+        "function-00940230.c",
+        "function-0086fed0.c",
+        "index-5.txt",
+        "c33-runtime-matches.json"
+      ],
+      "static_effect": "instance_id==0xffffffff increments first same-definition nonfull stack; otherwise reject definition flag+0x125 or capacity rule, create instance with quantity1 and insert first null array slot. Native component retains distinct equal-definition instances.",
+      "static_status": "traced",
+      "runtime_status": "verified",
+      "reducer_support": true,
+      "variants": [
+        {
+          "length": 12,
+          "status": "static_native",
+          "runtime_observation": null
+        },
+        {
+          "length": 14,
+          "status": "runtime_verified",
+          "runtime_observation": "C33-inventory-5"
+        }
+      ],
+      "guards": [
+        "actor_resolved",
+        "DAT_0209e204==0",
+        "definition availability/capacity"
+      ],
+      "before_after": "component+0x1c first null receives new pointer; occupied+0x70 increments; dirty+0x71 bit7 sets; stack-only branch increments uint16+0x34"
+    },
+    {
+      "opcode": "044b",
+      "name": "consume",
+      "native_payload_length": 10,
+      "fields": [
+        {
+          "name": "actor_id",
+          "offset": 0,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "instance_id",
+          "offset": 4,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "flag_wire",
+          "offset": 8,
+          "width": 2,
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        "receiver-044b.c.txt",
+        "function-0081a3b0.c",
+        "function-0094a400.c",
+        "function-0094cfb0.c",
+        "function-00872340.c",
+        "c33-runtime-matches.json"
+      ],
+      "static_effect": "Find by instance ID. Stackable definition decrements nonzero uint16 quantity; if remaining nonzero retain. Otherwise remove matching pointer(s), decrement occupied, queue pointer for deferred removal and set dirty bit.",
+      "static_status": "traced",
+      "runtime_status": "verified",
+      "reducer_support": true,
+      "variants": [
+        {
+          "length": 10,
+          "status": "static_native",
+          "runtime_observation": null
+        },
+        {
+          "length": 14,
+          "status": "runtime_verified",
+          "runtime_observation": "C33-inventory-39"
+        }
+      ],
+      "guards": [
+        "DAT_0209e204==0",
+        "actor_resolved",
+        "inventory_component_found",
+        "instance_found"
+      ],
+      "before_after": "quantity decrements or live pointer becomes0/deferred pointer assigned",
+      "flag_note": "Serializer writes BE16 boolean, receiver leaves its final2 bytes unswapped and constructor keeps first byte. Client path resource side effects are gated off regardless. Do not invent meaning for extended tail."
+    },
+    {
+      "opcode": "0444",
+      "name": "modify_stack",
+      "native_payload_length": 12,
+      "fields": [
+        {
+          "name": "actor_id",
+          "offset": 0,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "instance_id",
+          "offset": 4,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "quantity",
+          "offset": 8,
+          "width": 4,
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        "receiver-0444.c.txt",
+        "function-0094b7d0.c",
+        "function-0094f6f0.c"
+      ],
+      "static_effect": "Find instance+0x30 then overwrite uint16+0x34 with low16 of wire u32. Does not delete at zero.",
+      "static_status": "traced",
+      "runtime_status": "unobserved",
+      "reducer_support": false,
+      "variants": [
+        {
+          "length": 12,
+          "status": "static_native",
+          "runtime_observation": null
+        }
+      ],
+      "guards": [
+        "actor_resolved",
+        "inventory_component_and_instance_exist native code dereferences missing match"
+      ],
+      "before_after": "uint16 instance+0x34 replaced"
+    },
+    {
+      "opcode": "0437",
+      "name": "quick_buy_request",
+      "native_payload_length": 4,
+      "fields": [
+        {
+          "name": "actor_id",
+          "offset": 0,
+          "width": 4,
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        "receiver-0437.c.txt",
+        "function-009501d0.c"
+      ],
+      "static_effect": "DAT_0209e204!=0 invokes quickBuyItem callback; no client mutation in this apply.",
+      "static_status": "traced",
+      "runtime_status": "unobserved",
+      "reducer_support": false,
+      "variants": [
+        {
+          "length": 4,
+          "status": "static_native",
+          "runtime_observation": null
+        }
+      ],
+      "guards": [
+        "see cited native branch"
+      ],
+      "before_after": "no direct client inventory write in cited path",
+      "classification": "excluded_as_client_inventory_mutator"
+    },
+    {
+      "opcode": "0439",
+      "name": "buy_request",
+      "native_payload_length": 8,
+      "fields": [
+        {
+          "name": "actor_id",
+          "offset": 0,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "definition_id",
+          "offset": 4,
+          "width": 4,
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        "receiver-0439.c.txt",
+        "function-0094ce20.c"
+      ],
+      "static_effect": "DAT_0209e204!=0 forwards native buy routine; client apply exits.",
+      "static_status": "traced",
+      "runtime_status": "unobserved",
+      "reducer_support": false,
+      "variants": [
+        {
+          "length": 8,
+          "status": "static_native",
+          "runtime_observation": null
+        }
+      ],
+      "guards": [
+        "see cited native branch"
+      ],
+      "before_after": "no direct client inventory write in cited path",
+      "classification": "excluded_as_client_inventory_mutator"
+    },
+    {
+      "opcode": "044d",
+      "name": "sell_request",
+      "native_payload_length": 8,
+      "fields": [
+        {
+          "name": "actor_id",
+          "offset": 0,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "instance_id",
+          "offset": 4,
+          "width": 4,
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        "receiver-044d.c.txt",
+        "function-009504f0.c"
+      ],
+      "static_effect": "DAT_0209e204!=0 forwards native sell routine; client apply exits. No guessed sale mutation.",
+      "static_status": "traced",
+      "runtime_status": "unobserved",
+      "reducer_support": false,
+      "variants": [
+        {
+          "length": 8,
+          "status": "static_native",
+          "runtime_observation": null
+        },
+        {
+          "length": 14,
+          "status": "observed_unproved",
+          "runtime_observation": null
+        }
+      ],
+      "guards": [
+        "see cited native branch"
+      ],
+      "before_after": "no direct client inventory write in cited path",
+      "classification": "excluded_as_client_inventory_mutator"
+    },
+    {
+      "opcode": "0438",
+      "name": "reorder_request",
+      "native_payload_length": 6,
+      "fields": [
+        {
+          "name": "actor_id",
+          "offset": 0,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "index_a",
+          "offset": 4,
+          "width": 1,
+          "endian": "none"
+        },
+        {
+          "name": "index_b",
+          "offset": 5,
+          "width": 1,
+          "endian": "none"
+        }
+      ],
+      "evidence": [
+        "function-00950240.c",
+        "function-0094c0b0.c"
+      ],
+      "static_effect": "Client serialize phase0094c0b0 swaps live and deferred pointers at requested array indices and sets dirty bit before emitting; apply phase00950240 invokes server callback only. Multiset unaffected; no public slot-order claim.",
+      "static_status": "traced",
+      "runtime_status": "unobserved",
+      "reducer_support": false,
+      "variants": [
+        {
+          "length": 6,
+          "status": "static_native",
+          "runtime_observation": null
+        }
+      ],
+      "guards": [
+        "see cited native branch"
+      ],
+      "before_after": "no direct client inventory write in cited path",
+      "classification": "client_serializer_reorders_arrays"
+    },
+    {
+      "opcode": "0448",
+      "name": "activate_request_mode3",
+      "native_payload_length": 4,
+      "fields": [
+        {
+          "name": "instance_id",
+          "offset": 0,
+          "width": 4,
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        "function-0095bda0.c"
+      ],
+      "static_effect": "Serializes mode3 activation request; not removal evidence.",
+      "static_status": "traced",
+      "runtime_status": "unobserved",
+      "reducer_support": false,
+      "variants": [
+        {
+          "length": 4,
+          "status": "static_native",
+          "runtime_observation": null
+        },
+        {
+          "length": 6,
+          "status": "observed_unproved",
+          "runtime_observation": null
+        }
+      ],
+      "guards": [
+        "see cited native branch"
+      ],
+      "before_after": "no direct client inventory write in cited path",
+      "classification": "excluded_as_client_inventory_mutator"
+    },
+    {
+      "opcode": "0449",
+      "name": "activate_request_mode0",
+      "native_payload_length": 8,
+      "fields": [
+        {
+          "name": "argument_a",
+          "offset": 0,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "argument_b",
+          "offset": 4,
+          "width": 4,
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        "function-0095bea0.c"
+      ],
+      "static_effect": "Serializes mode0 targeted activation; not removal evidence.",
+      "static_status": "traced",
+      "runtime_status": "unobserved",
+      "reducer_support": false,
+      "variants": [
+        {
+          "length": 8,
+          "status": "static_native",
+          "runtime_observation": null
+        },
+        {
+          "length": 14,
+          "status": "observed_unproved",
+          "runtime_observation": null
+        }
+      ],
+      "guards": [
+        "see cited native branch"
+      ],
+      "before_after": "no direct client inventory write in cited path",
+      "classification": "excluded_as_client_inventory_mutator"
+    },
+    {
+      "opcode": "044a",
+      "name": "activate_request_mode1",
+      "native_payload_length": 16,
+      "fields": [
+        {
+          "name": "vector_x",
+          "offset": 0,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "vector_y",
+          "offset": 4,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "vector_z",
+          "offset": 8,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "argument",
+          "offset": 12,
+          "width": 4,
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        "function-0095bdd0.c"
+      ],
+      "static_effect": "Serializes mode1 location activation; not removal evidence.",
+      "static_status": "traced",
+      "runtime_status": "unobserved",
+      "reducer_support": false,
+      "variants": [
+        {
+          "length": 16,
+          "status": "static_native",
+          "runtime_observation": null
+        },
+        {
+          "length": 22,
+          "status": "observed_unproved",
+          "runtime_observation": null
+        }
+      ],
+      "guards": [
+        "see cited native branch"
+      ],
+      "before_after": "no direct client inventory write in cited path",
+      "classification": "excluded_as_client_inventory_mutator"
+    },
+    {
+      "opcode": "044c",
+      "name": "item_activated",
+      "native_payload_length": 21,
+      "fields": [
+        {
+          "name": "actor_id",
+          "offset": 0,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "instance_id",
+          "offset": 4,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "target_id",
+          "offset": 8,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "x",
+          "offset": 12,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "y",
+          "offset": 16,
+          "width": 4,
+          "endian": "big"
+        },
+        {
+          "name": "mode",
+          "offset": 20,
+          "width": 1,
+          "endian": "none"
+        }
+      ],
+      "evidence": [
+        "receiver-044c.c.txt",
+        "function-0094ee90.c"
+      ],
+      "static_effect": "Mode0/1/2 dispatch ability targeting/state and onPlayAbility; no inventory pointer removal/quantity write in this apply.",
+      "static_status": "traced",
+      "runtime_status": "unobserved",
+      "reducer_support": false,
+      "variants": [
+        {
+          "length": 21,
+          "status": "static_native",
+          "runtime_observation": null
+        },
+        {
+          "length": 22,
+          "status": "observed_unproved",
+          "runtime_observation": null
+        }
+      ],
+      "guards": [
+        "see cited native branch"
+      ],
+      "before_after": "no direct client inventory write in cited path",
+      "classification": "excluded_as_client_inventory_mutator"
+    },
+    {
+      "opcode": "048f",
+      "name": "reject_buy",
+      "native_payload_length": 1,
+      "fields": [
+        {
+          "name": "uninterpreted_byte",
+          "offset": 0,
+          "width": 1,
+          "endian": "none"
+        }
+      ],
+      "evidence": [
+        "receiver-048f.c.txt",
+        "function-00529e00.c"
+      ],
+      "static_effect": "Invokes method_onRejectBuyItem notification; no direct collection mutation.",
+      "static_status": "traced",
+      "runtime_status": "unobserved",
+      "reducer_support": false,
+      "variants": [
+        {
+          "length": 1,
+          "status": "static_native",
+          "runtime_observation": null
+        },
+        {
+          "length": 6,
+          "status": "observed_unproved",
+          "runtime_observation": null
+        }
+      ],
+      "guards": [
+        "see cited native branch"
+      ],
+      "before_after": "no direct client inventory write in cited path",
+      "classification": "excluded_as_client_inventory_mutator"
+    }
+  ],
+  "definitions": [
+    {
+      "id": 515,
+      "serialized_name": "*Item_LevelCandy*",
+      "name": "Item_LevelCandy",
+      "source": "definition-515.json",
+      "display_label_status": "original_item_asset_and_english_localization_matched",
+      "display_name": "Level Juice"
+    }
+  ],
+  "runtime_observations": [
+    {
+      "observation_id": "C33-inventory-2",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "03f3",
+      "payload_length": 750,
+      "section": 0,
+      "record_offset": 659
+    },
+    {
+      "observation_id": "C33-inventory-5",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "043d",
+      "payload_length": 14,
+      "section": 0,
+      "record_offset": 11451
+    },
+    {
+      "observation_id": "C33-inventory-11",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "043d",
+      "payload_length": 14,
+      "section": 0,
+      "record_offset": 11475
+    },
+    {
+      "observation_id": "C33-inventory-17",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "043d",
+      "payload_length": 14,
+      "section": 0,
+      "record_offset": 11499
+    },
+    {
+      "observation_id": "C33-inventory-23",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "03f3",
+      "payload_length": 746,
+      "section": 1,
+      "record_offset": 416
+    },
+    {
+      "observation_id": "C33-inventory-25",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "043d",
+      "payload_length": 14,
+      "section": 1,
+      "record_offset": 17811
+    },
+    {
+      "observation_id": "C33-inventory-31",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "043d",
+      "payload_length": 14,
+      "section": 1,
+      "record_offset": 27755
+    },
+    {
+      "observation_id": "C33-inventory-37",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "03f3",
+      "payload_length": 746,
+      "section": 2,
+      "record_offset": 416
+    },
+    {
+      "observation_id": "C33-inventory-39",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "044b",
+      "payload_length": 14,
+      "section": 2,
+      "record_offset": 29631
+    },
+    {
+      "observation_id": "C33-inventory-41",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "043d",
+      "payload_length": 14,
+      "section": 2,
+      "record_offset": 29655
+    },
+    {
+      "observation_id": "C33-inventory-47",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "043d",
+      "payload_length": 14,
+      "section": 2,
+      "record_offset": 32967
+    },
+    {
+      "observation_id": "C33-inventory-53",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "03f3",
+      "payload_length": 746,
+      "section": 3,
+      "record_offset": 416
+    },
+    {
+      "observation_id": "C33-inventory-55",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "044b",
+      "payload_length": 14,
+      "section": 3,
+      "record_offset": 20893
+    },
+    {
+      "observation_id": "C33-inventory-57",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "044b",
+      "payload_length": 14,
+      "section": 3,
+      "record_offset": 20949
+    },
+    {
+      "observation_id": "C33-inventory-59",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "043d",
+      "payload_length": 14,
+      "section": 3,
+      "record_offset": 20973
+    },
+    {
+      "observation_id": "C33-inventory-65",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "03f3",
+      "payload_length": 746,
+      "section": 4,
+      "record_offset": 416
+    },
+    {
+      "observation_id": "C33-inventory-67",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "03f3",
+      "payload_length": 746,
+      "section": 5,
+      "record_offset": 416
+    },
+    {
+      "observation_id": "C33-inventory-69",
+      "evidence": "c33-runtime-matches.json",
+      "opcode": "03f3",
+      "payload_length": 746,
+      "section": 6,
+      "record_offset": 416
+    }
+  ],
+  "unresolved": [
+    "Native array order does not prove rendered inventory order.",
+    "C16 and independent control/holdout native comparisons remain required.",
+    "ModifyStack0444 and other static-only variants have no runtime promotion."
+  ]
+}

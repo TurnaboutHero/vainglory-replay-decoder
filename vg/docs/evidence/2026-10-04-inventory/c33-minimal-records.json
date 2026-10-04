@@ -1,0 +1,41 @@
+{
+  "recording_id": "C33",
+  "samples": [
+    {
+      "section": 0,
+      "record_offset": 11451,
+      "game_time": 1.7708551910012443e-13,
+      "opcode": "043d",
+      "payload_length": 14,
+      "payload_hex": "000005dc000001c9000007d00000",
+      "source_sha256": "93f9fa2375ac9c33ee8c71b4d1d5ef9f57449b097568d9d36f68490222e15817"
+    },
+    {
+      "section": 2,
+      "record_offset": 29631,
+      "game_time": 1.7708551910012443e-13,
+      "opcode": "044b",
+      "payload_length": 14,
+      "payload_hex": "000005dc000007d3000100000000",
+      "source_sha256": "1e4f0d4d27d7db04603f966a3c4dcf5eb055b78a8dd3e27c13181be405efde3d"
+    },
+    {
+      "section": 4,
+      "record_offset": 21085,
+      "game_time": 1.7708551910012443e-13,
+      "opcode": "0448",
+      "payload_length": 6,
+      "payload_hex": "000007d20000",
+      "source_sha256": "ce5e3b0f6806e445aa42255d78612dd50b7e000dad8ad90b037eb5e545676f33"
+    },
+    {
+      "section": 4,
+      "record_offset": 21101,
+      "game_time": 1.7708551910012443e-13,
+      "opcode": "044c",
+      "payload_length": 22,
+      "payload_hex": "000005dc000007d2ffffffff00000000000000000200",
+      "source_sha256": "ce5e3b0f6806e445aa42255d78612dd50b7e000dad8ad90b037eb5e545676f33"
+    }
+  ]
+}

@@ -32,10 +32,11 @@ def generate_report(matches: list[DecodedMatch]) -> StatisticsReport:
         for player in match.all_players:
             h = hero_stats[player.hero_name]
             h['picks'] += 1
-            h['known_samples']['wins'] += match.winner is not None
+            result_known = match.winner is not None and player.team is not None
+            h['known_samples']['wins'] += result_known
             for metric in ('kills', 'deaths', 'assists', 'minion_kills', 'gold_earned'):
                 h['known_samples'][metric] += getattr(player, metric) is not None
-            if match.winner is None:
+            if not result_known:
                 h['wins'] = None
             elif h['wins'] is not None and player.team == match.winner:
                 h['wins'] += 1
@@ -191,7 +192,8 @@ def print_report(report: StatisticsReport) -> None:
     print(f"  {'Hero':20s} {'Picks':>5s} {'Pick%':>6s} {'Win%':>6s} {'K':>5s} {'D':>5s} {'A':>5s} {'MK':>6s} {'Gold':>7s}")
     print(f"  {'─'*80}")
     for h in heroes[:20]:
-        print(f"  {h['hero']:20s} {h['picks']:5d} {_stat_text(h['pick_rate'], 5)}% {_stat_text(h['win_rate'], 5)}%"
+        hero_label = h['hero'] if h['hero'] is not None else 'N/A'
+        print(f"  {hero_label:20s} {h['picks']:5d} {_stat_text(h['pick_rate'], 5)}% {_stat_text(h['win_rate'], 5)}%"
               f" {_stat_text(h['avg_kills'], 5)} {_stat_text(h['avg_deaths'], 5)} {_stat_text(h['avg_assists'], 5)}"
               f" {_stat_text(h['avg_minion_kills'], 6)} {_stat_text(h['avg_gold'], 7)}")
 

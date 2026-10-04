@@ -115,7 +115,7 @@ class ProductV2JourneyTests(unittest.TestCase):
         (metadata / '._sample.0.vgr').write_bytes(b'metadata')
         before = self.hashes()
         # When the safe CLI selects a directory without an explicit output path.
-        completed = self.run_cli('decode_match', self.replays, '--at-game-time', 105)
+        completed = self.run_cli('decode_match', self.replays, '--format', 'safe-json', '--at-game-time', 105)
         # Then the one real family determines the capture and source path.
         self.assertEqual(completed.returncode, 0, completed.stderr)
         result = json.loads(completed.stdout)
@@ -308,7 +308,7 @@ class ProductV2JourneyTests(unittest.TestCase):
         with patch.object(decode_match, 'decode_match', side_effect=change_source), \
              contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()), \
              self.assertRaises(SystemExit) as error:
-            decode_match.main([str(self.replay), '-o', str(self.output)])
+            decode_match.main([str(self.replay), '--format', 'safe-json', '-o', str(self.output)])
         # Then source changes invalidate publication instead of silently rebinding it.
         self.assertEqual(error.exception.code, 2)
         self.assertEqual(self.output.read_bytes(), b'previous report')

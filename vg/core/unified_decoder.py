@@ -609,11 +609,11 @@ class ObjectiveEvent:
 @dataclass
 class DecodedPlayer:
     """Player data from unified decoding."""
-    name: str
-    team: str                          # "left" / "right"
-    hero_name: str
+    name: Optional[str]
+    team: Optional[str]
+    hero_name: Optional[str]
     hero_id: Optional[int]
-    entity_id: int                     # Little Endian (original)
+    entity_id: Optional[int]           # Legacy 16-bit little-endian identity, when representable
     # Final native counters require source-bound final-screen validation.
     kills: Optional[int] = None
     deaths: Optional[int] = None
@@ -635,7 +635,7 @@ class DecodedPlayer:
     gold_status: str = "partial_final_validation_missing"
     entity_id_be: Optional[int] = None
     replay_scope: Optional[str] = None
-    items: List[str] = field(default_factory=list)  # Final build (after upgrade tree filtering)
+    items: Optional[List[str]] = field(default_factory=list)
     # Raw acquire log, kept unfiltered. Includes the STARTER_IDS items every
     # player is handed at match start, so subtract those before reading it as
     # purchase frequency.
@@ -643,6 +643,17 @@ class DecodedPlayer:
     # Comparison fields (populated when truth is available)
     truth_kills: Optional[int] = None
     truth_deaths: Optional[int] = None
+    native_actor_id: Optional[int] = None
+    team_id: Optional[int] = None
+    gold: Optional[float] = None  # Compatibility alias for recorded net worth, not earned gold
+    gold_balance: Optional[float] = None
+    net_worth: Optional[float] = None
+    state_scope: Optional[str] = None
+    as_of_game_time: Optional[float] = None
+    record_boundary: Optional[Dict] = None
+    field_status: Dict = field(default_factory=dict)
+    item_details: Optional[List[Dict]] = None
+    native_items: Optional[List[Dict]] = None
 
     def to_dict(self) -> Dict:
         return asdict(self)
@@ -709,10 +720,12 @@ class DecodedMatch:
     recording_evidence: Optional[Dict] = None
     duration_provenance: DurationProvenance = field(default_factory=_unknown_duration_provenance)
     truth_source: Optional[str] = None
+    unassigned_players: List[DecodedPlayer] = field(default_factory=list)
+    player_state: Optional[Dict] = None
 
     @property
     def all_players(self) -> List[DecodedPlayer]:
-        return self.left_team + self.right_team
+        return self.left_team + self.right_team + self.unassigned_players
 
     def to_dict(self) -> Dict:
         return asdict(self)
@@ -881,22 +894,19 @@ class UnifiedDecoder:
             duration, recorded_seconds, crystal_ts, duration_est,
         )
 
-        from vg.core.native_stats import read_native_stats
+        from vg.decoder_v2.player_state import decode_player_state
         evidence = inspect_replay_evidence(frames)
         clock = evidence.native_clock
-        native = read_native_stats(
-            frames, {_le_to_be(p.entity_id) for p in all_players if p.entity_id},
-        )
+        native = decode_player_state(replay_file)
         if not clock.valid:
             data_complete = None
             completeness_reason = f"Native clock integrity failed ({clock.status}): {clock.reason}"
-        kda_used = False
-        for player in all_players:
-            player.entity_id_be = _le_to_be(player.entity_id) if player.entity_id else None
-            player.replay_scope = evidence.replay_scope
-            player.observed_gold_estimate = player.gold_earned
-            player.gold_earned = None
-            player.kills = player.deaths = player.assists = player.minion_kills = None
+        all_players = self._native_players(native, all_players)
+        left_team = [p for p in all_players if p.team == 'left']
+        right_team = [p for p in all_players if p.team == 'right']
+        unassigned_players = [p for p in all_players if p.team not in ('left', 'right')]
+        kda_used = any(p.kills is not None for p in all_players)
+        item_used = any(p.items is not None for p in all_players)
 
         # --- Step 8: Objective event detection ---
         # 3v3: Kraken / Gold Mine.  5v5: Blackclaw / Ghostwing
@@ -928,6 +938,8 @@ class UnifiedDecoder:
             winner=winner,
             left_team=left_team,
             right_team=right_team,
+            unassigned_players=unassigned_players,
+            player_state=native.to_dict(),
             total_frames=match_info.get("total_frames", 0),
             crystal_death_ts=crystal_ts,
             crystal_death_eid=crystal_eid,
@@ -935,8 +947,8 @@ class UnifiedDecoder:
             completeness_ratio=round(completeness, 3) if completeness else None,
             data_complete=data_complete,
             completeness_reason=completeness_reason,
-            native_stats_status=native.status,
-            native_stats_reason=native.reason,
+            native_stats_status=native.field_status['kda'].status,
+            native_stats_reason=native.field_status['kda'].reason,
             as_of_game_time=native.as_of_game_time,
             final_stats_reason=final_field_reason('statistics'),
             recording_evidence=asdict(evidence),
@@ -994,6 +1006,40 @@ class UnifiedDecoder:
 
         inputs.recheck()
         return match
+
+    @staticmethod
+    def _native_players(state, auxiliary: List[DecodedPlayer]) -> List[DecodedPlayer]:
+        counts = Counter(p.entity_id for p in auxiliary)
+        by_actor = {_le_to_be(p.entity_id): p for p in auxiliary
+                    if isinstance(p.entity_id, int) and not isinstance(p.entity_id, bool)
+                    and 0 < p.entity_id <= 0xffff and counts[p.entity_id] == 1}
+        players = []
+        for source in state.players:
+            old = by_actor.get(source.native_actor_id)
+            player = DecodedPlayer(source.name, source.team, source.hero_name,
+                                   source.definition_index,
+                                   _le_to_be(source.native_actor_id) if source.native_actor_id <= 0xffff else None)
+            if old is not None:
+                for key in ('positions', 'map_side', 'jungle_kills', 'gold_spent', 'items_all_purchased'):
+                    setattr(player, key, getattr(old, key))
+                player.observed_gold_estimate = old.gold_earned
+            for key in ('native_actor_id', 'team_id', 'kills', 'deaths', 'assists', 'minion_kills',
+                        'gold_balance', 'net_worth'):
+                setattr(player, key, getattr(source, key))
+            player.entity_id_be = source.native_actor_id
+            player.gold = source.net_worth
+            player.gold_status = source.field_status['net_worth'].status
+            player.items = [item.name for item in source.items] if source.items is not None else None
+            player.item_details = [asdict(item) for item in source.items] if source.items is not None else None
+            player.native_items = [asdict(item) for item in source.native_items] if source.native_items is not None else None
+            player.replay_scope = state.replay_scope
+            player.state_scope = state.scope
+            player.as_of_game_time = state.as_of_game_time
+            player.record_boundary = asdict(state.record_boundary) if state.record_boundary is not None else None
+            player.field_status = {key: asdict(value) for key, value in source.field_status.items()}
+            player.field_status['gold'] = dict(player.field_status['net_worth'], alias_of='net_worth')
+            players.append(player)
+        return players
 
     def _make_player(self, p: Dict) -> DecodedPlayer:
         """Convert parser player dict to DecodedPlayer."""

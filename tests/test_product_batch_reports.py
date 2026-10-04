@@ -4,16 +4,36 @@ import io
 import json
 from pathlib import Path
 import subprocess
+import struct
 import sys
 import tempfile
 import unittest
 from unittest.mock import patch
 
-from tests.test_product_duration_provenance import replay_bytes
+from tests.test_native_inventory import anchor, packet
+from tests.test_native_roster import roster as native_roster
+from tests.test_native_stats import attribute
+from tests.test_player_state_service import state_snapshot
 from vg.analysis import batch_report as analysis
 from vg.core.batch_result import PartialBatchError
 from vg.core.unified_decoder import DecodedMatch, DecodedPlayer, UnifiedDecoder
 from vg.tools import replay_batch_parser as parser
+
+
+def replay_bytes(crystal=None, death=None, roster=True):
+    data = anchor()
+    if roster:
+        data += native_roster(7, b'PlayerOne') + state_snapshot()
+        data += attribute(1, layer=1)
+    events = []
+    if crystal is not None:
+        events.append((crystal, 2000))
+    if death is not None:
+        events.append((death, 7))
+    for timestamp, entity in sorted(events):
+        data += packet(timestamp, 0x0431, struct.pack('>IH', entity, 0))
+        data += packet(timestamp, 1)
+    return data + packet(max(crystal or 0, death or 0, 10), 1)
 
 
 class ProductBatchReportsTests(unittest.TestCase):
@@ -41,6 +61,12 @@ class ProductBatchReportsTests(unittest.TestCase):
         estimate = UnifiedDecoder(str(self.replay)).decode()
         self.replay.write_bytes(replay_bytes(roster=False))
         unknown = UnifiedDecoder(str(self.replay)).decode()
+        self.assertEqual([p.native_actor_id for p in zero.all_players], [7])
+        self.assertEqual([p.native_actor_id for p in estimate.all_players], [7])
+        self.assertEqual(zero.native_stats_status, 'unsupported_state')
+        self.assertEqual(estimate.native_stats_status, 'unsupported_state')
+        self.assertIn('layer', zero.native_stats_reason)
+        self.assertIn('layer', estimate.native_stats_reason)
         # When the actual values are aggregated together.
         report = analysis.generate_report([zero, estimate, unknown])
         # Then zero participates, provenance is separated and final unknowns persist.

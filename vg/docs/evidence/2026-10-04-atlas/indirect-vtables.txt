@@ -1,0 +1,162 @@
+SHA256 659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642
+SYMBOL 0121792c Nuo::Kindred::IKindredNetworking::vftable_meta_ptr
+ SLOT 0 01870080 null
+ SLOT 4 004ea950 std::_Facet_base::`scalar_deleting_destructor'
+ SLOT 8 011badaf VCRUNTIME140.DLL::purecall
+ SLOT c 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 10 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 14 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 18 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 1c 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 20 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 24 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 28 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 2c 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 30 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 34 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 38 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 3c 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 40 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 44 01870000 null
+ SLOT 48 004ea980 FUN_004ea980
+ SLOT 4c 004eabc0 FUN_004eabc0
+SYMBOL 01217930 Nuo::Kindred::IKindredNetworking::vftable
+ SLOT 0 004ea950 std::_Facet_base::`scalar_deleting_destructor'
+ SLOT 4 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 8 011badaf VCRUNTIME140.DLL::purecall
+ SLOT c 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 10 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 14 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 18 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 1c 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 20 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 24 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 28 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 2c 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 30 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 34 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 38 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 3c 011badaf VCRUNTIME140.DLL::purecall
+ SLOT 40 01870000 null
+ SLOT 44 004ea980 FUN_004ea980
+ SLOT 48 004eabc0 FUN_004eabc0
+ SLOT 4c 004eb530 FUN_004eb530
+SYMBOL 01217970 Nuo::Kindred::KindredNetworking::vftable_meta_ptr
+ SLOT 0 01870000 null
+ SLOT 4 004ea980 FUN_004ea980
+ SLOT 8 004eabc0 FUN_004eabc0
+ SLOT c 004eb530 FUN_004eb530
+ SLOT 10 004eaa60 FUN_004eaa60
+ SLOT 14 004eacb0 FUN_004eacb0
+ SLOT 18 004eac90 FUN_004eac90
+ SLOT 1c 004eab80 FUN_004eab80
+ SLOT 20 004eb460 FUN_004eb460
+ SLOT 24 00462380 gloox::TLSBase::hasChannelBinding
+ SLOT 28 00462380 gloox::TLSBase::hasChannelBinding
+ SLOT 2c 00462380 gloox::TLSBase::hasChannelBinding
+ SLOT 30 004eacc0 FUN_004eacc0
+ SLOT 34 004eb580 FUN_004eb580
+ SLOT 38 00460bb0 gloox::DiscoHandler::handleDiscoSet
+ SLOT 3c 004eabb0 FUN_004eabb0
+ SLOT 40 004eab70 FUN_004eab70
+ SLOT 44 01870094 null
+ SLOT 48 004ea9f0 FUN_004ea9f0
+ SLOT 4c 004eac70 FUN_004eac70
+SYMBOL 01217974 Nuo::Kindred::KindredNetworking::vftable
+ SLOT 0 004ea980 FUN_004ea980
+ SLOT 4 004eabc0 FUN_004eabc0
+ SLOT 8 004eb530 FUN_004eb530
+ SLOT c 004eaa60 FUN_004eaa60
+ SLOT 10 004eacb0 FUN_004eacb0
+ SLOT 14 004eac90 FUN_004eac90
+ SLOT 18 004eab80 FUN_004eab80
+ SLOT 1c 004eb460 FUN_004eb460
+ SLOT 20 00462380 gloox::TLSBase::hasChannelBinding
+ SLOT 24 00462380 gloox::TLSBase::hasChannelBinding
+ SLOT 28 00462380 gloox::TLSBase::hasChannelBinding
+ SLOT 2c 004eacc0 FUN_004eacc0
+ SLOT 30 004eb580 FUN_004eb580
+ SLOT 34 00460bb0 gloox::DiscoHandler::handleDiscoSet
+ SLOT 38 004eabb0 FUN_004eabb0
+ SLOT 3c 004eab70 FUN_004eab70
+ SLOT 40 01870094 null
+ SLOT 44 004ea9f0 FUN_004ea9f0
+ SLOT 48 004eac70 FUN_004eac70
+ SLOT 4c 00450910 guard_check_icall
+SYMBOL 012179b4 Nuo::Kindred::KindredReplay::vftable_meta_ptr
+ SLOT 0 01870094 null
+ SLOT 4 004ea9f0 FUN_004ea9f0
+ SLOT 8 004eac70 FUN_004eac70
+ SLOT c 00450910 guard_check_icall
+ SLOT 10 004eab50 FUN_004eab50
+ SLOT 14 00462380 gloox::TLSBase::hasChannelBinding
+ SLOT 18 004eaca0 FUN_004eaca0
+ SLOT 1c 004eaba0 thunk_FUN_004cd910
+ SLOT 20 004eb4a0 FUN_004eb4a0
+ SLOT 24 004eb410 FUN_004eb410
+ SLOT 28 004eb420 FUN_004eb420
+ SLOT 2c 004676f0 gloox::ClientBase::hasTls
+ SLOT 30 004eacd0 FUN_004eacd0
+ SLOT 34 004eb5d0 FUN_004eb5d0
+ SLOT 38 004eb430 FUN_004eb430
+ SLOT 3c 0045ecd0 gloox::Client::handleStartNode
+ SLOT 40 004676f0 gloox::ClientBase::hasTls
+ SLOT 44 018700e0 null
+ SLOT 48 004eb6f0 FUN_004eb6f0
+ SLOT 4c 0045ecd0 gloox::Client::handleStartNode
+SYMBOL 012179b8 Nuo::Kindred::KindredReplay::vftable
+ SLOT 0 004ea9f0 FUN_004ea9f0
+ SLOT 4 004eac70 FUN_004eac70
+ SLOT 8 00450910 guard_check_icall
+ SLOT c 004eab50 FUN_004eab50
+ SLOT 10 00462380 gloox::TLSBase::hasChannelBinding
+ SLOT 14 004eaca0 FUN_004eaca0
+ SLOT 18 004eaba0 thunk_FUN_004cd910
+ SLOT 1c 004eb4a0 FUN_004eb4a0
+ SLOT 20 004eb410 FUN_004eb410
+ SLOT 24 004eb420 FUN_004eb420
+ SLOT 28 004676f0 gloox::ClientBase::hasTls
+ SLOT 2c 004eacd0 FUN_004eacd0
+ SLOT 30 004eb5d0 FUN_004eb5d0
+ SLOT 34 004eb430 FUN_004eb430
+ SLOT 38 0045ecd0 gloox::Client::handleStartNode
+ SLOT 3c 004676f0 gloox::ClientBase::hasTls
+ SLOT 40 018700e0 null
+ SLOT 44 004eb6f0 FUN_004eb6f0
+ SLOT 48 0045ecd0 gloox::Client::handleStartNode
+ SLOT 4c 00460bb0 gloox::DiscoHandler::handleDiscoSet
+SYMBOL 01870000 Nuo::Kindred::KindredNetworking::RTTI_Complete_Object_Locator
+SYMBOL 01870014 Nuo::Kindred::KindredNetworking::RTTI_Class_Hierarchy_Descriptor
+SYMBOL 01870024 Nuo::Kindred::KindredNetworking::RTTI_Base_Class_Array
+SYMBOL 01870030 Nuo::Kindred::KindredNetworking::RTTI_Base_Class_Descriptor_at_(0,-1,0,64)
+SYMBOL 0187004c Nuo::Kindred::IKindredNetworking::RTTI_Base_Class_Descriptor_at_(0,-1,0,64)
+SYMBOL 01870068 Nuo::Kindred::IKindredNetworking::RTTI_Class_Hierarchy_Descriptor
+SYMBOL 01870078 Nuo::Kindred::IKindredNetworking::RTTI_Base_Class_Array
+SYMBOL 01870080 Nuo::Kindred::IKindredNetworking::RTTI_Complete_Object_Locator
+SYMBOL 01870094 Nuo::Kindred::KindredReplay::RTTI_Complete_Object_Locator
+SYMBOL 018700a8 Nuo::Kindred::KindredReplay::RTTI_Class_Hierarchy_Descriptor
+SYMBOL 018700b8 Nuo::Kindred::KindredReplay::RTTI_Base_Class_Array
+SYMBOL 018700c4 Nuo::Kindred::KindredReplay::RTTI_Base_Class_Descriptor_at_(0,-1,0,64)
+SYMBOL 01e466dc Nuo::Kindred::KindredNetworking::RTTI_Type_Descriptor
+SYMBOL 01e46708 Nuo::Kindred::IKindredNetworking::RTTI_Type_Descriptor
+SYMBOL 01e46738 Nuo::Kindred::KindredReplay::RTTI_Type_Descriptor
+GLOBALREF 004eb3f3 READ FUN_004eb3f0 MOV ECX,dword ptr [0x01ef0e80]
+GLOBALREF 004eacf0 READ FUN_004eacf0 MOV ECX,dword ptr [0x01ef0e80]
+GLOBALREF 004ead00 READ FUN_004ead00 MOV ECX,dword ptr [0x01ef0e80]
+GLOBALREF 004ead13 READ FUN_004ead10 MOV ECX,dword ptr [0x01ef0e80]
+GLOBALREF 004eb1b0 READ FUN_004bf6d0 MOV ECX,dword ptr [0x01ef0e80]
+GLOBALREF 004eb183 READ FUN_004eb180 MOV ECX,dword ptr [0x01ef0e80]
+GLOBALREF 004eb1a0 READ FUN_004eb1a0 MOV ECX,dword ptr [0x01ef0e80]
+GLOBALREF 004eb1c0 READ FUN_004eb1c0 MOV ECX,dword ptr [0x01ef0e80]
+GLOBALREF 004eb225 READ FUN_004eb220 MOV ECX,dword ptr [0x01ef0e80]
+GLOBALREF 004eb230 READ FUN_004eb220 MOV ECX,dword ptr [0x01ef0e80]
+GLOBALREF 004eb2b9 WRITE FUN_004eb220 MOV dword ptr [0x01ef0e80],0x0
+GLOBALREF 004eb356 READ FUN_004eb2d0 MOV ESI,dword ptr [0x01ef0e80]
+GLOBALREF 004eb3a4 WRITE FUN_004eb2d0 MOV dword ptr [0x01ef0e80],ESI
+GLOBALREF 004eb160 READ FUN_004eb160 MOV ECX,dword ptr [0x01ef0e80]
+GLOBALREF 004eb170 READ FUN_004eb170 MOV ECX,dword ptr [0x01ef0e80]
+GLOBALREF 004eb1d0 READ FUN_004eb1d0 MOV ECX,dword ptr [0x01ef0e80]
+GLOBALREF 004eb1db READ FUN_004eb1d0 MOV ECX,dword ptr [0x01ef0e80]
+GLOBALREF 004eb210 READ FUN_004eb210 MOV ECX,dword ptr [0x01ef0e80]
+GLOBALREF 004eb1f3 READ FUN_004eb1f0 MOV ECX,dword ptr [0x01ef0e80]
+GLOBALREF 004eace0 READ FUN_004eace0 MOV ECX,dword ptr [0x01ef0e80]

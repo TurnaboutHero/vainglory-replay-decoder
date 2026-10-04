@@ -4,7 +4,9 @@ Use [the offline quickstart](../PRODUCT_RELIABILITY.md#offline-quickstart) to ge
 
 ## Current evidence contract
 
-`decode_match` defaults to `safe-json`. Final output is `decoder_v2.match.v2`; game-time capture is `decoder_v2.capture.v2`; debug wrappers are `decoder_v2.debug_match.v2` and `decoder_v2.debug_capture.v2`.
+The `decode_match` CLI defaults to `state-json`, schema `decoder_v2.player_state.v3`. It returns native names, heroes, K/D/A, scoreboard CS, held item instances and quantities, spendable gold and net worth at one audited boundary. Default `scope=recorded_end` applies every record; `--at-game-time` selects a capture. Read `support_status`, per-field status and provenance. Native team IDs are retained without guessing UI sides, and item ordering is not asserted.
+
+This is an explicit CLI default migration. Pass `--format safe-json` to retain final output `decoder_v2.match.v2` or game-time capture `decoder_v2.capture.v2`; debug wrappers remain `decoder_v2.debug_match.v2` and `decoder_v2.debug_capture.v2`. The Python `decode_match(...)` contract is unchanged; `decode_player_state(...)` is the new API.
 
 Validated player-block identity can support hero, team grouping and entity ID decisions. Final K/D/A, minion kills, gold, winner and exact duration remain withheld. A duration candidate may still be carried as a non-indexable estimate. `claim_status` describes evidence; `accepted_for_index` is a separate decision. Neither a completeness label nor a promising research policy authorizes final acceptance.
 
@@ -26,7 +28,7 @@ For T-based analytical rows, R includes selected truth matches and any compariso
 
 | Module | Supported/consumed inputs | Selection options | Result scope |
 | --- | --- | --- | --- |
-| `vg.decoder_v2.decode_match` | R; positional replay | `--format` `--at-game-time` | Safe final or scoped capture; debug retains candidates. |
+| `vg.decoder_v2.decode_match` | R; positional replay | `--format` `--at-game-time` | Native recorded-end/capture state by default; explicit safe final/capture and debug formats retained. |
 | `vg.decoder_v2.validation` | T plus decoded referenced R; optional root inventory | `--truth` `--base` | --base adds explicit inventory; omitted means no machine-specific inventory scan. |
 | `vg.decoder_v2.kda_postgame_audit` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |
 | `vg.decoder_v2.residual_signal_research` | T + referenced R, including decoded comparison baselines | `--truth` | Research candidates/fixture comparisons; no final-index promotion. |

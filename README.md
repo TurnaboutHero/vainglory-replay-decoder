@@ -1,6 +1,6 @@
 # VG Reverse Engineering
 
-Offline tools for inspecting, comparing and archiving Vainglory: Community Edition replay families. Start with the conservative decoder: a readable recording and an accepted capture do not establish verified final-match statistics.
+Offline tools for inspecting, comparing and archiving Vainglory: Community Edition replay families. The default decoder reconstructs recorded player names, heroes, K/D/A, items, gold and scoreboard CS at a common state boundary.
 
 ## Start here
 
@@ -17,9 +17,13 @@ The tests generate synthetic framed recordings, execute the documented offline c
 For your own recording, keep its `.0.vgr` and numbered siblings together and use a separate output directory that already exists:
 
 ```sh
-python -B -m vg.decoder_v2.decode_match "replays/match.0.vgr" --format safe-json -o "reports/match.json"
+python -B -m vg.decoder_v2.decode_match "replays/match.0.vgr" -o "reports/match.json"
 python -B -m vg.decoder_v2.decode_match "replays/match.0.vgr" --at-game-time 1551 -o "reports/capture.json"
 ```
+
+Both commands return `decoder_v2.player_state.v3`. The default scope is `recorded_end`; a timed query returns `capture`. Players use recording-scoped 32-bit native actor IDs. `gold_balance` is spendable gold and `net_worth` is the native accumulated value. `minion_kills` is the client's displayed CS counter. `items` preserves held instances and quantities while `native_items` also includes HUD-hidden system items; inventory order is not a rendered slot claim. Check `support_status` and per-field provenance. Missing values remain null and measured zero remains zero.
+
+The CLI default changed from `safe-json` to `state-json`. Consumers of `decoder_v2.match.v2` or `decoder_v2.capture.v2` must pass `--format safe-json`. The Python `decode_match(...)` API retains those older contracts; `decode_player_state(...)` provides the new state model. Recorded-end state does not assert that gameplay finished, and cached scoreboard gold text can differ from the raw resource value.
 
 A single input may also be a directory containing exactly one replay family. Multiple families require an explicit `.0.vgr` selection or a batch command. Missing paths, unreadable sections, ambiguous selection and malformed input receive actionable errors.
 
@@ -27,8 +31,9 @@ A single input may also be a directory containing exactly one replay family. Mul
 
 | Need | Entry point | What to retain |
 | --- | --- | --- |
-| Inspect one recording | `vg.decoder_v2.decode_match` | Safe field decisions, reasons and `replay_scope` |
-| Observe a scoreboard moment | `decode_match --at-game-time SECONDS` | `decoder_v2.capture.v2`, requested/observed game time and roster identity |
+| Inspect one recording | `vg.decoder_v2.decode_match` | `decoder_v2.player_state.v3`, field provenance and `replay_scope` |
+| Observe a scoreboard moment | `decode_match --at-game-time SECONDS` | Common record boundary, requested/observed game time and native actor identity |
+| Retain conservative final decisions | `decode_match --format safe-json` | Existing v2 decisions and final-index acceptance |
 | Build a dataset | `vg.decoder_v2.batch_decode`, `vg.decoder_v2.index_export` | Every input result, scoped `input_id`, status/counts and withheld fields |
 | Use player/match spreadsheets | `vg.core.export_matches` | CSV provenance, blank unknowns, stable ordinals and export receipt |
 | Use legacy metadata/statistics | `vg.core.vgr_parser`, `vg.core.unified_decoder`, `vg.analysis.batch_report` | Truth source, duration provenance and known/total sample counts |
@@ -40,10 +45,11 @@ A single input may also be a directory containing exactly one replay family. Mul
 
 ## Read the evidence correctly
 
+- The [2026-10-04 player-state accuracy report](vg/docs/PLAYER_STATE_ACCURACY_2026-10-04.md) documents exact native EOF comparisons for 8 recordings and 37 players across default CLI, Python API and legacy CLI (777/777 field groups), plus the separate 56-recording coverage audit and remaining event unknowns.
 - `null` means unavailable; measured zero remains zero. CSV uses a blank cell for null. A duration estimate or supplied truth retains its provenance and is not final-index approval.
 - Safe final output currently withholds final K/D/A, minion kills, gold, winner and exact duration. Captured K/D/A can be observed at a supported clock, but `accepted_for_index` remains false for those captured counters.
 - The [C16 final-screen comparison](vg/docs/RUNTIME_DISPLAY_2026-10-03.md) and [native integration history](vg/docs/NATIVE_STATS_INTEGRATION_2026-09-07.md) are narrowly scoped evidence. A comparison's `matched` status covers the named K/D/A/CS counters; gold, winner, duration and result labels remain observation-only.
-- General final-gold reconstruction, end-time interpretation and broad replay compatibility remain unresolved. A complete filesystem snapshot does not prove completed gameplay, and a successful slot replacement does not prove game playback.
+- Native balance and net-worth reconstruction is available for supported recorded states. End-time interpretation, cached final labels and broad replay compatibility remain separate questions. A complete filesystem snapshot does not prove completed gameplay, and a successful slot replacement does not prove game playback.
 
 ## Historical research results
 

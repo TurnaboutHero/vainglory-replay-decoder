@@ -28,6 +28,10 @@ from vg.core.unified_decoder import UnifiedDecoder
 from vg.decoder_v2.decode_match import decode_match, decode_match_debug, main
 from vg.decoder_v2.models import KDAExtractionResult, KDAPlayerSummary, DurationEstimate
 from tests.test_native_stats import anchor, snapshot, attribute, resource, packet, frame
+from tests.test_native_inventory import anchor as state_anchor
+from tests.test_native_roster import roster
+from tests.test_player_state_service import state_snapshot
+from vg.decoder_v2.player_state import decode_player_state
 
 PARSED = {'replay_name':'x', 'replay_file':'x.0.vgr',
           'match_info':{'mode':'5v5','map_name':'map','team_size':1},
@@ -110,42 +114,55 @@ class NativeCallerBoundaryTests(unittest.TestCase):
             self.assertIsNone(safe.withheld_fields[key].value)
         self.assertIsNone(debug['duration']); self.assertIsNone(debug['winner_debug'])
 
-    def test_unified_observes_eof_without_adopting_final_counters(self):
-        data = anchor(0, 500) + snapshot(0)
+    def test_unified_observes_eof_as_recorded_state_without_final_validation(self):
+        data = state_anchor(0, 500) + roster(7, b'p')
+        data += state_snapshot(counters=(6, 2, 3, 100))
         data += attribute(2) + attribute(3, 2, index=42)
         data += resource(4, 4) + resource(5, 5, index=14)
         data += attribute(9.5, 100) + packet(10, 1)
-        with patch('vg.core.unified_decoder.VGRParser') as parser, \
-             patch.object(UnifiedDecoder, '_load_frames', return_value=[(0, data)]), \
-             patch.object(UnifiedDecoder, '_scan_kda_events', return_value=(None, {}, {}, 9.)), \
-             patch.object(UnifiedDecoder, '_detect_crystal_death', return_value=(9., 2000)), \
-             patch('vg.core.unified_decoder.WinLossDetector') as winner:
-            parser.return_value.parse.return_value = PARSED
-            winner.return_value.detect_winner.return_value = None
-            result = UnifiedDecoder('x.0.vgr').decode()
-        player = result.left_team[0]
+        with tempfile.TemporaryDirectory() as temporary, \
+             patch.object(UnifiedDecoder, '_detect_crystal_death', return_value=(9., 2000)):
+            replay = Path(temporary) / 'x.0.vgr'
+            replay.write_bytes(data)
+            result = UnifiedDecoder(str(replay)).decode()
+            state = decode_player_state(replay)
+        self.assertEqual(result.player_state, state.to_dict())
+        self.assertEqual(len(result.all_players), 1)
+        player = result.all_players[0]
         self.assertEqual(player.entity_id, 1792)
+        self.assertEqual(player.native_actor_id, 7)
         self.assertEqual((player.kills, player.deaths, player.assists, player.minion_kills),
-                         (None, None, None, None))
-        self.assertFalse(result.kda_detection_used)
-        self.assertEqual(result.native_stats_status, 'accepted')
+                         (107, 4, 7, 105))
+        self.assertEqual((player.gold_balance, player.net_worth, player.items), (25.5, 100.5, []))
+        self.assertEqual(player.state_scope, 'recorded_end')
+        self.assertEqual(player.record_boundary, result.player_state['record_boundary'])
+        for field in ('kda', 'minion_kills', 'items', 'gold_balance', 'net_worth'):
+            self.assertEqual(player.field_status[field]['provenance']['record_boundary'], player.record_boundary)
+        self.assertTrue(result.kda_detection_used)
+        self.assertEqual(result.native_stats_status, 'supported')
+        self.assertEqual(result.final_validation_status, 'unverified')
+        self.assertIsNone(result.winner)
         self.assertEqual(result.duration_seconds, 9)
         self.assertEqual(result.as_of_game_time, 510)
 
     def test_unified_real_mixed_frames_override_terminal_and_withhold_stats(self):
-        with patch('vg.core.unified_decoder.VGRParser') as parser, \
-             patch.object(UnifiedDecoder,'_load_frames',return_value=[(0,frame()),(1,frame(11,1))]), \
-             patch.object(UnifiedDecoder,'_scan_kda_events',return_value=(None,{}, {},20.)), \
-             patch.object(UnifiedDecoder,'_detect_crystal_death',return_value=(20.,2000)), \
-             patch('vg.core.unified_decoder.WinLossDetector') as winner:
-            parser.return_value.parse.return_value=PARSED
-            winner.return_value.detect_winner.return_value=None
-            result=UnifiedDecoder('x.0.vgr').decode()
+        with tempfile.TemporaryDirectory() as temporary, \
+             patch.object(UnifiedDecoder,'_detect_crystal_death',return_value=(20.,2000)):
+            replay = Path(temporary) / 'x.0.vgr'
+            replay.write_bytes(state_anchor() + roster(7, b'p') + state_snapshot() + packet(10, 1))
+            replay.with_name('x.1.vgr').write_bytes(state_anchor(11, 1) + packet(21, 1))
+            result = UnifiedDecoder(str(replay)).decode()
+            state = decode_player_state(replay)
+        self.assertEqual(result.player_state, state.to_dict())
+        self.assertEqual(result.duration_seconds, 20)
         self.assertIsNone(result.data_complete)
         self.assertEqual(result.native_stats_status,'mixed_segments')
         self.assertIsNone(result.winner)
-        self.assertIsNone(result.left_team[0].kills)
-        self.assertIsNone(result.left_team[0].minion_kills)
+        self.assertEqual(result.all_players, [])
+        self.assertEqual(result.player_state['players'], ())
+        self.assertEqual(result.player_state['support_status'], 'mixed_segments')
+        for field in ('kda', 'minion_kills', 'items', 'gold_balance', 'net_worth'):
+            self.assertEqual(result.player_state['field_status'][field]['status'], 'mixed_segments')
 
     def test_winner_rejects_accepted_capture_even_with_complete_assessment(self):
         from vg.decoder_v2.winner import decode_winner_from_replay

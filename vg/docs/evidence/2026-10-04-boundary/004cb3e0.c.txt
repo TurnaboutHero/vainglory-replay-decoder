@@ -1,0 +1,45 @@
+// 004cb3e0 FUN_004cb3e0
+
+void FUN_004cb3e0(void)
+
+{
+  undefined4 ****ppppuVar1;
+  uint uVar2;
+  undefined4 ***local_2c [5];
+  uint local_18;
+  uint local_14;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_011c46d8;
+  local_10 = ExceptionList;
+  local_14 = DAT_01e44f28 ^ (uint)&stack0xfffffffc;
+  ExceptionList = &local_10;
+  FUN_004ca240(local_2c,local_14);
+  local_8 = 0;
+  if (DAT_01eb09d8 == 0) {
+    ppppuVar1 = local_2c;
+    if (0xf < local_18) {
+      ppppuVar1 = (undefined4 ****)local_2c[0];
+    }
+    DAT_01eb09d8 = FUN_0096c240(ppppuVar1,&DAT_01215ee8);
+  }
+  if (0xf < local_18) {
+    uVar2 = local_18 + 1;
+    ppppuVar1 = (undefined4 ****)local_2c[0];
+    if (0xfff < uVar2) {
+      ppppuVar1 = (undefined4 ****)local_2c[0][-1];
+      uVar2 = local_18 + 0x24;
+      if (0x1f < (uint)((int)local_2c[0] + (-4 - (int)ppppuVar1))) {
+                    /* WARNING: Subroutine does not return */
+        _invalid_parameter_noinfo_noreturn();
+      }
+    }
+    FUN_011b8432(ppppuVar1,uVar2);
+  }
+  ExceptionList = local_10;
+  __security_check_cookie(local_14 ^ (uint)&stack0xfffffffc);
+  return;
+}

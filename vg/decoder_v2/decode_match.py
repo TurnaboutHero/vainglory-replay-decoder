@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 from vg.core.vgr_parser import VGRParser
-from vg.core.replay_input import ReplayInputError, select_replay
+from vg.core.replay_input import ReplayInputError, replay_sections, select_replay
 from vg.core.vgr_records import VGRRecordError
 from vg.core.stat_evidence import final_field_reason, inspect_replay_evidence
 from vg.core.unified_decoder import _le_to_be
@@ -25,6 +25,7 @@ from .minions import collect_minion_candidates
 from .models import (AcceptedPlayerFields, DecoderV2MatchOutput, FieldDecision,
                      )
 from .winner import decode_winner_from_replay
+from .player_state import decode_player_state
 
 
 def decode_match(replay_file: str, *, at_game_time: Optional[float] = None) -> DecoderV2MatchOutput:
@@ -176,31 +177,47 @@ def decode_match_debug(replay_file: str, *, at_game_time: Optional[float] = None
 
 
 def main(argv: Optional[List[str]] = None) -> int:
-    parser = argparse.ArgumentParser(description="Decode one replay conservatively with decoder_v2.")
+    parser = argparse.ArgumentParser(description="Decode native recorded player state, or request explicit final-safe/debug output.")
     parser.add_argument("replay_file", help="Path to .0.vgr replay file")
     parser.add_argument(
         "--format",
-        choices=("safe-json", "debug-json"),
-        default="safe-json",
-        help="Output format",
+        choices=("state-json", "safe-json", "debug-json"),
+        default="state-json",
+        help="state-json (default) reports native recorded state; safe-json retains conservative final decisions",
     )
     parser.add_argument("-o", "--output", help="Optional output JSON path")
-    parser.add_argument("--at-game-time", type=float, help="Capture at game-clock seconds; withholds final winner/gold/duration.")
+    time_query = parser.add_mutually_exclusive_group()
+    time_query.add_argument("--at-game-time", type=float, help="Capture all supported fields at game-clock seconds; does not assert match completion.")
+    time_query.add_argument("--at-record-time", type=float, help="Capture native state through replay-record seconds; distinct from game time and supported only by state-json.")
     args = parser.parse_args(argv)
-    if args.at_game_time is not None and (not math.isfinite(args.at_game_time) or args.at_game_time < 0):
-        parser.error("--at-game-time must be finite and non-negative")
+    for name, value in (("--at-game-time", args.at_game_time), ("--at-record-time", args.at_record_time)):
+        if value is not None and (not math.isfinite(value) or value < 0):
+            parser.error(f"{name} must be finite and non-negative")
+    if args.at_record_time is not None and args.format != "state-json":
+        parser.error("--at-record-time requires --format state-json")
     try:
         output = Path(args.output) if args.output else None
         if output is not None and not Path(args.replay_file).is_dir():
             validate_replay_output(Path(args.replay_file), output)
         replay = select_replay(args.replay_file)
-        inputs = ReportInputs(replays=(replay,))
+        sections = replay_sections(replay)
+        inputs = ReportInputs(files=tuple(path for _, path in sections), replays=(replay,))
         if output is not None:
+            for candidate in (output, output.resolve()):
+                if (candidate.parent.resolve() == replay.parent.resolve()
+                        and candidate.name.startswith(replay.name[:-6] + '.')
+                        and candidate.name.endswith('.vgr')):
+                    raise ReplayOutputError(output, 'output names a sibling input .vgr section')
             validate_report_outputs(inputs, (output,))
         if args.format == "debug-json":
             payload_obj = decode_match_debug(str(replay), at_game_time=args.at_game_time)
+        elif args.format == "state-json":
+            payload_obj = decode_player_state(str(replay), at_game_time=args.at_game_time,
+                                               at_record_time=args.at_record_time).to_dict()
         else:
             payload_obj = decode_match(str(replay), at_game_time=args.at_game_time).to_dict()
+        if replay_sections(replay) != sections:
+            raise ReplayOutputError(replay, 'Replay section set changed after preflight', 'input_changed')
         payload = json.dumps(payload_obj, indent=2, ensure_ascii=False)
         if output is not None:
             write_report_output(inputs, output, payload)
