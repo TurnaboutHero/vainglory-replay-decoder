@@ -86,13 +86,16 @@ python3.14 -B -m vg.tools.event_semantics_atlas validate \
   --output .omo/evidence/accuracy-20261004/task-8-final-controls.json
 ```
 
-This currently exits1 with one pending primary-opcode control check,03ee. Eight
-gates have bounded fixed-build runtime controls; see
-[the opcode control report](OPCODE_CONTROLS_2026-10-04.md). The remaining03ee
-condition is literal rendered hero-name text at an independently matched native
-boundary. Native216/222 identity and skin comparisons alone do not meet it. The old
+This now exits0 with all nine primary-opcode control gates verified through
+bounded fixed-build evidence; see
+[the opcode control report](OPCODE_CONTROLS_2026-10-04.md). The user-approved03ee
+criterion joins rendered portraits to independent native actor identity, original
+hero assets and unique K/D/A, including216/222 variants and same-name actors.
+The former literal rendered-name experiment is retained in the atlas; its UI text
+observation remains unproved. See [the approved adjustment](ROSTER_ACCEPTANCE_2026-10-05.md). The old
 `--require-player-state-semantics` spelling is an exact alias, covered by a CLI
-regression test. Neither its implementation nor its required proof was weakened.
+regression tests for both successful evidence and a deliberately pending gate.
+The validator implementation and both strict flag spellings are unchanged.
 These checks describe more controlled per-opcode coverage than the observed
 six-field EOF workflow requires. In particular0444 has zero observed records in
 the56 corpus: the new synthetic modify-stack controls establish native consumer

@@ -1088,6 +1088,22 @@
       "sha256": "d3c8ee0be7ef600dd68f6f1478fe2193a8fe1fe8c28e870091724e4b58271b97",
       "kind": "runtime_capture"
     },
+    "roster-identity-controls-20261004": {
+      "path": "evidence/2026-10-04-opcode-controls/roster-identity.json",
+      "sha256": "743491516bdc0e424b1c019ead3066dca7c75477d6b4ce68f753fd7b641a33f5",
+      "kind": "runtime_capture",
+      "scope": "Original C08 roster identity in both216/222 payloads; duplicate nicknames joined by unique native KDA to manually inspected rendered portraits. Literal rendered hero-name text remains unproved."
+    },
+    "roster-identity-screen-20261004": {
+      "path": "evidence/2026-10-04-opcode-controls/roster-identity-board.png",
+      "sha256": "2ea81f54354414ae6b71a63580eb5ad8acb547a9e8db7335a07ee317f202888e",
+      "kind": "runtime_capture"
+    },
+    "roster-identity-audit-20261004": {
+      "path": "evidence/2026-10-04-opcode-controls/audit_roster_identity.py",
+      "sha256": "a07344dbc5595ed7a8a9591fb391e9f00c16c35fc6683302960c7a44a9769108",
+      "kind": "native_review"
+    },
     "opcode-controls-20261004": {
       "path": "evidence/2026-10-04-opcode-controls/controls.json",
       "sha256": "b07e76cdf0c3fc35128ac751e0eb7ab39f054e9c787bb573de852c50b5ce4519",
@@ -2275,9 +2291,20 @@
         "hero"
       ],
       "player_state_gate": {
-        "status": "pending",
-        "reason": "At an exact framed roster boundary independently compare native table UTF16 name, actorID, definition/skin and rendered hero label; repeat216 and222 variants and same-name actors.",
-        "evidence": []
+        "status": "verified",
+        "reason": "Fifty uniquely matched original-frame/native roster controls verify UTF16 nickname, actorID, definition and raw skin in216/222 payloads. At stable C08 EOF, screenshot-bracketed unique native KDA joins both Guest rows to original hero definitions246/Petal and275/Lance and manually inspected rendered portraits. User approved portrait-based UI evidence on2026-10-05 because the scoreboard displays nicknames and portraits. Literal rendered hero-name text remains unproved and is no longer required by this approved criterion.",
+        "original_required_experiment": "At an exact framed roster boundary independently compare native table UTF16 name, actorID, definition/skin and rendered hero label; repeat216 and222 variants and same-name actors.",
+        "acceptance_adjustment": {
+          "approved_on": "2026-10-05",
+          "basis": "User confirmed that the in-game scoreboard shows hero portraits without hero-name text and explicitly approved adjusting this criterion and recognizing verification completion.",
+          "report": "ROSTER_ACCEPTANCE_2026-10-05.md",
+          "literal_hero_name_text_verified": false
+        },
+        "evidence": [
+          "roster-identity-controls-20261004",
+          "roster-identity-screen-20261004",
+          "roster-identity-audit-20261004"
+        ]
       },
       "review": {
         "status": "bounded_unknown",

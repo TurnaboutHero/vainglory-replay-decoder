@@ -80,7 +80,7 @@ class AtlasTests(unittest.TestCase):
         self.assertIn('player_state_gate_pending', [i['code'] for i in result['issues']])
         self.assertTrue(any(i.get('opcode') == '0x043d' for i in result['issues']))
 
-    def test_explicit_control_flag_preserves_legacy_strict_failure(self):
+    def test_explicit_control_flag_and_legacy_alias_accept_verified_controls(self):
         reports = []
         with tempfile.TemporaryDirectory() as directory:
             for flag in ('--require-per-opcode-runtime-controls', '--require-player-state-semantics'):
@@ -89,18 +89,36 @@ class AtlasTests(unittest.TestCase):
                     code = main(['validate', '--atlas', str(DOCS / 'event_semantics_2026-10-04.json'),
                                  '--source', str(DOCS / 'vg-binary-event-candidates-2026-09-09.json'),
                                  '--require-reviewed', flag, '--output', str(output)])
-                self.assertEqual(code, 1)
+                self.assertEqual(code, 0)
                 report = read_json(output)
                 self.assertEqual(report['validation_mode'], 'per_opcode_runtime_controls')
                 self.assertFalse(report['six_field_accuracy_certified'])
                 reports.append(report['issues'])
         self.assertEqual(reports[0], reports[1])
         self.assertEqual({i['opcode'] for i in reports[0]},
-                         {'0x03ee'})
+                         set())
         self.assertEqual({r['opcode'] for r in self.atlas['events']
                           if r['player_state_required'] and r['player_state_gate']['status'] == 'verified'},
-                         {'0x03f2', '0x03f3', '0x041c', '0x041d', '0x043d', '0x0444', '0x044b', '0x046f'})
-        self.assertTrue(all(i['code'] == 'player_state_gate_pending' for i in reports[0]))
+                         {'0x03ee', '0x03f2', '0x03f3', '0x041c', '0x041d', '0x043d', '0x0444', '0x044b', '0x046f'})
+
+    def test_both_strict_flags_still_reject_a_pending_roster_gate(self):
+        atlas, row = self.changed('0x03ee')
+        row['player_state_gate']['status'] = 'pending'
+        reports = []
+        with tempfile.TemporaryDirectory() as directory:
+            changed = Path(directory) / 'pending-atlas.json'
+            changed.write_text(json.dumps(atlas), encoding='utf8')
+            for flag in ('--require-per-opcode-runtime-controls', '--require-player-state-semantics'):
+                output = Path(directory) / (flag[2:] + '.json')
+                with redirect_stdout(io.StringIO()):
+                    code = main(['validate', '--atlas', str(changed),
+                                 '--source', str(DOCS / 'vg-binary-event-candidates-2026-09-09.json'),
+                                 '--require-reviewed', flag, '--output', str(output)])
+                self.assertEqual(code, 1)
+                reports.append(read_json(output)['issues'])
+        self.assertEqual(reports[0], reports[1])
+        self.assertEqual([(i['code'], i['opcode']) for i in reports[0]],
+                         [('player_state_gate_pending', '0x03ee')])
 
     def test_receiver_proof_cannot_become_application_proof(self):
         atlas, row = self.changed('0x03ee')
@@ -163,8 +181,7 @@ class AtlasTests(unittest.TestCase):
         self.assertEqual(row['player_state_required'], [])
         result = self.check(atlas, require_player_state_semantics=True)
         self.assertFalse(any(i.get('opcode') == '0x0448' for i in result['issues']))
-        self.assertEqual({i['opcode'] for i in result['issues'] if i['code'] == 'player_state_gate_pending'},
-                         {'0x03ee'})
+        self.assertTrue(result['ok'], result['issues'])
 
     def test_reader_policy_must_match_current_sources(self):
         atlas = deepcopy(self.atlas)

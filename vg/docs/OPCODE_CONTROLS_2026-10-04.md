@@ -1,6 +1,6 @@
 # Original replay opcode controls — 2026-10-04
 
-Eight of nine player-state control gates are verified for the pinned Windows replay build. The remaining03ee gate requires literal rendered hero-name text at an independently matched native boundary. Original replay observations, synthetic consumer controls and natural gameplay have distinct provenance. This does not change the original56-recording census, semantic-status counts, or certify complete decoder accuracy.
+All nine player-state control gates are verified for the pinned Windows replay build. The user-approved03ee UI criterion compares rendered portraits with independently matched native actor identity, original hero assets and unique K/D/A; see [the acceptance adjustment](ROSTER_ACCEPTANCE_2026-10-05.md). Original replay observations, synthetic consumer controls and natural gameplay have distinct provenance. This does not change the original56-recording census, semantic-status counts, or certify complete decoder accuracy.
 
 | Opcode | Observed controls | Scope |
 |---|---|---|
@@ -40,11 +40,11 @@ The resource auditor recomputes the comparisons and rejects20 data/provenance mu
 
 [Inventory evidence and reproduction commands](INVENTORY_CONTROLS_2026-10-04.md) cover25 synthetic consumer controls:22 grant/consume cases and three quantity assignments. They verify duplicate instances, sentinel stack selection, capacity rejection, native array vacancies, low16-bit SET and consume transitions. A stored quantity0 consume removes the item; it does not reject the action. The original rejection hypothesis is retained alongside this observed correction. Naturally emitted0444 records and rendered inventory slot order remain unproved.
 
-## Remaining03ee rendered-name condition
+## Approved03ee portrait and identity condition
 
 [The native roster index](evidence/2026-10-04-opcode-controls/roster-native.json) records50 exact original-source/native comparisons:40 payloads of216 bytes and10 of222 bytes. Both actors named Guest retain independently matched IDs, definitions and raw skins in both lengths. Skin-wrapper identity passthrough is not a skin-index lookup claim.
 
-C08 was paused at two native reader boundaries with98 and285 unchanged reader/roster samples. The spectator surface showed both Guest names, portraits, abilities and statistics. Hovering portraits/abilities and clicking the ability row did not produce literal Petal/Lance text in the captured attempts; a click selected the camera or replay timeline. Portraits and asset localization do not satisfy the original rendered-label requirement. This is a concrete experimental gap, not a claim that no such UI exists. The strict command still exits1 for03ee and its original requirement remains unchanged.
+C08 was paused at two native reader boundaries with98 and285 unchanged reader/roster samples. The spectator surface showed both Guest names, portraits, abilities and statistics. Hovering portraits/abilities and clicking the ability row did not produce literal Petal/Lance text in the captured attempts; a click selected the camera or replay timeline. These attempts left the former literal-text condition unproved. On2026-10-05 the user confirmed the scoreboard's portrait-only hero display and approved the independent portrait/identity comparison as its replacement. The original experiment is preserved in the atlas; literal UI text is not claimed.
 
 The fresh [same-nickname identity index](evidence/2026-10-04-opcode-controls/roster-identity.json) and [original result screenshot](evidence/2026-10-04-opcode-controls/roster-identity-board.png) establish the two Guest rows independently of row order. Manually transcribed K/D/A8/0/9 uniquely joins actor1501, definition246, raw skin2899818972 and the Petal portrait; K/D/A2/4/16 uniquely joins actor1502, definition275, raw skin3301891249 and the Lance portrait. All ten native K/D/A tuples are distinct at this boundary. Guest is the displayed nickname, not a hero name. The original paired definition manifest and hero resources resolve246 to Petal and275 to Lance.
 
@@ -52,7 +52,7 @@ The screenshot interval14:35:46.731900–14:35:47.441870 UTC is bracketed by nat
 
 Reproduce the embedded comparisons with `python3 vg/docs/evidence/2026-10-04-opcode-controls/audit_roster_identity.py`; add `--workspace /path/to/outer/workspace` with Python3.10 or newer to recheck the external captures, all170 original sections, screenshot receipt,342-sample stability and paired original assets. `python3 vg/docs/evidence/2026-10-04-opcode-controls/test_roster_identity.py` checks the unchanged evidence, row-order independence and11 rejected identity/boundary mutations. Portrait identification and screenshot transcription remain manual. The default audit validates two embedded bracket states; it does not certify the external342 samples without `--workspace`.
 
-Additional Tab holds, portrait/ability/item clicks and holds, and replay options still produced no literal hero-name text in the captured original UI. The native help-button event path was located statically, but no callable spectator route or selected-actor binding was established. All59 original replay-slot sections touched across the two fresh sessions were restored with matching SHA256 hashes; the owned games, workers, probes and scheduled tasks were stopped. This follow-up adds bounded identity proof while retaining the strict03ee rendered-text condition as pending.
+Additional Tab holds, portrait/ability/item clicks and holds, and replay options still produced no literal hero-name text in the captured original UI. The native help-button event path was located statically, but no callable spectator route or selected-actor binding was established. All59 original replay-slot sections touched across the two fresh sessions were restored with matching SHA256 hashes; the owned games, workers, probes and scheduled tasks were stopped. This bounded identity proof satisfies the approved03ee criterion; all nine runtime-control gates are verified.
 
 ## Runtime cleanup
 
