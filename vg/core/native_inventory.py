@@ -10,7 +10,7 @@ from pathlib import Path
 import struct
 from typing import Collection, Sequence
 
-from vg.core.definition_catalog import SUPPORTED_BUILD_SHA256
+from vg.core.definition_catalog import SUPPORTED_BUILD_SHA256, SUPPORTED_MANIFEST_SHA256
 from vg.core.native_query import GameTime, RecordTime, select_native_query
 
 
@@ -82,12 +82,14 @@ class NativeInventoryResult:
     build_sha256: str = SUPPORTED_BUILD_SHA256
 
 
-def _metadata() -> dict:
+def _metadata() -> tuple[dict | None, str]:
+    """Names and possession rules (stacking, uniqueness, capacity) share one provenance."""
     metadata = json.loads(DEFINITIONS_PATH.read_text(encoding='utf-8'))
-    if (metadata.get('schema_version') != 'native-item-definitions.v1'
-            or metadata.get('build_sha256') != SUPPORTED_BUILD_SHA256):
-        raise ValueError('unsupported native item-definition metadata')
-    return metadata
+    provenance = tuple(metadata.get(key) for key in ('schema_version', 'build_sha256', 'manifest_sha256'))
+    if provenance != ('native-item-definitions.v1', SUPPORTED_BUILD_SHA256, SUPPORTED_MANIFEST_SHA256):
+        return None, ('item definition catalog provenance mismatch: schema_version {}, '
+                      'build_sha256 {}, manifest_sha256 {}'.format(*provenance))
+    return metadata, ''
 
 
 def _items(slots):
@@ -161,7 +163,9 @@ def read_native_inventory(
         return result(False, 'invalid_query', 'player IDs must be unique nonreserved unsigned 32-bit integers')
     if not supplied:
         return result(False, 'missing_baseline', 'no player identities supplied')
-    metadata = _metadata()
+    metadata, mismatch = _metadata()
+    if metadata is None:
+        return result(False, 'unsupported_catalog', mismatch)
     definitions = {int(index): value for index, value in metadata['definitions'].items()}
     modes = set()
     for frame in query.frames:

@@ -68,7 +68,7 @@ python -B -m vg.core.vgr_loader load ".quickstart/replays" --name demo --temp ".
 
 These commands use only the fixture's disposable `slot` directory. They do not start or connect to the game. Use explicit source and target names when a directory has several families. Analysis can retain missing-section gaps as evidence, but slot loading requires contiguous numbered sections, disjoint source/target families and verified staging. Success proves copied filesystem bytes, not playback.
 
-Watcher snapshots cover whole section contents and the associated manifest. Changed or newly appended sections produce a new verified snapshot. `--once` reports each family as `success`, `unchanged`, `pending` or `error`; pending/error returns 1 and later scans retry. A stable snapshot does not imply that the recording or match has ended. Continuous watching uses the same scan behavior, with `--interval` in seconds.
+Watcher snapshots cover whole section contents and the associated manifest. Changed or newly appended sections produce a new verified snapshot. `--once` reports each family as `success`, `unchanged`, `pending` or `error`; pending/error returns 1 and later scans retry. A stable snapshot does not imply that the recording or match has ended. An existing snapshot is reused (`unchanged`) only when its section bytes, file set and complete `snapshot.json` (scope, source scope and sections; the stored path may be another spelling of the directory) match the current source inventory, and the watcher receipt is readable. A corrupted or edited receipt is never acknowledged; it is left in place and reported as `recovery_required`. Continuous watching uses the same scan behavior, with `--interval` in seconds.
 
 If a loader operation reports `recovery_required`, retain its operation directory and original backups. After the owning process has stopped, pass the returned `recovery` path:
 
@@ -76,7 +76,7 @@ If a loader operation reports `recovery_required`, retain its operation director
 python -B -m vg.core.vgr_loader recover "PATH_FROM_RECOVERY_FIELD"
 ```
 
-Recovery checks ownership and hashes before restoring the previous slot. It refuses unknown changed bytes, a live owner, or an untrusted journal. The quickstart failure scenario exercises this command on a generated interrupted operation. Do not remove a recovery lock or guess an operation path to bypass that check.
+Recovery checks ownership and hashes before restoring the previous slot. It refuses unknown changed bytes, a live owner, or an untrusted journal. A failed operation rolls back only the report bytes it published itself. If the report was edited, created, deleted-and-relinked or aliased by another program meanwhile, those bytes are preserved and the operation ends in `recovery_required` with "Report changed outside transaction"; move the other file aside, then run recovery to restore the previous report. The quickstart failure scenario exercises this command on a generated interrupted operation. Do not remove a recovery lock or guess an operation path to bypass that check.
 
 Catalog initialization inserts missing built-in entries while preserving existing IDs and custom metadata. Import uses content/section `replay_scope`: the same bytes at a new path are a duplicate, the same display name with different bytes is distinct, and a growing recording is a new snapshot. Legacy rows without a content scope are not silently rekeyed; a colliding name reports `legacy_identity_unknown`. Existing foreign-key violations are reported and block further imports without automatic repair. Unknown historical zeros are not reinterpreted.
 
@@ -151,7 +151,7 @@ from vg.core.replay_output import recover_report_set
 recover_report_set(Path("PATH_TO_PENDING_RECEIPT"))
 ```
 
-Recovery validates owned backups and restores the preceding generation. It does not delete unrelated output files. Collision checks defend against accidental aliases and handled IO failures; they are not an adversarial concurrent filesystem security boundary.
+A process killed at any replace step leaves either the previous complete generation, a pending receipt that recovery rolls back, or the new complete generation, never a mix (crash-matrix test). A kill can leave unreferenced hidden files beside the outputs, which are not cleaned up automatically: staged outputs and receipts (`.*.tmp`), including a staged complete receipt for a generation that recovery then rolled back, and backups of the prior outputs (`.*.backup`) when the kill came before the pending receipt or after the complete one. None of them is read by recovery or publication, and they may be removed once no receipt is pending. Recovery validates owned backups and restores the preceding generation. It does not delete unrelated output files. Collision checks defend against accidental aliases and handled IO failures; they are not an adversarial concurrent filesystem security boundary.
 
 ## Troubleshooting examples
 

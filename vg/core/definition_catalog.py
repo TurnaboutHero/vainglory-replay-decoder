@@ -82,6 +82,8 @@ def load_catalog(manifest: bytes, executable: bytes, profile: BuildProfile):
 
 
 SUPPORTED_BUILD_SHA256 = '659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642'
+# Manifest from which the bundled native roster/item catalogs were derived.
+SUPPORTED_MANIFEST_SHA256 = '7292b885378be83cb8596601bad7d0c7adfaab1e91e23f8ea65601f03136755c'
 
 def supported_build_profile(build_sha256: str, manifest_sha256: str):
     """Observed Windows PE32 profile. Manifest hash is a user trust assertion.
