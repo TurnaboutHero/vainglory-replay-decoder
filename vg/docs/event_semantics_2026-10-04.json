@@ -21172,7 +21172,7 @@
       "0x046f"
     ],
     "source_sha256": {
-      "native_roster.py": "33e277200cd79146a9473c256a3a1c339151e5314a0a3a0d1916f7c25df1d723",
+      "native_roster.py": "b3ced4d30bdb45459b3c315ac528efb59ae083c8263af85299e31dc8420452c7",
       "native_stats.py": "cc7f02f0a851b155ef2ac0aa6b90820d1f6592f5f30c8107fe67f3ef3ce5048f",
       "native_gold.py": "2208e4cc48e9eb71a42be41469181a0fa978c78c3ac40c26682751be2e16099e",
       "native_inventory.py": "0fd92140c2cdd16d7b2c35d188485b19dadbd367e831fb94a08ed85b9335e88c",

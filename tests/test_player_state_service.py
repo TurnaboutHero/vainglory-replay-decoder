@@ -141,6 +141,12 @@ class PlayerStateServiceTests(unittest.TestCase):
         self.assertEqual((player.gold_balance, player.net_worth), (0, 0))
         self.assertEqual(player.field_status['gold_balance'].status, 'supported')
 
+    def test_mismatched_catalog_does_not_mask_unproved_identity(self):
+        with hero_catalog(self, manifest_sha256='0' * 64):
+            result = player_state.decode_player_state(self.write(anchor() + roster(7, b'Same') + state_snapshot(definition=99999)))
+        self.assertEqual(result.players[0].field_status['hero'].status, 'identity_unproved')
+        self.assertEqual(result.players[0].field_status['kda'].status, 'identity_unproved')
+
     def test_mismatched_hero_catalog_withholds_only_hero(self):
         with hero_catalog(self, manifest_sha256='0' * 64):
             result = player_state.decode_player_state(self.write(recording(items=((515, 2002, 1),))))

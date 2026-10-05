@@ -168,7 +168,7 @@ def read_native_roster(
         definition_name = definition['definition_name'] if definition else None
         hero_name = definition['hero_name'] if definition and association == 'corroborated' else None
         hero_status = ('resolved' if hero_name is not None else
-                       'unresolved_definition' if catalog_ok else 'unsupported_catalog')
+                       'unsupported_catalog' if not catalog_ok and association == 'corroborated' else 'unresolved_definition')
         if association != 'corroborated':
             issues.append(f'actor {actor}: {association}')
         if latest.name is None:

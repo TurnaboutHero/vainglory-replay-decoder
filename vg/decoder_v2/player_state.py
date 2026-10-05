@@ -227,8 +227,8 @@ def decode_player_state(
             'roster/query boundary mismatch' if not roster_boundary_ok else identity.association_status)
         name_ok = identity.name is not None and roster_boundary_ok
         hero_ok = linked and identity.hero_name is not None
-        hero_status = 'supported' if hero_ok else (
-            'unsupported_catalog' if identity.hero_status == 'unsupported_catalog' else 'unresolved_definition')
+        hero_status = ('supported' if hero_ok else identity_status if not linked else
+                       'unsupported_catalog' if identity.hero_status == 'unsupported_catalog' else 'unresolved_definition')
         statuses = {
             'native_actor_id': field(identity_status, identity_reason, 'native_roster', ('03ee.actor', '03f3.actor'), source_records=records),
             'name': field('supported' if name_ok else identity.name_status, identity.name_status,
