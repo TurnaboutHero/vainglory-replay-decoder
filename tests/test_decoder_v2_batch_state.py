@@ -66,6 +66,10 @@ class BatchPlayerStateTests(unittest.TestCase):
         self.assertEqual(json.loads(stdout.getvalue())['schema_version'], 'decoder_v2.batch.v2')
         with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
             batch_decode.main([str(self.root), '--at-game-time', '0'])
+        for bad in ('-1', 'nan', 'inf'):
+            with self.subTest(at_game_time=bad), contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as usage:
+                batch_decode.main([str(self.root), '--format', 'state-json', '--at-game-time', bad])
+            self.assertEqual(usage.exception.code, 2)
 
 
 if __name__ == '__main__':

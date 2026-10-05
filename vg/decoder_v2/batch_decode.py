@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 from dataclasses import dataclass
 import json
+import math
 from pathlib import Path
 import sys
 from typing import Dict, List, Optional
@@ -144,6 +145,8 @@ def main(argv: Optional[List[str]] = None) -> int:
                         help="safe-json keeps decoder_v2.batch.v2; state-json emits decoder_v2.player_state.v3 per input")
     parser.add_argument("--at-game-time", type=float, help="Query every input at this game-clock second (state-json only)")
     args = parser.parse_args(argv)
+    if args.at_game_time is not None and (not math.isfinite(args.at_game_time) or args.at_game_time < 0):
+        parser.error("--at-game-time must be finite and non-negative")
     if args.at_game_time is not None and args.format != "state-json":
         parser.error("--at-game-time requires --format state-json")
 
