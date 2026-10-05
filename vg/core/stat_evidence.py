@@ -46,6 +46,29 @@ def final_field_reason(field: str) -> str:
             "recording coverage, native clock and queued end-match requests are separate observations.")
 
 
+def _end_requests(number: int, records) -> list[EndMatchObservation]:
+    found = []
+    for record in records:
+        if record.opcode == 0x03F1 and record.content_length == 8:
+            end_reason = record.payload[4]
+            status = ("validation_error" if end_reason in (5, 6, 7) else
+                      "no_op" if end_reason == 8 else "queued_request")
+            found.append(EndMatchObservation(number, record.offset, record.timestamp,
+                                             struct.unpack_from(">I", record.payload)[0], end_reason, status))
+    return found
+
+
+def end_match_requests(frames: Sequence[tuple[int, bytes]]) -> tuple[EndMatchObservation, ...]:
+    """Queued 03f1 requests in readable sections, without the clock audit."""
+    found = []
+    for number, data in frames:
+        try:
+            found.extend(_end_requests(number, iter_records(data)))
+        except VGRRecordError:
+            continue
+    return tuple(found)
+
+
 def inspect_replay_evidence(frames: Sequence[tuple[int, bytes]]) -> ReplayEvidence:
     """Keep structural, clock and terminal-request evidence independent."""
     valid = bool(frames) and frames[0][0] == 0
@@ -68,14 +91,6 @@ def inspect_replay_evidence(frames: Sequence[tuple[int, bytes]]) -> ReplayEviden
         if not records:
             valid = False
             reason = f"Section {number} contains no records."
-        for record in records:
-            if record.opcode == 0x03F1 and record.content_length == 8:
-                end_reason = record.payload[4]
-                status = ("validation_error" if end_reason in (5, 6, 7) else
-                          "no_op" if end_reason == 8 else "queued_request")
-                terminal.append(EndMatchObservation(
-                    number, record.offset, record.timestamp,
-                    struct.unpack_from(">I", record.payload)[0], end_reason, status,
-                ))
+        terminal.extend(_end_requests(number, records))
     return ReplayEvidence(frame_scope(frames), valid, reason,
                           inspect_native_clock(frames), tuple(terminal))

@@ -64,6 +64,20 @@ class PlayerStateServiceTests(unittest.TestCase):
         unavailable = player_state.decode_player_state(self.write(anchor()))
         self.assertEqual(unavailable.to_dict()['recording_client']['status'], 'unverified')
 
+    def test_end_requests_are_reported_raw_within_the_query_boundary(self):
+        end = packet(5, 0x03f1, struct.pack('>IBB', 0x0102, 2, 0))
+        result = player_state.decode_player_state(self.write(recording() + end))
+        self.assertEqual(result.support_status, 'supported', result.support_reason)
+        serialized = json.loads(json.dumps(result.to_dict()))
+        self.assertEqual(serialized['end_requests'], [{
+            'record_boundary': {'section': 0, 'record_offset': len(recording())}, 'record_time': 5.0,
+            'winning_team_raw': 0x0102, 'winning_team_id': 2, 'end_reason': 2, 'request_status': 'queued_request'}])
+        early = player_state.decode_player_state(self.write(recording() + end), at_record_time=1)
+        self.assertEqual(early.end_requests, ())
+        self.assertEqual(player_state.decode_player_state(self.write(recording())).end_requests, ())
+        invalid = player_state.decode_player_state(self.write(anchor() + end))
+        self.assertNotEqual(invalid.support_status, 'supported')
+
     def test_duplicate_items_and_hidden_native_possession_are_distinct(self):
         items = ((457, 2000, 1), (526, 2001, 1), (515, 2002, 1), (458, 2003, 1), (458, 2004, 1))
         result = player_state.decode_player_state(self.write(recording(items=items)))
