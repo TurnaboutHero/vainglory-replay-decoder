@@ -275,6 +275,7 @@ class TestProductLoader(unittest.TestCase):
                 inject.inject_replay_with_vgrplay(str(self.source), 'saved', str(self.target), output=str(late))
         # A late alias is someone else's change: preserved, reported, then resolved explicitly.
         self.assert_report_conflict(raised.exception, late)
+        self.assertFalse(late.exists() or late.is_symlink())
         self.assert_restored()
         for selected in (self.source / 'saved.0.vgr', self.target / 'slot.0.vgr'):
             for kind in ('symlink', 'hardlink'):
