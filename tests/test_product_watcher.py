@@ -138,6 +138,43 @@ class TestProductWatcher(unittest.TestCase):
         self.assertTrue(VGRWatcher(str(self.backup), str(self.source)).scan_once())
         self.assertEqual(len(self.snapshots()), 3)
 
+    def test_watcher_failure_corrupt_snapshot_receipt_is_not_acknowledged(self):
+        self.assertTrue(self.watcher.scan_once())
+        saved = next(p for p in self.snapshots() if (p / 'a.0.vgr').exists())
+        receipt = saved / 'snapshot.json'
+        good = receipt.read_bytes()
+        frame0 = self.source / 'a.0.vgr'
+        def corrupt(data):
+            data = json.loads(data)
+            return {'invalid_json': lambda: b'{"sections": [',
+                    'wrong_scope': lambda: json.dumps({**data, 'scope': '0' * 64}).encode(),
+                    'wrong_source_scope': lambda: json.dumps({**data, 'source_scope': 'sha256:' + '0' * 64}).encode(),
+                    'missing_sections': lambda: json.dumps({k: v for k, v in data.items() if k != 'sections'}).encode()}
+        for kind, payload in corrupt(good).items():
+            with self.subTest(kind=kind):
+                receipt.chmod(0o644)
+                receipt.write_bytes(payload())
+                with self.assertRaises(archive.ArchiveError) as reused:
+                    self.watcher.backup_replay('a')
+                self.assertEqual(reused.exception.code, 'recovery_required')
+                with self.assertRaises(archive.ArchiveError) as republished:
+                    archive.snapshot(frame0, saved)
+                self.assertEqual(republished.exception.code, 'recovery_required')
+                self.assertEqual(receipt.read_bytes(), payload())
+        receipt.write_bytes(good)
+        identity = hashlib.sha256(str(frame0.absolute().resolve()).encode()).hexdigest()
+        watcher_receipt = self.backup / '.watcher' / f'{identity}.json'
+        acknowledged = watcher_receipt.read_bytes()
+        for payload in (b'not json', b'[]', json.dumps({'snapshot': str(saved)}).encode()):
+            with self.subTest(watcher_receipt=payload[:12]):
+                watcher_receipt.write_bytes(payload)
+                with self.assertRaises(archive.ArchiveError) as unreadable:
+                    self.watcher.backup_replay('a')
+                self.assertEqual(unreadable.exception.code, 'recovery_required')
+        watcher_receipt.write_bytes(acknowledged)
+        self.assertEqual(self.watcher.backup_replay('a'), saved)
+        self.assertEqual(archive.snapshot(frame0, saved)['path'], str(saved))
+
     def test_watcher_failure_one_family_does_not_hide_other_and_cli_nonzero(self):
         (self.source / 'a.2.vgr').write_bytes(b'gap')
         self.assertTrue(self.watcher.scan_once())

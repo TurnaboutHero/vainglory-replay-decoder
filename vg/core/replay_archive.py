@@ -269,6 +269,29 @@ def recover(operation: Path) -> Path:
     return recover_operation(operation)
 
 
+def _snapshot_receipt(destination: Path, before: Inventory) -> Snapshot:
+    sections = [asdict(e) for e in before.entries]
+    scope = hashlib.sha256(json.dumps(sections, sort_keys=True).encode()).hexdigest()
+    return {'path': str(destination), 'scope': scope, 'source_scope': before.scope, 'sections': sections}
+
+
+def verify_snapshot(destination: Path, before: Inventory) -> None:
+    """An existing snapshot counts only when its bytes and its whole receipt match the source inventory."""
+    if destination.is_symlink() or {p.name for p in destination.iterdir()} != {e.name for e in before.entries} | {'snapshot.json'}:
+        raise ArchiveError('recovery_required', destination, 'Existing snapshot inventory differs')
+    try:
+        _verify(destination, before.entries)
+    except ArchiveError as error:
+        raise ArchiveError('recovery_required', error.path, error.reason) from error
+    receipt = destination / 'snapshot.json'
+    try:
+        recorded = json.loads(receipt.read_text(encoding='utf-8'))
+    except (OSError, UnicodeError, ValueError) as error:
+        raise ArchiveError('recovery_required', receipt, f'Snapshot receipt is unreadable: {error}') from error
+    if recorded != _snapshot_receipt(destination, before):
+        raise ArchiveError('recovery_required', receipt, 'Snapshot receipt differs from its verified sections')
+
+
 def snapshot(frame0: Path, destination: Path, *, expected: Inventory | None = None) -> Snapshot:
     """Publish a verified immutable directory; failed attempts never acknowledge it."""
     before = expected or inventory(frame0, manifest=True)
@@ -284,14 +307,10 @@ def snapshot(frame0: Path, destination: Path, *, expected: Inventory | None = No
                 _copy(frame0.parent / entry.name, stage / entry.name)
             _verify(stage, before.entries)
             _check_unchanged(before, 'source_changed', manifest=True)
-            scope = hashlib.sha256(json.dumps([asdict(e) for e in before.entries], sort_keys=True).encode()).hexdigest()
-            result: Snapshot = {'path': str(destination), 'scope': scope, 'source_scope': before.scope,
-                                'sections': [asdict(e) for e in before.entries]}
+            result = _snapshot_receipt(destination, before)
             _json(stage / 'snapshot.json', json.dumps(result, indent=2))
             if destination.exists():
-                if {p.name for p in destination.iterdir()} != {e.name for e in before.entries} | {'snapshot.json'}:
-                    raise ArchiveError('recovery_required', destination, 'Existing snapshot inventory differs')
-                _verify(destination, before.entries)
+                verify_snapshot(destination, before)
             else:
                 os.replace(stage, destination)
             return result

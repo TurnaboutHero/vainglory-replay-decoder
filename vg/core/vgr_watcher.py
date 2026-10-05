@@ -9,7 +9,7 @@ from pathlib import Path
 import time
 from typing import Literal, TypedDict
 
-from vg.core.replay_archive import ArchiveError, Inventory, exclusive_lock, inventory, snapshot
+from vg.core.replay_archive import ArchiveError, Inventory, exclusive_lock, inventory, snapshot, verify_snapshot
 from vg.core.replay_input import ReplayInputError, discover_replay_files
 from vg.core.replay_output import ReplayOutputError, ReportInputs, write_report_output
 
@@ -43,18 +43,16 @@ class VGRWatcher:
     def _existing(self, receipt: Path, fingerprint: str, details: Inventory) -> Path | None:
         if not receipt.exists():
             return None
-        data = json.loads(receipt.read_text(encoding='utf-8'))
-        if data['fingerprint'] != fingerprint:
+        try:
+            data = json.loads(receipt.read_text(encoding='utf-8'))
+            acknowledged, destination = data['fingerprint'], Path(data['snapshot'])
+        except (OSError, UnicodeError, ValueError, KeyError, TypeError) as error:
+            raise ArchiveError('recovery_required', receipt, f'Watcher receipt is unreadable: {error!r}') from error
+        if acknowledged != fingerprint:
             return None
-        destination = Path(data['snapshot'])
         if not destination.resolve().is_relative_to(self.backup_dir.resolve()) or destination.is_symlink():
             raise ArchiveError('recovery_required', receipt, 'Snapshot receipt leaves backup directory')
-        recorded = json.loads((destination / 'snapshot.json').read_text(encoding='utf-8'))
-        entries = [asdict(e) for e in details.entries]
-        if recorded['sections'] != entries or inventory(destination / details.frame0.name, manifest=True).entries != details.entries:
-            raise ArchiveError('recovery_required', destination, 'Acknowledged snapshot no longer verifies')
-        if {p.name for p in destination.iterdir()} != {e.name for e in details.entries} | {'snapshot.json'}:
-            raise ArchiveError('recovery_required', destination, 'Acknowledged snapshot has unexpected files')
+        verify_snapshot(destination, details)
         return destination
 
     def _backup(self, frame0: Path) -> ScanResult:
