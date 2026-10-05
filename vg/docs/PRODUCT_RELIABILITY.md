@@ -76,7 +76,7 @@ If a loader operation reports `recovery_required`, retain its operation director
 python -B -m vg.core.vgr_loader recover "PATH_FROM_RECOVERY_FIELD"
 ```
 
-Recovery checks ownership and hashes before restoring the previous slot. It refuses unknown changed bytes, a live owner, or an untrusted journal. The quickstart failure scenario exercises this command on a generated interrupted operation. Do not remove a recovery lock or guess an operation path to bypass that check.
+Recovery checks ownership and hashes before restoring the previous slot. It refuses unknown changed bytes, a live owner, or an untrusted journal. A failed operation rolls back only the report bytes it published itself. If the report was edited, created, deleted-and-relinked or aliased by another program meanwhile, those bytes are preserved and the operation ends in `recovery_required` with "Report changed outside transaction"; move the other file aside, then run recovery to restore the previous report. The quickstart failure scenario exercises this command on a generated interrupted operation. Do not remove a recovery lock or guess an operation path to bypass that check.
 
 Catalog initialization inserts missing built-in entries while preserving existing IDs and custom metadata. Import uses content/section `replay_scope`: the same bytes at a new path are a duplicate, the same display name with different bytes is distinct, and a growing recording is a new snapshot. Legacy rows without a content scope are not silently rekeyed; a colliding name reports `legacy_identity_unknown`. Existing foreign-key violations are reported and block further imports without automatic repair. Unknown historical zeros are not reinterpreted.
 
