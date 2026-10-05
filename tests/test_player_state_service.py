@@ -6,8 +6,8 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from tests.test_native_inventory import anchor, grant, packet, snapshot
-from tests.test_native_roster import roster
+from tests.test_native_inventory import anchor, grant, mismatched_catalog as item_catalog, packet, snapshot
+from tests.test_native_roster import mismatched_catalog as hero_catalog, roster
 from tests.test_native_stats import attribute, resource
 from vg.core.replay_output import ReplayOutputError
 from vg.decoder_v2 import player_state
@@ -140,6 +140,39 @@ class PlayerStateServiceTests(unittest.TestCase):
         self.assertEqual((player.kills, player.deaths, player.assists, player.minion_kills), (0, 0, 0, 0))
         self.assertEqual((player.gold_balance, player.net_worth), (0, 0))
         self.assertEqual(player.field_status['gold_balance'].status, 'supported')
+
+    def test_mismatched_hero_catalog_withholds_only_hero(self):
+        with hero_catalog(self, manifest_sha256='0' * 64):
+            result = player_state.decode_player_state(self.write(recording(items=((515, 2002, 1),))))
+        player = result.players[0]
+        self.assertEqual(result.support_status, 'partial')
+        self.assertIn('hero: unsupported_catalog', result.support_reason)
+        self.assertIn('roster definition catalog provenance mismatch', result.support_reason)
+        self.assertIsNone(player.hero_name)
+        self.assertIsNone(player.definition_name)
+        self.assertEqual(player.definition_index, 243)
+        hero = player.field_status['hero']
+        self.assertEqual(hero.status, 'unsupported_catalog')
+        self.assertIsNone(hero.provenance.resource_sha256)
+        self.assertEqual(result.field_status['hero'].status, 'unsupported_catalog')
+        self.assertEqual((player.native_actor_id, player.name, player.kills), (7, 'Same', 1))
+        self.assertEqual([i.definition_id for i in player.items], [515])
+        for name in ('native_actor_id', 'name', 'team_id', 'kda', 'items', 'gold_balance'):
+            self.assertEqual(player.field_status[name].status, 'supported', name)
+
+    def test_mismatched_item_catalog_withholds_only_items(self):
+        with item_catalog(self, build_sha256='0' * 64):
+            result = player_state.decode_player_state(self.write(recording(items=((515, 2002, 1),))))
+        player = result.players[0]
+        self.assertEqual(result.support_status, 'partial')
+        self.assertIsNone(player.items)
+        self.assertIsNone(player.native_items)
+        self.assertIsNone(player.inventory_capacity)
+        for name in ('items', 'native_items'):
+            self.assertEqual(player.field_status[name].status, 'unsupported_catalog')
+            self.assertIn('catalog provenance', player.field_status[name].reason)
+        self.assertEqual((player.hero_name, player.kills, player.gold_balance), ('Ringo', 1, 25.5))
+        self.assertEqual(player.field_status['hero'].status, 'supported')
 
     def test_unknown_gold_keeps_known_empty_inventory_and_counters(self):
         result = player_state.decode_player_state(self.write(recording(gold=(float('nan'), 1))))

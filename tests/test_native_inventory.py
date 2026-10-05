@@ -1,7 +1,11 @@
 import json
+from pathlib import Path
 import struct
+import tempfile
 import unittest
+from unittest.mock import patch
 
+from vg.core import native_inventory
 from vg.core.native_inventory import DEFINITIONS_PATH, read_native_inventory
 
 
@@ -49,6 +53,21 @@ def stack(time=2, instance=2000, quantity=3, actor=7):
 def values(result, actor=7):
     player = next(p for p in result.players if p.entity_id == actor)
     return None if player.items is None else [(i.definition_id, i.instance_id, i.quantity) for i in player.items]
+
+
+def mismatched_catalog(test, **changes):
+    """Patch in a copy of the bundled item catalog with altered/removed provenance keys."""
+    catalog = json.loads(DEFINITIONS_PATH.read_text(encoding='utf-8'))
+    for key, value in changes.items():
+        if value is None:
+            catalog.pop(key)
+        else:
+            catalog[key] = value
+    temp = tempfile.TemporaryDirectory()
+    test.addCleanup(temp.cleanup)
+    path = Path(temp.name) / 'native_inventory_definitions.json'
+    path.write_text(json.dumps(catalog), encoding='utf-8')
+    return patch.object(native_inventory, 'DEFINITIONS_PATH', path)
 
 
 class NativeInventoryTests(unittest.TestCase):
@@ -249,6 +268,17 @@ class NativeInventoryTests(unittest.TestCase):
         result = self.read(snapshot(flag=1))
         self.assertEqual(result.status, 'unsupported_state')
         self.assertIsNone(values(result))
+
+    def test_mismatched_catalog_withholds_inventory_without_raising(self):
+        for changes in ({'build_sha256': '0' * 64}, {'manifest_sha256': '0' * 64},
+                        {'schema_version': 'other'}, {'manifest_sha256': None}):
+            with self.subTest(changes=changes), mismatched_catalog(self, **changes):
+                result = self.read(snapshot(items=((515, 2002, 1),)))
+                self.assertFalse(result.valid)
+                self.assertEqual(result.status, 'unsupported_catalog')
+                self.assertIn('catalog provenance', result.reason)
+                self.assertEqual(result.players, ())
+        self.assertTrue(self.read(snapshot(items=((515, 2002, 1),))).valid)
 
     def test_native_metadata_contains_original_asset_provenance(self):
         metadata = json.loads(DEFINITIONS_PATH.read_text())

@@ -227,11 +227,13 @@ def decode_player_state(
             'roster/query boundary mismatch' if not roster_boundary_ok else identity.association_status)
         name_ok = identity.name is not None and roster_boundary_ok
         hero_ok = linked and identity.hero_name is not None
+        hero_status = 'supported' if hero_ok else (
+            'unsupported_catalog' if identity.hero_status == 'unsupported_catalog' else 'unresolved_definition')
         statuses = {
             'native_actor_id': field(identity_status, identity_reason, 'native_roster', ('03ee.actor', '03f3.actor'), source_records=records),
             'name': field('supported' if name_ok else identity.name_status, identity.name_status,
                           'native_roster', ('03ee.name_utf8_bmp',), source_records=records),
-            'hero': field('supported' if hero_ok else 'unresolved_definition', identity.hero_status,
+            'hero': field(hero_status, identity.hero_status,
                           'native_roster', ('03ee.definition', '03f3.definition', 'original_hero_localization'),
                           source_records=records, resource_sha256=identity.hero_resource_sha256),
             'team_id': field('supported' if linked else identity_status, 'recorded low nibble; no inferred UI side',

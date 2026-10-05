@@ -1,6 +1,11 @@
+import json
+from pathlib import Path
 import struct
+import tempfile
 import unittest
+from unittest.mock import patch
 
+from vg.core import native_roster
 from vg.core.native_roster import read_native_roster
 from vg.core.native_stats import GameTime, RecordTime
 
@@ -27,6 +32,21 @@ def spawn(entity=1500, definition=243, skin=42, opcode=0x03f3, extra=0, time=0):
     payload = bytearray((746 if opcode == 0x03f3 else 122) + extra)
     struct.pack_into('>III', payload, 0, definition, skin, entity)
     return packet(opcode, payload, time)
+
+
+def mismatched_catalog(test, **changes):
+    """Patch in a copy of the bundled catalog with altered/removed provenance keys."""
+    catalog = json.loads(native_roster.DEFINITIONS_PATH.read_text(encoding='utf-8'))
+    for key, value in changes.items():
+        if value is None:
+            catalog.pop(key)
+        else:
+            catalog[key] = value
+    temp = tempfile.TemporaryDirectory()
+    test.addCleanup(temp.cleanup)
+    path = Path(temp.name) / 'native_roster_definitions.json'
+    path.write_text(json.dumps(catalog), encoding='utf-8')
+    return patch.object(native_roster, 'DEFINITIONS_PATH', path)
 
 
 class NativeRosterTests(unittest.TestCase):
@@ -144,6 +164,25 @@ class NativeRosterTests(unittest.TestCase):
         result = self.read(roster(definition=515) + spawn(definition=515))
         self.assertFalse(result.valid)
         self.assertIsNone(result.players[0].hero_name)
+
+    def test_mismatched_catalog_withholds_hero_but_keeps_identity(self):
+        for changes in ({'build_sha256': '0' * 64}, {'manifest_sha256': '0' * 64},
+                        {'build_sha256': None}, {'manifest_sha256': None}):
+            with self.subTest(changes=changes), mismatched_catalog(self, **changes):
+                result = self.read(roster(70000, b'Same', team=0x1d) + spawn(70000))
+                self.assertFalse(result.valid)
+                self.assertEqual(result.status, 'partial_roster')
+                player = result.players[0]
+                self.assertEqual((player.entity_id, player.name, player.team_id), (70000, 'Same', 13))
+                self.assertEqual(player.association_status, 'corroborated')
+                self.assertEqual(player.definition_index, 243)
+                self.assertIsNone(player.hero_name)
+                self.assertIsNone(player.definition_name)
+                self.assertIsNone(player.hero_resource_sha256)
+                self.assertIsNone(player.hero_localization_key)
+                self.assertEqual(player.hero_status, 'unsupported_catalog')
+                self.assertTrue(any('catalog provenance' in issue for issue in result.issues), result.issues)
+        self.assertEqual(self.read(roster() + spawn()).players[0].hero_status, 'resolved')
 
     def test_boundary_is_last_included_record_not_query(self):
         initial = anchor() + roster() + spawn()

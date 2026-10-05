@@ -12,7 +12,7 @@ import struct
 from typing import Final, Sequence
 
 from vg.core.native_query import GameTime, RecordTime, select_native_query
-from vg.core.definition_catalog import SUPPORTED_BUILD_SHA256
+from vg.core.definition_catalog import SUPPORTED_BUILD_SHA256, SUPPORTED_MANIFEST_SHA256
 
 
 DEFINITIONS_PATH: Final = Path(__file__).with_name('native_roster_definitions.json')
@@ -62,7 +62,7 @@ class NativeRosterPlayer:
     spawn_observations: tuple[RosterSpawn, ...]
     hero_resource_sha256: str | None
     hero_localization_key: str | None
-    hero_localization_sha256: str
+    hero_localization_sha256: str | None
 
 
 @dataclass(frozen=True, slots=True)
@@ -76,7 +76,7 @@ class NativeRosterResult:
     record_boundary: tuple[int, int] | None = None
     evidence_version: str = "native_roster.windows_2026_10_04.v1"
     build_sha256: str = SUPPORTED_BUILD_SHA256
-    manifest_sha256: str = "7292b885378be83cb8596601bad7d0c7adfaab1e91e23f8ea65601f03136755c"
+    manifest_sha256: str = SUPPORTED_MANIFEST_SHA256
 
 
 def _name(raw: bytes) -> tuple[str | None, str, str]:
@@ -109,10 +109,14 @@ def read_native_roster(
         return NativeRosterResult(False, query.status, query.reason)
     audit, parsed = query.audit, query.frames
     catalog = json.loads(DEFINITIONS_PATH.read_text(encoding='utf-8'))
-    metadata = catalog['definitions']
+    provenance = (catalog.get('build_sha256'), catalog.get('manifest_sha256'))
+    # Labels from a catalog of another build/manifest are not evidence; identity survives.
+    catalog_ok = provenance == (SUPPORTED_BUILD_SHA256, SUPPORTED_MANIFEST_SHA256)
+    metadata = catalog['definitions'] if catalog_ok else {}
     observations: dict[int, list[RosterObservation]] = {}
     spawns: dict[int, list[RosterSpawn]] = {}
-    issues: list[str] = []
+    issues: list[str] = [] if catalog_ok else [
+        'roster definition catalog provenance mismatch: build_sha256 {}, manifest_sha256 {}'.format(*provenance)]
     as_of = None
     boundary = None
     for frame in parsed:
@@ -163,7 +167,8 @@ def read_native_roster(
         definition = metadata.get(str(latest.definition_index))
         definition_name = definition['definition_name'] if definition else None
         hero_name = definition['hero_name'] if definition and association == 'corroborated' else None
-        hero_status = 'resolved' if hero_name is not None else 'unresolved_definition'
+        hero_status = ('resolved' if hero_name is not None else
+                       'unresolved_definition' if catalog_ok else 'unsupported_catalog')
         if association != 'corroborated':
             issues.append(f'actor {actor}: {association}')
         if latest.name is None:
@@ -176,7 +181,7 @@ def read_native_roster(
             tuple(history), tuple(actor_spawns),
             definition['resource_sha256'] if definition else None,
             definition['name_key'] if definition else None,
-            catalog['localization']['resource_sha256'],
+            catalog['localization']['resource_sha256'] if catalog_ok else None,
         ))
     if not players:
         issues.append('no framed player roster records')
