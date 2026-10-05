@@ -13,7 +13,7 @@ from vg.core.native_roster import read_native_roster
 from vg.core.native_stats import read_native_stats
 from vg.core.replay_input import replay_sections, select_replay
 from vg.core.replay_output import ReportInputs, ReplayOutputError
-from vg.core.stat_evidence import frame_scope
+from vg.core.stat_evidence import end_match_requests, frame_scope
 
 
 EVIDENCE_VERSION = 'native_player_state.windows_2026_10_04.v1'
@@ -85,6 +85,17 @@ class PlayerState:
 
 
 @dataclass(frozen=True, slots=True)
+class EndRequest:
+    """Raw native ActionEndMatch (03f1) inside the query boundary; not a server or completed result."""
+    record_boundary: RecordBoundary
+    record_time: float
+    winning_team_raw: int
+    winning_team_id: int  # low byte, same space as PlayerState.team_id
+    end_reason: int  # 2 takes the native surrender path; others are unclassified
+    request_status: str
+
+
+@dataclass(frozen=True, slots=True)
 class PlayerStateResult:
     schema_version: str
     replay_name: str
@@ -105,6 +116,7 @@ class PlayerStateResult:
     last_game_time: float | None
     evidence_version: str = EVIDENCE_VERSION
     supported_client_sha256: str = SUPPORTED_BUILD_SHA256
+    end_requests: tuple[EndRequest, ...] = ()
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -155,6 +167,11 @@ def decode_player_state(
     replay_scope = frame_scope(frames)
     query = select_native_query(frames, cutoff)
     boundary = _boundary(query.record_boundary)
+    end_requests = tuple(
+        EndRequest(RecordBoundary(request.frame_index, request.record_offset), request.record_time,
+                   request.winning_team_raw, request.winning_team_raw & 0xff, request.end_reason, request.request_status)
+        for request in end_match_requests(frames)
+        if query.record_boundary is not None and (request.frame_index, request.record_offset) <= tuple(query.record_boundary))
 
     def finish(status, reason, players=(), fields=None):
         if query.valid and not query.audit.game_time_mapping_valid:
@@ -169,6 +186,7 @@ def decode_player_state(
             query.requested_game_time, at_record_time, query.applied_game_time, boundary,
             status, reason, tuple(players), fields or {}, sources,
             query.audit.first_game_time, query.audit.last_game_time,
+            end_requests=end_requests,
         )
 
     if not query.valid:
