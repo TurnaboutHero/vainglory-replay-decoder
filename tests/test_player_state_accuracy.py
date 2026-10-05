@@ -89,6 +89,21 @@ class AccuracyTests(unittest.TestCase):
         self.assertFalse(result['ok'])
         self.assertEqual(result['issues'][0]['field'], 'gold_balance')
 
+    def test_zero_quantity_is_a_held_item_not_an_invalid_one(self):
+        ref, actual, sources = fixture()
+        zero = [{'native_item_id': 101, 'quantity': 2}, {'native_item_id': 202, 'quantity': 0}]
+        ref['players'][0]['fields']['items']['value'] = deepcopy(zero)
+        actual['players'][0]['items'] = [{'definition_id': 101, 'quantity': 2}, {'definition_id': 202, 'quantity': 0}]
+        self.assertTrue(self.compare(ref, actual, sources)['ok'])
+        actual['players'][0]['items'] = [{'definition_id': 101, 'quantity': 2}]
+        result = self.compare(ref, actual, sources)
+        self.assertFalse(result['ok'])
+        self.assertEqual(result['issues'][0]['field'], 'items')
+        for bad in (-1, True, 1.0):
+            with self.subTest(quantity=bad):
+                actual['players'][0]['items'] = [{'definition_id': 101, 'quantity': 2}, {'definition_id': 202, 'quantity': bad}]
+                self.assertFalse(self.compare(ref, actual, sources)['ok'])
+
     def test_public_definition_id_adapter_preserves_multiplicity(self):
         ref, actual, sources = fixture()
         actual['players'][0]['items'] = [{'definition_id': 101, 'quantity': 1, 'reconstruction_index': n}

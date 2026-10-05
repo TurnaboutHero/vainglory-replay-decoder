@@ -221,8 +221,9 @@ def item_counts(items):
         identity, quantity = item['native_item_id'], item['quantity']
         if isinstance(identity, bool) or not isinstance(identity, int) or identity < 0:
             raise ValueError('invalid native item identity')
-        if isinstance(quantity, bool) or not isinstance(quantity, int) or quantity < 1:
+        if isinstance(quantity, bool) or not isinstance(quantity, int) or quantity < 0:
             raise ValueError('invalid native item multiplicity')
+        # Quantity 0 (after 0444, before 044b) is still a held item; keep its key.
         result[identity] += quantity
     return sorted(result.items())
 

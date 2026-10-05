@@ -96,7 +96,7 @@ unsigned 32-bit `native_actor_id`, `actor_link` with `status: observed` and
 | `hero` | Independently resolved hero name |
 | `kda` | `{kills, deaths, assists}` nonnegative integers |
 | `minion_kills` | Nonnegative integer, independently established display meaning |
-| `items` | `[{native_item_id, quantity}]`; quantity is a positive integer |
+| `items` | `[{native_item_id, quantity}]`; quantity is a non-negative integer (0 = still held after 0444 set it to zero, until 044b removes it) |
 | `gold_balance` | Eight hexadecimal float32 bits, or `{float32_bits, value}` |
 | `net_worth` | Same native float32 representation |
 
