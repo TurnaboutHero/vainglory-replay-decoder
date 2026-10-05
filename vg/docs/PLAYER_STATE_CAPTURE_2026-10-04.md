@@ -135,7 +135,8 @@ observation. EOF export keeps its original `recorded_end` scope.
 Export creates a new frozen reference registry and preserves the original
 development/holdout split. It copies native names, actor links, KDA, exact gold
 bits, displayed CS (native resource14) and all native inventory multiplicities
-under `native_items`. HUD `items` stay unobserved until independently verified
+under `native_items`, including a held quantity of zero after `0444`; such an entry still counts
+toward the native occupied count. HUD `items` stay unobserved until independently verified
 original Item names establish the native visibility predicate. The
 compatibility name `minion_kills` denotes scoreboard CS; it does not claim a
 lane-only count or a proved creature taxonomy. Hero labels stay unobserved until

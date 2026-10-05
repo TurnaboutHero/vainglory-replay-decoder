@@ -266,6 +266,44 @@ class CaptureEvidenceTests(unittest.TestCase):
         self.assertEqual(caught.exception.code, 'boundary_unproved')
         self.assertFalse((self.root / 'record-export').exists())
 
+    def export_inventory(self, items, occupied):
+        temp = tempfile.TemporaryDirectory()
+        self.addCleanup(temp.cleanup)
+        self.root = Path(temp.name)
+        self.spec_path, self.spec, self.rows = fixture(self.root)
+        self.dest = self.root / 'capture'
+        self.rows[2]['payload']['players'][0]['inventory'].update(
+            occupied=occupied, items=items + [None] * (8 - len(items)))
+        self.add_cleanup()
+        self.add_boundary()
+        self.save_spec()
+        import_capture(self.spec_path, self.dest)
+        registry = self.root / 'registry.json'
+        registry.write_text(json.dumps({'schema_version': 'player_state.reference.v1', 'reference_sources': [],
+            'recordings': [{'recording_id': 'C33', 'partition': 'development', 'source_files': self.spec['source_files'],
+                            'observations': []}]}))
+        (self.root / 'freeze.json').write_text(json.dumps({'manifest': metadata(registry)}))
+        return export_reference(self.dest, registry, self.root / 'export')
+
+    def test_zero_native_quantity_is_exported_and_still_occupies_a_pointer(self):
+        items = [{'definition_id': 101, 'quantity': 0}, {'definition_id': 101, 'quantity': 1}]
+        self.assertTrue(self.export_inventory(items, 2)['ok'])
+        observation = read_json(self.root / 'export/manifest.json')['recordings'][0]['observations'][0]
+        self.assertEqual(observation['players'][0]['fields']['native_items']['value'],
+                         [{'native_item_id': 101, 'quantity': 0}, {'native_item_id': 101, 'quantity': 1}])
+        with self.assertRaises(CaptureError) as caught:
+            self.export_inventory(items, 1)
+        self.assertEqual(caught.exception.code, 'inventory_incomplete')
+
+    def test_invalid_native_item_identity_or_quantity_is_rejected(self):
+        for item in ({'definition_id': 101, 'quantity': -1}, {'definition_id': 101, 'quantity': True},
+                     {'definition_id': 101, 'quantity': 1.0}, {'definition_id': 101},
+                     {'definition_id': 0, 'quantity': 1}, {'definition_id': True, 'quantity': 1}):
+            with self.subTest(item=item), self.assertRaises(CaptureError) as caught:
+                self.export_inventory([item], 1)
+            self.assertEqual(caught.exception.code, 'native_value_invalid')
+            self.assertFalse((self.root / 'export').exists())
+
     def test_restoration_timestamp_formats_preserve_exact_fraction(self):
         from vg.tools.player_state_capture.evidence import utc_timestamp
         self.assertEqual(utc_timestamp('2026-10-04T01:44:11.849008+00:00'),

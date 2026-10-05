@@ -323,9 +323,10 @@ def export_reference(capture_dir, manifest_path, output_dir, *, query_clock='gam
         if inventory is not None:
             items = []
             for item in inventory['items']:
+                # 0444 can set quantity 0; the pointer stays held and counted until 044b removes it.
                 if item is not None:
                     require(type(item.get('definition_id')) is int and item['definition_id'] > 0
-                            and type(item.get('quantity')) is int and item['quantity'] > 0,
+                            and type(item.get('quantity')) is int and item['quantity'] >= 0,
                             'native_value_invalid', 'Invalid native item identity or quantity')
                     items.append({'native_item_id': item['definition_id'], 'quantity': item['quantity']})
             require(len(items) == inventory['occupied'], 'inventory_incomplete', 'Occupied count and entries disagree')
