@@ -34,6 +34,27 @@ with patch('os.replace', side_effect=replace):
 '''
 
 
+MATRIX_PROGRAM = '''
+import os, sys
+from pathlib import Path
+from unittest.mock import patch
+from vg.core.replay_output import ReportInputs, publish_report_set
+root, crash_at, after = Path(sys.argv[1]), int(sys.argv[2]), sys.argv[3] == 'after'
+real_replace, calls = os.replace, [0]
+def replace(source, target):
+    calls[0] += 1
+    if calls[0] == crash_at and not after:
+        os._exit(73)
+    real_replace(source, target)
+    if calls[0] == crash_at:
+        os._exit(73)
+with patch('os.replace', side_effect=replace):
+    publish_report_set(ReportInputs(files=(root / 'input.bin',)),
+                       {root / 'one.json': 'new one', root / 'two.json': 'new two'}, root / 'receipt.json')
+print(calls[0])
+'''
+
+
 class ProductIORecovery(unittest.TestCase):
     def setUp(self) -> None:
         self.temp = tempfile.TemporaryDirectory()
@@ -68,6 +89,47 @@ class ProductIORecovery(unittest.TestCase):
         self.assertEqual(self.receipt.read_bytes(), prior_receipt)
         self.assertEqual(self.source.read_bytes(), b'original input')
         self.assertEqual(list(self.root.glob('.*.tmp')), [])
+
+    def test_crash_at_every_replace_leaves_one_whole_generation(self) -> None:
+        clean = subprocess.run([sys.executable, '-B', '-c', MATRIX_PROGRAM, str(self.root), '0', 'before'],
+                               capture_output=True, text=True)
+        replaces = int(clean.stdout)
+        self.assertEqual(replaces, 4)  # pending receipt, one, two, complete receipt
+        new = (b'new one', b'new two')
+        for prior in (True, False):
+            for crash_at in range(1, replaces + 1):
+                for when in ('before', 'after'):
+                    with self.subTest(prior=prior, crash_at=crash_at, when=when):
+                        for path in self.root.iterdir():
+                            if path != self.source:
+                                path.unlink()
+                        old = (b'old one', b'old two') if prior else (None, None)
+                        if prior:
+                            self.one.write_bytes(b'old one')
+                            self.two.write_bytes(b'old two')
+                            publish_report_set(self.inputs, {self.one: b'old one', self.two: b'old two'}, self.receipt)
+                        prior_receipt = self.receipt.read_bytes() if prior else None
+                        result = subprocess.run([sys.executable, '-B', '-c', MATRIX_PROGRAM, str(self.root), str(crash_at), when],
+                                                capture_output=True, text=True)
+                        self.assertEqual(result.returncode, 73, result.stderr)
+                        if self.receipt.exists() and json.loads(self.receipt.read_text())['status'] == 'pending':
+                            self.assertEqual(recover_report_set(self.receipt)['status'], 'rolled_back')
+                        state = tuple(p.read_bytes() if p.exists() else None for p in (self.one, self.two))
+                        self.assertIn(state, (old, new))
+                        if state == new:
+                            self.assertEqual(json.loads(self.receipt.read_text())['status'], 'complete')
+                        elif prior:
+                            self.assertEqual(self.receipt.read_bytes(), prior_receipt)
+                        else:
+                            self.assertFalse(self.receipt.exists())
+                        self.assertEqual(self.source.read_bytes(), b'original input')
+                        # A crash before the pending receipt or after the complete one can leave unreferenced
+                        # hidden staging/backup copies; nothing else may appear.
+                        visible = {p.name for p in self.root.iterdir() if not p.name.startswith('.')}
+                        self.assertLessEqual(visible, {'input.bin', 'one.json', 'two.json', 'receipt.json'})
+                        self.assertTrue(all(p.name.endswith(('.tmp', '.backup')) for p in self.root.iterdir() if p.name.startswith('.')))
+                        publish_report_set(self.inputs, {self.one: 'again one', self.two: 'again two'}, self.receipt)
+                        self.assertEqual((self.one.read_bytes(), self.two.read_bytes()), (b'again one', b'again two'))
 
     def test_recovery_refuses_unowned_changes_and_keeps_backups(self) -> None:
         pending = self.crash()

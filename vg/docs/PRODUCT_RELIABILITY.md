@@ -151,7 +151,7 @@ from vg.core.replay_output import recover_report_set
 recover_report_set(Path("PATH_TO_PENDING_RECEIPT"))
 ```
 
-Recovery validates owned backups and restores the preceding generation. It does not delete unrelated output files. Collision checks defend against accidental aliases and handled IO failures; they are not an adversarial concurrent filesystem security boundary.
+A process killed at any replace step leaves either the previous complete generation, a pending receipt that recovery rolls back, or the new complete generation, never a mix (crash-matrix test). A kill before the pending receipt is written or after the complete receipt can leave unreferenced hidden `.*.tmp`/`.*.backup` copies beside the outputs; they are copies, are not cleaned up automatically, and may be removed once no receipt is pending. Recovery validates owned backups and restores the preceding generation. It does not delete unrelated output files. Collision checks defend against accidental aliases and handled IO failures; they are not an adversarial concurrent filesystem security boundary.
 
 ## Troubleshooting examples
 
