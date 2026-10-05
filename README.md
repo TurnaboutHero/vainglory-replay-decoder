@@ -34,7 +34,7 @@ A single input may also be a directory containing exactly one replay family. Mul
 | Inspect one recording | `vg.decoder_v2.decode_match` | `decoder_v2.player_state.v3`, field provenance and `replay_scope` |
 | Observe a scoreboard moment | `decode_match --at-game-time SECONDS` | Common record boundary, requested/observed game time and native actor identity |
 | Retain conservative final decisions | `decode_match --format safe-json` | Existing v2 decisions and final-index acceptance |
-| Build a dataset | `vg.decoder_v2.batch_decode`, `vg.decoder_v2.index_export` | Every input result, scoped `input_id`, status/counts and withheld fields |
+| Build a dataset | `vg.decoder_v2.batch_decode`, `vg.decoder_v2.index_export` | Every input result, scoped `input_id`, status/counts and withheld fields; `--format state-json [--at-game-time S]` runs every input through the single-replay player-state path |
 | Use player/match spreadsheets | `vg.core.export_matches` | CSV provenance, blank unknowns, stable ordinals and export receipt |
 | Use legacy metadata/statistics | `vg.core.vgr_parser`, `vg.core.unified_decoder`, `vg.analysis.batch_report` | Truth source, duration provenance and known/total sample counts |
 | Maintain a SQLite catalog | `vg.core.vgr_database` | Catalog identities, nullable match values and catalog-only export coverage |
