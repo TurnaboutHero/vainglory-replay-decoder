@@ -54,6 +54,16 @@ class PlayerStateServiceTests(unittest.TestCase):
         self.assertEqual(result.players[0].field_status['team'].status, 'unresolved_team_side')
         self.assertEqual(result.players[0].field_status['team_id'].status, 'supported')
 
+    def test_recording_client_stays_unverified_without_downgrading_support(self):
+        result = player_state.decode_player_state(self.write(recording()))
+        self.assertEqual(result.support_status, 'supported', result.support_reason)
+        serialized = json.loads(json.dumps(result.to_dict()))
+        self.assertEqual(serialized['recording_client']['status'], 'unverified')
+        self.assertIn('no client build identifier', serialized['recording_client']['reason'])
+        self.assertEqual(serialized['supported_client_sha256'], player_state.SUPPORTED_BUILD_SHA256)
+        unavailable = player_state.decode_player_state(self.write(anchor()))
+        self.assertEqual(unavailable.to_dict()['recording_client']['status'], 'unverified')
+
     def test_duplicate_items_and_hidden_native_possession_are_distinct(self):
         items = ((457, 2000, 1), (526, 2001, 1), (515, 2002, 1), (458, 2003, 1), (458, 2004, 1))
         result = player_state.decode_player_state(self.write(recording(items=items)))
