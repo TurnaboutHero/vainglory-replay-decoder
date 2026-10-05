@@ -162,6 +162,9 @@ class TestProductWatcher(unittest.TestCase):
                 self.assertEqual(republished.exception.code, 'recovery_required')
                 self.assertEqual(receipt.read_bytes(), payload())
         receipt.write_bytes(good)
+        # The same directory spelled differently still names the verified snapshot.
+        for spelling in (saved.resolve(), saved.parent / '..' / saved.parent.name / saved.name):
+            self.assertEqual(archive.snapshot(frame0, spelling)['scope'], json.loads(good)['scope'])
         identity = hashlib.sha256(str(frame0.absolute().resolve()).encode()).hexdigest()
         watcher_receipt = self.backup / '.watcher' / f'{identity}.json'
         acknowledged = watcher_receipt.read_bytes()

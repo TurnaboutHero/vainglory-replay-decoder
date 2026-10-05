@@ -288,7 +288,10 @@ def verify_snapshot(destination: Path, before: Inventory) -> None:
         recorded = json.loads(receipt.read_text(encoding='utf-8'))
     except (OSError, UnicodeError, ValueError) as error:
         raise ArchiveError('recovery_required', receipt, f'Snapshot receipt is unreadable: {error}') from error
-    if recorded != _snapshot_receipt(destination, before):
+    # The stored path is how the snapshot was first named; another spelling or a moved directory is the same data.
+    expected = {k: v for k, v in _snapshot_receipt(destination, before).items() if k != 'path'}
+    if (not isinstance(recorded, dict) or not isinstance(recorded.get('path'), str)
+            or {k: v for k, v in recorded.items() if k != 'path'} != expected):
         raise ArchiveError('recovery_required', receipt, 'Snapshot receipt differs from its verified sections')
 
 
