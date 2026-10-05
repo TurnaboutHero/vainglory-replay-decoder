@@ -21172,10 +21172,10 @@
       "0x046f"
     ],
     "source_sha256": {
-      "native_roster.py": "a6c2e86d39649f044255f016741ba30420f0a0c66904a3fff7d547704ab93ec0",
+      "native_roster.py": "b3ced4d30bdb45459b3c315ac528efb59ae083c8263af85299e31dc8420452c7",
       "native_stats.py": "cc7f02f0a851b155ef2ac0aa6b90820d1f6592f5f30c8107fe67f3ef3ce5048f",
       "native_gold.py": "2208e4cc48e9eb71a42be41469181a0fa978c78c3ac40c26682751be2e16099e",
-      "native_inventory.py": "6239e4974006928ecc99d51933f0fa6351f2a05b466160bcc6e5f99e8f1868cf",
+      "native_inventory.py": "0fd92140c2cdd16d7b2c35d188485b19dadbd367e831fb94a08ed85b9335e88c",
       "native_query.py": "75f0d853e12000501a05b0b614d150f1db0d443e627c9ff0b3b1f9ba17ed1c47"
     },
     "scope": "Six-field production readers only; optional unused candidate semantics do not block this gate. 040b rejects output pending cleanup proof."

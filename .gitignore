@@ -45,3 +45,6 @@ vg/analysis/README_extract_all_item_ids.md
 # OS
 .DS_Store
 Thumbs.db
+
+# pytest
+.pytest_cache/
