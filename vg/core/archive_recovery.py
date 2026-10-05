@@ -25,17 +25,23 @@ def _restore(target: Path, originals: Path, entries: tuple[Entry, ...], expected
 
 
 def _restore_report(operation: Path, report: ReportState) -> None:
+    """Undo only this transaction's publication; any other report bytes belong to someone else."""
     output = Path(report['path'])
+    present = output.is_symlink() or output.exists()
+    current = digest(output) if present and not output.is_symlink() and output.is_file() else None
+    owned = {value for value in (report['prior'] if report['existed'] else '', report['published']) if value}
+    if present and current not in owned:
+        raise ArchiveError('recovery_required', output, 'Report changed outside transaction; preserved')
     if report['existed']:
         backup = operation / 'prior-report'
         if digest(backup) != report['prior']:
             raise ArchiveError('recovery_required', backup, 'Report backup hash mismatch')
-        if output.is_symlink() or not output.exists() or digest(output) != report['prior']:
+        if current != report['prior']:
             staged = operation / 'restore-report'
             _copy(backup, staged)
             os.replace(staged, output)
-    else:
-        output.unlink(missing_ok=True)
+    elif present:
+        output.unlink()
 
 
 def _owner_dead(pid: int) -> bool:

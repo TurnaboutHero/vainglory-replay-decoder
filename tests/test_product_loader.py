@@ -211,6 +211,40 @@ class TestProductLoader(unittest.TestCase):
                 self.assert_restored()
                 self.assertFalse(archive.lock_path(self.target / 'slot.0.vgr').exists())
 
+    def test_loader_failure_preserves_report_changed_outside_transaction(self):
+        lock = archive.lock_path(self.target / 'slot.0.vgr')
+        for existed in (True, False):
+            with self.subTest(existed=existed):
+                if not existed:
+                    self.report.unlink()
+                def process(cmd, **kwargs):
+                    self.run_fake(cmd)
+                    self.report.write_text('external-edit')
+                    return subprocess.CompletedProcess(cmd, 7, '', 'failed')
+                with patch.object(inject.subprocess, 'run', side_effect=process):
+                    with self.assertRaises(archive.ArchiveError) as raised:
+                        inject.inject_replay_with_vgrplay(str(self.source), 'saved', str(self.target), output=str(self.report))
+                error = raised.exception
+                self.assertEqual(error.code, 'recovery_required')
+                self.assertIn('Report changed outside transaction', error.reason)
+                self.assertEqual(self.report.read_text(), 'external-edit')
+                self.assertEqual(hashes(self.target), self.old_target)
+                self.assertEqual(hashes(self.source), self.old_source)
+                self.assertTrue((error.recovery / 'recovery-required').exists())
+                self.assertTrue(lock.exists())
+                # Explicit recovery runs after the owner exits; it still refuses to touch the edit.
+                with patch('vg.core.archive_recovery._owner_dead', return_value=True):
+                    with self.assertRaisesRegex(archive.ArchiveError, 'Report changed outside transaction'):
+                        archive.recover(error.recovery)
+                    self.assertEqual(self.report.read_text(), 'external-edit')
+                    self.report.rename(self.root / f'kept-{existed}.json')
+                    archive.recover(error.recovery)
+                self.assertEqual((self.root / f'kept-{existed}.json').read_text(), 'external-edit')
+                self.assertEqual(self.report.exists(), existed)
+                if existed:
+                    self.assertEqual(self.report.read_text(), 'old-report')
+                self.assertFalse(lock.exists())
+
     def test_loader_failure_report_aliases_before_and_after_process(self):
         for root, name in ((self.source, 'saved'), (self.target, 'slot')):
             for kind in ('direct', 'future', 'symlink', 'hardlink'):
@@ -237,8 +271,10 @@ class TestProductLoader(unittest.TestCase):
             late.symlink_to(self.source / 'saved.0.vgr')
             return result
         with patch.object(inject.subprocess, 'run', side_effect=process):
-            with self.assertRaises(ValueError):
+            with self.assertRaises(archive.ArchiveError) as raised:
                 inject.inject_replay_with_vgrplay(str(self.source), 'saved', str(self.target), output=str(late))
+        # A late alias is someone else's change: preserved, reported, then resolved explicitly.
+        self.assert_report_conflict(raised.exception, late)
         self.assert_restored()
         for selected in (self.source / 'saved.0.vgr', self.target / 'slot.0.vgr'):
             for kind in ('symlink', 'hardlink'):
@@ -252,10 +288,23 @@ class TestProductLoader(unittest.TestCase):
                             os.link(selected, self.report)
                         return result
                     with patch.object(inject.subprocess, 'run', side_effect=late_existing):
-                        with self.assertRaises(ValueError):
+                        with self.assertRaises(archive.ArchiveError) as raised:
                             inject.inject_replay_with_vgrplay(str(self.source), 'saved', str(self.target), output=str(self.report))
+                    self.assertEqual(self.report.is_symlink(), kind == 'symlink')
+                    self.assertNotEqual(self.report.read_bytes(), b'old-report')
+                    self.assert_report_conflict(raised.exception, self.report)
                     self.assert_restored()
                     self.assertFalse(self.report.is_symlink())
+
+    def assert_report_conflict(self, error, alias):
+        self.assertEqual(error.code, 'recovery_required')
+        self.assertIn('Report changed outside transaction', error.reason)
+        self.assertTrue((error.recovery / 'recovery-required').exists())
+        self.assertEqual(hashes(self.target), self.old_target)
+        with patch('vg.core.archive_recovery._owner_dead', return_value=True):
+            alias.unlink()
+            archive.recover(error.recovery)
+        self.assertFalse(archive.lock_path(self.target / 'slot.0.vgr').exists())
 
     def test_loader_failure_interrupt_overlap_and_ambiguous_source(self):
         with self.assertRaises(archive.ArchiveError):
