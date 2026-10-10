@@ -11,6 +11,7 @@ import sys
 from typing import Dict, List, Optional
 
 from vg.core.batch_result import InputResult, batch_report
+from vg.core.analysis_eligibility import partition_definitive_analysis
 from vg.core.replay_input import ReplayInputError, discover_replay_files, replay_input_id
 from vg.core.replay_output import ReplayOutputError, ReportInputs, validate_report_outputs, write_report_output
 from .decode_match import decode_match
@@ -96,6 +97,7 @@ def decode_replay_batch(base_path: str, *, inputs: BatchInputs | None = None) ->
         "accepted_field_summary": accepted_field_counter,
         "withheld_field_summary": withheld_field_counter,
         "matches": matches,
+        'definitive_analysis': partition_definitive_analysis(matches),
     }
 
 
@@ -134,6 +136,7 @@ def decode_state_batch(base_path: str, *, inputs: BatchInputs | None = None,
         'support_summary': support,
         'player_field_summary': fields,
         'states': states,
+        'definitive_analysis': partition_definitive_analysis(states),
     }
 
 

@@ -1,11 +1,12 @@
 """Recording-scoped native player state, without final-match or truth overrides."""
 
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 import hashlib
 import math
 from pathlib import Path
 
 from vg.core.definition_catalog import SUPPORTED_BUILD_SHA256
+from vg.core.analysis_eligibility import evaluate_definitive_analysis
 from vg.core.native_gold import read_native_gold
 from vg.core.native_inventory import NativeInventoryItem, read_native_inventory
 from vg.core.native_query import GameTime, RecordTime, select_native_query
@@ -128,9 +129,16 @@ class PlayerStateResult:
     supported_client_sha256: str = SUPPORTED_BUILD_SHA256
     recording_client: RecordingClient = RecordingClient()
     end_requests: tuple[EndRequest, ...] = ()
+    definitive_analysis: dict = field(init=False)
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, 'definitive_analysis',
+                           evaluate_definitive_analysis({'recording_client': asdict(self.recording_client)}))
 
     def to_dict(self) -> dict:
-        return asdict(self)
+        result = asdict(self)
+        result['definitive_analysis'] = evaluate_definitive_analysis(result)
+        return result
 
 
 def _boundary(value: tuple[int, int] | None) -> RecordBoundary | None:

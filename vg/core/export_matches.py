@@ -16,6 +16,7 @@ from vg.core.replay_output import (
     write_report_output,
 )
 from vg.core.unified_decoder import DecodedMatch, UnifiedDecoder
+from vg.core.analysis_eligibility import partition_definitive_analysis
 
 
 class ExportReport(BatchReport):
@@ -23,6 +24,7 @@ class ExportReport(BatchReport):
     matches: list[dict]
     publication_status: str
     receipt: str
+    definitive_analysis: dict
 
 
 def export_match_json(match: DecodedMatch, output_path: Path) -> None:
@@ -96,6 +98,7 @@ def _decode_batch(directory: str, truth_path: str | None, output_dir: str | None
         rows.extend(match_to_csv_rows(match, ordinal, input_id))
         summaries.append(match_to_summary_row(match, ordinal, input_id))
     report: ExportReport = {**batch_report(results), 'total_matches': len(matches), 'matches': payloads,
+                            'definitive_analysis': partition_definitive_analysis(payloads),
                             'publication_status': 'complete', 'receipt': str(receipt.absolute())}
     if not csv_only:
         outputs[out / 'all_matches.json'] = json.dumps(report, indent=2, ensure_ascii=False)
