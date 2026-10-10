@@ -1,0 +1,332 @@
+{
+  "schema_version": "vg.retained-result-screen-audit.v1",
+  "decoder_commit": "04e73640dd2af0dc54519d91e302e23d50255761",
+  "new_playback_runs": 0,
+  "unique_recordings": 2,
+  "unique_players": 20,
+  "source_sections_rehashed": 305,
+  "screens_compared": 6,
+  "transcription_method": "manual_visual",
+  "transcribed_at_utc": "2026-10-10T18:09:42Z",
+  "recording_build_certified": false,
+  "server_final_result_certified": false,
+  "cases": [
+    {
+      "recording": "H5543",
+      "replay_scope": "sha256:20b87a7925ceb3f6f4d0ec45474a927cbb9cc50ae9a591887d577cba6dde80e0",
+      "decoded_recorded_end_seconds": 1501.378173828125,
+      "queued_end_requests": [
+        {
+          "winning_team_id": 2,
+          "end_reason": 0,
+          "request_status": "queued_request"
+        }
+      ],
+      "routes": [
+        {
+          "route": "seek",
+          "screenshot_sha256": "893cdd7fd8d5673db18471f95db4724af57a76e2f299530bd33b9396c06e5af3",
+          "observation_sha256": "591c6f9f71722a704b4325c73ca2040051e80290c1c7392488d0b84ac048d1a5",
+          "comparison_sha256": "36565296323f0c7d3d0b123172d782427542e0a8952784640ef50c37fc096c6d",
+          "matched_kda_cs": 40,
+          "compared_kda_cs": 40,
+          "duration_display": "25:01",
+          "winner_screen_side": "orange",
+          "result_display": "패배",
+          "accepted_for_index": false
+        },
+        {
+          "route": "full-a",
+          "screenshot_sha256": "e58e5c90c5149b65e05b440f155463dba5a7f796739d8003937b3906a023f6b3",
+          "observation_sha256": "e2b11576da86f3e9580eda201f201a110e161bf607cb078296e8a251c026dabd",
+          "comparison_sha256": "506b0a57fb27441c8f4372ac4a615d151d1066cd03f3d24e14b50a827e89ad87",
+          "matched_kda_cs": 40,
+          "compared_kda_cs": 40,
+          "duration_display": "25:34",
+          "winner_screen_side": "orange",
+          "result_display": "패배",
+          "accepted_for_index": false
+        },
+        {
+          "route": "full-b",
+          "screenshot_sha256": "d4a3f480cdd7ab9d2e2773a5b0e49ae502598578de605e9a55f67796306ac655",
+          "observation_sha256": "a5843be518c70371f88ff654073f8a91da1b95afdb034719727b1dccf6cc8912",
+          "comparison_sha256": "ad3794277d322d6dcc727794441122f99fb18cc1254f2f23c76cac9fe44728d6",
+          "matched_kda_cs": 40,
+          "compared_kda_cs": 40,
+          "duration_display": "25:34",
+          "winner_screen_side": "orange",
+          "result_display": "패배",
+          "accepted_for_index": false
+        }
+      ],
+      "gold_labels": [
+        {
+          "actor": 1505,
+          "screen_side": "blue",
+          "observed_display_all_routes": "12.3k",
+          "recorded_net_worth": 12368.8125,
+          "direct_float32_format_candidate": "12.4k",
+          "candidate_matches_display": false,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1507,
+          "screen_side": "blue",
+          "observed_display_all_routes": "11.9k",
+          "recorded_net_worth": 11919.1455078125,
+          "direct_float32_format_candidate": "11.9k",
+          "candidate_matches_display": true,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1501,
+          "screen_side": "blue",
+          "observed_display_all_routes": "10.8k",
+          "recorded_net_worth": 10899.3955078125,
+          "direct_float32_format_candidate": "10.9k",
+          "candidate_matches_display": false,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1503,
+          "screen_side": "blue",
+          "observed_display_all_routes": "10.7k",
+          "recorded_net_worth": 10702.666015625,
+          "direct_float32_format_candidate": "10.7k",
+          "candidate_matches_display": true,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1504,
+          "screen_side": "blue",
+          "observed_display_all_routes": "9.8k",
+          "recorded_net_worth": 9852.978515625,
+          "direct_float32_format_candidate": "9.9k",
+          "candidate_matches_display": false,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1502,
+          "screen_side": "orange",
+          "observed_display_all_routes": "18.1k",
+          "recorded_net_worth": 18092.625,
+          "direct_float32_format_candidate": "18.1k",
+          "candidate_matches_display": true,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1508,
+          "screen_side": "orange",
+          "observed_display_all_routes": "12.4k",
+          "recorded_net_worth": 12478.8544921875,
+          "direct_float32_format_candidate": "12.5k",
+          "candidate_matches_display": false,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1506,
+          "screen_side": "orange",
+          "observed_display_all_routes": "11.7k",
+          "recorded_net_worth": 11769.5419921875,
+          "direct_float32_format_candidate": "11.8k",
+          "candidate_matches_display": false,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1500,
+          "screen_side": "orange",
+          "observed_display_all_routes": "10.3k",
+          "recorded_net_worth": 10367.458984375,
+          "direct_float32_format_candidate": "10.4k",
+          "candidate_matches_display": false,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1509,
+          "screen_side": "orange",
+          "observed_display_all_routes": "10.2k",
+          "recorded_net_worth": 10207.771484375,
+          "direct_float32_format_candidate": "10.2k",
+          "candidate_matches_display": true,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        }
+      ],
+      "post_result_native_clock_seconds": 1534.5474853515625,
+      "post_result_minus_recorded_end_seconds": 33.1693115234375,
+      "post_result_comparison_sha256": "9a6c28b46d21cbde44c3528b9ca19dc8474142f3cee7eb16202542f3fb065f75",
+      "post_result_native_sha256": "bfadd84774a123df1941f8456f2051529ca0187cb4bbefdb1297585d67d10a8a",
+      "direct_gold_candidate_mismatches": 6
+    },
+    {
+      "recording": "H5519",
+      "replay_scope": "sha256:6ff9434f2e57a6391e468dd4f6934720f38d067bd2242d00280b1e64237f5ca4",
+      "decoded_recorded_end_seconds": 1487.29052734375,
+      "queued_end_requests": [
+        {
+          "winning_team_id": 1,
+          "end_reason": 0,
+          "request_status": "queued_request"
+        }
+      ],
+      "routes": [
+        {
+          "route": "seek",
+          "screenshot_sha256": "4c52198dd6fbb49c6ead644ceb9e559a3b218331fe6d22ed0ecfcf044ebb6c6b",
+          "observation_sha256": "00d58cce56d0ed2cbfe8555a09930a7c072cfffd8bde30ae39b6c2e5132c358e",
+          "comparison_sha256": "dcc534ca0a69510d010d51ed734fa09195e977389c5735e57c0f38826d440a27",
+          "matched_kda_cs": 40,
+          "compared_kda_cs": 40,
+          "duration_display": "24:47",
+          "winner_screen_side": "blue",
+          "result_display": "승리",
+          "accepted_for_index": false
+        },
+        {
+          "route": "full-a",
+          "screenshot_sha256": "7101efb4f104b43e8028aff77d1e5ad4d3f99b3b34d83432d90fa3ddfe9e8b6a",
+          "observation_sha256": "08b4eab4783cc50f12b4f1070391671c47c35b96b9cfd8bd95282227dedebc70",
+          "comparison_sha256": "64bfc607660e904846adc91bf3dffa4354f0946e5b92a94764ea59530f75f6d8",
+          "matched_kda_cs": 40,
+          "compared_kda_cs": 40,
+          "duration_display": "24:49",
+          "winner_screen_side": "blue",
+          "result_display": "승리",
+          "accepted_for_index": false
+        },
+        {
+          "route": "full-b",
+          "screenshot_sha256": "eddf9e0c5264525d54fb302b28213695682513aadcc1ed7cd10f4489b6199d03",
+          "observation_sha256": "c84b334cd9de80068f852bdcc81b56d00a44fb89e8be42a1d6da3ee4be417cc2",
+          "comparison_sha256": "511f0b0f91c2ff096b063ec17dc7db064db1a5e8089afb873a13dadd902f2264",
+          "matched_kda_cs": 40,
+          "compared_kda_cs": 40,
+          "duration_display": "24:49",
+          "winner_screen_side": "blue",
+          "result_display": "승리",
+          "accepted_for_index": false
+        }
+      ],
+      "gold_labels": [
+        {
+          "actor": 1504,
+          "screen_side": "blue",
+          "observed_display_all_routes": "19.2k",
+          "recorded_net_worth": 19241,
+          "direct_float32_format_candidate": "19.2k",
+          "candidate_matches_display": true,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1509,
+          "screen_side": "blue",
+          "observed_display_all_routes": "13.9k",
+          "recorded_net_worth": 13952.833984375,
+          "direct_float32_format_candidate": "14.0k",
+          "candidate_matches_display": false,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1502,
+          "screen_side": "blue",
+          "observed_display_all_routes": "13.6k",
+          "recorded_net_worth": 13635.916015625,
+          "direct_float32_format_candidate": "13.6k",
+          "candidate_matches_display": true,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1501,
+          "screen_side": "blue",
+          "observed_display_all_routes": "11.0k",
+          "recorded_net_worth": 11044.4169921875,
+          "direct_float32_format_candidate": "11.0k",
+          "candidate_matches_display": true,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1503,
+          "screen_side": "blue",
+          "observed_display_all_routes": "10.7k",
+          "recorded_net_worth": 10730.3330078125,
+          "direct_float32_format_candidate": "10.7k",
+          "candidate_matches_display": true,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1506,
+          "screen_side": "orange",
+          "observed_display_all_routes": "16.0k",
+          "recorded_net_worth": 16090.7509765625,
+          "direct_float32_format_candidate": "16.1k",
+          "candidate_matches_display": false,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1505,
+          "screen_side": "orange",
+          "observed_display_all_routes": "14.6k",
+          "recorded_net_worth": 14615.916015625,
+          "direct_float32_format_candidate": "14.6k",
+          "candidate_matches_display": true,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1508,
+          "screen_side": "orange",
+          "observed_display_all_routes": "12.8k",
+          "recorded_net_worth": 12861.4736328125,
+          "direct_float32_format_candidate": "12.9k",
+          "candidate_matches_display": false,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1507,
+          "screen_side": "orange",
+          "observed_display_all_routes": "9.2k",
+          "recorded_net_worth": 9224.5830078125,
+          "direct_float32_format_candidate": "9.2k",
+          "candidate_matches_display": true,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        },
+        {
+          "actor": 1500,
+          "screen_side": "orange",
+          "observed_display_all_routes": "8.0k",
+          "recorded_net_worth": 8014.41650390625,
+          "direct_float32_format_candidate": "8.0k",
+          "candidate_matches_display": true,
+          "exact_final_gold": null,
+          "status": "observation_only"
+        }
+      ],
+      "post_result_native_clock_seconds": 1489.4930419921875,
+      "post_result_minus_recorded_end_seconds": 2.2025146484375,
+      "post_result_comparison_sha256": "c6e0041fb6925b8a57c2677a6f1aaa1bb2280822045f07ad5efbd04675e2df25",
+      "post_result_native_sha256": "8e4fac5ed640fa98a718d4f146db8453290016af1a4bd8a1350eee28558a51e1",
+      "direct_gold_candidate_mismatches": 3
+    }
+  ],
+  "matched_kda_cs": 240,
+  "compared_kda_cs": 240,
+  "direct_gold_candidate_mismatches_unique_players": 9
+}
