@@ -29,6 +29,13 @@ The CLI default changed from `safe-json` to `state-json`. Consumers of `decoder_
 
 A single input may also be a directory containing exactly one replay family. Multiple families require an explicit `.0.vgr` selection or a batch command. Missing paths, unreadable sections, ambiguous selection and malformed input receive actionable errors.
 
+State JSON also exposes `display_values` ([contract](vg/docs/DISPLAY_VALUES.md)). Its `raw` values retain recording provenance. `observed` and `reconstructed` remain null without a compatible supplied runtime receipt. `direct_raw_candidate` is an estimate of one gold formatter call, not a reconstruction of the UI cache. `--playback-speed 5` optionally estimates the playback clock after the last anchor; unknown clock mapping leaves it null. Neither display option changes definitive eligibility.
+
+```sh
+python -B -m vg.decoder_v2.decode_match "replays/match.0.vgr" --playback-speed 5 -o "reports/estimate.json"
+python -B -m vg.decoder_v2.decode_match "replays/match.0.vgr" --display-evidence "receipts/terminal-display.json" -o "reports/observed.json"
+```
+
 ## Choose the workflow
 
 | Need | Entry point | What to retain |

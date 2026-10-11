@@ -7,6 +7,7 @@ from pathlib import Path
 
 from vg.core.definition_catalog import SUPPORTED_BUILD_SHA256
 from vg.core.analysis_eligibility import evaluate_definitive_analysis
+from vg.core.display_values import build_display_values
 from vg.core.native_gold import read_native_gold
 from vg.core.native_inventory import NativeInventoryItem, read_native_inventory
 from vg.core.native_query import GameTime, RecordTime, select_native_query
@@ -129,6 +130,7 @@ class PlayerStateResult:
     supported_client_sha256: str = SUPPORTED_BUILD_SHA256
     recording_client: RecordingClient = RecordingClient()
     end_requests: tuple[EndRequest, ...] = ()
+    display_values: dict = field(default_factory=dict)
     definitive_analysis: dict = field(init=False)
 
     def __post_init__(self) -> None:
@@ -155,6 +157,8 @@ def decode_player_state(
     *,
     at_game_time: float | None = None,
     at_record_time: float | None = None,
+    runtime_evidence: dict | None = None,
+    playback_speed: float | None = None,
 ) -> PlayerStateResult:
     """Decode every field at one inclusive native boundary.
 
@@ -206,6 +210,9 @@ def decode_player_state(
             status, reason, tuple(players), fields or {}, sources,
             query.audit.first_game_time, query.audit.last_game_time,
             end_requests=end_requests,
+            display_values=build_display_values(query, players, replay_scope,
+                'recorded_end' if cutoff is None else 'capture',
+                runtime_evidence=runtime_evidence, playback_speed=playback_speed),
         )
 
     if not query.valid:
