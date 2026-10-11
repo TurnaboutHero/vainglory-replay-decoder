@@ -161,7 +161,9 @@ def build_display_values(query, players, replay_scope, scope, *, runtime_evidenc
     clock = None if case is None else case['clock']
     time = {'raw': {'seconds': raw_time, 'source': 'native_anchor_plus_record_interval',
         'status': 'recorded' if raw_time is not None else 'unknown', 'reason': query.reason,
-        'last_anchor_seconds': query.frames[-1].anchor_game_time if query.valid else None},
+        'last_anchor_seconds': next((frame.anchor_game_time for frame in query.frames
+            if query.record_boundary is not None and frame.number == query.record_boundary[0]), None)
+            if query.valid else None},
         'observed': None if clock is None else {
             'status': 'supplied_runtime_observation', 'label': clock['screenshot_duration_display'],
             'seconds': clock['time_format_input']['value'], 'format_seq': clock['time_format_seq'],

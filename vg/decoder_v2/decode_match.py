@@ -189,6 +189,8 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("-o", "--output", help="Optional output JSON path")
     parser.add_argument("--display-evidence", help="Scoped terminal-display receipt; observations remain unverified.")
     parser.add_argument("--playback-speed", type=float, help="Optional conditional UI clock estimate; state-json only.")
+    parser.add_argument("--player-id", type=int, action="append", dest="player_ids",
+                        help="Select a recording-scoped native actor ID; repeat for multiple players; state-json only.")
     time_query = parser.add_mutually_exclusive_group()
     time_query.add_argument("--at-game-time", type=float, help="Capture all supported fields at game-clock seconds; does not assert match completion.")
     time_query.add_argument("--at-record-time", type=float, help="Capture native state through replay-record seconds; distinct from game time and supported only by state-json.")
@@ -198,6 +200,13 @@ def main(argv: Optional[List[str]] = None) -> int:
             parser.error(f"{name} must be finite and non-negative")
     if args.at_record_time is not None and args.format != "state-json":
         parser.error("--at-record-time requires --format state-json")
+    if args.player_ids is not None:
+        if args.format != "state-json":
+            parser.error("--player-id requires --format state-json")
+        if any(not 0 < actor < 0xffffffff for actor in args.player_ids):
+            parser.error("--player-id must be positive and below 0xffffffff")
+        if len(set(args.player_ids)) != len(args.player_ids):
+            parser.error("--player-id values must be unique")
     if (args.display_evidence or args.playback_speed is not None) and args.format != "state-json":
         parser.error("display options require --format state-json")
     if args.playback_speed is not None and (not math.isfinite(args.playback_speed) or args.playback_speed <= 0):
@@ -224,6 +233,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         elif args.format == "state-json":
             payload_obj = decode_player_state(str(replay), at_game_time=args.at_game_time,
                 at_record_time=args.at_record_time, runtime_evidence=runtime_evidence,
+                player_ids=args.player_ids,
                 playback_speed=args.playback_speed).to_dict()
         else:
             payload_obj = decode_match(str(replay), at_game_time=args.at_game_time).to_dict()
