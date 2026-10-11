@@ -112,6 +112,13 @@ winner, final scores, cached gold labels or match duration. H5621 separately ret
 `unsupported_clock` for 600 seconds because of a forward jump at sections 89 to 90.
 Its exclusion applies even though the requested boundary precedes that jump.
 
+A later [actual H5543 10:00 capture](PLAYER_STATE_H5543_10MIN_2026-10-12.md)
+matched all ten players in 70/70 native field groups and the selected actors in
+14/14 groups through both CLI and API. It records the GUI seek/pause path,
+observed clock 600.3882446289062, distinct 600-second query boundary and cached
+gold labels. That observation adds midpoint evidence without certifying final
+results or the recording's original client version.
+
 The Python 3.14.7 local suite passed **903 tests**, including 15 new timed-query
 tests for selection consistency, repeated names/full actor IDs, actual boundaries,
 CLI/API agreement, preserved reports, unknown IDs, coverage failures, future malformed
