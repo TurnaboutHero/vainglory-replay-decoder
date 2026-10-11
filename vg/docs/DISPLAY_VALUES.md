@@ -19,7 +19,8 @@ An EOF number cannot recover the last UI refresh, and rounding down to a bucket
 does not recover that formatter input. The Python formatter remains a candidate
 outside the named validation corpus, including platform rounding edge cases.
 See the [native display study](RUNTIME_DISPLAY_2026-10-03.md) and
-[terminal-call validation](TERMINAL_DISPLAY_CALLS_2026-10-11.md).
+[terminal-call validation](TERMINAL_DISPLAY_CALLS_2026-10-11.md) and the
+[fresh 5v5 holdout](DISPLAY_HOLDOUT_2026-10-11.md).
 
 `time.raw.seconds` is the native anchor plus recorded interval at the selected
 boundary, or null with `status=unknown` when mapping is unavailable. It is not
@@ -42,6 +43,10 @@ and every resource-7 value must equal decoded EOF state. Float32 values/bits,
 formatter labels, increasing buckets, event ordering, recorded clock/last anchor,
 one terminal/final callback and artifact hashes are checked. The supported
 observation client is the documented LAA build, not the recording's original build.
+The last time formatter may precede the terminal call or follow the final
+callback. In both observed orders its float32 input must equal the terminal
+clock exactly; a stale differing input is rejected. Unknown recorded-time
+mapping remains unknown even when a separate runtime label can be reproduced.
 
 `observed.status=supplied_runtime_observation` reports that receipt's label,
 formatter input, call sequence and trace/screenshot/client/collector hashes.

@@ -100,7 +100,8 @@ def _observation(receipt, replay_scope, query, players, scope):
     if terminal != formatted:
         raise DisplayEvidenceError('terminal clock differs from time formatter input')
     seqs = [clock.get(k) for k in ('terminal_seq', 'final_seq', 'time_format_seq')]
-    if any(type(n) is not int or n <= 0 for n in seqs) or not seqs[0] < seqs[1] < seqs[2]:
+    if (any(type(n) is not int or n <= 0 for n in seqs)
+            or not (seqs[0] < seqs[1] < seqs[2] or seqs[2] < seqs[0] < seqs[1])):
         raise DisplayEvidenceError('display observation time call order is invalid')
     seconds = int(formatted)
     if clock.get('screenshot_duration_display') != f'{seconds // 60}:{seconds % 60:02d}':

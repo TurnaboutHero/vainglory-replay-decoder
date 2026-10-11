@@ -1,0 +1,371 @@
+{
+  "schema_version": "vg.terminal-display-observation.v1",
+  "decoder_base_commit": "2b257cb89fcf3ddc681aa3f3fff19cd2b652983b",
+  "client_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "probe_sha256": "d86a67ab7ce64cd4c60b77222248bfc5881b826d161812b0935863f7b99d6daa",
+  "guard_manifest_sha256": "e28e487e8f2d7259d1fc7934dada1125349407f697b6a04d37956f5390016778",
+  "recording_build_certified": false,
+  "server_final_result_certified": false,
+  "cases": [
+    {
+      "recording": "H5621",
+      "replay_scope": "sha256:8bcf5c9d601c2b9b543ec1a8a17dea6d136e855df32fdeea9de9042c0420c4cd",
+      "trace_sha256": "9d66ddd93804ba4f4cff11fcf3cfef33d96094ec51c927aa114ea24334e3de8a",
+      "screenshot_sha256": "c2635b397962bbf33c779eb119184a68a7ae48546065667ba507b99b9f703084",
+      "source_sections_rehashed": 108,
+      "event_counts": {
+        "hooks_installed": 1,
+        "sample": 3614,
+        "anchor": 108,
+        "gold_row": 11859,
+        "gold_format": 769,
+        "gold_label": 769,
+        "tick": 24230,
+        "time_format": 3612,
+        "terminal": 1,
+        "final": 1
+      },
+      "trace_complete": true,
+      "tick_transitions": {
+        "tested": 24122,
+        "matched": 24122
+      },
+      "all_gold_formatter_calls_linked_to_increasing_cache": 769,
+      "gold": [
+        {
+          "actor_id": 1500,
+          "row_seq": 44825,
+          "native7": {
+            "value": 13709.875,
+            "bits": 1180055424
+          },
+          "cache": 137,
+          "display_raw": {
+            "value": 13700.875,
+            "bits": 1180046208
+          },
+          "format_seq": 44720,
+          "format_input": {
+            "value": 13700.875,
+            "bits": 1180046208
+          },
+          "label_seq": 44721,
+          "label": "13.7k",
+          "last_format_row_seq": 44719,
+          "last_format_previous_cache": 136,
+          "direct_final_candidate": "13.7k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1501,
+          "row_seq": 44826,
+          "native7": {
+            "value": 11027.8330078125,
+            "bits": 1177309013
+          },
+          "cache": 110,
+          "display_raw": {
+            "value": 11000.8330078125,
+            "bits": 1177281365
+          },
+          "format_seq": 44514,
+          "format_input": {
+            "value": 11000.8330078125,
+            "bits": 1177281365
+          },
+          "label_seq": 44515,
+          "label": "11.0k",
+          "last_format_row_seq": 44513,
+          "last_format_previous_cache": 109,
+          "direct_final_candidate": "11.0k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1502,
+          "row_seq": 44820,
+          "native7": {
+            "value": 11781.75,
+            "bits": 1178081024
+          },
+          "cache": 117,
+          "display_raw": {
+            "value": 11700.75,
+            "bits": 1177998080
+          },
+          "format_seq": 43873,
+          "format_input": {
+            "value": 11700.75,
+            "bits": 1177998080
+          },
+          "label_seq": 43874,
+          "label": "11.7k",
+          "last_format_row_seq": 43872,
+          "last_format_previous_cache": 116,
+          "direct_final_candidate": "11.8k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1503,
+          "row_seq": 44827,
+          "native7": {
+            "value": 6387.62451171875,
+            "bits": 1170709759
+          },
+          "cache": 63,
+          "display_raw": {
+            "value": 6333.62451171875,
+            "bits": 1170599167
+          },
+          "format_seq": 44565,
+          "format_input": {
+            "value": 6333.62451171875,
+            "bits": 1170599167
+          },
+          "label_seq": 44566,
+          "label": "6.3k",
+          "last_format_row_seq": 44564,
+          "last_format_previous_cache": 62,
+          "direct_final_candidate": "6.4k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1504,
+          "row_seq": 44828,
+          "native7": {
+            "value": 13588.5,
+            "bits": 1179931136
+          },
+          "cache": 135,
+          "display_raw": {
+            "value": 13504.5,
+            "bits": 1179845120
+          },
+          "format_seq": 44568,
+          "format_input": {
+            "value": 13504.5,
+            "bits": 1179845120
+          },
+          "label_seq": 44569,
+          "label": "13.5k",
+          "last_format_row_seq": 44567,
+          "last_format_previous_cache": 134,
+          "direct_final_candidate": "13.6k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1505,
+          "row_seq": 44821,
+          "native7": {
+            "value": 5484.25,
+            "bits": 1168859648
+          },
+          "cache": 54,
+          "display_raw": {
+            "value": 5400.25,
+            "bits": 1168687616
+          },
+          "format_seq": 43827,
+          "format_input": {
+            "value": 5400.25,
+            "bits": 1168687616
+          },
+          "label_seq": 43828,
+          "label": "5.4k",
+          "last_format_row_seq": 43826,
+          "last_format_previous_cache": 53,
+          "direct_final_candidate": "5.5k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1506,
+          "row_seq": 44822,
+          "native7": {
+            "value": 8594.333984375,
+            "bits": 1174817110
+          },
+          "cache": 85,
+          "display_raw": {
+            "value": 8501.333984375,
+            "bits": 1174721878
+          },
+          "format_seq": 43726,
+          "format_input": {
+            "value": 8501.333984375,
+            "bits": 1174721878
+          },
+          "label_seq": 43727,
+          "label": "8.5k",
+          "last_format_row_seq": 43725,
+          "last_format_previous_cache": 84,
+          "direct_final_candidate": "8.6k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1507,
+          "row_seq": 44823,
+          "native7": {
+            "value": 6895.83349609375,
+            "bits": 1171750571
+          },
+          "cache": 68,
+          "display_raw": {
+            "value": 6800.83349609375,
+            "bits": 1171556011
+          },
+          "format_seq": 43761,
+          "format_input": {
+            "value": 6800.83349609375,
+            "bits": 1171556011
+          },
+          "label_seq": 43762,
+          "label": "6.8k",
+          "last_format_row_seq": 43760,
+          "last_format_previous_cache": 67,
+          "direct_final_candidate": "6.9k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1508,
+          "row_seq": 44824,
+          "native7": {
+            "value": 9454.3330078125,
+            "bits": 1175697749
+          },
+          "cache": 94,
+          "display_raw": {
+            "value": 9400.3330078125,
+            "bits": 1175642453
+          },
+          "format_seq": 44192,
+          "format_input": {
+            "value": 9400.3330078125,
+            "bits": 1175642453
+          },
+          "label_seq": 44193,
+          "label": "9.4k",
+          "last_format_row_seq": 44191,
+          "last_format_previous_cache": 93,
+          "direct_final_candidate": "9.5k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1509,
+          "row_seq": 44829,
+          "native7": {
+            "value": 7783.16650390625,
+            "bits": 1173567829
+          },
+          "cache": 77,
+          "display_raw": {
+            "value": 7732.16650390625,
+            "bits": 1173463381
+          },
+          "format_seq": 44262,
+          "format_input": {
+            "value": 7732.16650390625,
+            "bits": 1173463381
+          },
+          "label_seq": 44263,
+          "label": "7.7k",
+          "last_format_row_seq": 44261,
+          "last_format_previous_cache": 76,
+          "direct_final_candidate": "7.8k",
+          "retained_label_matches": true
+        }
+      ],
+      "direct_gold_mismatches": 8,
+      "clock": {
+        "last_anchor": {
+          "value": 1051.6890869140625,
+          "bits": 1149466125
+        },
+        "last_anchor_seq": 44692,
+        "last_record_interval_seconds": 4.494140625,
+        "decoder_eof_seconds": null,
+        "last_anchor_to_terminal_tick_count": 71,
+        "last_anchor_to_terminal_delta_sum": 4.49201301112771,
+        "multiplier": 5,
+        "terminal_clock": {
+          "value": 1074.1488037109375,
+          "bits": 1149650115
+        },
+        "terminal_seq": 44842,
+        "final_seq": 44843,
+        "time_format_seq": 44841,
+        "time_format_input": {
+          "value": 1074.1488037109375,
+          "bits": 1149650115
+        },
+        "screenshot_duration_display": "17:54",
+        "packet_interval_times_5_estimate": 1074.1597900390625
+      },
+      "queued_winning_team_id": 2,
+      "terminal_arg0": 2,
+      "winner_screen_side": null,
+      "result_screen_label": "surrender",
+      "accepted_for_definitive_analysis": false
+    }
+  ],
+  "holdout": {
+    "origin": "https://replays.richardtravel.com",
+    "mode": "GameMode_5v5_Ranked",
+    "selection_basis": "metadata_only",
+    "candidates_inspected": 2,
+    "excluded_candidate": "H5622: non-5v5 mode metadata",
+    "protocol_sha256": "775ea6c385790a3f8805b7a115d05f26036190a325d65092e12dd0d2b0b19ff6",
+    "index_sha256": "6c10231144157a91fbacf1a411c02033dbe589b8093840cba967b77803cf2c62",
+    "bundle_sha256": "dfb89fbba826a6524a19caeda610aa2a4ba4d7a378cc062224b61d5af041440e",
+    "metadata_sha256": "31caf0a2a8af46175a8e710bd2d7e568cb25e48a0d23bcf1bc26d0712756699e",
+    "reference_sha256": "b82b487a1f426fd1dfe8c612006db5035074447ebbfde835e578db980aa76ccb",
+    "offline_validation": {
+      "recording": "H5621",
+      "replay_scope": "sha256:8bcf5c9d601c2b9b543ec1a8a17dea6d136e855df32fdeea9de9042c0420c4cd",
+      "source_sections_rehashed": 108,
+      "prior_families_checked": 136,
+      "prior_unique_scopes": 95,
+      "duplicate_scope": false,
+      "duplicate_match_uuid": false,
+      "cli_api_equal": true,
+      "players": 10,
+      "support_status": "supported",
+      "raw_time_status": "unknown",
+      "recorded_time_mapping": "native record order is valid; game-time mapping unavailable: frames 89 -> 90: game clock delta 15.117249, record delta 10.005371",
+      "accepted_for_definitive_analysis": false
+    }
+  },
+  "output_validation": {
+    "default_cli_api_equal": true,
+    "attached_cli_api_equal": true,
+    "players_preserved": true,
+    "raw_time_unknown_preserved": true,
+    "conditional_time_estimate_unavailable": true,
+    "gold_labels_reproduced": 10,
+    "time_label_reproduced": "17:54",
+    "definitive_eligible": false,
+    "source_hashes_unchanged": 108,
+    "regression_tests_passed": 888
+  },
+  "cleanup": {
+    "restored_sections": 15,
+    "restored_hashes_and_timestamps_match": true,
+    "owned_processes_remaining": 0,
+    "owned_task_remaining": false,
+    "executable_hashes": [
+      "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+      "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc"
+    ],
+    "source_sections_rehashed": 108
+  },
+  "excluded_pre_injection_setup_attempts": [
+    {
+      "attempt": 1,
+      "reason": "operator selected client exit before replay injection",
+      "client_exit_code": 0
+    },
+    {
+      "attempt": 2,
+      "reason": "operator selected client exit before replay injection",
+      "client_exit_code": 0
+    }
+  ]
+}

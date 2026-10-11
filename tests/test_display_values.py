@@ -88,6 +88,32 @@ class DisplayValuesTests(unittest.TestCase):
         self.assertEqual(result['gold'], [])
         self.assertIsNone(result['time']['observed'])
 
+    def test_unchanged_preterminal_time_formatter_attaches_with_unknown_recorded_clock(self):
+        (self.root / 'match.1.vgr').write_bytes(anchor(3, 200) + packet(4, 1))
+        state = decode_player_state(self.replay)
+        evidence = copy.deepcopy(self.receipt)
+        case = evidence['cases'][0]
+        case['replay_scope'] = state.replay_scope
+        case['source_sections_rehashed'] = 2
+        clock = case['clock']
+        clock.update(decoder_eof_seconds=None, last_anchor=float_value(200),
+                     terminal_clock=float_value(210), time_format_input=float_value(210),
+                     time_format_seq=4, terminal_seq=5, final_seq=6,
+                     screenshot_duration_display='3:30')
+        result = decode_player_state(self.replay, runtime_evidence=evidence, playback_speed=5)
+        time = result.display_values['time']
+        self.assertIsNone(time['raw']['seconds'])
+        self.assertIsNone(time['playback_clock_estimate'])
+        self.assertEqual(time['observed']['label'], '3:30')
+        self.assertEqual(time['reconstructed']['label'], '3:30')
+        self.assertFalse(result.definitive_analysis['eligible'])
+        for changes in ({'time_format_input': float_value(209)}, {'time_format_seq': 5},
+                        {'time_format_seq': 6}, {'terminal_seq': 7}):
+            invalid = copy.deepcopy(evidence)
+            invalid['cases'][0]['clock'].update(changes)
+            with self.subTest(changes=changes), self.assertRaises(ValueError):
+                decode_player_state(self.replay, runtime_evidence=invalid)
+
     def test_receipt_rejects_scope_actor_value_bits_label_and_call_order_mismatches(self):
         variants = []
         for key, value in [('replay_scope', 'other'), ('trace_complete', False),
