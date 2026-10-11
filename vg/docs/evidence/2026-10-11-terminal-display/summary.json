@@ -1,0 +1,645 @@
+{
+  "schema_version": "vg.terminal-display-observation.v1",
+  "decoder_commit": "6f4ac1ff437119a3977e1a90f2c6413e23a8c48c",
+  "client_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "probe_sha256": "d86a67ab7ce64cd4c60b77222248bfc5881b826d161812b0935863f7b99d6daa",
+  "guard_manifest_sha256": "e28e487e8f2d7259d1fc7934dada1125349407f697b6a04d37956f5390016778",
+  "recording_build_certified": false,
+  "server_final_result_certified": false,
+  "cases": [
+    {
+      "recording": "H5543",
+      "replay_scope": "sha256:20b87a7925ceb3f6f4d0ec45474a927cbb9cc50ae9a591887d577cba6dde80e0",
+      "trace_sha256": "3397a809f2ae61fa4aa839d063405cf6c2616b4059ea46e15838730e77b23c09",
+      "screenshot_sha256": "daca935b5641cec2a5142c1be560c4602fb25cc6a61739a3c0d3c0df3b6f121d",
+      "source_sections_rehashed": 153,
+      "event_counts": {
+        "hooks_installed": 1,
+        "sample": 4731,
+        "anchor": 153,
+        "gold_row": 16869,
+        "gold_format": 1007,
+        "gold_label": 1007,
+        "tick": 35513,
+        "terminal": 1,
+        "final": 1,
+        "time_format": 1
+      },
+      "trace_complete": true,
+      "tick_transitions": {
+        "tested": 35360,
+        "matched": 35360
+      },
+      "all_gold_formatter_calls_linked_to_increasing_cache": 1007,
+      "gold": [
+        {
+          "actor_id": 1500,
+          "row_seq": 59158,
+          "native7": {
+            "value": 10367.458984375,
+            "bits": 1176632790
+          },
+          "cache": 103,
+          "display_raw": {
+            "value": 10302.458984375,
+            "bits": 1176566230
+          },
+          "format_seq": 58513,
+          "format_input": {
+            "value": 10302.458984375,
+            "bits": 1176566230
+          },
+          "label_seq": 58514,
+          "label": "10.3k",
+          "last_format_row_seq": 58512,
+          "last_format_previous_cache": 102,
+          "direct_final_candidate": "10.4k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1501,
+          "row_seq": 59151,
+          "native7": {
+            "value": 10899.3955078125,
+            "bits": 1177177493
+          },
+          "cache": 108,
+          "display_raw": {
+            "value": 10800.3955078125,
+            "bits": 1177076117
+          },
+          "format_seq": 58158,
+          "format_input": {
+            "value": 10800.3955078125,
+            "bits": 1177076117
+          },
+          "label_seq": 58159,
+          "label": "10.8k",
+          "last_format_row_seq": 58157,
+          "last_format_previous_cache": 107,
+          "direct_final_candidate": "10.9k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1502,
+          "row_seq": 59159,
+          "native7": {
+            "value": 18092.625,
+            "bits": 1183668544
+          },
+          "cache": 180,
+          "display_raw": {
+            "value": 18059.625,
+            "bits": 1183651648
+          },
+          "format_seq": 58901,
+          "format_input": {
+            "value": 18059.625,
+            "bits": 1183651648
+          },
+          "label_seq": 58902,
+          "label": "18.1k",
+          "last_format_row_seq": 58900,
+          "last_format_previous_cache": 179,
+          "direct_final_candidate": "18.1k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1503,
+          "row_seq": 59152,
+          "native7": {
+            "value": 10702.666015625,
+            "bits": 1176976042
+          },
+          "cache": 106,
+          "display_raw": {
+            "value": 10639.666015625,
+            "bits": 1176911530
+          },
+          "format_seq": 59153,
+          "format_input": {
+            "value": 10702.666015625,
+            "bits": 1176976042
+          },
+          "label_seq": 59154,
+          "label": "10.7k",
+          "last_format_row_seq": 59152,
+          "last_format_previous_cache": 106,
+          "direct_final_candidate": "10.7k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1504,
+          "row_seq": 59155,
+          "native7": {
+            "value": 9852.978515625,
+            "bits": 1176105962
+          },
+          "cache": 98,
+          "display_raw": {
+            "value": 9801.978515625,
+            "bits": 1176053738
+          },
+          "format_seq": 58637,
+          "format_input": {
+            "value": 9801.978515625,
+            "bits": 1176053738
+          },
+          "label_seq": 58638,
+          "label": "9.8k",
+          "last_format_row_seq": 58636,
+          "last_format_previous_cache": 97,
+          "direct_final_candidate": "9.9k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1505,
+          "row_seq": 59156,
+          "native7": {
+            "value": 12368.8125,
+            "bits": 1178682176
+          },
+          "cache": 123,
+          "display_raw": {
+            "value": 12302.8125,
+            "bits": 1178614592
+          },
+          "format_seq": 58478,
+          "format_input": {
+            "value": 12302.8125,
+            "bits": 1178614592
+          },
+          "label_seq": 58479,
+          "label": "12.3k",
+          "last_format_row_seq": 58477,
+          "last_format_previous_cache": 122,
+          "direct_final_candidate": "12.4k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1506,
+          "row_seq": 59160,
+          "native7": {
+            "value": 11769.5419921875,
+            "bits": 1178068523
+          },
+          "cache": 117,
+          "display_raw": {
+            "value": 11742.5419921875,
+            "bits": 1178040875
+          },
+          "format_seq": 58904,
+          "format_input": {
+            "value": 11742.5419921875,
+            "bits": 1178040875
+          },
+          "label_seq": 58905,
+          "label": "11.7k",
+          "last_format_row_seq": 58903,
+          "last_format_previous_cache": 116,
+          "direct_final_candidate": "11.8k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1507,
+          "row_seq": 59157,
+          "native7": {
+            "value": 11919.1455078125,
+            "bits": 1178221717
+          },
+          "cache": 119,
+          "display_raw": {
+            "value": 11901.1455078125,
+            "bits": 1178203285
+          },
+          "format_seq": 58977,
+          "format_input": {
+            "value": 11901.1455078125,
+            "bits": 1178203285
+          },
+          "label_seq": 58978,
+          "label": "11.9k",
+          "last_format_row_seq": 58976,
+          "last_format_previous_cache": 118,
+          "direct_final_candidate": "11.9k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1508,
+          "row_seq": 59161,
+          "native7": {
+            "value": 12478.8544921875,
+            "bits": 1178794859
+          },
+          "cache": 124,
+          "display_raw": {
+            "value": 12436.8544921875,
+            "bits": 1178751851
+          },
+          "format_seq": 58740,
+          "format_input": {
+            "value": 12436.8544921875,
+            "bits": 1178751851
+          },
+          "label_seq": 58741,
+          "label": "12.4k",
+          "last_format_row_seq": 58739,
+          "last_format_previous_cache": 123,
+          "direct_final_candidate": "12.5k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1509,
+          "row_seq": 59162,
+          "native7": {
+            "value": 10207.771484375,
+            "bits": 1176469270
+          },
+          "cache": 102,
+          "display_raw": {
+            "value": 10201.771484375,
+            "bits": 1176463126
+          },
+          "format_seq": 59099,
+          "format_input": {
+            "value": 10201.771484375,
+            "bits": 1176463126
+          },
+          "label_seq": 59100,
+          "label": "10.2k",
+          "last_format_row_seq": 59098,
+          "last_format_previous_cache": 101,
+          "direct_final_candidate": "10.2k",
+          "retained_label_matches": true
+        }
+      ],
+      "direct_gold_mismatches": 6,
+      "clock": {
+        "last_anchor": {
+          "value": 1493.120361328125,
+          "bits": 1153082330
+        },
+        "last_anchor_seq": 58896,
+        "last_record_interval_seconds": 8.2578125,
+        "decoder_eof_seconds": 1501.378173828125,
+        "last_anchor_to_terminal_tick_count": 140,
+        "last_anchor_to_terminal_delta_sum": 8.23114550486207,
+        "multiplier": 5,
+        "terminal_clock": {
+          "value": 1534.2757568359375,
+          "bits": 1153419475
+        },
+        "terminal_seq": 59148,
+        "final_seq": 59149,
+        "time_format_seq": 59150,
+        "time_format_input": {
+          "value": 1534.2757568359375,
+          "bits": 1153419475
+        },
+        "screenshot_duration_display": "25:34",
+        "packet_interval_times_5_estimate": 1534.409423828125
+      },
+      "queued_winning_team_id": 2,
+      "terminal_arg0": 2,
+      "winner_screen_side": "orange",
+      "accepted_for_definitive_analysis": false
+    },
+    {
+      "recording": "H5519",
+      "replay_scope": "sha256:6ff9434f2e57a6391e468dd4f6934720f38d067bd2242d00280b1e64237f5ca4",
+      "trace_sha256": "7f2b3d1ca7f83022bff23e4efb7e192b4fc50e703d6482e768257b9f81af450b",
+      "screenshot_sha256": "3cc3a1190e7213f2bf67b011fb263e4f3c154acd729983a7e5c41f8f00925265",
+      "source_sections_rehashed": 152,
+      "event_counts": {
+        "hooks_installed": 1,
+        "sample": 4201,
+        "anchor": 152,
+        "gold_row": 29280,
+        "gold_format": 1064,
+        "gold_label": 1064,
+        "tick": 32758,
+        "terminal": 1,
+        "final": 1,
+        "time_format": 1
+      },
+      "trace_complete": true,
+      "tick_transitions": {
+        "tested": 32606,
+        "matched": 32606
+      },
+      "all_gold_formatter_calls_linked_to_increasing_cache": 1064,
+      "gold": [
+        {
+          "actor_id": 1500,
+          "row_seq": 68368,
+          "native7": {
+            "value": 8014.41650390625,
+            "bits": 1174041429
+          },
+          "cache": 80,
+          "display_raw": {
+            "value": 8002.41650390625,
+            "bits": 1174016853
+          },
+          "format_seq": 68213,
+          "format_input": {
+            "value": 8002.41650390625,
+            "bits": 1174016853
+          },
+          "label_seq": 68214,
+          "label": "8.0k",
+          "last_format_row_seq": 68212,
+          "last_format_previous_cache": 79,
+          "direct_final_candidate": "8.0k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1501,
+          "row_seq": 68363,
+          "native7": {
+            "value": 11044.4169921875,
+            "bits": 1177325995
+          },
+          "cache": 110,
+          "display_raw": {
+            "value": 11010.9169921875,
+            "bits": 1177291691
+          },
+          "format_seq": 68109,
+          "format_input": {
+            "value": 11010.9169921875,
+            "bits": 1177291691
+          },
+          "label_seq": 68110,
+          "label": "11.0k",
+          "last_format_row_seq": 68108,
+          "last_format_previous_cache": 109,
+          "direct_final_candidate": "11.0k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1502,
+          "row_seq": 68364,
+          "native7": {
+            "value": 13635.916015625,
+            "bits": 1179979690
+          },
+          "cache": 136,
+          "display_raw": {
+            "value": 13602.916015625,
+            "bits": 1179945898
+          },
+          "format_seq": 67912,
+          "format_input": {
+            "value": 13602.916015625,
+            "bits": 1179945898
+          },
+          "label_seq": 67913,
+          "label": "13.6k",
+          "last_format_row_seq": 67911,
+          "last_format_previous_cache": 135,
+          "direct_final_candidate": "13.6k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1503,
+          "row_seq": 68365,
+          "native7": {
+            "value": 10730.3330078125,
+            "bits": 1177004373
+          },
+          "cache": 107,
+          "display_raw": {
+            "value": 10709.3330078125,
+            "bits": 1176982869
+          },
+          "format_seq": 68124,
+          "format_input": {
+            "value": 10709.3330078125,
+            "bits": 1176982869
+          },
+          "label_seq": 68125,
+          "label": "10.7k",
+          "last_format_row_seq": 68123,
+          "last_format_previous_cache": 106,
+          "direct_final_candidate": "10.7k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1504,
+          "row_seq": 68366,
+          "native7": {
+            "value": 19241,
+            "bits": 1184256512
+          },
+          "cache": 192,
+          "display_raw": {
+            "value": 19205,
+            "bits": 1184238080
+          },
+          "format_seq": 67889,
+          "format_input": {
+            "value": 19205,
+            "bits": 1184238080
+          },
+          "label_seq": 67890,
+          "label": "19.2k",
+          "last_format_row_seq": 67888,
+          "last_format_previous_cache": 191,
+          "direct_final_candidate": "19.2k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1505,
+          "row_seq": 68369,
+          "native7": {
+            "value": 14615.916015625,
+            "bits": 1180983210
+          },
+          "cache": 146,
+          "display_raw": {
+            "value": 14600.916015625,
+            "bits": 1180967850
+          },
+          "format_seq": 68173,
+          "format_input": {
+            "value": 14600.916015625,
+            "bits": 1180967850
+          },
+          "label_seq": 68174,
+          "label": "14.6k",
+          "last_format_row_seq": 68172,
+          "last_format_previous_cache": 145,
+          "direct_final_candidate": "14.6k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1506,
+          "row_seq": 68370,
+          "native7": {
+            "value": 16090.7509765625,
+            "bits": 1182493441
+          },
+          "cache": 160,
+          "display_raw": {
+            "value": 16000.7509765625,
+            "bits": 1182401281
+          },
+          "format_seq": 67167,
+          "format_input": {
+            "value": 16000.7509765625,
+            "bits": 1182401281
+          },
+          "label_seq": 67168,
+          "label": "16.0k",
+          "last_format_row_seq": 67166,
+          "last_format_previous_cache": 159,
+          "direct_final_candidate": "16.1k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1507,
+          "row_seq": 68371,
+          "native7": {
+            "value": 9224.5830078125,
+            "bits": 1175462485
+          },
+          "cache": 92,
+          "display_raw": {
+            "value": 9200.5830078125,
+            "bits": 1175437909
+          },
+          "format_seq": 68043,
+          "format_input": {
+            "value": 9200.5830078125,
+            "bits": 1175437909
+          },
+          "label_seq": 68044,
+          "label": "9.2k",
+          "last_format_row_seq": 68042,
+          "last_format_previous_cache": 91,
+          "direct_final_candidate": "9.2k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1508,
+          "row_seq": 68403,
+          "native7": {
+            "value": 12861.4736328125,
+            "bits": 1179186661
+          },
+          "cache": 128,
+          "display_raw": {
+            "value": 12800.013671875,
+            "bits": 1179123726
+          },
+          "format_seq": 67562,
+          "format_input": {
+            "value": 12800.013671875,
+            "bits": 1179123726
+          },
+          "label_seq": 67563,
+          "label": "12.8k",
+          "last_format_row_seq": 67561,
+          "last_format_previous_cache": 127,
+          "direct_final_candidate": "12.9k",
+          "retained_label_matches": true
+        },
+        {
+          "actor_id": 1509,
+          "row_seq": 68367,
+          "native7": {
+            "value": 13952.833984375,
+            "bits": 1180304214
+          },
+          "cache": 139,
+          "display_raw": {
+            "value": 13931.833984375,
+            "bits": 1180282710
+          },
+          "format_seq": 68089,
+          "format_input": {
+            "value": 13931.833984375,
+            "bits": 1180282710
+          },
+          "label_seq": 68090,
+          "label": "13.9k",
+          "last_format_row_seq": 68088,
+          "last_format_previous_cache": 138,
+          "direct_final_candidate": "14.0k",
+          "retained_label_matches": true
+        }
+      ],
+      "direct_gold_mismatches": 3,
+      "clock": {
+        "last_anchor": {
+          "value": 1486.7308349609375,
+          "bits": 1153029987
+        },
+        "last_anchor_seq": 68381,
+        "last_record_interval_seconds": 0.5596923828125,
+        "decoder_eof_seconds": 1487.29052734375,
+        "last_anchor_to_terminal_tick_count": 11,
+        "last_anchor_to_terminal_delta_sum": 0.6047090068459511,
+        "multiplier": 5,
+        "terminal_clock": {
+          "value": 1489.7545166015625,
+          "bits": 1153054757
+        },
+        "terminal_seq": 68400,
+        "final_seq": 68401,
+        "time_format_seq": 68402,
+        "time_format_input": {
+          "value": 1489.7545166015625,
+          "bits": 1153054757
+        },
+        "screenshot_duration_display": "24:49",
+        "packet_interval_times_5_estimate": 1489.529296875
+      },
+      "queued_winning_team_id": 1,
+      "terminal_arg0": 1,
+      "winner_screen_side": "blue",
+      "accepted_for_definitive_analysis": false
+    }
+  ],
+  "gold_mismatches_explained": 9,
+  "cleanup": {
+    "owned_game_and_probe_processes_remaining": 0,
+    "owned_scheduled_tasks_remaining": 0,
+    "source_sections_rehashed_after_cleanup": 305,
+    "restoration": [
+      {
+        "trial": "h5543-full",
+        "sections": 19,
+        "hashes_and_timestamps_match": true,
+        "recreated_missing": 19
+      },
+      {
+        "trial": "h5519-full",
+        "sections": 2,
+        "hashes_and_timestamps_match": true,
+        "recreated_missing": 2
+      },
+      {
+        "trial": "h5519-full-c",
+        "sections": 8,
+        "hashes_and_timestamps_match": true,
+        "recreated_missing": 0
+      }
+    ],
+    "executable_hashes_unchanged": true
+  },
+  "excluded_attempts": [
+    {
+      "trial": "H5519-initial",
+      "reason": "Returned to home without any replay anchor calls; game stayed alive; setup cause not isolated",
+      "replay_anchor_calls": 0,
+      "accepted": false
+    },
+    {
+      "trial": "H5519-open-slot-preparation",
+      "reason": "Injection rejected an empty section in a still recording practice slot; no replay started",
+      "accepted": false
+    }
+  ]
+}
