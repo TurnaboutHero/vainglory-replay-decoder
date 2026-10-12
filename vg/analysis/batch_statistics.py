@@ -4,6 +4,7 @@ from collections import Counter, defaultdict
 from typing import TypedDict
 from vg.core.export_rows import _complete_sum
 from vg.core.unified_decoder import DecodedMatch
+from vg.core.analysis_eligibility import partition_definitive_analysis
 
 
 class StatisticsReport(TypedDict):
@@ -14,13 +15,14 @@ class StatisticsReport(TypedDict):
     duration_distribution: dict
     objective_stats: dict
     hero_stats: list[dict]
+    definitive_analysis: dict
 
 
 def _duration_text(seconds: int | None) -> str:
     return 'N/A' if seconds is None else f'{seconds // 60}m {seconds % 60}s'
 
 
-def generate_report(matches: list[DecodedMatch]) -> StatisticsReport:
+def _observed_report(matches: list[DecodedMatch]) -> dict:
     # === Hero Statistics ===
     hero_stats = defaultdict(lambda: {
         'picks': 0, 'wins': 0, 'kills': 0, 'deaths': 0,
@@ -144,6 +146,14 @@ def generate_report(matches: list[DecodedMatch]) -> StatisticsReport:
     }
 
 
+def generate_report(matches: list[DecodedMatch]) -> StatisticsReport:
+    partition = partition_definitive_analysis([match.to_dict() for match in matches])
+    admitted = [match for match in matches if match.definitive_analysis['eligible']]
+    return {**_observed_report(matches), 'definitive_analysis': {
+        **partition, 'statistics': _observed_report(admitted),
+    }}
+
+
 def _stat_text(value, width):
     return f"{'N/A':>{width}}" if value is None else f"{value:{width}.1f}"
 
@@ -153,6 +163,10 @@ def print_report(report: StatisticsReport) -> None:
     print(f"\n{'='*70}")
     print(f"  BATCH REPLAY ANALYSIS REPORT")
     print(f"{'='*70}")
+
+    definitive = report['definitive_analysis']
+    print(f"  Definitive analysis: included={definitive['included_matches']}, excluded={definitive['excluded_matches']}")
+    print('  Statistics below are recording observations; exclusions are listed in definitive_analysis.excluded.')
 
     print(f"\n  Match Statistics:")
     print(f"  {'─'*50}")

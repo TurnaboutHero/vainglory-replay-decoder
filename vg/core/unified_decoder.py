@@ -727,8 +727,14 @@ class DecodedMatch:
     def all_players(self) -> List[DecodedPlayer]:
         return self.left_team + self.right_team + self.unassigned_players
 
+    @property
+    def definitive_analysis(self) -> Dict:
+        from vg.core.analysis_eligibility import evaluate_definitive_analysis
+        return evaluate_definitive_analysis({'player_state': self.player_state,
+                                            'final_validation_status': self.final_validation_status})
+
     def to_dict(self) -> Dict:
-        return asdict(self)
+        return {**asdict(self), 'definitive_analysis': self.definitive_analysis}
 
     def to_json(self, indent: int = 2) -> str:
         return json.dumps(self.to_dict(), indent=indent, ensure_ascii=False)

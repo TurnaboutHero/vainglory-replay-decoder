@@ -21,18 +21,33 @@ python -B -m vg.decoder_v2.decode_match "replays/match.0.vgr" -o "reports/match.
 python -B -m vg.decoder_v2.decode_match "replays/match.0.vgr" --at-game-time 1551 -o "reports/capture.json"
 ```
 
+For game 10:00, use `--at-game-time 600`. Add repeatable `--player-id` values from
+`players[].native_actor_id` to select players at the same inclusive boundary.
+`query_timing` reports the applied record time, projected game time and next record;
+it does not interpolate missing state. See the [timed player query guide](vg/docs/PLAYER_STATE_TIME_QUERY.md)
+for CLI/API examples, failure states and a scoped 5v5 check.
+
 Both commands return `decoder_v2.player_state.v3`. The default scope is `recorded_end`; a timed query returns `capture`. Players use recording-scoped 32-bit native actor IDs. `gold_balance` is spendable gold and `net_worth` is the native accumulated value. `minion_kills` is the client's displayed CS counter. `items` preserves held instances and quantities while `native_items` also includes HUD-hidden system items; inventory order is not a rendered slot claim. Check `support_status` and per-field provenance. Missing values remain null and measured zero remains zero. `supported` means the consumed records matched the validated payload layouts (and, where checked, catalog provenance); it does not identify which client wrote the recording. Recordings carry no client build identifier, so `recording_client` is always `unverified` and `supported_client_sha256` names the reference build the layouts were derived from ([evidence](vg/docs/RECORDING_CLIENT_PROVENANCE_2026-10-05.md)).
+
+Default state, safe JSON and legacy JSON/CSV exports also mark `definitive_analysis.eligible=false` with explicit exclusion reasons. Batch reports automatically remove these recordings from `definitive_analysis.matches`; observed results remain available in `states`/`matches` and the existing observed statistics. Use the separate definitive subset and, for `vg.analysis.batch_report`, `definitive_analysis.statistics` for definitive aggregation. A completed decode or successful playback does not override this gate. Current recordings all remain excluded because no source-bound recording-build or final-result validator exists; manually declaring `verified` or supplying truth does not authorize inclusion. See the [eligibility contract](vg/docs/DEFINITIVE_ANALYSIS_ELIGIBILITY.md).
 
 The CLI default changed from `safe-json` to `state-json`. Consumers of `decoder_v2.match.v2` or `decoder_v2.capture.v2` must pass `--format safe-json`. The Python `decode_match(...)` API retains those older contracts; `decode_player_state(...)` provides the new state model. Recorded-end state does not assert that gameplay finished, and cached scoreboard gold text can differ from the raw resource value. `end_requests` lists raw native end-match actions (`03f1`) inside the query boundary: `winning_team_id` uses the same team id as `players[].team_id` and `end_reason` 2 takes the native surrender path. An empty list means no end was recorded. A request is a client-recorded observation, not a server result ([held-out check](vg/docs/ENDGAME_HELDOUT_2026-10-05.md)).
 
 A single input may also be a directory containing exactly one replay family. Multiple families require an explicit `.0.vgr` selection or a batch command. Missing paths, unreadable sections, ambiguous selection and malformed input receive actionable errors.
+
+State JSON also exposes `display_values` ([contract](vg/docs/DISPLAY_VALUES.md)). Its `raw` values retain recording provenance. `observed` and `reconstructed` remain null without a compatible supplied runtime receipt. `direct_raw_candidate` is an estimate of one gold formatter call, not a reconstruction of the UI cache. `--playback-speed 5` optionally estimates the playback clock after the last anchor; unknown clock mapping leaves it null. Neither display option changes definitive eligibility.
+
+```sh
+python -B -m vg.decoder_v2.decode_match "replays/match.0.vgr" --playback-speed 5 -o "reports/estimate.json"
+python -B -m vg.decoder_v2.decode_match "replays/match.0.vgr" --display-evidence "receipts/terminal-display.json" -o "reports/observed.json"
+```
 
 ## Choose the workflow
 
 | Need | Entry point | What to retain |
 | --- | --- | --- |
 | Inspect one recording | `vg.decoder_v2.decode_match` | `decoder_v2.player_state.v3`, field provenance and `replay_scope` |
-| Observe a scoreboard moment | `decode_match --at-game-time SECONDS` | Common record boundary, requested/observed game time and native actor identity |
+| Query a recorded moment | `decode_match --at-game-time SECONDS [--player-id ID]` | Common record boundary, requested/projected game time and native actor identity |
 | Retain conservative final decisions | `decode_match --format safe-json` | Existing v2 decisions and final-index acceptance |
 | Build a dataset | `vg.decoder_v2.batch_decode`, `vg.decoder_v2.index_export` | Every input result, scoped `input_id`, status/counts and withheld fields; `--format state-json [--at-game-time S]` runs every input through the single-replay player-state path |
 | Use player/match spreadsheets | `vg.core.export_matches` | CSV provenance, blank unknowns, stable ordinals and export receipt |

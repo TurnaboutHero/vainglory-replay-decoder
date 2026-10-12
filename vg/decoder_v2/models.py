@@ -8,6 +8,7 @@ from typing import Dict, List, Optional, Tuple
 
 from vg.core.stat_evidence import EndMatchObservation, ReplayEvidence
 from vg.core.native_gold import NativeGoldResult
+from vg.core.analysis_eligibility import evaluate_definitive_analysis
 
 
 class ClaimStatus(str, Enum):
@@ -403,4 +404,5 @@ class DecoderV2MatchOutput:
             key: value.to_dict() for key, value in self.withheld_fields.items()
         }
         result["players"] = [player.to_dict() for player in self.players]
+        result['definitive_analysis'] = evaluate_definitive_analysis(result)
         return result

@@ -14,6 +14,7 @@ from vg.core.replay_output import (
 )
 from vg.core.replay_input import ReplayInputError
 from vg.core.stat_evidence import FINAL_VALIDATION_STATUS, final_field_reason
+from vg.core.analysis_eligibility import evaluate_definitive_analysis, partition_definitive_analysis
 from .batch_decode import BatchInputs, decode_replay_batch, prepare_batch_inputs
 from .minion_policy import MINION_POLICY_CHOICES, MINION_POLICY_NONE, evaluate_minion_policy
 from .models import FieldDecision
@@ -154,6 +155,7 @@ def build_index_ready_export(
                                        "team_size", "completeness_status")
         } | {
             'input_id': match.get('input_id'),
+            'definitive_analysis': evaluate_definitive_analysis(match),
             "replay_scope": match.get("replay_scope"),
             "source_scope": match.get("scope", "final"),
             "withheld_fields": decisions,
@@ -184,6 +186,7 @@ def build_index_ready_export(
         "total_replays": batch["total_replays"],
         "completeness_summary": batch["completeness_summary"],
         "matches": matches,
+        'definitive_analysis': partition_definitive_analysis(matches),
     }
 
 

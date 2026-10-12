@@ -1,11 +1,13 @@
 """Recording-scoped native player state, without final-match or truth overrides."""
 
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 import hashlib
 import math
 from pathlib import Path
 
 from vg.core.definition_catalog import SUPPORTED_BUILD_SHA256
+from vg.core.analysis_eligibility import evaluate_definitive_analysis
+from vg.core.display_values import build_display_values
 from vg.core.native_gold import read_native_gold
 from vg.core.native_inventory import NativeInventoryItem, read_native_inventory
 from vg.core.native_query import GameTime, RecordTime, select_native_query
@@ -128,9 +130,19 @@ class PlayerStateResult:
     supported_client_sha256: str = SUPPORTED_BUILD_SHA256
     recording_client: RecordingClient = RecordingClient()
     end_requests: tuple[EndRequest, ...] = ()
+    display_values: dict = field(default_factory=dict)
+    player_selection: dict = field(default_factory=dict)
+    query_timing: dict = field(default_factory=dict)
+    definitive_analysis: dict = field(init=False)
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, 'definitive_analysis',
+                           evaluate_definitive_analysis({'recording_client': asdict(self.recording_client)}))
 
     def to_dict(self) -> dict:
-        return asdict(self)
+        result = asdict(self)
+        result['definitive_analysis'] = evaluate_definitive_analysis(result)
+        return result
 
 
 def _boundary(value: tuple[int, int] | None) -> RecordBoundary | None:
@@ -142,11 +154,64 @@ def _items(values: tuple[NativeInventoryItem, ...]) -> tuple[StateItem, ...]:
                            item.definition_name, item.hud_hidden) for item in values)
 
 
+def _query_timing(query, sources) -> dict:
+    applied = following = None
+    for frame in query.frames:
+        for record in frame.records:
+            if (frame.number, record.offset) == query.record_boundary:
+                applied = (frame, record)
+            elif applied is not None:
+                following = (frame, record)
+                break
+        if following is not None:
+            break
+
+    def observation(pair):
+        if pair is None:
+            return None
+        frame, record = pair
+        mapped = query.valid and query.audit.game_time_mapping_valid
+        return {'record_boundary': asdict(RecordBoundary(frame.number, record.offset)),
+                'record_time': record.timestamp,
+                'projected_game_time': frame.game_time(record.timestamp) if mapped else None,
+                'anchor_record_time': frame.anchor_record_time if mapped else None,
+                'anchor_game_time': frame.anchor_game_time if mapped else None}
+
+    selected, next_record = observation(applied), observation(following)
+    requested = query.cutoff.seconds if query.cutoff is not None else None
+    applied_time = (selected['record_time'] if isinstance(query.cutoff, RecordTime) else
+                    selected['projected_game_time']) if selected else None
+    return {
+        'status': query.status, 'reason': query.reason,
+        'clock_audit': {'status': query.audit.status, 'reason': query.audit.reason,
+                        'game_time_mapping_valid': query.audit.valid and query.audit.game_time_mapping_valid},
+        'game_time_basis': 'anchor_game_time + record_time - anchor_record_time',
+        'applied': selected, 'next_record': next_record,
+        'cutoff_relation': ('unavailable' if selected is None else
+                            'recorded_end' if query.cutoff is None else
+                            'exact_record_boundary' if applied_time == requested else 'preceding_record'),
+        'seconds_before_requested': (requested - applied_time
+                                     if requested is not None and applied_time is not None else None),
+        'bracketing_record_interval_seconds': (next_record['record_time'] - selected['record_time']
+                                               if next_record is not None else None),
+        'coverage': {'first_game_time': query.audit.first_game_time,
+                     'last_game_time': query.audit.last_game_time,
+                     'first_section': sources[0].section, 'last_section': sources[-1].section,
+                     'section_count': len(sources), 'starts_at_section_zero': sources[0].section == 0},
+        'state_interpolated': False, 'native_game_clock_observed': False,
+        'note': 'State ends at the inclusive recorded boundary. Game times are anchor projections; '
+                'record intervals alone do not prove missing data or continuous gameplay.',
+    }
+
+
 def decode_player_state(
     replay_file: str | Path,
     *,
     at_game_time: float | None = None,
     at_record_time: float | None = None,
+    player_ids: tuple[int, ...] | list[int] | None = None,
+    runtime_evidence: dict | None = None,
+    playback_speed: float | None = None,
 ) -> PlayerStateResult:
     """Decode every field at one inclusive native boundary.
 
@@ -156,6 +221,8 @@ def decode_player_state(
     native resources, not cached final-screen labels or completed gameplay.
     ``items`` filters native HUD-hidden definitions; ``native_items`` retains
     them. Item array indices are provenance, not rendered slot positions.
+    ``player_ids`` selects unique recording-scoped native actor IDs, in roster
+    order, after decoding the common boundary. Support still audits the full roster.
     """
     if at_game_time is not None and at_record_time is not None:
         raise ValueError('choose one game-time or record-time cutoff')
@@ -163,6 +230,13 @@ def decode_player_state(
         if value is not None and (isinstance(value, bool) or not isinstance(value, (int, float))
                                   or not math.isfinite(value) or value < 0):
             raise ValueError(f'{name} must be finite and non-negative')
+    if player_ids is not None:
+        if (not isinstance(player_ids, (tuple, list)) or not player_ids
+                or any(type(actor) is not int or not 0 < actor < 0xffffffff for actor in player_ids)):
+            raise ValueError('player_ids must be a nonempty list or tuple of positive native actor IDs below 0xffffffff')
+        if len(set(player_ids)) != len(player_ids):
+            raise ValueError('player_ids must be unique')
+        player_ids = tuple(player_ids)
     cutoff = (GameTime(at_game_time) if at_game_time is not None else
               RecordTime(at_record_time) if at_record_time is not None else None)
     replay = select_replay(replay_file)
@@ -190,6 +264,20 @@ def decode_player_state(
         if replay_sections(replay) != sections:
             raise ReplayOutputError(replay, 'Replay section set changed after preflight', 'input_changed')
         inputs.recheck()
+        display = build_display_values(query, players, replay_scope,
+            'recorded_end' if cutoff is None else 'capture',
+            runtime_evidence=runtime_evidence, playback_speed=playback_speed)
+        selection_status = 'all' if player_ids is None else 'unavailable'
+        missing = []
+        if player_ids is not None:
+            if players:
+                missing = [actor for actor in player_ids if actor not in {p.native_actor_id for p in players}]
+                selection_status = 'player_not_found' if missing else 'selected'
+                if missing:
+                    status, reason = 'player_not_found', f'native actor IDs absent at this boundary: {missing}'
+            players = tuple(p for p in players if p.native_actor_id in player_ids) if not missing else ()
+            display['gold'] = [row for row in display['gold']
+                               if row['native_actor_id'] in {p.native_actor_id for p in players}]
         return PlayerStateResult(
             'decoder_v2.player_state.v3', replay.name[:-6], str(replay), replay_scope,
             'recorded_end' if cutoff is None else 'capture',
@@ -198,6 +286,12 @@ def decode_player_state(
             status, reason, tuple(players), fields or {}, sources,
             query.audit.first_game_time, query.audit.last_game_time,
             end_requests=end_requests,
+            display_values=display,
+            player_selection={'mode': 'all' if player_ids is None else 'selected',
+                'status': selection_status, 'requested_ids': list(player_ids) if player_ids is not None else None,
+                'missing_ids': missing, 'returned_count': len(players),
+                'support_scope': 'all_recorded_players_before_selection'},
+            query_timing=_query_timing(query, sources),
         )
 
     if not query.valid:

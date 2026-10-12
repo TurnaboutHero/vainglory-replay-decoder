@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 from vg.core.vgr_parser import VGRParser
+from vg.core.display_values import DisplayEvidenceError
 from vg.core.replay_input import ReplayInputError, replay_sections, select_replay
 from vg.core.vgr_records import VGRRecordError
 from vg.core.stat_evidence import final_field_reason, inspect_replay_evidence
@@ -186,6 +187,10 @@ def main(argv: Optional[List[str]] = None) -> int:
         help="state-json (default) reports native recorded state; safe-json retains conservative final decisions",
     )
     parser.add_argument("-o", "--output", help="Optional output JSON path")
+    parser.add_argument("--display-evidence", help="Scoped terminal-display receipt; observations remain unverified.")
+    parser.add_argument("--playback-speed", type=float, help="Optional conditional UI clock estimate; state-json only.")
+    parser.add_argument("--player-id", type=int, action="append", dest="player_ids",
+                        help="Select a recording-scoped native actor ID; repeat for multiple players; state-json only.")
     time_query = parser.add_mutually_exclusive_group()
     time_query.add_argument("--at-game-time", type=float, help="Capture all supported fields at game-clock seconds; does not assert match completion.")
     time_query.add_argument("--at-record-time", type=float, help="Capture native state through replay-record seconds; distinct from game time and supported only by state-json.")
@@ -195,13 +200,27 @@ def main(argv: Optional[List[str]] = None) -> int:
             parser.error(f"{name} must be finite and non-negative")
     if args.at_record_time is not None and args.format != "state-json":
         parser.error("--at-record-time requires --format state-json")
+    if args.player_ids is not None:
+        if args.format != "state-json":
+            parser.error("--player-id requires --format state-json")
+        if any(not 0 < actor < 0xffffffff for actor in args.player_ids):
+            parser.error("--player-id must be positive and below 0xffffffff")
+        if len(set(args.player_ids)) != len(args.player_ids):
+            parser.error("--player-id values must be unique")
+    if (args.display_evidence or args.playback_speed is not None) and args.format != "state-json":
+        parser.error("display options require --format state-json")
+    if args.playback_speed is not None and (not math.isfinite(args.playback_speed) or args.playback_speed <= 0):
+        parser.error("--playback-speed must be finite and positive")
     try:
         output = Path(args.output) if args.output else None
         if output is not None and not Path(args.replay_file).is_dir():
             validate_replay_output(Path(args.replay_file), output)
         replay = select_replay(args.replay_file)
         sections = replay_sections(replay)
-        inputs = ReportInputs(files=tuple(path for _, path in sections), replays=(replay,))
+        evidence_path = Path(args.display_evidence) if args.display_evidence else None
+        inputs = ReportInputs(files=tuple(path for _, path in sections) +
+                              ((evidence_path,) if evidence_path else ()), replays=(replay,))
+        runtime_evidence = json.loads(evidence_path.read_text(encoding='utf-8')) if evidence_path else None
         if output is not None:
             for candidate in (output, output.resolve()):
                 if (candidate.parent.resolve() == replay.parent.resolve()
@@ -213,7 +232,9 @@ def main(argv: Optional[List[str]] = None) -> int:
             payload_obj = decode_match_debug(str(replay), at_game_time=args.at_game_time)
         elif args.format == "state-json":
             payload_obj = decode_player_state(str(replay), at_game_time=args.at_game_time,
-                                               at_record_time=args.at_record_time).to_dict()
+                at_record_time=args.at_record_time, runtime_evidence=runtime_evidence,
+                player_ids=args.player_ids,
+                playback_speed=args.playback_speed).to_dict()
         else:
             payload_obj = decode_match(str(replay), at_game_time=args.at_game_time).to_dict()
         if replay_sections(replay) != sections:
@@ -225,7 +246,8 @@ def main(argv: Optional[List[str]] = None) -> int:
         else:
             inputs.recheck()
             print(payload)
-    except (ReplayInputError, ReplayOutputError, VGRRecordError, OSError) as error:
+    except (ReplayInputError, ReplayOutputError, VGRRecordError, OSError,
+            DisplayEvidenceError, json.JSONDecodeError) as error:
         parser.error(str(error))
     return 0
 

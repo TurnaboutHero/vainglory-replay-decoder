@@ -1,0 +1,67 @@
+[
+  {
+    "name": "anchor",
+    "rva": 1348720,
+    "bytes": "558bec6aff6850d51c0164a1000000005083ec34a1284fe401",
+    "relocations": [
+      6,
+      21
+    ]
+  },
+  {
+    "name": "terminal",
+    "rva": 1349152,
+    "bytes": "558bec8b450c538a5d08568bf1889e9c0100008986900100",
+    "relocations": []
+  },
+  {
+    "name": "final",
+    "rva": 1466256,
+    "bytes": "558bec56576a006a008bf9e810020000e8ebbbfdff51c704",
+    "relocations": []
+  },
+  {
+    "name": "time_format",
+    "rva": 3385200,
+    "bytes": "558becf30f10450856578bf9e8bfe2a70033d28db7a83b01",
+    "relocations": []
+  },
+  {
+    "name": "gold_row",
+    "rva": 3108816,
+    "bytes": "558bec83ec10538bd98b4b0c56578d7b0c85c90f842b0800",
+    "relocations": []
+  },
+  {
+    "name": "gold_format",
+    "rva": 3408784,
+    "bytes": "558becf30f104508f30f590560cc2101565783ec088bf90f",
+    "relocations": [
+      12
+    ]
+  },
+  {
+    "name": "label",
+    "rva": 3835104,
+    "bytes": "558bec568bf1578d8e80020000e86e33cbff8b7d088bcf50",
+    "relocations": []
+  },
+  {
+    "name": "resolver",
+    "rva": 1318816,
+    "bytes": "8d41ecf7d91bc923c1c3cccccccccccc558bec8b45088941",
+    "relocations": []
+  },
+  {
+    "name": "setter",
+    "rva": 1350944,
+    "bytes": "558becf30f104508f30f1181940100005dc20400cccccccc",
+    "relocations": []
+  },
+  {
+    "name": "tick",
+    "rva": 1349536,
+    "bytes": "558bec83ec08568bf1e802b13f0084c074078bcee8570a00",
+    "relocations": []
+  }
+]

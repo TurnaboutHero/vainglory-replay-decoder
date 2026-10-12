@@ -16,6 +16,14 @@ def _complete_sum(values):
     return None if not values or any(value is None for value in values) else sum(values)
 
 
+def _analysis_columns(match: DecodedMatch) -> Dict:
+    decision = match.definitive_analysis
+    return {'definitive_analysis_eligible': decision['eligible'],
+            'definitive_analysis_status': decision['status'],
+            'definitive_analysis_reason_codes': ' | '.join(decision['reason_codes']),
+            'definitive_analysis_reason': decision['reason']}
+
+
 def match_to_csv_rows(match: DecodedMatch, match_idx: int = 0, input_id: str = '') -> List[Dict]:
     """Convert a decoded match to flat CSV rows (one row per player)."""
     rows = []
@@ -40,6 +48,7 @@ def match_to_csv_rows(match: DecodedMatch, match_idx: int = 0, input_id: str = '
             'native_stats_status': match.native_stats_status,
             'final_validation_status': match.final_validation_status,
             'final_stats_reason': match.final_stats_reason,
+            **_analysis_columns(match),
             'winner': match.winner or '',
             'player_name': player.name,
             'native_actor_id': player.native_actor_id,
@@ -104,6 +113,7 @@ def match_to_summary_row(match: DecodedMatch, match_idx: int = 0, input_id: str 
             'native_stats_status': match.native_stats_status,
             'final_validation_status': match.final_validation_status,
             'final_stats_reason': match.final_stats_reason,
+            **_analysis_columns(match),
         'winner': match.winner or '',
         'left_kills': left_kills,
         'right_kills': right_kills,
