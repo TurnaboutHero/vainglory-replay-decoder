@@ -127,3 +127,5 @@ records, section gaps, clock jumps and display receipt scope. Run the focused ch
 ```sh
 python -B -m unittest tests.test_player_state_time_query tests.test_player_state_service tests.test_player_state_cli tests.test_display_values -q
 ```
+
+The [independent H5672 midpoint verification](PLAYER_STATE_H5672_10MIN_2026-10-12.md) preserves its initial partial result: 64 supported groups match, 6 identity groups remain unknown, and the separately observed screen comparison matches 40/40 groups. Its 600-second query and observed reader query retain distinct boundaries.
