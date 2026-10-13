@@ -1,0 +1,1151 @@
+{
+  "schema_version": "vg.h5810-10min-evidence.v1",
+  "recording_id": "H5810",
+  "baseline_commit": "dbb571871e255e5a818b21beb68e61657bb06828",
+  "product_logic_changed": false,
+  "independence": {
+    "key": "00add1f2-a259-45ed-beda-2463bc3a3760-8b68b2dd-924e-4c75-b662-c9da67df376d",
+    "recording_uuid": "8b68b2dd-924e-4c75-b662-c9da67df376d",
+    "bundle_sha256": "9019dd4f22ea813a90696af0499e5ed49a35b2121fc5026852af536d68f5c63c",
+    "concatenated_source_sha256": "ae8e37a0eb42f8d323311b20ceee2a1314fe97ae330be24cf30e3ffeca4870f0",
+    "reference_sha256": "c1d8d96118bb6ed8e033e55205d5bd2a20af702445a2b8e22527e9aaca987452",
+    "mode": "GameMode_5v5_Ranked",
+    "prior_recording_uuid_bundle_or_section_overlap": false,
+    "inventory_scope": [
+      "local Documents/Codex",
+      "winsrv VG_EVAL, Documents/GitHub, DevCache/Temp"
+    ],
+    "prior_local_files": 13215,
+    "prior_remote_files": 18921,
+    "selection_reader_sha256": {
+      "native_roster.py": "6079594e92a3a80c2330ecbd2498d8bce3c152da99f21002eb429ec064e02811"
+    },
+    "selection_before_decode": true,
+    "baseline_before_playback_preserved": true
+  },
+  "source_section_count": 168,
+  "client_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "observer_script_sha256": {
+    "player_state_probe.js": "24660b5c811dff07691bf28437aaf8a6cda26021c1780a0284484a98556684f1",
+    "probe.js": "d86a67ab7ce64cd4c60b77222248bfc5881b826d161812b0935863f7b99d6daa",
+    "manifest.json": "e28e487e8f2d7259d1fc7934dada1125349407f697b6a04d37956f5390016778"
+  },
+  "private_evidence_sha256": {
+    "protocol.json": "58451f032afa231c427ee13ba54a58eefbeeee71bdcfb7e3740ff87fbbc90d69",
+    "baseline-selection.json": "a7f35246aef437a935241faa5e7f67544f525e6039c6f9440acabf466747887a",
+    "baseline-all-api.json": "306098005d77222b16dfd7c32f03920ade95401a23a5db43344a68e0881760b2",
+    "baseline-selected-api.json": "0fe92868fdce57ab2931782fe91e60925b4b0ee9c02d0b38e2d436e536f1013c",
+    "comparison.json": "087bc892b7c476572846eefdfc2e2f245f8826b2b9d4987fe93b02ac8cc0f430",
+    "frozen-native.json": "964629b6ec56888240b18adce7722672bf27360bf99b97f47d2da45610fce237",
+    "ui-transcription.json": "5e0efae4e6cffaa4c2e3b10e06e76150983360df2b1193656393e31eb6fb9767",
+    "ui-observed.json": "5d43756586b84c366e3ef6651c3739fb17c661e50b4e4738296c6e0e9a51b8bb",
+    "prefix-interval.json": "49af96fcfd69322f68dd9ad3fa4fcf40d13a56811dc81667a8433a72f4809fae",
+    "trace-report.json": "b4923afcf56eadaa34204e091f928019ef6859eb800da6bb55caeee667caa5b9",
+    "capture-result.json": "676d54ec46633ab3f2955b0e70853b9e8b323cffe9c8054ad532343ab9caee26",
+    "capture-resumed-result.json": "d581eedaf4246d0aac39b94d7944cd7a327010bb16674183c7e37d664a6a7f17",
+    "h5810-midpoint-a.jsonl": "3cc87fa79af8e1c48142a339990ff35ee4915c0a0e5970ac5efc60a12c333f15",
+    "h5810-midpoint-a-exit.json": "516c57d2ba6527a2076c1d15137e69fe239be22fd3057a09c97efc0b9899f147",
+    "injection.json": "e9f77f4c8c0c0df27a591640b9865effbe5fbfecb16af503fa8ee19aef626cfa",
+    "cleanup.json": "fd6bf032fb5de07928a6184c3f303769fc627eadf48f747f4fb9dc87175f314d",
+    "task-cleanup.json": "ed6c7894d97d6ad8ae7065a46923f3bb13a0d0568e80ca0c6db15aa859a12eba",
+    "prelaunch-slot-backup.json": "f824cc70462ef06abbc2b974e965384012b237314c5078c30f010777291475b2",
+    "prelaunch-restored.json": "09bd8dd9c55ed91afbc306b23883d0ade22295572a32dcc223cf188ec7ae1103",
+    "slot-backup.json": "a0e083bc525b3f88c9ab9c5b7f5594be0527a3b6a9f85f316c55f9a5575d5e91",
+    "slot-restored.json": "74a3e91683e31c8bc37da3acf760e2d1e9090bb22e72f78b0e5852ead2152cf3",
+    "h5810-ar-600-board.png": "aa1f6852c5cca3e9bab13f4beb7219214f868b1d0f7b344108e9d34b4d6fa8d1",
+    "h5810-ar-600-paused.png": "2b702dec93764968f6a099be407a0556bc2a92ab8294155cf96130efcf8f77e3",
+    "unittest.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "unittest.stderr": "15bfa1b47decf138505324e6ef287c925bba7ed9e8599e865ce4fc1c5a21f75b",
+    "tests.stderr": "a8df54dda650623c8051f9fc6b579e304bf9381e6d77ed00a8043997c5da504a",
+    "runtime/observe.py": "3fdbe532cb812f52277c8eb1c93e36d7c8c074b2f12125b1704edea1a8c4d0e9",
+    "runtime/player_state_probe.js": "24660b5c811dff07691bf28437aaf8a6cda26021c1780a0284484a98556684f1",
+    "capture.py": "caadc89f894785e34706b81ac9949ae0d0f79e072505b65dcb2f7d85ef4facb5",
+    "capture-resumed.py": "0d1ae2ef5e4137107790bfc8d999af6c434d96df956503820d8068e35e95344b",
+    "verify_midpoint.py": "e5d9ba776af91112c5498f820fd200d16e91e9e44e81e253847a5f1e9582bcdb",
+    "verify-screen.py": "7991b49a4317d83586158f1401bac9d8c22288594436144082023a2bfdad4673",
+    "cleanup.py": "bd80225528836f691192817b582195a197ae7a9290e290e02a8a704ff77040fc",
+    "build-receipt.py": "9670f7362663e5381349d49a2d559a48ab255d82e7b7d04cf0754f812eb90502",
+    "acquisition/data/manifest.json": "864cae46ce9670f7ba3af09d9965de37be626cb84f0cc505d5eb3859961fb248",
+    "acquisition/data/selection.json": "67651eff85bb5314730042115785bccbc82f9e9f9c6a2ac1451b034bfedad0c4",
+    "acquisition/data/prior-local.json": "d09ccdc4995e11f05cfb9f9b12074591b3bd83cdb814cdee1e3a578140012272",
+    "acquisition/data/prior-remote.json": "9002ef8b7131b82e4644c1c36276e760d09a5e441bdf0406ea59d8305d3d865c",
+    "acquisition/all-600.json": "306098005d77222b16dfd7c32f03920ade95401a23a5db43344a68e0881760b2",
+    "acquisition/selected-600.json": "0fe92868fdce57ab2931782fe91e60925b4b0ee9c02d0b38e2d436e536f1013c",
+    "acquisition/summary.json": "64730a375d4eae4286c6cffdfacc254476a26d7502f519989aea4ba33db886d5",
+    "acquisition/PROTOCOL.md": "5a8575273e781c8841c81da59878f5b83099457d0b00abcfaab9a86d79c8fd56"
+  },
+  "capture": {
+    "path": "Same uninterrupted replay from loaded start; 1x then 5x then 1x, no GUI seek; initial hidden-controls preparation failure retained",
+    "screen_label": "10:00",
+    "screen_interval_seconds": [
+      600,
+      601
+    ],
+    "screen_begin_utc": "2026-10-13T18:07:39.993041+00:00",
+    "screen_end_utc": "2026-10-13T18:07:40.877211+00:00",
+    "native_clock": {
+      "value": 600.3576049804688,
+      "bits": 1142298339
+    },
+    "reader_playback_time": {
+      "value": 619.273193359375,
+      "bits": 1142608252
+    },
+    "pending_record_time": {
+      "value": 619.2776489257812,
+      "bits": 1142608325
+    },
+    "applied_boundary": {
+      "section": 61,
+      "record_offset": 133306
+    },
+    "pending_boundary": {
+      "section": 61,
+      "record_offset": 133330
+    },
+    "boundary_proof": "native strictly future pending-buffer predecessor and stable samples in original section framing",
+    "stable_samples": 137,
+    "stable_start_utc": "2026-10-13T18:07:36.619000+00:00",
+    "stable_end_utc": "2026-10-13T18:08:11.509000+00:00",
+    "stable_span_seconds": 34.89,
+    "atomic_snapshot_certified": false,
+    "native_paused_flag": false,
+    "native_recorded_end": false,
+    "multiplier_after_pause": 0,
+    "delta_after_pause": 0,
+    "formatter_clock_bits_match": true
+  },
+  "native_groups": [
+    "name",
+    "hero_definition",
+    "kda",
+    "native_items_definition_instance_quantity_multiset",
+    "gold_balance_float32_bits_resource6",
+    "net_worth_float32_bits_resource7",
+    "cs_resource14"
+  ],
+  "queries": {
+    "record-all": {
+      "matched": 70,
+      "mismatched": 0,
+      "unknown": 0,
+      "total": 70,
+      "cli_api_equal": true,
+      "support_status": "supported",
+      "record_boundary": {
+        "section": 61,
+        "record_offset": 133306
+      },
+      "query_timing": {
+        "status": "accepted",
+        "reason": "audited native record selection",
+        "clock_audit": {
+          "status": "accepted",
+          "reason": "continuous native clock anchors",
+          "game_time_mapping_valid": true
+        },
+        "game_time_basis": "anchor_game_time + record_time - anchor_record_time",
+        "applied": {
+          "record_boundary": {
+            "section": 61,
+            "record_offset": 133306
+          },
+          "record_time": 619.213134765625,
+          "projected_game_time": 600.3192138671875,
+          "anchor_record_time": 610.0140380859375,
+          "anchor_game_time": 591.1201171875
+        },
+        "next_record": {
+          "record_boundary": {
+            "section": 61,
+            "record_offset": 133330
+          },
+          "record_time": 619.2776489257812,
+          "projected_game_time": 600.3837280273438,
+          "anchor_record_time": 610.0140380859375,
+          "anchor_game_time": 591.1201171875
+        },
+        "cutoff_relation": "preceding_record",
+        "seconds_before_requested": 0.06005859375,
+        "bracketing_record_interval_seconds": 0.06451416015625,
+        "coverage": {
+          "first_game_time": 0,
+          "last_game_time": 1659.0091552734375,
+          "first_section": 0,
+          "last_section": 167,
+          "section_count": 168,
+          "starts_at_section_zero": true
+        },
+        "state_interpolated": false,
+        "native_game_clock_observed": false,
+        "note": "State ends at the inclusive recorded boundary. Game times are anchor projections; record intervals alone do not prove missing data or continuous gameplay."
+      }
+    },
+    "record-selected": {
+      "matched": 14,
+      "mismatched": 0,
+      "unknown": 0,
+      "total": 14,
+      "cli_api_equal": true,
+      "support_status": "supported",
+      "record_boundary": {
+        "section": 61,
+        "record_offset": 133306
+      },
+      "query_timing": {
+        "status": "accepted",
+        "reason": "audited native record selection",
+        "clock_audit": {
+          "status": "accepted",
+          "reason": "continuous native clock anchors",
+          "game_time_mapping_valid": true
+        },
+        "game_time_basis": "anchor_game_time + record_time - anchor_record_time",
+        "applied": {
+          "record_boundary": {
+            "section": 61,
+            "record_offset": 133306
+          },
+          "record_time": 619.213134765625,
+          "projected_game_time": 600.3192138671875,
+          "anchor_record_time": 610.0140380859375,
+          "anchor_game_time": 591.1201171875
+        },
+        "next_record": {
+          "record_boundary": {
+            "section": 61,
+            "record_offset": 133330
+          },
+          "record_time": 619.2776489257812,
+          "projected_game_time": 600.3837280273438,
+          "anchor_record_time": 610.0140380859375,
+          "anchor_game_time": 591.1201171875
+        },
+        "cutoff_relation": "preceding_record",
+        "seconds_before_requested": 0.06005859375,
+        "bracketing_record_interval_seconds": 0.06451416015625,
+        "coverage": {
+          "first_game_time": 0,
+          "last_game_time": 1659.0091552734375,
+          "first_section": 0,
+          "last_section": 167,
+          "section_count": 168,
+          "starts_at_section_zero": true
+        },
+        "state_interpolated": false,
+        "native_game_clock_observed": false,
+        "note": "State ends at the inclusive recorded boundary. Game times are anchor projections; record intervals alone do not prove missing data or continuous gameplay."
+      }
+    },
+    "game600-all": {
+      "matched": 70,
+      "mismatched": 0,
+      "unknown": 0,
+      "total": 70,
+      "cli_api_equal": true,
+      "support_status": "supported",
+      "record_boundary": {
+        "section": 61,
+        "record_offset": 127554
+      },
+      "query_timing": {
+        "status": "accepted",
+        "reason": "audited native record selection",
+        "clock_audit": {
+          "status": "accepted",
+          "reason": "continuous native clock anchors",
+          "game_time_mapping_valid": true
+        },
+        "game_time_basis": "anchor_game_time + record_time - anchor_record_time",
+        "applied": {
+          "record_boundary": {
+            "section": 61,
+            "record_offset": 127554
+          },
+          "record_time": 618.8933715820312,
+          "projected_game_time": 599.9994506835938,
+          "anchor_record_time": 610.0140380859375,
+          "anchor_game_time": 591.1201171875
+        },
+        "next_record": {
+          "record_boundary": {
+            "section": 61,
+            "record_offset": 127578
+          },
+          "record_time": 618.926513671875,
+          "projected_game_time": 600.0325927734375,
+          "anchor_record_time": 610.0140380859375,
+          "anchor_game_time": 591.1201171875
+        },
+        "cutoff_relation": "preceding_record",
+        "seconds_before_requested": 0.00054931640625,
+        "bracketing_record_interval_seconds": 0.03314208984375,
+        "coverage": {
+          "first_game_time": 0,
+          "last_game_time": 1659.0091552734375,
+          "first_section": 0,
+          "last_section": 167,
+          "section_count": 168,
+          "starts_at_section_zero": true
+        },
+        "state_interpolated": false,
+        "native_game_clock_observed": false,
+        "note": "State ends at the inclusive recorded boundary. Game times are anchor projections; record intervals alone do not prove missing data or continuous gameplay."
+      }
+    },
+    "game600-selected": {
+      "matched": 14,
+      "mismatched": 0,
+      "unknown": 0,
+      "total": 14,
+      "cli_api_equal": true,
+      "support_status": "supported",
+      "record_boundary": {
+        "section": 61,
+        "record_offset": 127554
+      },
+      "query_timing": {
+        "status": "accepted",
+        "reason": "audited native record selection",
+        "clock_audit": {
+          "status": "accepted",
+          "reason": "continuous native clock anchors",
+          "game_time_mapping_valid": true
+        },
+        "game_time_basis": "anchor_game_time + record_time - anchor_record_time",
+        "applied": {
+          "record_boundary": {
+            "section": 61,
+            "record_offset": 127554
+          },
+          "record_time": 618.8933715820312,
+          "projected_game_time": 599.9994506835938,
+          "anchor_record_time": 610.0140380859375,
+          "anchor_game_time": 591.1201171875
+        },
+        "next_record": {
+          "record_boundary": {
+            "section": 61,
+            "record_offset": 127578
+          },
+          "record_time": 618.926513671875,
+          "projected_game_time": 600.0325927734375,
+          "anchor_record_time": 610.0140380859375,
+          "anchor_game_time": 591.1201171875
+        },
+        "cutoff_relation": "preceding_record",
+        "seconds_before_requested": 0.00054931640625,
+        "bracketing_record_interval_seconds": 0.03314208984375,
+        "coverage": {
+          "first_game_time": 0,
+          "last_game_time": 1659.0091552734375,
+          "first_section": 0,
+          "last_section": 167,
+          "section_count": 168,
+          "starts_at_section_zero": true
+        },
+        "state_interpolated": false,
+        "native_game_clock_observed": false,
+        "note": "State ends at the inclusive recorded boundary. Game times are anchor projections; record intervals alone do not prove missing data or continuous gameplay."
+      }
+    }
+  },
+  "selected_actor_ids": [
+    1500,
+    1501
+  ],
+  "selected_are_subsets": true,
+  "screen": {
+    "matched": 40,
+    "mismatched": 0,
+    "total": 40,
+    "visible_icons": 42,
+    "rows": [
+      {
+        "side": "blue",
+        "row": 1,
+        "kda": [
+          1,
+          1,
+          4
+        ],
+        "cs": 70,
+        "gold": "5.8k",
+        "visible_item_icons": 4,
+        "actor_id": 1503,
+        "name_glyphs_certified": true
+      },
+      {
+        "side": "blue",
+        "row": 2,
+        "kda": [
+          1,
+          2,
+          1
+        ],
+        "cs": 63,
+        "gold": "5.6k",
+        "visible_item_icons": 6,
+        "actor_id": 1505,
+        "name_glyphs_certified": true
+      },
+      {
+        "side": "blue",
+        "row": 3,
+        "kda": [
+          2,
+          1,
+          0
+        ],
+        "cs": 49,
+        "gold": "5.3k",
+        "visible_item_icons": 6,
+        "actor_id": 1509,
+        "name_glyphs_certified": true
+      },
+      {
+        "side": "blue",
+        "row": 4,
+        "kda": [
+          2,
+          1,
+          3
+        ],
+        "cs": 2,
+        "gold": "4.2k",
+        "visible_item_icons": 2,
+        "actor_id": 1500,
+        "name_glyphs_certified": true
+      },
+      {
+        "side": "blue",
+        "row": 5,
+        "kda": [
+          1,
+          2,
+          1
+        ],
+        "cs": 16,
+        "gold": "4.2k",
+        "visible_item_icons": 3,
+        "actor_id": 1508,
+        "name_glyphs_certified": true
+      },
+      {
+        "side": "orange",
+        "row": 1,
+        "kda": [
+          4,
+          0,
+          2
+        ],
+        "cs": 82,
+        "gold": "7.7k",
+        "visible_item_icons": 4,
+        "actor_id": 1502,
+        "name_glyphs_certified": true
+      },
+      {
+        "side": "orange",
+        "row": 2,
+        "kda": [
+          2,
+          1,
+          0
+        ],
+        "cs": 49,
+        "gold": "5.3k",
+        "visible_item_icons": 4,
+        "actor_id": 1504,
+        "name_glyphs_certified": true
+      },
+      {
+        "side": "orange",
+        "row": 3,
+        "kda": [
+          0,
+          2,
+          3
+        ],
+        "cs": 34,
+        "gold": "4.4k",
+        "visible_item_icons": 5,
+        "actor_id": 1506,
+        "name_glyphs_certified": false
+      },
+      {
+        "side": "orange",
+        "row": 4,
+        "kda": [
+          0,
+          3,
+          1
+        ],
+        "cs": 18,
+        "gold": "4.3k",
+        "visible_item_icons": 4,
+        "actor_id": 1507,
+        "name_glyphs_certified": false
+      },
+      {
+        "side": "orange",
+        "row": 5,
+        "kda": [
+          1,
+          1,
+          3
+        ],
+        "cs": 1,
+        "gold": "3.8k",
+        "visible_item_icons": 4,
+        "actor_id": 1501,
+        "name_glyphs_certified": true
+      }
+    ],
+    "checks": [
+      {
+        "actor_id": 1503,
+        "field": "kda",
+        "screen": [
+          1,
+          1,
+          4
+        ],
+        "observed": [
+          1,
+          1,
+          4
+        ],
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1503,
+        "field": "cs",
+        "screen": 70,
+        "observed": 70,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1503,
+        "field": "gold",
+        "screen": "5.8k",
+        "observed": "5.8k",
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1503,
+        "field": "visible_item_icons",
+        "screen": 4,
+        "observed": 4,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1505,
+        "field": "kda",
+        "screen": [
+          1,
+          2,
+          1
+        ],
+        "observed": [
+          1,
+          2,
+          1
+        ],
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1505,
+        "field": "cs",
+        "screen": 63,
+        "observed": 63,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1505,
+        "field": "gold",
+        "screen": "5.6k",
+        "observed": "5.6k",
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1505,
+        "field": "visible_item_icons",
+        "screen": 6,
+        "observed": 6,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1509,
+        "field": "kda",
+        "screen": [
+          2,
+          1,
+          0
+        ],
+        "observed": [
+          2,
+          1,
+          0
+        ],
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1509,
+        "field": "cs",
+        "screen": 49,
+        "observed": 49,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1509,
+        "field": "gold",
+        "screen": "5.3k",
+        "observed": "5.3k",
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1509,
+        "field": "visible_item_icons",
+        "screen": 6,
+        "observed": 6,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1500,
+        "field": "kda",
+        "screen": [
+          2,
+          1,
+          3
+        ],
+        "observed": [
+          2,
+          1,
+          3
+        ],
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1500,
+        "field": "cs",
+        "screen": 2,
+        "observed": 2,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1500,
+        "field": "gold",
+        "screen": "4.2k",
+        "observed": "4.2k",
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1500,
+        "field": "visible_item_icons",
+        "screen": 2,
+        "observed": 2,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1508,
+        "field": "kda",
+        "screen": [
+          1,
+          2,
+          1
+        ],
+        "observed": [
+          1,
+          2,
+          1
+        ],
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1508,
+        "field": "cs",
+        "screen": 16,
+        "observed": 16,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1508,
+        "field": "gold",
+        "screen": "4.2k",
+        "observed": "4.2k",
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1508,
+        "field": "visible_item_icons",
+        "screen": 3,
+        "observed": 3,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1502,
+        "field": "kda",
+        "screen": [
+          4,
+          0,
+          2
+        ],
+        "observed": [
+          4,
+          0,
+          2
+        ],
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1502,
+        "field": "cs",
+        "screen": 82,
+        "observed": 82,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1502,
+        "field": "gold",
+        "screen": "7.7k",
+        "observed": "7.7k",
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1502,
+        "field": "visible_item_icons",
+        "screen": 4,
+        "observed": 4,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1504,
+        "field": "kda",
+        "screen": [
+          2,
+          1,
+          0
+        ],
+        "observed": [
+          2,
+          1,
+          0
+        ],
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1504,
+        "field": "cs",
+        "screen": 49,
+        "observed": 49,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1504,
+        "field": "gold",
+        "screen": "5.3k",
+        "observed": "5.3k",
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1504,
+        "field": "visible_item_icons",
+        "screen": 4,
+        "observed": 4,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1506,
+        "field": "kda",
+        "screen": [
+          0,
+          2,
+          3
+        ],
+        "observed": [
+          0,
+          2,
+          3
+        ],
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1506,
+        "field": "cs",
+        "screen": 34,
+        "observed": 34,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1506,
+        "field": "gold",
+        "screen": "4.4k",
+        "observed": "4.4k",
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1506,
+        "field": "visible_item_icons",
+        "screen": 5,
+        "observed": 5,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1507,
+        "field": "kda",
+        "screen": [
+          0,
+          3,
+          1
+        ],
+        "observed": [
+          0,
+          3,
+          1
+        ],
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1507,
+        "field": "cs",
+        "screen": 18,
+        "observed": 18,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1507,
+        "field": "gold",
+        "screen": "4.3k",
+        "observed": "4.3k",
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1507,
+        "field": "visible_item_icons",
+        "screen": 4,
+        "observed": 4,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1501,
+        "field": "kda",
+        "screen": [
+          1,
+          1,
+          3
+        ],
+        "observed": [
+          1,
+          1,
+          3
+        ],
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1501,
+        "field": "cs",
+        "screen": 1,
+        "observed": 1,
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1501,
+        "field": "gold",
+        "screen": "3.8k",
+        "observed": "3.8k",
+        "verdict": "match"
+      },
+      {
+        "actor_id": 1501,
+        "field": "visible_item_icons",
+        "screen": 4,
+        "observed": 4,
+        "verdict": "match"
+      }
+    ],
+    "exact_icon_identity_order_quantity_certified": false,
+    "full_pixel_name_transcription_certified": false
+  },
+  "gold_display_observations": [
+    {
+      "actor_id": 1500,
+      "row_seq": 40238,
+      "native7": {
+        "value": 4273.1669921875,
+        "bits": 1166379350
+      },
+      "cache": 42,
+      "display_raw": {
+        "value": 4219.1669921875,
+        "bits": 1166268758
+      },
+      "format_seq": 37847,
+      "format_input": {
+        "value": 4219.1669921875,
+        "bits": 1166268758
+      },
+      "label_seq": 37848,
+      "label": "4.2k"
+    },
+    {
+      "actor_id": 1501,
+      "row_seq": 40243,
+      "native7": {
+        "value": 3869.75,
+        "bits": 1165089792
+      },
+      "cache": 38,
+      "display_raw": {
+        "value": 3801.75,
+        "bits": 1164811264
+      },
+      "format_seq": 38713,
+      "format_input": {
+        "value": 3801.75,
+        "bits": 1164811264
+      },
+      "label_seq": 38714,
+      "label": "3.8k"
+    },
+    {
+      "actor_id": 1502,
+      "row_seq": 40244,
+      "native7": {
+        "value": 7722.25,
+        "bits": 1173443072
+      },
+      "cache": 77,
+      "display_raw": {
+        "value": 7701.25,
+        "bits": 1173400064
+      },
+      "format_seq": 39244,
+      "format_input": {
+        "value": 7701.25,
+        "bits": 1173400064
+      },
+      "label_seq": 39245,
+      "label": "7.7k"
+    },
+    {
+      "actor_id": 1503,
+      "row_seq": 40239,
+      "native7": {
+        "value": 5828.9169921875,
+        "bits": 1169565526
+      },
+      "cache": 58,
+      "display_raw": {
+        "value": 5801.9169921875,
+        "bits": 1169510230
+      },
+      "format_seq": 38972,
+      "format_input": {
+        "value": 5801.9169921875,
+        "bits": 1169510230
+      },
+      "label_seq": 38973,
+      "label": "5.8k"
+    },
+    {
+      "actor_id": 1504,
+      "row_seq": 40245,
+      "native7": {
+        "value": 5336,
+        "bits": 1168556032
+      },
+      "cache": 53,
+      "display_raw": {
+        "value": 5330,
+        "bits": 1168543744
+      },
+      "format_seq": 39895,
+      "format_input": {
+        "value": 5330,
+        "bits": 1168543744
+      },
+      "label_seq": 39896,
+      "label": "5.3k"
+    },
+    {
+      "actor_id": 1505,
+      "row_seq": 40240,
+      "native7": {
+        "value": 5645,
+        "bits": 1169188864
+      },
+      "cache": 56,
+      "display_raw": {
+        "value": 5600,
+        "bits": 1169096704
+      },
+      "format_seq": 38177,
+      "format_input": {
+        "value": 5600,
+        "bits": 1169096704
+      },
+      "label_seq": 38178,
+      "label": "5.6k"
+    },
+    {
+      "actor_id": 1506,
+      "row_seq": 40246,
+      "native7": {
+        "value": 4440,
+        "bits": 1166721024
+      },
+      "cache": 44,
+      "display_raw": {
+        "value": 4407,
+        "bits": 1166653440
+      },
+      "format_seq": 38774,
+      "format_input": {
+        "value": 4407,
+        "bits": 1166653440
+      },
+      "label_seq": 38775,
+      "label": "4.4k"
+    },
+    {
+      "actor_id": 1507,
+      "row_seq": 40247,
+      "native7": {
+        "value": 4392.5,
+        "bits": 1166623744
+      },
+      "cache": 43,
+      "display_raw": {
+        "value": 4302.5,
+        "bits": 1166439424
+      },
+      "format_seq": 36164,
+      "format_input": {
+        "value": 4302.5,
+        "bits": 1166439424
+      },
+      "label_seq": 36165,
+      "label": "4.3k"
+    },
+    {
+      "actor_id": 1508,
+      "row_seq": 40241,
+      "native7": {
+        "value": 4216.6669921875,
+        "bits": 1166263638
+      },
+      "cache": 42,
+      "display_raw": {
+        "value": 4201.6669921875,
+        "bits": 1166232918
+      },
+      "format_seq": 39507,
+      "format_input": {
+        "value": 4201.6669921875,
+        "bits": 1166232918
+      },
+      "label_seq": 39508,
+      "label": "4.2k"
+    },
+    {
+      "actor_id": 1509,
+      "row_seq": 40242,
+      "native7": {
+        "value": 5376,
+        "bits": 1168637952
+      },
+      "cache": 53,
+      "display_raw": {
+        "value": 5310,
+        "bits": 1168502784
+      },
+      "format_seq": 37246,
+      "format_input": {
+        "value": 5310,
+        "bits": 1168502784
+      },
+      "label_seq": 37247,
+      "label": "5.3k"
+    }
+  ],
+  "clock_tick_transitions": {
+    "tested": 33386,
+    "matched": 33386
+  },
+  "prefix_comparison": {
+    "record_count": 198,
+    "opcode_counts": {
+      "0x3f8": 27,
+      "0x41e": 18,
+      "0x43e": 66,
+      "0x41c": 15,
+      "0x43f": 7,
+      "0x41d": 8,
+      "0x415": 14,
+      "0x42b": 33,
+      "0x424": 1,
+      "0x40d": 5,
+      "0x430": 1,
+      "0x403": 1,
+      "0x446": 1,
+      "0x48c": 1
+    },
+    "supported_endpoint_differences": [],
+    "every_intermediate_state_audited": false
+  },
+  "recording_client": {
+    "status": "unverified",
+    "reason": "recordings carry no client build identifier; support reflects record-layout conformance of consumed opcodes and catalog provenance only"
+  },
+  "definitive_analysis": {
+    "policy_version": "vg.definitive-analysis.v1",
+    "eligible": false,
+    "status": "excluded",
+    "reason_codes": [
+      "recording_source_unverified",
+      "recording_version_unverified",
+      "final_result_unverified"
+    ],
+    "reason": "Excluded from definitive analysis: recording source/build and final result have no source-bound verification. Layout support, supplied truth, playback success and declared verification flags do not authorize inclusion."
+  },
+  "skin_status": "unverified_rendered_skin",
+  "skin_hash_conflict_actors": [],
+  "remaining_unverified": [
+    "recording source-bound client version and provenance",
+    "server-final winner, gold and duration",
+    "rendered skin and portrait asset identity",
+    "pixel item identity, order and stack quantity",
+    "transient states between the two compared record prefixes",
+    "uninstrumented playback and other computer/client compatibility"
+  ],
+  "preparation_diagnostics": {
+    "initial_hidden_controls_5x_not_observed": true,
+    "same_replay_continued_after_explicit_control_reveal": true,
+    "observer_failed": false,
+    "pytest_attempt": "pytest absent; no installation; repository unittest runner used"
+  },
+  "cleanup": {
+    "game_worker_observers_absent": true,
+    "pending_command_absent": true,
+    "restoration": [
+      {
+        "sections": 641,
+        "hashes_and_recorded_times_match": true
+      },
+      {
+        "sections": 7,
+        "hashes_and_recorded_times_match": true
+      }
+    ],
+    "source_sections_verified": 168,
+    "executable_hashes_unchanged": true,
+    "owned_tasks_removed": 2,
+    "prelaunch_sections_recreated": 13,
+    "archived_injected_sections": 168
+  },
+  "tests": {
+    "related_unittest_passed": 86,
+    "full_suite_rerun": false
+  }
+}
