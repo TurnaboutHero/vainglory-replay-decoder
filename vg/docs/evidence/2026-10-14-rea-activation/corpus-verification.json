@@ -1,0 +1,63 @@
+{
+  "schema_version": "rea-item-activation.corpus-verification.v1",
+  "baseline": "7d1e0e982d24bf48a11de6debbaeab7b7db090ba",
+  "recordings": 56,
+  "sections": 7870,
+  "all_source_hashes_unchanged": true,
+  "source_hash_multiset_sha256": "424d1d86744204c422fcd861e6f75c802eaa27eed278035dfc1848b2f7e954e3",
+  "decoded_module_sha256": "285f376a6613d203f6a9517328e66bc29b7e98ebc3061e53b4aa795dc758b638",
+  "events": [
+    {
+      "opcode": "0x0448",
+      "original_records": 11711,
+      "matched_rows": 11711,
+      "recordings": 55
+    },
+    {
+      "opcode": "0x0449",
+      "original_records": 31,
+      "matched_rows": 31,
+      "recordings": 14
+    },
+    {
+      "opcode": "0x044a",
+      "original_records": 6084,
+      "matched_rows": 6084,
+      "recordings": 54
+    },
+    {
+      "opcode": "0x044c",
+      "original_records": 17438,
+      "matched_rows": 17438,
+      "recordings": 55
+    }
+  ],
+  "activation_modes": {
+    "0": 655,
+    "1": 6077,
+    "2": 10706
+  },
+  "cli_checks": [
+    {
+      "opcode": "0x0448",
+      "rows": 89,
+      "exit_code": 0
+    },
+    {
+      "opcode": "0x0449",
+      "rows": 2,
+      "exit_code": 0
+    },
+    {
+      "opcode": "0x044a",
+      "rows": 50,
+      "exit_code": 0
+    },
+    {
+      "opcode": "0x044c",
+      "rows": 141,
+      "exit_code": 0
+    }
+  ],
+  "scope": "Offline field extraction, mode-specific references and strict JSON; not native execution or successful consumption."
+}

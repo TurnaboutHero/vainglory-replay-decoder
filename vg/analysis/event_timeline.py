@@ -171,7 +171,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("-o", "--output", type=Path, help="write JSONL to this path")
     parser.add_argument("--opcode", action="append", type=_integer,
                         help="opcode integer; repeat to select more (default includes 0x0430 ActionActorDie, "
-                             "item sell requests and buy rejection notifications)")
+                             "item activation requests/messages, sell requests and buy rejection notifications)")
     parser.add_argument("--entity", action="append", type=_integer, help="ref0/ref1 integer, including ActorDie victim/raw source; repeat to select more")
     parser.add_argument("--manifest", type=Path, help="user-owned definition manifest")
     parser.add_argument("--executable", type=Path, help="user-owned paired game executable")
