@@ -1,0 +1,177 @@
+{
+  "schema_version": "rea-item-events.native.v1",
+  "evidence_version": "rea-item-events.windows_2026_10_14.v1",
+  "baseline": "cd8390aeb2433eca6eedf2c62606503331f8f7ac",
+  "executable_sha256": "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+  "rea_version": "6.4.0",
+  "provider": {
+    "id": "ghidra",
+    "version": "12.1.4"
+  },
+  "private_snapshot_sha256": "00cc57c9762f9bf8c6610fa8ab6f9b61546c970b58d4baea5a97cb202382bb00",
+  "proofs": [
+    {
+      "evidence_id": "ev_208281c8b82162f062ac436328a22d712ab2614db902f4ba7167a7c45a2f07bd",
+      "operation": "read_bytes",
+      "parameters": {
+        "address": "0x4d4f99",
+        "length": 96
+      },
+      "normalized_result_sha256": "45b572596239c58bf1150b9e5fcaf6adaf5acbac1bf16e9845bfe891455e1830",
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "bounded_result": {
+        "address": "0x4d4f99",
+        "bytes_hex": "6a018d85d7f1ffff5650e8015ece00c78590f1ffff00000000c78594f1ffff00000000c7858cf1ffff1c5f21018d858cf1ffffc745fc6900000050c68598f1ffff01e86072450083c4108b4df464890d00000000595f5e8b4df033cde84634ce",
+        "complete": true,
+        "requested_bytes": 96,
+        "returned_bytes": 96
+      }
+    },
+    {
+      "evidence_id": "ev_44d625a320b0db15efdfbd6f6c7c130aa4a50dc521a9133026837c8f62f5716e",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x5ce440"
+      },
+      "normalized_result_sha256": "e47dd7686362abc6846c8566b90920f1cf875621f6e4c93d8e69cc470e8051fe",
+      "confidence": "observed",
+      "authority": "shipped-artifact"
+    },
+    {
+      "evidence_id": "ev_581051a28846d2f2f2991985693c17aaba58c686cdd974a37c01d5cd44cff149",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x9504f0"
+      },
+      "normalized_result_sha256": "2e8aa4029f73b7a81997e6c8df00d979f3599311442dbce39ea6e77edad87799",
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "bounded_result": "\r\nvoid FUN_009504f0(void)\r\n\r\n{\r\n  int iVar1;\r\n  int in_ECX;\r\n  \r\n  if ((DAT_0209e204 != '\\0') && (iVar1 = FUN_00857970(*(undefined4 *)(in_ECX + 0x14)), iVar1 != 0))\r\n  {\r\n    FUN_00536dd0(0,0,0x11fe0340,*(undefined4 *)(in_ECX + 0x10));\r\n    guard_check_icall(*(undefined4 *)(iVar1 + 0x178));\r\n  }\r\n  return;\r\n}\r\n\r\n"
+    },
+    {
+      "evidence_id": "ev_5db8048aed7594ce038c496ad1640ea9fe6f82b693bb8b42a008a9fd2817d16d",
+      "operation": "read_bytes",
+      "parameters": {
+        "address": "0x4d3f89",
+        "length": 128
+      },
+      "normalized_result_sha256": "924b2726698ea224a814a499602a7f546b07e294b2fbd6de552b9d12a879d4c7",
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "bounded_result": {
+        "address": "0x4d3f89",
+        "bytes_hex": "6a088d85c4f1ffff0f57c05650660f1385c4f1ffffe8066ece008b3514a6200183c40cffb5c4f1ffffffd6ffb5c8f1ffff8bf8ffd650578d4dd8e838823400c745fc59000000e938c3ffff6a048d85d4f1ffffc785d4f1ffff000000005650e8bc6dce00f30f1085d4f1ffff83c408f30f110424e89ebdffff83c404d99dd4f1",
+        "complete": true,
+        "requested_bytes": 128,
+        "returned_bytes": 128
+      }
+    },
+    {
+      "evidence_id": "ev_7ce5046cc8d8442b7beca1744244c708713a9fe6cad36420de00a9b4aabb7d60",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x536dd0"
+      },
+      "normalized_result_sha256": "b50dcb418a6f267e2a5932996d1c02c8b20f2a9751bc147f5a9b01ef71190263",
+      "confidence": "observed",
+      "authority": "shipped-artifact"
+    },
+    {
+      "evidence_id": "ev_9f370566dff7648dada0040cd2e8a99ed222125f7202e432b918bf50ed2d56d4",
+      "operation": "resolve_containing_procedure",
+      "parameters": {
+        "address": "0x5ce619"
+      },
+      "normalized_result_sha256": "4c0b34d38c296530f598f769be87075a8b2ad0e8a5b0214097519ec4796d1314",
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "bounded_result": {
+        "found": true,
+        "procedure": {
+          "address": "0x5ce440",
+          "body": {
+            "available": true,
+            "contains_entry": true,
+            "non_contiguous": false,
+            "provenance": "ghidra-function-body-address-set",
+            "ranges": [
+              {
+                "end": "0x5cea05",
+                "start": "0x5ce440"
+              }
+            ],
+            "span_bytes": 1478,
+            "total_bytes": 1478
+          },
+          "classification": {
+            "external": false,
+            "provenance": "ghidra-function-manager",
+            "thunk": false,
+            "thunk_target": null
+          },
+          "name": "FUN_005ce440"
+        },
+        "query_address": "0x5ce619"
+      }
+    },
+    {
+      "evidence_id": "ev_a7c746cf66204d9e6241f77025c20e93728c92fce47bcd1a93b1fc739a6a1833",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x529e00"
+      },
+      "normalized_result_sha256": "504c6ebaab03d414c90aeae7bd31a870ffa78ff9280f9bdefc524d0122abe57b",
+      "confidence": "observed",
+      "authority": "shipped-artifact"
+    },
+    {
+      "evidence_id": "ev_cff66b67958304a97591e1715ca4ec060cd1cc742c02f547fe485668546d0977",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x121a998"
+      },
+      "normalized_result_sha256": "e94e23d19dd72dd6acc3c9d9d2b6b0171736882455d452ddb7e0d0df5b5ba9fc",
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "bounded_result": [
+        "0x529e02",
+        "0x5ce619"
+      ]
+    },
+    {
+      "evidence_id": "ev_ebb74099185d39afed6c67bda3a5e3701c2a03faa41116afb69a71d45f5648b3",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x81c200"
+      },
+      "normalized_result_sha256": "90a45aaf02ab32e81b77f851e9c355c0b83e9110efc91c4b8e48168abc0e7a36",
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "bounded_result": "\r\nvoid FUN_0081c200(undefined4 param_1,undefined4 param_2)\r\n\r\n{\r\n  undefined4 *in_ECX;\r\n  \r\n  in_ECX[4] = param_2;\r\n  in_ECX[5] = param_1;\r\n  in_ECX[1] = 0;\r\n  in_ECX[2] = 0;\r\n  *(undefined1 *)(in_ECX + 3) = 0;\r\n  *in_ECX = Nuo::Kindred::ActionSellItem::vftable;\r\n  return;\r\n}\r\n\r\n"
+    },
+    {
+      "evidence_id": "ev_f857c1fc1b62c9cd0e60e17dadb17dc3909efb25d11852bdf1b0dcbe9bce61a7",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x5ce000"
+      },
+      "normalized_result_sha256": "76b52421076e073adef06a6532d2c679157a5d5876d6ca5167b61274a72af116",
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "bounded_result": "\r\nvoid FUN_005ce000(int param_1)\r\n\r\n{\r\n  *(byte *)(param_1 + 0x20bd) = *(byte *)(param_1 + 0x20bd) & 0x7f;\r\n  return;\r\n}\r\n\r\n"
+    },
+    {
+      "evidence_id": "ev_fcb279164c57a3208ce7d6db0be7e57be99029fc44e3fa73baaad847b84b1ce8",
+      "operation": "procedure_assembly",
+      "parameters": {
+        "procedure": "0x5ce000"
+      },
+      "normalized_result_sha256": "0152437cc51f601693e05aad8e5e1f153e3b09e63c5ce27a4d963715021cdc2c",
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "bounded_result": "0x5ce000: PUSH EBP\n0x5ce001: MOV EBP, ESP\n0x5ce003: MOV EAX, dword ptr [EBP + 0x8]\n0x5ce006: AND byte ptr [EAX + 0x20bd], 0x7f\n0x5ce00d: POP EBP\n0x5ce00e: RET"
+    }
+  ],
+  "scope": "Static observations on the reference executable; no native callback execution or recording-client identity claim."
+}

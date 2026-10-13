@@ -72,7 +72,7 @@ The original README advertised 100% for names, teams, modes, hero hashes, entity
 
 The earlier hero mapping listed 57 heroes, with 37 directly confirmed and 20 inferred. That is mapping coverage in the historical research, not a guarantee for all clients or recordings. The dated native capture study compared 294 K/D/A values across ten coherent fixtures; its exclusions and clock limits are preserved in the [September integration record](vg/docs/NATIVE_STATS_INTEGRATION_2026-09-07.md).
 
-Current research references: [event catalog](vg/docs/EVENT_CATALOG_2026-09-08.md), [endgame boundaries](vg/docs/ENDGAME_BOUNDARY_2026-09-08.md), [death-action sources](vg/docs/DEATH_EVENTS_2026-09-09.md), [161-code candidate inventory](vg/docs/vg-binary-event-candidates-2026-09-09.md), and [postgame follow-up](vg/docs/POSTGAME_OFFLINE_2026-09-09.md). They retain unresolved candidates rather than promoting them to accepted final statistics.
+Current research references: [event catalog](vg/docs/EVENT_CATALOG_2026-09-08.md), [endgame boundaries](vg/docs/ENDGAME_BOUNDARY_2026-09-08.md), [death-action sources](vg/docs/DEATH_EVENTS_2026-09-09.md), [REA item-event timeline](vg/docs/REA_ITEM_EVENTS_2026-10-14.md), [161-code candidate inventory](vg/docs/vg-binary-event-candidates-2026-09-09.md), and [postgame follow-up](vg/docs/POSTGAME_OFFLINE_2026-09-09.md). They retain unresolved candidates rather than promoting them to accepted final statistics.
 
 ## Historical binary research notes
 
