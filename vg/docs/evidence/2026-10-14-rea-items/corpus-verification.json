@@ -1,0 +1,36 @@
+{
+  "schema_version": "rea-item-events.corpus-verification.v1",
+  "baseline": "cd8390aeb2433eca6eedf2c62606503331f8f7ac",
+  "recordings": 56,
+  "sections": 7870,
+  "all_source_hashes_unchanged": true,
+  "source_hash_multiset_sha256": "424d1d86744204c422fcd861e6f75c802eaa27eed278035dfc1848b2f7e954e3",
+  "decoded_module_sha256": "a0b3ad71d088a5dd84dfa0bc1e6bd7816d3fded6f08e7a7336c6e2f1d126519b",
+  "events": [
+    {
+      "opcode": "0x044d",
+      "original_records": 326,
+      "matched_rows": 326,
+      "recordings": 47
+    },
+    {
+      "opcode": "0x048f",
+      "original_records": 11,
+      "matched_rows": 11,
+      "recordings": 9
+    }
+  ],
+  "cli_checks": [
+    {
+      "opcode": "0x044d",
+      "rows": 2,
+      "exit_code": 0
+    },
+    {
+      "opcode": "0x048f",
+      "rows": 1,
+      "exit_code": 0
+    }
+  ],
+  "scope": "Offline field extraction and record provenance; no runtime callback or inventory outcome assertion."
+}
