@@ -1,0 +1,430 @@
+{
+  "schema_version": "vg.spawn-skin-identity.v1",
+  "recording_id": "H5672",
+  "base_commit": "cd8390aeb2433eca6eedf2c62606503331f8f7ac",
+  "initial_heldout_preserved": {
+    "match": 64,
+    "mismatch": 0,
+    "unknown": 6
+  },
+  "source_sections": 121,
+  "offline": {
+    "roster_observations": 122,
+    "roster_definition": 257,
+    "roster_skin_hash": 1054951559,
+    "spawn_observations": 121,
+    "first_spawn_skin_hash": 3836149698,
+    "later_matching_spawns": 120,
+    "first_records": [
+      {
+        "section": 0,
+        "offset": 1356,
+        "record_time": 0,
+        "opcode": "0x3ee",
+        "definition": 257,
+        "skin": 1054951559
+      },
+      {
+        "section": 0,
+        "offset": 3621,
+        "record_time": 0,
+        "opcode": "0x3ee",
+        "definition": 257,
+        "skin": 1054951559
+      },
+      {
+        "section": 0,
+        "offset": 8749,
+        "record_time": 0.568828284740448,
+        "opcode": "0x3f3",
+        "definition": 257,
+        "skin": 3836149698
+      },
+      {
+        "section": 1,
+        "offset": 1356,
+        "record_time": 10.004056930541992,
+        "opcode": "0x3ee",
+        "definition": 257,
+        "skin": 1054951559
+      },
+      {
+        "section": 1,
+        "offset": 7734,
+        "record_time": 10.004056930541992,
+        "opcode": "0x3f3",
+        "definition": 257,
+        "skin": 1054951559
+      }
+    ],
+    "last_records": [
+      {
+        "section": 120,
+        "offset": 1356,
+        "record_time": 1200.0003662109375,
+        "opcode": "0x3ee",
+        "definition": 257,
+        "skin": 1054951559
+      },
+      {
+        "section": 120,
+        "offset": 8751,
+        "record_time": 1200.0003662109375,
+        "opcode": "0x3f3",
+        "definition": 257,
+        "skin": 1054951559
+      }
+    ]
+  },
+  "client": {
+    "original_sha256": "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+    "laa_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+    "probe_source_sha256": "015eef865d4e4fbf389a76a8945fd02326437b83e2df50a3b52823b1f9816abf",
+    "sampler_guards": 5,
+    "event_guards": 25,
+    "additional_skin_guards": 2
+  },
+  "runtime": {
+    "completed_without_error": true,
+    "path": "same owned client; GUI rewind to beginning after observer setup; initial creation and later snapshots",
+    "matched_source_dispatches": 74,
+    "first_spawn_boundary": {
+      "section": 0,
+      "offset": 8749
+    },
+    "first_spawn_record_seconds": 0.568828284740448,
+    "first_resolver_actor_present": false,
+    "first_actor_skin_before": 0,
+    "first_actor_skin_after": 3836149698,
+    "native_hashed_symbol": "Ardan_DefaultSkin",
+    "native_hash_seed": 305419896,
+    "skin_apply_va": "00941b60",
+    "skin_symbol_hash_va": "004c4450",
+    "roster_skin_field": "player_entry+0x7c",
+    "actor_skin_field": "actor+0x184",
+    "post_spawn_existing_actor_controls": 14,
+    "same_actor_and_definition_pointer_after_creation": true,
+    "post_spawn_controls": [
+      {
+        "dispatch_id": 17,
+        "section": 0,
+        "offset": 8749,
+        "record_time": 0.568828284740448,
+        "actor_id": 1505,
+        "definition": 257,
+        "incoming_skin": 3836149698,
+        "existing_actor": false,
+        "actor_skin_after": 3836149698,
+        "roster_skin_after": 1054951559,
+        "existing_state_unchanged": false
+      },
+      {
+        "dispatch_id": 22,
+        "section": 1,
+        "offset": 7734,
+        "record_time": 10.004056930541992,
+        "actor_id": 1505,
+        "definition": 257,
+        "incoming_skin": 1054951559,
+        "existing_actor": true,
+        "actor_skin_after": 3836149698,
+        "roster_skin_after": 1054951559,
+        "existing_state_unchanged": true
+      },
+      {
+        "dispatch_id": 26,
+        "section": 2,
+        "offset": 7804,
+        "record_time": 20.007566452026367,
+        "actor_id": 1505,
+        "definition": 257,
+        "incoming_skin": 1054951559,
+        "existing_actor": true,
+        "actor_skin_after": 3836149698,
+        "roster_skin_after": 1054951559,
+        "existing_state_unchanged": true
+      },
+      {
+        "dispatch_id": 30,
+        "section": 3,
+        "offset": 7842,
+        "record_time": 30.01828956604004,
+        "actor_id": 1505,
+        "definition": 257,
+        "incoming_skin": 1054951559,
+        "existing_actor": true,
+        "actor_skin_after": 3836149698,
+        "roster_skin_after": 1054951559,
+        "existing_state_unchanged": true
+      },
+      {
+        "dispatch_id": 34,
+        "section": 4,
+        "offset": 7855,
+        "record_time": 40.00777816772461,
+        "actor_id": 1505,
+        "definition": 257,
+        "incoming_skin": 1054951559,
+        "existing_actor": true,
+        "actor_skin_after": 3836149698,
+        "roster_skin_after": 1054951559,
+        "existing_state_unchanged": true
+      },
+      {
+        "dispatch_id": 38,
+        "section": 5,
+        "offset": 7893,
+        "record_time": 50.00444793701172,
+        "actor_id": 1505,
+        "definition": 257,
+        "incoming_skin": 1054951559,
+        "existing_actor": true,
+        "actor_skin_after": 3836149698,
+        "roster_skin_after": 1054951559,
+        "existing_state_unchanged": true
+      },
+      {
+        "dispatch_id": 42,
+        "section": 6,
+        "offset": 7855,
+        "record_time": 60.00078201293945,
+        "actor_id": 1505,
+        "definition": 257,
+        "incoming_skin": 1054951559,
+        "existing_actor": true,
+        "actor_skin_after": 3836149698,
+        "roster_skin_after": 1054951559,
+        "existing_state_unchanged": true
+      },
+      {
+        "dispatch_id": 46,
+        "section": 7,
+        "offset": 7855,
+        "record_time": 70.00382232666016,
+        "actor_id": 1505,
+        "definition": 257,
+        "incoming_skin": 1054951559,
+        "existing_actor": true,
+        "actor_skin_after": 3836149698,
+        "roster_skin_after": 1054951559,
+        "existing_state_unchanged": true
+      },
+      {
+        "dispatch_id": 50,
+        "section": 8,
+        "offset": 7855,
+        "record_time": 80.00055694580078,
+        "actor_id": 1505,
+        "definition": 257,
+        "incoming_skin": 1054951559,
+        "existing_actor": true,
+        "actor_skin_after": 3836149698,
+        "roster_skin_after": 1054951559,
+        "existing_state_unchanged": true
+      },
+      {
+        "dispatch_id": 54,
+        "section": 9,
+        "offset": 7855,
+        "record_time": 90.0051498413086,
+        "actor_id": 1505,
+        "definition": 257,
+        "incoming_skin": 1054951559,
+        "existing_actor": true,
+        "actor_skin_after": 3836149698,
+        "roster_skin_after": 1054951559,
+        "existing_state_unchanged": true
+      },
+      {
+        "dispatch_id": 58,
+        "section": 10,
+        "offset": 7855,
+        "record_time": 100.00129699707031,
+        "actor_id": 1505,
+        "definition": 257,
+        "incoming_skin": 1054951559,
+        "existing_actor": true,
+        "actor_skin_after": 3836149698,
+        "roster_skin_after": 1054951559,
+        "existing_state_unchanged": true
+      },
+      {
+        "dispatch_id": 62,
+        "section": 11,
+        "offset": 7855,
+        "record_time": 110.0052719116211,
+        "actor_id": 1505,
+        "definition": 257,
+        "incoming_skin": 1054951559,
+        "existing_actor": true,
+        "actor_skin_after": 3836149698,
+        "roster_skin_after": 1054951559,
+        "existing_state_unchanged": true
+      },
+      {
+        "dispatch_id": 66,
+        "section": 12,
+        "offset": 7874,
+        "record_time": 120.00113677978516,
+        "actor_id": 1505,
+        "definition": 257,
+        "incoming_skin": 1054951559,
+        "existing_actor": true,
+        "actor_skin_after": 3836149698,
+        "roster_skin_after": 1054951559,
+        "existing_state_unchanged": true
+      },
+      {
+        "dispatch_id": 70,
+        "section": 13,
+        "offset": 7938,
+        "record_time": 130.0052032470703,
+        "actor_id": 1505,
+        "definition": 257,
+        "incoming_skin": 1054951559,
+        "existing_actor": true,
+        "actor_skin_after": 3836149698,
+        "roster_skin_after": 1054951559,
+        "existing_state_unchanged": true
+      },
+      {
+        "dispatch_id": 74,
+        "section": 14,
+        "offset": 7951,
+        "record_time": 140.00119018554688,
+        "actor_id": 1505,
+        "definition": 257,
+        "incoming_skin": 1054951559,
+        "existing_actor": true,
+        "actor_skin_after": 3836149698,
+        "roster_skin_after": 1054951559,
+        "existing_state_unchanged": true
+      }
+    ],
+    "rendered_pixels_certified": false,
+    "producer_reason_for_different_initial_skin": "unknown"
+  },
+  "change": {
+    "actor_identity": "first spawn definition must match latest roster definition",
+    "full_skin_association": "existing conflicting_spawn result and partial status retained",
+    "skin_hash": "latest roster raw value",
+    "spawn_skin_hash": "first consumed spawn raw value, or null",
+    "field_status_skin": "conflicting_skin or unverified_rendered_skin; rendered asset never inferred",
+    "definition_conflicts_and_missing_spawns": "still withhold gameplay fields"
+  },
+  "regression": {
+    "game600": {
+      "matched_groups": 70,
+      "mismatches": 0,
+      "selected_actor_ids": [
+        1500,
+        1505
+      ],
+      "selected_matched_groups": 14,
+      "cli_api_equal": true,
+      "skin_status": "conflicting_skin",
+      "support_status": "partial"
+    },
+    "record": {
+      "matched_groups": 70,
+      "mismatches": 0,
+      "selected_actor_ids": [
+        1500,
+        1505
+      ],
+      "selected_matched_groups": 14,
+      "cli_api_equal": true,
+      "skin_status": "conflicting_skin",
+      "support_status": "partial"
+    }
+  },
+  "regression_reuses_initial_heldout": true,
+  "independent": {
+    "recording": "H5810",
+    "sections": 168,
+    "queries": {
+      "all": {
+        "players": 10,
+        "support_status": "supported",
+        "cli_api_equal": true,
+        "skin_conflicts": [],
+        "record_boundary": {
+          "section": 61,
+          "record_offset": 127554
+        }
+      },
+      "selected": {
+        "players": 2,
+        "support_status": "supported",
+        "cli_api_equal": true,
+        "skin_conflicts": [],
+        "record_boundary": {
+          "section": 61,
+          "record_offset": 127554
+        }
+      }
+    },
+    "native_accuracy_compared": false,
+    "limit": "Fresh WTS session_flags=0 at2026-10-13T17:29:51UTC; no client launch attempted for this sample",
+    "source_uuid_and_hash_overlap": false,
+    "bundle_sha256": "9019dd4f22ea813a90696af0499e5ed49a35b2121fc5026852af536d68f5c63c",
+    "recording_uuid_sha256": "6d6c09b9640307ca9b94cbdc565c4ea2554cf12bdafc68e86bb951095a152509",
+    "prior_local_files": 13215,
+    "prior_remote_files": 18921,
+    "selected_before_decode": true,
+    "skin_conflict_case_present": false
+  },
+  "checks": {
+    "new_tests": 6,
+    "related_tests_passed": 86,
+    "full_tests_passed": 909,
+    "full_tests_seconds": 19.42,
+    "reader_policy_pin_refreshed_after_runtime_audit": true
+  },
+  "cleanup": {
+    "game_worker_observers_absent": true,
+    "pending_command_absent": true,
+    "restoration": [
+      {
+        "sections": 628,
+        "hashes_and_recorded_times_match": true
+      },
+      {
+        "sections": 13,
+        "hashes_and_recorded_times_match": true
+      }
+    ],
+    "source_sections_verified": 121,
+    "executable_hashes_unchanged": true,
+    "owned_tasks_removed": 2,
+    "recreated_prelaunch_sections": 13
+  },
+  "limits": {
+    "original_recording_client_version_verified": false,
+    "server_final_results_certified": false,
+    "definitive_analysis_eligible": false,
+    "new_independent_native_accuracy_verified": false
+  },
+  "private_evidence_sha256": {
+    "PROTOCOL.md": "6da2fe2f839f3541b913d010d3be1476bb41cdc4b69109f3dbf8310842250979",
+    "OFFLINE_FINDINGS.md": "3dd060feaee034cc5fbf8a7ff71f67d91add6ebf7a715a2acd898fb1dee56b96",
+    "h5672-skin-b-failed.jsonl": "293752ab5c46cbe2394bcf997f738e0f4e50dedd3ced008ca47260c037c042ee",
+    "h5672-skin-c-partial.jsonl": "ac8571cf129a32e97d0621743ad9b67014801ca399f1b7fabebf23aec2b15dca",
+    "h5672-skin-d.jsonl": "0d8c75e0e1d427fae2efd402dacf2a9d6ca76f65e4b0456faa816f8931c079c0",
+    "runtime-audit.json": "9db68dd75b0cee4f5da892243c64bf421b032863ff9b55460d6f5f76d3e3c067",
+    "regression-summary.json": "164f03bc0a42f107adc3e80a241c7e9e1a6cc1dab4198b5041d2be562005e10a",
+    "game600-all-regression.json": "aff00e5e68ed20f592cec08a1556ff68281e9fdc5156fabf910352d541b2e9bf",
+    "game600-selected-regression.json": "fc00b4b3a42bee205a67fcf9ba61e6e5eaac8758d75d4aaaabd910d6f97f0cda",
+    "record-all-regression.json": "3119ac8411ae51c5d50e19c33abd89d27287bc8aa8e019b57e33fc6d704762c4",
+    "record-selected-regression.json": "3d181b24660201f27f9dc76337edacc71427a6ac12683c1f5ef33e7d1dcae3fd",
+    "injection-b.json": "9c52ab5b111f10bb1320b7b4a21cd0bb670010bd2dc51d2af170f380f35939bc",
+    "runtime/skin-guards.json": "84850d845793a72c1b8a6368d2054388d272bbdc20e03b812bebe552dfac25a2",
+    "full-tests.json": "f3e8933e622d23f2cfe8eed34419df4b347841525de31428cfc03ca429cd5f61",
+    "full-tests-after-audit.json": "d30019630562a3204068872475c0857ace7b2260a6c4f8d73db3b465a054dc44",
+    "cleanup-b.json": "d7ef44584f7d238bc4310e755e413d59831ba24b1aadbfc40fc87560e3955919",
+    "task-cleanup-b.json": "749be7e30ee113a2f5ed63b1aaa6da17c93d68904ca9c6a6f71806b87311ceba",
+    "independent/data/selection.json": "67651eff85bb5314730042115785bccbc82f9e9f9c6a2ac1451b034bfedad0c4",
+    "independent/data/manifest.json": "864cae46ce9670f7ba3af09d9965de37be626cb84f0cc505d5eb3859961fb248",
+    "independent/summary.json": "64730a375d4eae4286c6cffdfacc254476a26d7502f519989aea4ba33db886d5"
+  }
+}
