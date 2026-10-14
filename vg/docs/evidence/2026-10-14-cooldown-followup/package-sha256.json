@@ -80,5 +80,6 @@
   "replay-clock/prior-clock/0112b970.txt": "ece23e989e7ff2cc3268673fe50bedfc9aaa1cba89d4c1a4acaddd9b71cf10db",
   "replay-clock/prior-clock/0112b9e0.txt": "35a2de127c46bfeb36354a18e728b3cbf2316bd8773e2214466d9c7ffd1eaec9",
   "replay-clock/probe.sh": "f23c8409bc4e94a362450cdd5143be571a0ffa4984547b3a51eba7127ccfd828",
-  "replay-clock/scripts/CombatProbe.java": "a57e6ba9fc6e506f98b31e3e6c30a87372eb046619c114f037b31ad1cfcee8ec"
+  "replay-clock/scripts/CombatProbe.java": "a57e6ba9fc6e506f98b31e3e6c30a87372eb046619c114f037b31ad1cfcee8ec",
+  "ability-identity/FOLLOW-UP.md": "b1a838456baec5cd4ff6faee680fd54d616ba615f37caae47bae2fbdd34500a4"
 }

@@ -122,3 +122,15 @@ These are documentation and reproducibility artifacts only. No timer reducer,
 countdown estimate, numeric identifier join or player-state change is introduced.
 See each report's reproduction instructions and the
 [package hashes](evidence/2026-10-14-cooldown-followup/package-sha256.json).
+
+## Concrete definition evidence: Fountain of Renewal
+
+The [build-specific Fountain example](evidence/2026-10-14-fountain-definition/README.md)
+now derives definition 487's primary key 0x6f056481 from the matched embedded
+ability resource and native fallback branch. H5810 owner/key records corroborate
+that mapping, with 133 sync observations for owner 1500 and 73 for owner 1501.
+This narrows the earlier missing-definition limitation for this one example.
+Generic ability/slot/instance joins, runtime overrides, shared-key membership
+and lifetime handling remain unresolved. Definition/configuration value 75.0
+is not an observed running countdown or proof of successful application.
+No automatic identity enrichment or reducer is introduced.

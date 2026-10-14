@@ -1,0 +1,68 @@
+ENTRY 00933350 BODY [[00933350, 009333a0]]
+
+undefined4 __thiscall FUN_00933350(int param_1,undefined4 param_2,int *param_3)
+
+{
+  undefined4 *puVar1;
+  int iVar2;
+  undefined4 *puVar3;
+  int iVar4;
+  
+  puVar3 = *(undefined4 **)(*(int *)(param_1 + 0x1c) + 0x8c);
+  iVar4 = 0;
+  puVar1 = (undefined4 *)*puVar3;
+  while( true ) {
+    if (puVar1 == (undefined4 *)0x0) {
+      return 0;
+    }
+    iVar2 = func_0x0096c790(param_2,*puVar1);
+    if (iVar2 == 0) break;
+    puVar1 = (undefined4 *)puVar3[1];
+    puVar3 = puVar3 + 1;
+    iVar4 = iVar4 + 1;
+  }
+  *param_3 = iVar4;
+  return 1;
+}
+
+
+
+INSTRUCTIONS
+00933350 PUSH EBP
+00933351 MOV EBP,ESP
+00933353 MOV EAX,dword ptr [ECX + 0x1c]
+00933356 PUSH EBX
+00933357 PUSH ESI
+00933358 PUSH EDI
+00933359 MOV ESI,dword ptr [EAX + 0x8c]
+0093335f XOR EDI,EDI
+00933361 MOV EAX,dword ptr [ESI]
+00933363 TEST EAX,EAX
+00933365 JZ 0x0093338a
+00933367 MOV EBX,dword ptr [EBP + 0x8]
+0093336a NOP word ptr [EAX + EAX*0x1]
+00933370 PUSH dword ptr [EAX]
+00933372 PUSH EBX
+00933373 CALL 0x0096c790
+00933378 ADD ESP,0x8
+0093337b TEST EAX,EAX
+0093337d JZ 0x00933393
+0093337f MOV EAX,dword ptr [ESI + 0x4]
+00933382 ADD ESI,0x4
+00933385 INC EDI
+00933386 TEST EAX,EAX
+00933388 JNZ 0x00933370
+0093338a POP EDI
+0093338b POP ESI
+0093338c XOR AL,AL
+0093338e POP EBX
+0093338f POP EBP
+00933390 RET 0x8
+00933393 MOV EAX,dword ptr [EBP + 0xc]
+00933396 MOV dword ptr [EAX],EDI
+00933398 MOV AL,0x1
+0093339a POP EDI
+0093339b POP ESI
+0093339c POP EBX
+0093339d POP EBP
+0093339e RET 0x8
