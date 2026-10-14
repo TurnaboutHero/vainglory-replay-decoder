@@ -1,5 +1,10 @@
 # Live boots cooldown verification
 
+The later [timer reference follow-up](COOLDOWN_TIMER_RESOLUTION_2026-10-15.md)
+corrects the inner-pointer/body interpretation and adds bounded native tick
+evidence. Its three-stage HUD comparison remains incomplete; the observations
+and limitations below remain historical r2 evidence.
+
 This follow-up supersedes the current-status portion of the historical
 [r1 foreground refusal](COOLDOWN_RUNTIME_GUARD_2026-10-14.md). The user directly
 resumed Windows verification. Code baseline is `489c721`; the separate cooldown
