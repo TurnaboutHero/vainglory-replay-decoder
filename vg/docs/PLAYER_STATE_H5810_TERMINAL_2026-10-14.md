@@ -1,9 +1,9 @@
 # H5810 terminal preparation and offline comparison, 2026-10-14
 
-**Actual pre-terminal and result-screen comparison is pending.** The user stated
-that Windows is currently unavailable. This increment verifies local recorded
-state and CLI/API consistency only; no Windows connection, game launch, terminal
-capture, result screenshot, or new restoration experiment was attempted.
+**Actual pre-terminal and result-screen comparison is pending.** The offline
+increment at `45e42a4` ran while Windows was unavailable and verified recorded
+state and CLI/API consistency only. A later native attempt was blocked before
+replay injection by `LockApp.exe`; its complete cleanup is recorded below.
 
 At baseline **b68ab8f969dcab915a52aa99371485ec17667d29**, all **11 CLI/API JSON
 pairs were identical**: five all-player and five selected-player queries, plus
@@ -122,8 +122,33 @@ Retain failed or seek-assisted trials separately and restore source slots and
 all original groups before publishing a native receipt. Missing observations
 remain unavailable rather than successful comparisons.
 
-Related unittest checks passed **79** for time queries, CLI/service outputs,
+At `45e42a4`, related unittest checks passed **79** for time queries, CLI/service outputs,
 display values, final scope, definitive eligibility, winner signals, and end
-requests. The full suite was not rerun for this docs-only increment. Raw replay
+requests. Tests were not rerun for the later blocked-attempt documentation.
+The full suite was not rerun for these docs-only increments. Raw replay
 bytes, player names, complete outputs, and private collection scripts remain
-local; this commit contains only this report and its sanitized offline receipt.
+local; published evidence consists of this report and sanitized receipts.
+
+## Native attempt blocked and restored, 2026-10-14
+
+The [blocked-attempt receipt](evidence/2026-10-14-h5810-terminal-blocked/summary.json)
+is bound to baseline `45e42a41acf16974dd42588c3a70b09c4cf59dd6`. Preflight found no
+game, observer, worker, pending command, or existing VG scheduled task; original
+and LAA executable hashes matched. WTS reported session flags 1. The owned LAA
+game launched, but the guarded screenshot ended at **12:38:21.976648 UTC**
+(**21:38:21 KST**) with foreground `LockApp.exe` and error
+`Owned game not foreground on Default desktop; refused`. No screenshot was made.
+
+No practice/playback click, replay substitution, or observer attachment followed
+the refusal. The owned game stopped; all **648 prelaunch recording sections**
+matched saved hashes and creation/write times, with zero files needing recreation.
+The worker acknowledged exit, no owned game/observer/worker or command remained,
+and the sole owned scheduled task was removed after action identity checks.
+All 168 transferred H5810 source hashes/sizes and original/LAA executable hashes
+were reverified unchanged. Independent local preparation remains preserved.
+
+This is a setup failure, not a replay failure or new accuracy result. Winner,
+final gold, display duration, recording client identity, and definitive exclusion
+remain unchanged. Further actual game attempts and handoff to the other Windows
+experiment are held until a new user confirmation that the lock screen is closed
+and the desktop is visible, followed by a fresh owned foreground/capture check.
