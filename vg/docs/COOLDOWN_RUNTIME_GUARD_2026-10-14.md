@@ -1,5 +1,10 @@
 # Cooldown runtime attempt: foreground guard refusal
 
+Historical r1 attempt only. The later user-authorized
+[live r2 follow-up](COOLDOWN_LIVE_2026-10-14.md) captured the game and exercised
+all three boots trials. The NOT_RUN and retry-withheld statements below describe
+r1, not the current verification status.
+
 Code baseline `33611314a29d2ad57a4c56a2f6da569b22ec9641`, branch
 `codex/rea-item-activation`. The separate cooldown parser/static evidence at
 `311232a1deaa60835068a1939eaf1ec023e21ac0` was read, not merged or reimplemented.
