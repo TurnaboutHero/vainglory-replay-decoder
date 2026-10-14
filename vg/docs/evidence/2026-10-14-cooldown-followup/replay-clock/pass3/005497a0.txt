@@ -1,0 +1,53 @@
+ENTRY 005497a0 BODY [[005497a0, 005497fa]]
+
+void __fastcall FUN_005497a0(int param_1)
+
+{
+  char cVar1;
+  float10 fVar2;
+  float10 fVar3;
+  
+  cVar1 = func_0x009448b0();
+  if (cVar1 != '\0') {
+    func_0x0054a210();
+  }
+  if ((*(byte *)(param_1 + 0x19d) & 1) == 0) {
+    fVar2 = (float10)FUN_0112a7a0();
+    fVar3 = (float10)FUN_0093ba70();
+    *(float *)(param_1 + 0x194) =
+         *(float *)(param_1 + 0x194) + (float)(fVar3 * (float10)(double)fVar2);
+  }
+  func_0x004eef20();
+  return;
+}
+
+
+
+INSTRUCTIONS
+005497a0 PUSH EBP
+005497a1 MOV EBP,ESP
+005497a3 SUB ESP,0x8
+005497a6 PUSH ESI
+005497a7 MOV ESI,ECX
+005497a9 CALL 0x009448b0
+005497ae TEST AL,AL
+005497b0 JZ 0x005497b9
+005497b2 MOV ECX,ESI
+005497b4 CALL 0x0054a210
+005497b9 TEST byte ptr [ESI + 0x19d],0x1
+005497c0 JNZ 0x005497f1
+005497c2 CALL 0x0112a7a0
+005497c7 FSTP double ptr [EBP + -0x8]
+005497ca CALL 0x0093ba70
+005497cf MOVSS XMM0,dword ptr [ESI + 0x194]
+005497d7 FMUL double ptr [EBP + -0x8]
+005497da CVTPS2PD XMM0,XMM0
+005497dd FSTP double ptr [EBP + -0x8]
+005497e0 ADDSD XMM0,qword ptr [EBP + -0x8]
+005497e5 CVTPD2PS XMM0,XMM0
+005497e9 MOVSS dword ptr [ESI + 0x194],XMM0
+005497f1 CALL 0x004eef20
+005497f6 POP ESI
+005497f7 MOV ESP,EBP
+005497f9 POP EBP
+005497fa RET

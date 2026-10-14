@@ -1,0 +1,145 @@
+ENTRY 0112b850 BODY [[0112b850, 0112b968]]
+
+void __thiscall FUN_0112b850(int *param_1,int param_2)
+
+{
+  int iVar1;
+  code *pcVar2;
+  uint uVar3;
+  uint uVar4;
+  int iVar5;
+  uint uVar6;
+  int iStack_c;
+  uint uStack_8;
+  
+  uStack_8 = 0;
+  if (param_1[1] != 0) {
+    iStack_c = 0;
+    do {
+      iVar5 = *param_1 + iStack_c;
+      func_0x0112a3c0();
+      iVar1 = *(int *)(param_2 * 4 + iVar5);
+      if ((iVar1 != 0) || (*(int *)(iVar5 + 0x28 + param_2 * 4) != 0)) {
+        uVar3 = *(uint *)(iVar5 + 0x170);
+        uVar4 = (uVar3 & 0xffff) - (uVar3 >> 0x10 & 0x7fff);
+        if (iVar1 != 0) {
+          func_0x00943900();
+          uVar3 = *(uint *)(iVar5 + 0x170);
+          uVar6 = uVar4;
+          if (uVar4 < (uVar3 & 0xffff)) {
+            do {
+              (**(code **)(param_2 * 4 + iVar5))
+                        ((uint)*(ushort *)(*(int *)(iVar5 + 0x16c) + uVar6 * 2) *
+                         *(int *)(iVar5 + 0x58) + *(int *)(iVar5 + 0x168));
+              uVar3 = *(uint *)(iVar5 + 0x170);
+              uVar6 = uVar6 + 1;
+            } while (uVar6 < (uVar3 & 0xffff));
+          }
+        }
+        pcVar2 = *(code **)(iVar5 + 0x28 + param_2 * 4);
+        if (pcVar2 != (code *)0x0) {
+          (*pcVar2)(*(undefined4 *)(iVar5 + 0x168),*(int *)(iVar5 + 0x16c) + uVar4 * 2,
+                    uVar3 >> 0x10 & 0x7fff);
+        }
+      }
+      func_0x0112a3c0();
+      uStack_8 = uStack_8 + 1;
+      iStack_c = iStack_c + 0x17c;
+    } while (uStack_8 < (uint)param_1[1]);
+  }
+  return;
+}
+
+
+
+INSTRUCTIONS
+0112b850 PUSH EBP
+0112b851 MOV EBP,ESP
+0112b853 SUB ESP,0x14
+0112b856 PUSH EDI
+0112b857 XOR EDI,EDI
+0112b859 MOV dword ptr [EBP + -0x14],ECX
+0112b85c MOV dword ptr [EBP + -0x4],EDI
+0112b85f CMP dword ptr [ECX + 0x4],EDI
+0112b862 JBE 0x0112b962
+0112b868 PUSH EBX
+0112b869 MOV EBX,dword ptr [EBP + 0x8]
+0112b86c PUSH ESI
+0112b86d LEA EAX,[EBX*0x4 + 0x0]
+0112b874 MOV dword ptr [EBP + -0xc],EAX
+0112b877 XOR EAX,EAX
+0112b879 MOV dword ptr [EBP + -0x8],EAX
+0112b87c NOP dword ptr [EAX]
+0112b880 MOV ESI,dword ptr [ECX]
+0112b882 ADD ESI,EAX
+0112b884 MOV ECX,ESI
+0112b886 CALL 0x0112a3c0
+0112b88b LEA EAX,[EBX*0x4 + 0x0]
+0112b892 MOV EDX,dword ptr [EAX + ESI*0x1]
+0112b895 TEST EDX,EDX
+0112b897 JNZ 0x0112b8a3
+0112b899 CMP dword ptr [ESI + EBX*0x4 + 0x28],EDX
+0112b89d JZ 0x0112b93e
+0112b8a3 MOV ECX,dword ptr [ESI + 0x170]
+0112b8a9 MOV EAX,ECX
+0112b8ab SHR EAX,0x10
+0112b8ae AND EAX,0x7fff
+0112b8b3 MOVZX EBX,CX
+0112b8b6 SUB EBX,EAX
+0112b8b8 MOV dword ptr [EBP + -0x10],EBX
+0112b8bb TEST EDX,EDX
+0112b8bd JZ 0x0112b911
+0112b8bf MOV ECX,0x20ec7c0
+0112b8c4 CALL 0x00943900
+0112b8c9 MOV ECX,dword ptr [ESI + 0x170]
+0112b8cf MOV EDI,EBX
+0112b8d1 MOVZX EAX,CX
+0112b8d4 CMP EBX,EAX
+0112b8d6 JNC 0x0112b90e
+0112b8d8 MOV EBX,dword ptr [EBP + -0xc]
+0112b8db NOP dword ptr [EAX + EAX*0x1]
+0112b8e0 MOV EAX,dword ptr [ESI + 0x16c]
+0112b8e6 MOVZX EAX,word ptr [EAX + EDI*0x2]
+0112b8ea IMUL EAX,dword ptr [ESI + 0x58]
+0112b8ee ADD EAX,dword ptr [ESI + 0x168]
+0112b8f4 PUSH EAX
+0112b8f5 MOV EAX,dword ptr [EBX + ESI*0x1]
+0112b8f8 CALL EAX
+0112b8fa MOV ECX,dword ptr [ESI + 0x170]
+0112b900 INC EDI
+0112b901 MOVZX EAX,CX
+0112b904 ADD ESP,0x4
+0112b907 CMP EDI,EAX
+0112b909 JC 0x0112b8e0
+0112b90b MOV EBX,dword ptr [EBP + -0x10]
+0112b90e MOV EDI,dword ptr [EBP + -0x4]
+0112b911 MOV EDX,dword ptr [EBP + 0x8]
+0112b914 MOV EDX,dword ptr [ESI + EDX*0x4 + 0x28]
+0112b918 TEST EDX,EDX
+0112b91a JZ 0x0112b93b
+0112b91c MOV EAX,dword ptr [ESI + 0x16c]
+0112b922 SHR ECX,0x10
+0112b925 AND ECX,0x7fff
+0112b92b PUSH ECX
+0112b92c LEA EAX,[EAX + EBX*0x2]
+0112b92f PUSH EAX
+0112b930 PUSH dword ptr [ESI + 0x168]
+0112b936 CALL EDX
+0112b938 ADD ESP,0xc
+0112b93b MOV EBX,dword ptr [EBP + 0x8]
+0112b93e MOV ECX,ESI
+0112b940 CALL 0x0112a3c0
+0112b945 MOV ECX,dword ptr [EBP + -0x14]
+0112b948 INC EDI
+0112b949 MOV EAX,dword ptr [EBP + -0x8]
+0112b94c ADD EAX,0x17c
+0112b951 MOV dword ptr [EBP + -0x4],EDI
+0112b954 MOV dword ptr [EBP + -0x8],EAX
+0112b957 CMP EDI,dword ptr [ECX + 0x4]
+0112b95a JC 0x0112b880
+0112b960 POP ESI
+0112b961 POP EBX
+0112b962 POP EDI
+0112b963 MOV ESP,EBP
+0112b965 POP EBP
+0112b966 RET 0x4

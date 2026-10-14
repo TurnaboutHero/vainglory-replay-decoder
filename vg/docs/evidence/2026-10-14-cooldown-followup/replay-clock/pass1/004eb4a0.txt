@@ -1,0 +1,92 @@
+ENTRY 004eb4a0 BODY [[004eb4a0, 004eb52e]]
+
+void __fastcall FUN_004eb4a0(int param_1)
+
+{
+  char cVar1;
+  float10 fVar2;
+  undefined4 uStack_c;
+  float fStack_8;
+  
+  if (*(int *)(param_1 + 4) != 2) {
+    if (*(int *)(param_1 + 4) == 1) {
+      fVar2 = (float10)FUN_0112a7a0();
+      fStack_8 = (float)fVar2;
+      *(float *)(param_1 + 0xc) = *(float *)(param_1 + 0xc) + fStack_8;
+    }
+    cVar1 = *(char *)(param_1 + 0x14);
+    do {
+      if (cVar1 != '\0') {
+        cVar1 = FUN_004ca130(param_1 + 0x15,(undefined4 *)(param_1 + 0x818),&uStack_c,1);
+        if (cVar1 == '\0') {
+          return;
+        }
+        *(undefined4 *)(param_1 + 0x10) = uStack_c;
+        *(undefined1 *)(param_1 + 0x14) = 0;
+      }
+      if (*(float *)(param_1 + 0xc) < *(float *)(param_1 + 0x10)) {
+        return;
+      }
+      func_0x004cfec0(param_1 + 0x15,*(undefined4 *)(param_1 + 0x818));
+      *(undefined1 *)(param_1 + 0x14) = 1;
+      cVar1 = '\x01';
+    } while (*(int *)(param_1 + 4) != 2);
+  }
+  return;
+}
+
+
+
+INSTRUCTIONS
+004eb4a0 PUSH EBP
+004eb4a1 MOV EBP,ESP
+004eb4a3 SUB ESP,0x8
+004eb4a6 PUSH ESI
+004eb4a7 MOV ESI,ECX
+004eb4a9 MOV EAX,dword ptr [ESI + 0x4]
+004eb4ac CMP EAX,0x2
+004eb4af JZ 0x004eb52a
+004eb4b1 CMP EAX,0x1
+004eb4b4 JNZ 0x004eb4cd
+004eb4b6 CALL 0x0112a7a0
+004eb4bb MOVSS XMM0,dword ptr [ESI + 0xc]
+004eb4c0 FSTP float ptr [EBP + -0x4]
+004eb4c3 ADDSS XMM0,dword ptr [EBP + -0x4]
+004eb4c8 MOVSS dword ptr [ESI + 0xc],XMM0
+004eb4cd MOV AL,byte ptr [ESI + 0x14]
+004eb4d0 PUSH EBX
+004eb4d1 PUSH EDI
+004eb4d2 LEA EDI,[ESI + 0x15]
+004eb4d5 LEA EBX,[ESI + 0x818]
+004eb4db NOP dword ptr [EAX + EAX*0x1]
+004eb4e0 TEST AL,AL
+004eb4e2 JZ 0x004eb506
+004eb4e4 PUSH 0x1
+004eb4e6 LEA EAX,[EBP + -0x8]
+004eb4e9 PUSH EAX
+004eb4ea PUSH EBX
+004eb4eb PUSH EDI
+004eb4ec CALL 0x004ca130
+004eb4f1 ADD ESP,0x10
+004eb4f4 TEST AL,AL
+004eb4f6 JZ 0x004eb528
+004eb4f8 MOVSS XMM0,dword ptr [EBP + -0x8]
+004eb4fd MOVSS dword ptr [ESI + 0x10],XMM0
+004eb502 MOV byte ptr [ESI + 0x14],0x0
+004eb506 MOVSS XMM0,dword ptr [ESI + 0xc]
+004eb50b COMISS XMM0,dword ptr [ESI + 0x10]
+004eb50f JC 0x004eb528
+004eb511 PUSH dword ptr [EBX]
+004eb513 PUSH EDI
+004eb514 CALL 0x004cfec0
+004eb519 ADD ESP,0x8
+004eb51c MOV byte ptr [ESI + 0x14],0x1
+004eb520 CMP dword ptr [ESI + 0x4],0x2
+004eb524 MOV AL,0x1
+004eb526 JNZ 0x004eb4e0
+004eb528 POP EDI
+004eb529 POP EBX
+004eb52a POP ESI
+004eb52b MOV ESP,EBP
+004eb52d POP EBP
+004eb52e RET

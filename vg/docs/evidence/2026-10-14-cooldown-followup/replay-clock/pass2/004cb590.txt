@@ -1,0 +1,102 @@
+ENTRY 004cb590 BODY [[004cb590, 004cb5f1] [004cb5f9, 004cb61a]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_004cb590(undefined4 param_1,undefined4 param_2)
+
+{
+  char cVar1;
+  ushort uVar2;
+  undefined4 uStack_8;
+  
+  cVar1 = func_0x00943900();
+  if (cVar1 != '\0') {
+    uStack_8 = 0;
+    func_0x011bada9(&uStack_8,param_1,2);
+    uVar2 = Ordinal_15(uStack_8);
+    if (uVar2 < 0x3ed) {
+      if (0x3e9 < uVar2) {
+        return;
+      }
+      if (uVar2 == 0) {
+        return;
+      }
+    }
+    else {
+      switch(uVar2) {
+      case 0x411:
+      case 0x412:
+      case 0x413:
+      case 0x42e:
+      case 0x433:
+      case 0x435:
+      case 0x436:
+      case 0x437:
+      case 0x439:
+      case 0x44e:
+      case 0x451:
+      case 0x453:
+      case 0x454:
+      case 0x459:
+      case 0x45a:
+      case 0x45b:
+      case 0x46c:
+      case 0x473:
+      case 0x475:
+      case 0x479:
+      case 0x47a:
+      case 0x47c:
+      case 0x47d:
+        goto LAB_004cb617;
+      case 0x46f:
+        DAT_01ef0b2e = 1;
+      }
+    }
+    func_0x009546f0(param_1,param_2,_DAT_01ef0b30);
+  }
+LAB_004cb617:
+  return;
+}
+
+
+
+INSTRUCTIONS
+004cb590 PUSH EBP
+004cb591 MOV EBP,ESP
+004cb593 PUSH ECX
+004cb594 MOV ECX,0x1eb09e8
+004cb599 CALL 0x00943900
+004cb59e TEST AL,AL
+004cb5a0 JZ 0x004cb617
+004cb5a2 PUSH 0x2
+004cb5a4 PUSH dword ptr [EBP + 0x8]
+004cb5a7 LEA EAX,[EBP + -0x4]
+004cb5aa MOV dword ptr [EBP + -0x4],0x0
+004cb5b1 PUSH EAX
+004cb5b2 CALL 0x011bada9
+004cb5b7 ADD ESP,0xc
+004cb5ba PUSH dword ptr [EBP + -0x4]
+004cb5bd CALL dword ptr [0x0120a610]
+004cb5c3 MOVZX EAX,AX
+004cb5c6 CMP EAX,0x3ec
+004cb5cb JA 0x004cb5da
+004cb5cd CMP EAX,0x3ea
+004cb5d2 JNC 0x004cb617
+004cb5d4 TEST EAX,EAX
+004cb5d6 JZ 0x004cb617
+004cb5d8 JMP 0x004cb5f9
+004cb5da ADD EAX,0xfffffbef
+004cb5df CMP EAX,0x6c
+004cb5e2 JA 0x004cb5f9
+004cb5e4 MOVZX EAX,byte ptr [EAX + 0x4cb628]
+004cb5eb JMP dword ptr [EAX*0x4 + 0x4cb61c]
+004cb5f9 MOVSS XMM0,dword ptr [0x01ef0b30]
+004cb601 PUSH ECX
+004cb602 MOVSS dword ptr [ESP],XMM0
+004cb607 MOV ECX,0x1eb09e8
+004cb60c PUSH dword ptr [EBP + 0xc]
+004cb60f PUSH dword ptr [EBP + 0x8]
+004cb612 CALL 0x009546f0
+004cb617 MOV ESP,EBP
+004cb619 POP EBP
+004cb61a RET

@@ -1,0 +1,10 @@
+  93ff3a:	ff 35 7c 39 ef 01    	push   0x1ef397c
+  93ff40:	8b cb                	mov    %ebx,%ecx
+  93ff42:	e8 d9 9d 7e 00       	call   0x1129d20
+  93ff47:	8b 4b 1c             	mov    0x1c(%ebx),%ecx
+  93ff4a:	83 c1 4c             	add    $0x4c,%ecx
+  93ff4d:	89 43 2c             	mov    %eax,0x2c(%ebx)
+  93ff50:	51                   	push   %ecx
+  93ff51:	8b c8                	mov    %eax,%ecx
+  93ff53:	e8 78 f8 ff ff       	call   0x93f7d0
+  93ff58:	ff 35 4c 0b ef 01    	push   0x1ef0b4c

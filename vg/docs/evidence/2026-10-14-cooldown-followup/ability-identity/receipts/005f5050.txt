@@ -1,0 +1,52 @@
+ENTRY 005f5050 BODY [[005f5050, 005f508e]]
+
+uint * __thiscall FUN_005f5050(uint *param_1,char *param_2)
+
+{
+  char cVar1;
+  uint uVar2;
+  
+  if (param_2 == (char *)0x0) {
+    *param_1 = 0;
+    return param_1;
+  }
+  uVar2 = 0x811c9dc5;
+  cVar1 = *param_2;
+  while (cVar1 != '\0') {
+    param_2 = param_2 + 1;
+    uVar2 = ((int)cVar1 ^ uVar2) * 0x1000193;
+    cVar1 = *param_2;
+  }
+  *param_1 = uVar2;
+  return param_1;
+}
+
+
+
+INSTRUCTIONS
+005f5050 PUSH EBP
+005f5051 MOV EBP,ESP
+005f5053 MOV EDX,dword ptr [EBP + 0x8]
+005f5056 TEST EDX,EDX
+005f5058 JZ 0x005f5083
+005f505a MOV AL,byte ptr [EDX]
+005f505c PUSH ESI
+005f505d MOV ESI,0x811c9dc5
+005f5062 TEST AL,AL
+005f5064 JZ 0x005f507a
+005f5066 MOVSX EAX,AL
+005f5069 LEA EDX,[EDX + 0x1]
+005f506c XOR EAX,ESI
+005f506e IMUL ESI,EAX,0x1000193
+005f5074 MOV AL,byte ptr [EDX]
+005f5076 TEST AL,AL
+005f5078 JNZ 0x005f5066
+005f507a MOV dword ptr [ECX],ESI
+005f507c MOV EAX,ECX
+005f507e POP ESI
+005f507f POP EBP
+005f5080 RET 0x4
+005f5083 MOV dword ptr [ECX],0x0
+005f5089 MOV EAX,ECX
+005f508b POP EBP
+005f508c RET 0x4

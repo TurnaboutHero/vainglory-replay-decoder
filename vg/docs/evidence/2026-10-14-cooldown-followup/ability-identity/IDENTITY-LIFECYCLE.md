@@ -1,0 +1,45 @@
+# Ability, cooldown identity and object lifetime: static evidence
+
+## Result
+
+The structural join is proven: actor-owned cooldown objects are selected by a 32-bit key, and ability initialization stores the selected object pointer in ability+124. The ability slot index, item instance number and cooldown key are distinct identifiers. Different item instances can share the same actor-owned cooldown object. There is still no validated replay-to-definition mapping sufficient to join arbitrary 0429 slots or 044c item instances to the observed 0428/048a keys.
+
+No game execution, repository edit, remote update or merge was performed for this analysis. The input EXE SHA256 is d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc. Addresses below are static VA in that image. Ghidra 12.1.3 / JDK 21, standalone offline analysis; REA IPC was not bypassed. C output has imperfect calling conventions: the accompanying instructions are authoritative for register arguments and object ownership.
+
+## Proven joins
+
+1. **Ownership and lookup.** 01129d20 calls pooled allocation 01129dd0, writes newObject+8 = owner, prepends it to owner+0c, and links the old head at newObject+10. 0112a700 follows this list and selects exact type by [object+4]+54. Existing 008579e0 and 00945cc0 select this cooldown type (global 01ef0b3c) and compare object+28 to the action key. Therefore the search domain is one concrete owner's child list, not a global key table.
+2. **Ability → state.** 0093f270 initializes ability+1c with its definition and +20 with the ability component, where present. At 0093f3c3–3f1 it walks ability+8 ancestry until type 01e6ee20, then enumerates that actor's cooldown children. At 0093f400–40a it compares state+28 to the derived key. Only if absent does 0093f415–4ed allocate/configure a new child under that actor. At 0093f4ef and 0093f4f5 it stores the exact selected pointer into ability+11c and ability+124. The existing-object branch jumps directly to these assignments, bypassing configuration.
+3. **Actor slot → ability.** Actor initializer 0093fba0 creates a component under actor at 0093ff3a–42 and stores it in actor+2c at 0093ff4d. It calls 0093f7d0 with actorDefinition+4c. That initializer enumerates its definition's +18 ability list, creates each ability under the component, invokes 0093f270, then writes it to component+28+4*slot at 0093f82b. Count is an unsigned byte at component+164 and this path caps it at 20. Additional special abilities are appended by later branches. 00858d10 is another runtime add path using the same creation/init/append sequence. This is the very array consumed by 0429 apply 0094f170. Slot is order-dependent; it is not the cooldown hash.
+4. **Item instance → ability → actor-owned state.** 00940230 initializes item+14 definition, +30 instance and +2c definition/index operand. On its active-ability branch it creates an ability as a child of the item, saves it at item+18, resolves a definition and calls 0093f270. Its actor-ancestry search therefore reaches the same actor-owned state list. 0093cdc0 creates an item, calls 00940230, then explicitly reads item+18 → ability+124 → state+28 and searches the actor list by that key again (0093cf2b onward) before applying received timer/charge information. This independently corroborates the join.
+5. **Different item instances.** 008725f0 first considers stacking into an existing matching definition with room. Otherwise it allocates a new item, takes inventory+6c as its instance number, increments that counter and passes the previous value to 00940230 (objdump receipt). 0093cdc0 separately accepts a supplied instance. Neither path hashes the instance to choose the cooldown object. Thus two abilities with the same derived cooldown key under one actor reuse the same state object, even if their owning item instances differ. This is conditional on the derived key, not a universal assertion that all copies or all item definitions share cooldown.
+
+## What the key actually comes from
+
+The primary key branch of 0093f270 starts with signed-byte FNV-1a of abilityDefinition+18: initial 0x811c9dc5, XOR each sign-extended non-NUL byte, multiply 0x01000193 modulo 2^32. 005f5050 and 00589e10 have these exact instructions; NULL input returns 0, empty string hashes to 0x811c9dc5.
+
+There is a material fallback: if this hash matches global 01ab9cb8 or 020ea218, definition+6a selects either global 020e72e8, or a hash of ability+128 overrideName, falling back to definition+4 (and ultimately literal "<null>"). The image initializes 01ab9cb8 to 0x811c9dc5. Static initializer 0044e9f0 hashes the 14-byte string "DefaultAttacks" into 020e72e8. The runtime value of 020ea218 is not established by the selected receipts.
+
+State creation itself is conditional on definition properties, positive cooldown/cost-like fields, or the "Charges" property. Do not infer that every ability necessarily has a non-null +124 state. There is a second independently keyed state derived from definition+1c and stored at ability+120; it is not the +124 primary pointer. Do not collapse all ability-associated cooldown objects together.
+
+## Configuration and lifetime
+
+- Cooldown type registration links constructor 00958030, destructor wrapper 00536790 and object size 0x4c to type 01ef0b3c (registration objdump receipt).
+- Constructor initializes +20 timer pointer to 0, +24 generation sentinel, +28 key 0, +2c/+30 0, +34 1.0, +38 -1.0, +3c 0, +40/+41/+42 0, and clears relevant +44/+48 flags.
+- 048a creation-only settings in the earlier report are genuine new-object configuration. Ability initialization also has creation-only key/flags/configuration. A later sync with different config bytes does not by itself authorize overwriting a live object's config or inventing a new generation.
+- The actual owner of the cooldown is the actor, whereas an item owns its ability. The generic destructor 01129c00 recursively releases children, unlinks the destroyed object from its owner's child list, and clears its owner/sibling pointers. Destroying an item subtree therefore does not automatically destroy its actor-owned cooldown sibling. This proves the ownership distinction; it does not rule out separate explicit gameplay cleanup elsewhere.
+- Cooldown destructor vtable 01280658 resolves to 00820f10, which invalidates its handle-bearing subobject and invokes 01129c00. Pool release 0112a0d0 invokes the registered destructor, clears object+4, returns the slot to the free-index pool, and decreases the live count. Allocation 01129dd0 can reuse pool storage, zeroes it, and runs its constructor. Raw memory addresses therefore cannot identify a lifetime forever.
+- 0112a080 merely marks the pool object's pending bit. It is not immediate destruction. Do not use a call to it alone as proof of a completed object removal.
+- The exact replay actions that destroy/recreate an actor, independently destroy a cooldown object, or reinstall/replace ability slots remain outside these receipts. Consequently a permanent global owner/key map with no owner-lifetime handling is not fully proven.
+
+## Minimal safe implementation boundary
+
+Safe now: retain distinct raw identifiers and provenance; group 0428/048a observations by owner/key within an explicitly known owner lifetime; preserve record order; expose config bytes as observed creation candidates rather than overwrite-all truth; keep 0429 slot and 044c item-instance links unresolved unless the definition/lifetime mapping is independently supplied and validated. A data-only structural map/schema or tests preventing numeric joins is safe. No countdown simulation is justified by this identity analysis.
+
+Not safe yet: mapping key == slot or key == item ID, allocating a separate cooldown state per item instance, reinitializing config on every 048a, or asserting a permanent key lifetime. Do not join H5810's lone 0429 owner 1504/slot 0 to a 0428/048a key from matching numbers or temporal proximity.
+
+Required resources for a concrete semantic join: build-matched actor definitions and ordered ability lists; ability definitions including +18/+1c group names, +4 identity name, +6a mode and applicable override names; item definitions selecting their ability; replay actor lifetime and ability add/override/remove events. Then compute the documented key branch and validate against independent raw records. The EXE-only structural proof cannot substitute for these definition values. The supplied H5810 counts are context from the parent analysis, not independently re-counted here.
+
+## Evidence quality
+
+Only curated receipts listed by receipt-hashes.json support the conclusions. Exploratory probes at guessed mid-function addresses were excluded. In particular, the exploratory Ghidra 008725f0 body remained split by an earlier bad decode at 00872610; its C output is not included. The selected objdump instruction receipt is used for that path instead. Raw E8 byte candidates and whole-image textual disassembly were used to locate targets, not as standalone proof of callable functions. No claim depends on runtime game observation.

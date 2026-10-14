@@ -1,0 +1,77 @@
+ENTRY 004c6b90 BODY [[004c6b90, 004c6b94]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void thunk_FUN_00931bd0(void)
+
+{
+  undefined4 *puVar1;
+  int iVar2;
+  int iVar3;
+  uint uVar4;
+  int iVar5;
+  int *piVar6;
+  int *unaff_FS_OFFSET;
+  int iStack_10;
+  undefined *puStack_c;
+  undefined4 uStack_8;
+  
+  uStack_8 = 0xffffffff;
+  puStack_c = &DAT_011f9c48;
+  iStack_10 = *unaff_FS_OFFSET;
+  uVar4 = _DAT_01e44f28 ^ (uint)&stack0xfffffffc;
+  *unaff_FS_OFFSET = (int)&iStack_10;
+  func_0x00976cc0(0x20db890,uVar4);
+  uStack_8 = 0;
+  piVar6 = _DAT_020db894;
+  if (_DAT_020db894 != (int *)0x0) {
+    do {
+      iVar5 = *piVar6;
+      _DAT_020db8a8 = piVar6;
+      if ((char)piVar6[3] == '\0') {
+        (**(code **)(iVar5 + 4))();
+        if (DAT_0209e204 != '\0') {
+          iVar5 = *piVar6;
+          goto LAB_00931c40;
+        }
+      }
+      else {
+LAB_00931c40:
+        (**(code **)(iVar5 + 8))();
+      }
+      piVar6 = (int *)piVar6[1];
+    } while (piVar6 != (int *)0x0);
+    _DAT_020db8a8 = (int *)0x0;
+    piVar6 = _DAT_020db894;
+    while (piVar6 != (int *)0x0) {
+      puVar1 = (undefined4 *)*piVar6;
+      piVar6 = (int *)piVar6[1];
+      (*(code *)*puVar1)(0);
+    }
+    _DAT_020db894 = (int *)0x0;
+    _DAT_020db898 = 0;
+    _DAT_020db89c = 0;
+    iVar5 = _DAT_020db8a0;
+    if (_DAT_020db8a4 != 0) {
+      iVar3 = *(int *)(_DAT_020db8a4 + 0x2804);
+      iVar5 = _DAT_020db8a4;
+      while (iVar2 = iVar3, iVar2 != 0) {
+        iVar5 = iVar2;
+        iVar3 = *(int *)(iVar2 + 0x2804);
+      }
+      *(int *)(iVar5 + 0x2804) = _DAT_020db8a0;
+      iVar5 = _DAT_020db8a4;
+    }
+    _DAT_020db8a4 = iVar5;
+    _DAT_020db8a0 = 0;
+  }
+  uStack_8 = 1;
+  func_0x00976cd0(0x20db890);
+  *unaff_FS_OFFSET = iStack_10;
+  return;
+}
+
+
+
+INSTRUCTIONS
+004c6b90 JMP 0x00931bd0

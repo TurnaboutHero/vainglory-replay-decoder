@@ -1,0 +1,125 @@
+ENTRY 004ca130 BODY [[004ca130, 004ca20b]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+uint FUN_004ca130(undefined4 param_1,undefined4 *param_2,uint *param_3,char param_4)
+
+{
+  uint uVar1;
+  undefined4 uVar2;
+  
+  do {
+    uVar1 = 0;
+    if (_DAT_01eb09d8 == 0) {
+LAB_004ca192:
+      return uVar1 & 0xffffff00;
+    }
+    uVar1 = func_0x0096c2b0(param_3,4,1,_DAT_01eb09d8);
+    if (uVar1 == 1) {
+      uVar1 = *param_3;
+      *param_3 = (uVar1 & 0xff0000 | uVar1 >> 0x10) >> 8 | (uVar1 & 0xff00 | uVar1 << 0x10) << 8;
+      func_0x0096c2b0(param_2,4,1,_DAT_01eb09d8);
+      uVar2 = Ordinal_14(*param_2);
+      *param_2 = uVar2;
+      uVar1 = func_0x0096c2b0(param_1,uVar2,1,_DAT_01eb09d8);
+      if (uVar1 == 1) {
+        return 1;
+      }
+      goto LAB_004ca192;
+    }
+    if (param_4 == '\0') goto LAB_004ca192;
+    if (_DAT_01eb09d8 != 0) {
+      func_0x0096c220(_DAT_01eb09d8);
+      _DAT_01eb09d8 = 0;
+    }
+    _DAT_01ef0b38 = _DAT_01ef0b38 + 1;
+    uVar1 = func_0x004cb3e0();
+    if ((char)uVar1 == '\0') goto LAB_004ca192;
+    param_4 = '\x01';
+  } while( true );
+}
+
+
+
+INSTRUCTIONS
+004ca130 PUSH EBP
+004ca131 MOV EBP,ESP
+004ca133 PUSH ECX
+004ca134 MOV EAX,[0x01eb09d8]
+004ca139 PUSH EBX
+004ca13a PUSH ESI
+004ca13b TEST EAX,EAX
+004ca13d JZ 0x004ca192
+004ca13f MOV ESI,dword ptr [EBP + 0x10]
+004ca142 MOV BL,byte ptr [EBP + 0x14]
+004ca145 PUSH EAX
+004ca146 PUSH 0x1
+004ca148 PUSH 0x4
+004ca14a PUSH ESI
+004ca14b CALL 0x0096c2b0
+004ca150 ADD ESP,0x10
+004ca153 CMP EAX,0x1
+004ca156 JZ 0x004ca19a
+004ca158 TEST BL,BL
+004ca15a JZ 0x004ca192
+004ca15c MOV EAX,[0x01eb09d8]
+004ca161 TEST EAX,EAX
+004ca163 JZ 0x004ca178
+004ca165 PUSH EAX
+004ca166 CALL 0x0096c220
+004ca16b ADD ESP,0x4
+004ca16e MOV dword ptr [0x01eb09d8],0x0
+004ca178 INC dword ptr [0x01ef0b38]
+004ca17e CALL 0x004cb3e0
+004ca183 TEST AL,AL
+004ca185 JZ 0x004ca192
+004ca187 MOV EAX,[0x01eb09d8]
+004ca18c MOV BL,0x1
+004ca18e TEST EAX,EAX
+004ca190 JNZ 0x004ca145
+004ca192 POP ESI
+004ca193 XOR AL,AL
+004ca195 POP EBX
+004ca196 MOV ESP,EBP
+004ca198 POP EBP
+004ca199 RET
+004ca19a MOVSS XMM0,dword ptr [ESI]
+004ca19e MOVSS dword ptr [EBP + -0x4],XMM0
+004ca1a3 MOV ECX,dword ptr [EBP + -0x4]
+004ca1a6 MOV EDX,ECX
+004ca1a8 MOV EAX,ECX
+004ca1aa AND EDX,0xff0000
+004ca1b0 SHR EAX,0x10
+004ca1b3 OR EDX,EAX
+004ca1b5 MOV EAX,ECX
+004ca1b7 AND EAX,0xff00
+004ca1bc SHL ECX,0x10
+004ca1bf OR EAX,ECX
+004ca1c1 SHR EDX,0x8
+004ca1c4 SHL EAX,0x8
+004ca1c7 OR EDX,EAX
+004ca1c9 MOV dword ptr [ESI],EDX
+004ca1cb PUSH dword ptr [0x01eb09d8]
+004ca1d1 MOV ESI,dword ptr [EBP + 0xc]
+004ca1d4 PUSH 0x1
+004ca1d6 PUSH 0x4
+004ca1d8 PUSH ESI
+004ca1d9 CALL 0x0096c2b0
+004ca1de ADD ESP,0x10
+004ca1e1 PUSH dword ptr [ESI]
+004ca1e3 CALL dword ptr [0x0120a614]
+004ca1e9 MOV dword ptr [ESI],EAX
+004ca1eb PUSH dword ptr [0x01eb09d8]
+004ca1f1 PUSH 0x1
+004ca1f3 PUSH EAX
+004ca1f4 PUSH dword ptr [EBP + 0x8]
+004ca1f7 CALL 0x0096c2b0
+004ca1fc ADD ESP,0x10
+004ca1ff CMP EAX,0x1
+004ca202 JNZ 0x004ca192
+004ca204 POP ESI
+004ca205 MOV AL,AL
+004ca207 POP EBX
+004ca208 MOV ESP,EBP
+004ca20a POP EBP
+004ca20b RET

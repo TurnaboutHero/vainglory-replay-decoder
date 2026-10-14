@@ -1,0 +1,196 @@
+ENTRY 004c6990 BODY [[004c6990, 004c6b8d]]
+
+void __fastcall FUN_004c6990(int param_1)
+
+{
+  char cVar1;
+  undefined4 uVar2;
+  float10 fVar3;
+  float10 fVar4;
+  int iStack_c;
+  int iStack_8;
+  
+  uVar2 = func_0x009fcad0();
+  func_0x01124660();
+  fVar3 = (float10)FUN_0093ba70();
+  FUN_0112b130((double)fVar3);
+  FUN_0112b970();
+  fVar3 = (float10)FUN_0112a7d0();
+  fVar4 = (float10)FUN_0112a6e0();
+  func_0x004b3370();
+  cVar1 = FUN_004ca300();
+  if (cVar1 != '\0') {
+    FUN_004ce050((float)fVar3);
+  }
+  func_0x009c1210();
+  func_0x004c58e0();
+  _guard_check_icall();
+  func_0x011255f0();
+  if (*(char *)(param_1 + 100) != '\0') {
+    *(undefined1 *)(param_1 + 100) = 0;
+    iStack_c = 0;
+    iStack_8 = 0;
+    func_0x0097a560(&iStack_c,&iStack_8,1);
+    func_0x004c67a0((float)((double)iStack_c + *(double *)(&UNK_012122c0 + (iStack_c >> 0x1f) * -8))
+                    ,(float)((double)iStack_8 + *(double *)(&UNK_012122c0 + (iStack_8 >> 0x1f) * -8)
+                            ));
+  }
+  func_0x00a04490((float)fVar4);
+  func_0x004c0380((float)fVar4,(float)fVar3);
+  func_0x0112a6c0();
+  FUN_0112b9e0((float)fVar4,(float)fVar3);
+  _guard_check_icall();
+  func_0x009f5600((float)fVar3);
+  func_0x0112bb30();
+  func_0x00a25540(uVar2);
+  func_0x00a03e60(uVar2);
+  _guard_check_icall();
+  func_0x0113bf30((float)fVar3);
+  _guard_check_icall((float)fVar3);
+  func_0x009cc3a0((float)fVar4);
+  func_0x0097b7e0();
+  func_0x0112bb10();
+  _guard_check_icall();
+  func_0x0113d160();
+  func_0x004b3370();
+  _guard_check_icall();
+  return;
+}
+
+
+
+INSTRUCTIONS
+004c6990 PUSH EBP
+004c6991 MOV EBP,ESP
+004c6993 SUB ESP,0x18
+004c6996 PUSH EBX
+004c6997 PUSH ESI
+004c6998 MOV ESI,ECX
+004c699a PUSH EDI
+004c699b MOV ECX,dword ptr [ESI + 0x58]
+004c699e CALL 0x009fcad0
+004c69a3 MOV EBX,EAX
+004c69a5 CALL 0x01124660
+004c69aa CALL 0x0093ba70
+004c69af SUB ESP,0x8
+004c69b2 LEA ECX,[ESI + 0x20]
+004c69b5 FSTP double ptr [ESP]
+004c69b8 CALL 0x0112b130
+004c69bd LEA ECX,[ESI + 0x20]
+004c69c0 CALL 0x0112b970
+004c69c5 LEA ECX,[ESI + 0x20]
+004c69c8 CALL 0x0112a7d0
+004c69cd FSTP double ptr [EBP + -0x10]
+004c69d0 LEA ECX,[ESI + 0x20]
+004c69d3 CALL 0x0112a6e0
+004c69d8 FSTP double ptr [EBP + -0x18]
+004c69db LEA ECX,[ESI + 0x20]
+004c69de CALL 0x004b3370
+004c69e3 FSTP ST0
+004c69e5 CALL 0x004ca300
+004c69ea TEST AL,AL
+004c69ec JZ 0x004c6a05
+004c69ee MOVSD XMM0,qword ptr [EBP + -0x10]
+004c69f3 CVTPD2PS XMM0,XMM0
+004c69f7 PUSH ECX
+004c69f8 MOVSS dword ptr [ESP],XMM0
+004c69fd CALL 0x004ce050
+004c6a02 ADD ESP,0x4
+004c6a05 CALL 0x009c1210
+004c6a0a CALL 0x004c58e0
+004c6a0f CALL 0x00450910
+004c6a14 CALL 0x011255f0
+004c6a19 CMP byte ptr [ESI + 0x64],0x0
+004c6a1d JZ 0x004c6a8d
+004c6a1f PUSH 0x1
+004c6a21 LEA EAX,[EBP + -0x4]
+004c6a24 MOV byte ptr [ESI + 0x64],0x0
+004c6a28 PUSH EAX
+004c6a29 LEA EAX,[EBP + -0x8]
+004c6a2c MOV dword ptr [EBP + -0x8],0x0
+004c6a33 PUSH EAX
+004c6a34 MOV ECX,ESI
+004c6a36 MOV dword ptr [EBP + -0x4],0x0
+004c6a3d CALL 0x0097a560
+004c6a42 MOV EAX,dword ptr [EBP + -0x4]
+004c6a45 SUB ESP,0x8
+004c6a48 MOV ECX,ESI
+004c6a4a MOVD XMM0,EAX
+004c6a4e CVTDQ2PD XMM0,XMM0
+004c6a52 SHR EAX,0x1f
+004c6a55 ADDSD XMM0,qword ptr [EAX*0x8 + 0x12122c0]
+004c6a5e MOV EAX,dword ptr [EBP + -0x8]
+004c6a61 CVTPD2PS XMM0,XMM0
+004c6a65 MOVSS dword ptr [ESP + 0x4],XMM0
+004c6a6b MOVD XMM0,EAX
+004c6a6f CVTDQ2PD XMM0,XMM0
+004c6a73 SHR EAX,0x1f
+004c6a76 ADDSD XMM0,qword ptr [EAX*0x8 + 0x12122c0]
+004c6a7f CVTPD2PS XMM0,XMM0
+004c6a83 MOVSS dword ptr [ESP],XMM0
+004c6a88 CALL 0x004c67a0
+004c6a8d MOVSD XMM0,qword ptr [EBP + -0x18]
+004c6a92 CVTPD2PS XMM0,XMM0
+004c6a96 PUSH ECX
+004c6a97 MOVSS dword ptr [ESP],XMM0
+004c6a9c CALL 0x00a04490
+004c6aa1 MOVSD XMM0,qword ptr [EBP + -0x10]
+004c6aa6 CVTPD2PS XMM0,XMM0
+004c6aaa MOVSS dword ptr [ESP],XMM0
+004c6aaf MOVSD XMM0,qword ptr [EBP + -0x18]
+004c6ab4 CVTPD2PS XMM0,XMM0
+004c6ab8 PUSH ECX
+004c6ab9 MOV ECX,dword ptr [ESI + 0x60]
+004c6abc MOVSS dword ptr [ESP],XMM0
+004c6ac1 CALL 0x004c0380
+004c6ac6 CALL 0x0112a6c0
+004c6acb MOVSD XMM0,qword ptr [EBP + -0x10]
+004c6ad0 SUB ESP,0x8
+004c6ad3 CVTPD2PS XMM0,XMM0
+004c6ad7 MOVSS dword ptr [ESP + 0x4],XMM0
+004c6add MOVSD XMM0,qword ptr [EBP + -0x18]
+004c6ae2 CVTPD2PS XMM0,XMM0
+004c6ae6 MOVSS dword ptr [ESP],XMM0
+004c6aeb CALL 0x0112b9e0
+004c6af0 CALL 0x00450910
+004c6af5 MOVSD XMM0,qword ptr [EBP + -0x10]
+004c6afa ADD ESP,0x4
+004c6afd CVTPD2PS XMM0,XMM0
+004c6b01 MOVSS dword ptr [ESP],XMM0
+004c6b06 CALL 0x009f5600
+004c6b0b CALL 0x0112bb30
+004c6b10 PUSH EBX
+004c6b11 CALL 0x00a25540
+004c6b16 PUSH EBX
+004c6b17 CALL 0x00a03e60
+004c6b1c CALL 0x00450910
+004c6b21 MOVSD XMM0,qword ptr [EBP + -0x10]
+004c6b26 ADD ESP,0x8
+004c6b29 CVTPD2PS XMM0,XMM0
+004c6b2d MOVSS dword ptr [ESP],XMM0
+004c6b32 CALL 0x0113bf30
+004c6b37 MOVSD XMM0,qword ptr [EBP + -0x10]
+004c6b3c CVTPD2PS XMM0,XMM0
+004c6b40 MOVSS dword ptr [ESP],XMM0
+004c6b45 CALL 0x00450910
+004c6b4a MOVSD XMM0,qword ptr [EBP + -0x18]
+004c6b4f CVTPD2PS XMM0,XMM0
+004c6b53 MOVSS dword ptr [ESP],XMM0
+004c6b58 CALL 0x009cc3a0
+004c6b5d ADD ESP,0x4
+004c6b60 MOV ECX,ESI
+004c6b62 CALL 0x0097b7e0
+004c6b67 CALL 0x0112bb10
+004c6b6c CALL 0x00450910
+004c6b71 MOV ECX,EBX
+004c6b73 CALL 0x0113d160
+004c6b78 LEA ECX,[ESI + 0x20]
+004c6b7b CALL 0x004b3370
+004c6b80 FSTP ST0
+004c6b82 CALL 0x00450910
+004c6b87 POP EDI
+004c6b88 POP ESI
+004c6b89 POP EBX
+004c6b8a MOV ESP,EBP
+004c6b8c POP EBP
+004c6b8d RET

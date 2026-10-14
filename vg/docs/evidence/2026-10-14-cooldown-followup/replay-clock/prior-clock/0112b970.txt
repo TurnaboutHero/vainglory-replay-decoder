@@ -1,0 +1,63 @@
+ENTRY 0112b970 BODY [[0112b970, 0112b9de]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __fastcall FUN_0112b970(int param_1)
+
+{
+  double in_XMM0_Qa;
+  double dVar1;
+  undefined1 auStack_14 [8];
+  double dStack_c;
+  
+  QueryPerformanceCounter(&dStack_c);
+  QueryPerformanceFrequency(auStack_14);
+  func_0x011b8d90();
+  dStack_c = in_XMM0_Qa;
+  func_0x011b8d90();
+  dVar1 = dStack_c / in_XMM0_Qa - *(double *)(param_1 + 8);
+  *(double *)(param_1 + 8) = dStack_c / in_XMM0_Qa;
+  *(double *)(param_1 + 0x18) = dVar1;
+  if (_DAT_01217a38 <= dVar1) {
+    dVar1 = _DAT_01217a38;
+  }
+  *(double *)(param_1 + 0x10) = dVar1 * *(double *)(param_1 + 0x20);
+  return;
+}
+
+
+
+INSTRUCTIONS
+0112b970 PUSH EBP
+0112b971 MOV EBP,ESP
+0112b973 SUB ESP,0x10
+0112b976 PUSH ESI
+0112b977 LEA EAX,[EBP + -0x8]
+0112b97a MOV ESI,ECX
+0112b97c PUSH EAX
+0112b97d CALL dword ptr [0x0120a28c]
+0112b983 LEA EAX,[EBP + -0x10]
+0112b986 PUSH EAX
+0112b987 CALL dword ptr [0x0120a284]
+0112b98d MOV ECX,dword ptr [EBP + -0x8]
+0112b990 SUB ECX,dword ptr [ESI]
+0112b992 MOV EDX,dword ptr [EBP + -0x4]
+0112b995 SBB EDX,dword ptr [ESI + 0x4]
+0112b998 CALL 0x011b8d90
+0112b99d MOV EDX,dword ptr [EBP + -0xc]
+0112b9a0 MOV ECX,dword ptr [EBP + -0x10]
+0112b9a3 MOVSD qword ptr [EBP + -0x8],XMM0
+0112b9a8 CALL 0x011b8d90
+0112b9ad MOVSD XMM1,qword ptr [EBP + -0x8]
+0112b9b2 DIVSD XMM1,XMM0
+0112b9b6 MOVAPS XMM0,XMM1
+0112b9b9 SUBSD XMM0,qword ptr [ESI + 0x8]
+0112b9be MOVSD qword ptr [ESI + 0x8],XMM1
+0112b9c3 MOVSD qword ptr [ESI + 0x18],XMM0
+0112b9c8 MINSD XMM0,qword ptr [0x01217a38]
+0112b9d0 MULSD XMM0,qword ptr [ESI + 0x20]
+0112b9d5 MOVSD qword ptr [ESI + 0x10],XMM0
+0112b9da POP ESI
+0112b9db MOV ESP,EBP
+0112b9dd POP EBP
+0112b9de RET

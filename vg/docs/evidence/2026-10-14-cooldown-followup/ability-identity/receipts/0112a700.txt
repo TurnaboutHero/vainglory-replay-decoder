@@ -1,0 +1,62 @@
+ENTRY 0112a700 BODY [[0112a700, 0112a73f]]
+
+int __thiscall FUN_0112a700(int param_1,int *param_2,int param_3,int param_4)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  iVar1 = *(int *)(param_1 + 0xc);
+  iVar2 = 0;
+  if (iVar1 == 0) {
+    return 0;
+  }
+  do {
+    if (iVar2 == param_3) {
+      return iVar2;
+    }
+    if (*(int *)(*(int *)(iVar1 + 4) + 0x54) == param_4) {
+      *param_2 = iVar1;
+      param_2 = param_2 + 1;
+      iVar2 = iVar2 + 1;
+    }
+    iVar1 = *(int *)(iVar1 + 0x10);
+  } while (iVar1 != 0);
+  return iVar2;
+}
+
+
+
+INSTRUCTIONS
+0112a700 PUSH EBP
+0112a701 MOV EBP,ESP
+0112a703 MOV ECX,dword ptr [ECX + 0xc]
+0112a706 XOR EDX,EDX
+0112a708 TEST ECX,ECX
+0112a70a JZ 0x0112a73a
+0112a70c PUSH EBX
+0112a70d MOV EBX,dword ptr [EBP + 0x10]
+0112a710 PUSH ESI
+0112a711 MOV ESI,dword ptr [EBP + 0x8]
+0112a714 PUSH EDI
+0112a715 MOV EDI,dword ptr [EBP + 0xc]
+0112a718 CMP EDX,EDI
+0112a71a JZ 0x0112a731
+0112a71c MOV EAX,dword ptr [ECX + 0x4]
+0112a71f CMP dword ptr [EAX + 0x54],EBX
+0112a722 JNZ 0x0112a72a
+0112a724 MOV dword ptr [ESI],ECX
+0112a726 ADD ESI,0x4
+0112a729 INC EDX
+0112a72a MOV ECX,dword ptr [ECX + 0x10]
+0112a72d TEST ECX,ECX
+0112a72f JNZ 0x0112a718
+0112a731 POP EDI
+0112a732 POP ESI
+0112a733 MOV EAX,EDX
+0112a735 POP EBX
+0112a736 POP EBP
+0112a737 RET 0xc
+0112a73a MOV EAX,EDX
+0112a73c POP EBP
+0112a73d RET 0xc

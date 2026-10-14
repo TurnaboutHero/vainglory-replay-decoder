@@ -1,0 +1,201 @@
+ENTRY 009670c0 BODY [[009670c0, 00967234]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_009670c0(int param_1)
+
+{
+  int iVar1;
+  float10 fVar2;
+  float fVar3;
+  float fVar4;
+  undefined4 uStack_48;
+  undefined4 uStack_44;
+  undefined4 uStack_40;
+  undefined4 uStack_3c;
+  undefined4 uStack_38;
+  undefined4 uStack_34;
+  undefined4 uStack_30;
+  undefined4 uStack_2c;
+  undefined4 uStack_28;
+  undefined4 uStack_24;
+  undefined4 uStack_20;
+  undefined4 uStack_1c;
+  undefined4 uStack_18;
+  float fStack_14;
+  undefined4 uStack_10;
+  undefined4 uStack_c;
+  float fStack_8;
+  
+  fVar2 = (float10)FUN_0112a7a0();
+  fStack_8 = (float)fVar2;
+  fVar4 = fStack_8 + *(float *)(param_1 + 0x20);
+  fVar3 = *(float *)(param_1 + 0x1c);
+  iVar1 = *(int *)(param_1 + 8);
+  if (fVar3 <= fVar4) {
+    fVar4 = fVar3;
+  }
+  *(float *)(param_1 + 0x20) = fVar4;
+  if ((iVar1 == 0) || (*(int *)(*(int *)(iVar1 + 4) + 0x54) != _DAT_01e6ee20)) {
+    iVar1 = 0;
+  }
+  if (fVar3 <= fVar4) {
+    uStack_48 = *(undefined4 *)(iVar1 + 0x138);
+    uStack_44 = *(undefined4 *)(iVar1 + 0x13c);
+    uStack_40 = *(undefined4 *)(iVar1 + 0x140);
+    uStack_3c = *(undefined4 *)(iVar1 + 0x144);
+    *(undefined4 *)(iVar1 + 0x1d8) = 0;
+    uStack_38 = *(undefined4 *)(iVar1 + 0x148);
+    uStack_34 = *(undefined4 *)(iVar1 + 0x14c);
+    uStack_30 = *(undefined4 *)(iVar1 + 0x150);
+    uStack_2c = *(undefined4 *)(iVar1 + 0x154);
+    uStack_28 = *(undefined4 *)(iVar1 + 0x158);
+    uStack_24 = *(undefined4 *)(iVar1 + 0x15c);
+    uStack_20 = *(undefined4 *)(iVar1 + 0x160);
+    uStack_1c = *(undefined4 *)(iVar1 + 0x164);
+    uStack_18 = *(undefined4 *)(iVar1 + 0x168);
+    fStack_14 = *(float *)(iVar1 + 0x16c);
+    uStack_10 = *(undefined4 *)(iVar1 + 0x170);
+    uStack_c = *(undefined4 *)(iVar1 + 0x174);
+    if (*(int **)(iVar1 + 0x28) != (int *)0x0) {
+      (**(code **)(**(int **)(iVar1 + 0x28) + 0xac))(&uStack_48);
+    }
+    FUN_0112a080();
+    return;
+  }
+  fVar3 = fVar3 * _DAT_01213f9c;
+  if (fVar3 <= fVar4) {
+    fVar3 = _DAT_0186c0a4 * _DAT_01213f9c * (fVar4 - fVar3) * (_DAT_012142c4 / fVar3);
+    func_0x011bae0f();
+    fStack_14 = (_DAT_012142c4 - fVar3) * (*(float *)(param_1 + 0x14) - *(float *)(param_1 + 0x18))
+                + *(float *)(param_1 + 0x18);
+  }
+  else {
+    fVar3 = _DAT_0186c0a4 * _DAT_01213f9c * (_DAT_012142c4 / fVar3) * fVar4;
+    func_0x011bae1b();
+    fStack_14 = fVar3 * (*(float *)(param_1 + 0x18) - *(float *)(param_1 + 0x14)) +
+                *(float *)(param_1 + 0x14);
+  }
+  uStack_48 = *(undefined4 *)(iVar1 + 0x138);
+  uStack_44 = *(undefined4 *)(iVar1 + 0x13c);
+  uStack_40 = *(undefined4 *)(iVar1 + 0x140);
+  uStack_3c = *(undefined4 *)(iVar1 + 0x144);
+  *(float *)(iVar1 + 0x1d8) = fStack_14;
+  uStack_38 = *(undefined4 *)(iVar1 + 0x148);
+  uStack_34 = *(undefined4 *)(iVar1 + 0x14c);
+  uStack_30 = *(undefined4 *)(iVar1 + 0x150);
+  uStack_2c = *(undefined4 *)(iVar1 + 0x154);
+  uStack_28 = *(undefined4 *)(iVar1 + 0x158);
+  uStack_24 = *(undefined4 *)(iVar1 + 0x15c);
+  uStack_20 = *(undefined4 *)(iVar1 + 0x160);
+  uStack_1c = *(undefined4 *)(iVar1 + 0x164);
+  uStack_18 = *(undefined4 *)(iVar1 + 0x168);
+  uStack_10 = *(undefined4 *)(iVar1 + 0x170);
+  uStack_c = *(undefined4 *)(iVar1 + 0x174);
+  fStack_14 = *(float *)(iVar1 + 0x16c) + fStack_14;
+  if (*(int **)(iVar1 + 0x28) != (int *)0x0) {
+    (**(code **)(**(int **)(iVar1 + 0x28) + 0xac))(&uStack_48);
+  }
+  return;
+}
+
+
+
+INSTRUCTIONS
+009670c0 PUSH EBP
+009670c1 MOV EBP,ESP
+009670c3 SUB ESP,0x44
+009670c6 PUSH ESI
+009670c7 PUSH EDI
+009670c8 CALL 0x0112a7a0
+009670cd MOV EDI,dword ptr [EBP + 0x8]
+009670d0 FSTP float ptr [EBP + -0x4]
+009670d3 MOVSS XMM2,dword ptr [EBP + -0x4]
+009670d8 ADDSS XMM2,dword ptr [EDI + 0x20]
+009670dd MOVSS XMM1,dword ptr [EDI + 0x1c]
+009670e2 MOV ESI,dword ptr [EDI + 0x8]
+009670e5 MINSS XMM2,XMM1
+009670e9 MOVSS dword ptr [EDI + 0x20],XMM2
+009670ee TEST ESI,ESI
+009670f0 JZ 0x00967100
+009670f2 MOV EAX,dword ptr [ESI + 0x4]
+009670f5 MOV EAX,dword ptr [EAX + 0x54]
+009670f8 CMP EAX,dword ptr [0x01e6ee20]
+009670fe JZ 0x00967102
+00967100 XOR ESI,ESI
+00967102 COMISS XMM2,XMM1
+00967105 JC 0x0096715d
+00967107 MOVUPS XMM0,xmmword ptr [ESI + 0x138]
+0096710e MOV ECX,dword ptr [ESI + 0x28]
+00967111 MOV dword ptr [ESI + 0x1d8],0x0
+0096711b MOVUPS xmmword ptr [EBP + -0x44],XMM0
+0096711f MOVUPS XMM0,xmmword ptr [ESI + 0x148]
+00967126 MOVUPS xmmword ptr [EBP + -0x34],XMM0
+0096712a MOVUPS XMM0,xmmword ptr [ESI + 0x158]
+00967131 MOVUPS xmmword ptr [EBP + -0x24],XMM0
+00967135 MOVUPS XMM0,xmmword ptr [ESI + 0x168]
+0096713c MOVUPS xmmword ptr [EBP + -0x14],XMM0
+00967140 TEST ECX,ECX
+00967142 JZ 0x00967150
+00967144 MOV EAX,dword ptr [ECX]
+00967146 LEA EDX,[EBP + -0x44]
+00967149 PUSH EDX
+0096714a CALL dword ptr [EAX + 0xac]
+00967150 MOV ECX,EDI
+00967152 CALL 0x0112a080
+00967157 POP EDI
+00967158 POP ESI
+00967159 MOV ESP,EBP
+0096715b POP EBP
+0096715c RET
+0096715d MOVSS XMM4,dword ptr [0x01213f9c]
+00967165 MOVSS XMM3,dword ptr [0x012142c4]
+0096716d MOVSS XMM0,dword ptr [0x0186c0a4]
+00967175 MULSS XMM1,XMM4
+00967179 MULSS XMM0,XMM4
+0096717d COMISS XMM1,XMM2
+00967180 DIVSS XMM3,XMM1
+00967184 JBE 0x009671ab
+00967186 MULSS XMM3,XMM2
+0096718a MULSS XMM0,XMM3
+0096718e CALL 0x011bae1b
+00967193 MOVSS XMM1,dword ptr [EDI + 0x18]
+00967198 MOVAPS XMM2,XMM0
+0096719b SUBSS XMM1,dword ptr [EDI + 0x14]
+009671a0 MULSS XMM2,XMM1
+009671a4 ADDSS XMM2,dword ptr [EDI + 0x14]
+009671a9 JMP 0x009671db
+009671ab SUBSS XMM2,XMM1
+009671af MULSS XMM2,XMM3
+009671b3 MULSS XMM0,XMM2
+009671b7 CALL 0x011bae0f
+009671bc MOVSS XMM2,dword ptr [0x012142c4]
+009671c4 SUBSS XMM2,XMM0
+009671c8 MOVSS XMM0,dword ptr [EDI + 0x14]
+009671cd SUBSS XMM0,dword ptr [EDI + 0x18]
+009671d2 MULSS XMM2,XMM0
+009671d6 ADDSS XMM2,dword ptr [EDI + 0x18]
+009671db MOVUPS XMM0,xmmword ptr [ESI + 0x138]
+009671e2 MOV ECX,dword ptr [ESI + 0x28]
+009671e5 MOVSS dword ptr [ESI + 0x1d8],XMM2
+009671ed MOVUPS xmmword ptr [EBP + -0x44],XMM0
+009671f1 MOVUPS XMM0,xmmword ptr [ESI + 0x148]
+009671f8 MOVUPS xmmword ptr [EBP + -0x34],XMM0
+009671fc MOVUPS XMM0,xmmword ptr [ESI + 0x158]
+00967203 MOVUPS xmmword ptr [EBP + -0x24],XMM0
+00967207 MOVUPS XMM0,xmmword ptr [ESI + 0x168]
+0096720e MOVUPS xmmword ptr [EBP + -0x14],XMM0
+00967212 SHUFPS XMM0,XMM0,0x55
+00967216 ADDSS XMM0,XMM2
+0096721a MOVSS dword ptr [EBP + -0x10],XMM0
+0096721f TEST ECX,ECX
+00967221 JZ 0x0096722f
+00967223 MOV EAX,dword ptr [ECX]
+00967225 LEA EDX,[EBP + -0x44]
+00967228 PUSH EDX
+00967229 CALL dword ptr [EAX + 0xac]
+0096722f POP EDI
+00967230 POP ESI
+00967231 MOV ESP,EBP
+00967233 POP EBP
+00967234 RET

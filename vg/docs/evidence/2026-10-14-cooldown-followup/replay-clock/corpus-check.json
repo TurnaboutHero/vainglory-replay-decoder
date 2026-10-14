@@ -1,0 +1,35 @@
+{
+  "scope": "Fresh offline H5810 envelope check; no runtime observations",
+  "files": 168,
+  "records": 663517,
+  "unique_timestamps": 38399,
+  "largest_same_timestamp_group": 686,
+  "timestamp_backsteps": 0,
+  "first_timestamp": 0.0,
+  "last_timestamp": 1677.9219970703125,
+  "selected_opcodes": {
+    "0428": 1859,
+    "0427": 0,
+    "0429": 109,
+    "042a": 0,
+    "042b": 110934,
+    "048a": 21001,
+    "0476": 0,
+    "0451": 0,
+    "046f": 168
+  },
+  "first_anchor": {
+    "file_index": 0,
+    "offset": 2371,
+    "record_time": 0.0,
+    "game_time": 0.0
+  },
+  "last_anchor": {
+    "file_index": 167,
+    "offset": 2371,
+    "record_time": 1670.0003662109375,
+    "game_time": 1651.0875244140625
+  },
+  "last_record_interval_after_anchor": 7.921630859375,
+  "clock_samples_do_not_supply": "Per-update QPC delta, dispatch grouping per playback frame, queue drain boundaries, timer tick states are absent from this envelope check."
+}

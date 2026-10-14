@@ -1,0 +1,100 @@
+ENTRY 01129dd0 BODY [[01129dd0, 01129e84]]
+
+int __thiscall FUN_01129dd0(int *param_1,int param_2)
+
+{
+  int *piVar1;
+  uint uVar2;
+  int iVar3;
+  undefined4 *puVar4;
+  
+  puVar4 = (undefined4 *)(param_2 * 0x17c + *param_1);
+  uVar2 = puVar4[0x5c];
+  if ((uVar2 & 0xffff) <= (uVar2 >> 0x10 & 0x7fff)) {
+    return 0;
+  }
+  uVar2 = (uVar2 + 0x10000 ^ uVar2) & 0x7fff0000 ^ uVar2;
+  puVar4[0x5c] = uVar2;
+  iVar3 = (uint)*(ushort *)(puVar4[0x5b] + ((uVar2 & 0xffff) - (uVar2 >> 0x10 & 0x7fff)) * 2) *
+          puVar4[0x16] + puVar4[0x5a];
+  func_0x011bada3(iVar3,0,puVar4[0x16]);
+  *(undefined4 **)(iVar3 + 4) = puVar4;
+  (*(code *)puVar4[0x17])(iVar3);
+  if ((code *)*puVar4 != (code *)0x0) {
+    (*(code *)*puVar4)(iVar3);
+  }
+  for (piVar1 = *(int **)(iVar3 + 0xc); piVar1 != (int *)0x0; piVar1 = (int *)piVar1[4]) {
+    (**(code **)(*piVar1 + 4))();
+  }
+  *(byte *)(puVar4 + 0x5d) = *(byte *)(puVar4 + 0x5d) | 1;
+  return iVar3;
+}
+
+
+
+INSTRUCTIONS
+01129dd0 PUSH EBP
+01129dd1 MOV EBP,ESP
+01129dd3 PUSH EDI
+01129dd4 IMUL EDI,dword ptr [EBP + 0x8],0x17c
+01129ddb ADD EDI,dword ptr [ECX]
+01129ddd MOV EDX,dword ptr [EDI + 0x170]
+01129de3 MOV ECX,EDX
+01129de5 SHR ECX,0x10
+01129de8 AND ECX,0x7fff
+01129dee MOVZX EAX,DX
+01129df1 CMP ECX,EAX
+01129df3 JNC 0x01129e7e
+01129df9 LEA ECX,[EDX + 0x10000]
+01129dff XOR ECX,EDX
+01129e01 AND ECX,0x7fff0000
+01129e07 XOR ECX,EDX
+01129e09 MOV EDX,dword ptr [EDI + 0x58]
+01129e0c MOV EAX,ECX
+01129e0e MOV dword ptr [EDI + 0x170],ECX
+01129e14 SHR EAX,0x10
+01129e17 AND EAX,0x7fff
+01129e1c MOVZX ECX,CX
+01129e1f SUB ECX,EAX
+01129e21 MOV EAX,dword ptr [EDI + 0x16c]
+01129e27 PUSH EBX
+01129e28 PUSH ESI
+01129e29 PUSH EDX
+01129e2a MOVZX EBX,word ptr [EAX + ECX*0x2]
+01129e2e IMUL EBX,EDX
+01129e31 PUSH 0x0
+01129e33 ADD EBX,dword ptr [EDI + 0x168]
+01129e39 PUSH EBX
+01129e3a CALL 0x011bada3
+01129e3f MOV dword ptr [EBX + 0x4],EDI
+01129e42 MOV EAX,dword ptr [EDI + 0x5c]
+01129e45 PUSH EBX
+01129e46 CALL EAX
+01129e48 MOV EAX,dword ptr [EDI]
+01129e4a ADD ESP,0x10
+01129e4d TEST EAX,EAX
+01129e4f JZ 0x01129e57
+01129e51 PUSH EBX
+01129e52 CALL EAX
+01129e54 ADD ESP,0x4
+01129e57 MOV ESI,dword ptr [EBX + 0xc]
+01129e5a TEST ESI,ESI
+01129e5c JZ 0x01129e6e
+01129e5e NOP
+01129e60 MOV EAX,dword ptr [ESI]
+01129e62 MOV ECX,ESI
+01129e64 CALL dword ptr [EAX + 0x4]
+01129e67 MOV ESI,dword ptr [ESI + 0x10]
+01129e6a TEST ESI,ESI
+01129e6c JNZ 0x01129e60
+01129e6e OR byte ptr [EDI + 0x174],0x1
+01129e75 MOV EAX,EBX
+01129e77 POP ESI
+01129e78 POP EBX
+01129e79 POP EDI
+01129e7a POP EBP
+01129e7b RET 0x4
+01129e7e XOR EAX,EAX
+01129e80 POP EDI
+01129e81 POP EBP
+01129e82 RET 0x4

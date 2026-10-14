@@ -1,0 +1,79 @@
+ENTRY 00975780 BODY [[00975780, 00975809]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __thiscall FUN_00975780(int param_1,int param_2,undefined4 param_3)
+
+{
+  uint uVar1;
+  int *unaff_FS_OFFSET;
+  int iStack_10;
+  undefined *puStack_c;
+  undefined4 uStack_8;
+  
+  uStack_8 = 0xffffffff;
+  puStack_c = &DAT_011fa978;
+  iStack_10 = *unaff_FS_OFFSET;
+  uVar1 = _DAT_01e44f28 ^ (uint)&stack0xfffffffc;
+  *unaff_FS_OFFSET = (int)&iStack_10;
+  func_0x01169b10(param_1 + 0x48,uVar1);
+  uStack_8 = 0;
+  if (param_2 != 0) {
+    func_0x009756d0(_guard_check_icall,*(undefined4 *)(param_1 + 0x38));
+    func_0x009756d0(param_2,param_3);
+  }
+  func_0x009756d0(_guard_check_icall,*(undefined4 *)(param_1 + 0x38));
+  func_0x0116a3a0(param_1 + 0x48);
+  *unaff_FS_OFFSET = iStack_10;
+  return;
+}
+
+
+
+INSTRUCTIONS
+00975780 PUSH EBP
+00975781 MOV EBP,ESP
+00975783 PUSH -0x1
+00975785 PUSH 0x11fa978
+0097578a MOV EAX,FS:[0x0]
+00975790 PUSH EAX
+00975791 PUSH ECX
+00975792 PUSH ESI
+00975793 PUSH EDI
+00975794 MOV EAX,[0x01e44f28]
+00975799 XOR EAX,EBP
+0097579b PUSH EAX
+0097579c LEA EAX,[EBP + -0xc]
+0097579f MOV FS:[0x0],EAX
+009757a5 MOV ESI,ECX
+009757a7 LEA EDI,[ESI + 0x48]
+009757aa PUSH EDI
+009757ab MOV dword ptr [EBP + -0x10],EDI
+009757ae CALL 0x01169b10
+009757b3 ADD ESP,0x4
+009757b6 CMP dword ptr [EBP + 0x8],0x0
+009757ba MOV dword ptr [EBP + -0x4],0x0
+009757c1 JZ 0x009757df
+009757c3 PUSH dword ptr [ESI + 0x38]
+009757c6 MOV ECX,ESI
+009757c8 PUSH 0x450910
+009757cd CALL 0x009756d0
+009757d2 PUSH dword ptr [EBP + 0xc]
+009757d5 MOV ECX,ESI
+009757d7 PUSH dword ptr [EBP + 0x8]
+009757da CALL 0x009756d0
+009757df PUSH dword ptr [ESI + 0x38]
+009757e2 MOV ECX,ESI
+009757e4 PUSH 0x450910
+009757e9 CALL 0x009756d0
+009757ee PUSH EDI
+009757ef CALL 0x0116a3a0
+009757f4 ADD ESP,0x4
+009757f7 MOV ECX,dword ptr [EBP + -0xc]
+009757fa MOV dword ptr FS:[0x0],ECX
+00975801 POP ECX
+00975802 POP EDI
+00975803 POP ESI
+00975804 MOV ESP,EBP
+00975806 POP EBP
+00975807 RET 0x8

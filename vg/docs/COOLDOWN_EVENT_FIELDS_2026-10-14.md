@@ -101,3 +101,24 @@ and [H5810 baseline reproduction](evidence/2026-10-14-cooldown-events/h5810-repr
 These broader static findings do not expand this decoder's state semantics.
 The package manifest hashes the portable text artifacts; binaries, replay data,
 analysis databases, dependencies and execution logs are intentionally omitted.
+
+## Follow-up: replay clock and ability identity
+
+The [replay-clock report](evidence/2026-10-14-cooldown-followup/replay-clock/REPORT.ko.md)
+connects the scheduling cursor to the previously published scaled delta, and the
+stage-4 timer tick to the newly published delta on the analyzed main-loop path.
+It also identifies intervening action queue drains. Recorded timestamps alone
+do not supply the playback frame partition or apply/tick receipts needed for
+exact remaining seconds. The included arithmetic witnesses are synthetic,
+not observations of game execution.
+
+The [identity/lifetime report](evidence/2026-10-14-cooldown-followup/ability-identity/IDENTITY-LIFECYCLE.md)
+connects actor-owned keyed state to ability pointers and ordered ability slots.
+Item instances can share a keyed state under the documented conditions. These
+structural links do not establish concrete recording-specific slot/key/item
+maps: matching definitions, overrides and owner/object lifetimes remain needed.
+
+These are documentation and reproducibility artifacts only. No timer reducer,
+countdown estimate, numeric identifier join or player-state change is introduced.
+See each report's reproduction instructions and the
+[package hashes](evidence/2026-10-14-cooldown-followup/package-sha256.json).

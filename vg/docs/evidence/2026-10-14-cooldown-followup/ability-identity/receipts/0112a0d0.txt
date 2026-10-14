@@ -1,0 +1,167 @@
+ENTRY 0112a0d0 BODY [[0112a0d0, 0112a1e0]]
+
+void __thiscall FUN_0112a0d0(int param_1,int param_2)
+
+{
+  uint *puVar1;
+  undefined2 uVar2;
+  int *piVar3;
+  ulonglong uVar4;
+  uint uVar5;
+  uint uVar6;
+  uint uVar7;
+  uint uVar8;
+  ushort *puVar9;
+  uint uVar10;
+  int iVar11;
+  uint uStack_8;
+  
+  if (*(code **)(param_1 + 4) != (code *)0x0) {
+    (**(code **)(param_1 + 4))(param_2);
+  }
+  for (piVar3 = *(int **)(param_2 + 0xc); piVar3 != (int *)0x0; piVar3 = (int *)piVar3[4]) {
+    (**(code **)(*piVar3 + 8))();
+  }
+  (**(code **)(param_1 + 0x60))(param_2);
+  *(undefined4 *)(param_2 + 4) = 0;
+  uVar4 = (ulonglong)(uint)(param_2 - *(int *)(param_1 + 0x168)) /
+          (ulonglong)*(uint *)(param_1 + 0x58);
+  uVar5 = (uint)uVar4;
+  uStack_8 = 0;
+  puVar1 = (uint *)(*(int *)(param_1 + 0x178) + (uVar5 >> 6) * 8);
+  uVar6 = 1 << (uVar5 & 0x1f);
+  uVar7 = 0;
+  if (0x1f < (uVar5 & 0x3f)) {
+    uVar7 = uVar6;
+  }
+  uVar6 = uVar6 ^ uVar7;
+  if (0x3f < (uVar5 & 0x3f)) {
+    uVar7 = uVar6;
+  }
+  *puVar1 = *puVar1 & ~uVar6;
+  puVar1[1] = puVar1[1] & ~uVar7;
+  uVar7 = *(uint *)(param_1 + 0x170) >> 0x10 & 0x7fff;
+  uVar10 = *(uint *)(param_1 + 0x170) & 0xffff;
+  uVar8 = uVar10 - uVar7;
+  uVar6 = uStack_8;
+  if (uVar8 < uVar10) {
+    puVar9 = (ushort *)(*(int *)(param_1 + 0x16c) + uVar8 * 2);
+    do {
+      uVar6 = uVar8;
+      if (*puVar9 == uVar5) break;
+      uVar8 = uVar8 + 1;
+      puVar9 = puVar9 + 1;
+      uVar6 = uStack_8;
+    } while (uVar8 < uVar10);
+  }
+  uStack_8 = uVar6;
+  iVar11 = uVar10 - uVar7;
+  uVar2 = *(undefined2 *)(*(int *)(param_1 + 0x16c) + iVar11 * 2);
+  *(short *)(*(int *)(param_1 + 0x16c) + iVar11 * 2) = (short)uVar4;
+  *(undefined2 *)(*(int *)(param_1 + 0x16c) + uStack_8 * 2) = uVar2;
+  uVar6 = *(uint *)(param_1 + 0x170);
+  *(byte *)(param_1 + 0x174) = *(byte *)(param_1 + 0x174) | 1;
+  *(uint *)(param_1 + 0x170) = (((uVar6 >> 0x10) - 1) * 0x10000 ^ uVar6) & 0x7fff0000 ^ uVar6;
+  return;
+}
+
+
+
+INSTRUCTIONS
+0112a0d0 PUSH EBP
+0112a0d1 MOV EBP,ESP
+0112a0d3 PUSH ECX
+0112a0d4 PUSH EBX
+0112a0d5 MOV EBX,dword ptr [EBP + 0x8]
+0112a0d8 PUSH ESI
+0112a0d9 PUSH EDI
+0112a0da MOV EDI,ECX
+0112a0dc MOV EAX,dword ptr [EDI + 0x4]
+0112a0df TEST EAX,EAX
+0112a0e1 JZ 0x0112a0e9
+0112a0e3 PUSH EBX
+0112a0e4 CALL EAX
+0112a0e6 ADD ESP,0x4
+0112a0e9 MOV ESI,dword ptr [EBX + 0xc]
+0112a0ec TEST ESI,ESI
+0112a0ee JZ 0x0112a0fe
+0112a0f0 MOV EAX,dword ptr [ESI]
+0112a0f2 MOV ECX,ESI
+0112a0f4 CALL dword ptr [EAX + 0x8]
+0112a0f7 MOV ESI,dword ptr [ESI + 0x10]
+0112a0fa TEST ESI,ESI
+0112a0fc JNZ 0x0112a0f0
+0112a0fe MOV ECX,dword ptr [EDI + 0x60]
+0112a101 PUSH EBX
+0112a102 CALL ECX
+0112a104 MOV dword ptr [EBX + 0x4],0x0
+0112a10b XOR EDX,EDX
+0112a10d SUB EBX,dword ptr [EDI + 0x168]
+0112a113 ADD ESP,0x4
+0112a116 MOV EAX,EBX
+0112a118 MOV ECX,dword ptr [EDI + 0x178]
+0112a11e DIV dword ptr [EDI + 0x58]
+0112a121 MOV dword ptr [EBP + -0x4],0x0
+0112a128 MOV EBX,EAX
+0112a12a XOR EAX,EAX
+0112a12c MOV EDX,EBX
+0112a12e SHR EDX,0x6
+0112a131 LEA ESI,[ECX + EDX*0x8]
+0112a134 XOR EDX,EDX
+0112a136 MOV ECX,EBX
+0112a138 AND ECX,0x3f
+0112a13b BTS EAX,ECX
+0112a13e CMP ECX,0x20
+0112a141 CMOVNC EDX,EAX
+0112a144 XOR EAX,EDX
+0112a146 CMP ECX,0x40
+0112a149 CMOVNC EDX,EAX
+0112a14c NOT EAX
+0112a14e AND dword ptr [ESI],EAX
+0112a150 NOT EDX
+0112a152 AND dword ptr [ESI + 0x4],EDX
+0112a155 MOV EAX,dword ptr [EDI + 0x170]
+0112a15b MOV ECX,EAX
+0112a15d SHR ECX,0x10
+0112a160 AND ECX,0x7fff
+0112a166 MOVZX ESI,AX
+0112a169 MOV dword ptr [EBP + 0x8],ECX
+0112a16c MOV ECX,ESI
+0112a16e SUB ECX,dword ptr [EBP + 0x8]
+0112a171 CMP ECX,ESI
+0112a173 JNC 0x0112a194
+0112a175 MOV EAX,dword ptr [EDI + 0x16c]
+0112a17b LEA EDX,[EAX + ECX*0x2]
+0112a17e NOP
+0112a180 MOVZX EAX,word ptr [EDX]
+0112a183 CMP EAX,EBX
+0112a185 JZ 0x0112a191
+0112a187 INC ECX
+0112a188 ADD EDX,0x2
+0112a18b CMP ECX,ESI
+0112a18d JC 0x0112a180
+0112a18f JMP 0x0112a194
+0112a191 MOV dword ptr [EBP + -0x4],ECX
+0112a194 MOV EAX,dword ptr [EDI + 0x16c]
+0112a19a SUB ESI,dword ptr [EBP + 0x8]
+0112a19d MOV EDX,dword ptr [EBP + -0x4]
+0112a1a0 MOVZX ECX,word ptr [EAX + ESI*0x2]
+0112a1a4 MOV word ptr [EAX + ESI*0x2],BX
+0112a1a8 MOV EAX,dword ptr [EDI + 0x16c]
+0112a1ae MOV word ptr [EAX + EDX*0x2],CX
+0112a1b2 MOV EAX,dword ptr [EDI + 0x170]
+0112a1b8 MOV ECX,EAX
+0112a1ba SHR ECX,0x10
+0112a1bd DEC ECX
+0112a1be SHL ECX,0x10
+0112a1c1 XOR ECX,EAX
+0112a1c3 AND ECX,0x7fff0000
+0112a1c9 XOR ECX,EAX
+0112a1cb OR byte ptr [EDI + 0x174],0x1
+0112a1d2 MOV dword ptr [EDI + 0x170],ECX
+0112a1d8 POP EDI
+0112a1d9 POP ESI
+0112a1da POP EBX
+0112a1db MOV ESP,EBP
+0112a1dd POP EBP
+0112a1de RET 0x4

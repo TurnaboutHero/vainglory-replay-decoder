@@ -1,0 +1,19 @@
+ENTRY 004ead00 BODY [[004ead00, 004ead0a]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_004ead00(void)
+
+{
+                    /* WARNING: Could not recover jumptable at 0x004ead08. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+  (**(code **)(*_DAT_01ef0e80 + 0x18))();
+  return;
+}
+
+
+
+INSTRUCTIONS
+004ead00 MOV ECX,dword ptr [0x01ef0e80]
+004ead06 MOV EAX,dword ptr [ECX]
+004ead08 JMP dword ptr [EAX + 0x18]

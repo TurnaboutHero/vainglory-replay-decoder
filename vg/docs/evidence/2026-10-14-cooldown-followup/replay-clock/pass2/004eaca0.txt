@@ -1,0 +1,14 @@
+ENTRY 004eaca0 BODY [[004eaca0, 004eaca7]]
+
+bool __fastcall FUN_004eaca0(int param_1)
+
+{
+  return *(int *)(param_1 + 4) == 1;
+}
+
+
+
+INSTRUCTIONS
+004eaca0 CMP dword ptr [ECX + 0x4],0x1
+004eaca4 SETZ AL
+004eaca7 RET

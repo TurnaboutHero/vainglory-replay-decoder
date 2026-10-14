@@ -1,0 +1,26 @@
+ENTRY 0112a6c0 BODY [[0112a6c0, 0112a6dd]]
+
+void FUN_0112a6c0(void)
+
+{
+  char cVar1;
+  
+  cVar1 = func_0x00943900();
+  if (cVar1 != '\0') {
+    func_0x00976d80(0x20ec700,0);
+  }
+  return;
+}
+
+
+
+INSTRUCTIONS
+0112a6c0 MOV ECX,0x20ec700
+0112a6c5 CALL 0x00943900
+0112a6ca TEST AL,AL
+0112a6cc JZ 0x0112a6dd
+0112a6ce PUSH 0x0
+0112a6d0 PUSH 0x20ec700
+0112a6d5 CALL 0x00976d80
+0112a6da ADD ESP,0x8
+0112a6dd RET

@@ -1,0 +1,19 @@
+ENTRY 01129cb0 BODY [[01129cb0, 01129cbe]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __fastcall FUN_01129cb0(undefined4 *param_1)
+
+{
+  *param_1 = &UNK_01849a40;
+  param_1[1] = _DAT_020ec6fc;
+  return;
+}
+
+
+
+INSTRUCTIONS
+01129cb0 MOV dword ptr [ECX],0x1849a40
+01129cb6 MOV EAX,[0x020ec6fc]
+01129cbb MOV dword ptr [ECX + 0x4],EAX
+01129cbe RET

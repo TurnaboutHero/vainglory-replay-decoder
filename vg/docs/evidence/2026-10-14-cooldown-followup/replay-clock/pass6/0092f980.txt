@@ -1,0 +1,131 @@
+ENTRY 0092f980 BODY [[0092f980, 0092faca]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __fastcall FUN_0092f980(int param_1)
+
+{
+  int *piVar1;
+  int iVar2;
+  uint uVar3;
+  int *piVar4;
+  int *unaff_FS_OFFSET;
+  int iStack_10;
+  undefined *puStack_c;
+  undefined4 uStack_8;
+  
+  puStack_c = &DAT_011f9bc0;
+  iStack_10 = *unaff_FS_OFFSET;
+  uVar3 = _DAT_01e44f28 ^ (uint)&stack0xfffffffc;
+  *unaff_FS_OFFSET = (int)&iStack_10;
+  if (DAT_0209e204 != '\0') {
+    piVar4 = *(int **)(*(int *)(param_1 + 0x14) + 0x2c);
+    iVar2 = *piVar4;
+    while (iVar2 != 0) {
+      if (*(float *)(iVar2 + 4) <= 0.0) {
+        if (0.0 < *(float *)(iVar2 + 8)) {
+          uStack_8 = 1;
+          func_0x0092e8e0(0x20db890,uVar3);
+        }
+      }
+      else {
+        uStack_8 = 0;
+        func_0x0092e8e0(0x20db890,uVar3);
+      }
+      piVar1 = piVar4 + 1;
+      piVar4 = piVar4 + 1;
+      iVar2 = *piVar1;
+    }
+    uStack_8 = 0xffffffff;
+    func_0x00865e30();
+  }
+  *unaff_FS_OFFSET = iStack_10;
+  return;
+}
+
+
+
+INSTRUCTIONS
+0092f980 PUSH EBP
+0092f981 MOV EBP,ESP
+0092f983 PUSH -0x1
+0092f985 PUSH 0x11f9bc0
+0092f98a MOV EAX,FS:[0x0]
+0092f990 PUSH EAX
+0092f991 SUB ESP,0x50
+0092f994 PUSH ESI
+0092f995 PUSH EDI
+0092f996 MOV EAX,[0x01e44f28]
+0092f99b XOR EAX,EBP
+0092f99d PUSH EAX
+0092f99e LEA EAX,[EBP + -0xc]
+0092f9a1 MOV FS:[0x0],EAX
+0092f9a7 MOV EDI,ECX
+0092f9a9 CMP byte ptr [0x0209e204],0x0
+0092f9b0 JZ 0x0092faba
+0092f9b6 MOV EAX,dword ptr [EDI + 0x14]
+0092f9b9 MOV ESI,dword ptr [EAX + 0x2c]
+0092f9bc MOV EAX,dword ptr [ESI]
+0092f9be TEST EAX,EAX
+0092f9c0 JZ 0x0092fab3
+0092f9c6 XORPS XMM1,XMM1
+0092f9c9 NOP dword ptr [EAX]
+0092f9d0 MOVSS XMM0,dword ptr [EAX + 0x4]
+0092f9d5 COMISS XMM0,XMM1
+0092f9d8 MOV ECX,dword ptr [EAX]
+0092f9da JBE 0x0092fa34
+0092f9dc MOV EAX,dword ptr [EDI + 0x8]
+0092f9df MOV EAX,dword ptr [EAX + 0x8]
+0092f9e2 MOV EAX,dword ptr [EAX + 0x178]
+0092f9e8 MOV dword ptr [EBP + -0x58],0x0
+0092f9ef MOV dword ptr [EBP + -0x54],0x0
+0092f9f6 MOV byte ptr [EBP + -0x50],0x0
+0092f9fa MOV dword ptr [EBP + -0x5c],0x127c9a0
+0092fa01 MOV dword ptr [EBP + -0x4c],EAX
+0092fa04 MOV dword ptr [EBP + -0x48],0xffffffff
+0092fa0b MOV dword ptr [EBP + -0x44],ECX
+0092fa0e MOV dword ptr [EBP + -0x40],0x1
+0092fa15 MOVSS dword ptr [EBP + -0x3c],XMM0
+0092fa1a MOV byte ptr [EBP + -0x38],0x0
+0092fa1e PUSH 0x20db890
+0092fa23 LEA ECX,[EBP + -0x5c]
+0092fa26 MOV dword ptr [EBP + -0x4],0x0
+0092fa2d CALL 0x0092e8e0
+0092fa32 JMP 0x0092fa9b
+0092fa34 MOVSS XMM0,dword ptr [EAX + 0x8]
+0092fa39 COMISS XMM0,XMM1
+0092fa3c JBE 0x0092faa5
+0092fa3e MOV EAX,dword ptr [EDI + 0x8]
+0092fa41 MOV EAX,dword ptr [EAX + 0x8]
+0092fa44 MOV EAX,dword ptr [EAX + 0x178]
+0092fa4a MOV dword ptr [EBP + -0x30],0x0
+0092fa51 MOV dword ptr [EBP + -0x2c],0x0
+0092fa58 MOV byte ptr [EBP + -0x28],0x0
+0092fa5c MOV dword ptr [EBP + -0x34],0x127c9a0
+0092fa63 MOV dword ptr [EBP + -0x24],EAX
+0092fa66 MOV dword ptr [EBP + -0x20],0xffffffff
+0092fa6d MOV dword ptr [EBP + -0x1c],ECX
+0092fa70 MOV dword ptr [EBP + -0x18],0x2
+0092fa77 MOVSS dword ptr [EBP + -0x14],XMM0
+0092fa7c MOV byte ptr [EBP + -0x10],0x0
+0092fa80 PUSH 0x20db890
+0092fa85 LEA ECX,[EBP + -0x34]
+0092fa88 MOV dword ptr [EBP + -0x4],0x1
+0092fa8f CALL 0x0092e8e0
+0092fa94 MOV dword ptr [EBP + -0x34],0x1215f08
+0092fa9b XORPS XMM1,XMM1
+0092fa9e MOV dword ptr [EBP + -0x4],0xffffffff
+0092faa5 MOV EAX,dword ptr [ESI + 0x4]
+0092faa8 ADD ESI,0x4
+0092faab TEST EAX,EAX
+0092faad JNZ 0x0092f9d0
+0092fab3 MOV ECX,EDI
+0092fab5 CALL 0x00865e30
+0092faba MOV ECX,dword ptr [EBP + -0xc]
+0092fabd MOV dword ptr FS:[0x0],ECX
+0092fac4 POP ECX
+0092fac5 POP EDI
+0092fac6 POP ESI
+0092fac7 MOV ESP,EBP
+0092fac9 POP EBP
+0092faca RET

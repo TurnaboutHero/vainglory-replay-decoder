@@ -1,0 +1,154 @@
+ENTRY 00931bd0 BODY [[00931bd0, 00931cf1]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_00931bd0(void)
+
+{
+  undefined4 *puVar1;
+  int iVar2;
+  int iVar3;
+  uint uVar4;
+  int iVar5;
+  int *piVar6;
+  int *unaff_FS_OFFSET;
+  int iStack_10;
+  undefined *puStack_c;
+  undefined4 uStack_8;
+  
+  uStack_8 = 0xffffffff;
+  puStack_c = &DAT_011f9c48;
+  iStack_10 = *unaff_FS_OFFSET;
+  uVar4 = _DAT_01e44f28 ^ (uint)&stack0xfffffffc;
+  *unaff_FS_OFFSET = (int)&iStack_10;
+  func_0x00976cc0(0x20db890,uVar4);
+  uStack_8 = 0;
+  piVar6 = _DAT_020db894;
+  if (_DAT_020db894 != (int *)0x0) {
+    do {
+      iVar5 = *piVar6;
+      _DAT_020db8a8 = piVar6;
+      if ((char)piVar6[3] == '\0') {
+        (**(code **)(iVar5 + 4))();
+        if (DAT_0209e204 != '\0') {
+          iVar5 = *piVar6;
+          goto LAB_00931c40;
+        }
+      }
+      else {
+LAB_00931c40:
+        (**(code **)(iVar5 + 8))();
+      }
+      piVar6 = (int *)piVar6[1];
+    } while (piVar6 != (int *)0x0);
+    _DAT_020db8a8 = (int *)0x0;
+    piVar6 = _DAT_020db894;
+    while (piVar6 != (int *)0x0) {
+      puVar1 = (undefined4 *)*piVar6;
+      piVar6 = (int *)piVar6[1];
+      (*(code *)*puVar1)(0);
+    }
+    _DAT_020db894 = (int *)0x0;
+    _DAT_020db898 = 0;
+    _DAT_020db89c = 0;
+    iVar5 = _DAT_020db8a0;
+    if (_DAT_020db8a4 != 0) {
+      iVar3 = *(int *)(_DAT_020db8a4 + 0x2804);
+      iVar5 = _DAT_020db8a4;
+      while (iVar2 = iVar3, iVar2 != 0) {
+        iVar5 = iVar2;
+        iVar3 = *(int *)(iVar2 + 0x2804);
+      }
+      *(int *)(iVar5 + 0x2804) = _DAT_020db8a0;
+      iVar5 = _DAT_020db8a4;
+    }
+    _DAT_020db8a4 = iVar5;
+    _DAT_020db8a0 = 0;
+  }
+  uStack_8 = 1;
+  func_0x00976cd0(0x20db890);
+  *unaff_FS_OFFSET = iStack_10;
+  return;
+}
+
+
+
+INSTRUCTIONS
+00931bd0 PUSH EBP
+00931bd1 MOV EBP,ESP
+00931bd3 PUSH -0x1
+00931bd5 PUSH 0x11f9c48
+00931bda MOV EAX,FS:[0x0]
+00931be0 PUSH EAX
+00931be1 PUSH ECX
+00931be2 PUSH ESI
+00931be3 MOV EAX,[0x01e44f28]
+00931be8 XOR EAX,EBP
+00931bea PUSH EAX
+00931beb LEA EAX,[EBP + -0xc]
+00931bee MOV FS:[0x0],EAX
+00931bf4 PUSH 0x20db890
+00931bf9 MOV dword ptr [EBP + -0x10],0x20db890
+00931c00 CALL 0x00976cc0
+00931c05 ADD ESP,0x4
+00931c08 MOV ESI,dword ptr [0x020db894]
+00931c0e MOV dword ptr [EBP + -0x4],0x0
+00931c15 TEST ESI,ESI
+00931c17 JZ 0x00931cce
+00931c1d NOP dword ptr [EAX]
+00931c20 MOV dword ptr [0x020db8a8],ESI
+00931c26 MOV ECX,ESI
+00931c28 CMP byte ptr [ESI + 0xc],0x0
+00931c2c MOV EAX,dword ptr [ESI]
+00931c2e JNZ 0x00931c40
+00931c30 CALL dword ptr [EAX + 0x4]
+00931c33 CMP byte ptr [0x0209e204],0x0
+00931c3a JZ 0x00931c43
+00931c3c MOV EAX,dword ptr [ESI]
+00931c3e MOV ECX,ESI
+00931c40 CALL dword ptr [EAX + 0x8]
+00931c43 MOV ESI,dword ptr [ESI + 0x4]
+00931c46 TEST ESI,ESI
+00931c48 JNZ 0x00931c20
+00931c4a MOV ECX,dword ptr [0x020db894]
+00931c50 MOV dword ptr [0x020db8a8],ESI
+00931c56 TEST ECX,ECX
+00931c58 JZ 0x00931c6f
+00931c5a NOP word ptr [EAX + EAX*0x1]
+00931c60 MOV EAX,dword ptr [ECX]
+00931c62 MOV ESI,dword ptr [ECX + 0x4]
+00931c65 PUSH 0x0
+00931c67 CALL dword ptr [EAX]
+00931c69 MOV ECX,ESI
+00931c6b TEST ESI,ESI
+00931c6d JNZ 0x00931c60
+00931c6f MOV ECX,dword ptr [0x020db8a4]
+00931c75 MOV dword ptr [0x020db894],0x0
+00931c7f MOV dword ptr [0x020db898],0x0
+00931c89 MOV dword ptr [0x020db89c],0x0
+00931c93 TEST ECX,ECX
+00931c95 JZ 0x00931cba
+00931c97 MOV EAX,dword ptr [ECX + 0x2804]
+00931c9d TEST EAX,EAX
+00931c9f JZ 0x00931cad
+00931ca1 MOV ECX,EAX
+00931ca3 MOV EAX,dword ptr [ECX + 0x2804]
+00931ca9 TEST EAX,EAX
+00931cab JNZ 0x00931ca1
+00931cad MOV EAX,[0x020db8a0]
+00931cb2 MOV dword ptr [ECX + 0x2804],EAX
+00931cb8 JMP 0x00931cc4
+00931cba MOV EAX,[0x020db8a0]
+00931cbf MOV [0x020db8a4],EAX
+00931cc4 MOV dword ptr [0x020db8a0],0x0
+00931cce PUSH 0x20db890
+00931cd3 MOV dword ptr [EBP + -0x4],0x1
+00931cda CALL 0x00976cd0
+00931cdf ADD ESP,0x4
+00931ce2 MOV ECX,dword ptr [EBP + -0xc]
+00931ce5 MOV dword ptr FS:[0x0],ECX
+00931cec POP ECX
+00931ced POP ESI
+00931cee MOV ESP,EBP
+00931cf0 POP EBP
+00931cf1 RET

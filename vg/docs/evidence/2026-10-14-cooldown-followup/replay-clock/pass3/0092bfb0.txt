@@ -1,0 +1,212 @@
+ENTRY 0092bfb0 BODY [[0092bfb0, 0092c0f9]]
+
+uint __fastcall FUN_0092bfb0(uint param_1)
+
+{
+  char *pcVar1;
+  int iVar2;
+  uint uVar3;
+  uint uVar4;
+  uint uVar5;
+  uint uVar6;
+  uint unaff_EBX;
+  int unaff_EBP;
+  uint unaff_ESI;
+  uint uVar7;
+  uint unaff_EDI;
+  bool bVar8;
+  
+  *(int *)(unaff_EBX + 0xfff1) = *(int *)(unaff_EBX + 0xfff1) + 1;
+  do {
+    uVar3 = ((int)(char)(&UNK_0122b5c8)[unaff_EDI] + param_1) % unaff_EBX;
+    uVar4 = ((int)(char)(&UNK_0122b5c9)[unaff_EDI] + uVar3) % unaff_EBX;
+    uVar5 = ((int)(char)(&UNK_0122b5ca)[unaff_EDI] + uVar4) % unaff_EBX;
+    uVar6 = ((int)(char)(&UNK_0122b5cb)[unaff_EDI] + uVar5) % unaff_EBX;
+    pcVar1 = &UNK_0122b5cc + unaff_EDI;
+    unaff_EDI = unaff_EDI + 5;
+    param_1 = ((int)*pcVar1 + uVar6) % unaff_EBX;
+    uVar3 = ((((unaff_ESI + uVar3) % unaff_EBX + uVar4) % unaff_EBX + uVar5) % unaff_EBX + uVar6) %
+            unaff_EBX + param_1;
+    uVar4 = uVar3 / unaff_EBX;
+    unaff_ESI = uVar3 % unaff_EBX;
+  } while (unaff_EDI < 0xf);
+  uVar3 = *(uint *)(unaff_EBP + -4);
+  uVar6 = 0x10000;
+  *(uint *)(unaff_EBP + 8) = unaff_ESI;
+  *(uint *)(unaff_EBP + -8) = param_1;
+  uVar5 = uVar3;
+  if (uVar3 != 0) {
+    do {
+      if ((uVar5 != uVar3) &&
+         (iVar2 = func_0x0112ab20(*(int *)(unaff_EBP + 8) << 0x10 | param_1), iVar2 != 0)) {
+        (**(code **)(iVar2 + 4))(uVar5,uVar3 + 0x24);
+      }
+      uVar4 = uVar6 >> 0x10;
+      if ((uVar6 & 0xffff) < uVar4) {
+        uVar4 = 0;
+        if (*(uint *)(uVar5 + 0xc) == 0) goto LAB_0092c09f;
+        uVar4 = (uVar6 + 1 ^ uVar6) & 0xffff;
+        uVar6 = uVar6 ^ uVar4;
+        uVar7 = *(uint *)(uVar5 + 0xc);
+      }
+      else {
+LAB_0092c09f:
+        if ((uVar6 & 0xffff) == 0) break;
+        uVar4 = *(uint *)(uVar5 + 0x10);
+        uVar7 = uVar4;
+        if (uVar4 == 0) {
+          if (*(int *)(uVar5 + 8) == 0) break;
+          do {
+            uVar5 = *(uint *)(uVar5 + 8);
+            uVar6 = uVar6 ^ (uVar6 - 1 ^ uVar6) & 0xffff;
+            uVar4 = uVar6 & 0xffff;
+            if (uVar4 == 0) goto LAB_0092c0ea;
+            bVar8 = true;
+            if (uVar5 == 0) goto LAB_0092c0e1;
+            uVar7 = *(uint *)(uVar5 + 0x10);
+            if (*(uint *)(uVar5 + 0x10) != 0) break;
+            bVar8 = true;
+            if (uVar5 == 0) goto LAB_0092c0e1;
+            uVar7 = uVar5;
+          } while (uVar4 != 0);
+        }
+      }
+      bVar8 = uVar7 == 0;
+      uVar5 = uVar7;
+LAB_0092c0e1:
+      param_1 = *(uint *)(unaff_EBP + -8);
+    } while (!bVar8);
+  }
+LAB_0092c0ea:
+  *(undefined1 *)(uVar3 + 0x9c) = 1;
+  return uVar4;
+}
+
+
+
+INSTRUCTIONS
+0092bfb0 INC dword ptr [EBX + 0xfff1]
+0092bfb6 NOP dword ptr [EAX + EAX*0x1]
+0092bfc0 MOVSX EAX,byte ptr [EDI + 0x122b5c8]
+0092bfc7 XOR EDX,EDX
+0092bfc9 ADD EAX,ECX
+0092bfcb DIV EBX
+0092bfcd MOV ECX,EDX
+0092bfcf XOR EDX,EDX
+0092bfd1 LEA EAX,[ESI + ECX*0x1]
+0092bfd4 DIV EBX
+0092bfd6 MOVSX EAX,byte ptr [EDI + 0x122b5c9]
+0092bfdd ADD EAX,ECX
+0092bfdf MOV ESI,EDX
+0092bfe1 XOR EDX,EDX
+0092bfe3 DIV EBX
+0092bfe5 MOV ECX,EDX
+0092bfe7 XOR EDX,EDX
+0092bfe9 LEA EAX,[ESI + ECX*0x1]
+0092bfec DIV EBX
+0092bfee MOVSX EAX,byte ptr [EDI + 0x122b5ca]
+0092bff5 ADD EAX,ECX
+0092bff7 MOV ESI,EDX
+0092bff9 XOR EDX,EDX
+0092bffb DIV EBX
+0092bffd MOV ECX,EDX
+0092bfff XOR EDX,EDX
+0092c001 LEA EAX,[ESI + ECX*0x1]
+0092c004 DIV EBX
+0092c006 MOVSX EAX,byte ptr [EDI + 0x122b5cb]
+0092c00d MOV ESI,EDX
+0092c00f ADD EAX,ECX
+0092c011 XOR EDX,EDX
+0092c013 DIV EBX
+0092c015 MOV ECX,EDX
+0092c017 XOR EDX,EDX
+0092c019 LEA EAX,[ESI + ECX*0x1]
+0092c01c DIV EBX
+0092c01e MOVSX EAX,byte ptr [EDI + 0x122b5cc]
+0092c025 ADD EDI,0x5
+0092c028 MOV ESI,EDX
+0092c02a ADD EAX,ECX
+0092c02c XOR EDX,EDX
+0092c02e DIV EBX
+0092c030 MOV ECX,EDX
+0092c032 XOR EDX,EDX
+0092c034 LEA EAX,[ESI + ECX*0x1]
+0092c037 DIV EBX
+0092c039 MOV ESI,EDX
+0092c03b CMP EDI,0xf
+0092c03e JC 0x0092bfc0
+0092c040 MOV EBX,dword ptr [EBP + -0x4]
+0092c043 MOV EDI,0x10000
+0092c048 MOV dword ptr [EBP + 0x8],ESI
+0092c04b MOV ESI,EBX
+0092c04d MOV dword ptr [EBP + -0x8],ECX
+0092c050 TEST EBX,EBX
+0092c052 JZ 0x0092c0ea
+0092c058 CMP ESI,EBX
+0092c05a JZ 0x0092c07e
+0092c05c MOV EAX,dword ptr [EBP + 0x8]
+0092c05f SHL EAX,0x10
+0092c062 OR EAX,ECX
+0092c064 MOV ECX,dword ptr [ESI + 0x4]
+0092c067 PUSH EAX
+0092c068 CALL 0x0112ab20
+0092c06d TEST EAX,EAX
+0092c06f JZ 0x0092c07e
+0092c071 MOV EAX,dword ptr [EAX + 0x4]
+0092c074 LEA ECX,[EBX + 0x24]
+0092c077 PUSH ECX
+0092c078 PUSH ESI
+0092c079 CALL EAX
+0092c07b ADD ESP,0x8
+0092c07e MOV EAX,EDI
+0092c080 MOVZX ECX,DI
+0092c083 SHR EAX,0x10
+0092c086 CMP ECX,EAX
+0092c088 JNC 0x0092c09f
+0092c08a MOV EAX,dword ptr [ESI + 0xc]
+0092c08d TEST EAX,EAX
+0092c08f JZ 0x0092c09f
+0092c091 MOV ESI,EAX
+0092c093 LEA EAX,[EDI + 0x1]
+0092c096 XOR EAX,EDI
+0092c098 MOVZX EAX,AX
+0092c09b XOR EDI,EAX
+0092c09d JMP 0x0092c0df
+0092c09f TEST ECX,ECX
+0092c0a1 JZ 0x0092c0ea
+0092c0a3 MOV EAX,dword ptr [ESI + 0x10]
+0092c0a6 TEST EAX,EAX
+0092c0a8 JZ 0x0092c0ae
+0092c0aa MOV ESI,EAX
+0092c0ac JMP 0x0092c0df
+0092c0ae CMP dword ptr [ESI + 0x8],0x0
+0092c0b2 JZ 0x0092c0ea
+0092c0b4 MOV ESI,dword ptr [ESI + 0x8]
+0092c0b7 LEA EAX,[EDI + -0x1]
+0092c0ba XOR EAX,EDI
+0092c0bc MOVZX EAX,AX
+0092c0bf XOR EDI,EAX
+0092c0c1 MOVZX EAX,DI
+0092c0c4 TEST EAX,EAX
+0092c0c6 JZ 0x0092c0ea
+0092c0c8 TEST ESI,ESI
+0092c0ca JZ 0x0092c0e1
+0092c0cc MOV ECX,dword ptr [ESI + 0x10]
+0092c0cf TEST ECX,ECX
+0092c0d1 JNZ 0x0092c0dd
+0092c0d3 TEST ESI,ESI
+0092c0d5 JZ 0x0092c0e1
+0092c0d7 TEST EAX,EAX
+0092c0d9 JNZ 0x0092c0b4
+0092c0db JMP 0x0092c0df
+0092c0dd MOV ESI,ECX
+0092c0df TEST ESI,ESI
+0092c0e1 MOV ECX,dword ptr [EBP + -0x8]
+0092c0e4 JNZ 0x0092c058
+0092c0ea POP EDI
+0092c0eb POP ESI
+0092c0ec MOV byte ptr [EBX + 0x9c],0x1
+0092c0f3 POP EBX
+0092c0f4 MOV ESP,EBP
+0092c0f6 POP EBP
+0092c0f7 RET 0x4
