@@ -1,6 +1,8 @@
 # H5810 terminal preparation and offline comparison, 2026-10-14
 
-**Actual pre-terminal and result-screen comparison is pending.** The offline
+**This file preserves earlier offline and blocked work.** A later successful
+[native terminal/result comparison](PLAYER_STATE_H5810_TERMINAL_NATIVE_2026-10-14.md)
+now records the actual client observations and retained unknowns. The offline
 increment at `45e42a4` ran while Windows was unavailable and verified recorded
 state and CLI/API consistency only. A later native attempt was blocked before
 replay injection by `LockApp.exe`; its complete cleanup is recorded below.
@@ -9,7 +11,7 @@ At baseline **b68ab8f969dcab915a52aa99371485ec17667d29**, all **11 CLI/API JSON
 pairs were identical**: five all-player and five selected-player queries, plus
 one conservative final export. The existing product code and final-field policy
 were not changed. CLI/API equality is internal consistency, **not independent
-native accuracy**. Native match/mismatch counts are unavailable.
+native accuracy**. Native match/mismatch counts were unavailable in that increment.
 
 The [sanitized offline receipt](evidence/2026-10-14-h5810-terminal-offline/summary.json)
 contains source identity, output hashes, query boundaries, recorded values,
@@ -150,5 +152,6 @@ were reverified unchanged. Independent local preparation remains preserved.
 This is a setup failure, not a replay failure or new accuracy result. Winner,
 final gold, display duration, recording client identity, and definitive exclusion
 remain unchanged. Further actual game attempts and handoff to the other Windows
-experiment are held until a new user confirmation that the lock screen is closed
-and the desktop is visible, followed by a fresh owned foreground/capture check.
+experiment were held pending a new user confirmation and fresh owned
+foreground/capture check. That condition was later satisfied for the successful
+native run linked above.
