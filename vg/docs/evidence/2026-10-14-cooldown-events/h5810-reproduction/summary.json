@@ -1,0 +1,147 @@
+{
+  "commit": "7d1e0e982d24bf48a11de6debbaeab7b7db090ba",
+  "source_sections": 168,
+  "source_bytes": 22820292,
+  "concatenated_sha256": "ae8e37a0eb42f8d323311b20ceee2a1314fe97ae330be24cf30e3ffeca4870f0",
+  "source_hashes_unchanged": true,
+  "queries": {
+    "all": {
+      "exit_code": 0,
+      "cli_api_equal": true,
+      "player_count": 10,
+      "support_status": "supported",
+      "record_boundary": {
+        "section": 61,
+        "record_offset": 127554
+      },
+      "query_timing": {
+        "status": "accepted",
+        "reason": "audited native record selection",
+        "clock_audit": {
+          "status": "accepted",
+          "reason": "continuous native clock anchors",
+          "game_time_mapping_valid": true
+        },
+        "game_time_basis": "anchor_game_time + record_time - anchor_record_time",
+        "applied": {
+          "record_boundary": {
+            "section": 61,
+            "record_offset": 127554
+          },
+          "record_time": 618.8933715820312,
+          "projected_game_time": 599.9994506835938,
+          "anchor_record_time": 610.0140380859375,
+          "anchor_game_time": 591.1201171875
+        },
+        "next_record": {
+          "record_boundary": {
+            "section": 61,
+            "record_offset": 127578
+          },
+          "record_time": 618.926513671875,
+          "projected_game_time": 600.0325927734375,
+          "anchor_record_time": 610.0140380859375,
+          "anchor_game_time": 591.1201171875
+        },
+        "cutoff_relation": "preceding_record",
+        "seconds_before_requested": 0.00054931640625,
+        "bracketing_record_interval_seconds": 0.03314208984375,
+        "coverage": {
+          "first_game_time": 0.0,
+          "last_game_time": 1659.0091552734375,
+          "first_section": 0,
+          "last_section": 167,
+          "section_count": 168,
+          "starts_at_section_zero": true
+        },
+        "state_interpolated": false,
+        "native_game_clock_observed": false,
+        "note": "State ends at the inclusive recorded boundary. Game times are anchor projections; record intervals alone do not prove missing data or continuous gameplay."
+      },
+      "definitive_analysis": {
+        "policy_version": "vg.definitive-analysis.v1",
+        "eligible": false,
+        "status": "excluded",
+        "reason_codes": [
+          "recording_source_unverified",
+          "recording_version_unverified",
+          "final_result_unverified"
+        ],
+        "reason": "Excluded from definitive analysis: recording source/build and final result have no source-bound verification. Layout support, supplied truth, playback success and declared verification flags do not authorize inclusion."
+      }
+    },
+    "selected": {
+      "exit_code": 0,
+      "cli_api_equal": true,
+      "player_count": 2,
+      "support_status": "supported",
+      "record_boundary": {
+        "section": 61,
+        "record_offset": 127554
+      },
+      "query_timing": {
+        "status": "accepted",
+        "reason": "audited native record selection",
+        "clock_audit": {
+          "status": "accepted",
+          "reason": "continuous native clock anchors",
+          "game_time_mapping_valid": true
+        },
+        "game_time_basis": "anchor_game_time + record_time - anchor_record_time",
+        "applied": {
+          "record_boundary": {
+            "section": 61,
+            "record_offset": 127554
+          },
+          "record_time": 618.8933715820312,
+          "projected_game_time": 599.9994506835938,
+          "anchor_record_time": 610.0140380859375,
+          "anchor_game_time": 591.1201171875
+        },
+        "next_record": {
+          "record_boundary": {
+            "section": 61,
+            "record_offset": 127578
+          },
+          "record_time": 618.926513671875,
+          "projected_game_time": 600.0325927734375,
+          "anchor_record_time": 610.0140380859375,
+          "anchor_game_time": 591.1201171875
+        },
+        "cutoff_relation": "preceding_record",
+        "seconds_before_requested": 0.00054931640625,
+        "bracketing_record_interval_seconds": 0.03314208984375,
+        "coverage": {
+          "first_game_time": 0.0,
+          "last_game_time": 1659.0091552734375,
+          "first_section": 0,
+          "last_section": 167,
+          "section_count": 168,
+          "starts_at_section_zero": true
+        },
+        "state_interpolated": false,
+        "native_game_clock_observed": false,
+        "note": "State ends at the inclusive recorded boundary. Game times are anchor projections; record intervals alone do not prove missing data or continuous gameplay."
+      },
+      "definitive_analysis": {
+        "policy_version": "vg.definitive-analysis.v1",
+        "eligible": false,
+        "status": "excluded",
+        "reason_codes": [
+          "recording_source_unverified",
+          "recording_version_unverified",
+          "final_result_unverified"
+        ],
+        "reason": "Excluded from definitive analysis: recording source/build and final result have no source-bound verification. Layout support, supplied truth, playback success and declared verification flags do not authorize inclusion."
+      }
+    }
+  },
+  "selected_rows_equal_all_subset": true,
+  "visible_inventory_entries": 42,
+  "limitations": [
+    "Offline CLI/API consistency only; no new client execution, native capture, rendered-screen or final-result validation",
+    "Historical comparison used dbb5718; this run uses main without its additive actor/skin split"
+  ],
+  "actor1507_resource7": 4392.5,
+  "packaging_note": "Detailed actor payload omitted; resource7 retained. Original offline results pinned to commit above."
+}

@@ -1,0 +1,13 @@
+ENTRY 0112a6e0 BODY [[0112a6e0, 0112a6e3]]
+
+float10 __fastcall FUN_0112a6e0(int param_1)
+
+{
+  return (float10)*(double *)(param_1 + 0x18);
+}
+
+
+
+INSTRUCTIONS
+0112a6e0 FLD double ptr [ECX + 0x18]
+0112a6e3 RET

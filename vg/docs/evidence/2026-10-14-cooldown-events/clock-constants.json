@@ -1,0 +1,29 @@
+{
+  "0x1217a38": 2.0,
+  "0x1212298": 0.0,
+  "0x1213f98": 0.0,
+  "0x12142c4": 1.0,
+  "0x1a761b0": "double storage; initial float read was not a meaningful runtime scale; inspect pass12/0093ba70 INSTRUCTIONS",
+  "speed_global_refs_candidates": [
+    [
+      "0x93ba72",
+      "0x93ba70"
+    ],
+    [
+      "0x94fc78",
+      "0x94fc60"
+    ],
+    [
+      "0x94fc89",
+      "0x94fc60"
+    ],
+    [
+      "0x950724",
+      "0x950710"
+    ],
+    [
+      "0x95f484",
+      "0x95f470"
+    ]
+  ]
+}

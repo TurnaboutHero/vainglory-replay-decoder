@@ -1,0 +1,58 @@
+ENTRY 0094f170 BODY [[0094f170, 0094f1c3]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __fastcall FUN_0094f170(int param_1)
+
+{
+  int iVar1;
+  float fVar2;
+  
+  iVar1 = func_0x00857970(*(undefined4 *)(param_1 + 0x10));
+  if (iVar1 != 0) {
+    if (*(char *)(param_1 + 0x1c) != '\0') {
+      FUN_0095cd10(*(int *)(param_1 + 0x18));
+      return;
+    }
+    fVar2 = (float)(int)((uint)*(byte *)(*(int *)(*(int *)(*(int *)(iVar1 + 0x2c) + 0x28 +
+                                                          *(int *)(param_1 + 0x14) * 4) + 0x124) +
+                                        0x42) + *(int *)(param_1 + 0x18));
+    if (fVar2 <= _DAT_01213f98) {
+      fVar2 = _DAT_01213f98;
+    }
+    FUN_0095cd10((int)fVar2);
+  }
+  return;
+}
+
+
+
+INSTRUCTIONS
+0094f170 PUSH ESI
+0094f171 MOV ESI,ECX
+0094f173 PUSH dword ptr [ESI + 0x10]
+0094f176 CALL 0x00857970
+0094f17b ADD ESP,0x4
+0094f17e TEST EAX,EAX
+0094f180 JZ 0x0094f1c2
+0094f182 CMP byte ptr [ESI + 0x1c],0x0
+0094f186 MOV ECX,dword ptr [ESI + 0x14]
+0094f189 MOV EAX,dword ptr [EAX + 0x2c]
+0094f18c MOV EDX,dword ptr [ESI + 0x18]
+0094f18f MOV EAX,dword ptr [EAX + ECX*0x4 + 0x28]
+0094f193 MOV ECX,dword ptr [EAX + 0x124]
+0094f199 JZ 0x0094f1a3
+0094f19b PUSH EDX
+0094f19c CALL 0x0095cd10
+0094f1a1 POP ESI
+0094f1a2 RET
+0094f1a3 MOVZX EAX,byte ptr [ECX + 0x42]
+0094f1a7 ADD EAX,EDX
+0094f1a9 MOVD XMM0,EAX
+0094f1ad CVTDQ2PS XMM0,XMM0
+0094f1b0 MAXSS XMM0,dword ptr [0x01213f98]
+0094f1b8 CVTTSS2SI EAX,XMM0
+0094f1bc PUSH EAX
+0094f1bd CALL 0x0095cd10
+0094f1c2 POP ESI
+0094f1c3 RET

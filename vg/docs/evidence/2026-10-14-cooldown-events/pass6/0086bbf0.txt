@@ -1,0 +1,128 @@
+ENTRY 0086bbf0 BODY [[0086bbf0, 0086bcfd]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+float10 __fastcall FUN_0086bbf0(int param_1)
+
+{
+  int iVar1;
+  float fVar2;
+  float fVar3;
+  undefined4 uStack_8;
+  
+  uStack_8 = *(float *)(param_1 + 0x38);
+  if (uStack_8 < _DAT_01213f98) {
+    uStack_8 = (*(float *)(param_1 + 0x30) + *(float *)(param_1 + 0x2c)) *
+               *(float *)(param_1 + 0x34);
+  }
+  if ((*(byte *)(param_1 + 0x48) & 2) != 0) {
+    iVar1 = *(int *)(param_1 + 8);
+    if ((iVar1 == 0) || (*(int *)(*(int *)(iVar1 + 4) + 0x54) != _DAT_01e6ee20)) {
+      iVar1 = 0;
+    }
+    iVar1 = *(int *)(iVar1 + 0x20);
+    fVar3 = ((*(float *)(iVar1 + 0x2a0) + _DAT_012142c4) * *(float *)(iVar1 + 0x138) +
+            *(float *)(iVar1 + 0x84)) * (*(float *)(iVar1 + 0x1ec) + _DAT_012142c4);
+    fVar2 = _DAT_020e73ac;
+    if (fVar3 <= _DAT_020e73ac) {
+      fVar2 = fVar3;
+    }
+    if (fVar2 <= _DAT_01a760fc) {
+      fVar2 = _DAT_01a760fc;
+    }
+    uStack_8 = uStack_8 * (_DAT_012142c4 - fVar2);
+  }
+  if ((*(byte *)(param_1 + 0x48) & 4) != 0) {
+    iVar1 = *(int *)(param_1 + 8);
+    if ((iVar1 == 0) || (*(int *)(*(int *)(iVar1 + 4) + 0x54) != _DAT_01e6ee20)) {
+      iVar1 = 0;
+    }
+    iVar1 = *(int *)(iVar1 + 0x20);
+    fVar3 = ((*(float *)(iVar1 + 0x278) + _DAT_012142c4) * *(float *)(iVar1 + 0x110) +
+            *(float *)(iVar1 + 0x5c)) * (*(float *)(iVar1 + 0x1c4) + _DAT_012142c4);
+    fVar2 = _DAT_020e7384;
+    if (fVar3 <= _DAT_020e7384) {
+      fVar2 = fVar3;
+    }
+    if (fVar2 <= _DAT_01a760d4) {
+      fVar2 = _DAT_01a760d4;
+    }
+    if (fVar2 <= _DAT_012142c4) {
+      fVar2 = _DAT_012142c4;
+    }
+    uStack_8 = uStack_8 / fVar2;
+  }
+  return (float10)uStack_8;
+}
+
+
+
+INSTRUCTIONS
+0086bbf0 PUSH EBP
+0086bbf1 MOV EBP,ESP
+0086bbf3 PUSH ECX
+0086bbf4 MOVSS XMM3,dword ptr [ECX + 0x38]
+0086bbf9 COMISS XMM3,dword ptr [0x01213f98]
+0086bc00 JNC 0x0086bc11
+0086bc02 MOVSS XMM3,dword ptr [ECX + 0x30]
+0086bc07 ADDSS XMM3,dword ptr [ECX + 0x2c]
+0086bc0c MULSS XMM3,dword ptr [ECX + 0x34]
+0086bc11 MOVSS XMM4,dword ptr [0x012142c4]
+0086bc19 PUSH EBX
+0086bc1a MOV BL,byte ptr [ECX + 0x48]
+0086bc1d MOVSS dword ptr [EBP + -0x4],XMM3
+0086bc22 PUSH ESI
+0086bc23 MOV ESI,dword ptr [0x01e6ee20]
+0086bc29 TEST BL,0x2
+0086bc2c JZ 0x0086bc92
+0086bc2e MOV EDX,dword ptr [ECX + 0x8]
+0086bc31 TEST EDX,EDX
+0086bc33 JZ 0x0086bc3d
+0086bc35 MOV EAX,dword ptr [EDX + 0x4]
+0086bc38 CMP dword ptr [EAX + 0x54],ESI
+0086bc3b JZ 0x0086bc3f
+0086bc3d XOR EDX,EDX
+0086bc3f MOV EAX,dword ptr [EDX + 0x20]
+0086bc42 MOVSS XMM1,dword ptr [0x020e73ac]
+0086bc4a MOVSS XMM2,dword ptr [EAX + 0x2a0]
+0086bc52 MOVSS XMM0,dword ptr [EAX + 0x1ec]
+0086bc5a ADDSS XMM2,XMM4
+0086bc5e ADDSS XMM0,XMM4
+0086bc62 MULSS XMM2,dword ptr [EAX + 0x138]
+0086bc6a ADDSS XMM2,dword ptr [EAX + 0x84]
+0086bc72 MULSS XMM2,XMM0
+0086bc76 MOVAPS XMM0,XMM4
+0086bc79 MINSS XMM1,XMM2
+0086bc7d MAXSS XMM1,dword ptr [0x01a760fc]
+0086bc85 SUBSS XMM0,XMM1
+0086bc89 MULSS XMM3,XMM0
+0086bc8d MOVSS dword ptr [EBP + -0x4],XMM3
+0086bc92 TEST BL,0x4
+0086bc95 JZ 0x0086bcf5
+0086bc97 MOV ECX,dword ptr [ECX + 0x8]
+0086bc9a TEST ECX,ECX
+0086bc9c JZ 0x0086bca6
+0086bc9e MOV EAX,dword ptr [ECX + 0x4]
+0086bca1 CMP dword ptr [EAX + 0x54],ESI
+0086bca4 JZ 0x0086bca8
+0086bca6 XOR ECX,ECX
+0086bca8 MOV EAX,dword ptr [ECX + 0x20]
+0086bcab MOVSS XMM1,dword ptr [EAX + 0x278]
+0086bcb3 MOVSS XMM0,dword ptr [EAX + 0x1c4]
+0086bcbb ADDSS XMM1,XMM4
+0086bcbf ADDSS XMM0,XMM4
+0086bcc3 MULSS XMM1,dword ptr [EAX + 0x110]
+0086bccb ADDSS XMM1,dword ptr [EAX + 0x5c]
+0086bcd0 MULSS XMM1,XMM0
+0086bcd4 MOVSS XMM0,dword ptr [0x020e7384]
+0086bcdc MINSS XMM0,XMM1
+0086bce0 MAXSS XMM0,dword ptr [0x01a760d4]
+0086bce8 MAXSS XMM0,XMM4
+0086bcec DIVSS XMM3,XMM0
+0086bcf0 MOVSS dword ptr [EBP + -0x4],XMM3
+0086bcf5 FLD float ptr [EBP + -0x4]
+0086bcf8 POP ESI
+0086bcf9 POP EBX
+0086bcfa MOV ESP,EBP
+0086bcfc POP EBP
+0086bcfd RET

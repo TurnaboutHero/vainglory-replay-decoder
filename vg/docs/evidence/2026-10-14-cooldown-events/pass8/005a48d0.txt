@@ -1,0 +1,38 @@
+ENTRY 005a48d0 BODY [[005a48d0, 005a4910]]
+
+void __thiscall FUN_005a48d0(int param_1,int param_2)
+
+{
+  if (param_2 == *(int *)(param_1 + 0x16b0)) {
+    func_0x009fe950();
+    func_0x00659120();
+    if ((*(byte *)(param_1 + 0x16c0) & 0x60) == 0) {
+      func_0x00659b70(&UNK_01226c50);
+    }
+  }
+  return;
+}
+
+
+
+INSTRUCTIONS
+005a48d0 PUSH EBP
+005a48d1 MOV EBP,ESP
+005a48d3 MOV EAX,dword ptr [EBP + 0x8]
+005a48d6 PUSH ESI
+005a48d7 MOV ESI,ECX
+005a48d9 CMP EAX,dword ptr [ESI + 0x16b0]
+005a48df JNZ 0x005a490c
+005a48e1 PUSH EDI
+005a48e2 CALL 0x009fe950
+005a48e7 LEA ECX,[ESI + 0x1508]
+005a48ed CALL 0x00659120
+005a48f2 TEST byte ptr [ESI + 0x16c0],0x60
+005a48f9 JNZ 0x005a490b
+005a48fb PUSH 0x1226c50
+005a4900 LEA ECX,[ESI + 0x1508]
+005a4906 CALL 0x00659b70
+005a490b POP EDI
+005a490c POP ESI
+005a490d POP EBP
+005a490e RET 0x4

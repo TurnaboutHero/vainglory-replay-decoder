@@ -1,0 +1,124 @@
+ENTRY 0095dcf0 BODY [[0095dcf0, 0095dd43]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __thiscall FUN_0095dcf0(int param_1,byte param_2)
+
+{
+  char *pcVar1;
+  char cVar2;
+  byte bVar3;
+  char cVar4;
+  int iVar5;
+  uint uVar6;
+  uint uVar7;
+  uint uVar8;
+  uint uVar9;
+  uint uVar10;
+  uint uVar11;
+  uint uVar12;
+  float fVar13;
+  
+  bVar3 = *(byte *)(param_1 + 0x40);
+  *(byte *)(param_1 + 0x40) = param_2;
+  iVar5 = (uint)param_2 - (uint)bVar3;
+  if (iVar5 < 1) {
+    _param_2 = (int)*(char *)(param_1 + 0x41) + (uint)param_2;
+    if (*(byte *)(param_1 + 0x42) <= _param_2) {
+      return;
+    }
+  }
+  else {
+    fVar13 = (float)(int)(iVar5 + (uint)*(byte *)(param_1 + 0x42));
+    if (fVar13 <= _DAT_01213f98) {
+      fVar13 = _DAT_01213f98;
+    }
+    _param_2 = (uint)fVar13;
+  }
+  iVar5 = (int)*(char *)(param_1 + 0x41) + (uint)*(byte *)(param_1 + 0x40);
+  cVar2 = *(char *)(param_1 + 0x42);
+  fVar13 = (float)((double)iVar5 + *(double *)(&UNK_012122c0 + (iVar5 >> 0x1f) * -8));
+  if ((float)((double)(int)_param_2 + *(double *)(&UNK_012122c0 + ((int)_param_2 >> 0x1f) * -8)) <=
+      fVar13) {
+    fVar13 = (float)((double)(int)_param_2 +
+                    *(double *)(&UNK_012122c0 + ((int)_param_2 >> 0x1f) * -8));
+  }
+  cVar4 = (char)(int)fVar13;
+  *(char *)(param_1 + 0x42) = cVar4;
+  if (cVar2 != '\0') {
+    if (cVar4 == '\0') {
+      uVar12 = 0;
+      _param_2 = 1;
+      uVar11 = 0;
+      do {
+        uVar6 = ((int)(char)(&UNK_0128ec04)[uVar11] + _param_2) % 0xfff1;
+        uVar7 = ((int)(char)(&UNK_0128ec05)[uVar11] + uVar6) % 0xfff1;
+        uVar8 = ((int)(char)(&UNK_0128ec06)[uVar11] + uVar7) % 0xfff1;
+        uVar9 = ((int)(char)(&UNK_0128ec07)[uVar11] + uVar8) % 0xfff1;
+        uVar10 = ((int)(char)(&UNK_0128ec08)[uVar11] + uVar9) % 0xfff1;
+        pcVar1 = &UNK_0128ec09 + uVar11;
+        uVar11 = uVar11 + 6;
+        _param_2 = ((int)*pcVar1 + uVar10) % 0xfff1;
+        uVar12 = ((((((uVar12 + uVar6) % 0xfff1 + uVar7) % 0xfff1 + uVar8) % 0xfff1 + uVar9) %
+                   0xfff1 + uVar10) % 0xfff1 + _param_2) % 0xfff1;
+      } while (uVar11 < 0x12);
+      goto LAB_0095ceea;
+    }
+    if (cVar2 != '\0') {
+      return;
+    }
+  }
+  if (cVar4 == '\0') {
+    return;
+  }
+  uVar12 = 0;
+  _param_2 = 1;
+  uVar11 = 0;
+  do {
+    uVar6 = ((int)(char)(&UNK_0121d8bc)[uVar11] + _param_2) % 0xfff1;
+    uVar7 = ((int)(char)(&UNK_0121d8bd)[uVar11] + uVar6) % 0xfff1;
+    uVar8 = ((int)(char)(&UNK_0121d8be)[uVar11] + uVar7) % 0xfff1;
+    pcVar1 = &UNK_0121d8bf + uVar11;
+    uVar11 = uVar11 + 4;
+    _param_2 = ((int)*pcVar1 + uVar8) % 0xfff1;
+    uVar12 = ((((uVar12 + uVar6) % 0xfff1 + uVar7) % 0xfff1 + uVar8) % 0xfff1 + _param_2) % 0xfff1;
+  } while (uVar11 < 0x10);
+LAB_0095ceea:
+  FUN_00536dd0(0,1,uVar12 << 0x10 | _param_2,param_1);
+  return;
+}
+
+
+
+INSTRUCTIONS
+0095dcf0 PUSH EBP
+0095dcf1 MOV EBP,ESP
+0095dcf3 MOV AL,byte ptr [EBP + 0x8]
+0095dcf6 MOVZX EDX,byte ptr [ECX + 0x40]
+0095dcfa PUSH ESI
+0095dcfb MOVZX ESI,AL
+0095dcfe MOV byte ptr [ECX + 0x40],AL
+0095dd01 MOV EAX,ESI
+0095dd03 SUB EAX,EDX
+0095dd05 MOVZX EDX,byte ptr [ECX + 0x42]
+0095dd09 TEST EAX,EAX
+0095dd0b JLE 0x0095dd2c
+0095dd0d ADD EAX,EDX
+0095dd0f POP ESI
+0095dd10 MOVD XMM0,EAX
+0095dd14 CVTDQ2PS XMM0,XMM0
+0095dd17 MAXSS XMM0,dword ptr [0x01213f98]
+0095dd1f CVTTSS2SI EAX,XMM0
+0095dd23 MOV dword ptr [EBP + 0x8],EAX
+0095dd26 POP EBP
+0095dd27 JMP 0x0095cd10
+0095dd2c MOVSX EAX,byte ptr [ECX + 0x41]
+0095dd30 ADD EAX,ESI
+0095dd32 POP ESI
+0095dd33 CMP EDX,EAX
+0095dd35 JBE 0x0095dd40
+0095dd37 MOV dword ptr [EBP + 0x8],EAX
+0095dd3a POP EBP
+0095dd3b JMP 0x0095cd10
+0095dd40 POP EBP
+0095dd41 RET 0x4

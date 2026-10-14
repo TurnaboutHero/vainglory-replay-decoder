@@ -1,0 +1,71 @@
+ENTRY 008579e0 BODY [[008579e0, 00857a41]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_008579e0(undefined4 param_1,int *param_2)
+
+{
+  uint uVar1;
+  uint uVar2;
+  int aiStack_12c8 [1196];
+  undefined4 uStack_18;
+  int *piStack_14;
+  undefined4 uStack_10;
+  undefined4 uStack_c;
+  
+  func_0x011b8a10();
+  piStack_14 = aiStack_12c8;
+  uStack_c = _DAT_01ef0b3c;
+  uStack_10 = 0x4b0;
+  uStack_18 = 0x857a12;
+  uVar1 = func_0x0112a700();
+  uVar2 = 0;
+  if (uVar1 != 0) {
+    do {
+      if (*(int *)(aiStack_12c8[uVar2] + 0x28) == *param_2) break;
+      uVar2 = uVar2 + 1;
+    } while (uVar2 < uVar1);
+  }
+  piStack_14 = (int *)0x857a3e;
+  func_0x011b8440();
+  return;
+}
+
+
+
+INSTRUCTIONS
+008579e0 PUSH EBP
+008579e1 MOV EBP,ESP
+008579e3 MOV EAX,0x12c4
+008579e8 CALL 0x011b8a10
+008579ed MOV EAX,[0x01e44f28]
+008579f2 XOR EAX,EBP
+008579f4 MOV dword ptr [EBP + -0x4],EAX
+008579f7 MOV ECX,dword ptr [EBP + 0x8]
+008579fa LEA EAX,[EBP + 0xffffed3c]
+00857a00 PUSH ESI
+00857a01 PUSH dword ptr [0x01ef0b3c]
+00857a07 PUSH 0x4b0
+00857a0c PUSH EAX
+00857a0d CALL 0x0112a700
+00857a12 MOV ESI,EAX
+00857a14 XOR ECX,ECX
+00857a16 TEST ESI,ESI
+00857a18 JZ 0x00857a31
+00857a1a MOV EDX,dword ptr [EBP + 0xc]
+00857a1d MOV EDX,dword ptr [EDX]
+00857a1f NOP
+00857a20 MOV EAX,dword ptr [EBP + ECX*0x4 + 0xffffed3c]
+00857a27 CMP dword ptr [EAX + 0x28],EDX
+00857a2a JZ 0x00857a33
+00857a2c INC ECX
+00857a2d CMP ECX,ESI
+00857a2f JC 0x00857a20
+00857a31 XOR EAX,EAX
+00857a33 MOV ECX,dword ptr [EBP + -0x4]
+00857a36 XOR ECX,EBP
+00857a38 POP ESI
+00857a39 CALL 0x011b8440
+00857a3e MOV ESP,EBP
+00857a40 POP EBP
+00857a41 RET

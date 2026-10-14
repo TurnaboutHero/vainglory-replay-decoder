@@ -1,0 +1,57 @@
+ENTRY 0112a080 BODY [[0112a080, 0112a0c1]]
+
+void __fastcall FUN_0112a080(int param_1)
+
+{
+  uint *puVar1;
+  int iVar2;
+  uint uVar3;
+  uint uVar4;
+  uint uVar5;
+  
+  iVar2 = *(int *)(param_1 + 4);
+  uVar3 = (uint)(param_1 - *(int *)(iVar2 + 0x168)) / *(uint *)(iVar2 + 0x58);
+  uVar4 = 1 << (uVar3 & 0x1f);
+  puVar1 = (uint *)(*(int *)(iVar2 + 0x178) + (uVar3 >> 6) * 8);
+  uVar5 = 0;
+  if (0x1f < (uVar3 & 0x3f)) {
+    uVar5 = uVar4;
+  }
+  uVar4 = uVar4 ^ uVar5;
+  if (0x3f < (uVar3 & 0x3f)) {
+    uVar5 = uVar4;
+  }
+  *puVar1 = *puVar1 | uVar4;
+  puVar1[1] = puVar1[1] | uVar5;
+  return;
+}
+
+
+
+INSTRUCTIONS
+0112a080 PUSH ESI
+0112a081 MOV ESI,dword ptr [ECX + 0x4]
+0112a084 XOR EDX,EDX
+0112a086 PUSH EDI
+0112a087 SUB ECX,dword ptr [ESI + 0x168]
+0112a08d MOV EAX,ECX
+0112a08f MOV ECX,dword ptr [ESI + 0x178]
+0112a095 DIV dword ptr [ESI + 0x58]
+0112a098 MOV EDI,EAX
+0112a09a XOR EAX,EAX
+0112a09c MOV EDX,EDI
+0112a09e AND EDI,0x3f
+0112a0a1 SHR EDX,0x6
+0112a0a4 BTS EAX,EDI
+0112a0a7 LEA EDX,[ECX + EDX*0x8]
+0112a0aa XOR ECX,ECX
+0112a0ac CMP EDI,0x20
+0112a0af CMOVNC ECX,EAX
+0112a0b2 XOR EAX,ECX
+0112a0b4 CMP EDI,0x40
+0112a0b7 POP EDI
+0112a0b8 CMOVNC ECX,EAX
+0112a0bb OR dword ptr [EDX],EAX
+0112a0bd OR dword ptr [EDX + 0x4],ECX
+0112a0c0 POP ESI
+0112a0c1 RET

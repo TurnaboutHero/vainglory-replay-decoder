@@ -1,0 +1,63 @@
+ENTRY 005a4070 BODY [[005a4070, 005a40dc]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __thiscall FUN_005a4070(int param_1,undefined4 param_2)
+
+{
+  char cVar1;
+  float10 fVar2;
+  undefined *puVar3;
+  
+  cVar1 = func_0x005a6b40(param_2);
+  if (cVar1 != '\0') {
+    fVar2 = (float10)func_0x009383d0();
+    func_0x009fe950();
+    func_0x00659120();
+    if ((*(byte *)(param_1 + 0x16c0) & 0x60) == 0) {
+      puVar3 = &UNK_01226c0c;
+      if (_DAT_01213f98 < (float)fVar2) {
+        func_0x00659b70(&UNK_01226c0c);
+        puVar3 = &UNK_01226c2c;
+      }
+      func_0x00659b70(puVar3);
+    }
+  }
+  return;
+}
+
+
+
+INSTRUCTIONS
+005a4070 PUSH EBP
+005a4071 MOV EBP,ESP
+005a4073 PUSH ESI
+005a4074 MOV ESI,dword ptr [EBP + 0x8]
+005a4077 PUSH EDI
+005a4078 PUSH ESI
+005a4079 MOV EDI,ECX
+005a407b CALL 0x005a6b40
+005a4080 TEST AL,AL
+005a4082 JZ 0x005a40d7
+005a4084 MOV ECX,ESI
+005a4086 CALL 0x009383d0
+005a408b MOV ECX,EDI
+005a408d FSTP float ptr [EBP + 0x8]
+005a4090 CALL 0x009fe950
+005a4095 LEA ECX,[EDI + 0x1508]
+005a409b CALL 0x00659120
+005a40a0 TEST byte ptr [EDI + 0x16c0],0x60
+005a40a7 JNZ 0x005a40d7
+005a40a9 MOVSS XMM0,dword ptr [EBP + 0x8]
+005a40ae LEA ECX,[EDI + 0x1508]
+005a40b4 COMISS XMM0,dword ptr [0x01213f98]
+005a40bb PUSH 0x1226c0c
+005a40c0 JBE 0x005a40d2
+005a40c2 CALL 0x00659b70
+005a40c7 PUSH 0x1226c2c
+005a40cc LEA ECX,[EDI + 0x1508]
+005a40d2 CALL 0x00659b70
+005a40d7 POP EDI
+005a40d8 POP ESI
+005a40d9 POP EBP
+005a40da RET 0x4

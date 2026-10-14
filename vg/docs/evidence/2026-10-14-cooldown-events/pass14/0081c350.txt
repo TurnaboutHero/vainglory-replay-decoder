@@ -1,0 +1,30 @@
+ENTRY 0081c350 BODY [[0081c350, 0081c380]]
+
+undefined4 * __thiscall FUN_0081c350(undefined4 *param_1,undefined4 param_2)
+
+{
+  param_1[1] = 0;
+  param_1[2] = 0;
+  *(undefined1 *)(param_1 + 3) = 0;
+  *param_1 = &UNK_0127cbcc;
+  param_1[4] = param_2;
+  return param_1;
+}
+
+
+
+INSTRUCTIONS
+0081c350 PUSH EBP
+0081c351 MOV EBP,ESP
+0081c353 PUSH ECX
+0081c354 MOVSS XMM0,dword ptr [EBP + 0x8]
+0081c359 MOV EAX,ECX
+0081c35b MOV dword ptr [EBP + -0x4],ECX
+0081c35e MOV dword ptr [ECX + 0x4],0x0
+0081c365 MOV dword ptr [ECX + 0x8],0x0
+0081c36c MOV byte ptr [ECX + 0xc],0x0
+0081c370 MOV dword ptr [ECX],0x127cbcc
+0081c376 MOVSS dword ptr [ECX + 0x10],XMM0
+0081c37b MOV ESP,EBP
+0081c37d POP EBP
+0081c37e RET 0x4

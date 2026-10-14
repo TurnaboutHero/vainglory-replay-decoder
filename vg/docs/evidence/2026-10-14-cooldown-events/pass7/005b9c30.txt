@@ -1,0 +1,42 @@
+ENTRY 005b9c30 BODY [[005ada00, 005ada2d] [005b9c30, 005b9c3e]]
+
+void FUN_005b9c30(undefined4 param_1)
+
+{
+  int iVar1;
+  
+  iVar1 = 3;
+  do {
+    func_0x005a48d0(param_1);
+    iVar1 = iVar1 + -1;
+  } while (iVar1 != 0);
+  return;
+}
+
+
+
+INSTRUCTIONS
+005ada00 PUSH EBP
+005ada01 MOV EBP,ESP
+005ada03 PUSH EBX
+005ada04 MOV EBX,dword ptr [EBP + 0x8]
+005ada07 PUSH ESI
+005ada08 PUSH EDI
+005ada09 LEA ESI,[ECX + 0x340]
+005ada0f MOV EDI,0x3
+005ada14 PUSH EBX
+005ada15 MOV ECX,ESI
+005ada17 CALL 0x005a48d0
+005ada1c ADD ESI,0x16c8
+005ada22 SUB EDI,0x1
+005ada25 JNZ 0x005ada14
+005ada27 POP EDI
+005ada28 POP ESI
+005ada29 POP EBX
+005ada2a POP EBP
+005ada2b RET 0x4
+005b9c30 PUSH EBP
+005b9c31 MOV EBP,ESP
+005b9c33 ADD ECX,0x250
+005b9c39 POP EBP
+005b9c3a JMP 0x005ada00

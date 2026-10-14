@@ -1,0 +1,63 @@
+ENTRY 0112aa20 BODY [[0112aa20, 0112aa67]]
+
+int __fastcall FUN_0112aa20(int param_1)
+
+{
+  int iVar1;
+  uint uVar2;
+  uint3 uVar3;
+  uint uVar4;
+  uint uVar5;
+  
+  iVar1 = *(int *)(param_1 + 4);
+  uVar2 = (uint)(param_1 - *(int *)(iVar1 + 0x168)) / *(uint *)(iVar1 + 0x58);
+  uVar5 = 1 << (uVar2 & 0x1f);
+  uVar4 = 0;
+  if (0x1f < (uVar2 & 0x3f)) {
+    uVar4 = uVar5;
+  }
+  uVar5 = uVar5 ^ uVar4;
+  iVar1 = *(int *)(iVar1 + 0x178);
+  if (0x3f < (uVar2 & 0x3f)) {
+    uVar4 = uVar5;
+  }
+  uVar3 = (uint3)((uint)iVar1 >> 8);
+  if ((uVar5 & *(uint *)(iVar1 + (uVar2 >> 6) * 8)) != 0 ||
+      (uVar4 & *(uint *)(iVar1 + 4 + (uVar2 >> 6) * 8)) != 0) {
+    return CONCAT31(uVar3,1);
+  }
+  return (uint)uVar3 << 8;
+}
+
+
+
+INSTRUCTIONS
+0112aa20 PUSH ESI
+0112aa21 PUSH EDI
+0112aa22 MOV EDI,dword ptr [ECX + 0x4]
+0112aa25 XOR EDX,EDX
+0112aa27 SUB ECX,dword ptr [EDI + 0x168]
+0112aa2d MOV EAX,ECX
+0112aa2f XOR ECX,ECX
+0112aa31 DIV dword ptr [EDI + 0x58]
+0112aa34 XOR EDX,EDX
+0112aa36 MOV ESI,EAX
+0112aa38 AND EAX,0x3f
+0112aa3b BTS EDX,EAX
+0112aa3e SHR ESI,0x6
+0112aa41 CMP EAX,0x20
+0112aa44 CMOVNC ECX,EDX
+0112aa47 XOR EDX,ECX
+0112aa49 CMP EAX,0x40
+0112aa4c MOV EAX,dword ptr [EDI + 0x178]
+0112aa52 CMOVNC ECX,EDX
+0112aa55 POP EDI
+0112aa56 AND EDX,dword ptr [EAX + ESI*0x8]
+0112aa59 AND ECX,dword ptr [EAX + ESI*0x8 + 0x4]
+0112aa5d OR EDX,ECX
+0112aa5f POP ESI
+0112aa60 JZ 0x0112aa65
+0112aa62 MOV AL,0x1
+0112aa64 RET
+0112aa65 XOR AL,AL
+0112aa67 RET

@@ -1,0 +1,88 @@
+ENTRY 0052ae00 BODY [[0052ae00, 0052ae9b]]
+
+void __fastcall FUN_0052ae00(int param_1)
+
+{
+  undefined4 *puVar1;
+  byte bVar2;
+  
+  puVar1 = (undefined4 *)func_0x00859670(0x2c,4);
+  *puVar1 = &UNK_01215f08;
+  puVar1[1] = *(undefined4 *)(param_1 + 4);
+  puVar1[2] = *(undefined4 *)(param_1 + 8);
+  *(undefined1 *)(puVar1 + 3) = *(undefined1 *)(param_1 + 0xc);
+  *puVar1 = &UNK_0121aaf4;
+  puVar1[4] = *(undefined4 *)(param_1 + 0x10);
+  puVar1[5] = *(undefined4 *)(param_1 + 0x14);
+  puVar1[6] = *(undefined4 *)(param_1 + 0x18);
+  puVar1[7] = *(undefined4 *)(param_1 + 0x1c);
+  *(undefined1 *)(puVar1 + 8) = *(undefined1 *)(param_1 + 0x20);
+  *(undefined1 *)((int)puVar1 + 0x21) = *(undefined1 *)(param_1 + 0x21);
+  puVar1[9] = puVar1[9] ^ (*(uint *)(param_1 + 0x24) ^ puVar1[9]) & 3;
+  *(byte *)(puVar1 + 10) =
+       *(byte *)(puVar1 + 10) ^ (*(byte *)(puVar1 + 10) ^ *(byte *)(param_1 + 0x28)) & 1;
+  bVar2 = (*(byte *)(param_1 + 0x28) ^ *(byte *)(puVar1 + 10)) & 2 ^ *(byte *)(puVar1 + 10);
+  *(byte *)(puVar1 + 10) = bVar2;
+  *(byte *)(puVar1 + 10) = (*(byte *)(param_1 + 0x28) ^ bVar2) & 4 ^ bVar2;
+  func_0x0092f720(puVar1);
+  return;
+}
+
+
+
+INSTRUCTIONS
+0052ae00 PUSH EBP
+0052ae01 MOV EBP,ESP
+0052ae03 PUSH ESI
+0052ae04 PUSH EDI
+0052ae05 PUSH 0x4
+0052ae07 MOV EDI,ECX
+0052ae09 MOV ECX,dword ptr [EBP + 0x8]
+0052ae0c PUSH 0x2c
+0052ae0e CALL 0x00859670
+0052ae13 MOV ESI,EAX
+0052ae15 PUSH ESI
+0052ae16 MOV dword ptr [ESI],0x1215f08
+0052ae1c MOV EDX,dword ptr [EDI + 0x4]
+0052ae1f MOV dword ptr [ESI + 0x4],EDX
+0052ae22 MOV ECX,dword ptr [EDI + 0x8]
+0052ae25 MOV dword ptr [ESI + 0x8],ECX
+0052ae28 MOV CL,byte ptr [EDI + 0xc]
+0052ae2b MOV byte ptr [ESI + 0xc],CL
+0052ae2e MOV dword ptr [ESI],0x121aaf4
+0052ae34 MOV ECX,dword ptr [EDI + 0x10]
+0052ae37 MOV dword ptr [ESI + 0x10],ECX
+0052ae3a MOV EAX,dword ptr [EDI + 0x14]
+0052ae3d MOV dword ptr [ESI + 0x14],EAX
+0052ae40 MOV EAX,dword ptr [EDI + 0x18]
+0052ae43 MOV dword ptr [ESI + 0x18],EAX
+0052ae46 MOV EAX,dword ptr [EDI + 0x1c]
+0052ae49 MOV dword ptr [ESI + 0x1c],EAX
+0052ae4c MOVZX EAX,byte ptr [EDI + 0x20]
+0052ae50 MOV byte ptr [ESI + 0x20],AL
+0052ae53 MOVZX EAX,byte ptr [EDI + 0x21]
+0052ae57 MOV byte ptr [ESI + 0x21],AL
+0052ae5a MOV EAX,dword ptr [EDI + 0x24]
+0052ae5d XOR EAX,dword ptr [ESI + 0x24]
+0052ae60 AND EAX,0x3
+0052ae63 MOV ECX,dword ptr [EBP + 0x8]
+0052ae66 XOR dword ptr [ESI + 0x24],EAX
+0052ae69 MOVZX EAX,byte ptr [ESI + 0x28]
+0052ae6d XOR AL,byte ptr [EDI + 0x28]
+0052ae70 AND AL,0x1
+0052ae72 XOR byte ptr [ESI + 0x28],AL
+0052ae75 MOV DL,byte ptr [EDI + 0x28]
+0052ae78 XOR DL,byte ptr [ESI + 0x28]
+0052ae7b AND DL,0x2
+0052ae7e XOR DL,byte ptr [ESI + 0x28]
+0052ae81 MOV byte ptr [ESI + 0x28],DL
+0052ae84 MOVZX EAX,byte ptr [EDI + 0x28]
+0052ae88 XOR AL,DL
+0052ae8a AND AL,0x4
+0052ae8c XOR AL,DL
+0052ae8e MOV byte ptr [ESI + 0x28],AL
+0052ae91 CALL 0x0092f720
+0052ae96 POP EDI
+0052ae97 POP ESI
+0052ae98 POP EBP
+0052ae99 RET 0x4

@@ -1,0 +1,116 @@
+ENTRY 0112b9e0 BODY [[0112b9e0, 0112badd]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_0112b9e0(undefined4 param_1,undefined4 param_2)
+
+{
+  char cVar1;
+  
+  func_0x0112b850(2);
+  if (DAT_020ec6dc == '\0') {
+    _DAT_020ec6d0 = param_2;
+    _DAT_020ec6d4 = param_1;
+    if (_DAT_020ec834 != (code *)0x0) {
+      (*_DAT_020ec834)(0,param_2);
+    }
+    func_0x0112b850(3);
+    if (_DAT_020ec838 != (code *)0x0) {
+      (*_DAT_020ec838)(1,param_2);
+    }
+    func_0x0112b850(4);
+    if (_DAT_020ec83c != (code *)0x0) {
+      (*_DAT_020ec83c)(2,param_2);
+    }
+    cVar1 = func_0x00943900();
+    if (cVar1 != '\0') {
+      func_0x00975780(0,0);
+    }
+    func_0x0112b850(5);
+    if (_DAT_020ec840 != (code *)0x0) {
+      (*_DAT_020ec840)(3,param_2);
+    }
+    if (_DAT_020ec844 != (code *)0x0) {
+      (*_DAT_020ec844)(4,param_2);
+    }
+  }
+  return;
+}
+
+
+
+INSTRUCTIONS
+0112b9e0 PUSH EBP
+0112b9e1 MOV EBP,ESP
+0112b9e3 MOV ECX,dword ptr [0x020ec828]
+0112b9e9 PUSH 0x2
+0112b9eb CALL 0x0112b850
+0112b9f0 CMP byte ptr [0x020ec6dc],0x0
+0112b9f7 JNZ 0x0112badc
+0112b9fd MOVSS XMM1,dword ptr [EBP + 0xc]
+0112ba02 MOVSS XMM0,dword ptr [EBP + 0x8]
+0112ba07 MOV EAX,[0x020ec834]
+0112ba0c MOVSS dword ptr [0x020ec6d0],XMM1
+0112ba14 MOVSS dword ptr [0x020ec6d4],XMM0
+0112ba1c TEST EAX,EAX
+0112ba1e JZ 0x0112ba2d
+0112ba20 PUSH ECX
+0112ba21 MOVSS dword ptr [ESP],XMM1
+0112ba26 PUSH 0x0
+0112ba28 CALL EAX
+0112ba2a ADD ESP,0x8
+0112ba2d MOV ECX,dword ptr [0x020ec828]
+0112ba33 PUSH 0x3
+0112ba35 CALL 0x0112b850
+0112ba3a MOV EAX,[0x020ec838]
+0112ba3f TEST EAX,EAX
+0112ba41 JZ 0x0112ba55
+0112ba43 MOVSS XMM0,dword ptr [EBP + 0xc]
+0112ba48 PUSH ECX
+0112ba49 MOVSS dword ptr [ESP],XMM0
+0112ba4e PUSH 0x1
+0112ba50 CALL EAX
+0112ba52 ADD ESP,0x8
+0112ba55 MOV ECX,dword ptr [0x020ec828]
+0112ba5b PUSH 0x4
+0112ba5d CALL 0x0112b850
+0112ba62 MOV EAX,[0x020ec83c]
+0112ba67 TEST EAX,EAX
+0112ba69 JZ 0x0112ba7d
+0112ba6b MOVSS XMM0,dword ptr [EBP + 0xc]
+0112ba70 PUSH ECX
+0112ba71 MOVSS dword ptr [ESP],XMM0
+0112ba76 PUSH 0x2
+0112ba78 CALL EAX
+0112ba7a ADD ESP,0x8
+0112ba7d MOV ECX,0x20ec7c0
+0112ba82 CALL 0x00943900
+0112ba87 TEST AL,AL
+0112ba89 JZ 0x0112ba99
+0112ba8b PUSH 0x0
+0112ba8d PUSH 0x0
+0112ba8f MOV ECX,0x20ec7c0
+0112ba94 CALL 0x00975780
+0112ba99 MOV ECX,dword ptr [0x020ec828]
+0112ba9f PUSH 0x5
+0112baa1 CALL 0x0112b850
+0112baa6 MOV EAX,[0x020ec840]
+0112baab TEST EAX,EAX
+0112baad JZ 0x0112bac1
+0112baaf MOVSS XMM0,dword ptr [EBP + 0xc]
+0112bab4 PUSH ECX
+0112bab5 MOVSS dword ptr [ESP],XMM0
+0112baba PUSH 0x3
+0112babc CALL EAX
+0112babe ADD ESP,0x8
+0112bac1 MOV EAX,[0x020ec844]
+0112bac6 TEST EAX,EAX
+0112bac8 JZ 0x0112badc
+0112baca MOVSS XMM0,dword ptr [EBP + 0xc]
+0112bacf PUSH ECX
+0112bad0 MOVSS dword ptr [ESP],XMM0
+0112bad5 PUSH 0x4
+0112bad7 CALL EAX
+0112bad9 ADD ESP,0x8
+0112badc POP EBP
+0112badd RET

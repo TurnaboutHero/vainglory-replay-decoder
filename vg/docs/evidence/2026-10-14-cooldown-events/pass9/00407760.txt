@@ -1,0 +1,17 @@
+ENTRY 00407760 BODY [[00407760, 0040776a]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_00407760(void)
+
+{
+  _DAT_0209133c = _DAT_01e3f840;
+  return;
+}
+
+
+
+INSTRUCTIONS
+00407760 MOV EAX,[0x01e3f840]
+00407765 MOV [0x0209133c],EAX
+0040776a RET

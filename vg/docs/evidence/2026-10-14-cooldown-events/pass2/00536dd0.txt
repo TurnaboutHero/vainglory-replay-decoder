@@ -1,0 +1,135 @@
+ENTRY 00536dd0 BODY [[00536dd0, 00536e89]]
+
+void __thiscall
+FUN_00536dd0(int param_1,char param_2,char param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  int iVar1;
+  int iVar2;
+  uint uVar3;
+  
+  uVar3 = 0x10000;
+  iVar1 = param_1;
+  if (param_3 != '\0') {
+    uVar3 = 0xffff0000;
+  }
+  do {
+    do {
+      while( true ) {
+        iVar2 = iVar1;
+        if (iVar2 == 0) {
+          return;
+        }
+        if (((param_2 != '\0') || (iVar2 != param_1)) &&
+           (iVar1 = func_0x0112ab20(param_4), iVar1 != 0)) {
+          (**(code **)(iVar1 + 4))(iVar2,param_5);
+        }
+        if ((uVar3 >> 0x10 <= (uVar3 & 0xffff)) || (*(int *)(iVar2 + 0xc) == 0)) break;
+        uVar3 = uVar3 ^ (uVar3 + 1 ^ uVar3) & 0xffff;
+        iVar1 = *(int *)(iVar2 + 0xc);
+      }
+      if ((uVar3 & 0xffff) == 0) {
+        return;
+      }
+      iVar1 = *(int *)(iVar2 + 0x10);
+    } while (*(int *)(iVar2 + 0x10) != 0);
+    if (*(int *)(iVar2 + 8) == 0) {
+      return;
+    }
+    do {
+      iVar2 = *(int *)(iVar2 + 8);
+      uVar3 = uVar3 ^ (uVar3 - 1 ^ uVar3) & 0xffff;
+      if ((uVar3 & 0xffff) == 0) {
+        return;
+      }
+      if (iVar2 == 0) {
+        return;
+      }
+      iVar1 = *(int *)(iVar2 + 0x10);
+      if (*(int *)(iVar2 + 0x10) != 0) break;
+      if (iVar2 == 0) {
+        return;
+      }
+      iVar1 = iVar2;
+    } while ((uVar3 & 0xffff) != 0);
+  } while( true );
+}
+
+
+
+INSTRUCTIONS
+00536dd0 PUSH EBP
+00536dd1 MOV EBP,ESP
+00536dd3 CMP byte ptr [EBP + 0xc],0x0
+00536dd7 MOV EAX,0xffff0000
+00536ddc PUSH EBX
+00536ddd PUSH ESI
+00536dde PUSH EDI
+00536ddf MOV EBX,ECX
+00536de1 MOV EDI,0x10000
+00536de6 CMOVNZ EDI,EAX
+00536de9 MOV ESI,EBX
+00536deb TEST EBX,EBX
+00536ded JZ 0x00536e83
+00536df3 CMP byte ptr [EBP + 0x8],0x0
+00536df7 JNZ 0x00536dfd
+00536df9 CMP ESI,EBX
+00536dfb JZ 0x00536e18
+00536dfd PUSH dword ptr [EBP + 0x10]
+00536e00 MOV ECX,dword ptr [ESI + 0x4]
+00536e03 CALL 0x0112ab20
+00536e08 TEST EAX,EAX
+00536e0a JZ 0x00536e18
+00536e0c PUSH dword ptr [EBP + 0x14]
+00536e0f MOV EAX,dword ptr [EAX + 0x4]
+00536e12 PUSH ESI
+00536e13 CALL EAX
+00536e15 ADD ESP,0x8
+00536e18 MOV EAX,EDI
+00536e1a MOVZX ECX,DI
+00536e1d SHR EAX,0x10
+00536e20 CMP ECX,EAX
+00536e22 JNC 0x00536e39
+00536e24 MOV EAX,dword ptr [ESI + 0xc]
+00536e27 TEST EAX,EAX
+00536e29 JZ 0x00536e39
+00536e2b MOV ESI,EAX
+00536e2d LEA EAX,[EDI + 0x1]
+00536e30 XOR EAX,EDI
+00536e32 MOVZX EAX,AX
+00536e35 XOR EDI,EAX
+00536e37 JMP 0x00536e7b
+00536e39 TEST ECX,ECX
+00536e3b JZ 0x00536e83
+00536e3d MOV EAX,dword ptr [ESI + 0x10]
+00536e40 TEST EAX,EAX
+00536e42 JNZ 0x00536e79
+00536e44 CMP dword ptr [ESI + 0x8],EAX
+00536e47 JZ 0x00536e83
+00536e49 NOP dword ptr [EAX]
+00536e50 MOV ESI,dword ptr [ESI + 0x8]
+00536e53 LEA EAX,[EDI + -0x1]
+00536e56 XOR EAX,EDI
+00536e58 MOVZX EAX,AX
+00536e5b XOR EDI,EAX
+00536e5d MOVZX ECX,DI
+00536e60 TEST ECX,ECX
+00536e62 JZ 0x00536e83
+00536e64 TEST ESI,ESI
+00536e66 JZ 0x00536e83
+00536e68 MOV EAX,dword ptr [ESI + 0x10]
+00536e6b TEST EAX,EAX
+00536e6d JNZ 0x00536e79
+00536e6f TEST ESI,ESI
+00536e71 JZ 0x00536e83
+00536e73 TEST ECX,ECX
+00536e75 JNZ 0x00536e50
+00536e77 JMP 0x00536e7b
+00536e79 MOV ESI,EAX
+00536e7b TEST ESI,ESI
+00536e7d JNZ 0x00536df3
+00536e83 POP EDI
+00536e84 POP ESI
+00536e85 POP EBX
+00536e86 POP EBP
+00536e87 RET 0x10
