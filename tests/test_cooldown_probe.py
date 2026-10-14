@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
-import time
+import tempfile
 import unittest
 
 
@@ -12,8 +12,13 @@ class CooldownProbeTests(unittest.TestCase):
         repo = Path(__file__).resolve().parents[1]
         node = shutil.which('node')
         self.assertIsNotNone(node, 'Node is required for cooldown observer regression coverage')
-        evidence = Path(os.environ.get('COOLDOWN_PROBE_EVIDENCE_DIR',
-            str(repo / '.omo' / 'evidence' / f'cooldown-probe-{time.time_ns()}'))).resolve()
+        configured_evidence = os.environ.get('COOLDOWN_PROBE_EVIDENCE_DIR')
+        if configured_evidence is None:
+            temporary_evidence = tempfile.TemporaryDirectory(prefix='cooldown-probe-')
+            self.addCleanup(temporary_evidence.cleanup)
+            evidence = Path(temporary_evidence.name).resolve()
+        else:
+            evidence = Path(configured_evidence).resolve()
         evidence.mkdir(parents=True, exist_ok=True)
         command = [node, str(repo / 'tests/fixtures/cooldown_probe_smoke.cjs'), str(evidence)]
         result = subprocess.run(command, cwd=repo, capture_output=True, text=True, timeout=60)
@@ -24,7 +29,10 @@ class CooldownProbeTests(unittest.TestCase):
             'invocation': command, 'observable': 'exit_code == 0 and all scenario assertions pass',
             'exit_code': result.returncode, 'artifact_path': str(evidence / 'smoke-results.json'),
         }, indent=2) + '\n')
-        self.assertEqual(result.returncode, 0, f'{result.stderr}\n{result.stdout}\nEvidence: {evidence}')
+        diagnostics = f'{result.stderr}\n{result.stdout}'
+        if configured_evidence is not None:
+            diagnostics += f'\nEvidence retained: {evidence}'
+        self.assertEqual(result.returncode, 0, diagnostics)
         report_path = evidence / 'smoke-results.json'
         self.assertGreater(report_path.stat().st_size, 0)
         report = json.loads(report_path.read_text())
@@ -36,7 +44,9 @@ class CooldownProbeTests(unittest.TestCase):
             self.assertTrue(scenario['observable'])
             self.assertGreater(Path(scenario['artifact_path']).stat().st_size, 0)
         self.assertGreater((evidence / 'sample.json').stat().st_size, 0)
-        print(f'Node VM: {report["passed"]} passed; evidence: {evidence}')
+        print(f'Node VM: {report["passed"]} passed')
+        if configured_evidence is not None:
+            print(f'Evidence retained: {evidence}')
 
 
 if __name__ == '__main__':
