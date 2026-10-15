@@ -1,0 +1,939 @@
+{
+  "schema": "cooldown-timer-followup.v1",
+  "baseline": "5582c26af745f901a2cf4aeea24def2ef10ad5f1",
+  "runtime_scope": "controlled practice; instrumented tick calls; no replay frame validation",
+  "full_three_stage_hud_comparison_completed": false,
+  "middle_hud_positive_countdown_captured": false,
+  "exact_expiry_boundary_captured": false,
+  "post_expiry_null_timer_is_zero_or_available": false,
+  "timer_body_resolution": {
+    "inner_offset": 20,
+    "body_vtable": "0x0127ba9c",
+    "inner_vtable": "0x0127baac",
+    "resolver": "0x00541fa0",
+    "legacy_read_body_offset": 56,
+    "correct_remaining_body_offset": 36
+  },
+  "hud_number_rule": {
+    "operation": "CVTTSS2SI(ADDSS(remaining, constant))",
+    "constant_bits": 1065185444,
+    "constant_f32": 0.9900000095367432,
+    "format": "%d",
+    "not_exact_ceil": true
+  },
+  "cases": {
+    "countdown-practice-v2": {
+      "error": "Error: Collector: sample_failed",
+      "stop": {
+        "samples": 17,
+        "stopped": true,
+        "reason": "sample_failed",
+        "failure_code": "changed_actor_or_inventory"
+      },
+      "detached": true,
+      "stages": {
+        "before-use": {
+          "before": {
+            "actor_id": 1500,
+            "actor_pointer": "0x21993e80",
+            "instance_id": 2003,
+            "definition_id": 478,
+            "primary": {
+              "status": "observed",
+              "pointer": "0x21ad0250",
+              "owner": "0x21993e80",
+              "class_index": 17,
+              "key": 1496005215,
+              "charges": 1,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "charge_gate": {
+                "charges_nonzero": true,
+                "getter_short_circuits_to_zero": true
+              },
+              "timer": {
+                "pointer": null,
+                "body_pointer": null,
+                "expected_generation": 0,
+                "actual_generation": null,
+                "generation_equal": null,
+                "native_handle_proof": "bounded_timer_specific_static_checks_only",
+                "native_handle_verified": false,
+                "lifetime_unverified": true,
+                "atomic": false,
+                "status": "unavailable",
+                "availability": "unknown",
+                "reason": "null_timer",
+                "remaining_f32": null,
+                "initial_f32": null,
+                "pause_byte": null,
+                "legacy_inner_plus_24": {
+                  "semantics": "unverified_raw_bits_not_cooldown",
+                  "raw": null
+                }
+              }
+            },
+            "secondary": {
+              "status": "unavailable",
+              "reason": "null_state",
+              "pointer": null
+            },
+            "game_clock_before": {
+              "bits": 1147747018,
+              "signed_bits": 1147747018,
+              "value": 932.9185791015625,
+              "negative_zero": false,
+              "nonfinite": false
+            },
+            "game_clock_after": {
+              "bits": 1147778471,
+              "signed_bits": 1147778471,
+              "value": 934.8383178710938,
+              "negative_zero": false,
+              "nonfinite": false
+            }
+          },
+          "after": {
+            "actor_id": 1500,
+            "actor_pointer": "0x21993e80",
+            "instance_id": 2003,
+            "definition_id": 478,
+            "primary": {
+              "status": "observed",
+              "pointer": "0x21ad0250",
+              "owner": "0x21993e80",
+              "class_index": 17,
+              "key": 1496005215,
+              "charges": 1,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "charge_gate": {
+                "charges_nonzero": true,
+                "getter_short_circuits_to_zero": true
+              },
+              "timer": {
+                "pointer": null,
+                "body_pointer": null,
+                "expected_generation": 0,
+                "actual_generation": null,
+                "generation_equal": null,
+                "native_handle_proof": "bounded_timer_specific_static_checks_only",
+                "native_handle_verified": false,
+                "lifetime_unverified": true,
+                "atomic": false,
+                "status": "unavailable",
+                "availability": "unknown",
+                "reason": "null_timer",
+                "remaining_f32": null,
+                "initial_f32": null,
+                "pause_byte": null,
+                "legacy_inner_plus_24": {
+                  "semantics": "unverified_raw_bits_not_cooldown",
+                  "raw": null
+                }
+              }
+            },
+            "secondary": {
+              "status": "unavailable",
+              "reason": "null_state",
+              "pointer": null
+            },
+            "game_clock_before": {
+              "bits": 1147789783,
+              "signed_bits": 1147789783,
+              "value": 935.5287475585938,
+              "negative_zero": false,
+              "nonfinite": false
+            },
+            "game_clock_after": {
+              "bits": 1147821211,
+              "signed_bits": 1147821211,
+              "value": 937.4469604492188,
+              "negative_zero": false,
+              "nonfinite": false
+            }
+          },
+          "shot_begin_utc": "2026-10-14T16:47:59.677342+00:00"
+        },
+        "after-use": {
+          "before": {
+            "actor_id": 1500,
+            "actor_pointer": "0x21993e80",
+            "instance_id": 2003,
+            "definition_id": 478,
+            "primary": {
+              "status": "observed",
+              "pointer": "0x21ad0250",
+              "owner": "0x21993e80",
+              "class_index": 17,
+              "key": 1496005215,
+              "charges": 0,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "charge_gate": {
+                "charges_nonzero": false,
+                "getter_short_circuits_to_zero": false
+              },
+              "timer": {
+                "pointer": "0x21b85fe4",
+                "body_pointer": "0x21b85fd0",
+                "expected_generation": 95726,
+                "actual_generation": 95726,
+                "generation_equal": true,
+                "native_handle_proof": "bounded_timer_specific_static_checks_only",
+                "native_handle_verified": false,
+                "lifetime_unverified": true,
+                "atomic": false,
+                "status": "observed",
+                "availability": "unknown",
+                "reason": null,
+                "remaining_f32": {
+                  "bits": 1118498972,
+                  "signed_bits": 1118498972,
+                  "value": 85.46994018554688,
+                  "negative_zero": false,
+                  "nonfinite": false
+                },
+                "initial_f32": {
+                  "bits": 1119105843,
+                  "signed_bits": 1119105843,
+                  "value": 90.0999984741211,
+                  "negative_zero": false,
+                  "nonfinite": false
+                },
+                "pause_byte": 0,
+                "legacy_inner_plus_24": {
+                  "semantics": "unverified_raw_bits_not_cooldown",
+                  "raw": {
+                    "bits": 0,
+                    "signed_bits": 0,
+                    "value": 0,
+                    "negative_zero": false,
+                    "nonfinite": false
+                  }
+                },
+                "pool_checks": {
+                  "descriptor": "0x218d7e78",
+                  "class_index": 42,
+                  "storage": "0x21b71310",
+                  "stride": 44,
+                  "slot": 1936,
+                  "pending_bits": "0x21b87a78",
+                  "callback": 564986476,
+                  "pending": false
+                }
+              }
+            },
+            "secondary": {
+              "status": "unavailable",
+              "reason": "null_state",
+              "pointer": null
+            },
+            "game_clock_before": {
+              "bits": 1147878770,
+              "signed_bits": 1147878770,
+              "value": 940.9600830078125,
+              "negative_zero": false,
+              "nonfinite": false
+            },
+            "game_clock_after": {
+              "bits": 1147916952,
+              "signed_bits": 1147916952,
+              "value": 943.29052734375,
+              "negative_zero": false,
+              "nonfinite": false
+            }
+          },
+          "after": {
+            "actor_id": 1500,
+            "actor_pointer": "0x21993e80",
+            "instance_id": 2003,
+            "definition_id": 478,
+            "primary": {
+              "status": "observed",
+              "pointer": "0x21ad0250",
+              "owner": "0x21993e80",
+              "class_index": 17,
+              "key": 1496005215,
+              "charges": 0,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "charge_gate": {
+                "charges_nonzero": false,
+                "getter_short_circuits_to_zero": false
+              },
+              "timer": {
+                "pointer": "0x21b85fe4",
+                "body_pointer": "0x21b85fd0",
+                "expected_generation": 95726,
+                "actual_generation": 95726,
+                "generation_equal": true,
+                "native_handle_proof": "bounded_timer_specific_static_checks_only",
+                "native_handle_verified": false,
+                "lifetime_unverified": true,
+                "atomic": false,
+                "status": "observed",
+                "availability": "unknown",
+                "reason": null,
+                "remaining_f32": {
+                  "bits": 1118108443,
+                  "signed_bits": 1118108443,
+                  "value": 82.49044036865234,
+                  "negative_zero": false,
+                  "nonfinite": false
+                },
+                "initial_f32": {
+                  "bits": 1119105843,
+                  "signed_bits": 1119105843,
+                  "value": 90.0999984741211,
+                  "negative_zero": false,
+                  "nonfinite": false
+                },
+                "pause_byte": 0,
+                "legacy_inner_plus_24": {
+                  "semantics": "unverified_raw_bits_not_cooldown",
+                  "raw": {
+                    "bits": 0,
+                    "signed_bits": 0,
+                    "value": 0,
+                    "negative_zero": false,
+                    "nonfinite": false
+                  }
+                },
+                "pool_checks": {
+                  "descriptor": "0x218d7e78",
+                  "class_index": 42,
+                  "storage": "0x21b71310",
+                  "stride": 44,
+                  "slot": 1936,
+                  "pending_bits": "0x21b87a78",
+                  "callback": 564986476,
+                  "pending": false
+                }
+              }
+            },
+            "secondary": {
+              "status": "unavailable",
+              "reason": "null_state",
+              "pointer": null
+            },
+            "game_clock_before": {
+              "bits": 1147927913,
+              "signed_bits": 1147927913,
+              "value": 943.9595336914062,
+              "negative_zero": false,
+              "nonfinite": false
+            },
+            "game_clock_after": {
+              "bits": 1147964670,
+              "signed_bits": 1147964670,
+              "value": 946.2030029296875,
+              "negative_zero": false,
+              "nonfinite": false
+            }
+          },
+          "shot_begin_utc": "2026-10-14T16:48:08.085014+00:00"
+        }
+      },
+      "observed_stage": "partial-use-episode"
+    },
+    "short-after-use": {
+      "error": "changed_actor_or_inventory",
+      "shot_begin_utc": "2026-10-14T17:14:16.950157+00:00",
+      "before": {
+        "error": null,
+        "stop": {
+          "samples": 1,
+          "stopped": true,
+          "reason": "requested",
+          "failure_code": null
+        },
+        "detached": true,
+        "sample": {
+          "actor_id": 1500,
+          "actor_pointer": "0x21993e80",
+          "instance_id": 2003,
+          "definition_id": 478,
+          "primary": {
+            "status": "observed",
+            "pointer": "0x21ad0380",
+            "owner": "0x21993e80",
+            "class_index": 17,
+            "key": 1496005215,
+            "charges": 0,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "charge_gate": {
+              "charges_nonzero": false,
+              "getter_short_circuits_to_zero": false
+            },
+            "timer": {
+              "pointer": "0x21b86a8c",
+              "body_pointer": "0x21b86a78",
+              "expected_generation": 173294,
+              "actual_generation": 173294,
+              "generation_equal": true,
+              "native_handle_proof": "bounded_timer_specific_static_checks_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "observed",
+              "availability": "unknown",
+              "reason": null,
+              "remaining_f32": {
+                "bits": 1118152884,
+                "signed_bits": 1118152884,
+                "value": 82.82949829101562,
+                "negative_zero": false,
+                "nonfinite": false
+              },
+              "initial_f32": {
+                "bits": 1119105843,
+                "signed_bits": 1119105843,
+                "value": 90.0999984741211,
+                "negative_zero": false,
+                "nonfinite": false
+              },
+              "pause_byte": 0,
+              "legacy_inner_plus_24": {
+                "semantics": "unverified_raw_bits_not_cooldown",
+                "raw": {
+                  "bits": 0,
+                  "signed_bits": 0,
+                  "value": 0,
+                  "negative_zero": false,
+                  "nonfinite": false
+                }
+              },
+              "pool_checks": {
+                "descriptor": "0x218d7e78",
+                "class_index": 42,
+                "storage": "0x21b71310",
+                "stride": 44,
+                "slot": 1998,
+                "pending_bits": "0x21b87a78",
+                "callback": 564986780,
+                "pending": false
+              }
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          },
+          "game_clock_before": {
+            "bits": 1138761224,
+            "signed_bits": 1138761224,
+            "value": 448.234619140625,
+            "negative_zero": false,
+            "nonfinite": false
+          },
+          "game_clock_after": {
+            "bits": 1138840193,
+            "signed_bits": 1138840193,
+            "value": 450.6445617675781,
+            "negative_zero": false,
+            "nonfinite": false
+          }
+        }
+      },
+      "after": {
+        "error": "sample_rejected",
+        "stop": {
+          "samples": 0,
+          "stopped": true,
+          "reason": "sample_failed",
+          "failure_code": "changed_actor_or_inventory"
+        },
+        "detached": true,
+        "sample": null
+      },
+      "observed_stage": "after-use-partial"
+    },
+    "short-middle": {
+      "error": null,
+      "shot_begin_utc": "2026-10-14T17:19:37.811763+00:00",
+      "before": {
+        "error": null,
+        "stop": {
+          "samples": 1,
+          "stopped": true,
+          "reason": "requested",
+          "failure_code": null
+        },
+        "detached": true,
+        "sample": {
+          "actor_id": 1500,
+          "actor_pointer": "0x21993e80",
+          "instance_id": 2003,
+          "definition_id": 478,
+          "primary": {
+            "status": "observed",
+            "pointer": "0x21ad0380",
+            "owner": "0x21993e80",
+            "class_index": 17,
+            "key": 1496005215,
+            "charges": 1,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "charge_gate": {
+              "charges_nonzero": true,
+              "getter_short_circuits_to_zero": true
+            },
+            "timer": {
+              "pointer": null,
+              "body_pointer": null,
+              "expected_generation": 0,
+              "actual_generation": null,
+              "generation_equal": null,
+              "native_handle_proof": "bounded_timer_specific_static_checks_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "unavailable",
+              "availability": "unknown",
+              "reason": "null_timer",
+              "remaining_f32": null,
+              "initial_f32": null,
+              "pause_byte": null,
+              "legacy_inner_plus_24": {
+                "semantics": "unverified_raw_bits_not_cooldown",
+                "raw": null
+              }
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          },
+          "game_clock_before": {
+            "bits": 1145078675,
+            "signed_bits": 1145078675,
+            "value": 770.0558471679688,
+            "negative_zero": false,
+            "nonfinite": false
+          },
+          "game_clock_after": {
+            "bits": 1145101724,
+            "signed_bits": 1145101724,
+            "value": 771.462646484375,
+            "negative_zero": false,
+            "nonfinite": false
+          }
+        }
+      },
+      "after": {
+        "error": null,
+        "stop": {
+          "samples": 1,
+          "stopped": true,
+          "reason": "requested",
+          "failure_code": null
+        },
+        "detached": true,
+        "sample": {
+          "actor_id": 1500,
+          "actor_pointer": "0x21993e80",
+          "instance_id": 2003,
+          "definition_id": 478,
+          "primary": {
+            "status": "observed",
+            "pointer": "0x21ad0380",
+            "owner": "0x21993e80",
+            "class_index": 17,
+            "key": 1496005215,
+            "charges": 1,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "charge_gate": {
+              "charges_nonzero": true,
+              "getter_short_circuits_to_zero": true
+            },
+            "timer": {
+              "pointer": null,
+              "body_pointer": null,
+              "expected_generation": 0,
+              "actual_generation": null,
+              "generation_equal": null,
+              "native_handle_proof": "bounded_timer_specific_static_checks_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "unavailable",
+              "availability": "unknown",
+              "reason": "null_timer",
+              "remaining_f32": null,
+              "initial_f32": null,
+              "pause_byte": null,
+              "legacy_inner_plus_24": {
+                "semantics": "unverified_raw_bits_not_cooldown",
+                "raw": null
+              }
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          },
+          "game_clock_before": {
+            "bits": 1145159543,
+            "signed_bits": 1145159543,
+            "value": 774.9916381835938,
+            "negative_zero": false,
+            "nonfinite": false
+          },
+          "game_clock_after": {
+            "bits": 1145176830,
+            "signed_bits": 1145176830,
+            "value": 776.0467529296875,
+            "negative_zero": false,
+            "nonfinite": false
+          }
+        }
+      },
+      "observed_stage": "post-expiry"
+    },
+    "short-expiry": {
+      "error": null,
+      "shot_begin_utc": "2026-10-14T17:22:40.185903+00:00",
+      "before": {
+        "error": null,
+        "stop": {
+          "samples": 1,
+          "stopped": true,
+          "reason": "requested",
+          "failure_code": null
+        },
+        "detached": true,
+        "sample": {
+          "actor_id": 1500,
+          "actor_pointer": "0x21993e80",
+          "instance_id": 2003,
+          "definition_id": 478,
+          "primary": {
+            "status": "observed",
+            "pointer": "0x21ad0380",
+            "owner": "0x21993e80",
+            "class_index": 17,
+            "key": 1496005215,
+            "charges": 1,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "charge_gate": {
+              "charges_nonzero": true,
+              "getter_short_circuits_to_zero": true
+            },
+            "timer": {
+              "pointer": null,
+              "body_pointer": null,
+              "expected_generation": 0,
+              "actual_generation": null,
+              "generation_equal": null,
+              "native_handle_proof": "bounded_timer_specific_static_checks_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "unavailable",
+              "availability": "unknown",
+              "reason": "null_timer",
+              "remaining_f32": null,
+              "initial_f32": null,
+              "pause_byte": null,
+              "legacy_inner_plus_24": {
+                "semantics": "unverified_raw_bits_not_cooldown",
+                "raw": null
+              }
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          },
+          "game_clock_before": {
+            "bits": 1148076634,
+            "signed_bits": 1148076634,
+            "value": 953.0367431640625,
+            "negative_zero": false,
+            "nonfinite": false
+          },
+          "game_clock_after": {
+            "bits": 1148091090,
+            "signed_bits": 1148091090,
+            "value": 953.9190673828125,
+            "negative_zero": false,
+            "nonfinite": false
+          }
+        }
+      },
+      "after": {
+        "error": null,
+        "stop": {
+          "samples": 1,
+          "stopped": true,
+          "reason": "requested",
+          "failure_code": null
+        },
+        "detached": true,
+        "sample": {
+          "actor_id": 1500,
+          "actor_pointer": "0x21993e80",
+          "instance_id": 2003,
+          "definition_id": 478,
+          "primary": {
+            "status": "observed",
+            "pointer": "0x21ad0380",
+            "owner": "0x21993e80",
+            "class_index": 17,
+            "key": 1496005215,
+            "charges": 1,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "charge_gate": {
+              "charges_nonzero": true,
+              "getter_short_circuits_to_zero": true
+            },
+            "timer": {
+              "pointer": null,
+              "body_pointer": null,
+              "expected_generation": 0,
+              "actual_generation": null,
+              "generation_equal": null,
+              "native_handle_proof": "bounded_timer_specific_static_checks_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "unavailable",
+              "availability": "unknown",
+              "reason": "null_timer",
+              "remaining_f32": null,
+              "initial_f32": null,
+              "pause_byte": null,
+              "legacy_inner_plus_24": {
+                "semantics": "unverified_raw_bits_not_cooldown",
+                "raw": null
+              }
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          },
+          "game_clock_before": {
+            "bits": 1148138087,
+            "signed_bits": 1148138087,
+            "value": 956.7875366210938,
+            "negative_zero": false,
+            "nonfinite": false
+          },
+          "game_clock_after": {
+            "bits": 1148152156,
+            "signed_bits": 1148152156,
+            "value": 957.646240234375,
+            "negative_zero": false,
+            "nonfinite": false
+          }
+        }
+      },
+      "observed_stage": "post-expiry"
+    }
+  },
+  "tick": {
+    "rows": 800,
+    "exact_unpaused_same_delta_f32_matches": 800,
+    "mismatches": 0,
+    "instrumented": true,
+    "minimum_observed_remaining": 25.450061798095703,
+    "source_sha256": "a9bff0d9db0346a52b3ce3177bd53fac0937f4f1a170ec145dcbabb68ab84f27",
+    "representative_first": {
+      "tag": "owned_cooldown_tick_call",
+      "ordinal": 1,
+      "row": 1,
+      "utc_ms": 1791998048588,
+      "before": {
+        "identity": {
+          "body": "0x21b86a78",
+          "state": "0x21ad0380",
+          "actor": "0x21993e80",
+          "generation": 173294,
+          "state_generation": 173294,
+          "referenced": true,
+          "pending": false,
+          "charges": 0
+        },
+        "remaining": {
+          "bits": 1119105843,
+          "signed_bits": 1119105843,
+          "value": 90.0999984741211
+        },
+        "delta": {
+          "bits": 998575387,
+          "signed_bits": 998575387,
+          "value": 0.0040604001842439175
+        },
+        "pause": 0,
+        "game_clock": {
+          "bits": 1138574213,
+          "signed_bits": 1138574213,
+          "value": 442.5274963378906
+        }
+      },
+      "after": {
+        "status": "observed",
+        "identity": {
+          "body": "0x21b86a78",
+          "state": "0x21ad0380",
+          "actor": "0x21993e80",
+          "generation": 173294,
+          "state_generation": 173294,
+          "referenced": true,
+          "pending": false,
+          "charges": 0
+        },
+        "delta": {
+          "bits": 998575387,
+          "signed_bits": 998575387,
+          "value": 0.0040604001842439175
+        },
+        "game_clock": {
+          "bits": 1138574213,
+          "signed_bits": 1138574213,
+          "value": 442.5274963378906
+        },
+        "state": {
+          "pointer": "0x21ad0380",
+          "charges": 0,
+          "inner": "0x21b86a8c"
+        },
+        "remaining": {
+          "bits": 1119105311,
+          "signed_bits": 1119105311,
+          "value": 90.09593963623047
+        }
+      },
+      "instrumented": true,
+      "original_frame_partition_verified": false,
+      "native_handle_verified": false,
+      "lifetime_unverified": true
+    },
+    "representative_last": {
+      "tag": "owned_cooldown_tick_call",
+      "ordinal": 15900,
+      "row": 800,
+      "utc_ms": 1791998113233,
+      "before": {
+        "identity": {
+          "body": "0x21b86a78",
+          "state": "0x21ad0380",
+          "actor": "0x21993e80",
+          "generation": 173294,
+          "state_generation": 173294,
+          "referenced": true,
+          "pending": false,
+          "charges": 0
+        },
+        "remaining": {
+          "bits": 1103864301,
+          "signed_bits": 1103864301,
+          "value": 25.454065322875977
+        },
+        "delta": {
+          "bits": 998451692,
+          "signed_bits": 998451692,
+          "value": 0.004002800211310387
+        },
+        "pause": 0,
+        "game_clock": {
+          "bits": 1140692407,
+          "signed_bits": 1140692407,
+          "value": 507.1696472167969
+        }
+      },
+      "after": {
+        "status": "observed",
+        "identity": {
+          "body": "0x21b86a78",
+          "state": "0x21ad0380",
+          "actor": "0x21993e80",
+          "generation": 173294,
+          "state_generation": 173294,
+          "referenced": true,
+          "pending": false,
+          "charges": 0
+        },
+        "delta": {
+          "bits": 998451692,
+          "signed_bits": 998451692,
+          "value": 0.004002800211310387
+        },
+        "game_clock": {
+          "bits": 1140692407,
+          "signed_bits": 1140692407,
+          "value": 507.1696472167969
+        },
+        "state": {
+          "pointer": "0x21ad0380",
+          "charges": 0,
+          "inner": "0x21b86a8c"
+        },
+        "remaining": {
+          "bits": 1103862202,
+          "signed_bits": 1103862202,
+          "value": 25.450061798095703
+        }
+      },
+      "instrumented": true,
+      "original_frame_partition_verified": false,
+      "native_handle_verified": false,
+      "lifetime_unverified": true
+    },
+    "original_frame_partition_verified": false,
+    "expiry_rows_retained": false
+  },
+  "latest_attempt": {
+    "stages_captured": 0,
+    "trace_returncode": 1,
+    "cause": "owned GUI worker exited at its one-hour loop deadline before timed-final click",
+    "worker_exit_utc": "2026-10-14T17:24:43.192822+00:00"
+  },
+  "cleanup": {
+    "utc": "2026-10-14T17:34:49.455791+00:00",
+    "owned_game_worker_absent": true,
+    "observer_cleanup_separate_receipt": true,
+    "pending_command_absent": true,
+    "original_files": 661,
+    "original_hashes_creation_write_times_match": true,
+    "recreated_or_repaired": 13,
+    "new_session_files_archived": 133,
+    "owned_scheduled_tasks_removed": 1,
+    "executable_hashes_unchanged": true,
+    "game_screenshot_captured": true
+  },
+  "raw_replay_binary_dump_published": false,
+  "private_screenshot_hashes": {
+    "short-after-use.png": "27e90a0c2fe247a3e52f24d71698646748afd081a7d467ba6af4767abfb9d791",
+    "short-middle.png": "430afd28f43a89bf0a2b45c1cb333e4c4fd5dced771ac4c786760a3356d83b83",
+    "short-expiry.png": "9e79fc0e190da517e983f022c323297b91ccf07917e093dcfe3e9ed59d702cba",
+    "countdown-practice-v2-after-use.png": "38cb4da3337a96944addf069d772416a81c17e4933155a889b6c18133bdf51d9"
+  },
+  "checks": {
+    "suite": {
+      "python": "3.14.7",
+      "tests": 920,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "successful": true
+    },
+    "collector_scenarios": 81,
+    "source_sha256": {
+      "stock": "24660b5c811dff07691bf28437aaf8a6cda26021c1780a0284484a98556684f1",
+      "extension": "69005ef72d2eea4a71b1c7c7e54e7ca23c844dcdbf795f2ee3a5726175d343fb",
+      "combined": "ef63004041e294ac3642a7505749268fa680ea46e28b13417b51edc80279e399"
+    }
+  }
+}

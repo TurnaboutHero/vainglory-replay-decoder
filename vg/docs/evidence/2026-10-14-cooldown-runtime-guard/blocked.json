@@ -1,0 +1,63 @@
+{
+  "schema_version": "cooldown-runtime-guard.v1",
+  "code_baseline": "33611314a29d2ad57a4c56a2f6da569b22ec9641",
+  "cloud_evidence": "311232a1deaa60835068a1939eaf1ec023e21ac0",
+  "handoff_received": true,
+  "fresh_preflight": {
+    "session_unlocked": true,
+    "preexisting_game_or_workers": false,
+    "owned_game_pid": 69176,
+    "owned_worker_pid": 30544,
+    "executable_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc"
+  },
+  "first_capture": {
+    "begin_utc": "2026-10-14T13:29:31.882330+00:00",
+    "end_utc": "2026-10-14T13:29:31.998209+00:00",
+    "desktop": "Default",
+    "foreground_name": "OP.GG.exe",
+    "error": "Owned game not foreground on Default desktop; refused",
+    "capture_attempts": 1,
+    "screenshots_captured": 0
+  },
+  "activities": {
+    "owned_game_launched": true,
+    "normal_focus_attempts": 1,
+    "post_guard_failure_focus_or_capture_retries": 0,
+    "gameplay_click_or_key_commands": 0,
+    "observer_attachments": 0,
+    "slot_substitutions": 0,
+    "hypothesis_trials": 0
+  },
+  "cleanup": {
+    "utc": "2026-10-14T13:33:55.973596+00:00",
+    "owned_game_worker_absent": true,
+    "observer_started": false,
+    "pending_command_absent": true,
+    "original_files": 661,
+    "original_hashes_creation_write_times_match": true,
+    "recreated_or_repaired": 0,
+    "new_session_files_archived": 0,
+    "owned_scheduled_tasks_removed": 1,
+    "executable_hashes_unchanged": true,
+    "game_screenshot_captured": false
+  },
+  "private_receipt_sha256": {
+    "commands.jsonl": "53569f6701c7a41062e70806b951e41f652ecf2a76340eef3e6e512e0129100a",
+    "cleanup.json": "c81a6d23932444e94777c306150faf9f8b59c5226c366b6c9b3ac9d7d7e277bf",
+    "identity.json": "59f045637e0aec646e8c172b619b6df399bc55379e6a42490545756a397c371e",
+    "worker-exited.json": "d80c8b6eb1c87041bcc28219620b9941bf6963467c968d72e1a62e7595abdbf0",
+    "task-cleanup.json": "6e1b7547eda4e95af6d0d0b4520d595a36d31bbd9032b73797df190bfd96f1c0"
+  },
+  "hypotheses": {
+    "same_definition_shares": "NOT_RUN",
+    "sell_rebuy_preserves": "NOT_RUN",
+    "different_tiers_independent": "NOT_RUN"
+  },
+  "remaining_seconds": null,
+  "blocker": "owned_game_foreground_not_verified",
+  "required_for_resume": [
+    "new_user_resume_authorization",
+    "actual_owned_game_foreground",
+    "fresh_runtime_guards"
+  ]
+}

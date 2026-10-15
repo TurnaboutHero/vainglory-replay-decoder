@@ -1,0 +1,840 @@
+{
+  "schema": "cooldown-live-bounded-receipt.v1",
+  "code_baseline": "489c7210733736ae917be5bdb9a7b03005405c39",
+  "executable_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "scenario_scope": "two normal UI practice matches, one owned process; not replay-frame validation",
+  "dispositions": {
+    "same_definition_distinct_instances": "SUPPORTED",
+    "complete_sale_and_rebuy": "SUPPORTED",
+    "sprint_vs_travel_independence": "SUPPORTED"
+  },
+  "observed_keys": {
+    "477": "0x8c2eef5b",
+    "478": "0x592b3a5f"
+  },
+  "samples": {
+    "practice-baseline": {
+      "utc": "2026-10-14T14:23:43.071903+00:00",
+      "actor_id": 1500,
+      "actor_pointer": "0x21067e80",
+      "identity": {
+        "id": 1500,
+        "type": "0x20fa878c",
+        "component": "0x210902c8",
+        "inventory": "0x21225aa4"
+      },
+      "boots": [],
+      "atomic": false,
+      "lifetime_unverified": true,
+      "native_handle_verified": false,
+      "detached": true,
+      "source_sha256": "660689322aff66ec2abc4f1e2ddd6c6bc5975ce9c2b100c069d45b46c5a5103e"
+    },
+    "r2-sprint-one": {
+      "utc": "2026-10-14T14:50:03.477080+00:00",
+      "actor_id": 1500,
+      "actor_pointer": "0x21067e80",
+      "identity": {
+        "id": 1500,
+        "type": "0x20fa878c",
+        "component": "0x210902c8",
+        "inventory": "0x21225aa4"
+      },
+      "boots": [
+        {
+          "array_index": 3,
+          "definition_id": 477,
+          "instance_id": 2003,
+          "quantity": 1,
+          "item_flags": 0,
+          "item_pointer": "0x211b4410",
+          "definition_pointer": "0x20d92120",
+          "ability_pointer": "0x21009c20",
+          "primary": {
+            "status": "observed",
+            "pointer": "0x211a3ec0",
+            "owner": "0x21067e80",
+            "class_index": 17,
+            "key": 2351886171,
+            "charges": 1,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "timer": {
+              "pointer": null,
+              "expected_generation": 0,
+              "actual_generation": null,
+              "generation_equal": null,
+              "native_handle_proof": "limited_generation_comparison_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "unavailable",
+              "reason": "null_timer",
+              "pause_byte": null,
+              "field_0x24_raw": null,
+              "field_0x24_semantics": "unverified; zero while HUD countdown is positive"
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          }
+        }
+      ],
+      "atomic": false,
+      "lifetime_unverified": true,
+      "native_handle_verified": false,
+      "detached": true,
+      "source_sha256": "fef84e2dd3e392cb3c879fb30b1b447f66ac0a4a90009370a0300e64e07a4ba4"
+    },
+    "rebuy-absent": {
+      "utc": "2026-10-14T14:52:07.637552+00:00",
+      "actor_id": 1500,
+      "actor_pointer": "0x21067e80",
+      "identity": {
+        "id": 1500,
+        "type": "0x20fa878c",
+        "component": "0x210902c8",
+        "inventory": "0x21225aa4"
+      },
+      "boots": [],
+      "atomic": false,
+      "lifetime_unverified": true,
+      "native_handle_verified": false,
+      "detached": true,
+      "source_sha256": "940504837efa6257590805f37367e1735b7480d018150086fcd98d0f6bb39c4b"
+    },
+    "rebuy-after": {
+      "utc": "2026-10-14T14:52:13.127256+00:00",
+      "actor_id": 1500,
+      "actor_pointer": "0x21067e80",
+      "identity": {
+        "id": 1500,
+        "type": "0x20fa878c",
+        "component": "0x210902c8",
+        "inventory": "0x21225aa4"
+      },
+      "boots": [
+        {
+          "array_index": 3,
+          "definition_id": 477,
+          "instance_id": 2004,
+          "quantity": 1,
+          "item_flags": 0,
+          "item_pointer": "0x211b4410",
+          "definition_pointer": "0x20d92120",
+          "ability_pointer": "0x21019920",
+          "primary": {
+            "status": "observed",
+            "pointer": "0x211a3ec0",
+            "owner": "0x21067e80",
+            "class_index": 17,
+            "key": 2351886171,
+            "charges": 0,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "timer": {
+              "pointer": "0x2125a220",
+              "expected_generation": 151486,
+              "actual_generation": 151486,
+              "generation_equal": true,
+              "native_handle_proof": "limited_generation_comparison_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "observed",
+              "reason": null,
+              "pause_byte": 0,
+              "field_0x24_raw": {
+                "bits": 0,
+                "value": 0
+              },
+              "field_0x24_semantics": "unverified; zero while HUD countdown is positive"
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          }
+        }
+      ],
+      "atomic": false,
+      "lifetime_unverified": true,
+      "native_handle_verified": false,
+      "detached": true,
+      "source_sha256": "1b9f0cf3e4a02046e93608486bb87f820f8b70f845d0a183b51babc8f8ad0a36"
+    },
+    "rebuy-before": {
+      "utc": "2026-10-14T14:51:03.315705+00:00",
+      "actor_id": 1500,
+      "actor_pointer": "0x21067e80",
+      "identity": {
+        "id": 1500,
+        "type": "0x20fa878c",
+        "component": "0x210902c8",
+        "inventory": "0x21225aa4"
+      },
+      "boots": [
+        {
+          "array_index": 3,
+          "definition_id": 477,
+          "instance_id": 2003,
+          "quantity": 1,
+          "item_flags": 0,
+          "item_pointer": "0x211b4410",
+          "definition_pointer": "0x20d92120",
+          "ability_pointer": "0x21009c20",
+          "primary": {
+            "status": "observed",
+            "pointer": "0x211a3ec0",
+            "owner": "0x21067e80",
+            "class_index": 17,
+            "key": 2351886171,
+            "charges": 0,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "timer": {
+              "pointer": "0x2125a220",
+              "expected_generation": 151486,
+              "actual_generation": 151486,
+              "generation_equal": true,
+              "native_handle_proof": "limited_generation_comparison_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "observed",
+              "reason": null,
+              "pause_byte": 0,
+              "field_0x24_raw": {
+                "bits": 0,
+                "value": 0
+              },
+              "field_0x24_semantics": "unverified; zero while HUD countdown is positive"
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          }
+        }
+      ],
+      "atomic": false,
+      "lifetime_unverified": true,
+      "native_handle_verified": false,
+      "detached": true,
+      "source_sha256": "329d399cf540ea58fe6e8eaf96b1adad94c15488655c2ee6c8790c1776bac5b4"
+    },
+    "sprint-one": {
+      "utc": "2026-10-14T14:26:32.740614+00:00",
+      "actor_id": 1500,
+      "actor_pointer": "0x21067e80",
+      "identity": {
+        "id": 1500,
+        "type": "0x20fa878c",
+        "component": "0x210902c8",
+        "inventory": "0x21225aa4"
+      },
+      "boots": [
+        {
+          "array_index": 3,
+          "definition_id": 477,
+          "instance_id": 2003,
+          "quantity": 1,
+          "item_flags": 0,
+          "item_pointer": "0x211b4410",
+          "definition_pointer": "0x20d92120",
+          "ability_pointer": "0x210042c0",
+          "primary": {
+            "status": "observed",
+            "pointer": "0x211a3248",
+            "owner": "0x21067e80",
+            "class_index": 17,
+            "key": 2351886171,
+            "charges": 1,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "timer": {
+              "pointer": null,
+              "expected_generation": 0,
+              "actual_generation": null,
+              "generation_equal": null,
+              "native_handle_proof": "limited_generation_comparison_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "unavailable",
+              "reason": "null_timer",
+              "pause_byte": null,
+              "field_0x24_raw": null,
+              "field_0x24_semantics": "unverified; zero while HUD countdown is positive"
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          }
+        }
+      ],
+      "atomic": false,
+      "lifetime_unverified": true,
+      "native_handle_verified": false,
+      "detached": true,
+      "source_sha256": "56c47bea7dce8857ac53098a7b3bebabe99035cd5f4a43f95937882c2abab9fa"
+    },
+    "sprint-two": {
+      "utc": "2026-10-14T14:27:10.354439+00:00",
+      "actor_id": 1500,
+      "actor_pointer": "0x21067e80",
+      "identity": {
+        "id": 1500,
+        "type": "0x20fa878c",
+        "component": "0x210902c8",
+        "inventory": "0x21225aa4"
+      },
+      "boots": [
+        {
+          "array_index": 3,
+          "definition_id": 477,
+          "instance_id": 2003,
+          "quantity": 1,
+          "item_flags": 0,
+          "item_pointer": "0x211b4410",
+          "definition_pointer": "0x20d92120",
+          "ability_pointer": "0x210042c0",
+          "primary": {
+            "status": "observed",
+            "pointer": "0x211a3248",
+            "owner": "0x21067e80",
+            "class_index": 17,
+            "key": 2351886171,
+            "charges": 1,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "timer": {
+              "pointer": null,
+              "expected_generation": 0,
+              "actual_generation": null,
+              "generation_equal": null,
+              "native_handle_proof": "limited_generation_comparison_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "unavailable",
+              "reason": "null_timer",
+              "pause_byte": null,
+              "field_0x24_raw": null,
+              "field_0x24_semantics": "unverified; zero while HUD countdown is positive"
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          }
+        },
+        {
+          "array_index": 4,
+          "definition_id": 477,
+          "instance_id": 2004,
+          "quantity": 1,
+          "item_flags": 0,
+          "item_pointer": "0x211b43d4",
+          "definition_pointer": "0x20d92120",
+          "ability_pointer": "0x2101a580",
+          "primary": {
+            "status": "observed",
+            "pointer": "0x211a3248",
+            "owner": "0x21067e80",
+            "class_index": 17,
+            "key": 2351886171,
+            "charges": 1,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "timer": {
+              "pointer": null,
+              "expected_generation": 0,
+              "actual_generation": null,
+              "generation_equal": null,
+              "native_handle_proof": "limited_generation_comparison_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "unavailable",
+              "reason": "null_timer",
+              "pause_byte": null,
+              "field_0x24_raw": null,
+              "field_0x24_semantics": "unverified; zero while HUD countdown is positive"
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          }
+        }
+      ],
+      "atomic": false,
+      "lifetime_unverified": true,
+      "native_handle_verified": false,
+      "detached": true,
+      "source_sha256": "e4897de3df779162e7b098a72f3bcb49ca021db265dcdacf045632e58031485a"
+    },
+    "sprint-used": {
+      "utc": "2026-10-14T14:28:46.713346+00:00",
+      "actor_id": 1500,
+      "actor_pointer": "0x21067e80",
+      "identity": {
+        "id": 1500,
+        "type": "0x20fa878c",
+        "component": "0x210902c8",
+        "inventory": "0x21225aa4"
+      },
+      "boots": [
+        {
+          "array_index": 3,
+          "definition_id": 477,
+          "instance_id": 2003,
+          "quantity": 1,
+          "item_flags": 0,
+          "item_pointer": "0x211b4410",
+          "definition_pointer": "0x20d92120",
+          "ability_pointer": "0x210042c0",
+          "primary": {
+            "status": "observed",
+            "pointer": "0x211a3248",
+            "owner": "0x21067e80",
+            "class_index": 17,
+            "key": 2351886171,
+            "charges": 0,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "timer": {
+              "pointer": "0x2125aa08",
+              "expected_generation": 52680,
+              "actual_generation": 52680,
+              "generation_equal": true,
+              "native_handle_proof": "limited_generation_comparison_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "observed",
+              "reason": null,
+              "pause_byte": 0,
+              "field_0x24_raw": {
+                "bits": 0,
+                "value": 0
+              },
+              "field_0x24_semantics": "unverified; zero while HUD countdown is positive"
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          }
+        },
+        {
+          "array_index": 4,
+          "definition_id": 477,
+          "instance_id": 2004,
+          "quantity": 1,
+          "item_flags": 0,
+          "item_pointer": "0x211b43d4",
+          "definition_pointer": "0x20d92120",
+          "ability_pointer": "0x2101a580",
+          "primary": {
+            "status": "observed",
+            "pointer": "0x211a3248",
+            "owner": "0x21067e80",
+            "class_index": 17,
+            "key": 2351886171,
+            "charges": 0,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "timer": {
+              "pointer": "0x2125aa08",
+              "expected_generation": 52680,
+              "actual_generation": 52680,
+              "generation_equal": true,
+              "native_handle_proof": "limited_generation_comparison_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "observed",
+              "reason": null,
+              "pause_byte": 0,
+              "field_0x24_raw": {
+                "bits": 0,
+                "value": 0
+              },
+              "field_0x24_semantics": "unverified; zero while HUD countdown is positive"
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          }
+        }
+      ],
+      "atomic": false,
+      "lifetime_unverified": true,
+      "native_handle_verified": false,
+      "detached": true,
+      "source_sha256": "93200f4499b673707aa48e1e6b4d50c36907f35e59a5c0e91d194480daab8511"
+    },
+    "tiers-before": {
+      "utc": "2026-10-14T14:53:51.896995+00:00",
+      "actor_id": 1500,
+      "actor_pointer": "0x21067e80",
+      "identity": {
+        "id": 1500,
+        "type": "0x20fa878c",
+        "component": "0x210902c8",
+        "inventory": "0x21225aa4"
+      },
+      "boots": [
+        {
+          "array_index": 3,
+          "definition_id": 478,
+          "instance_id": 2005,
+          "quantity": 1,
+          "item_flags": 0,
+          "item_pointer": "0x211b43d4",
+          "definition_pointer": "0x20d92450",
+          "ability_pointer": "0x2100ed40",
+          "primary": {
+            "status": "observed",
+            "pointer": "0x211a3c60",
+            "owner": "0x21067e80",
+            "class_index": 17,
+            "key": 1496005215,
+            "charges": 1,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "timer": {
+              "pointer": null,
+              "expected_generation": 0,
+              "actual_generation": null,
+              "generation_equal": null,
+              "native_handle_proof": "limited_generation_comparison_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "unavailable",
+              "reason": "null_timer",
+              "pause_byte": null,
+              "field_0x24_raw": null,
+              "field_0x24_semantics": "unverified; zero while HUD countdown is positive"
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          }
+        },
+        {
+          "array_index": 4,
+          "definition_id": 477,
+          "instance_id": 2006,
+          "quantity": 1,
+          "item_flags": 0,
+          "item_pointer": "0x211b4410",
+          "definition_pointer": "0x20d92120",
+          "ability_pointer": "0x21003500",
+          "primary": {
+            "status": "observed",
+            "pointer": "0x211a3ec0",
+            "owner": "0x21067e80",
+            "class_index": 17,
+            "key": 2351886171,
+            "charges": 1,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "timer": {
+              "pointer": null,
+              "expected_generation": 0,
+              "actual_generation": null,
+              "generation_equal": null,
+              "native_handle_proof": "limited_generation_comparison_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "unavailable",
+              "reason": "null_timer",
+              "pause_byte": null,
+              "field_0x24_raw": null,
+              "field_0x24_semantics": "unverified; zero while HUD countdown is positive"
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          }
+        }
+      ],
+      "atomic": false,
+      "lifetime_unverified": true,
+      "native_handle_verified": false,
+      "detached": true,
+      "source_sha256": "2d2edc5413529a51402ec0943732c2f7941776fb619ba0a36189c66d3258898d"
+    },
+    "tiers-both-used": {
+      "utc": "2026-10-14T14:55:35.500335+00:00",
+      "actor_id": 1500,
+      "actor_pointer": "0x21067e80",
+      "identity": {
+        "id": 1500,
+        "type": "0x20fa878c",
+        "component": "0x210902c8",
+        "inventory": "0x21225aa4"
+      },
+      "boots": [
+        {
+          "array_index": 3,
+          "definition_id": 478,
+          "instance_id": 2005,
+          "quantity": 1,
+          "item_flags": 0,
+          "item_pointer": "0x211b43d4",
+          "definition_pointer": "0x20d92450",
+          "ability_pointer": "0x2100ed40",
+          "primary": {
+            "status": "observed",
+            "pointer": "0x211a3c60",
+            "owner": "0x21067e80",
+            "class_index": 17,
+            "key": 1496005215,
+            "charges": 0,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "timer": {
+              "pointer": "0x2125a19c",
+              "expected_generation": 179931,
+              "actual_generation": 179931,
+              "generation_equal": true,
+              "native_handle_proof": "limited_generation_comparison_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "observed",
+              "reason": null,
+              "pause_byte": 0,
+              "field_0x24_raw": {
+                "bits": 0,
+                "value": 0
+              },
+              "field_0x24_semantics": "unverified; zero while HUD countdown is positive"
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          }
+        },
+        {
+          "array_index": 4,
+          "definition_id": 477,
+          "instance_id": 2006,
+          "quantity": 1,
+          "item_flags": 0,
+          "item_pointer": "0x211b4410",
+          "definition_pointer": "0x20d92120",
+          "ability_pointer": "0x21003500",
+          "primary": {
+            "status": "observed",
+            "pointer": "0x211a3ec0",
+            "owner": "0x21067e80",
+            "class_index": 17,
+            "key": 2351886171,
+            "charges": 0,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "timer": {
+              "pointer": "0x2125a3ac",
+              "expected_generation": 180422,
+              "actual_generation": 180422,
+              "generation_equal": true,
+              "native_handle_proof": "limited_generation_comparison_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "observed",
+              "reason": null,
+              "pause_byte": 0,
+              "field_0x24_raw": {
+                "bits": 0,
+                "value": 0
+              },
+              "field_0x24_semantics": "unverified; zero while HUD countdown is positive"
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          }
+        }
+      ],
+      "atomic": false,
+      "lifetime_unverified": true,
+      "native_handle_verified": false,
+      "detached": true,
+      "source_sha256": "293406ffe2295a1c4426d8d5a525114b2d4f76d0a7438f1efb3eaf9f3c6338bf"
+    },
+    "travel-used": {
+      "utc": "2026-10-14T14:55:30.484656+00:00",
+      "actor_id": 1500,
+      "actor_pointer": "0x21067e80",
+      "identity": {
+        "id": 1500,
+        "type": "0x20fa878c",
+        "component": "0x210902c8",
+        "inventory": "0x21225aa4"
+      },
+      "boots": [
+        {
+          "array_index": 3,
+          "definition_id": 478,
+          "instance_id": 2005,
+          "quantity": 1,
+          "item_flags": 0,
+          "item_pointer": "0x211b43d4",
+          "definition_pointer": "0x20d92450",
+          "ability_pointer": "0x2100ed40",
+          "primary": {
+            "status": "observed",
+            "pointer": "0x211a3c60",
+            "owner": "0x21067e80",
+            "class_index": 17,
+            "key": 1496005215,
+            "charges": 0,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "timer": {
+              "pointer": "0x2125a19c",
+              "expected_generation": 179931,
+              "actual_generation": 179931,
+              "generation_equal": true,
+              "native_handle_proof": "limited_generation_comparison_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "observed",
+              "reason": null,
+              "pause_byte": 0,
+              "field_0x24_raw": {
+                "bits": 0,
+                "value": 0
+              },
+              "field_0x24_semantics": "unverified; zero while HUD countdown is positive"
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          }
+        },
+        {
+          "array_index": 4,
+          "definition_id": 477,
+          "instance_id": 2006,
+          "quantity": 1,
+          "item_flags": 0,
+          "item_pointer": "0x211b4410",
+          "definition_pointer": "0x20d92120",
+          "ability_pointer": "0x21003500",
+          "primary": {
+            "status": "observed",
+            "pointer": "0x211a3ec0",
+            "owner": "0x21067e80",
+            "class_index": 17,
+            "key": 2351886171,
+            "charges": 1,
+            "lifetime_unverified": true,
+            "atomic": false,
+            "timer": {
+              "pointer": null,
+              "expected_generation": 0,
+              "actual_generation": null,
+              "generation_equal": null,
+              "native_handle_proof": "limited_generation_comparison_only",
+              "native_handle_verified": false,
+              "lifetime_unverified": true,
+              "atomic": false,
+              "status": "unavailable",
+              "reason": "null_timer",
+              "pause_byte": null,
+              "field_0x24_raw": null,
+              "field_0x24_semantics": "unverified; zero while HUD countdown is positive"
+            }
+          },
+          "secondary": {
+            "status": "unavailable",
+            "reason": "null_state",
+            "pointer": null
+          }
+        }
+      ],
+      "atomic": false,
+      "lifetime_unverified": true,
+      "native_handle_verified": false,
+      "detached": true,
+      "source_sha256": "a3bba4cb0b957aa1ada1465b9f6810ea0531eae0137d3347c1e1439596d0575c"
+    }
+  },
+  "screens": {
+    "sprint-used.png": {
+      "sha256": "8e9414b912b5c4eb1ed9243cb6fea268009d20b4f6f7f26b42f2109c34dfcc65",
+      "observed": "Both distinct Sprint Boots show 150; lower HUD partly covered by taskbar."
+    },
+    "rebuy-hud.png": {
+      "sha256": "8ea4d6a359966f5d76412fff3cbd0c6146f3e1e59d32fc9bc598bd849c98fdc4",
+      "observed": "New Sprint Boots show 75 after complete sale and repurchase."
+    },
+    "travel-used.png": {
+      "sha256": "9bcd7232e43a6cc1a267af3ff8d2a8fe6d4d75c659643356ab0edd658f437640",
+      "observed": "Travel Boots show 90; Sprint Boots have no countdown."
+    },
+    "both-tiers-used.png": {
+      "sha256": "ffde1a0ee9871e7c156521823acdfeaf77e64c6a90df50b00c264a473e508b46",
+      "observed": "Travel Boots show 85 and Sprint Boots show 150 after separate uses."
+    }
+  },
+  "exact_remaining_seconds_verified": false,
+  "full_native_timer_handle_verified": false,
+  "cleanup": {
+    "utc": "2026-10-14T14:56:59.903512+00:00",
+    "owned_game_worker_absent": true,
+    "pending_command_absent": true,
+    "original_files": 661,
+    "original_hashes_creation_write_times_match": true,
+    "recreated_or_repaired": 470,
+    "new_session_files_archived": 61,
+    "owned_scheduled_tasks_removed": 1,
+    "executable_hashes_unchanged": true,
+    "game_screenshot_captured": true
+  },
+  "observer_sessions_detached": 11,
+  "total_owned_scheduled_tasks_removed": 4,
+  "private_cleanup_flag_caveat": "Legacy cleanup utility observer_started=false is not used as observation proof.",
+  "private_cleanup_sha256": "588d765b01b68ed721a18322f3b40248839b20fbc1db184ebb7b3f589efd4b29",
+  "offline_collector_checks": {
+    "passed": 35,
+    "failed": 0,
+    "source_sha256": {
+      "stock": "24660b5c811dff07691bf28437aaf8a6cda26021c1780a0284484a98556684f1",
+      "extension": "1eb5208d76aa03e5966724544377b4072bc30a7964f0a99d7ff355c58969bf78",
+      "combined": "30217ef16e9351d67a365d78a7b98ad0979d22889e4d9d0af81fb9b2ccb12d72"
+    }
+  },
+  "private_action_log_sha256": "a4103473054d08abcdf60e7fbb2a958df45c127a1591c7fc229fbb76d1dd0480"
+}

@@ -109,6 +109,11 @@ Game-screen playback and native execution validation were explicitly excluded
 from this increment because the operator cannot perform them currently. They
 remain separate follow-up evidence, not part of the 35,264 matching-row claim.
 
+The later [live boots follow-up](COOLDOWN_LIVE_2026-10-14.md) exercised normal
+practice UI actions with passive native observations. It supplies separate
+runtime evidence for those three scenarios, not replay-frame alignment or
+whole-opcode validation of this corpus.
+
 Focused tests cover exact layouts, unsigned/raw fields, mode-active refs,
 nonfinite/negative-zero floats, unknown modes, entity filtering, real CLI
 success/truncation and unchanged inventory baselines/transitions until a separate
