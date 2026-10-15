@@ -12,6 +12,7 @@ from vg.core.native_gold import read_native_gold
 from vg.core.native_inventory import NativeInventoryItem, read_native_inventory
 from vg.core.native_query import GameTime, RecordTime, select_native_query
 from vg.core.native_roster import read_native_roster
+from vg.core.recording_identity import RecordingIdentitySummary, summarize_recording_identity
 from vg.core.native_stats import read_native_stats
 from vg.core.replay_input import replay_sections, select_replay
 from vg.core.replay_output import ReportInputs, ReplayOutputError
@@ -133,6 +134,7 @@ class PlayerStateResult:
     display_values: dict = field(default_factory=dict)
     player_selection: dict = field(default_factory=dict)
     query_timing: dict = field(default_factory=dict)
+    recording_identity: RecordingIdentitySummary | None = None
     definitive_analysis: dict = field(init=False)
 
     def __post_init__(self) -> None:
@@ -252,6 +254,7 @@ def decode_player_state(
     replay_scope = frame_scope(frames)
     query = select_native_query(frames, cutoff)
     boundary = _boundary(query.record_boundary)
+    roster = read_native_roster(frames, cutoff)
     end_requests = tuple(
         EndRequest(RecordBoundary(request.frame_index, request.record_offset), request.record_time,
                    request.winning_team_raw, request.winning_team_raw & 0xff, request.end_reason, request.request_status)
@@ -292,13 +295,13 @@ def decode_player_state(
                 'missing_ids': missing, 'returned_count': len(players),
                 'support_scope': 'all_recorded_players_before_selection'},
             query_timing=_query_timing(query, sources),
+            recording_identity=summarize_recording_identity(roster.recording_identity),
         )
 
     if not query.valid:
         fields = {field: StateFieldStatus(query.status, query.reason) for field in REQUIRED_FIELDS}
         return finish(query.status, query.reason, fields=fields)
 
-    roster = read_native_roster(frames, cutoff)
     roster_boundary_ok = roster.record_boundary == query.record_boundary
     ids = [player.entity_id for player in roster.players
            if player.association_status == 'corroborated' and 0 < player.entity_id < 0xffffffff]

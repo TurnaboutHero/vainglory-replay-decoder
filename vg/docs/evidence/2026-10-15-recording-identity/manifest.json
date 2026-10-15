@@ -1,0 +1,45 @@
+{
+  "executable_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "image_base": "0x00400000",
+  "extraction": "GNU objdump, static disassembly only",
+  "files": [
+    {
+      "file": "bootstrap-writer.txt",
+      "start": "0x4cb030",
+      "end_exclusive": "0x4cb3d3",
+      "sha256": "184f3ab2adae90e826dab614d7ab7a46d6fa327cfcb78671dd9e23f9f1b565a8"
+    },
+    {
+      "file": "selected-actor-getter.txt",
+      "start": "0x939790",
+      "end_exclusive": "0x939937",
+      "sha256": "b2821cafab58dbf4bd3655cc7d329a284c0e58d2f1cf8c860b6032a02c7a6bf1",
+      "original_capture_sha256": "dde0905376a832a2fd559d504370611eba819fbc1da31192b42004dee6f87562",
+      "normalization": "Removed trailing spaces from two objdump instruction-byte continuation lines; instruction bytes and disassembly are unchanged."
+    },
+    {
+      "file": "roster-team-getter.txt",
+      "start": "0x93b1d0",
+      "end_exclusive": "0x93b214",
+      "sha256": "c1631d1c0be48a4d648aa9facceb9e429aaa2e7ed84c133dc94703a427c4d257"
+    },
+    {
+      "file": "roster-external-string-setter.txt",
+      "start": "0x95ea90",
+      "end_exclusive": "0x95eae6",
+      "sha256": "434392c5538ae710095062f0a4d76d0bf026df6e1238a09bc0be172508a2e712"
+    },
+    {
+      "file": "selection-mode-setter.txt",
+      "start": "0x95da80",
+      "end_exclusive": "0x95da9a",
+      "sha256": "0db595a23d83b8c2e0d2804c7f3d283514e0a4da197d7fcf0a1d36a6f2cccc8f"
+    }
+  ],
+  "scope": "Static native evidence only. This reference executable does not identify any recording writer.",
+  "reference_provenance": {
+    "original_reference_sha256": "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+    "reviewed_image_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+    "difference": "Clearing IMAGE_FILE_LARGE_ADDRESS_AWARE (0x20) at file offset 0x186 changes characteristics 0x122 to 0x102 and reproduces the original reference hash. Native code bytes are unchanged."
+  }
+}

@@ -1,0 +1,16 @@
+
+rea-cloud/inputs/vgna-windows-static/app/Vainglory.exe:     file format pei-i386
+
+
+Disassembly of section .text:
+
+0095da80 <.text+0x55ca80>:
+  95da80:	55                   	push   ebp
+  95da81:	8b ec                	mov    ebp,esp
+  95da83:	8a 45 08             	mov    al,BYTE PTR [ebp+0x8]
+  95da86:	b9 e0 6c 0e 02       	mov    ecx,0x20e6ce0
+  95da8b:	ff 75 0c             	push   DWORD PTR [ebp+0xc]
+  95da8e:	a2 05 e2 09 02       	mov    ds:0x209e205,al
+  95da93:	e8 38 79 b5 ff       	call   0x4b53d0
+  95da98:	5d                   	pop    ebp
+  95da99:	c3                   	ret

@@ -1,0 +1,165 @@
+
+rea-cloud/inputs/vgna-windows-static/app/Vainglory.exe:     file format pei-i386
+
+
+Disassembly of section .text:
+
+00939790 <.text+0x538790>:
+  939790:	55                   	push   ebp
+  939791:	8b ec                	mov    ebp,esp
+  939793:	51                   	push   ecx
+  939794:	80 3d 05 e2 09 02 00 	cmp    BYTE PTR ds:0x209e205,0x0
+  93979b:	56                   	push   esi
+  93979c:	57                   	push   edi
+  93979d:	0f 84 2b 01 00 00    	je     0x9398ce
+  9397a3:	8b 35 24 74 0e 02    	mov    esi,DWORD PTR ds:0x20e7424
+  9397a9:	85 f6                	test   esi,esi
+  9397ab:	74 0b                	je     0x9397b8
+  9397ad:	8b 76 04             	mov    esi,DWORD PTR [esi+0x4]
+  9397b0:	8b c6                	mov    eax,esi
+  9397b2:	5f                   	pop    edi
+  9397b3:	5e                   	pop    esi
+  9397b4:	8b e5                	mov    esp,ebp
+  9397b6:	5d                   	pop    ebp
+  9397b7:	c3                   	ret
+  9397b8:	53                   	push   ebx
+  9397b9:	b9 e0 6c 0e 02       	mov    ecx,0x20e6ce0
+  9397be:	e8 5d f4 b6 ff       	call   0x4a8c20
+  9397c3:	8b 0d 08 74 0e 02    	mov    ecx,DWORD PTR ds:0x20e7408
+  9397c9:	8b 1d 04 74 0e 02    	mov    ebx,DWORD PTR ds:0x20e7404
+  9397cf:	85 c0                	test   eax,eax
+  9397d1:	75 74                	jne    0x939847
+  9397d3:	33 ff                	xor    edi,edi
+  9397d5:	85 c9                	test   ecx,ecx
+  9397d7:	74 32                	je     0x93980b
+  9397d9:	8d 93 b0 00 00 00    	lea    edx,[ebx+0xb0]
+  9397df:	90                   	nop
+  9397e0:	8b b2 54 ff ff ff    	mov    esi,DWORD PTR [edx-0xac]
+  9397e6:	83 fe ff             	cmp    esi,0xffffffff
+  9397e9:	74 15                	je     0x939800
+  9397eb:	8d 82 50 ff ff ff    	lea    eax,[edx-0xb0]
+  9397f1:	89 45 fc             	mov    DWORD PTR [ebp-0x4],eax
+  9397f4:	8a 02                	mov    al,BYTE PTR [edx]
+  9397f6:	24 0f                	and    al,0xf
+  9397f8:	3c 01                	cmp    al,0x1
+  9397fa:	0f 84 8d 00 00 00    	je     0x93988d
+  939800:	47                   	inc    edi
+  939801:	81 c2 b8 00 00 00    	add    edx,0xb8
+  939807:	3b f9                	cmp    edi,ecx
+  939809:	72 d5                	jb     0x9397e0
+  93980b:	33 ff                	xor    edi,edi
+  93980d:	85 c9                	test   ecx,ecx
+  93980f:	74 36                	je     0x939847
+  939811:	8d 93 b0 00 00 00    	lea    edx,[ebx+0xb0]
+  939817:	66 0f 1f 84 00 00 00 	nop    WORD PTR [eax+eax*1+0x0]
+  93981e:	00 00
+  939820:	8b b2 54 ff ff ff    	mov    esi,DWORD PTR [edx-0xac]
+  939826:	83 fe ff             	cmp    esi,0xffffffff
+  939829:	74 11                	je     0x93983c
+  93982b:	8d 82 50 ff ff ff    	lea    eax,[edx-0xb0]
+  939831:	89 45 fc             	mov    DWORD PTR [ebp-0x4],eax
+  939834:	8a 02                	mov    al,BYTE PTR [edx]
+  939836:	24 0f                	and    al,0xf
+  939838:	3c 02                	cmp    al,0x2
+  93983a:	74 62                	je     0x93989e
+  93983c:	47                   	inc    edi
+  93983d:	81 c2 b8 00 00 00    	add    edx,0xb8
+  939843:	3b f9                	cmp    edi,ecx
+  939845:	72 d9                	jb     0x939820
+  939847:	33 f6                	xor    esi,esi
+  939849:	85 c9                	test   ecx,ecx
+  93984b:	74 34                	je     0x939881
+  93984d:	33 ff                	xor    edi,edi
+  93984f:	90                   	nop
+  939850:	83 7c 1f 04 ff       	cmp    DWORD PTR [edi+ebx*1+0x4],0xffffffff
+  939855:	74 1f                	je     0x939876
+  939857:	8d 4b 08             	lea    ecx,[ebx+0x8]
+  93985a:	68 e0 6c 0e 02       	push   0x20e6ce0
+  93985f:	03 cf                	add    ecx,edi
+  939861:	e8 fa 37 03 00       	call   0x96d060
+  939866:	84 c0                	test   al,al
+  939868:	75 45                	jne    0x9398af
+  93986a:	8b 0d 08 74 0e 02    	mov    ecx,DWORD PTR ds:0x20e7408
+  939870:	8b 1d 04 74 0e 02    	mov    ebx,DWORD PTR ds:0x20e7404
+  939876:	46                   	inc    esi
+  939877:	81 c7 b8 00 00 00    	add    edi,0xb8
+  93987d:	3b f1                	cmp    esi,ecx
+  93987f:	72 cf                	jb     0x939850
+  939881:	5b                   	pop    ebx
+  939882:	83 ce ff             	or     esi,0xffffffff
+  939885:	5f                   	pop    edi
+  939886:	8b c6                	mov    eax,esi
+  939888:	5e                   	pop    esi
+  939889:	8b e5                	mov    esp,ebp
+  93988b:	5d                   	pop    ebp
+  93988c:	c3                   	ret
+  93988d:	8b 45 fc             	mov    eax,DWORD PTR [ebp-0x4]
+  939890:	5b                   	pop    ebx
+  939891:	a3 24 74 0e 02       	mov    ds:0x20e7424,eax
+  939896:	8b c6                	mov    eax,esi
+  939898:	5f                   	pop    edi
+  939899:	5e                   	pop    esi
+  93989a:	8b e5                	mov    esp,ebp
+  93989c:	5d                   	pop    ebp
+  93989d:	c3                   	ret
+  93989e:	8b 45 fc             	mov    eax,DWORD PTR [ebp-0x4]
+  9398a1:	5b                   	pop    ebx
+  9398a2:	a3 24 74 0e 02       	mov    ds:0x20e7424,eax
+  9398a7:	8b c6                	mov    eax,esi
+  9398a9:	5f                   	pop    edi
+  9398aa:	5e                   	pop    esi
+  9398ab:	8b e5                	mov    esp,ebp
+  9398ad:	5d                   	pop    ebp
+  9398ae:	c3                   	ret
+  9398af:	a1 04 74 0e 02       	mov    eax,ds:0x20e7404
+  9398b4:	69 ce b8 00 00 00    	imul   ecx,esi,0xb8
+  9398ba:	5b                   	pop    ebx
+  9398bb:	5f                   	pop    edi
+  9398bc:	8b 74 08 04          	mov    esi,DWORD PTR [eax+ecx*1+0x4]
+  9398c0:	03 c1                	add    eax,ecx
+  9398c2:	a3 24 74 0e 02       	mov    ds:0x20e7424,eax
+  9398c7:	8b c6                	mov    eax,esi
+  9398c9:	5e                   	pop    esi
+  9398ca:	8b e5                	mov    esp,ebp
+  9398cc:	5d                   	pop    ebp
+  9398cd:	c3                   	ret
+  9398ce:	a1 20 74 0e 02       	mov    eax,ds:0x20e7420
+  9398d3:	85 c0                	test   eax,eax
+  9398d5:	74 09                	je     0x9398e0
+  9398d7:	8b 40 04             	mov    eax,DWORD PTR [eax+0x4]
+  9398da:	5f                   	pop    edi
+  9398db:	5e                   	pop    esi
+  9398dc:	8b e5                	mov    esp,ebp
+  9398de:	5d                   	pop    ebp
+  9398df:	c3                   	ret
+  9398e0:	8b 35 08 74 0e 02    	mov    esi,DWORD PTR ds:0x20e7408
+  9398e6:	33 c9                	xor    ecx,ecx
+  9398e8:	85 f6                	test   esi,esi
+  9398ea:	74 34                	je     0x939920
+  9398ec:	a1 04 74 0e 02       	mov    eax,ds:0x20e7404
+  9398f1:	05 b4 00 00 00       	add    eax,0xb4
+  9398f6:	66 66 0f 1f 84 00 00 	data16 nop WORD PTR [eax+eax*1+0x0]
+  9398fd:	00 00 00
+  939900:	8b 90 50 ff ff ff    	mov    edx,DWORD PTR [eax-0xb0]
+  939906:	83 fa ff             	cmp    edx,0xffffffff
+  939909:	74 0b                	je     0x939916
+  93990b:	f6 00 20             	test   BYTE PTR [eax],0x20
+  93990e:	8d b8 4c ff ff ff    	lea    edi,[eax-0xb4]
+  939914:	75 13                	jne    0x939929
+  939916:	41                   	inc    ecx
+  939917:	05 b8 00 00 00       	add    eax,0xb8
+  93991c:	3b ce                	cmp    ecx,esi
+  93991e:	72 e0                	jb     0x939900
+  939920:	5f                   	pop    edi
+  939921:	83 c8 ff             	or     eax,0xffffffff
+  939924:	5e                   	pop    esi
+  939925:	8b e5                	mov    esp,ebp
+  939927:	5d                   	pop    ebp
+  939928:	c3                   	ret
+  939929:	89 3d 20 74 0e 02    	mov    DWORD PTR ds:0x20e7420,edi
+  93992f:	8b c2                	mov    eax,edx
+  939931:	5f                   	pop    edi
+  939932:	5e                   	pop    esi
+  939933:	8b e5                	mov    esp,ebp
+  939935:	5d                   	pop    ebp
+  939936:	c3                   	ret

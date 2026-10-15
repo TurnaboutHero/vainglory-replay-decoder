@@ -1,0 +1,44 @@
+
+rea-cloud/inputs/vgna-windows-static/app/Vainglory.exe:     file format pei-i386
+
+
+Disassembly of section .text:
+
+0095ea90 <.text+0x55da90>:
+  95ea90:	55                   	push   ebp
+  95ea91:	8b ec                	mov    ebp,esp
+  95ea93:	8b 55 08             	mov    edx,DWORD PTR [ebp+0x8]
+  95ea96:	83 fa ff             	cmp    edx,0xffffffff
+  95ea99:	74 49                	je     0x95eae4
+  95ea9b:	56                   	push   esi
+  95ea9c:	8b 35 08 74 0e 02    	mov    esi,DWORD PTR ds:0x20e7408
+  95eaa2:	33 c9                	xor    ecx,ecx
+  95eaa4:	85 f6                	test   esi,esi
+  95eaa6:	74 3b                	je     0x95eae3
+  95eaa8:	a1 04 74 0e 02       	mov    eax,ds:0x20e7404
+  95eaad:	0f 1f 00             	nop    DWORD PTR [eax]
+  95eab0:	39 50 04             	cmp    DWORD PTR [eax+0x4],edx
+  95eab3:	74 0d                	je     0x95eac2
+  95eab5:	41                   	inc    ecx
+  95eab6:	05 b8 00 00 00       	add    eax,0xb8
+  95eabb:	3b ce                	cmp    ecx,esi
+  95eabd:	72 f1                	jb     0x95eab0
+  95eabf:	5e                   	pop    esi
+  95eac0:	5d                   	pop    ebp
+  95eac1:	c3                   	ret
+  95eac2:	85 c0                	test   eax,eax
+  95eac4:	74 1d                	je     0x95eae3
+  95eac6:	8d 48 44             	lea    ecx,[eax+0x44]
+  95eac9:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
+  95eacc:	3b c8                	cmp    ecx,eax
+  95eace:	74 13                	je     0x95eae3
+  95ead0:	83 78 14 10          	cmp    DWORD PTR [eax+0x14],0x10
+  95ead4:	8b d0                	mov    edx,eax
+  95ead6:	72 02                	jb     0x95eada
+  95ead8:	8b 10                	mov    edx,DWORD PTR [eax]
+  95eada:	ff 70 10             	push   DWORD PTR [eax+0x10]
+  95eadd:	52                   	push   edx
+  95eade:	e8 ad 88 af ff       	call   0x457390
+  95eae3:	5e                   	pop    esi
+  95eae4:	5d                   	pop    ebp
+  95eae5:	c3                   	ret

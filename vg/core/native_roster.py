@@ -13,6 +13,7 @@ from typing import Final, Sequence
 
 from vg.core.native_query import GameTime, RecordTime, select_native_query
 from vg.core.definition_catalog import SUPPORTED_BUILD_SHA256, SUPPORTED_MANIFEST_SHA256
+from vg.core.recording_identity import RecordingIdentity, _recording_identity
 
 
 DEFINITIONS_PATH: Final = Path(__file__).with_name('native_roster_definitions.json')
@@ -77,6 +78,7 @@ class NativeRosterResult:
     evidence_version: str = "native_roster.windows_2026_10_04.v1"
     build_sha256: str = SUPPORTED_BUILD_SHA256
     manifest_sha256: str = SUPPORTED_MANIFEST_SHA256
+    recording_identity: RecordingIdentity | None = None
 
 
 def _name(raw: bytes) -> tuple[str | None, str, str]:
@@ -105,8 +107,9 @@ def read_native_roster(
     Team is the stored low nibble, with no inferred left/right assignment.
     """
     query = select_native_query(frames, cutoff)
+    recording_identity = _recording_identity(frames, query)
     if not query.valid:
-        return NativeRosterResult(False, query.status, query.reason)
+        return NativeRosterResult(False, query.status, query.reason, recording_identity=recording_identity)
     audit, parsed = query.audit, query.frames
     catalog = json.loads(DEFINITIONS_PATH.read_text(encoding='utf-8'))
     provenance = (catalog.get('build_sha256'), catalog.get('manifest_sha256'))
@@ -188,7 +191,8 @@ def read_native_roster(
     valid = not issues
     status = 'accepted' if valid else ('partial_roster' if players else 'missing_roster')
     return NativeRosterResult(valid, status, 'recorded roster; completion not asserted',
-                              tuple(players), tuple(issues), as_of, boundary)
+                              tuple(players), tuple(issues), as_of, boundary,
+                              recording_identity=recording_identity)
 
 
 def main() -> int:

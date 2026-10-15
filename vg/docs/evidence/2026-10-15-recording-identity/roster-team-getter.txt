@@ -1,0 +1,38 @@
+
+rea-cloud/inputs/vgna-windows-static/app/Vainglory.exe:     file format pei-i386
+
+
+Disassembly of section .text:
+
+0093b1d0 <.text+0x53a1d0>:
+  93b1d0:	55                   	push   ebp
+  93b1d1:	8b ec                	mov    ebp,esp
+  93b1d3:	8b 55 08             	mov    edx,DWORD PTR [ebp+0x8]
+  93b1d6:	83 fa ff             	cmp    edx,0xffffffff
+  93b1d9:	75 04                	jne    0x93b1df
+  93b1db:	b0 01                	mov    al,0x1
+  93b1dd:	5d                   	pop    ebp
+  93b1de:	c3                   	ret
+  93b1df:	56                   	push   esi
+  93b1e0:	8b 35 08 74 0e 02    	mov    esi,DWORD PTR ds:0x20e7408
+  93b1e6:	33 c9                	xor    ecx,ecx
+  93b1e8:	85 f6                	test   esi,esi
+  93b1ea:	74 14                	je     0x93b200
+  93b1ec:	a1 04 74 0e 02       	mov    eax,ds:0x20e7404
+  93b1f1:	39 50 04             	cmp    DWORD PTR [eax+0x4],edx
+  93b1f4:	74 0f                	je     0x93b205
+  93b1f6:	41                   	inc    ecx
+  93b1f7:	05 b8 00 00 00       	add    eax,0xb8
+  93b1fc:	3b ce                	cmp    ecx,esi
+  93b1fe:	72 f1                	jb     0x93b1f1
+  93b200:	0c ff                	or     al,0xff
+  93b202:	5e                   	pop    esi
+  93b203:	5d                   	pop    ebp
+  93b204:	c3                   	ret
+  93b205:	85 c0                	test   eax,eax
+  93b207:	74 f7                	je     0x93b200
+  93b209:	8a 80 b0 00 00 00    	mov    al,BYTE PTR [eax+0xb0]
+  93b20f:	24 0f                	and    al,0xf
+  93b211:	5e                   	pop    esi
+  93b212:	5d                   	pop    ebp
+  93b213:	c3                   	ret

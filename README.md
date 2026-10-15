@@ -35,6 +35,8 @@ The CLI default changed from `safe-json` to `state-json`. Consumers of `decoder_
 
 A single input may also be a directory containing exactly one replay family. Multiple families require an explicit `.0.vgr` selection or a batch command. Missing paths, unreadable sections, ambiguous selection and malformed input receive actionable errors.
 
+State JSON also exposes compact `recording_identity` [diagnostics](vg/docs/RECORDING_IDENTITY_DIAGNOSTICS.md): raw external-ID candidate summaries and recording-selected actor/team evidence. Full per-record histories are available through the existing native-roster report. Empty snapshots do not erase historical candidates; conflicts and unsupported layouts remain explicit. These fields do not authenticate accounts or uploaders, identify the recording client, or change result/eligibility decisions.
+
 State JSON also exposes `display_values` ([contract](vg/docs/DISPLAY_VALUES.md)). Its `raw` values retain recording provenance. `observed` and `reconstructed` remain null without a compatible supplied runtime receipt. `direct_raw_candidate` is an estimate of one gold formatter call, not a reconstruction of the UI cache. `--playback-speed 5` optionally estimates the playback clock after the last anchor; unknown clock mapping leaves it null. Neither display option changes definitive eligibility.
 
 ```sh
