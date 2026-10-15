@@ -405,7 +405,8 @@
             "combat_math",
             "health",
             "correlation",
-            "implementation"
+            "implementation",
+            "status_effect"
           ]
         },
         "title_ko": {

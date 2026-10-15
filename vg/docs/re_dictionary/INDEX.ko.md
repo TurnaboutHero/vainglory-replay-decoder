@@ -2,7 +2,7 @@
 
 이 파일은 catalog.json에서 생성됩니다. 직접 수정하지 말고 원본 catalog를 갱신하세요.
 
-기준 checkout: `65bab83` · 갱신: 2026-10-15 · 항목: 71
+기준 checkout: `65bab83` · 갱신: 2026-10-15 · 항목: 100
 
 검토된 기능 묶음과 중요한 정정만 담았습니다. 기존 evidence 전체를 검증 완료로 승격한 목록이 아닙니다.
 정적 명령 검증, synthetic test, 개발 corpus 관측, runtime 관측은 서로 다른 증거입니다. semantic confidence가 높아도 서버 권위나 live 실행은 증명되지 않습니다.
@@ -22,18 +22,19 @@ python -B -m vg.research.dictionary validate --check-index
 ## 기능별 목차
 
 - 파일·빌드 출처: [Windows 파일 해시와 주소 기준](#vgre-provenance-pe-variants)
-- 프레임·시간 소유권: [VGR 레코드 경계와 시각 소유권](#vgre-vgr-record-framing)
+- 프레임·시간 소유권: [Native buff record prefix and historical mismatch](#vgre-buff-record-layout-boundary), [VGR 레코드 경계와 시각 소유권](#vgre-vgr-record-framing)
 - actor·roster·계정 경계: [identity authenticated account from roster](#vgre-deepening-identity-authenticated-account-from-roster), [identity external string mastery cache](#vgre-deepening-identity-external-string-mastery-cache), [identity mastery response cache](#vgre-deepening-identity-mastery-response-cache), [identity mastery rpc method](#vgre-deepening-identity-mastery-rpc-method), [Actor 리소스 종류와 네이티브 분류](#vgre-entity-actor-resource-kind), [040b 삭제 액션과 지연 정리](#vgre-entity-destroy-lifecycle-observation), [03e9 기록 선택 actor와 팀](#vgre-identity-bootstrap-selection), [03ee 외부 문자열의 관측 이력](#vgre-identity-external-string-history), [한 기록 family와 unknown completeness](#vgre-identity-recording-family-validation), [03ee 명단의 네이티브 식별 계약](#vgre-identity-roster-native-contract), [생성 관찰·스킨 값·실제 수명 분리](#vgre-identity-spawn-skin-observation)
 - 종료·승패·완전성: [terminal banner reason keys](#vgre-deepening-terminal-banner-reason-keys), [terminal clock lifecycle](#vgre-deepening-terminal-clock-lifecycle), [terminal gold final refresh cache](#vgre-deepening-terminal-gold-final-refresh-cache), [terminal last request is final result](#vgre-deepening-terminal-last-request-is-final-result), [terminal primary entry](#vgre-deepening-terminal-primary-entry), [terminal repeated field callback divergence](#vgre-deepening-terminal-repeated-field-callback-divergence), [03f1 요청 팀과 상대 승리 boolean](#vgre-result-request-relative-win)
-- 아이템·설정·소유: [아이템 인스턴스·수량·인벤토리 갱신](#vgre-inventory-native-instance-state), [아이템 사용 요청과 모드별 메시지](#vgre-item-activation-envelope), [설정 mode와 선택 제스처 분리](#vgre-item-configuration-selection), [회복 아이템·정찰 카메라의 키와 생성 선언](#vgre-item-consumable-keys-spawn-declaration), [판매 요청과 구매 거절 알림의 한계](#vgre-item-sell-reject-prefix)
-- 쿨다운·clock·timer: [능력 슬롯과 궁극기 표시 순서](#vgre-ability-slot-ultimate-identity), [만료 초과량과 재생성 타이머의 다음 순회](#vgre-cooldown-expiry-overshoot-stage4), [소유자·키 기반 공유 쿨다운 상태](#vgre-cooldown-owner-key-identity), [기록 시각만으로 쿨다운을 복원할 수 없는 이유](#vgre-cooldown-replay-time-identifiability), [타이머 본체 역참조와 HUD 숫자 변환](#vgre-cooldown-timer-reference-hud), [쿨다운·충전 이벤트의 원시 필드](#vgre-cooldown-wire-fields), [combat packed override](#vgre-deepening-combat-packed-override), [cooldown buff capacity lifecycle](#vgre-deepening-cooldown-buff-capacity-lifecycle), [cooldown buff duration modifiers](#vgre-deepening-cooldown-buff-duration-modifiers), [cooldown effective stat flags](#vgre-deepening-cooldown-effective-stat-flags), [cooldown two state blocker selector](#vgre-deepening-cooldown-two-state-blocker-selector), [scout cam upgrade modifier declarations](#vgre-deepening-scout-cam-upgrade-modifier-declarations), [게임 시계 앵커·재생 누적·화면 시간](#vgre-replay-game-clock-anchor-display)
+- 아이템·설정·소유: [타격·수정 강화제 지속시간 갱신과 조건부 능력치 선언](#vgre-infusion-refresh-and-stat-declarations), [아이템 인스턴스·수량·인벤토리 갱신](#vgre-inventory-native-instance-state), [아이템 사용 요청과 모드별 메시지](#vgre-item-activation-envelope), [설정 mode와 선택 제스처 분리](#vgre-item-configuration-selection), [회복 아이템·정찰 카메라의 키와 생성 선언](#vgre-item-consumable-keys-spawn-declaration), [판매 요청과 구매 거절 알림의 한계](#vgre-item-sell-reject-prefix), [Buff_JungleMinion_5v5_CrystalOrb](#vgre-jungle-definition-1066), [Buff_JungleMinion_5v5_CrystalOrb_Lockout](#vgre-jungle-definition-1067), [Buff_JungleMinion_5v5_CrystalOrb_Effect](#vgre-jungle-definition-1068), [Buff_JungleMinion_5v5_WeaponOrb](#vgre-jungle-definition-1069), [Buff_JungleMinion_5v5_WeaponOrb_Effect](#vgre-jungle-definition-1070), [Buff_JungleMinion_TreeEnt_Restore](#vgre-jungle-definition-220), [Buff_JungleMinion_TreeEnt_Barrier](#vgre-jungle-definition-221), [Buff_JungleMinion_TreeEnt_Immobilize](#vgre-jungle-definition-222), [Buff_JungleMinion_TreeEnt_RootField](#vgre-jungle-definition-223), [Buff_JungleMinion_TreeEnt_CancelRootOnDeath](#vgre-jungle-definition-224), [Buff_JungleMinion_CrystalMiner_CrystalAmp](#vgre-jungle-definition-225), [Buff_JungleMinion_CrystalMiner_Defense](#vgre-jungle-definition-226), [Buff_JungleMinion_CrystalMiner_Empowerment](#vgre-jungle-definition-227), [타격 강화제 (Weapon Infusion)](#vgre-jungle-definition-283), [수정 강화제 (Crystal Infusion)](#vgre-jungle-definition-284), [Jungle visual identity](#vgre-jungle-visual-identity), [Orb acquisition stub boundary](#vgre-orb-acquisition-stub-boundary)
+- 쿨다운·clock·timer: [능력 슬롯과 궁극기 표시 순서](#vgre-ability-slot-ultimate-identity), [buff lifetime create reapply stack dispatch](#vgre-buff-lifetime-create-reapply-stack-dispatch), [buff lifetime removal expiry dispatch](#vgre-buff-lifetime-removal-expiry-dispatch), [만료 초과량과 재생성 타이머의 다음 순회](#vgre-cooldown-expiry-overshoot-stage4), [소유자·키 기반 공유 쿨다운 상태](#vgre-cooldown-owner-key-identity), [기록 시각만으로 쿨다운을 복원할 수 없는 이유](#vgre-cooldown-replay-time-identifiability), [타이머 본체 역참조와 HUD 숫자 변환](#vgre-cooldown-timer-reference-hud), [쿨다운·충전 이벤트의 원시 필드](#vgre-cooldown-wire-fields), [combat packed override](#vgre-deepening-combat-packed-override), [cooldown buff capacity lifecycle](#vgre-deepening-cooldown-buff-capacity-lifecycle), [cooldown buff duration modifiers](#vgre-deepening-cooldown-buff-duration-modifiers), [cooldown effective stat flags](#vgre-deepening-cooldown-effective-stat-flags), [cooldown two state blocker selector](#vgre-deepening-cooldown-two-state-blocker-selector), [scout cam upgrade modifier declarations](#vgre-deepening-scout-cam-upgrade-modifier-declarations), [게임 시계 앵커·재생 누적·화면 시간](#vgre-replay-game-clock-anchor-display)
 - 게임 요청과 전송: [combat 041a](#vgre-deepening-combat-041a), [combat 041b](#vgre-deepening-combat-041b), [combat 0425](#vgre-deepening-combat-0425), [0411/0412/0413 능력 요청](#vgre-request-ability-layouts), [0448/0449/044a 아이템 요청](#vgre-request-item-layouts), [이동 3종과 공격 대상 선택](#vgre-request-movement-attack), [게임 요청 compact frame](#vgre-request-plain-frame), [전송 facade와 replay no-send 분기](#vgre-request-send-replay-boundary)
 - 플랫폼 JSON schema: [authenticate는 executeCommand 인수](#vgre-platform-authenticate-command), [첫 RPC parameter는 credential일 수 있음](#vgre-platform-credential-capable-identity), [플랫폼 JSON envelope](#vgre-platform-json-envelope), [lobby·party·pending의 서로 다른 schema](#vgre-platform-lobby-party-pending), [명명된 matchId와 품질 telemetry](#vgre-platform-match-state-quality), [startSessionForPlayer 11개 값](#vgre-platform-start-session)
 - Android 패키지와 routing: [connect hook은 원래 목적지 관측](#vgre-android-match-socket-observation), [원본과 VGNA의 한정된 변경 범위](#vgre-android-matched-base-delta), [region bootstrap은 고정 routing](#vgre-android-region-routing)
 - VGNA replay upload: [identity event의 출처와 응답](#vgre-upload-identity-events), [continuous upload policy 연결은 미확정](#vgre-upload-policy-bounded-gap), [terminal_scoreboard는 entity→hero만](#vgre-upload-terminal-hero-only), [VGNL 68-byte transport header](#vgre-upload-vgnl-frame)
 - client 산술·HUD·stub: [critical 산술의 mode gate와 RET 경계](#vgre-combat-critical-stub), [4-array 유효 stat 계산](#vgre-combat-effective-stats), [방어 계산은 last-hit HUD 추정](#vgre-combat-hud-attack-estimate), [property scaling과 TooltipDamage](#vgre-combat-property-tooltip)
-- 받은 HP와 표시: [041e 실제 resource 변경 operand](#vgre-health-impact-prefix), [받은 action은 apply로 직접 진입](#vgre-health-incoming-dispatch), [041d SET/ADD와 음수 SET 정정](#vgre-health-resource-set-add), [impact·HP·보호량·표시량 분리](#vgre-health-split-display)
+- 받은 HP와 표시: [041e 실제 resource 변경 operand](#vgre-health-impact-prefix), [받은 action은 apply로 직접 진입](#vgre-health-incoming-dispatch), [041d SET/ADD와 음수 SET 정정](#vgre-health-resource-set-add), [impact·HP·보호량·표시량 분리](#vgre-health-split-display), [Treant duration extension and gated heal](#vgre-treant-duration-extension-and-heal)
 - action↔impact의 제한된 연관: [아이템 instance는 actor와 함께 묶기](#vgre-correlation-item-instance-scope), [시간·actor 근접성은 인과 키가 아님](#vgre-correlation-no-causal-key), [play actor/target/slot과 불투명 suffix](#vgre-correlation-play-fields), [combat target storage](#vgre-deepening-combat-target-storage)
+- status_effect: [Separate movement attack skill and item gates](#vgre-status-action-specific-gates), [Metadata and identity based blockers](#vgre-status-buff-blocker-matching), [Cleanse metadata filtered cancellation](#vgre-status-cleanse-filtered-queue), [Display records are separate from logical flags](#vgre-status-display-native-distinction), [Per-source gameplay flag lifecycle](#vgre-status-flag-contributor-lifecycle), [Selected named status masks](#vgre-status-named-factory-masks), [Movement modifier maximum per category](#vgre-status-slow-max-category)
 
 ## 파일·빌드 출처
 
@@ -53,6 +54,31 @@ python -B -m vg.research.dictionary validate --check-index
 
 
 ## 프레임·시간 소유권
+
+### VGRE-buff-record-layout-boundary
+
+**Native buff record prefix and historical mismatch**
+
+Native043e formatter emits16-byte payload;043f emits34. Common prefix carries raw target/source actor IDs, half-float duration, instance and buff-definition index.043f adds stack count and unnamed extra fields. Historical043e22 and043f38 variants remain unsupported; matching prefix indices are diagnostic only.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- Opcode: `043e`, `043f`
+- 함수/위치: `0x008145c0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x008144c0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x004d34d8` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x004d357d` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00819fe0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 필드: target_actor_raw = payload_after_opcode+0 (be_u32); Exact native prefix only; no historical extended-layout promotion.
+- 필드: source_actor_raw = payload_after_opcode+4 (be_u32); Exact native prefix only; no historical extended-layout promotion.
+- 필드: duration_raw = payload_after_opcode+8 (be_f16); Exact native prefix only; no historical extended-layout promotion.
+- 필드: instance_raw = payload_after_opcode+10 (be_u32); Exact native prefix only; no historical extended-layout promotion.
+- 필드: buff_definition_index_raw = payload_after_opcode+14 (be_u16); Exact native prefix only; no historical extended-layout promotion.
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Observed records include repeated section snapshots; counts do not mean unique acquisitions or lifetimes. Action eligibility/override can still reject or replace ordinary apply.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
 
 ### VGRE-vgr-record-framing
 
@@ -501,6 +527,27 @@ A repeat while primary2 overwrites controller fields but same-state primary guar
 
 ## 아이템·설정·소유
 
+### VGRE-infusion-refresh-and-stat-declarations
+
+**타격·수정 강화제 지속시간 갱신과 조건부 능력치 선언**
+
+Infusion reapply script-list handler copies original duration+0x230 into remaining+0x22c and adjusts flag bit4. It coexists with Lifetime reapply stubs. Declared item duration is150, distinct from TIME2.5. Stat builders use intercept/delta declarations; execution queues mode-gated commands rather than directly rewriting local stats.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00861ff0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00931b70` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00861250` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00861530` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 한계: Conditional interpolation endpoints at stack1/12 are algebraic models, not observed server totals. Dynamic stack/level ordering, final aggregation and full IEEE-754 effects remain unverified.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
 ### VGRE-inventory-native-instance-state
 
 **아이템 인스턴스·수량·인벤토리 갱신**
@@ -655,6 +702,377 @@ inventory의 기본 식별은 definition 단독이 아니라 owner 아래의 ite
 - 근거: [src-legacy-026d9ced892c](#src-legacy-026d9ced892c) · Selected claim and limitations in this source; historical status may be superseded by the listed corrections.
 - 근거: [src-legacy-6e281d7ff695](#src-legacy-6e281d7ff695) · Selected claim and limitations in this source; historical status may be superseded by the listed corrections.
 
+### VGRE-jungle-definition-1066
+
+**Buff_JungleMinion_5v5_CrystalOrb**
+
+Exact-build buff definition 1066 names Buff_JungleMinion_5v5_CrystalOrb, declares stack capacity 1 and policy 0; icon is icon_buff_orb_guardian_cp. Factory registration is statically linked. production_ready remains false.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions, resource_decode
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x8f47b0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 원문 layout: Resource 551BCB541D80053BACD0A897B7993A77 SHA256 e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79, decoded definition offset 0x21d24.
+- 원문 layout: lookup2 seed12345678 name hash 0xf0f1a8a1; not the ability/cooldown FNV1a key.
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-jungle-definition-1067
+
+**Buff_JungleMinion_5v5_CrystalOrb_Lockout**
+
+Exact-build buff definition 1067 names Buff_JungleMinion_5v5_CrystalOrb_Lockout, declares stack capacity 1 and policy 0; icon is icon_buff_orb_guardian_cp. Factory registration is statically linked. production_ready remains false.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions, resource_decode
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x450910` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 원문 layout: Resource 551BCB541D80053BACD0A897B7993A77 SHA256 e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79, decoded definition offset 0x21dbc.
+- 원문 layout: lookup2 seed12345678 name hash 0x115dc56b; not the ability/cooldown FNV1a key.
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-jungle-definition-1068
+
+**Buff_JungleMinion_5v5_CrystalOrb_Effect**
+
+Exact-build buff definition 1068 names Buff_JungleMinion_5v5_CrystalOrb_Effect, declares stack capacity 1 and policy 0; icon is (empty). Factory registration is statically linked. production_ready remains false.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions, resource_decode
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x8f4a40` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 원문 layout: Resource 551BCB541D80053BACD0A897B7993A77 SHA256 e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79, decoded definition offset 0x21e5c.
+- 원문 layout: lookup2 seed12345678 name hash 0x321f3bd3; not the ability/cooldown FNV1a key.
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-jungle-definition-1069
+
+**Buff_JungleMinion_5v5_WeaponOrb**
+
+Exact-build buff definition 1069 names Buff_JungleMinion_5v5_WeaponOrb, declares stack capacity 1 and policy 0; icon is icon_buff_orb_guardian_wp. Factory registration is statically linked. production_ready remains false.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions, resource_decode
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x8f4ae0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 원문 layout: Resource 551BCB541D80053BACD0A897B7993A77 SHA256 e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79, decoded definition offset 0x21ee4.
+- 원문 layout: lookup2 seed12345678 name hash 0x69992acf; not the ability/cooldown FNV1a key.
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-jungle-definition-1070
+
+**Buff_JungleMinion_5v5_WeaponOrb_Effect**
+
+Exact-build buff definition 1070 names Buff_JungleMinion_5v5_WeaponOrb_Effect, declares stack capacity 1 and policy 0; icon is (empty). Factory registration is statically linked. production_ready remains false.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions, resource_decode
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x8f4dd0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 원문 layout: Resource 551BCB541D80053BACD0A897B7993A77 SHA256 e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79, decoded definition offset 0x21f7c.
+- 원문 layout: lookup2 seed12345678 name hash 0x8d311616; not the ability/cooldown FNV1a key.
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-jungle-definition-220
+
+**Buff_JungleMinion_TreeEnt_Restore**
+
+Exact-build buff definition 220 names Buff_JungleMinion_TreeEnt_Restore, declares stack capacity 1 and policy 0; icon is icon_buff_treanthealing. Factory registration is statically linked. production_ready remains false.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions, resource_decode
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x8f5740` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 원문 layout: Resource 551BCB541D80053BACD0A897B7993A77 SHA256 e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79, decoded definition offset 0x7e6c.
+- 원문 layout: lookup2 seed12345678 name hash 0xf7b2d182; not the ability/cooldown FNV1a key.
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-jungle-definition-221
+
+**Buff_JungleMinion_TreeEnt_Barrier**
+
+Exact-build buff definition 221 names Buff_JungleMinion_TreeEnt_Barrier, declares stack capacity 1 and policy 0; icon is (empty). Factory registration is statically linked. production_ready remains false.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions, resource_decode
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x8f5610` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 원문 layout: Resource 551BCB541D80053BACD0A897B7993A77 SHA256 e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79, decoded definition offset 0x7f04.
+- 원문 layout: lookup2 seed12345678 name hash 0x2e7f1ac6; not the ability/cooldown FNV1a key.
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-jungle-definition-222
+
+**Buff_JungleMinion_TreeEnt_Immobilize**
+
+Exact-build buff definition 222 names Buff_JungleMinion_TreeEnt_Immobilize, declares stack capacity 1 and policy 0; icon is (empty). Factory registration is statically linked. production_ready remains false.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions, resource_decode
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x8f56d0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 원문 layout: Resource 551BCB541D80053BACD0A897B7993A77 SHA256 e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79, decoded definition offset 0x7f84.
+- 원문 layout: lookup2 seed12345678 name hash 0x94d1f29f; not the ability/cooldown FNV1a key.
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-jungle-definition-223
+
+**Buff_JungleMinion_TreeEnt_RootField**
+
+Exact-build buff definition 223 names Buff_JungleMinion_TreeEnt_RootField, declares stack capacity 1 and policy 0; icon is (empty). Factory registration is statically linked. production_ready remains false.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions, resource_decode
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x8f5820` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 원문 layout: Resource 551BCB541D80053BACD0A897B7993A77 SHA256 e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79, decoded definition offset 0x8008.
+- 원문 layout: lookup2 seed12345678 name hash 0x9d5e13c; not the ability/cooldown FNV1a key.
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-jungle-definition-224
+
+**Buff_JungleMinion_TreeEnt_CancelRootOnDeath**
+
+Exact-build buff definition 224 names Buff_JungleMinion_TreeEnt_CancelRootOnDeath, declares stack capacity 1 and policy 0; icon is (empty). Factory registration is statically linked. production_ready remains false.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions, resource_decode
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x8f5670` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 원문 layout: Resource 551BCB541D80053BACD0A897B7993A77 SHA256 e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79, decoded definition offset 0x808c.
+- 원문 layout: lookup2 seed12345678 name hash 0xad257ec4; not the ability/cooldown FNV1a key.
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-jungle-definition-225
+
+**Buff_JungleMinion_CrystalMiner_CrystalAmp**
+
+Exact-build buff definition 225 names Buff_JungleMinion_CrystalMiner_CrystalAmp, declares stack capacity 4 and policy 0; icon is icon_buff_crystal_miner. Factory registration is statically linked. production_ready remains false.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions, resource_decode
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x8f4e70` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 원문 layout: Resource 551BCB541D80053BACD0A897B7993A77 SHA256 e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79, decoded definition offset 0x8118.
+- 원문 layout: lookup2 seed12345678 name hash 0x1cf09e09; not the ability/cooldown FNV1a key.
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-jungle-definition-226
+
+**Buff_JungleMinion_CrystalMiner_Defense**
+
+Exact-build buff definition 226 names Buff_JungleMinion_CrystalMiner_Defense, declares stack capacity 1 and policy 0; icon is (empty). Factory registration is statically linked. production_ready remains false.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions, resource_decode
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x8f50c0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 원문 layout: Resource 551BCB541D80053BACD0A897B7993A77 SHA256 e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79, decoded definition offset 0x81b8.
+- 원문 layout: lookup2 seed12345678 name hash 0x349ea62; not the ability/cooldown FNV1a key.
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-jungle-definition-227
+
+**Buff_JungleMinion_CrystalMiner_Empowerment**
+
+Exact-build buff definition 227 names Buff_JungleMinion_CrystalMiner_Empowerment, declares stack capacity 1 and policy 0; icon is icon_buff_crystal_sentry. Factory registration is statically linked. production_ready remains false.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions, resource_decode
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x8f5120` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 원문 layout: Resource 551BCB541D80053BACD0A897B7993A77 SHA256 e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79, decoded definition offset 0x823c.
+- 원문 layout: lookup2 seed12345678 name hash 0x3e3f6d73; not the ability/cooldown FNV1a key.
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-jungle-definition-283
+
+**타격 강화제 (Weapon Infusion)**
+
+Exact-build buff definition 283 names Buff_Item_WeaponInfusion, declares stack capacity 12 and policy 0; icon is icon_item_weapon_infusion. Factory registration is statically linked. production_ready remains false.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions, resource_decode
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x8f3b10` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 원문 layout: Resource 551BCB541D80053BACD0A897B7993A77 SHA256 e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79, decoded definition offset 0x9e14.
+- 원문 layout: lookup2 seed12345678 name hash 0x2b85b8d0; not the ability/cooldown FNV1a key.
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-jungle-definition-284
+
+**수정 강화제 (Crystal Infusion)**
+
+Exact-build buff definition 284 names Buff_Item_CrystalInfusion, declares stack capacity 12 and policy 0; icon is icon_item_crystal_infusion. Factory registration is statically linked. production_ready remains false.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions, resource_decode
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x8ee7c0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 원문 layout: Resource 551BCB541D80053BACD0A897B7993A77 SHA256 e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79, decoded definition offset 0x9ea4.
+- 원문 layout: lookup2 seed12345678 name hash 0xfe03cbe2; not the ability/cooldown FNV1a key.
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-jungle-visual-identity
+
+**Jungle visual identity**
+
+CrystalOrb and WeaponOrb factories bind Effect_Blue_Buff and Effect_Red_Buff respectively through a client visual behavior. Resource actor localization GREEN/ORANGE is preserved separately. TreeEnt healing and older CrystalMiner families remain distinct.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x008f47b0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x008f4ae0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x005f8e20` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-orb-acquisition-stub-boundary
+
+**Orb acquisition stub boundary**
+
+Selected orb death factories declare a90-second operand and buff name, but ApplyBuffToSelection helper setters do not store the arguments and execute is a stub in this client. No working kill-acquisition or automatic transfer follows from these declarations.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00883d40` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x008cd240` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00525a30` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0045cd00` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0045e8a0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 한계: Target-provider handle writer is not established as killer. Runtime duration and minimum/transfer behavior remain unverified.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
 
 ## 쿨다운·clock·timer
 
@@ -688,6 +1106,52 @@ inventory의 기본 식별은 definition 단독이 아니라 owner 아래의 ite
 - 근거: [src-legacy-5af109d2e37d](#src-legacy-5af109d2e37d) · Selected claim and limitations in this source; historical status may be superseded by the listed corrections.
 - 근거: [src-legacy-9eb65b2b4773](#src-legacy-9eb65b2b4773) · Selected claim and limitations in this source; historical status may be superseded by the listed corrections.
 - 근거: [src-legacy-398995e110f9](#src-legacy-398995e110f9) · Selected claim and limitations in this source; historical status may be superseded by the listed corrections.
+
+### VGRE-buff-lifetime-create-reapply-stack-dispatch
+
+**buff lifetime create reapply stack dispatch**
+
+New factory-created buff dispatches Lifetime apply behavior; generic reapply and stack notification slots are stubs for Lifetime. Existing scripted handlers remain possible.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0094c9a0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x008659c0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00863050` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x008cef70` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00945bb0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x009477c0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0095f4d0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Action eligibility and factory success required
+- 한계: No observed item buff execution
+- 한계: Dynamic behavior update timing unresolved
+- 한계: Only generic apply/inverse outer dispatch is closed. Prior unresolved exact active Scout modifiers and dynamic behavior-update timing remain unresolved.
+- 근거: [src-buffstatus-4fdd371a12f4](#src-buffstatus-4fdd371a12f4) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-31336b548579](#src-buffstatus-31336b548579) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-f9777f46fbc2](#src-buffstatus-f9777f46fbc2) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-62c5d0f62db4](#src-buffstatus-62c5d0f62db4) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-365f1595b3c7](#src-buffstatus-365f1595b3c7) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-e77b0c4a391a](#src-buffstatus-e77b0c4a391a) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-fc6e1b76657f](#src-buffstatus-fc6e1b76657f) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-buff-lifetime-removal-expiry-dispatch
+
+**buff lifetime removal expiry dispatch**
+
+Removal0092d6a0 zeroes stacks, dispatches Lifetime inverse behavior, then marks state2. Timer expiry is flag/mode gated and can queue or skip direct removal.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0092d6a0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00948320` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00966410` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00967a20` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00954aa0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Timer<=0 alone does not imply removal
+- 한계: Global0209e204 mode not independently named
+- 한계: No replay runtime observation
+- 한계: Only generic apply/inverse outer dispatch is closed. Prior unresolved exact active Scout modifiers and dynamic behavior-update timing remain unresolved.
+- 근거: [src-buffstatus-4fdd371a12f4](#src-buffstatus-4fdd371a12f4) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-31336b548579](#src-buffstatus-31336b548579) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-f9777f46fbc2](#src-buffstatus-f9777f46fbc2) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-62c5d0f62db4](#src-buffstatus-62c5d0f62db4) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-365f1595b3c7](#src-buffstatus-365f1595b3c7) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-e77b0c4a391a](#src-buffstatus-e77b0c4a391a) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-fc6e1b76657f](#src-buffstatus-fc6e1b76657f) · Reviewed claim and its explicit conditional/static limits.
 
 ### VGRE-cooldown-expiry-overshoot-stage4
 
@@ -1579,6 +2043,27 @@ negative operand는 resource4 흡수, resource5 half-absorption, ordinary resour
 - 근거: [src-health](#src-health) · The local split is real arithmetic; Path 3
 - 근거: [src-combat_review](#src-combat_review) · Incoming health/damage path
 
+### VGRE-treant-duration-extension-and-heal
+
+**Treant duration extension and gated heal**
+
+TreeEnt Restore reapply expands remaining only when incoming duration is strictly greater; original duration only increases if exceeded too. Heal/recharge behavior is mode-gated, with unnamed conditional provider branches. Icon and coefficient do not prove healing delivered.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00860be0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00860ee0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00861f30` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Build-specific declaration only; index, name hash, item ID, buff stack capacity and cooldown charges are distinct domains. No observed buff acquisition or active lifetime is established.
+- 한계: Blue/red refers to exact visual linkage, not a universal color-to-stat rule. Stat/heal command bodies retain literal mode-byte gates; selected orb acquisition helpers are stubs.
+- 한계: Tick/list scheduling, exact heal dispatch target and runtime cadence remain unresolved.
+- 근거: [src-buffstatus-2d9b8c138369](#src-buffstatus-2d9b8c138369) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-249a38261108](#src-buffstatus-249a38261108) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-25a78502e711](#src-buffstatus-25a78502e711) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-eae3928dda28](#src-buffstatus-eae3928dda28) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-0a1dff2b1a88](#src-buffstatus-0a1dff2b1a88) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6c40c4224ec5](#src-buffstatus-6c40c4224ec5) · Reviewed claim and its explicit conditional/static limits.
+
 
 ## action↔impact의 제한된 연관
 
@@ -1662,6 +2147,182 @@ Incoming play resolves the runtime override before target/vector writes, while s
 - 근거: [src-deepening-9d37dc38eb98](#src-deepening-9d37dc38eb98) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
 - 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
 - 근거: [src-deepening-2f20bcbf5127](#src-deepening-2f20bcbf5127) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
+
+## status_effect
+
+### VGRE-status-action-specific-gates
+
+**Separate movement attack skill and item gates**
+
+00936490 accumulates readiness reasons with per-definition status exceptions and a distinct definition+6c branch testing flag10. Selection helpers use+6a/+6b and separate bypasses. Movement outer gate checks flag2/state5 with explicit override; inner mover still tests81.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00936490` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0096b5b0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00931340` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0086f730` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0086fb80` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0095dd70` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0095ded0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Status subset zero is not readiness
+- 한계: Raw ReflexBlock/Aegis embedded defaults do not resolve inherited effective definitions
+- 한계: No universal silence-blocks-all-items assertion
+- 한계: Before-add callbacks may mutate flags. A zero modeled status-reason subset is not overall readiness; queued cancellation and pending-child removal do not prove synchronous state/UI cleanup.
+- 근거: [src-buffstatus-a4cd780e2f2f](#src-buffstatus-a4cd780e2f2f) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-e5f7e2594dc9](#src-buffstatus-e5f7e2594dc9) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6732d26c2783](#src-buffstatus-6732d26c2783) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-f347f66b6b45](#src-buffstatus-f347f66b6b45) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-594c10a894d6](#src-buffstatus-594c10a894d6) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-00eb1bde27b4](#src-buffstatus-00eb1bde27b4) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-8b5ed6b76129](#src-buffstatus-8b5ed6b76129) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6952e73678c5](#src-buffstatus-6952e73678c5) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-7d8f7d69c15e](#src-buffstatus-7d8f7d69c15e) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-status-buff-blocker-matching
+
+**Metadata and identity based blockers**
+
+BlockBuffs creates typed blockers; matcher tests name hash, definition bytes/category bits, and a special identity list. Mode-gated ActionApplyBuff preparation retains first match; execution diverts to blocker callback or returns instead of normal apply.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x008da3c0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0052f0e0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0081d3c0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x009615e0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00962710` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x009378a0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00868a20` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00949b60` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0094c9a0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Mode0209e204 is unnamed
+- 한계: At most32 collected blockers
+- 한계: BlockDebuffs is not unconditional all-status immunity
+- 한계: Before-add callbacks may mutate flags. A zero modeled status-reason subset is not overall readiness; queued cancellation and pending-child removal do not prove synchronous state/UI cleanup.
+- 근거: [src-buffstatus-a4cd780e2f2f](#src-buffstatus-a4cd780e2f2f) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-e5f7e2594dc9](#src-buffstatus-e5f7e2594dc9) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6732d26c2783](#src-buffstatus-6732d26c2783) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-f347f66b6b45](#src-buffstatus-f347f66b6b45) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-594c10a894d6](#src-buffstatus-594c10a894d6) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-00eb1bde27b4](#src-buffstatus-00eb1bde27b4) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-8b5ed6b76129](#src-buffstatus-8b5ed6b76129) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6952e73678c5](#src-buffstatus-6952e73678c5) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-7d8f7d69c15e](#src-buffstatus-7d8f7d69c15e) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-status-cleanse-filtered-queue
+
+**Cleanse metadata filtered cancellation**
+
+Buff_Cleanse builds self-selection and CancelBuff mode2. In nonzero0209e204 mode only buffs whose definition+16 is nonzero are queued for ActionCancelBuff.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x008dda40` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00811820` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00811a20` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00811ad0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00860450` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x008709b0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0092dc00` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Queued cancellation is not synchronous erase-all
+- 한계: No claim every debuff has the cancellation flag
+- 한계: Network and UI timing unproven
+- 한계: Before-add callbacks may mutate flags. A zero modeled status-reason subset is not overall readiness; queued cancellation and pending-child removal do not prove synchronous state/UI cleanup.
+- 근거: [src-buffstatus-a4cd780e2f2f](#src-buffstatus-a4cd780e2f2f) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-e5f7e2594dc9](#src-buffstatus-e5f7e2594dc9) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6732d26c2783](#src-buffstatus-6732d26c2783) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-f347f66b6b45](#src-buffstatus-f347f66b6b45) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-594c10a894d6](#src-buffstatus-594c10a894d6) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-00eb1bde27b4](#src-buffstatus-00eb1bde27b4) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-8b5ed6b76129](#src-buffstatus-8b5ed6b76129) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6952e73678c5](#src-buffstatus-6952e73678c5) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-7d8f7d69c15e](#src-buffstatus-7d8f7d69c15e) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-status-display-native-distinction
+
+**Display records are separate from logical flags**
+
+DisplayStatusOnPlaque_Client stores localized status enum/string and buff+220 identifier, with an independent generation-checked display handle. The identifier is not a remaining-time float.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0052f870` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x005335f0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x005336d0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x005336e0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0054aaa0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00938ff0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x005338d0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: End-to-end countdown rendering unresolved
+- 한계: Status labels and particles do not prove native flag application
+- 한계: Before-add callbacks may mutate flags. A zero modeled status-reason subset is not overall readiness; queued cancellation and pending-child removal do not prove synchronous state/UI cleanup.
+- 근거: [src-buffstatus-a4cd780e2f2f](#src-buffstatus-a4cd780e2f2f) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-e5f7e2594dc9](#src-buffstatus-e5f7e2594dc9) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6732d26c2783](#src-buffstatus-6732d26c2783) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-f347f66b6b45](#src-buffstatus-f347f66b6b45) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-594c10a894d6](#src-buffstatus-594c10a894d6) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-00eb1bde27b4](#src-buffstatus-00eb1bde27b4) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-8b5ed6b76129](#src-buffstatus-8b5ed6b76129) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6952e73678c5](#src-buffstatus-6952e73678c5) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-7d8f7d69c15e](#src-buffstatus-7d8f7d69c15e) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-status-flag-contributor-lifecycle
+
+**Per-source gameplay flag lifecycle**
+
+ApplyGameplayFlags stores generation-checked per-source masks. Before-add callbacks can mutate expanded masks. The actor aggregate ORs up to128 collected children; removal destroys its own child, recomputes and emits the changed callback.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x008e29b0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0052ee10` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0081d390` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00961580` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00858e50` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00869720` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x009625e0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0112a680` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0112a0d0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Native event names are not replay opcodes
+- 한계: Lifecycle expiry and mode gates remain material
+- 한계: No arbitrary-count aggregation claim
+- 한계: Before-add callbacks may mutate flags. A zero modeled status-reason subset is not overall readiness; queued cancellation and pending-child removal do not prove synchronous state/UI cleanup.
+- 근거: [src-buffstatus-a4cd780e2f2f](#src-buffstatus-a4cd780e2f2f) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-e5f7e2594dc9](#src-buffstatus-e5f7e2594dc9) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6732d26c2783](#src-buffstatus-6732d26c2783) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-f347f66b6b45](#src-buffstatus-f347f66b6b45) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-594c10a894d6](#src-buffstatus-594c10a894d6) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-00eb1bde27b4](#src-buffstatus-00eb1bde27b4) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-8b5ed6b76129](#src-buffstatus-8b5ed6b76129) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6952e73678c5](#src-buffstatus-6952e73678c5) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-7d8f7d69c15e](#src-buffstatus-7d8f7d69c15e) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-status-named-factory-masks
+
+**Selected named status masks**
+
+Stunned factory supplies001f; Silence0018; ItemSilence0010; Tutorial_Rooted0001; Petal and Leo roots0023. Pre-add expansion and callback mutation follow.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x009166a0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00910af0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x008ed680` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0091a610` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00907d40` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x008fda60` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x008e29b0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Factory configuration is conditional on successful application
+- 한계: Named roots have different flags; do not generalize all roots
+- 한계: Before-add callbacks may mutate flags. A zero modeled status-reason subset is not overall readiness; queued cancellation and pending-child removal do not prove synchronous state/UI cleanup.
+- 근거: [src-buffstatus-a4cd780e2f2f](#src-buffstatus-a4cd780e2f2f) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-e5f7e2594dc9](#src-buffstatus-e5f7e2594dc9) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6732d26c2783](#src-buffstatus-6732d26c2783) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-f347f66b6b45](#src-buffstatus-f347f66b6b45) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-594c10a894d6](#src-buffstatus-594c10a894d6) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-00eb1bde27b4](#src-buffstatus-00eb1bde27b4) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-8b5ed6b76129](#src-buffstatus-8b5ed6b76129) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6952e73678c5](#src-buffstatus-6952e73678c5) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-7d8f7d69c15e](#src-buffstatus-7d8f7d69c15e) · Reviewed claim and its explicit conditional/static limits.
+
+### VGRE-status-slow-max-category
+
+**Movement modifier maximum per category**
+
+Buff_Slow configures immediate0.5 category2 ModifyMoveSpeedNew. Collector00939f40 selects maximum applicable contribution per category and caps category2 with a stat quantity. Removal marks pending child rather than proving instant cleanup.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_buff_status_followup / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00915c00` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x008e2b90` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00530800` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0081d640` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x009619d0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00962b60` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00939f40` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0112a080` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Static possible client paths only; no native/server execution or fresh holdout. Historical producer build is unmatched. Native 043e consumes 16 bytes while the observed H5810 payload is 22; no unsupported production decode or runtime buff reconstruction is introduced.
+- 한계: Finite collection limit800
+- 한계: Directional predicates and cap apply
+- 한계: No universal observed50-percent slow or additive stacking
+- 한계: Before-add callbacks may mutate flags. A zero modeled status-reason subset is not overall readiness; queued cancellation and pending-child removal do not prove synchronous state/UI cleanup.
+- 근거: [src-buffstatus-a4cd780e2f2f](#src-buffstatus-a4cd780e2f2f) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-e5f7e2594dc9](#src-buffstatus-e5f7e2594dc9) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6732d26c2783](#src-buffstatus-6732d26c2783) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-f347f66b6b45](#src-buffstatus-f347f66b6b45) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-594c10a894d6](#src-buffstatus-594c10a894d6) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-00eb1bde27b4](#src-buffstatus-00eb1bde27b4) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-8b5ed6b76129](#src-buffstatus-8b5ed6b76129) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-6952e73678c5](#src-buffstatus-6952e73678c5) · Reviewed claim and its explicit conditional/static limits.
+- 근거: [src-buffstatus-7d8f7d69c15e](#src-buffstatus-7d8f7d69c15e) · Reviewed claim and its explicit conditional/static limits.
 
 ## 정확한 입력 파일과 주소 공간
 
@@ -2571,3 +3232,147 @@ repo 경로는 현재 checkout에서 hash를 확인합니다. 외부 namespace �
 - `research:vgna-upload-schema/native/REPORT.md`
 - SHA-256: `273e5302ef843fa0dbefd44b56fcaced4a9762a1ad33b2d506a85d8249a3a3be`
 - 종류: analysis_report · 보관: external_reference_only
+
+### src-buffstatus-4fdd371a12f4
+
+- `research:cooldown-deepening/lifecycle-delta/REPORT.md`
+- SHA-256: `8c438f4ade9183c4fd116d5f90b3e9d28730ae2958c4ac7f9440a0c098632c24`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-buffstatus-31336b548579
+
+- `research:cooldown-deepening/lifecycle-delta/receipt-hashes.json`
+- SHA-256: `401cbcda16ac5222407ebce9ad32f735c7cd30c98c990a7e77557d3a6f18fe39`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-buffstatus-f9777f46fbc2
+
+- `research:cooldown-deepening/lifecycle-delta/test-results.json`
+- SHA-256: `8e78d3d5670e3a4961beb95c4127d0fbb9e8449e58039d21a780df14eba75adf`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-buffstatus-62c5d0f62db4
+
+- `research:cooldown-deepening/lifecycle-delta/test_dispatch.py`
+- SHA-256: `2151cbb8938862f553274091eb7d1a1eb8e6da5a87030245574087f0a17353a7`
+- 종류: source_code · 보관: external_reference_only
+
+### src-buffstatus-365f1595b3c7
+
+- `research:independent-deepening-review/lifecycle-delta-review.json`
+- SHA-256: `1c0fe2f4b13031580e754b5f8d472699ca99b62a9783d2eb2142cd742116462a`
+- 종류: independent_review · 보관: external_reference_only
+
+### src-buffstatus-e77b0c4a391a
+
+- [repo:vg/docs/re_dictionary/buff_status/lifecycle-additions.json](../../../vg/docs/re_dictionary/buff_status/lifecycle-additions.json)
+- SHA-256: `4d664423d0cdeca28d7adec84fbc668580efbadff1301f13baf6709f9d8e3b60`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-buffstatus-fc6e1b76657f
+
+- [repo:tests/test_research_buff_lifecycle.py](../../../tests/test_research_buff_lifecycle.py)
+- SHA-256: `1bde24f8fb4d68bde4023233598d90a59a37db35fb6f460bdd79f5cfb6edae11`
+- 종류: source_code · 보관: existing_repository
+
+### src-buffstatus-2d9b8c138369
+
+- `research:jungle-infusion-buffs/portable/REPORT.md`
+- SHA-256: `eeaf30f3f397a0d3d71777e5e55c377403706225cb712ddd909da607f5bc255f`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-buffstatus-249a38261108
+
+- `research:jungle-infusion-buffs/portable/receipt-hashes.json`
+- SHA-256: `cdcb9d0a9fd0526415a9e3567862d595ad309454f060f454d486a24a1e02d911`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-buffstatus-25a78502e711
+
+- `research:jungle-infusion-buffs/portable/native-anchors.json`
+- SHA-256: `8e318be768beaa7907375e095f2bac357983ec86e010f6a68592b649166da709`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-buffstatus-eae3928dda28
+
+- `research:independent-deepening-review/jungle-infusion-review.json`
+- SHA-256: `d97cf6c6a56d9e50eb0ce2cded653396eb27055a21fae8f7d76bbea130595585`
+- 종류: independent_review · 보관: external_reference_only
+
+### src-buffstatus-0a1dff2b1a88
+
+- [repo:vg/docs/re_dictionary/buff_status/jungle-candidates.json](../../../vg/docs/re_dictionary/buff_status/jungle-candidates.json)
+- SHA-256: `cefe2615f21245bd178d298a4cb166d6ebc7e499dc4fc8f4f87828e75544c439`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-buffstatus-6c40c4224ec5
+
+- [repo:tests/test_research_jungle_infusion.py](../../../tests/test_research_jungle_infusion.py)
+- SHA-256: `001cb01dac2d172bc1695f2b66b97e13901ccdcbd73c3c1b294d20f34812bb82`
+- 종류: source_code · 보관: existing_repository
+
+### src-buffstatus-a4cd780e2f2f
+
+- `research:status-effect-gates/portable/REPORT.md`
+- SHA-256: `29f3a4e44e78a868b946ddf9720981940e6975badfe069639d3bac025404cef4`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-buffstatus-e5f7e2594dc9
+
+- `research:status-effect-gates/portable/PACKAGE.sha256.json`
+- SHA-256: `7e49d00b74a3218ef001e34f77f347d1943508c2e0131bb5c16339bdedf3cd93`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-buffstatus-6732d26c2783
+
+- `research:status-effect-gates/portable/receipt-hashes.json`
+- SHA-256: `2c0f6e4e16aba0ee28822ecbfdd5bcfded91f79fcf9768fa25081bafd059e184`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-buffstatus-f347f66b6b45
+
+- `research:status-effect-gates/portable/evidence-checks.json`
+- SHA-256: `9dc4bb4cabf2449751e228e6cd7465241e074c07dd8e137f24686ccaaea47b53`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-buffstatus-594c10a894d6
+
+- `research:status-effect-gates/portable/factory-identities.json`
+- SHA-256: `588fffca43a9cddefb50758af168385bc9cb4de6f3c11ffd0e0d799a9d828b0c`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-buffstatus-00eb1bde27b4
+
+- `research:status-effect-gates/portable/resource-flags.json`
+- SHA-256: `83ba99848bd9a33ba1e813fd9f1c32e7af0f1ac929353bf0c4ea0d1eceb56f67`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-buffstatus-8b5ed6b76129
+
+- `research:independent-deepening-review/status-effect-review.json`
+- SHA-256: `14ee8ac73a0b15d9ce064a5f981e65c82445c1005876731b742bb13c83175397`
+- 종류: independent_review · 보관: external_reference_only
+
+### src-buffstatus-6952e73678c5
+
+- [repo:vg/docs/re_dictionary/buff_status/status-additions.json](../../../vg/docs/re_dictionary/buff_status/status-additions.json)
+- SHA-256: `e6c076c2e2951c76493dc348a3b273bc5834ab72aee5fb0e82b6b51d51ff4134`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-buffstatus-7d8f7d69c15e
+
+- [repo:tests/test_research_status_models.py](../../../tests/test_research_status_models.py)
+- SHA-256: `cc4fea44392a22f2f0ea92e669e5366b68332a62c15b3a15e5b2d272d4b0a44a`
+- 종류: source_code · 보관: existing_repository
+
+### src-buffstatus-ad352c83dd55
+
+- [repo:tests/test_research_buff_status_catalog.py](../../../tests/test_research_buff_status_catalog.py)
+- SHA-256: `43e8b81c3adecd460de3dc598a42f70eb0521bc7951f977c7714dcad4001981e`
+- 종류: source_code · 보관: existing_repository
+
+### src-buffstatus-617028591c63
+
+- [repo:vg/docs/re_dictionary/buff_status/README.md](../../../vg/docs/re_dictionary/buff_status/README.md)
+- SHA-256: `0c9a56e37ad3614a703b12806ee2dbd1e2c0469753b4cca0dca7679a56ee9800`
+- 종류: analysis_report · 보관: existing_repository

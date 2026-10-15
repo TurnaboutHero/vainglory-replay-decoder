@@ -90,3 +90,35 @@ application, general cast eligibility, exact final display or server validation.
 
 Final combined offline regression suite: 1,065 tests passed in 108.778 seconds
 using Python 3.12.14. The full command above includes all 25 new tests.
+
+## Reviewed buff/status extension
+
+The separate follow-up to `52f1786d` adds 29 bounded entries, bringing the catalog
+to 100 entries, 161 source references and the same 9 artifact identities. All
+71 previous entries, 137 source records and 9 artifact records are unchanged.
+The schema adds only the `status_effect` category; no production decoder or
+research CLI Python code changes. The generated index includes 타격 강화제 and
+수정 강화제 while retaining canonical English identities in structured facts.
+
+Default verification resolves 60 repository references and reports 101 external
+sources unresolved. Supplying the original research/shared roots verifies all
+161 source hashes. Draft 2020-12 and deterministic index checks pass. The portable
+focused run passes 59 tests: 30 dictionary tests plus 7 lifecycle models,
+5 jungle/infusion models, 11 status models and 6 catalog scope checks.
+
+Producer reviews bind the frozen lifecycle, jungle/infusion and status packages.
+The adjacent `buff_status/SOURCE_MANIFEST.json` exposes their source hashes and
+external-reference status. New disassembly, executable/resource contents and raw
+replay payloads are not imported. Build-bound checks remain external evidence;
+portable models are not substitutes for native execution or runtime observations.
+
+Important safeguards include predicate-false expiry for an already-expired timer,
+explicit post-reactivation model scope, Lifetime stubs versus real infusion
+script-list refresh, conditional acquisition/stat/heal behavior, mutable flag
+contributors, action-specific readiness conditions, deferred slow cleanup and
+metadata-filtered queued cleanse. Native `043e` payload16 versus historical22,
+and unsupported historical `043f`38, remain blockers to production decoding.
+
+Final full combined offline suite: 1,094 tests passed in 79.691 seconds.
+Independent integration review reran all 29 new tests and verified every source
+hash plus the schema, with no production/research Python delta.
