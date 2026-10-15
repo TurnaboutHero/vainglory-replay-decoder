@@ -42,6 +42,26 @@ python -B -m vg.decoder_v2.decode_match "replays/match.0.vgr" --playback-speed 5
 python -B -m vg.decoder_v2.decode_match "replays/match.0.vgr" --display-evidence "receipts/terminal-display.json" -o "reports/observed.json"
 ```
 
+## Running the regression suite
+
+The complete offline suite requires Python 3.12+ and **Node.js 18+** (`node`
+on `PATH`) for the cooldown observer's VM and syntax coverage. No npm packages,
+Frida, game process, Git executable or historical Git objects are required for
+those VM tests. Missing Node is a test failure, not skipped or passing coverage.
+
+```sh
+python -X utf8 -B -m unittest discover -s tests -v
+python -X utf8 -B -m unittest discover -s tests -p "test_cooldown_probe.py" -v
+```
+
+The stock probe is checked against a pinned SHA-256 from commit `3361131`, so
+source archives and shallow checkouts retain the same stock-source invariant.
+Git HEAD/status are optional report metadata (null when unavailable).
+The Python wrapper removes its default temporary evidence on success or failure.
+Set `COOLDOWN_PROBE_EVIDENCE_DIR` to an explicit directory to retain logs and
+receipts for inspection, including failed runs. These offline mocks do not
+establish native runtime correctness or decoded cooldown certainty.
+
 ## Choose the workflow
 
 | Need | Entry point | What to retain |
@@ -72,7 +92,7 @@ The original README advertised 100% for names, teams, modes, hero hashes, entity
 
 The earlier hero mapping listed 57 heroes, with 37 directly confirmed and 20 inferred. That is mapping coverage in the historical research, not a guarantee for all clients or recordings. The dated native capture study compared 294 K/D/A values across ten coherent fixtures; its exclusions and clock limits are preserved in the [September integration record](vg/docs/NATIVE_STATS_INTEGRATION_2026-09-07.md).
 
-Current research references: [event catalog](vg/docs/EVENT_CATALOG_2026-09-08.md), [endgame boundaries](vg/docs/ENDGAME_BOUNDARY_2026-09-08.md), [death-action sources](vg/docs/DEATH_EVENTS_2026-09-09.md), [REA item-event timeline](vg/docs/REA_ITEM_EVENTS_2026-10-14.md), [161-code candidate inventory](vg/docs/vg-binary-event-candidates-2026-09-09.md), and [postgame follow-up](vg/docs/POSTGAME_OFFLINE_2026-09-09.md). They retain unresolved candidates rather than promoting them to accepted final statistics.
+Current research references: [event catalog](vg/docs/EVENT_CATALOG_2026-09-08.md), [endgame boundaries](vg/docs/ENDGAME_BOUNDARY_2026-09-08.md), [death-action sources](vg/docs/DEATH_EVENTS_2026-09-09.md), [REA item-event timeline](vg/docs/REA_ITEM_EVENTS_2026-10-14.md), [REA item activation](vg/docs/REA_ITEM_ACTIVATION_2026-10-14.md), [161-code candidate inventory](vg/docs/vg-binary-event-candidates-2026-09-09.md), and [postgame follow-up](vg/docs/POSTGAME_OFFLINE_2026-09-09.md). They retain unresolved candidates rather than promoting them to accepted final statistics.
 
 ## Historical binary research notes
 

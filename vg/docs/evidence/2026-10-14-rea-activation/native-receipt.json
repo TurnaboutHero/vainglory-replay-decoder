@@ -1,0 +1,214 @@
+{
+  "schema_version": "rea-item-activation.native.v1",
+  "evidence_version": "rea-item-activation.windows_2026_10_14.v1",
+  "baseline": "7d1e0e982d24bf48a11de6debbaeab7b7db090ba",
+  "executable_sha256": "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+  "rea_version": "6.4.0",
+  "provider": {
+    "id": "ghidra",
+    "version": "12.1.4"
+  },
+  "private_snapshot_sha256": "b73945623f03d1dbfba6e03ef4fef186de9e4397e6025041aa6e687ba8678462",
+  "proofs": [
+    {
+      "evidence_id": "ev_1f31b59a5652c7cc4d9ae2a112e42faced64506a807e8a5dd37aa3f577c16ecc",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x529ff0"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "normalized_result_sha256": "a6deb335877582117eedf33a271468d08bbd65f233c4dc6e54d646df49d3fa2b",
+      "bounded_result": "\r\nvoid FUN_00529ff0(void)\r\n\r\n{\r\n  int iVar1;\r\n  int in_ECX;\r\n  \r\n  iVar1 = *(int *)(in_ECX + 0x24);\r\n  if (iVar1 == 3) {\r\n    FUN_0095bda0(*(undefined4 *)(in_ECX + 0x14));\r\n    iVar1 = *(int *)(in_ECX + 0x24);\r\n  }\r\n  if (iVar1 == 0) {\r\n    FUN_0095bea0(*(undefined4 *)(in_ECX + 0x10),*(undefined4 *)(in_ECX + 0x14));\r\n    return;\r\n  }\r\n  if (iVar1 == 1) {\r\n    FUN_0095bdd0(in_ECX + 0x18,*(undefined4 *)(in_ECX + 0x14));\r\n  }\r\n  return;\r\n}\r\n\r\n"
+    },
+    {
+      "evidence_id": "ev_1fa1ffb60784954fc81e0bb9a91a4775928702ed3fed4641136d8c65e9c09ac1",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x81b740"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "normalized_result_sha256": "5251a2331aa9c3c6e81f3c9eb11bbbb15bcaf51249cd54ace604c2ef1867c7f1",
+      "bounded_result": "\r\nvoid FUN_0081b740(undefined4 param_1,undefined4 param_2)\r\n\r\n{\r\n  undefined4 *in_ECX;\r\n  \r\n  in_ECX[4] = param_1;\r\n  in_ECX[5] = param_2;\r\n  in_ECX[1] = 0;\r\n  in_ECX[2] = 0;\r\n  *(undefined1 *)(in_ECX + 3) = 0;\r\n  *in_ECX = Nuo::Kindred::ActionItemActivated::vftable;\r\n  in_ECX[6] = 0xffffffff;\r\n  in_ECX[7] = 0;\r\n  in_ECX[8] = 0;\r\n  in_ECX[9] = 2;\r\n  return;\r\n}\r\n\r\n"
+    },
+    {
+      "evidence_id": "ev_224ab73208cf34e19d02bc25625a156bc73f001440428366984c8a77f63ebfc4",
+      "operation": "read_bytes",
+      "parameters": {
+        "address": "0x4d3e39",
+        "length": 64
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "normalized_result_sha256": "43d6549a88c06ce6bdab3f2e2da66f1573fb85c02dd77899447b1cbf95c92bba",
+      "bounded_result": {
+        "address": "0x4d3e39",
+        "bytes_hex": "6a158d8588f1ffffc78598f1ffff000000000f57c0c6859cf1ffff0056500f118588f1ffffe8466fce008b3514a6200183c40cffb588f1ffffffd6ffb58cf1ff",
+        "complete": true,
+        "requested_bytes": 64,
+        "returned_bytes": 64
+      }
+    },
+    {
+      "evidence_id": "ev_2a9aad49746895a4739a1d494d910d0920ddfcf645eacd2c34d9286d4ae1dbf1",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x94ee90"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "normalized_result_sha256": "5e3d0541e3cac0c4ccbe61a74e4ce2dced804a89d9603137258edc00993a3572"
+    },
+    {
+      "evidence_id": "ev_54ae4c0fdbd6a15e48253bd448f12a06e37bd1e811023490a95d02107f633002",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x95bdd0"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "normalized_result_sha256": "f0c4f7c0b52fef6d4f3beb8faec263225a221fea6a3ee548d93e9f32ef6a161e",
+      "bounded_result": "\r\nvoid FUN_0095bdd0(uint *param_1,u_long param_2)\r\n\r\n{\r\n  uint uVar1;\r\n  uint uVar2;\r\n  uint uVar3;\r\n  uint local_14;\r\n  uint local_10;\r\n  uint local_c;\r\n  u_long local_8;\r\n  \r\n  uVar1 = *param_1;\r\n  uVar2 = param_1[1];\r\n  uVar3 = param_1[2];\r\n  local_14 = (uVar1 & 0xff0000 | uVar1 >> 0x10) >> 8 | (uVar1 << 0x10 | uVar1 & 0xff00) << 8;\r\n  local_10 = (uVar2 & 0xff0000 | uVar2 >> 0x10) >> 8 | (uVar2 << 0x10 | uVar2 & 0xff00) << 8;\r\n  local_c = (uVar3 & 0xff0000 | uVar3 >> 0x10) >> 8 | (uVar3 << 0x10 | uVar3 & 0xff00) << 8;\r\n  local_8 = htonl(param_2);\r\n  FUN_00813ec0(&local_14,0);\r\n  return;\r\n}\r\n\r\n"
+    },
+    {
+      "evidence_id": "ev_8d2d00e7cd00df3c7e99385f1ab1d8d8b1fe3ed1f38bcd17a68f7e29c39f1c82",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x813dc0"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "normalized_result_sha256": "20f007020743109bc5e4b22886a923f2e965d2ff45103c94b888b0bc9522b431",
+      "bounded_result": "\r\n/* WARNING: Function: __alloca_probe_16 replaced with injection: alloca_probe */\r\n/* WARNING: Unable to track spacebase fully for stack */\r\n\r\nvoid FUN_00813dc0(void *param_1,char param_2)\r\n\r\n{\r\n  int iVar1;\r\n  code *pcVar2;\r\n  int iVar3;\r\n  u_short uVar4;\r\n  u_short uVar5;\r\n  int iVar6;\r\n  undefined1 *puVar7;\r\n  undefined1 *puVar8;\r\n  uint local_18;\r\n  uint local_14;\r\n  undefined1 local_10 [2];\r\n  undefined1 local_e [2];\r\n  undefined1 local_c [4];\r\n  uint local_8;\r\n  \r\n  local_8 = DAT_01e44f28 ^ (uint)&stack0xfffffffc;\r\n  uVar4 = htons(6);\r\n  local_18 = (uint)uVar4;\r\n  uVar4 = htons(0x448);\r\n  local_14 = (uint)uVar4;\r\n  memmove(local_10,&local_18,2);\r\n  memmove(local_e,&local_14,2);\r\n  memmove(local_c,param_1,4);\r\n  if ((DAT_020e7344 != (int *)0x0) && (param_2 == '\\0')) {\r\n    iVar6 = (**(code **)(*DAT_020e7344 + 4))();\r\n    iVar3 = -(iVar6 + 2);\r\n    local_14 = 0;\r\n    *(uint **)(local_c + iVar3 + -0x20) = &local_14;\r\n    iVar1 = *DAT_020e7344;\r\n    *(undefined1 **)(local_10 + iVar3 + -0x20) = &stack0xffffffda + iVar3;\r\n    *(undefined4 *)(&stack0xffffffcc + iVar3) = 6;\r\n    *(undefined1 **)(&stack0xffffffc8 + iVar3) = local_e;\r\n    pcVar2 = *(code **)(iVar1 + 0xc);\r\n    puVar7 = &stack0xffffffc4 + iVar3;\r\n    *(undefined4 *)(&stack0xffffffc4 + iVar3) = 0x813e63;\r\n    (*pcVar2)();\r\n    *(uint *)(puVar7 + -4) = local_14;\r\n    puVar8 = puVar7 + -8;\r\n    *(undefined4 *)(puVar7 + -8) = 0x813e6c;\r\n    uVar5 = htons(*(u_short *)(puVar7 + -4));\r\n    local_18 = (uint)uVar5;\r\n    *(undefined4 *)(puVar8 + -4) = 2;\r\n    *(uint **)(puVar8 + -8) = &local_18;\r\n    *(undefined1 **)(puVar8 + -0xc) = &stack0xffffffd8 + iVar3;\r\n    *(undefined4 *)(puVar8 + -0x10) = 0x813e7e;\r\n    memmove(*(void **)(puVar8 + -0xc),*(void **)(puVar8 + -8),*(size_t *)(puVar8 + -4));\r\n    *(uint *)(puVar8 + -0x10) = (uint)uVar4;\r\n    *(int *)(puVar8 + -0x14) = iVar6 + 2;\r\n    *(undefined1 **)(puVar8 + -0x18) = &stack0xffffffd8 + iVar3;\r\n    *(undefined4 *)(puVar8 + -0x1c) = 0x813e86;\r\n    FUN_004cfea0();\r\n    __security_check_cookie(local_8 ^ (uint)&stack0xfffffffc);\r\n    return;\r\n  }\r\n  FUN_004cfea0();\r\n  __security_check_cookie(local_8 ^ (uint)&stack0xfffffffc);\r\n  return;\r\n}\r\n\r\n"
+    },
+    {
+      "evidence_id": "ev_b01cdb2b780c043b2972c1ee19bfcc4a017a661abf87b460c21e72281e8db1a6",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x813ec0"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "normalized_result_sha256": "7e85abe9eb4adb28013d4ffc93a77e1e69274208bdea55bc6dbe2a4e5c8390c7",
+      "bounded_result": "\r\n/* WARNING: Function: __alloca_probe_16 replaced with injection: alloca_probe */\r\n/* WARNING: Unable to track spacebase fully for stack */\r\n\r\nvoid FUN_00813ec0(void *param_1,char param_2)\r\n\r\n{\r\n  int iVar1;\r\n  code *pcVar2;\r\n  int iVar3;\r\n  u_short uVar4;\r\n  u_short uVar5;\r\n  int iVar6;\r\n  undefined1 *puVar7;\r\n  undefined1 *puVar8;\r\n  uint local_24;\r\n  uint local_20;\r\n  undefined1 local_1c [2];\r\n  undefined1 local_1a [2];\r\n  undefined1 local_18 [16];\r\n  uint local_8;\r\n  \r\n  local_8 = DAT_01e44f28 ^ (uint)&stack0xfffffffc;\r\n  uVar4 = htons(0x12);\r\n  local_24 = (uint)uVar4;\r\n  uVar4 = htons(0x44a);\r\n  local_20 = (uint)uVar4;\r\n  memmove(local_1c,&local_24,2);\r\n  memmove(local_1a,&local_20,2);\r\n  memmove(local_18,param_1,0x10);\r\n  if ((DAT_020e7344 != (int *)0x0) && (param_2 == '\\0')) {\r\n    iVar6 = (**(code **)(*DAT_020e7344 + 4))();\r\n    iVar3 = -(iVar6 + 2);\r\n    local_20 = 0;\r\n    *(uint **)(local_18 + iVar3 + -0x20) = &local_20;\r\n    iVar1 = *DAT_020e7344;\r\n    *(undefined1 **)(local_1c + iVar3 + -0x20) = local_18 + iVar3 + -0x1a;\r\n    *(undefined4 *)(&stack0xffffffc0 + iVar3) = 0x12;\r\n    *(undefined1 **)(&stack0xffffffbc + iVar3) = local_1a;\r\n    pcVar2 = *(code **)(iVar1 + 0xc);\r\n    puVar7 = &stack0xffffffb8 + iVar3;\r\n    *(undefined4 *)(&stack0xffffffb8 + iVar3) = 0x813f63;\r\n    (*pcVar2)();\r\n    *(uint *)(puVar7 + -4) = local_20;\r\n    puVar8 = puVar7 + -8;\r\n    *(undefined4 *)(puVar7 + -8) = 0x813f6c;\r\n    uVar5 = htons(*(u_short *)(puVar7 + -4));\r\n    local_24 = (uint)uVar5;\r\n    *(undefined4 *)(puVar8 + -4) = 2;\r\n    *(uint **)(puVar8 + -8) = &local_24;\r\n    *(undefined1 **)(puVar8 + -0xc) = local_18 + iVar3 + -0x1c;\r\n    *(undefined4 *)(puVar8 + -0x10) = 0x813f7e;\r\n    memmove(*(void **)(puVar8 + -0xc),*(void **)(puVar8 + -8),*(size_t *)(puVar8 + -4));\r\n    *(uint *)(puVar8 + -0x10) = (uint)uVar4;\r\n    *(int *)(puVar8 + -0x14) = iVar6 + 2;\r\n    *(undefined1 **)(puVar8 + -0x18) = local_18 + iVar3 + -0x1c;\r\n    *(undefined4 *)(puVar8 + -0x1c) = 0x813f86;\r\n    FUN_004cfea0();\r\n    __security_check_cookie(local_8 ^ (uint)&stack0xfffffffc);\r\n    return;\r\n  }\r\n  FUN_004cfea0();\r\n  __security_check_cookie(local_8 ^ (uint)&stack0xfffffffc);\r\n  return;\r\n}\r\n\r\n"
+    },
+    {
+      "evidence_id": "ev_ba891bca040498192131d98fb6a8fc88edf380452e54a285e20c58c596f75bb3",
+      "operation": "procedure_assembly",
+      "parameters": {
+        "procedure": "0x81b790"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "normalized_result_sha256": "5a21c4f3652bffd8e510cd600e22bf6b2814252109edc8e95a06ee726aa0550c",
+      "bounded_result": "0x81b790: PUSH EBP\n0x81b791: MOV EBP, ESP\n0x81b793: PUSH ECX\n0x81b794: MOV EAX, dword ptr [EBP + 0x8]\n0x81b797: MOV EDX, ECX\n0x81b799: MOV ECX, dword ptr [EBP + 0x10]\n0x81b79c: MOV dword ptr [EBP + -0x4], EDX\n0x81b79f: MOV dword ptr [EDX + 0x10], EAX\n0x81b7a2: MOV EAX, dword ptr [EBP + 0xc]\n0x81b7a5: MOV dword ptr [EDX + 0x14], EAX\n0x81b7a8: MOV dword ptr [EDX + 0x4], 0x0\n0x81b7af: MOV dword ptr [EDX + 0x8], 0x0\n0x81b7b6: MOV byte ptr [EDX + 0xc], 0x0\n0x81b7ba: MOV dword ptr [EDX], 0x127c950\n0x81b7c0: MOV dword ptr [EDX + 0x18], 0xffffffff\n0x81b7c7: MOV EAX, dword ptr [ECX]\n0x81b7c9: MOV dword ptr [EDX + 0x1c], EAX\n0x81b7cc: MOV EAX, dword ptr [ECX + 0x4]\n0x81b7cf: MOV dword ptr [EDX + 0x20], EAX\n0x81b7d2: MOV EAX, EDX\n0x81b7d4: MOV dword ptr [EDX + 0x24], 0x1\n0x81b7db: MOV ESP, EBP\n0x81b7dd: POP EBP\n0x81b7de: RET 0xc"
+    },
+    {
+      "evidence_id": "ev_bcc9fde9e58546b673aa6c7d7e8c0ddce4a8149eac6655af7e1a285607015598",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x95bda0"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "normalized_result_sha256": "29b7e7637b682b69c03270df689e89e8d53f8ff3c31a90e5d559249a8cd8ba86",
+      "bounded_result": "\r\nvoid FUN_0095bda0(u_long param_1)\r\n\r\n{\r\n  u_long local_8;\r\n  \r\n  local_8 = htonl(param_1);\r\n  FUN_00813dc0(&local_8,0);\r\n  return;\r\n}\r\n\r\n"
+    },
+    {
+      "evidence_id": "ev_c20131442f6895f5352e7d8559e1d8755d36e79354e5e0bab5968397fc95d8da",
+      "operation": "procedure_callers",
+      "parameters": {
+        "procedure": "0x95bda0"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "normalized_result_sha256": "3c5f07b0e9f28999fbb84c0793a43ab756f3ff2e91966cad3b946da177570ebc",
+      "bounded_result": [
+        "0x529ff0"
+      ]
+    },
+    {
+      "evidence_id": "ev_e020a75afd9b3f66c93195ef5431d12ded68768a202b9b2aa1951a38c8462ba2",
+      "operation": "procedure_callers",
+      "parameters": {
+        "procedure": "0x95bdd0"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "normalized_result_sha256": "3c5f07b0e9f28999fbb84c0793a43ab756f3ff2e91966cad3b946da177570ebc",
+      "bounded_result": [
+        "0x529ff0"
+      ]
+    },
+    {
+      "evidence_id": "ev_e696f1840c6efab364d4838c830fa049d53fa355489a3c913538530d51b6b56a",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x813fc0"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "normalized_result_sha256": "024c4558b63af08a0e95116812a5e6920e1f79a4e2bd6ec52863788e52da6247",
+      "bounded_result": "\r\n/* WARNING: Function: __alloca_probe_16 replaced with injection: alloca_probe */\r\n/* WARNING: Unable to track spacebase fully for stack */\r\n\r\nvoid FUN_00813fc0(void *param_1,char param_2)\r\n\r\n{\r\n  int iVar1;\r\n  code *pcVar2;\r\n  int iVar3;\r\n  u_short uVar4;\r\n  u_short uVar5;\r\n  int iVar6;\r\n  undefined1 *puVar7;\r\n  undefined1 *puVar8;\r\n  uint local_1c;\r\n  uint local_18;\r\n  undefined1 local_14 [2];\r\n  undefined1 local_12 [2];\r\n  undefined1 local_10 [8];\r\n  uint local_8;\r\n  \r\n  local_8 = DAT_01e44f28 ^ (uint)&stack0xfffffffc;\r\n  uVar4 = htons(10);\r\n  local_1c = (uint)uVar4;\r\n  uVar4 = htons(0x449);\r\n  local_18 = (uint)uVar4;\r\n  memmove(local_14,&local_1c,2);\r\n  memmove(local_12,&local_18,2);\r\n  memmove(local_10,param_1,8);\r\n  if ((DAT_020e7344 != (int *)0x0) && (param_2 == '\\0')) {\r\n    iVar6 = (**(code **)(*DAT_020e7344 + 4))();\r\n    iVar3 = -(iVar6 + 2);\r\n    local_18 = 0;\r\n    *(uint **)(local_10 + iVar3 + -0x20) = &local_18;\r\n    iVar1 = *DAT_020e7344;\r\n    *(undefined1 **)(local_14 + iVar3 + -0x20) = local_10 + iVar3 + -0x1a;\r\n    *(undefined4 *)(&stack0xffffffc8 + iVar3) = 10;\r\n    *(undefined1 **)(&stack0xffffffc4 + iVar3) = local_12;\r\n    pcVar2 = *(code **)(iVar1 + 0xc);\r\n    puVar7 = &stack0xffffffc0 + iVar3;\r\n    *(undefined4 *)(&stack0xffffffc0 + iVar3) = 0x814063;\r\n    (*pcVar2)();\r\n    *(uint *)(puVar7 + -4) = local_18;\r\n    puVar8 = puVar7 + -8;\r\n    *(undefined4 *)(puVar7 + -8) = 0x81406c;\r\n    uVar5 = htons(*(u_short *)(puVar7 + -4));\r\n    local_1c = (uint)uVar5;\r\n    *(undefined4 *)(puVar8 + -4) = 2;\r\n    *(uint **)(puVar8 + -8) = &local_1c;\r\n    *(undefined1 **)(puVar8 + -0xc) = local_10 + iVar3 + -0x1c;\r\n    *(undefined4 *)(puVar8 + -0x10) = 0x81407e;\r\n    memmove(*(void **)(puVar8 + -0xc),*(void **)(puVar8 + -8),*(size_t *)(puVar8 + -4));\r\n    *(uint *)(puVar8 + -0x10) = (uint)uVar4;\r\n    *(int *)(puVar8 + -0x14) = iVar6 + 2;\r\n    *(undefined1 **)(puVar8 + -0x18) = local_10 + iVar3 + -0x1c;\r\n    *(undefined4 *)(puVar8 + -0x1c) = 0x814086;\r\n    FUN_004cfea0();\r\n    __security_check_cookie(local_8 ^ (uint)&stack0xfffffffc);\r\n    return;\r\n  }\r\n  FUN_004cfea0();\r\n  __security_check_cookie(local_8 ^ (uint)&stack0xfffffffc);\r\n  return;\r\n}\r\n\r\n"
+    },
+    {
+      "evidence_id": "ev_e6b8888f734e23bd234c120281e8d5ecf0bfeba97c4d73471595482a6734be9b",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x95bea0"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "normalized_result_sha256": "cef24ce3878de7a7769c0982e67704e41751823fff25ea5d890a3f336a2c1ee2",
+      "bounded_result": "\r\nvoid FUN_0095bea0(u_long param_1,u_long param_2)\r\n\r\n{\r\n  u_long local_c;\r\n  u_long local_8;\r\n  \r\n  local_c = htonl(param_1);\r\n  local_8 = htonl(param_2);\r\n  FUN_00813fc0(&local_c,0);\r\n  return;\r\n}\r\n\r\n"
+    },
+    {
+      "evidence_id": "ev_ef9a0a3b3518334a826d6e3062f526e56eef6c1952b95c31f21e0e3a9a5c03ae",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x81b7f0"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "normalized_result_sha256": "efd58de22d25b2077fb897f537aaa11469a2ac5b26f2d83f2b244cd24de0aaf8",
+      "bounded_result": "\r\nvoid FUN_0081b7f0(undefined4 param_1,undefined4 param_2,undefined4 param_3)\r\n\r\n{\r\n  undefined4 *in_ECX;\r\n  \r\n  in_ECX[4] = param_1;\r\n  in_ECX[5] = param_2;\r\n  in_ECX[6] = param_3;\r\n  in_ECX[1] = 0;\r\n  in_ECX[2] = 0;\r\n  *(undefined1 *)(in_ECX + 3) = 0;\r\n  *in_ECX = Nuo::Kindred::ActionItemActivated::vftable;\r\n  in_ECX[7] = 0;\r\n  in_ECX[8] = 0;\r\n  in_ECX[9] = 0;\r\n  return;\r\n}\r\n\r\n"
+    },
+    {
+      "evidence_id": "ev_f4ac10ff9d99e4b67e2bc2436a454b252d99eb28d55392cbdfdf45c71ed924d8",
+      "operation": "procedure_assembly",
+      "parameters": {
+        "procedure": "0x81b740"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "normalized_result_sha256": "26501e902fd40dc52c2c61cad5b3095970a5349de3bda223bf74f5889c160bf6",
+      "bounded_result": "0x81b740: PUSH EBP\n0x81b741: MOV EBP, ESP\n0x81b743: PUSH ECX\n0x81b744: MOV EAX, dword ptr [EBP + 0x8]\n0x81b747: MOV dword ptr [ECX + 0x10], EAX\n0x81b74a: MOV EAX, dword ptr [EBP + 0xc]\n0x81b74d: MOV dword ptr [ECX + 0x14], EAX\n0x81b750: MOV EAX, ECX\n0x81b752: MOV dword ptr [ECX + 0x4], 0x0\n0x81b759: MOV dword ptr [ECX + 0x8], 0x0\n0x81b760: MOV byte ptr [ECX + 0xc], 0x0\n0x81b764: MOV dword ptr [ECX], 0x127c950\n0x81b76a: MOV dword ptr [ECX + 0x18], 0xffffffff\n0x81b771: MOV dword ptr [ECX + 0x1c], 0x0\n0x81b778: MOV dword ptr [ECX + 0x20], 0x0\n0x81b77f: MOV dword ptr [EBP + -0x4], ECX\n0x81b782: MOV dword ptr [ECX + 0x24], 0x2\n0x81b789: MOV ESP, EBP\n0x81b78b: POP EBP\n0x81b78c: RET 0x8"
+    },
+    {
+      "evidence_id": "ev_fb10ff8e85249cef372ba7c0deacc7dbfc8e4e07db73ffb24753b492443e6695",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x81b790"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "normalized_result_sha256": "90b4bda8afaa50d09db25b9e6ee25c21f5156b7f8629199d83d065c127a01af5",
+      "bounded_result": "\r\nvoid FUN_0081b790(undefined4 param_1,undefined4 param_2,undefined4 *param_3)\r\n\r\n{\r\n  undefined4 *in_ECX;\r\n  \r\n  in_ECX[4] = param_1;\r\n  in_ECX[5] = param_2;\r\n  in_ECX[1] = 0;\r\n  in_ECX[2] = 0;\r\n  *(undefined1 *)(in_ECX + 3) = 0;\r\n  *in_ECX = Nuo::Kindred::ActionItemActivated::vftable;\r\n  in_ECX[6] = 0xffffffff;\r\n  in_ECX[7] = *param_3;\r\n  in_ECX[8] = param_3[1];\r\n  in_ECX[9] = 1;\r\n  return;\r\n}\r\n\r\n"
+    },
+    {
+      "evidence_id": "ev_fe1225b536748fcd4d1678b826bcd3381168cc2b9003d9dedde134ffac544ad4",
+      "operation": "procedure_callers",
+      "parameters": {
+        "procedure": "0x95bea0"
+      },
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "normalized_result_sha256": "3c5f07b0e9f28999fbb84c0793a43ab756f3ff2e91966cad3b946da177570ebc",
+      "bounded_result": [
+        "0x529ff0"
+      ]
+    }
+  ],
+  "scope": "Static reference-build observations; request acceptance, native execution and consumption remain unverified."
+}

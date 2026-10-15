@@ -9,9 +9,16 @@ NATIVE_EVIDENCE: Final = "gamekindred-c23b2e9e"
 END_MATCH_EVIDENCE_SHA256: Final = "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642"
 END_MATCH_EVIDENCE: Final = "windows-659f9eed"
 ITEM_EVENT_EVIDENCE: Final = "rea-item-events.windows_2026_10_14.v1"
+ITEM_ACTIVATION_EVIDENCE: Final = "rea-item-activation.windows_2026_10_14.v1"
 ATTRIBUTE_STATS: Final[dict[int, str]] = {0x29: "kills", 0x2A: "deaths"}
-type KnownOpcode = Literal[0x03F1, 0x040B, 0x041C, 0x041D, 0x042B, 0x0430, 0x0431, 0x044D, 0x048F]
-DEFAULT_OPCODES: Final = frozenset({0x03F1, 0x041C, 0x041D, 0x042B, 0x0430, 0x0431, 0x044D, 0x048F})
+type KnownOpcode = Literal[
+    0x03F1, 0x040B, 0x041C, 0x041D, 0x042B, 0x0430, 0x0431,
+    0x0448, 0x0449, 0x044A, 0x044C, 0x044D, 0x048F,
+]
+DEFAULT_OPCODES: Final = frozenset({
+    0x03F1, 0x041C, 0x041D, 0x042B, 0x0430, 0x0431,
+    0x0448, 0x0449, 0x044A, 0x044C, 0x044D, 0x048F,
+})
 EXPECTED_CONTENT_LENGTH: Final[dict[KnownOpcode, int]] = {
     0x03F1: 8,
     0x040B: 8,
@@ -20,6 +27,10 @@ EXPECTED_CONTENT_LENGTH: Final[dict[KnownOpcode, int]] = {
     0x042B: 16,
     0x0430: 16,  # Two opcode bytes plus the observed 14-byte payload.
     0x0431: 8,
+    0x0448: 8,
+    0x0449: 16,
+    0x044A: 24,
+    0x044C: 24,
     0x044D: 16,
     0x048F: 8,
 }
@@ -61,6 +72,12 @@ class DecodedFields(TypedDict, total=False):
     native_item_instance_id: int
     native_callback: str
     native_semantic_scope: str
+    native_request_arguments: list[int]
+    native_vector_bits: list[int]
+    native_activation_mode: int
+    native_target_raw: int
+    native_coordinate_bits: list[int]
+    native_position: list[float | None]
 
 
 def _is_known_opcode(opcode: int) -> TypeGuard[KnownOpcode]:
@@ -82,8 +99,9 @@ def decode_fields(record: VGRRecord) -> DecodedFields:
     Reasons 5/6/7 enter validation-error paths and 8 is a no-op in this build.
     native_surrender is only the consumer's reason == 2 boolean; team IDs have
     no screen-side mapping here. Timestamp always belongs to the outer record.
-    Item requests/notifications decode only the receiver's observed prefix;
-    suffixes, callback side effects and purchase outcomes remain unverified.
+    Item requests/notifications decode only a traced receiver or serializer
+    prefix. Activation-mode semantics do not establish successful consumption.
+    Suffixes, callback side effects and purchase outcomes remain unverified.
     """
     if not _is_known_opcode(record.opcode):
         return {"decoding_status": "unknown_opcode"}
@@ -191,6 +209,61 @@ def decode_fields(record: VGRRecord) -> DecodedFields:
                 "native_conditional": True,
                 "native_stat": None,
             }
+        case 0x0448:
+            return {
+                "decoding_status": "decoded",
+                "native_type": "item_activation_request",
+                "native_item_instance_id": struct.unpack_from(">I", payload, 0)[0],
+                "native_semantic_scope": "serializer_prefix",
+                "remaining_hex": payload[4:].hex(),
+                "native_evidence": ITEM_ACTIVATION_EVIDENCE,
+                "native_evidence_sha256": END_MATCH_EVIDENCE_SHA256,
+            }
+        case 0x0449:
+            return {
+                "decoding_status": "decoded",
+                "native_type": "item_activation_request",
+                "native_request_arguments": list(struct.unpack_from(">II", payload, 0)),
+                "native_semantic_scope": "serializer_prefix",
+                "remaining_hex": payload[8:].hex(),
+                "native_evidence": ITEM_ACTIVATION_EVIDENCE,
+                "native_evidence_sha256": END_MATCH_EVIDENCE_SHA256,
+            }
+        case 0x044A:
+            return {
+                "decoding_status": "decoded",
+                "native_type": "item_activation_request",
+                "native_vector_bits": list(struct.unpack_from(">III", payload, 0)),
+                "native_request_arguments": [struct.unpack_from(">I", payload, 12)[0]],
+                "native_semantic_scope": "serializer_prefix",
+                "remaining_hex": payload[16:].hex(),
+                "native_evidence": ITEM_ACTIVATION_EVIDENCE,
+                "native_evidence_sha256": END_MATCH_EVIDENCE_SHA256,
+            }
+        case 0x044C:
+            actor, instance, target = struct.unpack_from(">III", payload, 0)
+            mode = payload[20]
+            activation_fields: DecodedFields = {
+                "decoding_status": "decoded" if mode in (0, 1, 2) else "unsupported_mode",
+                "native_type": "item_activation_message",
+                "ref0": actor,
+                "native_item_instance_id": instance,
+                "native_activation_mode": mode,
+                "native_target_raw": target,
+                "native_coordinate_bits": list(struct.unpack_from(">II", payload, 12)),
+                "native_conditional": True,
+                "native_semantic_scope": "receiver_prefix",
+                "remaining_hex": payload[21:].hex(),
+                "native_evidence": ITEM_ACTIVATION_EVIDENCE,
+                "native_evidence_sha256": END_MATCH_EVIDENCE_SHA256,
+            }
+            if mode == 0:
+                activation_fields["ref1"] = target
+            elif mode == 1:
+                x, _ = _float_fields(payload, 12)
+                y, _ = _float_fields(payload, 16)
+                activation_fields["native_position"] = [x, y]
+            return activation_fields
         case 0x044D:
             actor, instance = struct.unpack_from(">II", payload, 0)
             return {
