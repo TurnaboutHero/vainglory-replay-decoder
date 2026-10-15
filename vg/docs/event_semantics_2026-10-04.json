@@ -51,7 +51,7 @@
       "kind": "native_apply"
     },
     "roster-review": {
-      "path": "NATIVE_ROSTER_2026-10-04.md",
+      "path": "re_dictionary/baseline/NATIVE_ROSTER-65bab83.md.txt",
       "sha256": "51a334c0d4a38469df07f1b18a01e17701fbdeb1064a461ddba9c2a7a5e0b1d1",
       "kind": "native_review"
     },
@@ -21172,13 +21172,13 @@
       "0x046f"
     ],
     "source_sha256": {
-      "native_roster.py": "b3ced4d30bdb45459b3c315ac528efb59ae083c8263af85299e31dc8420452c7",
+      "native_roster.py": "4f12a678003cfddcdc0bf893ae499c44c967bc47dfb3d9c05eedd26512ec2374",
       "native_stats.py": "cc7f02f0a851b155ef2ac0aa6b90820d1f6592f5f30c8107fe67f3ef3ce5048f",
       "native_gold.py": "2208e4cc48e9eb71a42be41469181a0fa978c78c3ac40c26682751be2e16099e",
       "native_inventory.py": "0fd92140c2cdd16d7b2c35d188485b19dadbd367e831fb94a08ed85b9335e88c",
       "native_query.py": "75f0d853e12000501a05b0b614d150f1db0d443e627c9ff0b3b1f9ba17ed1c47"
     },
-    "scope": "Six-field production readers only; optional unused candidate semantics do not block this gate. 040b rejects output pending cleanup proof."
+    "scope": "Six-field production readers only; optional unused candidate semantics do not block this gate. 040b rejects output pending cleanup proof. Actor definition corroboration is separate from skin agreement; H5672 skin conflicts remain partial. See H5672_SPAWN_SKIN_2026-10-14.md."
   },
   "interpretation": "Static application proof and native runtime observations are narrower than independent six-field replay accuracy. Unknown recorded variants and all required pending gates remain failures."
 }

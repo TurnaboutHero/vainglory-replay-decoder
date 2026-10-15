@@ -35,12 +35,23 @@ The CLI default changed from `safe-json` to `state-json`. Consumers of `decoder_
 
 A single input may also be a directory containing exactly one replay family. Multiple families require an explicit `.0.vgr` selection or a batch command. Missing paths, unreadable sections, ambiguous selection and malformed input receive actionable errors.
 
+State JSON also exposes compact `recording_identity` [diagnostics](vg/docs/RECORDING_IDENTITY_DIAGNOSTICS.md): raw external-ID candidate summaries and recording-selected actor/team evidence. Full per-record histories are available through the existing native-roster report. Empty snapshots do not erase historical candidates; conflicts and unsupported layouts remain explicit. These fields do not authenticate accounts or uploaders, identify the recording client, or change result/eligibility decisions.
+
 State JSON also exposes `display_values` ([contract](vg/docs/DISPLAY_VALUES.md)). Its `raw` values retain recording provenance. `observed` and `reconstructed` remain null without a compatible supplied runtime receipt. `direct_raw_candidate` is an estimate of one gold formatter call, not a reconstruction of the UI cache. `--playback-speed 5` optionally estimates the playback clock after the last anchor; unknown clock mapping leaves it null. Neither display option changes definitive eligibility.
 
 ```sh
 python -B -m vg.decoder_v2.decode_match "replays/match.0.vgr" --playback-speed 5 -o "reports/estimate.json"
 python -B -m vg.decoder_v2.decode_match "replays/match.0.vgr" --display-evidence "receipts/terminal-display.json" -o "reports/observed.json"
 ```
+
+## Inspect a plaintext outgoing request
+
+The separate [offline outgoing request decoder](vg/docs/OFFLINE_OUTGOING_REQUESTS.md)
+accepts one explicitly untransformed Windows request frame, with exact lengths
+and typed raw fields for movement, ability and item activation. Use
+`python -B -m vg.core.outgoing_requests --schema` to inspect its bounded schema.
+This does not decode VGR records, decrypt traffic, contact a server or prove
+request success; existing replay interpretation and eligibility remain unchanged.
 
 ## Running the regression suite
 
@@ -62,6 +73,16 @@ Set `COOLDOWN_PROBE_EVIDENCE_DIR` to an explicit directory to retain logs and
 receipts for inspection, including failed runs. These offline mocks do not
 establish native runtime correctness or decoded cooldown certainty.
 
+## Import offline VGNL payloads
+
+Locally saved, complete VGNL binary WebSocket application payloads can be validated
+and imported with `python -B -m vg.core.vgnl_importer`. The importer retains exact
+input bytes and hashes, reports sequence/epoch/section/offset conflicts and gaps,
+and only reconstructs unambiguous contiguous observed bytes. It does not contact
+servers or promote account identity, replay completeness or final results. See the
+[offline VGNL importer guide](vg/docs/VGNL_OFFLINE_IMPORTER.md) for CLI/API usage,
+resume/terminal metadata limits and the synthetic-only transport validation scope.
+
 ## Choose the workflow
 
 | Need | Entry point | What to retain |
@@ -80,6 +101,12 @@ establish native runtime correctness or decoded cooldown certainty.
 
 ## Read the evidence correctly
 
+- The [Korean RE evidence dictionary](vg/docs/re_dictionary/INDEX.ko.md) groups curated findings by feature, exact artifact, address space, proof status and limitations. Its [machine-readable catalog](vg/docs/re_dictionary/catalog.json) supports read-only search with `python -B -m vg.research.dictionary search --opcode 0449`; run `python -B -m vg.research.dictionary validate --check-index` to check repository source hashes and index consistency. External references remain explicitly unresolved unless their roots are supplied. Catalog validation does not repeat native experiments or validate a live server.
+- The [reviewed research follow-up](vg/docs/re_dictionary/deepening/README.md) adds terminal callback, guarded combat-network and cooldown-modifier findings with synthetic models and explicit runtime limits; it does not change decoder inference.
+- The [buff/status extension](vg/docs/re_dictionary/buff_status/README.md) adds reviewed jungle buffs, 타격 강화제 / 수정 강화제, status contributors and action gates, and generic lifecycle findings. Historical extended payload layouts remain unsupported; no production buff/status decoder is enabled.
+- The [progression/reward extension](vg/docs/re_dictionary/progression_rewards/README.md) separates hero XP/level, skill investment, creature display attribution and individual resource updates from unverified reward credit or shared-reward formulas. Bounded models do not enable a production reducer.
+- The [XP baseline/structure extension](vg/docs/re_dictionary/xp_structures/README.md) records reviewed snapshot/layer semantics, same-recording recurrence checks and structure death/cleanup/regeneration boundaries. Structure credit, payouts, rebuild scheduling and crystal-to-match-end causation remain unresolved.
+- The [respawn/recall extension](vg/docs/re_dictionary/respawn_recall/README.md) distinguishes existing-actor resets, timer display, runtime recall requests and stubbed channel behaviors. Successful recall, timer-triggered revival and control recovery remain unproved.
 - The [2026-10-04 player-state accuracy report](vg/docs/PLAYER_STATE_ACCURACY_2026-10-04.md) documents exact native EOF comparisons for 8 recordings and 37 players across default CLI, Python API and legacy CLI (777/777 field groups), plus the separate 56-recording coverage audit and remaining event unknowns.
 - `null` means unavailable; measured zero remains zero. CSV uses a blank cell for null. A duration estimate or supplied truth retains its provenance and is not final-index approval.
 - Safe final output currently withholds final K/D/A, minion kills, gold, winner and exact duration. Captured K/D/A can be observed at a supported clock, but `accepted_for_index` remains false for those captured counters.

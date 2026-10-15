@@ -96,6 +96,17 @@ The numeric team field is preserved with raw-byte evidence; `team` stays null
 because no left/right display convention is inferred here. Repeated spawns
 are observations, not proof of respawns or new lifetimes.
 
+The [H5672 skin investigation](H5672_SPAWN_SKIN_2026-10-14.md) separates
+`actor_identity_status` from that full definition/skin association. The former
+requires the first spawn's definition to match the latest roster definition.
+A skin-only disagreement still leaves `association_status=conflicting_spawn`
+and the roster invalid/partial, but does not by itself invalidate the actor ID
+or generic hero label. `decode_player_state` can report corroborated gameplay
+fields while retaining the overall partial result. Its existing `skin_hash`
+is the latest roster value; additive `spawn_skin_hash` preserves the first
+spawn value, and `field_status.skin` keeps a conflict or unverified rendering
+explicit. Matching raw skin hashes alone never certify the rendered asset.
+
 ## Verification
 
 All 57 hero definitions observed in the corpus have verified original Actor

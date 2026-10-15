@@ -1,0 +1,97 @@
+{
+  "scope": "Curated structured test facts; original complete sources remain external. No raw replay bytes or assets.",
+  "hero_count": 57,
+  "embedded_ability_count": 255,
+  "selected_heroes": [
+    {
+      "hero": "Catherine",
+      "ui_indices": [
+        1,
+        2,
+        3
+      ],
+      "alternate_tier_flags": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "hero": "Ringo",
+      "ui_indices": [
+        0,
+        1,
+        2
+      ],
+      "alternate_tier_flags": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "hero": "Ozo",
+      "ui_indices": [
+        0,
+        3,
+        8
+      ],
+      "alternate_tier_flags": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "hero": "Varya",
+      "ui_indices": [
+        0,
+        4,
+        8
+      ],
+      "alternate_tier_flags": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "corpus": {
+    "build_match": false,
+    "sections": 168,
+    "numeric_concatenation_sha256": "ae8e37a0eb42f8d323311b20ceee2a1314fe97ae330be24cf30e3ffeca4870f0",
+    "counts": [
+      {
+        "opcode": "0x3f3",
+        "payload_length": 746,
+        "count": 1670
+      },
+      {
+        "opcode": "0x3f3",
+        "payload_length": 750,
+        "count": 10
+      },
+      {
+        "opcode": "0x43a",
+        "payload_length": 14,
+        "count": 120
+      }
+    ]
+  }
+}

@@ -1,0 +1,1096 @@
+{
+  "schema": "vg.consolidation.branch-audit.v1",
+  "main_snapshot": "65bab83ae27e4c0f81338471a30a4aa1ee0944df",
+  "research_start": "e95918c98962f334a68b703cc04e61edc9200be5",
+  "integration_content_commit": "303031aa08ad2f14d9acab637a72216d454ea1c4",
+  "method": "Frozen remote tips; ancestry plus git cherry stable patch equivalence; branch feature delta exact Git blobs; independently reviewed superseded files. All absent paths and unmatched patches resolved. Exact ancestry alone was not used as sole content preservation evidence.",
+  "open_prs_before_integration": [],
+  "branches": [
+    {
+      "branch": "codex/cooldown-research-followup",
+      "tip": "311232a1deaa60835068a1939eaf1ec023e21ac0",
+      "main_inclusion": "ancestor",
+      "integration_inclusion": "ancestor",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "33611314a29d2ad57a4c56a2f6da569b22ec9641",
+      "feature_delta_base_derivation": "first main first-parent merge containing tip via second parent 65bab83ae27e4c0f81338471a30a4aa1ee0944df",
+      "same_feature_blob_count": 202,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "5a5fccc1ada455055ba55a559eaee50fe810dabb",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [],
+      "preservation_reason": "No unique commits vs research; 202 feature files identical, README expanded. Parent separately audits cooldown semantics.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "codex/pr27-integration-validation",
+      "tip": "b40a9de5420e7d7a1d95be7a507b57273fb6a1bc",
+      "main_inclusion": "patch-equivalent",
+      "integration_inclusion": "patch/content-equivalent; reviewed supersession",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "07e30046b6abd44eec897ae6d2813ea591225bd7",
+      "feature_delta_base_derivation": "merge-base(audit/main,tip)",
+      "same_feature_blob_count": 204,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "9cedd85609fafd0f8511cef5ea9bbbcb38818b9e",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        }
+      ],
+      "main_patch_equivalent_commits": [
+        "2c37d2ba46d6d17e52e279f6ca78405c9f1314cc"
+      ],
+      "initial_integration_patch_equivalent_commits": [
+        "2c37d2ba46d6d17e52e279f6ca78405c9f1314cc"
+      ],
+      "preservation_reason": "Portable test patch equivalent exists; integration merge commit itself lacks patch-id by design. 204 blobs identical, README expanded. No missing file.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "codex/pr27-portable-tests",
+      "tip": "2c37d2ba46d6d17e52e279f6ca78405c9f1314cc",
+      "main_inclusion": "patch-equivalent",
+      "integration_inclusion": "patch/content-equivalent; reviewed supersession",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "07e30046b6abd44eec897ae6d2813ea591225bd7",
+      "feature_delta_base_derivation": "merge-base(audit/main,tip)",
+      "same_feature_blob_count": 2,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "78e032a810cadb47ce78fdc439b110db8f072781",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        }
+      ],
+      "main_patch_equivalent_commits": [
+        "2c37d2ba46d6d17e52e279f6ca78405c9f1314cc"
+      ],
+      "initial_integration_patch_equivalent_commits": [
+        "2c37d2ba46d6d17e52e279f6ca78405c9f1314cc"
+      ],
+      "preservation_reason": "Patch-equivalent cf23a5d history already present; fixture and test blobs identical; README reference list expanded.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "codex/rea-item-activation",
+      "tip": "cf23a5daf3d1bf856e3a02e1252f340d12f12e1e",
+      "main_inclusion": "ancestor",
+      "integration_inclusion": "ancestor",
+      "open_prs": [],
+      "related_prs": [
+        {
+          "number": 27,
+          "state": "MERGED",
+          "url": "https://github.com/TurnaboutHero/vainglory-replay-decoder/pull/27"
+        }
+      ],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "7d1e0e982d24bf48a11de6debbaeab7b7db090ba",
+      "feature_delta_base_derivation": "first main first-parent merge containing tip via second parent 3bbb5a97701c79e24d3c15e818c1a449a614572a",
+      "same_feature_blob_count": 14,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "78e032a810cadb47ce78fdc439b110db8f072781",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        },
+        {
+          "path": "vg/analysis/event_timeline.py",
+          "branch_blob": "310e398c1834bbd48f1037b2e54b2b757609fa75",
+          "integration_blob": "4095afea60b0c277a4675e3f7c51519fd21a62b1"
+        },
+        {
+          "path": "vg/analysis/native_event_fields.py",
+          "branch_blob": "97a21912acadea272996d84d67f593b0303775cb",
+          "integration_blob": "4c92f319c773f10b40a5a2d87fd5ef84f0a62afa"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [],
+      "preservation_reason": "Merged PR27. 14 identical feature blobs; native_event_fields adds cooldown cases without removing item cases; timeline difference is help-text expansion; README reference list expanded.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "codex/rea-item-events",
+      "tip": "df1da9a28282d0298b3eece999a2454ab9959ff3",
+      "main_inclusion": "ancestor",
+      "integration_inclusion": "ancestor",
+      "open_prs": [],
+      "related_prs": [
+        {
+          "number": 26,
+          "state": "MERGED",
+          "url": "https://github.com/TurnaboutHero/vainglory-replay-decoder/pull/26"
+        }
+      ],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "cd8390aeb2433eca6eedf2c62606503331f8f7ac",
+      "feature_delta_base_derivation": "first main first-parent merge containing tip via second parent 7d1e0e982d24bf48a11de6debbaeab7b7db090ba",
+      "same_feature_blob_count": 4,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "ca314dac58356dcb3978ae6ab1007ba63b3d6412",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        },
+        {
+          "path": "vg/analysis/event_timeline.py",
+          "branch_blob": "0bb52d55e4fc1d9fa03185beac2e01c2e619505e",
+          "integration_blob": "4095afea60b0c277a4675e3f7c51519fd21a62b1"
+        },
+        {
+          "path": "vg/analysis/native_event_fields.py",
+          "branch_blob": "100a6d8d4b99fa9eb6de4e55cffc57adfa4298a2",
+          "integration_blob": "4c92f319c773f10b40a5a2d87fd5ef84f0a62afa"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [],
+      "preservation_reason": "Merged PR26. Four identical feature blobs. Later item-activation/cooldown additions supersede shared timeline/native_event_fields; original sell/rejection cases retained.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "codex/verified-cooldown-events",
+      "tip": "ed828514bccd631f3d0dfeb5a19e3b832da83302",
+      "main_inclusion": "ancestor",
+      "integration_inclusion": "ancestor",
+      "open_prs": [],
+      "related_prs": [
+        {
+          "number": 28,
+          "state": "MERGED",
+          "url": "https://github.com/TurnaboutHero/vainglory-replay-decoder/pull/28"
+        }
+      ],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "3bbb5a97701c79e24d3c15e818c1a449a614572a",
+      "feature_delta_base_derivation": "first main first-parent merge containing tip via second parent 65bab83ae27e4c0f81338471a30a4aa1ee0944df",
+      "same_feature_blob_count": 202,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "9cedd85609fafd0f8511cef5ea9bbbcb38818b9e",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [],
+      "preservation_reason": "Merged PR28; 202 identical feature blobs; README expansion only. Parent cooldown audit owns deeper confirmation.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "codex/verified-cooldown-events-local-20261015",
+      "tip": "a64db6ebf6b50c77b5a9d107620967617310c42c",
+      "main_inclusion": "patch-equivalent",
+      "integration_inclusion": "patch/content-equivalent; reviewed supersession",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "33611314a29d2ad57a4c56a2f6da569b22ec9641",
+      "feature_delta_base_derivation": "merge-base(audit/main,tip)",
+      "same_feature_blob_count": 102,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "5a5fccc1ada455055ba55a559eaee50fe810dabb",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        },
+        {
+          "path": "vg/docs/COOLDOWN_EVENT_FIELDS_2026-10-14.md",
+          "branch_blob": "153ddc7d456499166df7fb1df8d0f08410dcca9f",
+          "integration_blob": "76787edd94a06bf55a2eaf8c26e8523450c0785c"
+        }
+      ],
+      "main_patch_equivalent_commits": [
+        "a64db6ebf6b50c77b5a9d107620967617310c42c"
+      ],
+      "initial_integration_patch_equivalent_commits": [
+        "a64db6ebf6b50c77b5a9d107620967617310c42c"
+      ],
+      "preservation_reason": "Commit patch equivalent in target; 102 identical blobs; cooldown doc and README differing. Parent cooldown audit reviews exact superseding doc edits.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "feat/decoder-stat-accuracy-20261004",
+      "tip": "b7d5a3af675db6d6a96ae3c71823a3f6d13b5d24",
+      "main_inclusion": "ancestor",
+      "integration_inclusion": "ancestor",
+      "open_prs": [],
+      "related_prs": [
+        {
+          "number": 13,
+          "state": "MERGED",
+          "url": "https://github.com/TurnaboutHero/vainglory-replay-decoder/pull/13"
+        }
+      ],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "46ec3fdfe61d9e37f1241261c1c0bd630a53055f",
+      "feature_delta_base_derivation": "first main first-parent merge containing tip via second parent 47dbc266c42a2a09b44bb63564caf5b7e6bea8ab",
+      "same_feature_blob_count": 172,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "f7b7eb7d1a56cd895e4f5758288ef4ce5e9d06fa",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        },
+        {
+          "path": "tests/test_native_inventory.py",
+          "branch_blob": "bf2338e255c3d4fe0666349e277ed1eac386ec40",
+          "integration_blob": "e93478a8f267fe857a36b72edc8ed8c21d7dcdb5"
+        },
+        {
+          "path": "tests/test_native_roster.py",
+          "branch_blob": "50d09cf11aa5add7c9e37b7733b0cf085b355e4e",
+          "integration_blob": "6e08d0dc302e08f47c79fe0467e94f0db7190df9"
+        },
+        {
+          "path": "tests/test_player_state_accuracy.py",
+          "branch_blob": "1c96363ed6589afc57e212de160e7bd4f02b5864",
+          "integration_blob": "4880128a667f4b44e3783b3f4ef8aa0459377426"
+        },
+        {
+          "path": "tests/test_player_state_capture.py",
+          "branch_blob": "73d3ec5ac750ba85938b2c10c58e485249420110",
+          "integration_blob": "509e84255540a209bd0705ad41845a6ebefd660d"
+        },
+        {
+          "path": "tests/test_player_state_service.py",
+          "branch_blob": "3d1061349ee65f1eaa090b2346fe87f3d7d57ad0",
+          "integration_blob": "51cc681db536dcd30000c0ecc9c2af48b64e77f6"
+        },
+        {
+          "path": "vg/analysis/batch_statistics.py",
+          "branch_blob": "e078ce3933f9ffbf847aba5e82867220898fcd2b",
+          "integration_blob": "5804df14ca1694d4bb062bdfb8e4b01b84e9f6fc"
+        },
+        {
+          "path": "vg/core/export_rows.py",
+          "branch_blob": "0c8ec4ccd71b7d567ad8bbf33cbd9fec179489de",
+          "integration_blob": "32141984247503b8efd91c4eb0fb79b5da510519"
+        },
+        {
+          "path": "vg/core/native_inventory.py",
+          "branch_blob": "5397a3ebee64c38e660e0f15aa2680d0805e2127",
+          "integration_blob": "857f74494bce48838a0dd256b0c14596d4ca3efa"
+        },
+        {
+          "path": "vg/core/native_roster.py",
+          "branch_blob": "f2b96321ea83dc54f59769890696e9940a7cc726",
+          "integration_blob": "42dec42cd8b7cadb7454e7f621bc6867633c63e5"
+        },
+        {
+          "path": "vg/core/unified_decoder.py",
+          "branch_blob": "669f7b8e88cc6324213a02706c32506969d80b8a",
+          "integration_blob": "a87a26fb2694a9e7a65c45764d517b2a06b58726"
+        },
+        {
+          "path": "vg/decoder_v2/decode_match.py",
+          "branch_blob": "4cd8fc2132ffc1277ad9004f25ace20c6e115498",
+          "integration_blob": "f4f240fac0976a2ad596b6d71f0115201b3d1324"
+        },
+        {
+          "path": "vg/decoder_v2/player_state.py",
+          "branch_blob": "91699553d3db5a9065409578fd9af96024dbe641",
+          "integration_blob": "1971757cdf65542f5f9bb74db87bdcccb0ebde8b"
+        },
+        {
+          "path": "vg/docs/NATIVE_ROSTER_2026-10-04.md",
+          "branch_blob": "97a85e0b94dd52e42d334b8157cf1ea8b4b824e0",
+          "integration_blob": "f089285f3dc83d07d753ff3160c9ed07794cb113"
+        },
+        {
+          "path": "vg/docs/PLAYER_STATE_CAPTURE_2026-10-04.md",
+          "branch_blob": "7a3fce0770da44195808abad7b3e719dbb7ba7c3",
+          "integration_blob": "2d14fcee351d80b8369e0b8b79a6a751d413cdc2"
+        },
+        {
+          "path": "vg/docs/PLAYER_STATE_REFERENCE_SCHEMA.md",
+          "branch_blob": "ea958e5e9ba49bcd0c9077c1bec316a9e4956987",
+          "integration_blob": "d5bda062b8956190178e3a2f988e33e274d1239c"
+        },
+        {
+          "path": "vg/docs/PRODUCT_RELIABILITY.md",
+          "branch_blob": "c76df0036ceb0f5b347e26e27ba6e8ba2b6fdd77",
+          "integration_blob": "fa74bd9f4f53e9fa8fffad70351b525ce1aea25d"
+        },
+        {
+          "path": "vg/docs/event_semantics_2026-10-04.json",
+          "branch_blob": "9b28321c56577c715f0eabe3f90f6cdc1ba915be",
+          "integration_blob": "21578011ddae89ee18ecae30910387023ce67190"
+        },
+        {
+          "path": "vg/tools/player_state_accuracy.py",
+          "branch_blob": "7f0f0ff3f4ccbd32260f99786625b2d109399119",
+          "integration_blob": "3d58f2cdd1690612c8bc5175c1f1327f65f4ecf1"
+        },
+        {
+          "path": "vg/tools/player_state_capture/evidence.py",
+          "branch_blob": "21f3def6dfdd5e56c00b2e45ecad86bc934c2eba",
+          "integration_blob": "8986e2d0da70bc0590bb21159dcbc399ecc688d6"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [],
+      "preservation_reason": "Merged PR13. 173 identical introduced blobs, zero absent. 19 shared-file blobs differ after eligibility, capture/display, provenance, and recording-identity work. Historical tip remains reachable through main; do not replace current shared files with older ones.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "feat/offline-combined-integration-20261015",
+      "tip": "61c6d4900742d69902ed2a7be4d6c55c47a16d92",
+      "main_inclusion": "not yet included",
+      "integration_inclusion": "ancestor",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "65bab83ae27e4c0f81338471a30a4aa1ee0944df",
+      "feature_delta_base_derivation": "merge-base(audit/main,tip)",
+      "same_feature_blob_count": 19,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "1006542089bf61544888670cced52280c7e429ea",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        },
+        {
+          "path": "tests/test_re_dictionary.py",
+          "branch_blob": "7d8f4c269eb8dfd22e21e379d07c25a5a69c66c2",
+          "integration_blob": "38d8f815da7caabddeb549f84870d96f009cb7db"
+        },
+        {
+          "path": "tests/test_recording_identity_integration.py",
+          "branch_blob": "31204c808e12d0aa68fec1882fc92191927dd3b0",
+          "integration_blob": "85e31fc9582c23c9a931f9d5117264b9517b9b54"
+        },
+        {
+          "path": "vg/core/native_roster.py",
+          "branch_blob": "81c137c9997d42d17e00022827df2a03daea3da9",
+          "integration_blob": "42dec42cd8b7cadb7454e7f621bc6867633c63e5"
+        },
+        {
+          "path": "vg/decoder_v2/player_state.py",
+          "branch_blob": "27639e7f7586563047e845797de91a198fd8cc24",
+          "integration_blob": "1971757cdf65542f5f9bb74db87bdcccb0ebde8b"
+        },
+        {
+          "path": "vg/docs/event_semantics_2026-10-04.json",
+          "branch_blob": "e367c20513f01b481a3892f1b7e2b9f734699723",
+          "integration_blob": "21578011ddae89ee18ecae30910387023ce67190"
+        },
+        {
+          "path": "vg/docs/re_dictionary/INDEX.ko.md",
+          "branch_blob": "adc93f685a30e0d483360d8dbd418c3e2cbf8396",
+          "integration_blob": "93436b6456cfe9a8ea56b654d8387482ae59b9a6"
+        },
+        {
+          "path": "vg/docs/re_dictionary/VALIDATION.md",
+          "branch_blob": "8148c2f77b9472c57b1271935f99d8bd84bd3e18",
+          "integration_blob": "2b571e71edf015484a5556fac967c1bc0722c705"
+        },
+        {
+          "path": "vg/docs/re_dictionary/catalog.json",
+          "branch_blob": "7562e14a010b0a6aa5bdb8cb2c3d0619680703e9",
+          "integration_blob": "8bb5c3dd9d34eada6561d5f385f15acd1b661b56"
+        },
+        {
+          "path": "vg/docs/re_dictionary/catalog.schema.json",
+          "branch_blob": "a0d11701df96b6ed45d43b3b2175a33982a9f247",
+          "integration_blob": "e254f57137d3e9d4d3334fdd8dc4e7aff80d3d75"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [],
+      "preservation_reason": "Exact ancestor. 24 feature blobs identical; README and generated dictionary/catalog/schema superseded by reviewed chain. All old entry/source IDs and objects retained.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "feat/offline-outgoing-requests",
+      "tip": "5688ce3b0c64ef2d3cefe1b668474ce0a3a4851a",
+      "main_inclusion": "not yet included",
+      "integration_inclusion": "patch/content-equivalent; reviewed supersession",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "65bab83ae27e4c0f81338471a30a4aa1ee0944df",
+      "feature_delta_base_derivation": "merge-base(audit/main,tip)",
+      "same_feature_blob_count": 3,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "5beec1ca5ce195b8368aed7946735164a5a0695c",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [
+        "5688ce3b0c64ef2d3cefe1b668474ce0a3a4851a"
+      ],
+      "preservation_reason": "5688ce3 patch-id matches 0be9ea1; implementation/test/doc blobs identical; README contains all old nonempty lines.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "feat/offline-vgnl-importer",
+      "tip": "9c241bca100a088af5f435f2f2e9098320aa87d6",
+      "main_inclusion": "not yet included",
+      "integration_inclusion": "patch/content-equivalent; reviewed supersession",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "65bab83ae27e4c0f81338471a30a4aa1ee0944df",
+      "feature_delta_base_derivation": "merge-base(audit/main,tip)",
+      "same_feature_blob_count": 3,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "5069049112d6c3e03393b9eb90cf65fdde64d5c7",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [
+        "9c241bca100a088af5f435f2f2e9098320aa87d6"
+      ],
+      "preservation_reason": "9c241bc patch-id matches 19652d4; implementation/test/doc blobs identical; README contains all old nonempty lines.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "feat/recording-identity-diagnostics",
+      "tip": "f9a4436525428475ee073e8b38385771e05ed50b",
+      "main_inclusion": "not yet included",
+      "integration_inclusion": "ancestor",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "65bab83ae27e4c0f81338471a30a4aa1ee0944df",
+      "feature_delta_base_derivation": "merge-base(audit/main,tip)",
+      "same_feature_blob_count": 10,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "13b880cc7f7c43bb3d9bcb2823276f327dc2cf44",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        },
+        {
+          "path": "tests/test_recording_identity_integration.py",
+          "branch_blob": "31204c808e12d0aa68fec1882fc92191927dd3b0",
+          "integration_blob": "85e31fc9582c23c9a931f9d5117264b9517b9b54"
+        },
+        {
+          "path": "vg/core/native_roster.py",
+          "branch_blob": "81c137c9997d42d17e00022827df2a03daea3da9",
+          "integration_blob": "42dec42cd8b7cadb7454e7f621bc6867633c63e5"
+        },
+        {
+          "path": "vg/decoder_v2/player_state.py",
+          "branch_blob": "27639e7f7586563047e845797de91a198fd8cc24",
+          "integration_blob": "1971757cdf65542f5f9bb74db87bdcccb0ebde8b"
+        },
+        {
+          "path": "vg/docs/event_semantics_2026-10-04.json",
+          "branch_blob": "e367c20513f01b481a3892f1b7e2b9f734699723",
+          "integration_blob": "21578011ddae89ee18ecae30910387023ce67190"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [],
+      "preservation_reason": "Exact ancestor f9a4436. All14 implementation/test/doc feature blobs identical; README contains all old nonempty lines.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "feat/reverse-engineering-dictionary",
+      "tip": "a2dc5ec64fb12e3d0c6d5dafb08c97748529116e",
+      "main_inclusion": "not yet included",
+      "integration_inclusion": "patch/content-equivalent; reviewed supersession",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "65bab83ae27e4c0f81338471a30a4aa1ee0944df",
+      "feature_delta_base_derivation": "merge-base(audit/main,tip)",
+      "same_feature_blob_count": 2,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "ef69a2991a483a658175ca89adc93c983cb0e5f1",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        },
+        {
+          "path": "tests/test_re_dictionary.py",
+          "branch_blob": "7d8f4c269eb8dfd22e21e379d07c25a5a69c66c2",
+          "integration_blob": "38d8f815da7caabddeb549f84870d96f009cb7db"
+        },
+        {
+          "path": "vg/docs/re_dictionary/INDEX.ko.md",
+          "branch_blob": "40ccaff77f74765641ea9e61eb7f15b28cafe887",
+          "integration_blob": "93436b6456cfe9a8ea56b654d8387482ae59b9a6"
+        },
+        {
+          "path": "vg/docs/re_dictionary/VALIDATION.md",
+          "branch_blob": "c4db71835cb3c4dc7b2ee5390d5d148a2d5ceb30",
+          "integration_blob": "2b571e71edf015484a5556fac967c1bc0722c705"
+        },
+        {
+          "path": "vg/docs/re_dictionary/catalog.json",
+          "branch_blob": "bfe711156ad345c6974e2332edb2917597e2e910",
+          "integration_blob": "8bb5c3dd9d34eada6561d5f385f15acd1b661b56"
+        },
+        {
+          "path": "vg/docs/re_dictionary/catalog.schema.json",
+          "branch_blob": "a0d11701df96b6ed45d43b3b2175a33982a9f247",
+          "integration_blob": "e254f57137d3e9d4d3334fdd8dc4e7aff80d3d75"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [
+        "a2dc5ec64fb12e3d0c6d5dafb08c97748529116e"
+      ],
+      "preservation_reason": "a2dc5ec patch-id matches84d68a9. Parser/package/test blobs identical. All51 entries unchanged in current141; all97 sources retained, one intentionally repointed to frozen baseline file preserving original source SHA. Current schema adds status_effect; keep expanded catalog/index/validation/schema.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "feat/reviewed-buff-status-20261015",
+      "tip": "51f5db7d7ecfc3fba9ec9c9f82bd524ea0be3aff",
+      "main_inclusion": "not yet included",
+      "integration_inclusion": "ancestor",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "65bab83ae27e4c0f81338471a30a4aa1ee0944df",
+      "feature_delta_base_derivation": "merge-base(audit/main,tip)",
+      "same_feature_blob_count": 40,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "9ada5d6c31bab4fdcea7b3ffa90347e2049acea7",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        },
+        {
+          "path": "tests/test_re_dictionary.py",
+          "branch_blob": "7d8f4c269eb8dfd22e21e379d07c25a5a69c66c2",
+          "integration_blob": "38d8f815da7caabddeb549f84870d96f009cb7db"
+        },
+        {
+          "path": "tests/test_recording_identity_integration.py",
+          "branch_blob": "31204c808e12d0aa68fec1882fc92191927dd3b0",
+          "integration_blob": "85e31fc9582c23c9a931f9d5117264b9517b9b54"
+        },
+        {
+          "path": "vg/core/native_roster.py",
+          "branch_blob": "81c137c9997d42d17e00022827df2a03daea3da9",
+          "integration_blob": "42dec42cd8b7cadb7454e7f621bc6867633c63e5"
+        },
+        {
+          "path": "vg/decoder_v2/player_state.py",
+          "branch_blob": "27639e7f7586563047e845797de91a198fd8cc24",
+          "integration_blob": "1971757cdf65542f5f9bb74db87bdcccb0ebde8b"
+        },
+        {
+          "path": "vg/docs/event_semantics_2026-10-04.json",
+          "branch_blob": "e367c20513f01b481a3892f1b7e2b9f734699723",
+          "integration_blob": "21578011ddae89ee18ecae30910387023ce67190"
+        },
+        {
+          "path": "vg/docs/re_dictionary/INDEX.ko.md",
+          "branch_blob": "231b78cb2d464254882ce9b297476ea61fc74d41",
+          "integration_blob": "93436b6456cfe9a8ea56b654d8387482ae59b9a6"
+        },
+        {
+          "path": "vg/docs/re_dictionary/VALIDATION.md",
+          "branch_blob": "c74e71ef20ae75b1e88b17eb15b383faf7f1c2be",
+          "integration_blob": "2b571e71edf015484a5556fac967c1bc0722c705"
+        },
+        {
+          "path": "vg/docs/re_dictionary/catalog.json",
+          "branch_blob": "c0dd06a8073e82b6550d813a4d2652e38f8a0ab1",
+          "integration_blob": "8bb5c3dd9d34eada6561d5f385f15acd1b661b56"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [],
+      "preservation_reason": "Exact ancestor.45 identical feature blobs; all entry/source objects retained unchanged; README/catalog/index/validation superseded by later reviewed additions.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "feat/reviewed-progression-rewards-20261015",
+      "tip": "471beb6d9c661db13fa93956e084071c62d6af37",
+      "main_inclusion": "not yet included",
+      "integration_inclusion": "ancestor",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "65bab83ae27e4c0f81338471a30a4aa1ee0944df",
+      "feature_delta_base_derivation": "merge-base(audit/main,tip)",
+      "same_feature_blob_count": 55,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "721a2683ee92cdeaf5c58d9c8ded175b49eeb6e3",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        },
+        {
+          "path": "tests/test_re_dictionary.py",
+          "branch_blob": "7d8f4c269eb8dfd22e21e379d07c25a5a69c66c2",
+          "integration_blob": "38d8f815da7caabddeb549f84870d96f009cb7db"
+        },
+        {
+          "path": "tests/test_recording_identity_integration.py",
+          "branch_blob": "31204c808e12d0aa68fec1882fc92191927dd3b0",
+          "integration_blob": "85e31fc9582c23c9a931f9d5117264b9517b9b54"
+        },
+        {
+          "path": "vg/core/native_roster.py",
+          "branch_blob": "81c137c9997d42d17e00022827df2a03daea3da9",
+          "integration_blob": "42dec42cd8b7cadb7454e7f621bc6867633c63e5"
+        },
+        {
+          "path": "vg/decoder_v2/player_state.py",
+          "branch_blob": "27639e7f7586563047e845797de91a198fd8cc24",
+          "integration_blob": "1971757cdf65542f5f9bb74db87bdcccb0ebde8b"
+        },
+        {
+          "path": "vg/docs/event_semantics_2026-10-04.json",
+          "branch_blob": "e367c20513f01b481a3892f1b7e2b9f734699723",
+          "integration_blob": "21578011ddae89ee18ecae30910387023ce67190"
+        },
+        {
+          "path": "vg/docs/re_dictionary/INDEX.ko.md",
+          "branch_blob": "771cb868242a6e7cf56fedc94db12ff4a0c01091",
+          "integration_blob": "93436b6456cfe9a8ea56b654d8387482ae59b9a6"
+        },
+        {
+          "path": "vg/docs/re_dictionary/VALIDATION.md",
+          "branch_blob": "4b45cc654a0588f8c0c7029e7be4055340d3161c",
+          "integration_blob": "2b571e71edf015484a5556fac967c1bc0722c705"
+        },
+        {
+          "path": "vg/docs/re_dictionary/catalog.json",
+          "branch_blob": "a46b6df665624734f77cc70306aa7537cc8930e3",
+          "integration_blob": "8bb5c3dd9d34eada6561d5f385f15acd1b661b56"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [],
+      "preservation_reason": "Exact ancestor.60 identical feature blobs; all entry/source objects retained unchanged; generated summary files expanded later.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "feat/reviewed-research-followup-20261015",
+      "tip": "b6e2fa2d6451d90b8d37a91e737db87a00085ee0",
+      "main_inclusion": "not yet included",
+      "integration_inclusion": "ancestor",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "65bab83ae27e4c0f81338471a30a4aa1ee0944df",
+      "feature_delta_base_derivation": "merge-base(audit/main,tip)",
+      "same_feature_blob_count": 30,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "06d2f7f36e2d31ff317e52361d441685d551bbf8",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        },
+        {
+          "path": "tests/test_re_dictionary.py",
+          "branch_blob": "7d8f4c269eb8dfd22e21e379d07c25a5a69c66c2",
+          "integration_blob": "38d8f815da7caabddeb549f84870d96f009cb7db"
+        },
+        {
+          "path": "tests/test_recording_identity_integration.py",
+          "branch_blob": "31204c808e12d0aa68fec1882fc92191927dd3b0",
+          "integration_blob": "85e31fc9582c23c9a931f9d5117264b9517b9b54"
+        },
+        {
+          "path": "vg/core/native_roster.py",
+          "branch_blob": "81c137c9997d42d17e00022827df2a03daea3da9",
+          "integration_blob": "42dec42cd8b7cadb7454e7f621bc6867633c63e5"
+        },
+        {
+          "path": "vg/decoder_v2/player_state.py",
+          "branch_blob": "27639e7f7586563047e845797de91a198fd8cc24",
+          "integration_blob": "1971757cdf65542f5f9bb74db87bdcccb0ebde8b"
+        },
+        {
+          "path": "vg/docs/event_semantics_2026-10-04.json",
+          "branch_blob": "e367c20513f01b481a3892f1b7e2b9f734699723",
+          "integration_blob": "21578011ddae89ee18ecae30910387023ce67190"
+        },
+        {
+          "path": "vg/docs/re_dictionary/INDEX.ko.md",
+          "branch_blob": "0155b66edf569730d2e1128c11c6a002513418c4",
+          "integration_blob": "93436b6456cfe9a8ea56b654d8387482ae59b9a6"
+        },
+        {
+          "path": "vg/docs/re_dictionary/VALIDATION.md",
+          "branch_blob": "1034eda62fdba2371066a0cf32e37a212645a197",
+          "integration_blob": "2b571e71edf015484a5556fac967c1bc0722c705"
+        },
+        {
+          "path": "vg/docs/re_dictionary/catalog.json",
+          "branch_blob": "b90b27e52cf30231ede15aed93b8739c9db5640a",
+          "integration_blob": "8bb5c3dd9d34eada6561d5f385f15acd1b661b56"
+        },
+        {
+          "path": "vg/docs/re_dictionary/catalog.schema.json",
+          "branch_blob": "a0d11701df96b6ed45d43b3b2175a33982a9f247",
+          "integration_blob": "e254f57137d3e9d4d3334fdd8dc4e7aff80d3d75"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [],
+      "preservation_reason": "Exact ancestor.35 identical feature blobs; all entry/source objects retained unchanged; generated docs/schema expanded later.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "feat/reviewed-respawn-recall-20261015",
+      "tip": "9712ab6985357bd89cd3cfc062e2068e303d3100",
+      "main_inclusion": "not yet included",
+      "integration_inclusion": "ancestor",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "65bab83ae27e4c0f81338471a30a4aa1ee0944df",
+      "feature_delta_base_derivation": "merge-base(audit/main,tip)",
+      "same_feature_blob_count": 74,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "tests/test_re_dictionary.py",
+          "branch_blob": "7d8f4c269eb8dfd22e21e379d07c25a5a69c66c2",
+          "integration_blob": "38d8f815da7caabddeb549f84870d96f009cb7db"
+        },
+        {
+          "path": "tests/test_recording_identity_integration.py",
+          "branch_blob": "31204c808e12d0aa68fec1882fc92191927dd3b0",
+          "integration_blob": "85e31fc9582c23c9a931f9d5117264b9517b9b54"
+        },
+        {
+          "path": "vg/core/native_roster.py",
+          "branch_blob": "81c137c9997d42d17e00022827df2a03daea3da9",
+          "integration_blob": "42dec42cd8b7cadb7454e7f621bc6867633c63e5"
+        },
+        {
+          "path": "vg/decoder_v2/player_state.py",
+          "branch_blob": "27639e7f7586563047e845797de91a198fd8cc24",
+          "integration_blob": "1971757cdf65542f5f9bb74db87bdcccb0ebde8b"
+        },
+        {
+          "path": "vg/docs/event_semantics_2026-10-04.json",
+          "branch_blob": "e367c20513f01b481a3892f1b7e2b9f734699723",
+          "integration_blob": "21578011ddae89ee18ecae30910387023ce67190"
+        },
+        {
+          "path": "vg/docs/re_dictionary/INDEX.ko.md",
+          "branch_blob": "56be36456d07d30db2a91414ca3d051e6cc020e4",
+          "integration_blob": "93436b6456cfe9a8ea56b654d8387482ae59b9a6"
+        },
+        {
+          "path": "vg/docs/re_dictionary/catalog.json",
+          "branch_blob": "9b3fa4ce86c2ab5756375b4760d5883c5a9d4e04",
+          "integration_blob": "8bb5c3dd9d34eada6561d5f385f15acd1b661b56"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [],
+      "preservation_reason": "Exact ancestor. All81 feature delta blobs identical; no missing or differing feature file.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "feat/reviewed-xp-structures-20261015",
+      "tip": "46e2a47cc6dd4908d5180f1e288e4d91bbb177f4",
+      "main_inclusion": "not yet included",
+      "integration_inclusion": "ancestor",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "65bab83ae27e4c0f81338471a30a4aa1ee0944df",
+      "feature_delta_base_derivation": "merge-base(audit/main,tip)",
+      "same_feature_blob_count": 66,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "fc608befd734636ebfd16691b6fd8fccd6f500ea",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        },
+        {
+          "path": "tests/test_re_dictionary.py",
+          "branch_blob": "7d8f4c269eb8dfd22e21e379d07c25a5a69c66c2",
+          "integration_blob": "38d8f815da7caabddeb549f84870d96f009cb7db"
+        },
+        {
+          "path": "tests/test_recording_identity_integration.py",
+          "branch_blob": "31204c808e12d0aa68fec1882fc92191927dd3b0",
+          "integration_blob": "85e31fc9582c23c9a931f9d5117264b9517b9b54"
+        },
+        {
+          "path": "vg/core/native_roster.py",
+          "branch_blob": "81c137c9997d42d17e00022827df2a03daea3da9",
+          "integration_blob": "42dec42cd8b7cadb7454e7f621bc6867633c63e5"
+        },
+        {
+          "path": "vg/decoder_v2/player_state.py",
+          "branch_blob": "27639e7f7586563047e845797de91a198fd8cc24",
+          "integration_blob": "1971757cdf65542f5f9bb74db87bdcccb0ebde8b"
+        },
+        {
+          "path": "vg/docs/event_semantics_2026-10-04.json",
+          "branch_blob": "e367c20513f01b481a3892f1b7e2b9f734699723",
+          "integration_blob": "21578011ddae89ee18ecae30910387023ce67190"
+        },
+        {
+          "path": "vg/docs/re_dictionary/INDEX.ko.md",
+          "branch_blob": "cbe2215a70ffb54e9fc5b83a7a811d49e0aad420",
+          "integration_blob": "93436b6456cfe9a8ea56b654d8387482ae59b9a6"
+        },
+        {
+          "path": "vg/docs/re_dictionary/VALIDATION.md",
+          "branch_blob": "a3bd64b5c0eee2f1ad9075d55bd5ae2a93949bbb",
+          "integration_blob": "2b571e71edf015484a5556fac967c1bc0722c705"
+        },
+        {
+          "path": "vg/docs/re_dictionary/catalog.json",
+          "branch_blob": "b0f294335aff9a769553b686e068b138bada1bb8",
+          "integration_blob": "8bb5c3dd9d34eada6561d5f385f15acd1b661b56"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [],
+      "preservation_reason": "Exact ancestor.71 identical feature blobs; all entry/source objects retained unchanged; generated docs expanded later.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "fix/definitive-analysis-eligibility-20261011",
+      "tip": "296b10174db299f896bb4bd5c41bc57187de497f",
+      "main_inclusion": "ancestor",
+      "integration_inclusion": "ancestor",
+      "open_prs": [],
+      "related_prs": [
+        {
+          "number": 25,
+          "state": "MERGED",
+          "url": "https://github.com/TurnaboutHero/vainglory-replay-decoder/pull/25"
+        }
+      ],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "f52de1000eab38bfbc91bd59929a102ec3b0d6da",
+      "feature_delta_base_derivation": "first main first-parent merge containing tip via second parent cd8390aeb2433eca6eedf2c62606503331f8f7ac",
+      "same_feature_blob_count": 28,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "f2abfd0027333a13566671de45d5438efb712cdf",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        },
+        {
+          "path": "vg/decoder_v2/player_state.py",
+          "branch_blob": "0ef255d64613b13da99b45a1a23f21322c7fea22",
+          "integration_blob": "1971757cdf65542f5f9bb74db87bdcccb0ebde8b"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [],
+      "preservation_reason": "Merged PR25.28 feature blobs identical. player_state differences only add recording_identity import/result/output and move roster acquisition before query-validity return; definitive eligibility handling retained. README reference list expanded.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "fix/h5672-spawn-skin-identity-20261014",
+      "tip": "76e1fbacb422a1fa7b3736451d76264bbd338953",
+      "main_inclusion": "not yet included",
+      "integration_inclusion": "ancestor",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [
+        "dbb571871e255e5a818b21beb68e61657bb06828",
+        "b68ab8f969dcab915a52aa99371485ec17667d29",
+        "45e42a41acf16974dd42588c3a70b09c4cf59dd6",
+        "4edeb299589f9fbb9e726828aef1fd00201da121",
+        "76e1fbacb422a1fa7b3736451d76264bbd338953"
+      ],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "cd8390aeb2433eca6eedf2c62606503331f8f7ac",
+      "feature_delta_base_derivation": "merge-base(audit/main,tip)",
+      "same_feature_blob_count": 11,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "vg/core/native_roster.py",
+          "branch_blob": "38e678956fd6151e1efd5ef33c776e21f8b6fc1b",
+          "integration_blob": "42dec42cd8b7cadb7454e7f621bc6867633c63e5"
+        },
+        {
+          "path": "vg/decoder_v2/player_state.py",
+          "branch_blob": "f7cc488eb1dc1aad2a2fd81a249683635c7693ff",
+          "integration_blob": "1971757cdf65542f5f9bb74db87bdcccb0ebde8b"
+        },
+        {
+          "path": "vg/docs/event_semantics_2026-10-04.json",
+          "branch_blob": "8e91ded2c2411dbaa81f1a0983e72d23b8f65d09",
+          "integration_blob": "21578011ddae89ee18ecae30910387023ce67190"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [],
+      "preservation_reason": "Only initially missing feature: merged all five original commits. Actor/skin split and all ten missing evidence/test files preserved alongside recording diagnostics. Combined module hashes and historical evidence references reconciled.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "main",
+      "tip": "65bab83ae27e4c0f81338471a30a4aa1ee0944df",
+      "main_inclusion": "ancestor",
+      "integration_inclusion": "ancestor",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "3bbb5a97701c79e24d3c15e818c1a449a614572a",
+      "feature_delta_base_derivation": "tip first-parent fallback; baseline main/research reference, not feature branch",
+      "same_feature_blob_count": 202,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "9cedd85609fafd0f8511cef5ea9bbbcb38818b9e",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [],
+      "preservation_reason": "Baseline reference; protect/default main. Feature-content check of last merge delta202 identical blobs, README expanded in research.",
+      "cleanup_decision": "PROTECT default main"
+    },
+    {
+      "branch": "publish-cooldown-integration",
+      "tip": "81fd070f43677979e86772657d43799c53573adf",
+      "main_inclusion": "patch-equivalent",
+      "integration_inclusion": "patch/content-equivalent; reviewed supersession",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "3bbb5a97701c79e24d3c15e818c1a449a614572a",
+      "feature_delta_base_derivation": "merge-base(audit/main,tip)",
+      "same_feature_blob_count": 202,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "README.md",
+          "branch_blob": "9cedd85609fafd0f8511cef5ea9bbbcb38818b9e",
+          "integration_blob": "ee344cdfa15d83bb97bcfccc4cc6a487745df7b2"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [],
+      "preservation_reason": "Integration merge connector differs in identity but202 feature blobs identical,README expanded. No unique content found; parent cooldown audit owns confirmation.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    },
+    {
+      "branch": "research/rea-boundaries-20261016",
+      "tip": "e95918c98962f334a68b703cc04e61edc9200be5",
+      "main_inclusion": "not yet included",
+      "integration_inclusion": "ancestor",
+      "open_prs": [],
+      "related_prs": [],
+      "initial_unmatched_patch_commits": [],
+      "integration_unmatched_patch_commits": [],
+      "feature_delta_base": "65bab83ae27e4c0f81338471a30a4aa1ee0944df",
+      "feature_delta_base_derivation": "merge-base(audit/main,tip)",
+      "same_feature_blob_count": 82,
+      "missing_feature_paths": [],
+      "reviewed_different_feature_blobs": [
+        {
+          "path": "tests/test_re_dictionary.py",
+          "branch_blob": "7d8f4c269eb8dfd22e21e379d07c25a5a69c66c2",
+          "integration_blob": "38d8f815da7caabddeb549f84870d96f009cb7db"
+        },
+        {
+          "path": "tests/test_recording_identity_integration.py",
+          "branch_blob": "31204c808e12d0aa68fec1882fc92191927dd3b0",
+          "integration_blob": "85e31fc9582c23c9a931f9d5117264b9517b9b54"
+        },
+        {
+          "path": "vg/core/native_roster.py",
+          "branch_blob": "81c137c9997d42d17e00022827df2a03daea3da9",
+          "integration_blob": "42dec42cd8b7cadb7454e7f621bc6867633c63e5"
+        },
+        {
+          "path": "vg/decoder_v2/player_state.py",
+          "branch_blob": "27639e7f7586563047e845797de91a198fd8cc24",
+          "integration_blob": "1971757cdf65542f5f9bb74db87bdcccb0ebde8b"
+        },
+        {
+          "path": "vg/docs/event_semantics_2026-10-04.json",
+          "branch_blob": "e367c20513f01b481a3892f1b7e2b9f734699723",
+          "integration_blob": "21578011ddae89ee18ecae30910387023ce67190"
+        },
+        {
+          "path": "vg/docs/re_dictionary/INDEX.ko.md",
+          "branch_blob": "56be36456d07d30db2a91414ca3d051e6cc020e4",
+          "integration_blob": "93436b6456cfe9a8ea56b654d8387482ae59b9a6"
+        },
+        {
+          "path": "vg/docs/re_dictionary/catalog.json",
+          "branch_blob": "9b3fa4ce86c2ab5756375b4760d5883c5a9d4e04",
+          "integration_blob": "8bb5c3dd9d34eada6561d5f385f15acd1b661b56"
+        }
+      ],
+      "main_patch_equivalent_commits": [],
+      "initial_integration_patch_equivalent_commits": [],
+      "preservation_reason": "Research baseline itself; all89 last-feature-delta blobs identical. Preserve until integration branch is merged and verified; contains latest REA/verifier deliverables.",
+      "cleanup_decision": "Conditional deletion candidate only AFTER integration PR merged and latest main/tip preservation rechecked"
+    }
+  ],
+  "connector_patch_equivalences": {
+    "5688ce3=0be9ea1": "dfd4bcda9e12fdd0b29f447c7491902f0702ab22",
+    "9c241bc=19652d4": "7939274d426d1f16db1c47a602731eba6ddcd194",
+    "a2dc5ec=84d68a9": "dc53484931b164faa47229601912adadd248f232"
+  },
+  "cleanup_policy": "No merge, PR close or branch deletion performed. Recheck current main and each exact tip after PR merge; main protected; keep integration branch while PR open. Equivalent commits have different SHAs and must be checked by patch/content.",
+  "historical_evidence": "Original code/report bytes and hashes preserved in dictionary baseline snapshots; skin report additions do not upgrade H5810 to an independent holdout or certify current server behavior."
+}

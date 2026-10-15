@@ -1,0 +1,474 @@
+{
+  "schema": "vg.reviewed_research_sources.v1",
+  "baseline_commit": "709dd8bbc9e31df86d6eaab053f010db88bee51d",
+  "input_artifact": {
+    "id": "win-x86-laa",
+    "filename": "Vainglory.exe",
+    "sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+    "hash_kind": "file_sha256",
+    "platform": "Windows",
+    "abi": "x86",
+    "build": {
+      "label": "PE timestamp 2020-03-09T21:30:28Z",
+      "verified_release": false,
+      "note": "Header timestamp is build evidence, not a verified release version."
+    },
+    "address_kind": "preferred_va",
+    "image_base": "0x00400000",
+    "source_refs": [
+      "src-network",
+      "src-pe_relation"
+    ],
+    "availability": "not_distributed"
+  },
+  "native_execution": false,
+  "historical_recording_build_match": "unverified",
+  "raw_native_exports_distributed": false,
+  "notes": [
+    "Paths with namespace research are external references and require the original evidence root.",
+    "Relative evidence_refs inside match-result-additions.json resolve in external match-result-deepening, not this repository.",
+    "Producer summaries are reviewed static claims; synthetic tests do not validate native execution."
+  ],
+  "sources": [
+    {
+      "id": "src-deepening-014b40b70e6f",
+      "kind": "independent_review",
+      "location": {
+        "namespace": "research",
+        "path": "independent-deepening-review/review.json"
+      },
+      "sha256": "e6c834c265e2af39ea31279bf584e2aba5dde59f0529938bb24ea294a9720b08",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-06095db2b8c7",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/research_models/override_fields.py"
+      },
+      "sha256": "e2ec34bbe4c8f26ef492f28467fed4f348514f3e123a50c45ac34d598535ccc3",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-0792a03dcffe",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/synthetic-terminal-counterexample.json"
+      },
+      "sha256": "4a168b367c0f899bf713b99e99b9b9ca909dab8635a76a05bacd83e45b04da38",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-09908834d9ba",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/REPORT.md"
+      },
+      "sha256": "00ac40a5f389815be047fefd89150a582cbfcd1b19f680c5ae418f521ec600a8",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-0be03adf5873",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/mastery-rpc-key.txt"
+      },
+      "sha256": "37f4ce6a3482093c607af730ca9d4268327d924326a73e720c4eb47d2e4f1c9e",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-1de244922c2b",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/mastery-lookup.txt"
+      },
+      "sha256": "97977795d02810d0556680456903e7937bc97a1aa530bc87fe9080c7c7a5e772",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-232fc680c622",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/deepening/README.md"
+      },
+      "sha256": "f0f8d654db11998281646fd19477b0ad0a369f48c001ad934dae0dd42a200ef9",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-2626275848a3",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/terminal2/00564e50.txt"
+      },
+      "sha256": "9413f4c0c1f793afa319a4cdf216d89f81a5cbb60ad331a856f69d425bc2b481",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-2d186061c682",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/platform-getHeroMastery.txt"
+      },
+      "sha256": "98dd513240e0d596f343438d12c08db23346672e558060606574502ae4985c97",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-2f20bcbf5127",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_override_fields.py"
+      },
+      "sha256": "536ed4f84cc7a5298e485444503c5740e4cd60128b0e179044b950683d1a3928",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-34c9e68da6ff",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "combat-network-deepening/ARTIFACTS.sha256.json"
+      },
+      "sha256": "99b9f8c46bbad2483cdbc7706000316416a74a9a8bf3308e7572f5c4ac205694",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-37d63228f200",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "cooldown-deepening/portable/evidence-checks.json"
+      },
+      "sha256": "67f5d05e007839127020154e2a89afcd5f2fc03823d00f3de76c568afcfc748e",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-3bbf4528ff44",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/row-identity-reader.txt"
+      },
+      "sha256": "8f192fb682a451852f521acb18e7bdce47ddc8c3e296319ba81b73e1a556feba",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-3f546d5d0d00",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/primary-constructor.txt"
+      },
+      "sha256": "a75f0a27483606c6770ae34ae4e2d3368a93d6f12bc60916e88c22cd8ba45bfa",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-58bc1f4ae6c5",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/gold-ui-gate.txt"
+      },
+      "sha256": "b9d4ca1fc3da9bde6443d937a637b73b907113e143cffe210e342376bf66bb46",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-592d9786b4a9",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/banner-consumer.txt"
+      },
+      "sha256": "aafdb115e82b3406942668a63552847f36f356fc660203319b4f59069b0e7313",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-65f790466d1d",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/final-row-refresh.txt"
+      },
+      "sha256": "ae2187928c24a5c6a2de9cc522f8f8a669520293b740ad4846c28a64c77fe19c",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-6ab9f1b58c3c",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/clock-tick.txt"
+      },
+      "sha256": "bbc5d4a3e89eee7dec1d6aec9c3bb3b3a2afe412a03e0f3bb8ddc07cf9c0398a",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-6c2e708b509a",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_terminal_model.py"
+      },
+      "sha256": "865cedffcc00e27925191d37ae39a4ebae02f817814070ea8d725def0d3899fe",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-6dda242b856c",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/primary-transition.txt"
+      },
+      "sha256": "2ca1a69d1076caaff9b117461e768e517855de5bdc14192d707cbb252ba0e3b0",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-763146dae926",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "cooldown-deepening/portable/REPORT.md"
+      },
+      "sha256": "fd9bfdd07422d854fbcdbabee127471d788e3f3924547580bdc52da26e37d28f",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-7f0bce357f27",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/mastery-response.txt"
+      },
+      "sha256": "f6e5402111d16adc27e09c356b51aefb00d9b54702304694f096925fc41196e1",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-882cd47fa830",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/deepening/cooldown-additions.json"
+      },
+      "sha256": "21948d47581c419572ae71271d866710791958852c6227d3c2002d247b572b82",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-8911ccbae0f8",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "combat-network-deepening/REPORT.md"
+      },
+      "sha256": "10584f746f7c0a4a0f65ac9a0be5b8be4c76bec0c1fb1919f67624e8d45b8eab",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-8df4eb06449a",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/mastery-request-builder.txt"
+      },
+      "sha256": "c1b274d19b24bd6efdd1c0a72d9f393aedd0bb622c66f725f10c23368fe96f87",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-9676a04fd41e",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_followup_catalog.py"
+      },
+      "sha256": "da713cf8c01a9faa8a2c1fe6d4031da3ace6fbb01edec2ab96756c668635042c",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-9d37dc38eb98",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/deepening/combat-network-additions.json"
+      },
+      "sha256": "7ae2a5624b23ab5f7b6183f82eba583c165345b0522f09cd28306ffec3516523",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-a684ae59db6d",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/platform-interface-slot.txt"
+      },
+      "sha256": "c36a999877933303a96b697d9f686e2c6c5780f55ba6b541194a383fa46c713a",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-afbcd8686e13",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/terminal-setter.txt"
+      },
+      "sha256": "eeef0fba32ea8704af439ee78ab111016ee12bb059cab70724c5e7accc020b59",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-b0dd017522f4",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/banner-keys.txt"
+      },
+      "sha256": "72df35939225703c84063b38630f977f00aaffb4c36e3e18ad6e71c914a258d6",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-b5a020905ffa",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_cooldown_models.py"
+      },
+      "sha256": "a99ed095453bf3c191516d3dd021ba5118232921d23bf112ce5b6bf97abf8c1e",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-ce219ed8f1ee",
+      "kind": "source_code",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/test_terminal_model.py"
+      },
+      "sha256": "86cf827e689433128ad7389a319e7455d28992152152062aa6b507d087ad43ae",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-d32981953aa3",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/clock-ui-gate.txt"
+      },
+      "sha256": "f2b2a1cc48f2b8e6096a84b80897fe3ac1b50e100f0b87c8ba7982018600815a",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-d4f1a88174ec",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "cooldown-deepening/portable/receipt-hashes.json"
+      },
+      "sha256": "e0dc2ebe834b878e274cf0d76da00cd686af213517e563f117363d4a3d24c2a6",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-ddcafec18612",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/mastery-manifest-keys.txt"
+      },
+      "sha256": "f5a4fb230e64cde35ffce3674cf942802b39100ac1a5859fa3e21e14bb6c5745",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-e358da15fc1e",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/mastery-tier.txt"
+      },
+      "sha256": "71ac81632ab6bed40284094d30407252f4d4529208beacdb520b9022706e27c1",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-f1eed04cad1f",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/deepening/match-result-additions.json"
+      },
+      "sha256": "fbfbbe5d61ea51336ed851cff1b70e93eb53517a5903abf94507d2a47af51c6b",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-f7ad612fc5c4",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/terminal7/0056f500.txt"
+      },
+      "sha256": "5839a0a565c1a47820b9036fa8222121d0422ecdbcdfc7deddf4f72a6b832485",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-f804572b3e72",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/roster-string-getter.txt"
+      },
+      "sha256": "57444aff329506bc2b083c455d6c0935f71eaf4929326bd131e3474b7335a5db",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-f8c7558a816d",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/manifest.json"
+      },
+      "sha256": "98b0ecc30c753bf509921b3eb6f444458f3b3fc3274ffe87767293bd84b9c8ee",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    }
+  ]
+}

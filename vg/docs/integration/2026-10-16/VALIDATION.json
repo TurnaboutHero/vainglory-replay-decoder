@@ -1,0 +1,103 @@
+{
+  "schema": "vg.consolidation.validation.v1",
+  "reviewed_content_commit": "303031aa08ad2f14d9acab637a72216d454ea1c4",
+  "unfiltered_suite": {
+    "command": "PYTHONUTF8=1 python -X utf8 -B -m unittest discover -s tests -q",
+    "tests": 1169,
+    "failures": 2,
+    "errors": 60,
+    "skipped": 3,
+    "passed": false,
+    "log_sha256": "02c1e11f56512e18da18a0d923bbd4743fdfaa78af2f36ef5dc5d73ea0a18f38",
+    "classification": {
+      "direct_windows_symlink_privilege_errors": 57,
+      "secondary_missing_symlink_fixture_cleanup_errors": 2,
+      "cross_volume_relpath_error": 1,
+      "symlink_fixture_callback_failure_assertions": 2
+    },
+    "baseline_reproduction": "The two assertion failures and cross-volume error reproduce unchanged on main 65bab83; symlink privilege errors occur directly in fixture creation. No security settings changed.",
+    "root_cause_summary": {
+      "distinct_platform_root_causes": 2,
+      "symlink_privilege": {
+        "affected_test_methods": 24,
+        "direct_error_records": 57,
+        "secondary_cleanup_error_records": 2,
+        "callback_assertion_failures": 2
+      },
+      "cross_volume_relpath": {
+        "affected_test_methods": 1,
+        "error_records": 1
+      },
+      "total_affected_test_methods": 25,
+      "interpretation": "60 error records are not 60 independent defects. Subtests repeat fixture failures; two missing-fixture cleanup records are secondary. The 2 assertion failures arise from unavailable symlink callbacks. Existing main reproduction is representative, not a complete baseline suite."
+    }
+  },
+  "available_suite": {
+    "discovered": 1169,
+    "platform_blocked_methods": 25,
+    "run": 1169,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 28,
+    "success": true,
+    "scope": "All cases attempted unfiltered first. This second run replaces only platform-blocked method IDs with explicit skips; not full symlink/cross-drive validation.",
+    "passed_non_skipped_test_methods": 1141,
+    "log_sha256": "620ed1cf580c145221aab10d587b73cd4e2003acdc4caf1d9c3adb41c67d70ec",
+    "runner_external_source_sha256": "1786143b12c98aa788a3225932d148898e34c1a0041a15cfbe55341a8395183a",
+    "exclusion_warning": "Whole-method exclusions also omit portable assertions inside those methods; this is not a full-suite pass. Original unfiltered failure record is retained."
+  },
+  "platform_blocked_methods": {
+    "test_batch_output_safety.BatchOutputSafetyTests.test_dangling_symlink_to_future_sibling_is_protected": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_batch_output_safety.BatchOutputSafetyTests.test_index_correction_files_and_aliases_are_protected": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_batch_output_safety.BatchOutputSafetyTests.test_output_alias_created_during_decode_is_rejected": "Symlink fixture creation fails with Windows privilege 1314; cleanup then unlinks an absent fixture",
+    "test_batch_output_safety.BatchOutputSafetyTests.test_symlink_to_second_family_is_protected": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_batch_output_safety.BatchOutputSafetyTests.test_symlinked_parent_is_protected": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_decoder_v2_output_safety.MatchOutputSafetyTests.test_dangling_symlink_to_future_sibling_is_protected": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_decoder_v2_output_safety.MatchOutputSafetyTests.test_input_symlink_keeps_lexical_sibling_discovery": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_decoder_v2_output_safety.MatchOutputSafetyTests.test_symlink_alias_is_protected": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_decoder_v2_output_safety.MatchOutputSafetyTests.test_symlinked_parent_is_protected": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_event_timeline.EventTimelineTests.test_cli_rejects_discoverable_outputs_through_symlink_paths": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_player_state_accuracy.AccuracyTests.test_output_manifest_hardlink_and_symlink_collision": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_player_state_cli.PlayerStateCliTests.test_output_direct_sibling_hardlink_and_symlink_collisions_are_rejected": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_io_contracts.ProductIOContracts.test_shared_contract_failure": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_io_recovery.ProductIORecovery.test_aliases_are_rejected_before_absolute_key_normalization": "Temporary D: directory and repository C: cannot form os.path.relpath; reproduced unchanged on main",
+    "test_product_io_recovery.ProductIORecovery.test_recovery_refuses_source_hardlink_and_output_symlink": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_loader.TestProductLoader.test_loader_failure_report_aliases_before_and_after_process": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_research_13.ProductTruthResearch.test_research_failure": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_research_14.ProductFoundationResearch.test_research_failure": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_research_15.ProductActionResearch.test_research_failure": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_research_16.ProductPolicyResearch.test_research_failure": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_research_17.ProductComparisonResearch.test_research_failure": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_research_18.ProductSeriesResearch.test_research_failure": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_research_18.ProductSeriesResearch.test_xp_limit_consumed_inputs": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_io_contracts.ProductIOContracts.test_changed_source_and_late_alias_are_rejected": "Symlink fixture callback cannot create alias, causing publication_failed; reproduced unchanged on main",
+    "test_product_v2_journey.ProductV2JourneyTests.test_v2_journey_failure_reserved_sources_reject_stage_time_aliases": "Symlink fixture callback cannot create alias and leaves staged fixture; reproduced unchanged on main"
+  },
+  "independent_focused_review_tests": {
+    "tests": 115,
+    "skipped": 2,
+    "outcome": "OK"
+  },
+  "atlas_tests": {
+    "tests": 30,
+    "outcome": "OK"
+  },
+  "dictionary": {
+    "entries": 141,
+    "verified_repo_source_hashes": 90,
+    "source_failures": 0,
+    "unresolved_external_sources": 172,
+    "check_generated_index": true,
+    "log_sha256": "64a853980c96feb2df0267974bcdeb21a5030470d175482a191bee25e4eb182a"
+  },
+  "selected_pe_verifier": {
+    "selected_opcode_chains": 3,
+    "exact_receipt_reproduced": true,
+    "scope": "Read-only original hash-gated PE byte verification, not native game/server execution"
+  },
+  "ci": {
+    "github_actions_workflows": 0,
+    "status": "No existing workflow; PR checks re-read after publication"
+  },
+  "publication_scope": "No original binaries/replays/raw runtime logs or secrets added. No main merge, PR close or branch deletion. Draft PR pending capable-platform full validation and human review."
+}

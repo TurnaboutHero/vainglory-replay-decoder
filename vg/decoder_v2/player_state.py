@@ -12,6 +12,7 @@ from vg.core.native_gold import read_native_gold
 from vg.core.native_inventory import NativeInventoryItem, read_native_inventory
 from vg.core.native_query import GameTime, RecordTime, select_native_query
 from vg.core.native_roster import read_native_roster
+from vg.core.recording_identity import RecordingIdentitySummary, summarize_recording_identity
 from vg.core.native_stats import read_native_stats
 from vg.core.replay_input import replay_sections, select_replay
 from vg.core.replay_output import ReportInputs, ReplayOutputError
@@ -94,6 +95,8 @@ class PlayerState:
     net_worth: float | None
     field_status: dict[str, StateFieldStatus]
 
+    spawn_skin_hash: int | None = None
+
 
 @dataclass(frozen=True, slots=True)
 class EndRequest:
@@ -133,6 +136,7 @@ class PlayerStateResult:
     display_values: dict = field(default_factory=dict)
     player_selection: dict = field(default_factory=dict)
     query_timing: dict = field(default_factory=dict)
+    recording_identity: RecordingIdentitySummary | None = None
     definitive_analysis: dict = field(init=False)
 
     def __post_init__(self) -> None:
@@ -252,6 +256,7 @@ def decode_player_state(
     replay_scope = frame_scope(frames)
     query = select_native_query(frames, cutoff)
     boundary = _boundary(query.record_boundary)
+    roster = read_native_roster(frames, cutoff)
     end_requests = tuple(
         EndRequest(RecordBoundary(request.frame_index, request.record_offset), request.record_time,
                    request.winning_team_raw, request.winning_team_raw & 0xff, request.end_reason, request.request_status)
@@ -292,16 +297,16 @@ def decode_player_state(
                 'missing_ids': missing, 'returned_count': len(players),
                 'support_scope': 'all_recorded_players_before_selection'},
             query_timing=_query_timing(query, sources),
+            recording_identity=summarize_recording_identity(roster.recording_identity),
         )
 
     if not query.valid:
         fields = {field: StateFieldStatus(query.status, query.reason) for field in REQUIRED_FIELDS}
         return finish(query.status, query.reason, fields=fields)
 
-    roster = read_native_roster(frames, cutoff)
     roster_boundary_ok = roster.record_boundary == query.record_boundary
     ids = [player.entity_id for player in roster.players
-           if player.association_status == 'corroborated' and 0 < player.entity_id < 0xffffffff]
+           if player.actor_identity_status == 'corroborated' and 0 < player.entity_id < 0xffffffff]
     identity_unique = len(ids) == len(set(ids))
     ids = ids if identity_unique and roster_boundary_ok else []
     counters = read_native_stats(frames, ids, cutoff)
@@ -346,12 +351,14 @@ def decode_player_state(
             ))
 
         identity_status = 'supported' if linked else 'identity_unproved'
-        identity_reason = 'framed 03ee actor corroborated by native spawn definition/skin' if linked else (
-            'roster/query boundary mismatch' if not roster_boundary_ok else identity.association_status)
+        identity_reason = 'framed 03ee actor corroborated by first native spawn definition; skin audited separately' if linked else (
+            'roster/query boundary mismatch' if not roster_boundary_ok else identity.actor_identity_status)
         name_ok = identity.name is not None and roster_boundary_ok
         hero_ok = linked and identity.hero_name is not None
         hero_status = ('supported' if hero_ok else identity_status if not linked else
                        'unsupported_catalog' if identity.hero_status == 'unsupported_catalog' else 'unresolved_definition')
+        first_spawn = identity.spawn_observations[0] if identity.spawn_observations else None
+        skin_conflict = first_spawn is not None and first_spawn.skin_hash != identity.skin_hash
         statuses = {
             'native_actor_id': field(identity_status, identity_reason, 'native_roster', ('03ee.actor', '03f3.actor'), source_records=records),
             'name': field('supported' if name_ok else identity.name_status, identity.name_status,
@@ -359,6 +366,12 @@ def decode_player_state(
             'hero': field(hero_status, identity.hero_status,
                           'native_roster', ('03ee.definition', '03f3.definition', 'original_hero_localization'),
                           source_records=records, resource_sha256=identity.hero_resource_sha256),
+            'skin': field('conflicting_skin' if skin_conflict else 'unverified_rendered_skin',
+                          'roster and first-spawn skin hashes differ; rendered skin is not certified'
+                          if skin_conflict else 'recorded skin hashes do not certify the rendered skin',
+                          'native_roster', ('03ee.skin_hash', 'first_spawn.skin_hash'),
+                          source_records=records + ((RecordBoundary(first_spawn.section, first_spawn.record_offset),)
+                                                    if first_spawn else ())),
             'team_id': field('supported' if linked else identity_status, 'recorded low nibble; no inferred UI side',
                              'native_roster', ('03ee.team_byte & 15',), source_records=records),
             'team': field('unresolved_team_side', 'native team ID does not establish a left/right label',
@@ -393,6 +406,7 @@ def decode_player_state(
             stat.minion_kills if stat else None, _items(held.visible_items) if held_ok else None,
             _items(held.items) if held_ok else None, held.capacity if held_ok else None,
             resource.gold_balance if resource else None, resource.net_worth if resource else None, statuses,
+            spawn_skin_hash=first_spawn.skin_hash if first_spawn else None,
         ))
     fields = {}
     for name in REQUIRED_FIELDS:

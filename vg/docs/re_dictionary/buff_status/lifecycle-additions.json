@@ -1,0 +1,41 @@
+{
+  "binary_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "entries": [
+    {
+      "id": "buff-lifetime-create-reapply-stack-dispatch",
+      "status": "confirmed_static_conditional",
+      "summary": "New factory-created buff dispatches Lifetime apply behavior; generic reapply and stack notification slots are stubs for Lifetime. Existing scripted handlers remain possible.",
+      "addresses": [
+        "0094c9a0",
+        "008659c0",
+        "00863050",
+        "008cef70",
+        "00945bb0",
+        "009477c0",
+        "0095f4d0"
+      ],
+      "limitations": [
+        "Action eligibility and factory success required",
+        "No observed item buff execution",
+        "Dynamic behavior update timing unresolved"
+      ]
+    },
+    {
+      "id": "buff-lifetime-removal-expiry-dispatch",
+      "status": "confirmed_static_conditional",
+      "summary": "Removal0092d6a0 zeroes stacks, dispatches Lifetime inverse behavior, then marks state2. Timer expiry is flag/mode gated and can queue or skip direct removal.",
+      "addresses": [
+        "0092d6a0",
+        "00948320",
+        "00966410",
+        "00967a20",
+        "00954aa0"
+      ],
+      "limitations": [
+        "Timer<=0 alone does not imply removal",
+        "Global0209e204 mode not independently named",
+        "No replay runtime observation"
+      ]
+    }
+  ]
+}

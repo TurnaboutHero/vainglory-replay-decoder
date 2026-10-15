@@ -1,0 +1,662 @@
+{
+  "sources": [
+    {
+      "id": "src-respawn-recall-report",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "respawn-recall/REPORT.md"
+      },
+      "sha256": "4acb1e753422737702a3aca6cb08b3d07001a8392807f64f74a8e87810872871",
+      "publication": "original_summary",
+      "locator_note": "Original summary; raw exports external only"
+    }
+  ],
+  "entries": [
+    {
+      "id": "VGRE-respawn-inplace-reset",
+      "category": "implementation",
+      "title_ko": "Revival resets an existing actor",
+      "claim_ko": "ActorRespawn relocates an existing actor, restores bounded resource0/resource2, clears source-attribution IDs and requests state1. It is not a new actor allocation or guaranteed control transition.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "supported",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094c950",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x009572b0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0095eb50",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00966570",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "0432"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-respawn-recall-report",
+          "locator": "Named sections and exact-build anchors"
+        }
+      ],
+      "limitations_ko": [
+        "Exact offline build only; no live/server execution or current-version claim.",
+        "No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.",
+        "Unmatched H5810 payload widths and callback/stub dependencies block production promotion."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "respawn",
+        "recall",
+        "offline_only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-respawn-timer-display",
+      "category": "implementation",
+      "title_ko": "Timer display is separate from actual revival",
+      "claim_ko": "StartRespawnTimer writes a client-mode-gated component value; existing auxiliary state is retained. HUD zero display does not establish timer expiry dispatching revival.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "supported",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00950c80",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093b850",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x005d3b60",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0081c430",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "0433"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-respawn-recall-report",
+          "locator": "Named sections and exact-build anchors"
+        }
+      ],
+      "limitations_ko": [
+        "Exact offline build only; no live/server execution or current-version claim.",
+        "No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.",
+        "Unmatched H5810 payload widths and callback/stub dependencies block production promotion."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "respawn",
+        "recall",
+        "offline_only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-respawn-snapshot-boundary",
+      "category": "implementation",
+      "title_ko": "Snapshot restoration is not a new lifetime",
+      "claim_ko": "Already-resolved creation IDs can be skipped; HeroSpawn absolute restoration and timer initialization must not be counted as new revival.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "supported",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094e170",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094d480",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "03f3",
+        "03f2"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-respawn-recall-report",
+          "locator": "Named sections and exact-build anchors"
+        }
+      ],
+      "limitations_ko": [
+        "Exact offline build only; no live/server execution or current-version claim.",
+        "No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.",
+        "Unmatched H5810 payload widths and callback/stub dependencies block production promotion."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "respawn",
+        "recall",
+        "offline_only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-teleport-not-revival",
+      "category": "implementation",
+      "title_ko": "Generic teleport is not recall or revival",
+      "claim_ko": "TeleportTo conditionally changes position and dispatches onTeleport; it does not run ActorRespawn resource/attribution reset. Teleport_Client is a different client positioning path.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "supported",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00950dc0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094c720",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0095ee80",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0052b010",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "0409"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-respawn-recall-report",
+          "locator": "Named sections and exact-build anchors"
+        }
+      ],
+      "limitations_ko": [
+        "Exact offline build only; no live/server execution or current-version claim.",
+        "No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.",
+        "Unmatched H5810 payload widths and callback/stub dependencies block production promotion."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "respawn",
+        "recall",
+        "offline_only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-recall-runtime-identity",
+      "category": "implementation",
+      "title_ko": "Recall uses the runtime Withdraw ability",
+      "claim_ko": "Recall input selects component+18 through pointer matching, including missing-slot sentinel; builder chooses Withdraw default or override. Dispatch is a request, not acceptance.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "supported",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00597560",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093cd90",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x009564f0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093f7d0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-respawn-recall-report",
+          "locator": "Named sections and exact-build anchors"
+        }
+      ],
+      "limitations_ko": [
+        "Exact offline build only; no live/server execution or current-version claim.",
+        "No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.",
+        "Unmatched H5810 payload widths and callback/stub dependencies block production promotion."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "respawn",
+        "recall",
+        "offline_only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-recall-channel-declaration",
+      "category": "implementation",
+      "title_ko": "Four-unit recall operand is conditional",
+      "claim_ko": "Withdraw factory configures ApplyBuff duration4.0 and stack1; mode/selection gates and client stubs prohibit asserting successful channel duration.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "supported",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x008cd400",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x008cd410",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00819420",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0085a890",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-respawn-recall-report",
+          "locator": "Named sections and exact-build anchors"
+        }
+      ],
+      "limitations_ko": [
+        "Exact offline build only; no live/server execution or current-version claim.",
+        "No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.",
+        "Unmatched H5810 payload widths and callback/stub dependencies block production promotion."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "respawn",
+        "recall",
+        "offline_only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-recall-cancel-stub-boundary",
+      "category": "implementation",
+      "title_ko": "Cancellation callbacks do not prove cancellation",
+      "claim_ko": "Combat/ability/movement callbacks are configured with CancelThisBuff, whose run slot is a no-op in this client. Tutorial exclusion and combat filters preclude blanket damage cancellation claims.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "supported",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00923320",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00947cb0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0095fa10",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00946c00",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00947970",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x009495f0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0052f3b0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0045ecd0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-respawn-recall-report",
+          "locator": "Named sections and exact-build anchors"
+        }
+      ],
+      "limitations_ko": [
+        "Exact offline build only; no live/server execution or current-version claim.",
+        "No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.",
+        "Unmatched H5810 payload widths and callback/stub dependencies block production promotion."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "respawn",
+        "recall",
+        "offline_only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-recall-completion-stub-boundary",
+      "category": "implementation",
+      "title_ko": "Timeout and completion remain distinct evidence",
+      "claim_ko": "Timeout has a separate callback slot from End; its TeleportSelection run and provider setter are stubs. Declared destination providers do not establish successful recall completion.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "supported",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00923320",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00946ee0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00532910",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0045cd00",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x008553d0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00855340",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-respawn-recall-report",
+          "locator": "Named sections and exact-build anchors"
+        }
+      ],
+      "limitations_ko": [
+        "Exact offline build only; no live/server execution or current-version claim.",
+        "No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.",
+        "Unmatched H5810 payload widths and callback/stub dependencies block production promotion."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "respawn",
+        "recall",
+        "offline_only"
+      ],
+      "layout_notes": []
+    }
+  ]
+}

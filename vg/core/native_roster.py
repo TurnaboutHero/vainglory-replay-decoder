@@ -13,6 +13,7 @@ from typing import Final, Sequence
 
 from vg.core.native_query import GameTime, RecordTime, select_native_query
 from vg.core.definition_catalog import SUPPORTED_BUILD_SHA256, SUPPORTED_MANIFEST_SHA256
+from vg.core.recording_identity import RecordingIdentity, _recording_identity
 
 
 DEFINITIONS_PATH: Final = Path(__file__).with_name('native_roster_definitions.json')
@@ -64,6 +65,13 @@ class NativeRosterPlayer:
     hero_localization_key: str | None
     hero_localization_sha256: str | None
 
+    @property
+    def actor_identity_status(self) -> str:
+        if not self.spawn_observations:
+            return 'missing_spawn'
+        return ('corroborated' if self.spawn_observations[0].definition_index == self.definition_index
+                else 'conflicting_spawn')
+
 
 @dataclass(frozen=True, slots=True)
 class NativeRosterResult:
@@ -77,6 +85,7 @@ class NativeRosterResult:
     evidence_version: str = "native_roster.windows_2026_10_04.v1"
     build_sha256: str = SUPPORTED_BUILD_SHA256
     manifest_sha256: str = SUPPORTED_MANIFEST_SHA256
+    recording_identity: RecordingIdentity | None = None
 
 
 def _name(raw: bytes) -> tuple[str | None, str, str]:
@@ -105,8 +114,9 @@ def read_native_roster(
     Team is the stored low nibble, with no inferred left/right assignment.
     """
     query = select_native_query(frames, cutoff)
+    recording_identity = _recording_identity(frames, query)
     if not query.valid:
-        return NativeRosterResult(False, query.status, query.reason)
+        return NativeRosterResult(False, query.status, query.reason, recording_identity=recording_identity)
     audit, parsed = query.audit, query.frames
     catalog = json.loads(DEFINITIONS_PATH.read_text(encoding='utf-8'))
     provenance = (catalog.get('build_sha256'), catalog.get('manifest_sha256'))
@@ -166,11 +176,13 @@ def read_native_roster(
                            (latest.definition_index, latest.skin_hash) else 'conflicting_spawn')
         definition = metadata.get(str(latest.definition_index))
         definition_name = definition['definition_name'] if definition else None
-        hero_name = definition['hero_name'] if definition and association == 'corroborated' else None
+        definition_matches = bool(actor_spawns and actor_spawns[0].definition_index == latest.definition_index)
+        hero_name = definition['hero_name'] if definition and definition_matches else None
         hero_status = ('resolved' if hero_name is not None else
-                       'unsupported_catalog' if not catalog_ok and association == 'corroborated' else 'unresolved_definition')
+                       'unsupported_catalog' if not catalog_ok and definition_matches else 'unresolved_definition')
         if association != 'corroborated':
-            issues.append(f'actor {actor}: {association}')
+            detail = ' (skin mismatch; actor definition corroborated)' if definition_matches else ''
+            issues.append(f'actor {actor}: {association}{detail}')
         if latest.name is None:
             issues.append(f'actor {actor}: {latest.name_status}')
         if hero_name is None:
@@ -188,7 +200,8 @@ def read_native_roster(
     valid = not issues
     status = 'accepted' if valid else ('partial_roster' if players else 'missing_roster')
     return NativeRosterResult(valid, status, 'recorded roster; completion not asserted',
-                              tuple(players), tuple(issues), as_of, boundary)
+                              tuple(players), tuple(issues), as_of, boundary,
+                              recording_identity=recording_identity)
 
 
 def main() -> int:

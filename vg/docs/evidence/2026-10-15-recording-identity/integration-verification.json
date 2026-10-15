@@ -1,0 +1,107 @@
+{
+  "schema": "recording_identity.integration_verification.v1",
+  "baseline_commit": "65bab83ae27e4c0f81338471a30a4aa1ee0944df",
+  "fixture": "H5810 (development-seen; not a holdout)",
+  "runtime": "3.12.14",
+  "limits": [
+    "Offline structural and regression checks only",
+    "No authenticated account/uploader binding",
+    "Recording client remains unverified",
+    "No final-result or completeness certification"
+  ],
+  "cases": [
+    {
+      "query": "recorded-end",
+      "replay_scope": "sha256:e0594f1bb06721d1139c18c156001cc8379cc182d12cb9451ca786a8a728d11b",
+      "record_boundary": {
+        "section": 167,
+        "record_offset": 145152
+      },
+      "source_count": 168,
+      "source_manifest_sha256": "1e108efd7b134b2697b5be37a76c437b9fcabe72a6a48aeb08215021c4524c77",
+      "preexisting_state_canonical_sha256": "6f8352c264c23f26724e70ac727c89bab35a5220fafb48a164b19ee1752c4a75",
+      "preexisting_roster_canonical_sha256": "02c7acc9349a8d9bc824fd315b1a47f40ec9096311d4f7ba0ee5f2322ecfa8f8",
+      "preexisting_outputs_unchanged": true,
+      "identity_summary": {
+        "sources": 168,
+        "histories": 10,
+        "observations": 1690,
+        "nonempty": 10,
+        "empty": 1680,
+        "payload_lengths": {
+          "216": 1680,
+          "222": 10
+        },
+        "candidates": 10,
+        "conflicts": 0,
+        "unassigned": 0,
+        "selection_observations": 168,
+        "selection_status": "observed",
+        "selection_actor": 1505,
+        "selection_team": 1,
+        "roster_consistency": "consistent",
+        "completeness_status": "unknown",
+        "recording_client_verified": false,
+        "diagnostic_json_bytes": 1414045,
+        "default_summary_json_bytes": 4790
+      }
+    },
+    {
+      "query": "record-time-100",
+      "replay_scope": "sha256:e0594f1bb06721d1139c18c156001cc8379cc182d12cb9451ca786a8a728d11b",
+      "record_boundary": {
+        "section": 9,
+        "record_offset": 138399
+      },
+      "source_count": 168,
+      "source_manifest_sha256": "1e108efd7b134b2697b5be37a76c437b9fcabe72a6a48aeb08215021c4524c77",
+      "preexisting_state_canonical_sha256": "5d7358bde8f881fadf2b2b87e48984d7712d2440bad34b461c4cf6d141bb6686",
+      "preexisting_roster_canonical_sha256": "801288dff4236100e07c5e34082d23b3155680e0c12eb6afa8a4d3d619cf2df7",
+      "preexisting_outputs_unchanged": true,
+      "identity_summary": {
+        "sources": 168,
+        "histories": 10,
+        "observations": 110,
+        "nonempty": 10,
+        "empty": 100,
+        "payload_lengths": {
+          "216": 100,
+          "222": 10
+        },
+        "candidates": 10,
+        "conflicts": 0,
+        "unassigned": 0,
+        "selection_observations": 10,
+        "selection_status": "observed",
+        "selection_actor": 1505,
+        "selection_team": 1,
+        "roster_consistency": "consistent",
+        "completeness_status": "unknown",
+        "recording_client_verified": false,
+        "diagnostic_json_bytes": 113348,
+        "default_summary_json_bytes": 4764
+      }
+    }
+  ],
+  "default_detail_level": "summary; complete observations remain in native-roster diagnostic",
+  "hash_conventions": {
+    "source_manifest_sha256": "SHA256 of UTF-8 JSON for the source_files array in numeric section order, dropping only path from each item; sort_keys=True, separators=(comma, colon), ensure_ascii=True. Each item contains section, sha256, size_bytes.",
+    "preexisting_output_canonical_sha256": "SHA256 of UTF-8 JSON with sort_keys=True, separators=(comma, colon), ensure_ascii=True, after removing only recording_identity. State retains runtime file paths: this is a same-source comparison receipt, not a portable expected hash. Roster output contains no runtime paths."
+  },
+  "verification": {
+    "command": "python -X utf8 -B -m unittest discover -s tests -v",
+    "test_count": 972,
+    "status": "passed",
+    "new_focused_tests": 40,
+    "python": "3.12.14",
+    "node": "v24.19.0",
+    "notes": "Offline synthetic regression coverage; no native game/runtime or authenticated service result claimed."
+  },
+  "verified_source_sha256": {
+    "vg/core/recording_identity.py": "2d16fc405a31d978172abe60df2a17118d568de47ce7e00f8008abc7375647d7",
+    "vg/core/native_roster.py": "362945b3965f93528f5d6adde094a3d8d69fc9e6b30ef5d63d0620aad1edf237",
+    "vg/decoder_v2/player_state.py": "ac8c7981e98499f51458372ecf6d7df9d51d94105343837d281b8beff22bab10",
+    "tests/test_recording_identity.py": "08733909b3f31aa2587072fac40e9f61bcf0748fdcfd2c462d73e5962d067437",
+    "tests/test_recording_identity_integration.py": "62b854a84fce1b3d05614e0a60afe54afd59d5950a722e5299f78399d4776e3e"
+  }
+}

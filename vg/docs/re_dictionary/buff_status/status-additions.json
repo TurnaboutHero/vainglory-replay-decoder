@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "integration": "Safe original summaries only. No raw exports or production replay semantics.",
+  "entries": [
+    {
+      "id": "VGRE-status-flag-contributor-lifecycle",
+      "category": "status_effect",
+      "title_en": "Per-source gameplay flag lifecycle",
+      "claim_en": "ApplyGameplayFlags stores generation-checked per-source masks. Before-add callbacks can mutate expanded masks. The actor aggregate ORs up to128 collected children; removal destroys its own child, recomputes and emits the changed callback.",
+      "artifact_id": "win-x86-laa",
+      "artifact_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "address_kind": "preferred_va",
+      "proof_status": "supported",
+      "execution": "static_only",
+      "native_execution": false,
+      "recording_build_match": "unknown",
+      "functions": [
+        "0x008e29b0",
+        "0x0052ee10",
+        "0x0081d390",
+        "0x00961580",
+        "0x00858e50",
+        "0x00869720",
+        "0x009625e0",
+        "0x0112a680",
+        "0x0112a0d0"
+      ],
+      "limitations": [
+        "Native event names are not replay opcodes",
+        "Lifecycle expiry and mode gates remain material",
+        "No arbitrary-count aggregation claim"
+      ],
+      "evidence_report": "REPORT.md"
+    },
+    {
+      "id": "VGRE-status-named-factory-masks",
+      "category": "status_effect",
+      "title_en": "Selected named status masks",
+      "claim_en": "Stunned factory supplies001f; Silence0018; ItemSilence0010; Tutorial_Rooted0001; Petal and Leo roots0023. Pre-add expansion and callback mutation follow.",
+      "artifact_id": "win-x86-laa",
+      "artifact_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "address_kind": "preferred_va",
+      "proof_status": "supported",
+      "execution": "static_only",
+      "native_execution": false,
+      "recording_build_match": "unknown",
+      "functions": [
+        "0x009166a0",
+        "0x00910af0",
+        "0x008ed680",
+        "0x0091a610",
+        "0x00907d40",
+        "0x008fda60",
+        "0x008e29b0"
+      ],
+      "limitations": [
+        "Factory configuration is conditional on successful application",
+        "Named roots have different flags; do not generalize all roots"
+      ],
+      "evidence_report": "REPORT.md"
+    },
+    {
+      "id": "VGRE-status-action-specific-gates",
+      "category": "status_effect",
+      "title_en": "Separate movement attack skill and item gates",
+      "claim_en": "00936490 accumulates readiness reasons with per-definition status exceptions and a distinct definition+6c branch testing flag10. Selection helpers use+6a/+6b and separate bypasses. Movement outer gate checks flag2/state5 with explicit override; inner mover still tests81.",
+      "artifact_id": "win-x86-laa",
+      "artifact_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "address_kind": "preferred_va",
+      "proof_status": "supported",
+      "execution": "static_only",
+      "native_execution": false,
+      "recording_build_match": "unknown",
+      "functions": [
+        "0x00936490",
+        "0x0096b5b0",
+        "0x00931340",
+        "0x0086f730",
+        "0x0086fb80",
+        "0x0095dd70",
+        "0x0095ded0"
+      ],
+      "limitations": [
+        "Status subset zero is not readiness",
+        "Raw ReflexBlock/Aegis embedded defaults do not resolve inherited effective definitions",
+        "No universal silence-blocks-all-items assertion"
+      ],
+      "evidence_report": "REPORT.md"
+    },
+    {
+      "id": "VGRE-status-slow-max-category",
+      "category": "status_effect",
+      "title_en": "Movement modifier maximum per category",
+      "claim_en": "Buff_Slow configures immediate0.5 category2 ModifyMoveSpeedNew. Collector00939f40 selects maximum applicable contribution per category and caps category2 with a stat quantity. Removal marks pending child rather than proving instant cleanup.",
+      "artifact_id": "win-x86-laa",
+      "artifact_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "address_kind": "preferred_va",
+      "proof_status": "supported",
+      "execution": "static_only",
+      "native_execution": false,
+      "recording_build_match": "unknown",
+      "functions": [
+        "0x00915c00",
+        "0x008e2b90",
+        "0x00530800",
+        "0x0081d640",
+        "0x009619d0",
+        "0x00962b60",
+        "0x00939f40",
+        "0x0112a080"
+      ],
+      "limitations": [
+        "Finite collection limit800",
+        "Directional predicates and cap apply",
+        "No universal observed50-percent slow or additive stacking"
+      ],
+      "evidence_report": "REPORT.md"
+    },
+    {
+      "id": "VGRE-status-buff-blocker-matching",
+      "category": "status_effect",
+      "title_en": "Metadata and identity based blockers",
+      "claim_en": "BlockBuffs creates typed blockers; matcher tests name hash, definition bytes/category bits, and a special identity list. Mode-gated ActionApplyBuff preparation retains first match; execution diverts to blocker callback or returns instead of normal apply.",
+      "artifact_id": "win-x86-laa",
+      "artifact_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "address_kind": "preferred_va",
+      "proof_status": "supported",
+      "execution": "static_only",
+      "native_execution": false,
+      "recording_build_match": "unknown",
+      "functions": [
+        "0x008da3c0",
+        "0x0052f0e0",
+        "0x0081d3c0",
+        "0x009615e0",
+        "0x00962710",
+        "0x009378a0",
+        "0x00868a20",
+        "0x00949b60",
+        "0x0094c9a0"
+      ],
+      "limitations": [
+        "Mode0209e204 is unnamed",
+        "At most32 collected blockers",
+        "BlockDebuffs is not unconditional all-status immunity"
+      ],
+      "evidence_report": "REPORT.md"
+    },
+    {
+      "id": "VGRE-status-cleanse-filtered-queue",
+      "category": "status_effect",
+      "title_en": "Cleanse metadata filtered cancellation",
+      "claim_en": "Buff_Cleanse builds self-selection and CancelBuff mode2. In nonzero0209e204 mode only buffs whose definition+16 is nonzero are queued for ActionCancelBuff.",
+      "artifact_id": "win-x86-laa",
+      "artifact_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "address_kind": "preferred_va",
+      "proof_status": "supported",
+      "execution": "static_only",
+      "native_execution": false,
+      "recording_build_match": "unknown",
+      "functions": [
+        "0x008dda40",
+        "0x00811820",
+        "0x00811a20",
+        "0x00811ad0",
+        "0x00860450",
+        "0x008709b0",
+        "0x0092dc00"
+      ],
+      "limitations": [
+        "Queued cancellation is not synchronous erase-all",
+        "No claim every debuff has the cancellation flag",
+        "Network and UI timing unproven"
+      ],
+      "evidence_report": "REPORT.md"
+    },
+    {
+      "id": "VGRE-status-display-native-distinction",
+      "category": "status_effect",
+      "title_en": "Display records are separate from logical flags",
+      "claim_en": "DisplayStatusOnPlaque_Client stores localized status enum/string and buff+220 identifier, with an independent generation-checked display handle. The identifier is not a remaining-time float.",
+      "artifact_id": "win-x86-laa",
+      "artifact_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "address_kind": "preferred_va",
+      "proof_status": "supported",
+      "execution": "static_only",
+      "native_execution": false,
+      "recording_build_match": "unknown",
+      "functions": [
+        "0x0052f870",
+        "0x005335f0",
+        "0x005336d0",
+        "0x005336e0",
+        "0x0054aaa0",
+        "0x00938ff0",
+        "0x005338d0"
+      ],
+      "limitations": [
+        "End-to-end countdown rendering unresolved",
+        "Status labels and particles do not prove native flag application"
+      ],
+      "evidence_report": "REPORT.md"
+    }
+  ]
+}

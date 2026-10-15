@@ -1,0 +1,50 @@
+{
+  "schema": "bounded-respawn-pe-verification-v1",
+  "executable_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "image_base": "00400000",
+  "entries": [
+    {
+      "opcode": "0432",
+      "index_byte_va": "004d522c",
+      "index": 59,
+      "target_word_va": "004d50ec",
+      "receiver_va": "004d252d",
+      "call_site_va": "004d25d5",
+      "relative_call_target_va": "00819f70",
+      "vtable_va": "0127c6d0",
+      "vtable_serializer_04_va": "00949a30",
+      "vtable_apply_08_va": "0094c950",
+      "vtable_forward_0c_va": "0092d820",
+      "vtable_16_byte_span_sha256": "3f8b7ae0e11fdaf01ada26acd6a13f257a6839b70371368adb8560e09b38cf99"
+    },
+    {
+      "opcode": "0433",
+      "index_byte_va": "004d522d",
+      "index": 60,
+      "target_word_va": "004d50f0",
+      "receiver_va": "004d25fc",
+      "call_site_va": "004d2651",
+      "relative_call_target_va": "0081c430",
+      "vtable_va": "0127cc30",
+      "vtable_serializer_04_va": "0094c4e0",
+      "vtable_apply_08_va": "00950c80",
+      "vtable_forward_0c_va": "0092f4c0",
+      "vtable_16_byte_span_sha256": "d64ef711bf0b8eab98bf911ae1c8d334f606c49cf2fc6c8aef938783427995c8"
+    },
+    {
+      "opcode": "041d",
+      "index_byte_va": "004d5217",
+      "index": 42,
+      "target_word_va": "004d50a8",
+      "receiver_va": "004d2cf4",
+      "call_site_va": "004d2d6d",
+      "relative_call_target_va": "0081b960",
+      "vtable_va": "0127c9b4",
+      "vtable_serializer_04_va": "0094b380",
+      "vtable_apply_08_va": "0094f210",
+      "vtable_forward_0c_va": "0092e950",
+      "vtable_16_byte_span_sha256": "5434c74695cc563a2be612b6c29022b203cc0c68cceb56b0c2342159c3464558"
+    }
+  ],
+  "scope": "Static selected PE bytes only; no execution or exhaustive caller claim"
+}

@@ -1,0 +1,232 @@
+{
+  "sources": [
+    {
+      "id": "src-progression-xp-hero-report",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/progression_rewards/XP_HERO_LEVELS.md"
+      },
+      "sha256": "8d444a55c67a5e0beb377a26b3af644ffd0beeb4a0f4d2ab2f5efb5aa256df4e",
+      "publication": "existing_repository",
+      "locator_note": "Original static summary; raw exports retained externally. Proposed destination, integration must update if moved."
+    }
+  ],
+  "entries": [
+    {
+      "id": "VGRE-level-action-delta",
+      "category": "implementation",
+      "title_ko": "영웅 레벨 변화 액션",
+      "claim_ko": "0434는 actor u32와 요청 레벨 증가량 u32를 전달한다. 수신기는 actor를 찾은 뒤 증가량을 적용한다. 기록만으로 실제 적용이나 절대 레벨을 단정하지 않는다.",
+      "scope": {
+        "layer": "native_gameplay",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "corpus_audit"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x004d31ec",
+          "address_kind": "preferred_va",
+          "role": "0434 reader",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0081b840",
+          "address_kind": "preferred_va",
+          "role": "constructor",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094b150",
+          "address_kind": "preferred_va",
+          "role": "serializer",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094f120",
+          "address_kind": "preferred_va",
+          "role": "apply",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-progression-xp-hero-report",
+          "locator": "1. Applied level action and raw wire fields"
+        }
+      ],
+      "limitations_ko": [
+        "H5810은 기존 자료이며 바이너리 일치가 확인되지 않았다",
+        "역사적 payload14의 끝6바이트는 의미 미확정으로 보존한다"
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp",
+        "hero_level",
+        "historical_unmatched"
+      ]
+    },
+    {
+      "id": "VGRE-hero-level-effects",
+      "category": "implementation",
+      "title_ko": "영웅 레벨 상한과 성장 효과",
+      "claim_ko": "유효 LEVEL 속성40은 base와 modifier 계층을 합성한다. 12 미만에서 증가량을 남은 상한으로 제한하고 성장 능력치와 능력 포인트를 처리한다. 증가량0도 재계산 경로를 실행할 수 있다.",
+      "scope": {
+        "layer": "native_gameplay",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "corpus_audit"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00944de0",
+          "address_kind": "preferred_va",
+          "role": "level mutation",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093fba0",
+          "address_kind": "preferred_va",
+          "role": "initialization",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-progression-xp-hero-report",
+          "locator": "2. Hero-level mutation, initialization and effects"
+        }
+      ],
+      "limitations_ko": [
+        "base+c0 단독 값은 유효 레벨이 아니다",
+        "시작 레벨과 전체 snapshot/수명 처리를 아직 닫지 않았다",
+        "유한 정상 값 모델 테스트는 native 실행 검증이 아니다"
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp",
+        "hero_level",
+        "historical_unmatched"
+      ]
+    },
+    {
+      "id": "VGRE-xp-progress-threshold-ui",
+      "category": "implementation",
+      "title_ko": "레벨 내 경험치와 표시 비율",
+      "claim_ko": "resource8은 레벨 내 경험치 진행량이다. HUD는 XP_REQUIRED 속성39로 나누어 목표 비율을 제한한 뒤 캐시를 애니메이션한다. 이미 상한인 경우는 종료하고 레벨1 초기화는0으로 설정한다. 그 외 상한 미만 재계산 경로는 기존 임계값을 호출당 한 번 차감한다.",
+      "scope": {
+        "layer": "native_gameplay",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "corpus_audit"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x005ad770",
+          "address_kind": "preferred_va",
+          "role": "HUD ratio and cache",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00944de0",
+          "address_kind": "preferred_va",
+          "role": "threshold subtraction",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x007d1410",
+          "address_kind": "preferred_va",
+          "role": "named attribute labels",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0095f270",
+          "address_kind": "preferred_va",
+          "role": "resource store",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-progression-xp-hero-report",
+          "locator": "3. XP current progress, threshold, and UI"
+        }
+      ],
+      "limitations_ko": [
+        "누적 총 경험치 필드는 확정되지 않았다",
+        "resource7은 LifetimeGold이며 경험치가 아니다",
+        "H5810 임계값84부터244까지의 관측은 보편 곡선 증명이 아니다",
+        "HUD와 helper의 clamp globals가 다르며 동일하다고 가정하지 않는다",
+        "raw 비율은 애니메이션된 실제 표시값이 아니다"
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp",
+        "hero_level",
+        "historical_unmatched"
+      ]
+    }
+  ]
+}

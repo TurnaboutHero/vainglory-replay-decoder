@@ -1,0 +1,87 @@
+{
+  "schema_version": "vg.h5810-terminal-blocked-evidence.v1",
+  "recording_id": "H5810",
+  "baseline_commit": "45e42a41acf16974dd42588c3a70b09c4cf59dd6",
+  "product_logic_changed": false,
+  "native_comparison_complete": false,
+  "native_terminal_status": "blocked_before_replay_injection",
+  "native_result_screen_status": "unverified",
+  "blocker": {
+    "begin_utc": "2026-10-14T12:38:19.789768+00:00",
+    "end_utc": "2026-10-14T12:38:21.976648+00:00",
+    "WTS_session_flags_before_launch": 1,
+    "desktop": "Default",
+    "foreground": "LockApp.exe",
+    "error": "Owned game not foreground on Default desktop; refused",
+    "actual_game_screenshot_created": false,
+    "GUI_retry_after_refusal": false,
+    "resume_requirement": "New user confirmation that the Windows lock screen is closed and desktop is visible, followed by a fresh owned foreground and guarded screenshot check",
+    "other_Windows_experiment_handoff": "held pending usable desktop confirmation"
+  },
+  "source_section_count": 168,
+  "local_source_hashes_reverified": true,
+  "transferred_source_hashes_and_sizes_verified_after_cleanup": true,
+  "replay_scope": "sha256:e0594f1bb06721d1139c18c156001cc8379cc182d12cb9451ca786a8a728d11b",
+  "cleanup": {
+    "utc": "2026-10-14T12:41:16.444398+00:00",
+    "game_worker_observers_absent": true,
+    "pending_command_absent": true,
+    "restored_original_sections": 648,
+    "hashes_creation_write_times_match": true,
+    "slot_substitution_attempted": false,
+    "observer_attached": false,
+    "executable_hashes_unchanged": true,
+    "owned_tasks_removed": 1,
+    "prelaunch_files_recreated": 0
+  },
+  "new_native_accuracy_observations": null,
+  "new_winner_gold_time_observations": null,
+  "final_winner": {
+    "status": "unverified",
+    "value": null
+  },
+  "final_gold": {
+    "status": "unverified",
+    "value": null
+  },
+  "display_duration": {
+    "status": "unverified",
+    "value": null
+  },
+  "recording_client": {
+    "status": "unverified",
+    "reason": "recordings carry no client build identifier; support reflects record-layout conformance of consumed opcodes and catalog provenance only"
+  },
+  "definitive_analysis": {
+    "policy_version": "vg.definitive-analysis.v1",
+    "eligible": false,
+    "status": "excluded",
+    "reason_codes": [
+      "recording_source_unverified",
+      "recording_version_unverified",
+      "final_result_unverified"
+    ],
+    "reason": "Excluded from definitive analysis: recording source/build and final result have no source-bound verification. Layout support, supplied truth, playback success and declared verification flags do not authorize inclusion."
+  },
+  "checks": {
+    "source_and_restoration_hashes": true,
+    "worker_exit_acknowledged": true,
+    "task_action_identity_checked": true,
+    "previous_79_unittest_result": "retained offline result at 45e42a4, not rerun for this blocked documentation increment",
+    "full_suite_rerun": false
+  },
+  "private_evidence_sha256": {
+    "attempt-commands.json": "c34a8b921b2634b4c6005cdbdf814a8de81aa7842afe54e33b7f801c90897749",
+    "preflight.json": "8b4813578e0715b6864cd6c9dd5e3e7175393dce332b662f2f5b39be1d85518d",
+    "prelaunch-slot-backup.json": "2ff7b2165b9446f85cab351d98a9f7b6e31c4e849abed15570b0e4d371a3de64",
+    "prelaunch-restored.json": "319e74dc93bc9a5d9c876ecc18f7ed2c1fb059146a22a9b66883b99c2ce31254",
+    "ready.json": "adde22e15d8dd8d6f5825f2f4b5485327092260e18dd31fd1ffeed6f9590ea19",
+    "cleanup.json": "10cebed6d32dd20fcd7f81925227f13c57086817785c472a1a4cef68747f7c27",
+    "task-cleanup.json": "d9dad84946edac06d3be19377c58f80c8f638a3bba3edcacd8c4c2e9e555bf87",
+    "preflight.py": "e106b49e0dc876b6934190c198496b1b6132d57464ce186530d446ec690e4962",
+    "cleanup.py": "b7b72d2ee6accc875977a6fb7b00565ad3f270debbb1d0a090bb049c5d0c75c5",
+    "cleanup-task.ps1": "1abef4bbe0067c14ab91d2cd154b5fe1cb1f201a49e04eea6d2b52e02c81ff5f",
+    "verify-source.py": "8e660850f1d92e4c0b6cf803e7b938a94199f37950dd379c3217d10464d05537",
+    "build-blocked-receipt.py": "ea27932698c8b4cd250e5428acc1e75c2acedbb1cbd7bb86721c98fc92347592"
+  }
+}

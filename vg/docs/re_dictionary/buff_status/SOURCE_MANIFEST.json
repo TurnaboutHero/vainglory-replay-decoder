@@ -1,0 +1,272 @@
+{
+  "schema": "vg.reviewed_buff_status_sources.v1",
+  "baseline_commit": "52f1786d09dfcfba062ed7d523623dc90c33eea1",
+  "native_execution": false,
+  "raw_exports_distributed": false,
+  "sources": [
+    {
+      "id": "src-buffstatus-4fdd371a12f4",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "cooldown-deepening/lifecycle-delta/REPORT.md"
+      },
+      "sha256": "8c438f4ade9183c4fd116d5f90b3e9d28730ae2958c4ac7f9440a0c098632c24",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-31336b548579",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "cooldown-deepening/lifecycle-delta/receipt-hashes.json"
+      },
+      "sha256": "401cbcda16ac5222407ebce9ad32f735c7cd30c98c990a7e77557d3a6f18fe39",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-f9777f46fbc2",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "cooldown-deepening/lifecycle-delta/test-results.json"
+      },
+      "sha256": "8e78d3d5670e3a4961beb95c4127d0fbb9e8449e58039d21a780df14eba75adf",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-62c5d0f62db4",
+      "kind": "source_code",
+      "location": {
+        "namespace": "research",
+        "path": "cooldown-deepening/lifecycle-delta/test_dispatch.py"
+      },
+      "sha256": "2151cbb8938862f553274091eb7d1a1eb8e6da5a87030245574087f0a17353a7",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-365f1595b3c7",
+      "kind": "independent_review",
+      "location": {
+        "namespace": "research",
+        "path": "independent-deepening-review/lifecycle-delta-review.json"
+      },
+      "sha256": "1c0fe2f4b13031580e754b5f8d472699ca99b62a9783d2eb2142cd742116462a",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-e77b0c4a391a",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/buff_status/lifecycle-additions.json"
+      },
+      "sha256": "4d664423d0cdeca28d7adec84fbc668580efbadff1301f13baf6709f9d8e3b60",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-fc6e1b76657f",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_buff_lifecycle.py"
+      },
+      "sha256": "1bde24f8fb4d68bde4023233598d90a59a37db35fb6f460bdd79f5cfb6edae11",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-2d9b8c138369",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "jungle-infusion-buffs/portable/REPORT.md"
+      },
+      "sha256": "eeaf30f3f397a0d3d71777e5e55c377403706225cb712ddd909da607f5bc255f",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-249a38261108",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "jungle-infusion-buffs/portable/receipt-hashes.json"
+      },
+      "sha256": "cdcb9d0a9fd0526415a9e3567862d595ad309454f060f454d486a24a1e02d911",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-25a78502e711",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "jungle-infusion-buffs/portable/native-anchors.json"
+      },
+      "sha256": "8e318be768beaa7907375e095f2bac357983ec86e010f6a68592b649166da709",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-eae3928dda28",
+      "kind": "independent_review",
+      "location": {
+        "namespace": "research",
+        "path": "independent-deepening-review/jungle-infusion-review.json"
+      },
+      "sha256": "d97cf6c6a56d9e50eb0ce2cded653396eb27055a21fae8f7d76bbea130595585",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-0a1dff2b1a88",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/buff_status/jungle-candidates.json"
+      },
+      "sha256": "cefe2615f21245bd178d298a4cb166d6ebc7e499dc4fc8f4f87828e75544c439",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-6c40c4224ec5",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_jungle_infusion.py"
+      },
+      "sha256": "001cb01dac2d172bc1695f2b66b97e13901ccdcbd73c3c1b294d20f34812bb82",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-a4cd780e2f2f",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "status-effect-gates/portable/REPORT.md"
+      },
+      "sha256": "29f3a4e44e78a868b946ddf9720981940e6975badfe069639d3bac025404cef4",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-e5f7e2594dc9",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "status-effect-gates/portable/PACKAGE.sha256.json"
+      },
+      "sha256": "7e49d00b74a3218ef001e34f77f347d1943508c2e0131bb5c16339bdedf3cd93",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-6732d26c2783",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "status-effect-gates/portable/receipt-hashes.json"
+      },
+      "sha256": "2c0f6e4e16aba0ee28822ecbfdd5bcfded91f79fcf9768fa25081bafd059e184",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-f347f66b6b45",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "status-effect-gates/portable/evidence-checks.json"
+      },
+      "sha256": "9dc4bb4cabf2449751e228e6cd7465241e074c07dd8e137f24686ccaaea47b53",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-594c10a894d6",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "status-effect-gates/portable/factory-identities.json"
+      },
+      "sha256": "588fffca43a9cddefb50758af168385bc9cb4de6f3c11ffd0e0d799a9d828b0c",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-00eb1bde27b4",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "status-effect-gates/portable/resource-flags.json"
+      },
+      "sha256": "83ba99848bd9a33ba1e813fd9f1c32e7af0f1ac929353bf0c4ea0d1eceb56f67",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-8b5ed6b76129",
+      "kind": "independent_review",
+      "location": {
+        "namespace": "research",
+        "path": "independent-deepening-review/status-effect-review.json"
+      },
+      "sha256": "14ee8ac73a0b15d9ce064a5f981e65c82445c1005876731b742bb13c83175397",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-6952e73678c5",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/buff_status/status-additions.json"
+      },
+      "sha256": "e6c076c2e2951c76493dc348a3b273bc5834ab72aee5fb0e82b6b51d51ff4134",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-7d8f7d69c15e",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_status_models.py"
+      },
+      "sha256": "cc4fea44392a22f2f0ea92e669e5366b68332a62c15b3a15e5b2d272d4b0a44a",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-ad352c83dd55",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_buff_status_catalog.py"
+      },
+      "sha256": "43e8b81c3adecd460de3dc598a42f70eb0521bc7951f977c7714dcad4001981e",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-buffstatus-617028591c63",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/buff_status/README.md"
+      },
+      "sha256": "0c9a56e37ad3614a703b12806ee2dbd1e2c0469753b4cca0dca7679a56ee9800",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    }
+  ]
+}

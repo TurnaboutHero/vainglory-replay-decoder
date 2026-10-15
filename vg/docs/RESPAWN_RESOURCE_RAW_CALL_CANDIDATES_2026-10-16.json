@@ -1,0 +1,31 @@
+{
+  "schema": "raw-e8-rel32-candidate-scan-v1",
+  "executable_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "image_base": "00400000",
+  "scope": "Raw byte E8 rel32 candidates in file-backed executable sections; instruction boundaries and callers unverified; candidates may overlap data or be misaligned",
+  "scanned_sections": [
+    {
+      "section": ".text",
+      "rva": "00001000",
+      "raw_size": 14716416,
+      "executable": true
+    }
+  ],
+  "targets": {
+    "0081b960": [
+      {
+        "candidate_va": "004d2d6d",
+        "section": ".text",
+        "executable": true
+      }
+    ],
+    "009572b0": [
+      {
+        "candidate_va": "0094c964",
+        "section": ".text",
+        "executable": true
+      }
+    ],
+    "0094f210": []
+  }
+}

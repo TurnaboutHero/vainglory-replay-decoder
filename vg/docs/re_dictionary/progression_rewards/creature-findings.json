@@ -1,0 +1,91 @@
+{
+  "schema": "creature-kill-credit.research.v1",
+  "build_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "recording_client": "unverified",
+  "production_ready": false,
+  "accepted_for_index": false,
+  "entries": [
+    {
+      "id": "creature.classification.native_kind_flags",
+      "primary_va": "00942480",
+      "related_vas": [
+        "00942d90",
+        "005b19e0"
+      ],
+      "finding": "Actor resource kind1 sets0x10,kind5 sets0x100,kind4 sets4; minion icon uses0x110; selected named definitions independently decoded",
+      "limits": "No universal CS or objective-award taxonomy",
+      "production_ready": false,
+      "accepted_for_index": false
+    },
+    {
+      "id": "creature.death.raw_source",
+      "primary_va": "00819f30",
+      "related_vas": [
+        "0094c8f0",
+        "0092d7d0"
+      ],
+      "finding": "ActorDie stores victim and raw source; presentation path is gated; existing decoder preserves unsigned IDs and opaque suffix",
+      "limits": "Raw source is not an awarded killer",
+      "production_ready": false,
+      "accepted_for_index": false
+    },
+    {
+      "id": "creature.credit.retained_hero_reference",
+      "primary_va": "0094e970",
+      "related_vas": [
+        "0094eaa0",
+        "009396f0",
+        "005b19e0"
+      ],
+      "finding": "Negative incoming health-change action can record direct or linked hero into victim+1c0 before damage apply; ineligible later sources leave it retained; hero-death battle log may prefer it",
+      "limits": "Not universal latest hitter, successful damage or awarded killer",
+      "production_ready": false,
+      "accepted_for_index": false
+    },
+    {
+      "id": "creature.credit.generation_checked_link",
+      "primary_va": "00939e40",
+      "related_vas": [
+        "0094d480",
+        "0094e170"
+      ],
+      "finding": "actor+1c8/+1cc is generation-checked, initialized from creation action+37c or alternate+484, and can supply hero display attribution",
+      "limits": "Action-object offsets are not replay payload offsets; owner/summoner semantics not universal",
+      "production_ready": false,
+      "accepted_for_index": false
+    },
+    {
+      "id": "creature.objective.distinct_definitions",
+      "primary_va": "00942480",
+      "related_vas": [
+        "005b19e0"
+      ],
+      "finding": "Ghostwing331,Blackclaw uncaptured332,captured333,Kraken jungle320,captured321 independently identified at kind4",
+      "limits": "Captured creature death is not automatically objective capture or team credit",
+      "production_ready": false,
+      "accepted_for_index": false
+    },
+    {
+      "id": "creature.cs.coincidence_boundary",
+      "primary_va": null,
+      "related_vas": [],
+      "finding": "H5810 diagnostic2422 death actions,994 resource14 ADD1;990 updates have raw-source/same-time matches,81 ambiguous,4 unmatched",
+      "limits": "Development-seen unmatched-build sample;1147 candidate pairs are not kills; no per-category counters",
+      "production_ready": false,
+      "accepted_for_index": false
+    }
+  ],
+  "tests": {
+    "existing_unittest_passed": 39,
+    "bounded_checks_passed": 40
+  },
+  "source_anchors": [
+    "actor-definitions.json",
+    "corpus-summary.json",
+    "correlation-summary.json",
+    "parser-tests.log",
+    "tests.log",
+    "REPORT.md"
+  ],
+  "raw_receipts_external": true
+}
