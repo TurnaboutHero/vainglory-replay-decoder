@@ -2,7 +2,7 @@
 
 이 파일은 catalog.json에서 생성됩니다. 직접 수정하지 말고 원본 catalog를 갱신하세요.
 
-기준 checkout: `65bab83` · 갱신: 2026-10-15 · 항목: 100
+기준 checkout: `65bab83` · 갱신: 2026-10-15 · 항목: 120
 
 검토된 기능 묶음과 중요한 정정만 담았습니다. 기존 evidence 전체를 검증 완료로 승격한 목록이 아닙니다.
 정적 명령 검증, synthetic test, 개발 corpus 관측, runtime 관측은 서로 다른 증거입니다. semantic confidence가 높아도 서버 권위나 live 실행은 증명되지 않습니다.
@@ -33,7 +33,8 @@ python -B -m vg.research.dictionary validate --check-index
 - VGNA replay upload: [identity event의 출처와 응답](#vgre-upload-identity-events), [continuous upload policy 연결은 미확정](#vgre-upload-policy-bounded-gap), [terminal_scoreboard는 entity→hero만](#vgre-upload-terminal-hero-only), [VGNL 68-byte transport header](#vgre-upload-vgnl-frame)
 - client 산술·HUD·stub: [critical 산술의 mode gate와 RET 경계](#vgre-combat-critical-stub), [4-array 유효 stat 계산](#vgre-combat-effective-stats), [방어 계산은 last-hit HUD 추정](#vgre-combat-hud-attack-estimate), [property scaling과 TooltipDamage](#vgre-combat-property-tooltip)
 - 받은 HP와 표시: [041e 실제 resource 변경 operand](#vgre-health-impact-prefix), [받은 action은 apply로 직접 진입](#vgre-health-incoming-dispatch), [041d SET/ADD와 음수 SET 정정](#vgre-health-resource-set-add), [impact·HP·보호량·표시량 분리](#vgre-health-split-display), [Treant duration extension and gated heal](#vgre-treant-duration-extension-and-heal)
-- action↔impact의 제한된 연관: [아이템 instance는 actor와 함께 묶기](#vgre-correlation-item-instance-scope), [시간·actor 근접성은 인과 키가 아님](#vgre-correlation-no-causal-key), [play actor/target/slot과 불투명 suffix](#vgre-correlation-play-fields), [combat target storage](#vgre-deepening-combat-target-storage)
+- action↔impact의 제한된 연관: [아이템 instance는 actor와 함께 묶기](#vgre-correlation-item-instance-scope), [시간·actor 근접성은 인과 키가 아님](#vgre-correlation-no-causal-key), [play actor/target/slot과 불투명 suffix](#vgre-correlation-play-fields), [creature classification native_kind_flags](#vgre-creature-classification-native-kind-flags), [creature credit generation_checked_link](#vgre-creature-credit-generation-checked-link), [creature credit retained_hero_reference](#vgre-creature-credit-retained-hero-reference), [creature cs coincidence_boundary](#vgre-creature-cs-coincidence-boundary), [creature death raw_source](#vgre-creature-death-raw-source), [creature objective distinct_definitions](#vgre-creature-objective-distinct-definitions), [combat target storage](#vgre-deepening-combat-target-storage), [ambient gold payout declaration](#vgre-reward-ambient-gold-payout-declaration), [bounty multiplier](#vgre-reward-bounty-multiplier), [goldshell distance provider](#vgre-reward-goldshell-distance-provider), [individual resource apply](#vgre-reward-individual-resource-apply)
+- 구현 상태: [영웅 레벨 상한과 성장 효과](#vgre-hero-level-effects), [영웅 레벨 변화 액션](#vgre-level-action-delta), [Downgrade and conditional refund](#vgre-skill-downgrade-refund), [Gated skill investment and point spending](#vgre-skill-investment-apply), [Overdrive equality and property bonus differ](#vgre-skill-overdrive-condition), [Rank bits, base rank and prerequisites](#vgre-skill-rank-prerequisite), [Display slots and runtime identities](#vgre-skill-slot-selection), [Absolute skill ranks restored by HeroSpawn](#vgre-skill-snapshot-restore), [Skill upgrade request is separate from application](#vgre-skill-upgrade-request), [레벨 내 경험치와 표시 비율](#vgre-xp-progress-threshold-ui)
 - status_effect: [Separate movement attack skill and item gates](#vgre-status-action-specific-gates), [Metadata and identity based blockers](#vgre-status-buff-blocker-matching), [Cleanse metadata filtered cancellation](#vgre-status-cleanse-filtered-queue), [Display records are separate from logical flags](#vgre-status-display-native-distinction), [Per-source gameplay flag lifecycle](#vgre-status-flag-contributor-lifecycle), [Selected named status masks](#vgre-status-named-factory-masks), [Movement modifier maximum per category](#vgre-status-slow-max-category)
 
 ## 파일·빌드 출처
@@ -2127,6 +2128,150 @@ H5810 negative impact35192개에 대해 raw timestamp1.0 window에서 same-sourc
 - 근거: [src-correlation_native](#src-correlation_native) · Exact native prefixes
 - 근거: [src-artifact-07c468b8ae82](#src-artifact-07c468b8ae82) · whole artifact; content remains external
 
+### VGRE-creature-classification-native-kind-flags
+
+**creature classification native_kind_flags**
+
+Actor resource kind1 sets0x10,kind5 sets0x100,kind4 sets4; minion icon uses0x110; selected named definitions independently decoded
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_progression_rewards / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00942480` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00942d90` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x005b19e0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.
+- 한계: No universal CS or objective-award taxonomy
+- 한계: Producer accepted_for_index:false is preserved: bounded research-catalog inclusion is not acceptance for a replay index, state reducer or reward assignment.
+- 한계: Raw death source, retained hero display reference, owner-like links and authoritative awarded killer remain distinct.
+- 근거: [src-progression-57a34aa9c432](#src-progression-57a34aa9c432) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-950f804660d2](#src-progression-950f804660d2) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-1b60abe8fbc4](#src-progression-1b60abe8fbc4) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-c4c358323260](#src-progression-c4c358323260) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-336482845157](#src-progression-336482845157) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-caba033b27b0](#src-progression-caba033b27b0) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-d8461fd9775d](#src-progression-d8461fd9775d) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-95fa1f21d0c2](#src-progression-95fa1f21d0c2) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-44728f7a19e6](#src-progression-44728f7a19e6) · Reviewed static claim and its explicit conditional limits.
+
+### VGRE-creature-credit-generation-checked-link
+
+**creature credit generation_checked_link**
+
+actor+1c8/+1cc is generation-checked, initialized from creation action+37c or alternate+484, and can supply hero display attribution
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_progression_rewards / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00939e40` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0094d480` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0094e170` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.
+- 한계: Action-object offsets are not replay payload offsets; owner/summoner semantics not universal
+- 한계: Producer accepted_for_index:false is preserved: bounded research-catalog inclusion is not acceptance for a replay index, state reducer or reward assignment.
+- 한계: Raw death source, retained hero display reference, owner-like links and authoritative awarded killer remain distinct.
+- 근거: [src-progression-57a34aa9c432](#src-progression-57a34aa9c432) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-950f804660d2](#src-progression-950f804660d2) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-1b60abe8fbc4](#src-progression-1b60abe8fbc4) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-c4c358323260](#src-progression-c4c358323260) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-336482845157](#src-progression-336482845157) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-caba033b27b0](#src-progression-caba033b27b0) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-d8461fd9775d](#src-progression-d8461fd9775d) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-95fa1f21d0c2](#src-progression-95fa1f21d0c2) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-44728f7a19e6](#src-progression-44728f7a19e6) · Reviewed static claim and its explicit conditional limits.
+
+### VGRE-creature-credit-retained-hero-reference
+
+**creature credit retained_hero_reference**
+
+Negative incoming health-change action can record direct or linked hero into victim+1c0 before damage apply; ineligible later sources leave it retained; hero-death battle log may prefer it
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_progression_rewards / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0094e970` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0094eaa0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x009396f0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x005b19e0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.
+- 한계: Not universal latest hitter, successful damage or awarded killer
+- 한계: Producer accepted_for_index:false is preserved: bounded research-catalog inclusion is not acceptance for a replay index, state reducer or reward assignment.
+- 한계: Raw death source, retained hero display reference, owner-like links and authoritative awarded killer remain distinct.
+- 근거: [src-progression-57a34aa9c432](#src-progression-57a34aa9c432) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-950f804660d2](#src-progression-950f804660d2) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-1b60abe8fbc4](#src-progression-1b60abe8fbc4) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-c4c358323260](#src-progression-c4c358323260) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-336482845157](#src-progression-336482845157) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-caba033b27b0](#src-progression-caba033b27b0) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-d8461fd9775d](#src-progression-d8461fd9775d) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-95fa1f21d0c2](#src-progression-95fa1f21d0c2) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-44728f7a19e6](#src-progression-44728f7a19e6) · Reviewed static claim and its explicit conditional limits.
+
+### VGRE-creature-cs-coincidence-boundary
+
+**creature cs coincidence_boundary**
+
+H5810 diagnostic2422 death actions,994 resource14 ADD1;990 updates have raw-source/same-time matches,81 ambiguous,4 unmatched
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, development_corpus
+- 경계: independently_reviewed_progression_rewards / not_applicable / synthetic_and_development
+- 정확한 파일: `h5810-development`
+- 한계: Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.
+- 한계: Development-seen unmatched-build sample;1147 candidate pairs are not kills; no per-category counters
+- 한계: Producer accepted_for_index:false is preserved: bounded research-catalog inclusion is not acceptance for a replay index, state reducer or reward assignment.
+- 한계: Raw death source, retained hero display reference, owner-like links and authoritative awarded killer remain distinct.
+- 한계: The pooled exact-time/raw-source join has no section, order or lifetime constraint; candidate pairs do not establish causal kill credit.
+- 근거: [src-progression-57a34aa9c432](#src-progression-57a34aa9c432) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-950f804660d2](#src-progression-950f804660d2) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-1b60abe8fbc4](#src-progression-1b60abe8fbc4) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-c4c358323260](#src-progression-c4c358323260) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-336482845157](#src-progression-336482845157) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-caba033b27b0](#src-progression-caba033b27b0) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-d8461fd9775d](#src-progression-d8461fd9775d) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-95fa1f21d0c2](#src-progression-95fa1f21d0c2) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-44728f7a19e6](#src-progression-44728f7a19e6) · Reviewed static claim and its explicit conditional limits.
+
+### VGRE-creature-death-raw-source
+
+**creature death raw_source**
+
+ActorDie stores victim and raw source; presentation path is gated; existing decoder preserves unsigned IDs and opaque suffix
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_progression_rewards / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00819f30` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0094c8f0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0092d7d0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.
+- 한계: Raw source is not an awarded killer
+- 한계: Producer accepted_for_index:false is preserved: bounded research-catalog inclusion is not acceptance for a replay index, state reducer or reward assignment.
+- 한계: Raw death source, retained hero display reference, owner-like links and authoritative awarded killer remain distinct.
+- 근거: [src-progression-57a34aa9c432](#src-progression-57a34aa9c432) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-950f804660d2](#src-progression-950f804660d2) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-1b60abe8fbc4](#src-progression-1b60abe8fbc4) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-c4c358323260](#src-progression-c4c358323260) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-336482845157](#src-progression-336482845157) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-caba033b27b0](#src-progression-caba033b27b0) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-d8461fd9775d](#src-progression-d8461fd9775d) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-95fa1f21d0c2](#src-progression-95fa1f21d0c2) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-44728f7a19e6](#src-progression-44728f7a19e6) · Reviewed static claim and its explicit conditional limits.
+
+### VGRE-creature-objective-distinct-definitions
+
+**creature objective distinct_definitions**
+
+Ghostwing331,Blackclaw uncaptured332,captured333,Kraken jungle320,captured321 independently identified at kind4
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_progression_rewards / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00942480` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x005b19e0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.
+- 한계: Captured creature death is not automatically objective capture or team credit
+- 한계: Producer accepted_for_index:false is preserved: bounded research-catalog inclusion is not acceptance for a replay index, state reducer or reward assignment.
+- 한계: Raw death source, retained hero display reference, owner-like links and authoritative awarded killer remain distinct.
+- 근거: [src-progression-57a34aa9c432](#src-progression-57a34aa9c432) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-950f804660d2](#src-progression-950f804660d2) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-1b60abe8fbc4](#src-progression-1b60abe8fbc4) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-c4c358323260](#src-progression-c4c358323260) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-336482845157](#src-progression-336482845157) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-caba033b27b0](#src-progression-caba033b27b0) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-d8461fd9775d](#src-progression-d8461fd9775d) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-95fa1f21d0c2](#src-progression-95fa1f21d0c2) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-44728f7a19e6](#src-progression-44728f7a19e6) · Reviewed static claim and its explicit conditional limits.
+
 ### VGRE-deepening-combat-target-storage
 
 **combat target storage**
@@ -2147,6 +2292,330 @@ Incoming play resolves the runtime override before target/vector writes, while s
 - 근거: [src-deepening-9d37dc38eb98](#src-deepening-9d37dc38eb98) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
 - 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
 - 근거: [src-deepening-2f20bcbf5127](#src-deepening-2f20bcbf5127) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
+### VGRE-reward-ambient-gold-payout-declaration
+
+**ambient gold payout declaration**
+
+AmbientGold declares resource6/provider context, but selected helper configuration and lifecycle execution are stubs in this client. Capacity9999 is neither gold amount nor recipient count. No split formula or recipient selection is established.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_progression_rewards / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x008d2eb0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00528fc0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0045ecd0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x008268c0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.
+- 한계: No shared-gold/XP recipient eligibility, participation window, last-hit priority, split denominator or authoritative amount established.
+- 한계: 041d prefix carries individual target/operand/resource/mode/presentation fields, not kill source or recipient array. Historical suffixes remain opaque.
+- 한계: Reporting ratios are not payout coefficients. Finite resource illustrations do not emulate native float32, complete lifetime sources or server causation.
+- 근거: [src-progression-820a55e55144](#src-progression-820a55e55144) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-5a0e398204b3](#src-progression-5a0e398204b3) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-c44f49eb6438](#src-progression-c44f49eb6438) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-159ec2054d94](#src-progression-159ec2054d94) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-e47d6b3ef6fd](#src-progression-e47d6b3ef6fd) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-eee9a8e311d3](#src-progression-eee9a8e311d3) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-9a182b69a8af](#src-progression-9a182b69a8af) · Reviewed static claim and its explicit conditional limits.
+
+### VGRE-reward-bounty-multiplier
+
+**bounty multiplier**
+
+Selected ARAM bounty factory declares attribute21/layer2/constant1, but its helper setter and lifecycle execution are stubs. It does not establish an applied bounty multiplier.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_progression_rewards / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x008cf910` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00529040` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.
+- 한계: No shared-gold/XP recipient eligibility, participation window, last-hit priority, split denominator or authoritative amount established.
+- 한계: 041d prefix carries individual target/operand/resource/mode/presentation fields, not kill source or recipient array. Historical suffixes remain opaque.
+- 한계: Reporting ratios are not payout coefficients. Finite resource illustrations do not emulate native float32, complete lifetime sources or server causation.
+- 근거: [src-progression-820a55e55144](#src-progression-820a55e55144) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-5a0e398204b3](#src-progression-5a0e398204b3) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-c44f49eb6438](#src-progression-c44f49eb6438) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-159ec2054d94](#src-progression-159ec2054d94) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-e47d6b3ef6fd](#src-progression-e47d6b3ef6fd) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-eee9a8e311d3](#src-progression-eee9a8e311d3) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-9a182b69a8af](#src-progression-9a182b69a8af) · Reviewed static claim and its explicit conditional limits.
+
+### VGRE-reward-goldshell-distance-provider
+
+**goldshell distance provider**
+
+Goldshell operand0x2e selects a projectile, not a gold amount. Its mode-gated provider resolves actor+0x1bc and returns one handle only within strict squared distance810000. This is not a general shared-XP recipient radius or proof of awarded killer.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_progression_rewards / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0088b530` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0086d160` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.
+- 한계: No shared-gold/XP recipient eligibility, participation window, last-hit priority, split denominator or authoritative amount established.
+- 한계: 041d prefix carries individual target/operand/resource/mode/presentation fields, not kill source or recipient array. Historical suffixes remain opaque.
+- 한계: Reporting ratios are not payout coefficients. Finite resource illustrations do not emulate native float32, complete lifetime sources or server causation.
+- 근거: [src-progression-820a55e55144](#src-progression-820a55e55144) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-5a0e398204b3](#src-progression-5a0e398204b3) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-c44f49eb6438](#src-progression-c44f49eb6438) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-159ec2054d94](#src-progression-159ec2054d94) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-e47d6b3ef6fd](#src-progression-e47d6b3ef6fd) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-eee9a8e311d3](#src-progression-eee9a8e311d3) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-9a182b69a8af](#src-progression-9a182b69a8af) · Reviewed static claim and its explicit conditional limits.
+
+### VGRE-reward-individual-resource-apply
+
+**individual resource apply**
+
+Individual resource6 ADD mutates the resolved target balance and positive operands also increment resource7 income total. SET/debit do not perform that positive-income increment. Same-team filtering belongs to presentation; all branches still require second target resolution before mutation.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_progression_rewards / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0094f210` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0093ead0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0095f160` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0095f270` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.
+- 한계: No shared-gold/XP recipient eligibility, participation window, last-hit priority, split denominator or authoritative amount established.
+- 한계: 041d prefix carries individual target/operand/resource/mode/presentation fields, not kill source or recipient array. Historical suffixes remain opaque.
+- 한계: Reporting ratios are not payout coefficients. Finite resource illustrations do not emulate native float32, complete lifetime sources or server causation.
+- 근거: [src-progression-820a55e55144](#src-progression-820a55e55144) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-5a0e398204b3](#src-progression-5a0e398204b3) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-c44f49eb6438](#src-progression-c44f49eb6438) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-159ec2054d94](#src-progression-159ec2054d94) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-e47d6b3ef6fd](#src-progression-e47d6b3ef6fd) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-eee9a8e311d3](#src-progression-eee9a8e311d3) · Reviewed static claim and its explicit conditional limits.
+- 근거: [src-progression-9a182b69a8af](#src-progression-9a182b69a8af) · Reviewed static claim and its explicit conditional limits.
+
+
+## 구현 상태
+
+### VGRE-hero-level-effects
+
+**영웅 레벨 상한과 성장 효과**
+
+유효 LEVEL 속성40은 base와 modifier 계층을 합성한다. 12 미만에서 증가량을 남은 상한으로 제한하고 성장 능력치와 능력 포인트를 처리한다. 증가량0도 재계산 경로를 실행할 수 있다.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, corpus_audit, independent_review, file_hash
+- 경계: native_gameplay / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00944de0` (win-x86-laa, preferred_va, level mutation); `0x0093fba0` (win-x86-laa, preferred_va, initialization)
+- 한계: base+c0 단독 값은 유효 레벨이 아니다
+- 한계: 시작 레벨과 전체 snapshot/수명 처리를 아직 닫지 않았다
+- 한계: 유한 정상 값 모델 테스트는 native 실행 검증이 아니다
+- 근거: [src-progression-xp-hero-report](#src-progression-xp-hero-report) · 2. Hero-level mutation, initialization and effects
+- 근거: [src-progression-22c90cdc19a6](#src-progression-22c90cdc19a6) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-e47899d9a88c](#src-progression-e47899d9a88c) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-edc6e409f284](#src-progression-edc6e409f284) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-51a57ad65eff](#src-progression-51a57ad65eff) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-ea12af3d45eb](#src-progression-ea12af3d45eb) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-57a3320adc8b](#src-progression-57a3320adc8b) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-1f6c2d820b1c](#src-progression-1f6c2d820b1c) · Frozen review, input provenance or bounded test-only model.
+
+### VGRE-level-action-delta
+
+**영웅 레벨 변화 액션**
+
+0434는 actor u32와 요청 레벨 증가량 u32를 전달한다. 수신기는 actor를 찾은 뒤 증가량을 적용한다. 기록만으로 실제 적용이나 절대 레벨을 단정하지 않는다.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, corpus_audit, independent_review, file_hash
+- 경계: native_gameplay / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- Opcode: `0434`
+- 함수/위치: `0x004d31ec` (win-x86-laa, preferred_va, 0434 reader); `0x0081b840` (win-x86-laa, preferred_va, constructor); `0x0094b150` (win-x86-laa, preferred_va, serializer); `0x0094f120` (win-x86-laa, preferred_va, apply)
+- 한계: H5810은 기존 자료이며 바이너리 일치가 확인되지 않았다
+- 한계: 역사적 payload14의 끝6바이트는 의미 미확정으로 보존한다
+- 근거: [src-progression-xp-hero-report](#src-progression-xp-hero-report) · 1. Applied level action and raw wire fields
+- 근거: [src-progression-22c90cdc19a6](#src-progression-22c90cdc19a6) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-e47899d9a88c](#src-progression-e47899d9a88c) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-edc6e409f284](#src-progression-edc6e409f284) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-51a57ad65eff](#src-progression-51a57ad65eff) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-ea12af3d45eb](#src-progression-ea12af3d45eb) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-57a3320adc8b](#src-progression-57a3320adc8b) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-1f6c2d820b1c](#src-progression-1f6c2d820b1c) · Frozen review, input provenance or bounded test-only model.
+
+### VGRE-skill-downgrade-refund
+
+**Downgrade and conditional refund**
+
+043b applies rank/history decrement only for nonzero rank; refund emission depends on global0209e204, not unconditional.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, resource_decode, independent_review, file_hash
+- 경계: native_static / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- Opcode: `043b`
+- 함수/위치: `0x0094d360` (win-x86-laa, preferred_va, bounded static progression path); `0x0092d300` (win-x86-laa, preferred_va, bounded static progression path)
+- 한계: Exact supplied build only; no live/server execution or current-version claim.
+- 한계: H5810 recording build unmatched; request/action observation does not guarantee acceptance.
+- 한계: Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed.
+- 근거: [src-skill-4ec21246b4db](#src-skill-4ec21246b4db) · Anchors and limitations; selected raw receipts are separately hashed.
+- 근거: [src-progression-12bb9e88c8de](#src-progression-12bb9e88c8de) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-4ec21246b4db](#src-progression-4ec21246b4db) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-eae07b21a838](#src-progression-eae07b21a838) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-faa9c64596d7](#src-progression-faa9c64596d7) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-4966dd4e9b25](#src-progression-4966dd4e9b25) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-209bf9691ed0](#src-progression-209bf9691ed0) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-7257824606df](#src-progression-7257824606df) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-81a39cb66859](#src-progression-81a39cb66859) · Frozen review or bounded portable model/curated facts; no runtime inference.
+
+### VGRE-skill-investment-apply
+
+**Gated skill investment and point spending**
+
+043a apply checks effective unspent stat1d and hero-level prerequisite; accepted local branch increments rank/history and spends one point.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, resource_decode, independent_review, file_hash
+- 경계: native_static / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- Opcode: `043a`
+- 함수/위치: `0x0094df40` (win-x86-laa, preferred_va, bounded static progression path); `0x0096b400` (win-x86-laa, preferred_va, bounded static progression path); `0x0096b2c0` (win-x86-laa, preferred_va, bounded static progression path); `0x0093e850` (win-x86-laa, preferred_va, bounded static progression path)
+- 한계: Exact supplied build only; no live/server execution or current-version claim.
+- 한계: H5810 recording build unmatched; request/action observation does not guarantee acceptance.
+- 한계: Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed.
+- 근거: [src-skill-4ec21246b4db](#src-skill-4ec21246b4db) · Anchors and limitations; selected raw receipts are separately hashed.
+- 근거: [src-progression-12bb9e88c8de](#src-progression-12bb9e88c8de) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-4ec21246b4db](#src-progression-4ec21246b4db) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-eae07b21a838](#src-progression-eae07b21a838) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-faa9c64596d7](#src-progression-faa9c64596d7) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-4966dd4e9b25](#src-progression-4966dd4e9b25) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-209bf9691ed0](#src-progression-209bf9691ed0) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-7257824606df](#src-progression-7257824606df) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-81a39cb66859](#src-progression-81a39cb66859) · Frozen review or bounded portable model/curated facts; no runtime inference.
+
+### VGRE-skill-overdrive-condition
+
+**Overdrive equality and property bonus differ**
+
+Resolved named condition is rank==base+(alternate?3:5); raw property bonus applies at rank5 only. Empty resolved slot implementation edge can return true.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, resource_decode, independent_review, file_hash
+- 경계: native_static / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0092ff60` (win-x86-laa, preferred_va, bounded static progression path); `0x0093cbf0` (win-x86-laa, preferred_va, bounded static progression path)
+- 한계: Exact supplied build only; no live/server execution or current-version claim.
+- 한계: H5810 recording build unmatched; request/action observation does not guarantee acceptance.
+- 한계: Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed.
+- 근거: [src-skill-4ec21246b4db](#src-skill-4ec21246b4db) · Anchors and limitations; selected raw receipts are separately hashed.
+- 근거: [src-progression-12bb9e88c8de](#src-progression-12bb9e88c8de) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-4ec21246b4db](#src-progression-4ec21246b4db) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-eae07b21a838](#src-progression-eae07b21a838) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-faa9c64596d7](#src-progression-faa9c64596d7) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-4966dd4e9b25](#src-progression-4966dd4e9b25) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-209bf9691ed0](#src-progression-209bf9691ed0) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-7257824606df](#src-progression-7257824606df) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-81a39cb66859](#src-progression-81a39cb66859) · Frozen review or bounded portable model/curated facts; no runtime inference.
+
+### VGRE-skill-rank-prerequisite
+
+**Rank bits, base rank and prerequisites**
+
+Rank mask1c00 at ability+154; definition+58 base rank; normal requirements1(or2),2,4,6,8, alternate6,9,12; raw setter masks rather than saturates.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, resource_decode, independent_review, file_hash
+- 경계: native_static / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0095daa0` (win-x86-laa, preferred_va, bounded static progression path); `0x00937080` (win-x86-laa, preferred_va, bounded static progression path); `0x0093f270` (win-x86-laa, preferred_va, bounded static progression path)
+- 한계: Exact supplied build only; no live/server execution or current-version claim.
+- 한계: H5810 recording build unmatched; request/action observation does not guarantee acceptance.
+- 한계: Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed.
+- 근거: [src-skill-4ec21246b4db](#src-skill-4ec21246b4db) · Anchors and limitations; selected raw receipts are separately hashed.
+- 근거: [src-progression-12bb9e88c8de](#src-progression-12bb9e88c8de) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-4ec21246b4db](#src-progression-4ec21246b4db) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-eae07b21a838](#src-progression-eae07b21a838) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-faa9c64596d7](#src-progression-faa9c64596d7) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-4966dd4e9b25](#src-progression-4966dd4e9b25) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-209bf9691ed0](#src-progression-209bf9691ed0) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-7257824606df](#src-progression-7257824606df) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-81a39cb66859](#src-progression-81a39cb66859) · Frozen review or bounded portable model/curated facts; no runtime inference.
+
+### VGRE-skill-slot-selection
+
+**Display slots and runtime identities**
+
+Initial display selectors vary by hero; Catherine1/2/3 and Ozo0/3/8 refute universal native slot2=ultimate. Runtime override/name mapping must be preserved.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, resource_decode, independent_review, file_hash
+- 경계: native_static / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x005acbf0` (win-x86-laa, preferred_va, bounded static progression path); `0x00936bd0` (win-x86-laa, preferred_va, bounded static progression path)
+- 한계: Exact supplied build only; no live/server execution or current-version claim.
+- 한계: H5810 recording build unmatched; request/action observation does not guarantee acceptance.
+- 한계: Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed.
+- 근거: [src-skill-4ec21246b4db](#src-skill-4ec21246b4db) · Anchors and limitations; selected raw receipts are separately hashed.
+- 근거: [src-progression-12bb9e88c8de](#src-progression-12bb9e88c8de) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-4ec21246b4db](#src-progression-4ec21246b4db) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-eae07b21a838](#src-progression-eae07b21a838) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-faa9c64596d7](#src-progression-faa9c64596d7) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-4966dd4e9b25](#src-progression-4966dd4e9b25) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-209bf9691ed0](#src-progression-209bf9691ed0) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-7257824606df](#src-progression-7257824606df) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-81a39cb66859](#src-progression-81a39cb66859) · Frozen review or bounded portable model/curated facts; no runtime inference.
+
+### VGRE-skill-snapshot-restore
+
+**Absolute skill ranks restored by HeroSpawn**
+
+HeroSpawn action arrays feed absolute-rank setter and linked-slot synchronization independently of point investment; action offsets are not wire offsets.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, resource_decode, independent_review, file_hash
+- 경계: native_static / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- Opcode: `03f3`
+- 함수/위치: `0x0094e170` (win-x86-laa, preferred_va, bounded static progression path); `0x0095c380` (win-x86-laa, preferred_va, bounded static progression path)
+- 한계: Exact supplied build only; no live/server execution or current-version claim.
+- 한계: H5810 recording build unmatched; request/action observation does not guarantee acceptance.
+- 한계: Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed.
+- 근거: [src-skill-4ec21246b4db](#src-skill-4ec21246b4db) · Anchors and limitations; selected raw receipts are separately hashed.
+- 근거: [src-progression-12bb9e88c8de](#src-progression-12bb9e88c8de) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-4ec21246b4db](#src-progression-4ec21246b4db) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-eae07b21a838](#src-progression-eae07b21a838) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-faa9c64596d7](#src-progression-faa9c64596d7) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-4966dd4e9b25](#src-progression-4966dd4e9b25) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-209bf9691ed0](#src-progression-209bf9691ed0) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-7257824606df](#src-progression-7257824606df) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-81a39cb66859](#src-progression-81a39cb66859) · Frozen review or bounded portable model/curated facts; no runtime inference.
+
+### VGRE-skill-upgrade-request
+
+**Skill upgrade request is separate from application**
+
+0436 selected formatter serializes one native-slot byte; requesting is not a successful applied upgrade.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, resource_decode, independent_review, file_hash
+- 경계: native_static / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- Opcode: `0436`
+- 함수/위치: `0x0052a5f0` (win-x86-laa, preferred_va, bounded static progression path); `0x004d6600` (win-x86-laa, preferred_va, bounded static progression path); `0x004cfbf0` (win-x86-laa, preferred_va, bounded static progression path)
+- 한계: Exact supplied build only; no live/server execution or current-version claim.
+- 한계: H5810 recording build unmatched; request/action observation does not guarantee acceptance.
+- 한계: Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed.
+- 근거: [src-skill-4ec21246b4db](#src-skill-4ec21246b4db) · Anchors and limitations; selected raw receipts are separately hashed.
+- 근거: [src-progression-12bb9e88c8de](#src-progression-12bb9e88c8de) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-4ec21246b4db](#src-progression-4ec21246b4db) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-eae07b21a838](#src-progression-eae07b21a838) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-faa9c64596d7](#src-progression-faa9c64596d7) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-4966dd4e9b25](#src-progression-4966dd4e9b25) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-209bf9691ed0](#src-progression-209bf9691ed0) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-7257824606df](#src-progression-7257824606df) · Frozen review or bounded portable model/curated facts; no runtime inference.
+- 근거: [src-progression-81a39cb66859](#src-progression-81a39cb66859) · Frozen review or bounded portable model/curated facts; no runtime inference.
+
+### VGRE-xp-progress-threshold-ui
+
+**레벨 내 경험치와 표시 비율**
+
+resource8은 레벨 내 경험치 진행량이다. HUD는 XP_REQUIRED 속성39로 나누어 목표 비율을 제한한 뒤 캐시를 애니메이션한다. 이미 상한인 경우는 종료하고 레벨1 초기화는0으로 설정한다. 그 외 상한 미만 재계산 경로는 기존 임계값을 호출당 한 번 차감한다.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, corpus_audit, independent_review, file_hash
+- 경계: native_gameplay / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x005ad770` (win-x86-laa, preferred_va, HUD ratio and cache); `0x00944de0` (win-x86-laa, preferred_va, threshold subtraction); `0x007d1410` (win-x86-laa, preferred_va, named attribute labels); `0x0095f270` (win-x86-laa, preferred_va, resource store)
+- 한계: 누적 총 경험치 필드는 확정되지 않았다
+- 한계: resource7은 LifetimeGold이며 경험치가 아니다
+- 한계: H5810 임계값84부터244까지의 관측은 보편 곡선 증명이 아니다
+- 한계: HUD와 helper의 clamp globals가 다르며 동일하다고 가정하지 않는다
+- 한계: raw 비율은 애니메이션된 실제 표시값이 아니다
+- 근거: [src-progression-xp-hero-report](#src-progression-xp-hero-report) · 3. XP current progress, threshold, and UI
+- 근거: [src-progression-22c90cdc19a6](#src-progression-22c90cdc19a6) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-e47899d9a88c](#src-progression-e47899d9a88c) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-edc6e409f284](#src-progression-edc6e409f284) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-51a57ad65eff](#src-progression-51a57ad65eff) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-ea12af3d45eb](#src-progression-ea12af3d45eb) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-57a3320adc8b](#src-progression-57a3320adc8b) · Frozen review, input provenance or bounded test-only model.
+- 근거: [src-progression-1f6c2d820b1c](#src-progression-1f6c2d820b1c) · Frozen review, input provenance or bounded test-only model.
 
 
 ## status_effect
@@ -3376,3 +3845,417 @@ repo 경로는 현재 checkout에서 hash를 확인합니다. 외부 namespace �
 - [repo:vg/docs/re_dictionary/buff_status/README.md](../../../vg/docs/re_dictionary/buff_status/README.md)
 - SHA-256: `0c9a56e37ad3614a703b12806ee2dbd1e2c0469753b4cca0dca7679a56ee9800`
 - 종류: analysis_report · 보관: existing_repository
+
+### src-skill-e32c9441a903
+
+- `research:skill-rank-progression/receipts/core/0052a5f0.txt`
+- SHA-256: `b41b4537c5ddf989a3f52e9941bbe12efffe4f5240392944efa119679762e262`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-6be779bd2f8f
+
+- `research:skill-rank-progression/receipts/core/0052a5a0.txt`
+- SHA-256: `2d9ef8536af0eacaed44e53aee11c1d1304e515e7ee2b9f255d2c5e1e704ac73`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-588ae13b408a
+
+- `research:skill-rank-progression/receipts/core/005977c0.txt`
+- SHA-256: `5da75a3ff64b0fc3af45dff12c9bffd00a0b371433f0ecf06d951dbd41180025`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-035459f7b571
+
+- `research:skill-rank-progression/receipts/core/005acbf0.txt`
+- SHA-256: `f3c66f83f9286811b5b8dfda732f6ef9ffd08cf061512ab13a48f90dc6474082`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-fd34f8f15834
+
+- `research:skill-rank-progression/receipts/core/0092ff60.txt`
+- SHA-256: `4d6f6da356129a64bc57b59307b1efe6074e8e9f10d177b9d98068fca8cb079d`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-e00cffe95d0f
+
+- `research:skill-rank-progression/receipts/core/009467e0.txt`
+- SHA-256: `a44928aa87fa04583d4cb6a913680cb42896ddb8bf7176c1d723350cbce54bc6`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-c26a2d66cac0
+
+- `research:skill-rank-progression/receipts/rank/004d6600.txt`
+- SHA-256: `23578fbeb812409e5f554d9fbbaf794aaca1fd5adfb4e00fe6c9ac675a498b67`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-6f46062d4046
+
+- `research:skill-rank-progression/receipts/rank/0052a570.txt`
+- SHA-256: `b0eb40dfa1553941734479316f215235b11a116e486b16c74011f13cc24dd845`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-86e397140a56
+
+- `research:skill-rank-progression/receipts/rank/00937080.txt`
+- SHA-256: `a8617aeac99979e12cc8f73bd5859b8561a695a2371db9da0fcdd86d688c619d`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-54757ca6fb08
+
+- `research:skill-rank-progression/receipts/rank/00936bd0.txt`
+- SHA-256: `fb964ebd9df188a366a2b9f34c469afaf87d4ccc0f7b3d68243c9b42a508c01e`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-bf11ff57e4f1
+
+- `research:skill-rank-progression/receipts/rank/0093cbf0.txt`
+- SHA-256: `01bdb24357f2d5665abd9a0af38d42bd61db5ee01b2cec718199cff18be86a25`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-ba63796095c9
+
+- `research:skill-rank-progression/receipts/rank/00944ae0.txt`
+- SHA-256: `4273e3f961a2d4a4420d803087dace18dea76d637f1968f9975405fd98ae41a3`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-6467259189d3
+
+- `research:skill-rank-progression/receipts/apply/004cfbf0.txt`
+- SHA-256: `663cb5fde116f8acaa4551222f3308b94b2d10d36ab0fdc97266a4b00d2e7d12`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-771ad24e44d7
+
+- `research:skill-rank-progression/receipts/apply/0095daa0.txt`
+- SHA-256: `4a4e70a76172599b773bd00a2a42ba56f9795b5d576c78e9f98e1b13f0a02649`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-4fb5788fafa6
+
+- `research:skill-rank-progression/receipts/mutate/0096b2c0.txt`
+- SHA-256: `15866307eaf1a3cadb9922fd5d2fdbba1b4a35813007784675810aa17f2d40a2`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-6a31e8004173
+
+- `research:skill-rank-progression/receipts/mutate/0096b400.txt`
+- SHA-256: `20e527a4624a0efa88923c77196fb3363b140ec5d2fe18662f6c6114a6b40d07`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-deb494a5d2aa
+
+- `research:skill-rank-progression/receipts/mutate/0092d300.txt`
+- SHA-256: `ba63b8ea6a7e838d4d6c6540845be551321e37a7860f19ec07cf14483127968d`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-8cf00fdcb0f6
+
+- `research:skill-rank-progression/receipts/network/0094df40.txt`
+- SHA-256: `b4ede0cd7b36cd11628da85cb1e87ec8b62210ed6007bb94c447ea8903c20a2f`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-1430dd047ace
+
+- `research:skill-rank-progression/receipts/network/0094d360.txt`
+- SHA-256: `d45dc42f75db7b5182e2ad363cad04c10cc5233c7791fdf0706c4c14411a7238`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-58d6e8a36a6b
+
+- `research:skill-rank-progression/receipts/network/0095c380.txt`
+- SHA-256: `71d1a4bff7775a0c28dc894b98a1003d71b6e0aea96f8c8652cdaac2a987a117`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-ea658ba3290e
+
+- `research:skill-rank-progression/receipts/network/0081aba0.txt`
+- SHA-256: `f0e39d96786be733a62cb637a08a64bfe934df291303b5f1dbe76f3fcb2d5bd4`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-cebac3b4c0f8
+
+- `research:skill-rank-progression/receipts/network/008164c0.txt`
+- SHA-256: `73caf64732d1ec33209d92affaa0a46587245f5ebd3c3ec50b72392bbacb3594`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-d6ff852dcb8f
+
+- `research:skill-rank-progression/receipts/snapshot/0093e850.txt`
+- SHA-256: `b9cdb1393bf6faa06f9ca87ff9d6fb8860950b344ac2f62c13bdea03e7050ac3`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-2af2a78412d7
+
+- `research:skill-rank-progression/receipts/spawn/0094e170.txt`
+- SHA-256: `941278ec8ce637f56e394427b5cd02d2de9580d0743acf94c2eb3f6a7c14b84d`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-6205c75fac79
+
+- `research:skill-rank-progression/receipts/spawn/0094ada0.txt`
+- SHA-256: `c5d1f745d51d56c5659750a03c535e83fd066cba59955449aa57d52308b651d8`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-2560ca2a43f2
+
+- `research:skill-rank-progression/receipts/spawn/0093f270.txt`
+- SHA-256: `bb6dc7f7f46bea72066e27b327409834adc61cf612d93b202427c4a44ce0877c`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-420cafc71469
+
+- `research:skill-rank-progression/receipts/spawn/vtable_0127c914.txt`
+- SHA-256: `af1df45ba4e4bee4393d982bbeaa184eb6fd9d8e4432fb48c46cc93f0e9daaa9`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-4ec21246b4db
+
+- `research:skill-rank-progression/REPORT.md`
+- SHA-256: `0b4d634ef4bc3ea0a0a0ea66158dec3a026c03b8858964a6d5f2f823c7a699bd`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-eae07b21a838
+
+- `research:skill-rank-progression/resource-rank-fields.json`
+- SHA-256: `6b3a49b8b51e9d99c6acd86120fab6e47e08343ef6b3ceeb66843849ad20ec18`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-faa9c64596d7
+
+- `research:skill-rank-progression/corpus-observations.json`
+- SHA-256: `c1e72ccd4b070a55953113e15e83ae28d7b8cf370235b5df33368b5b64efc190`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-9681fe0d93d3
+
+- `research:skill-rank-progression/resources.py`
+- SHA-256: `19bb9ccaad3e5f6d80138dbb45ed2606257e1eecedd0dede18236ae98bfcc03c`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-ee977b70e91c
+
+- `research:skill-rank-progression/corpus.py`
+- SHA-256: `a9bb842c3684faea986830a5eef9f408c965b10263b23b47b9ba0951d04d7335`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-1ca01c636d19
+
+- `research:skill-rank-progression/models.py`
+- SHA-256: `793ff36a1e6c39c53e00632ecf3ff2c2afb5296fa4295c30c5491f4c1981b30c`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-0359206016d9
+
+- `research:skill-rank-progression/test_models.py`
+- SHA-256: `9e79ccc63ae120a87931c74d9d1bc234a91c5fdb577e4e3091d76d85ac97112f`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-skill-61d6df10e04b
+
+- `research:skill-rank-progression/tests.log`
+- SHA-256: `4c3b3b2f85f7f81206f2731efca1a5c61f58b2f6c54d820b4003b988757b84ec`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-progression-12bb9e88c8de
+
+- `research:independent-deepening-review/skill-rank-review.json`
+- SHA-256: `32d42ccca13f6ac260f2c92e64ac0cc093ba222bc2f0ab73707930f6c90b7aff`
+- 종류: independent_review · 보관: external_reference_only
+
+### src-progression-4ec21246b4db
+
+- `research:skill-rank-progression/REPORT.md`
+- SHA-256: `0b4d634ef4bc3ea0a0a0ea66158dec3a026c03b8858964a6d5f2f823c7a699bd`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-progression-eae07b21a838
+
+- `research:skill-rank-progression/resource-rank-fields.json`
+- SHA-256: `6b3a49b8b51e9d99c6acd86120fab6e47e08343ef6b3ceeb66843849ad20ec18`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-progression-faa9c64596d7
+
+- `research:skill-rank-progression/corpus-observations.json`
+- SHA-256: `c1e72ccd4b070a55953113e15e83ae28d7b8cf370235b5df33368b5b64efc190`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-progression-4966dd4e9b25
+
+- [repo:vg/docs/re_dictionary/progression_rewards/skill-additions.json](../../../vg/docs/re_dictionary/progression_rewards/skill-additions.json)
+- SHA-256: `79453d6626204bfab6e811c508795a44d6bad5e6e6147a787b1b7a79f9518575`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-progression-209bf9691ed0
+
+- [repo:vg/docs/re_dictionary/progression_rewards/skill-fixtures.json](../../../vg/docs/re_dictionary/progression_rewards/skill-fixtures.json)
+- SHA-256: `5c1f96ec2b4e6b0fbf13a8029c787f4f7e5ee55a0d9a3e6117fd54563db39753`
+- 종류: evidence_manifest · 보관: existing_repository
+
+### src-progression-7257824606df
+
+- [repo:tests/research_models/skill_ranks.py](../../../tests/research_models/skill_ranks.py)
+- SHA-256: `793ff36a1e6c39c53e00632ecf3ff2c2afb5296fa4295c30c5491f4c1981b30c`
+- 종류: source_code · 보관: existing_repository
+
+### src-progression-81a39cb66859
+
+- [repo:tests/test_research_skill_ranks.py](../../../tests/test_research_skill_ranks.py)
+- SHA-256: `a94bfd79c2830902d8ed96c1d5d037c6e5625a4a33f873183dc921d34d1be711`
+- 종류: source_code · 보관: existing_repository
+
+### src-progression-xp-hero-report
+
+- [repo:vg/docs/re_dictionary/progression_rewards/XP_HERO_LEVELS.md](../../../vg/docs/re_dictionary/progression_rewards/XP_HERO_LEVELS.md)
+- SHA-256: `8d444a55c67a5e0beb377a26b3af644ffd0beeb4a0f4d2ab2f5efb5aa256df4e`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-progression-22c90cdc19a6
+
+- `research:independent-deepening-review/experience-hero-level-review.json`
+- SHA-256: `df881f44c915ed3fae0fa3612e83dab5c96a5daccb5dda5faf4fe9320e554c00`
+- 종류: independent_review · 보관: external_reference_only
+
+### src-progression-e47899d9a88c
+
+- `research:experience-hero-levels/frozen-manifest.json`
+- SHA-256: `174709bc6b3a9cfb67f7c7ee49cce04b816b1a6f7e36e4f09f3b100942f2d102`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-progression-edc6e409f284
+
+- `research:experience-hero-levels/native-anchors.json`
+- SHA-256: `aeb4f9f0d48e3bf13951db0f43082af072b38ce8cb30abe2c6b9a1798db195b2`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-progression-51a57ad65eff
+
+- `research:experience-hero-levels/replay-evidence.json`
+- SHA-256: `8f54e472ed781295f4b173fc0fbdb5305c5c11a741adb691c6a8a72e654f02c6`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-progression-ea12af3d45eb
+
+- [repo:vg/docs/re_dictionary/progression_rewards/xp-additions.json](../../../vg/docs/re_dictionary/progression_rewards/xp-additions.json)
+- SHA-256: `f2b43dfc21624e4ce3c9a9f191a1e57e3dad465c9444b8bbb3cf36d4bf56f3bf`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-progression-57a3320adc8b
+
+- [repo:tests/research_models/hero_xp.py](../../../tests/research_models/hero_xp.py)
+- SHA-256: `a028a6c643d5d24e6f64744e527b1cbeacf17c34bcb442a40ef03872bfb30657`
+- 종류: source_code · 보관: existing_repository
+
+### src-progression-1f6c2d820b1c
+
+- [repo:tests/test_research_hero_xp.py](../../../tests/test_research_hero_xp.py)
+- SHA-256: `badd2f6a84ace2f8183efcc4a41e872d276ce0c13460529802170c0df0b9082e`
+- 종류: source_code · 보관: existing_repository
+
+### src-progression-820a55e55144
+
+- `research:shared-reward-distribution/portable/REPORT.md`
+- SHA-256: `8ff2c1d0047b0625cad1fe081f3c51318743bb3b6c12c19c10ba00d650b8019a`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-progression-5a0e398204b3
+
+- `research:shared-reward-distribution/portable/ARTIFACTS.sha256.json`
+- SHA-256: `8034ed272fb52aeb672560762bbd52303e6a760ef4ebd0599d08fef08af96e03`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-progression-c44f49eb6438
+
+- `research:shared-reward-distribution/portable/native-spans.json`
+- SHA-256: `347e547539d8bdcb7adefa34ebbd17e640faa3db2753f036c61c093e8a84010b`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-progression-159ec2054d94
+
+- `research:shared-reward-distribution/portable/verification.json`
+- SHA-256: `8b14fb15e286304faf8f209a1321960003cc95057fa43634c57ea58e2b461ede`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-progression-e47d6b3ef6fd
+
+- `research:independent-deepening-review/shared-reward-review.json`
+- SHA-256: `e255ef505308d555c0d0f6a23a70d605d61873a6d76f3d78c87479daa6cc7c54`
+- 종류: independent_review · 보관: external_reference_only
+
+### src-progression-eee9a8e311d3
+
+- [repo:vg/docs/re_dictionary/progression_rewards/shared-reward-findings.json](../../../vg/docs/re_dictionary/progression_rewards/shared-reward-findings.json)
+- SHA-256: `00dedfa24a822e30d2d63f2ea4dedac02f28ee4ee9bc439012180933eebc8afb`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-progression-9a182b69a8af
+
+- [repo:tests/test_research_reward_models.py](../../../tests/test_research_reward_models.py)
+- SHA-256: `fc1223875e33de0b47f0442facfd85336f6e23bffee2a88917825245da355f8e`
+- 종류: source_code · 보관: existing_repository
+
+### src-progression-57a34aa9c432
+
+- `research:creature-kill-credit/portable/REPORT.md`
+- SHA-256: `c8fb3cef9533b7414cf13481a94bb8d4e317f0cdaebfdaf779b0fe7007164bf0`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-progression-950f804660d2
+
+- `research:creature-kill-credit/portable/PACKAGE.sha256.json`
+- SHA-256: `05673abfc994e0defe95fd2d33641214bfa92c5e45cf69a4f952060fad7b8a4e`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-progression-1b60abe8fbc4
+
+- `research:creature-kill-credit/portable/EXTERNAL_RECEIPTS.json`
+- SHA-256: `a67bb782f1f816a38a2348a9489726c9395e29082270abc597890244f48e30d9`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-progression-c4c358323260
+
+- `research:creature-kill-credit/portable/actor-definitions.json`
+- SHA-256: `9e54949a3e6202121d2d92719a5b564abfa9b13bcd084ccd5f5647e5fc612bda`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-progression-336482845157
+
+- `research:creature-kill-credit/portable/correlation-summary.json`
+- SHA-256: `832b51db477f328172667fa67fd1cf418e0a4a1666dffc10e1ab09d0faed85e2`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-progression-caba033b27b0
+
+- `research:creature-kill-credit/portable/corpus-summary.json`
+- SHA-256: `180003a07fc3f251a2c22632b78a7e2c90fa605de18f85278b8b6ef85b2e31cd`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-progression-d8461fd9775d
+
+- `research:independent-deepening-review/creature-credit-review.json`
+- SHA-256: `4caa6a2167efcd23ce173e6acc04ff5672ad1cab3f06653935460900ee56e17e`
+- 종류: independent_review · 보관: external_reference_only
+
+### src-progression-95fa1f21d0c2
+
+- [repo:vg/docs/re_dictionary/progression_rewards/creature-findings.json](../../../vg/docs/re_dictionary/progression_rewards/creature-findings.json)
+- SHA-256: `c2f2f02fcfb4f20585fcd19ca93bef32c4191da4f44b7193c09d4fc2ac4f0285`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-progression-44728f7a19e6
+
+- [repo:tests/test_research_creature_credit.py](../../../tests/test_research_creature_credit.py)
+- SHA-256: `64cdff613da7027a9185ea45845d7a25d640913eba78c5b005a54418dea3a671`
+- 종류: source_code · 보관: existing_repository
+
+### src-progression-9b8ea21b85d8
+
+- [repo:vg/docs/re_dictionary/progression_rewards/README.md](../../../vg/docs/re_dictionary/progression_rewards/README.md)
+- SHA-256: `9c2cf4e6f597b5afdc9420faa43b4a16007aebc0dc403076d524f79b49627710`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-progression-588c2b9bf0e1
+
+- [repo:tests/test_research_progression_catalog.py](../../../tests/test_research_progression_catalog.py)
+- SHA-256: `59a426f0340c3d3fb4ad5a929d6f0232b6cb15b52f7430aff6b0548968c8f486`
+- 종류: source_code · 보관: existing_repository

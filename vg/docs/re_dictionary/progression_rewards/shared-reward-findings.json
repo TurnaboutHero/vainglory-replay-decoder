@@ -1,0 +1,77 @@
+{
+  "build_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "production_ready": false,
+  "reward_distribution_confirmed": false,
+  "findings": [
+    {
+      "id": "ambient_gold_payout_declaration",
+      "classification": "static_declaration_with_noop_client_execution",
+      "resource_index": 6,
+      "buff_definition_indices": [
+        44,
+        45
+      ],
+      "factory_va": "008d2eb0",
+      "helper_setter_va": "00528fc0",
+      "execute_va": "0045ecd0",
+      "provider_va": "008268c0",
+      "provider_variable": "__VAR1_FLOAT__",
+      "recipient_selection": null,
+      "split_formula": null
+    },
+    {
+      "id": "individual_resource_apply",
+      "classification": "confirmed_native_client_state_path",
+      "apply_va": "0094f210",
+      "add_va": "0093ead0",
+      "set_va": "0095f160",
+      "store_va": "0095f270",
+      "resource_component_offsets": {
+        "6": "308",
+        "7": "30c",
+        "8": "310"
+      },
+      "presentation_team_gate_is_recipient_gate": false,
+      "recorded_payload_prefix_bytes": 12,
+      "server_reward_causation_confirmed": false,
+      "declared_gold_balance_resource": 6,
+      "positive_income_total_resource": 7,
+      "naming_caveat": "Prior spendable/lifetime labels consistent; no independent purchase/debit consumer or exhaustive lifetime source audit in this pass"
+    },
+    {
+      "id": "bounty_multiplier",
+      "classification": "static_declaration_with_noop_client_execution",
+      "buff_definition_index": 129,
+      "factory_va": "008cf910",
+      "declared_attribute": 21,
+      "declared_layer": 2,
+      "declared_constant": 1,
+      "setter_va": "00529040"
+    },
+    {
+      "id": "goldshell_distance_provider",
+      "classification": "bounded_static_selection_not_general_sharing_radius",
+      "factory_va": "0088b530",
+      "provider_va": "0086d160",
+      "mode_gate_va": "0209e204",
+      "source_handle_offset": "1bc",
+      "distance_squared_constant_va": "01292948",
+      "strict_squared_distance_max": 810000,
+      "units": "native_position_units",
+      "source_is_killer": null,
+      "team_split_proven": false,
+      "projectile_selector_0x2e_is_gold_amount": false
+    }
+  ],
+  "blocked": [
+    "shared_gold_recipient_eligibility",
+    "shared_xp_recipient_eligibility",
+    "participation_window",
+    "last_hit_priority",
+    "split_denominator",
+    "authoritative_reward_amount"
+  ],
+  "evidence": "REPORT.md; native-spans.json; verification.json; raw/ and receipts/ (private/external native exports)",
+  "validation_scope": "Static exact-byte checks and bounded finite synthetic illustrations; not runtime gameplay or heldout validation",
+  "corpus": "No new corpus attribution claim; H5810 previously seen, producer build unmatched"
+}

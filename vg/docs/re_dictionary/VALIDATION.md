@@ -122,3 +122,29 @@ and unsupported historical `043f`38, remain blockers to production decoding.
 Final full combined offline suite: 1,094 tests passed in 79.691 seconds.
 Independent integration review reran all 29 new tests and verified every source
 hash plus the schema, with no production/research Python delta.
+
+## Reviewed progression/reward extension
+
+The isolated follow-up to `20c76277` adds 20 bounded entries covering hero XP/level,
+skill ranks, creature deaths/credit and shared-reward boundaries. The catalog now
+contains 120 entries, 230 sources and the same 9 artifacts. All 100 previous
+entries, 161 source records and 9 artifacts are unchanged; production and research
+Python code and the schema are unchanged.
+
+Default validation verifies 74 repository references and reports 156 external
+sources unresolved. With both original roots supplied, all 230 hashes verify.
+Draft 2020-12 and deterministic index checks pass. The focused run passes 67 tests:
+30 dictionary tests plus 11 skill-rank, 12 XP/hero, 4 creature-parser, 4 finite
+individual-resource and 6 catalog-scope tests.
+
+The source manifest binds four independent producer reviews. Native/resource/
+replay exports remain external. Skill tests use a small curated fixture of counts
+and selected fields instead of original raw replay samples. Creature findings
+retain `accepted_for_index:false`: research-catalog inclusion is not acceptance
+for a gameplay index, reducer, last-hit or objective-award attribution.
+
+The hero model preserves cap-12 exit, level-one progress reset, below-cap zero-delta
+recalculation and subtraction of one old threshold rather than a per-level loop.
+Learned-rank algebra excludes rank zero. Resource models illustrate finite small
+integer ADD/SET distinctions only, not native floating point, full lifetime
+sources or shared-reward eligibility. Historical producer build remains unmatched.

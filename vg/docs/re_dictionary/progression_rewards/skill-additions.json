@@ -1,0 +1,861 @@
+{
+  "sources": [
+    {
+      "id": "src-skill-e32c9441a903",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/core/0052a5f0.txt"
+      },
+      "sha256": "b41b4537c5ddf989a3f52e9941bbe12efffe4f5240392944efa119679762e262",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-6be779bd2f8f",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/core/0052a5a0.txt"
+      },
+      "sha256": "2d9ef8536af0eacaed44e53aee11c1d1304e515e7ee2b9f255d2c5e1e704ac73",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-588ae13b408a",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/core/005977c0.txt"
+      },
+      "sha256": "5da75a3ff64b0fc3af45dff12c9bffd00a0b371433f0ecf06d951dbd41180025",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-035459f7b571",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/core/005acbf0.txt"
+      },
+      "sha256": "f3c66f83f9286811b5b8dfda732f6ef9ffd08cf061512ab13a48f90dc6474082",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-fd34f8f15834",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/core/0092ff60.txt"
+      },
+      "sha256": "4d6f6da356129a64bc57b59307b1efe6074e8e9f10d177b9d98068fca8cb079d",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-e00cffe95d0f",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/core/009467e0.txt"
+      },
+      "sha256": "a44928aa87fa04583d4cb6a913680cb42896ddb8bf7176c1d723350cbce54bc6",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-c26a2d66cac0",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/rank/004d6600.txt"
+      },
+      "sha256": "23578fbeb812409e5f554d9fbbaf794aaca1fd5adfb4e00fe6c9ac675a498b67",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-6f46062d4046",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/rank/0052a570.txt"
+      },
+      "sha256": "b0eb40dfa1553941734479316f215235b11a116e486b16c74011f13cc24dd845",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-86e397140a56",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/rank/00937080.txt"
+      },
+      "sha256": "a8617aeac99979e12cc8f73bd5859b8561a695a2371db9da0fcdd86d688c619d",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-54757ca6fb08",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/rank/00936bd0.txt"
+      },
+      "sha256": "fb964ebd9df188a366a2b9f34c469afaf87d4ccc0f7b3d68243c9b42a508c01e",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-bf11ff57e4f1",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/rank/0093cbf0.txt"
+      },
+      "sha256": "01bdb24357f2d5665abd9a0af38d42bd61db5ee01b2cec718199cff18be86a25",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-ba63796095c9",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/rank/00944ae0.txt"
+      },
+      "sha256": "4273e3f961a2d4a4420d803087dace18dea76d637f1968f9975405fd98ae41a3",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-6467259189d3",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/apply/004cfbf0.txt"
+      },
+      "sha256": "663cb5fde116f8acaa4551222f3308b94b2d10d36ab0fdc97266a4b00d2e7d12",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-771ad24e44d7",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/apply/0095daa0.txt"
+      },
+      "sha256": "4a4e70a76172599b773bd00a2a42ba56f9795b5d576c78e9f98e1b13f0a02649",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-4fb5788fafa6",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/mutate/0096b2c0.txt"
+      },
+      "sha256": "15866307eaf1a3cadb9922fd5d2fdbba1b4a35813007784675810aa17f2d40a2",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-6a31e8004173",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/mutate/0096b400.txt"
+      },
+      "sha256": "20e527a4624a0efa88923c77196fb3363b140ec5d2fe18662f6c6114a6b40d07",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-deb494a5d2aa",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/mutate/0092d300.txt"
+      },
+      "sha256": "ba63b8ea6a7e838d4d6c6540845be551321e37a7860f19ec07cf14483127968d",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-8cf00fdcb0f6",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/network/0094df40.txt"
+      },
+      "sha256": "b4ede0cd7b36cd11628da85cb1e87ec8b62210ed6007bb94c447ea8903c20a2f",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-1430dd047ace",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/network/0094d360.txt"
+      },
+      "sha256": "d45dc42f75db7b5182e2ad363cad04c10cc5233c7791fdf0706c4c14411a7238",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-58d6e8a36a6b",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/network/0095c380.txt"
+      },
+      "sha256": "71d1a4bff7775a0c28dc894b98a1003d71b6e0aea96f8c8652cdaac2a987a117",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-ea658ba3290e",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/network/0081aba0.txt"
+      },
+      "sha256": "f0e39d96786be733a62cb637a08a64bfe934df291303b5f1dbe76f3fcb2d5bd4",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-cebac3b4c0f8",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/network/008164c0.txt"
+      },
+      "sha256": "73caf64732d1ec33209d92affaa0a46587245f5ebd3c3ec50b72392bbacb3594",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-d6ff852dcb8f",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/snapshot/0093e850.txt"
+      },
+      "sha256": "b9cdb1393bf6faa06f9ca87ff9d6fb8860950b344ac2f62c13bdea03e7050ac3",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-2af2a78412d7",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/spawn/0094e170.txt"
+      },
+      "sha256": "941278ec8ce637f56e394427b5cd02d2de9580d0743acf94c2eb3f6a7c14b84d",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-6205c75fac79",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/spawn/0094ada0.txt"
+      },
+      "sha256": "c5d1f745d51d56c5659750a03c535e83fd066cba59955449aa57d52308b651d8",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-2560ca2a43f2",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/spawn/0093f270.txt"
+      },
+      "sha256": "bb6dc7f7f46bea72066e27b327409834adc61cf612d93b202427c4a44ce0877c",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-420cafc71469",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/spawn/vtable_0127c914.txt"
+      },
+      "sha256": "af1df45ba4e4bee4393d982bbeaa184eb6fd9d8e4432fb48c46cc93f0e9daaa9",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-4ec21246b4db",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/REPORT.md"
+      },
+      "sha256": "0b4d634ef4bc3ea0a0a0ea66158dec3a026c03b8858964a6d5f2f823c7a699bd",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-eae07b21a838",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/resource-rank-fields.json"
+      },
+      "sha256": "6b3a49b8b51e9d99c6acd86120fab6e47e08343ef6b3ceeb66843849ad20ec18",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-faa9c64596d7",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/corpus-observations.json"
+      },
+      "sha256": "c1e72ccd4b070a55953113e15e83ae28d7b8cf370235b5df33368b5b64efc190",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-9681fe0d93d3",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/resources.py"
+      },
+      "sha256": "19bb9ccaad3e5f6d80138dbb45ed2606257e1eecedd0dede18236ae98bfcc03c",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-ee977b70e91c",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/corpus.py"
+      },
+      "sha256": "a9bb842c3684faea986830a5eef9f408c965b10263b23b47b9ba0951d04d7335",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-1ca01c636d19",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/models.py"
+      },
+      "sha256": "793ff36a1e6c39c53e00632ecf3ff2c2afb5296fa4295c30c5491f4c1981b30c",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-0359206016d9",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/test_models.py"
+      },
+      "sha256": "9e79ccc63ae120a87931c74d9d1bc234a91c5fdb577e4e3091d76d85ac97112f",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-61d6df10e04b",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/tests.log"
+      },
+      "sha256": "4c3b3b2f85f7f81206f2731efca1a5c61f58b2f6c54d820b4003b988757b84ec",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    }
+  ],
+  "entries": [
+    {
+      "id": "VGRE-skill-upgrade-request",
+      "category": "implementation",
+      "title_ko": "Skill upgrade request is separate from application",
+      "claim_ko": "0436 selected formatter serializes one native-slot byte; requesting is not a successful applied upgrade.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "supported",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "resource_decode"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0052a5f0",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x004d6600",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x004cfbf0",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "0436"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-skill-4ec21246b4db",
+          "locator": "Anchors and limitations; selected raw receipts are separately hashed."
+        }
+      ],
+      "limitations_ko": [
+        "Exact supplied build only; no live/server execution or current-version claim.",
+        "H5810 recording build unmatched; request/action observation does not guarantee acceptance.",
+        "Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "skill_rank",
+        "offline_only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-skill-investment-apply",
+      "category": "implementation",
+      "title_ko": "Gated skill investment and point spending",
+      "claim_ko": "043a apply checks effective unspent stat1d and hero-level prerequisite; accepted local branch increments rank/history and spends one point.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "supported",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "resource_decode"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094df40",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0096b400",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0096b2c0",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093e850",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "043a"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-skill-4ec21246b4db",
+          "locator": "Anchors and limitations; selected raw receipts are separately hashed."
+        }
+      ],
+      "limitations_ko": [
+        "Exact supplied build only; no live/server execution or current-version claim.",
+        "H5810 recording build unmatched; request/action observation does not guarantee acceptance.",
+        "Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "skill_rank",
+        "offline_only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-skill-rank-prerequisite",
+      "category": "implementation",
+      "title_ko": "Rank bits, base rank and prerequisites",
+      "claim_ko": "Rank mask1c00 at ability+154; definition+58 base rank; normal requirements1(or2),2,4,6,8, alternate6,9,12; raw setter masks rather than saturates.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "supported",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "resource_decode"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0095daa0",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00937080",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093f270",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-skill-4ec21246b4db",
+          "locator": "Anchors and limitations; selected raw receipts are separately hashed."
+        }
+      ],
+      "limitations_ko": [
+        "Exact supplied build only; no live/server execution or current-version claim.",
+        "H5810 recording build unmatched; request/action observation does not guarantee acceptance.",
+        "Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "skill_rank",
+        "offline_only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-skill-overdrive-condition",
+      "category": "implementation",
+      "title_ko": "Overdrive equality and property bonus differ",
+      "claim_ko": "Resolved named condition is rank==base+(alternate?3:5); raw property bonus applies at rank5 only. Empty resolved slot implementation edge can return true.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "supported",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "resource_decode"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0092ff60",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093cbf0",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-skill-4ec21246b4db",
+          "locator": "Anchors and limitations; selected raw receipts are separately hashed."
+        }
+      ],
+      "limitations_ko": [
+        "Exact supplied build only; no live/server execution or current-version claim.",
+        "H5810 recording build unmatched; request/action observation does not guarantee acceptance.",
+        "Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "skill_rank",
+        "offline_only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-skill-snapshot-restore",
+      "category": "implementation",
+      "title_ko": "Absolute skill ranks restored by HeroSpawn",
+      "claim_ko": "HeroSpawn action arrays feed absolute-rank setter and linked-slot synchronization independently of point investment; action offsets are not wire offsets.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "supported",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "resource_decode"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094e170",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0095c380",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "03f3"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-skill-4ec21246b4db",
+          "locator": "Anchors and limitations; selected raw receipts are separately hashed."
+        }
+      ],
+      "limitations_ko": [
+        "Exact supplied build only; no live/server execution or current-version claim.",
+        "H5810 recording build unmatched; request/action observation does not guarantee acceptance.",
+        "Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "skill_rank",
+        "offline_only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-skill-slot-selection",
+      "category": "implementation",
+      "title_ko": "Display slots and runtime identities",
+      "claim_ko": "Initial display selectors vary by hero; Catherine1/2/3 and Ozo0/3/8 refute universal native slot2=ultimate. Runtime override/name mapping must be preserved.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "supported",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "resource_decode"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x005acbf0",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00936bd0",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-skill-4ec21246b4db",
+          "locator": "Anchors and limitations; selected raw receipts are separately hashed."
+        }
+      ],
+      "limitations_ko": [
+        "Exact supplied build only; no live/server execution or current-version claim.",
+        "H5810 recording build unmatched; request/action observation does not guarantee acceptance.",
+        "Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "skill_rank",
+        "offline_only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-skill-downgrade-refund",
+      "category": "implementation",
+      "title_ko": "Downgrade and conditional refund",
+      "claim_ko": "043b applies rank/history decrement only for nonzero rank; refund emission depends on global0209e204, not unconditional.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "supported",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "resource_decode"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094d360",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0092d300",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "043b"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-skill-4ec21246b4db",
+          "locator": "Anchors and limitations; selected raw receipts are separately hashed."
+        }
+      ],
+      "limitations_ko": [
+        "Exact supplied build only; no live/server execution or current-version claim.",
+        "H5810 recording build unmatched; request/action observation does not guarantee acceptance.",
+        "Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "skill_rank",
+        "offline_only"
+      ],
+      "layout_notes": []
+    }
+  ]
+}

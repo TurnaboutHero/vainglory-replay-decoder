@@ -1961,6 +1961,765 @@
       "sha256": "0c9a56e37ad3614a703b12806ee2dbd1e2c0469753b4cca0dca7679a56ee9800",
       "publication": "existing_repository",
       "locator_note": "Reviewed bounded static source; raw exports are external, never bundled."
+    },
+    {
+      "id": "src-skill-e32c9441a903",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/core/0052a5f0.txt"
+      },
+      "sha256": "b41b4537c5ddf989a3f52e9941bbe12efffe4f5240392944efa119679762e262",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-6be779bd2f8f",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/core/0052a5a0.txt"
+      },
+      "sha256": "2d9ef8536af0eacaed44e53aee11c1d1304e515e7ee2b9f255d2c5e1e704ac73",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-588ae13b408a",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/core/005977c0.txt"
+      },
+      "sha256": "5da75a3ff64b0fc3af45dff12c9bffd00a0b371433f0ecf06d951dbd41180025",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-035459f7b571",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/core/005acbf0.txt"
+      },
+      "sha256": "f3c66f83f9286811b5b8dfda732f6ef9ffd08cf061512ab13a48f90dc6474082",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-fd34f8f15834",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/core/0092ff60.txt"
+      },
+      "sha256": "4d6f6da356129a64bc57b59307b1efe6074e8e9f10d177b9d98068fca8cb079d",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-e00cffe95d0f",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/core/009467e0.txt"
+      },
+      "sha256": "a44928aa87fa04583d4cb6a913680cb42896ddb8bf7176c1d723350cbce54bc6",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-c26a2d66cac0",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/rank/004d6600.txt"
+      },
+      "sha256": "23578fbeb812409e5f554d9fbbaf794aaca1fd5adfb4e00fe6c9ac675a498b67",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-6f46062d4046",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/rank/0052a570.txt"
+      },
+      "sha256": "b0eb40dfa1553941734479316f215235b11a116e486b16c74011f13cc24dd845",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-86e397140a56",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/rank/00937080.txt"
+      },
+      "sha256": "a8617aeac99979e12cc8f73bd5859b8561a695a2371db9da0fcdd86d688c619d",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-54757ca6fb08",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/rank/00936bd0.txt"
+      },
+      "sha256": "fb964ebd9df188a366a2b9f34c469afaf87d4ccc0f7b3d68243c9b42a508c01e",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-bf11ff57e4f1",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/rank/0093cbf0.txt"
+      },
+      "sha256": "01bdb24357f2d5665abd9a0af38d42bd61db5ee01b2cec718199cff18be86a25",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-ba63796095c9",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/rank/00944ae0.txt"
+      },
+      "sha256": "4273e3f961a2d4a4420d803087dace18dea76d637f1968f9975405fd98ae41a3",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-6467259189d3",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/apply/004cfbf0.txt"
+      },
+      "sha256": "663cb5fde116f8acaa4551222f3308b94b2d10d36ab0fdc97266a4b00d2e7d12",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-771ad24e44d7",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/apply/0095daa0.txt"
+      },
+      "sha256": "4a4e70a76172599b773bd00a2a42ba56f9795b5d576c78e9f98e1b13f0a02649",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-4fb5788fafa6",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/mutate/0096b2c0.txt"
+      },
+      "sha256": "15866307eaf1a3cadb9922fd5d2fdbba1b4a35813007784675810aa17f2d40a2",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-6a31e8004173",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/mutate/0096b400.txt"
+      },
+      "sha256": "20e527a4624a0efa88923c77196fb3363b140ec5d2fe18662f6c6114a6b40d07",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-deb494a5d2aa",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/mutate/0092d300.txt"
+      },
+      "sha256": "ba63b8ea6a7e838d4d6c6540845be551321e37a7860f19ec07cf14483127968d",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-8cf00fdcb0f6",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/network/0094df40.txt"
+      },
+      "sha256": "b4ede0cd7b36cd11628da85cb1e87ec8b62210ed6007bb94c447ea8903c20a2f",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-1430dd047ace",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/network/0094d360.txt"
+      },
+      "sha256": "d45dc42f75db7b5182e2ad363cad04c10cc5233c7791fdf0706c4c14411a7238",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-58d6e8a36a6b",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/network/0095c380.txt"
+      },
+      "sha256": "71d1a4bff7775a0c28dc894b98a1003d71b6e0aea96f8c8652cdaac2a987a117",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-ea658ba3290e",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/network/0081aba0.txt"
+      },
+      "sha256": "f0e39d96786be733a62cb637a08a64bfe934df291303b5f1dbe76f3fcb2d5bd4",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-cebac3b4c0f8",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/network/008164c0.txt"
+      },
+      "sha256": "73caf64732d1ec33209d92affaa0a46587245f5ebd3c3ec50b72392bbacb3594",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-d6ff852dcb8f",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/snapshot/0093e850.txt"
+      },
+      "sha256": "b9cdb1393bf6faa06f9ca87ff9d6fb8860950b344ac2f62c13bdea03e7050ac3",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-2af2a78412d7",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/spawn/0094e170.txt"
+      },
+      "sha256": "941278ec8ce637f56e394427b5cd02d2de9580d0743acf94c2eb3f6a7c14b84d",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-6205c75fac79",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/spawn/0094ada0.txt"
+      },
+      "sha256": "c5d1f745d51d56c5659750a03c535e83fd066cba59955449aa57d52308b651d8",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-2560ca2a43f2",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/spawn/0093f270.txt"
+      },
+      "sha256": "bb6dc7f7f46bea72066e27b327409834adc61cf612d93b202427c4a44ce0877c",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-420cafc71469",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/receipts/spawn/vtable_0127c914.txt"
+      },
+      "sha256": "af1df45ba4e4bee4393d982bbeaa184eb6fd9d8e4432fb48c46cc93f0e9daaa9",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-4ec21246b4db",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/REPORT.md"
+      },
+      "sha256": "0b4d634ef4bc3ea0a0a0ea66158dec3a026c03b8858964a6d5f2f823c7a699bd",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-eae07b21a838",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/resource-rank-fields.json"
+      },
+      "sha256": "6b3a49b8b51e9d99c6acd86120fab6e47e08343ef6b3ceeb66843849ad20ec18",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-faa9c64596d7",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/corpus-observations.json"
+      },
+      "sha256": "c1e72ccd4b070a55953113e15e83ae28d7b8cf370235b5df33368b5b64efc190",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-9681fe0d93d3",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/resources.py"
+      },
+      "sha256": "19bb9ccaad3e5f6d80138dbb45ed2606257e1eecedd0dede18236ae98bfcc03c",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-ee977b70e91c",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/corpus.py"
+      },
+      "sha256": "a9bb842c3684faea986830a5eef9f408c965b10263b23b47b9ba0951d04d7335",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-1ca01c636d19",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/models.py"
+      },
+      "sha256": "793ff36a1e6c39c53e00632ecf3ff2c2afb5296fa4295c30c5491f4c1981b30c",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-0359206016d9",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/test_models.py"
+      },
+      "sha256": "9e79ccc63ae120a87931c74d9d1bc234a91c5fdb577e4e3091d76d85ac97112f",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-skill-61d6df10e04b",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/tests.log"
+      },
+      "sha256": "4c3b3b2f85f7f81206f2731efca1a5c61f58b2f6c54d820b4003b988757b84ec",
+      "publication": "external_reference_only",
+      "locator_note": "Bounded offline evidence; original receipts/resources are not bundled."
+    },
+    {
+      "id": "src-progression-12bb9e88c8de",
+      "kind": "independent_review",
+      "location": {
+        "namespace": "research",
+        "path": "independent-deepening-review/skill-rank-review.json"
+      },
+      "sha256": "32d42ccca13f6ac260f2c92e64ac0cc093ba222bc2f0ab73707930f6c90b7aff",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-4ec21246b4db",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/REPORT.md"
+      },
+      "sha256": "0b4d634ef4bc3ea0a0a0ea66158dec3a026c03b8858964a6d5f2f823c7a699bd",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-eae07b21a838",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/resource-rank-fields.json"
+      },
+      "sha256": "6b3a49b8b51e9d99c6acd86120fab6e47e08343ef6b3ceeb66843849ad20ec18",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-faa9c64596d7",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "skill-rank-progression/corpus-observations.json"
+      },
+      "sha256": "c1e72ccd4b070a55953113e15e83ae28d7b8cf370235b5df33368b5b64efc190",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-4966dd4e9b25",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/progression_rewards/skill-additions.json"
+      },
+      "sha256": "79453d6626204bfab6e811c508795a44d6bad5e6e6147a787b1b7a79f9518575",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-209bf9691ed0",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/progression_rewards/skill-fixtures.json"
+      },
+      "sha256": "5c1f96ec2b4e6b0fbf13a8029c787f4f7e5ee55a0d9a3e6117fd54563db39753",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-7257824606df",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/research_models/skill_ranks.py"
+      },
+      "sha256": "793ff36a1e6c39c53e00632ecf3ff2c2afb5296fa4295c30c5491f4c1981b30c",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-81a39cb66859",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_skill_ranks.py"
+      },
+      "sha256": "a94bfd79c2830902d8ed96c1d5d037c6e5625a4a33f873183dc921d34d1be711",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-xp-hero-report",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/progression_rewards/XP_HERO_LEVELS.md"
+      },
+      "sha256": "8d444a55c67a5e0beb377a26b3af644ffd0beeb4a0f4d2ab2f5efb5aa256df4e",
+      "publication": "existing_repository",
+      "locator_note": "Original static summary; raw exports retained externally. Proposed destination, integration must update if moved."
+    },
+    {
+      "id": "src-progression-22c90cdc19a6",
+      "kind": "independent_review",
+      "location": {
+        "namespace": "research",
+        "path": "independent-deepening-review/experience-hero-level-review.json"
+      },
+      "sha256": "df881f44c915ed3fae0fa3612e83dab5c96a5daccb5dda5faf4fe9320e554c00",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-e47899d9a88c",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "experience-hero-levels/frozen-manifest.json"
+      },
+      "sha256": "174709bc6b3a9cfb67f7c7ee49cce04b816b1a6f7e36e4f09f3b100942f2d102",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-edc6e409f284",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "experience-hero-levels/native-anchors.json"
+      },
+      "sha256": "aeb4f9f0d48e3bf13951db0f43082af072b38ce8cb30abe2c6b9a1798db195b2",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-51a57ad65eff",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "experience-hero-levels/replay-evidence.json"
+      },
+      "sha256": "8f54e472ed781295f4b173fc0fbdb5305c5c11a741adb691c6a8a72e654f02c6",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-ea12af3d45eb",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/progression_rewards/xp-additions.json"
+      },
+      "sha256": "f2b43dfc21624e4ce3c9a9f191a1e57e3dad465c9444b8bbb3cf36d4bf56f3bf",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-57a3320adc8b",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/research_models/hero_xp.py"
+      },
+      "sha256": "a028a6c643d5d24e6f64744e527b1cbeacf17c34bcb442a40ef03872bfb30657",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-1f6c2d820b1c",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_hero_xp.py"
+      },
+      "sha256": "badd2f6a84ace2f8183efcc4a41e872d276ce0c13460529802170c0df0b9082e",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-820a55e55144",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "shared-reward-distribution/portable/REPORT.md"
+      },
+      "sha256": "8ff2c1d0047b0625cad1fe081f3c51318743bb3b6c12c19c10ba00d650b8019a",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-5a0e398204b3",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "shared-reward-distribution/portable/ARTIFACTS.sha256.json"
+      },
+      "sha256": "8034ed272fb52aeb672560762bbd52303e6a760ef4ebd0599d08fef08af96e03",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-c44f49eb6438",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "shared-reward-distribution/portable/native-spans.json"
+      },
+      "sha256": "347e547539d8bdcb7adefa34ebbd17e640faa3db2753f036c61c093e8a84010b",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-159ec2054d94",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "shared-reward-distribution/portable/verification.json"
+      },
+      "sha256": "8b14fb15e286304faf8f209a1321960003cc95057fa43634c57ea58e2b461ede",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-e47d6b3ef6fd",
+      "kind": "independent_review",
+      "location": {
+        "namespace": "research",
+        "path": "independent-deepening-review/shared-reward-review.json"
+      },
+      "sha256": "e255ef505308d555c0d0f6a23a70d605d61873a6d76f3d78c87479daa6cc7c54",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-eee9a8e311d3",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/progression_rewards/shared-reward-findings.json"
+      },
+      "sha256": "00dedfa24a822e30d2d63f2ea4dedac02f28ee4ee9bc439012180933eebc8afb",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-9a182b69a8af",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_reward_models.py"
+      },
+      "sha256": "fc1223875e33de0b47f0442facfd85336f6e23bffee2a88917825245da355f8e",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-57a34aa9c432",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "creature-kill-credit/portable/REPORT.md"
+      },
+      "sha256": "c8fb3cef9533b7414cf13481a94bb8d4e317f0cdaebfdaf779b0fe7007164bf0",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-950f804660d2",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "creature-kill-credit/portable/PACKAGE.sha256.json"
+      },
+      "sha256": "05673abfc994e0defe95fd2d33641214bfa92c5e45cf69a4f952060fad7b8a4e",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-1b60abe8fbc4",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "creature-kill-credit/portable/EXTERNAL_RECEIPTS.json"
+      },
+      "sha256": "a67bb782f1f816a38a2348a9489726c9395e29082270abc597890244f48e30d9",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-c4c358323260",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "creature-kill-credit/portable/actor-definitions.json"
+      },
+      "sha256": "9e54949a3e6202121d2d92719a5b564abfa9b13bcd084ccd5f5647e5fc612bda",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-336482845157",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "creature-kill-credit/portable/correlation-summary.json"
+      },
+      "sha256": "832b51db477f328172667fa67fd1cf418e0a4a1666dffc10e1ab09d0faed85e2",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-caba033b27b0",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "creature-kill-credit/portable/corpus-summary.json"
+      },
+      "sha256": "180003a07fc3f251a2c22632b78a7e2c90fa605de18f85278b8b6ef85b2e31cd",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-d8461fd9775d",
+      "kind": "independent_review",
+      "location": {
+        "namespace": "research",
+        "path": "independent-deepening-review/creature-credit-review.json"
+      },
+      "sha256": "4caa6a2167efcd23ce173e6acc04ff5672ad1cab3f06653935460900ee56e17e",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-95fa1f21d0c2",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/progression_rewards/creature-findings.json"
+      },
+      "sha256": "c2f2f02fcfb4f20585fcd19ca93bef32c4191da4f44b7193c09d4fc2ac4f0285",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-44728f7a19e6",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_creature_credit.py"
+      },
+      "sha256": "64cdff613da7027a9185ea45845d7a25d640913eba78c5b005a54418dea3a671",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-9b8ea21b85d8",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/progression_rewards/README.md"
+      },
+      "sha256": "9c2cf4e6f597b5afdc9420faa43b4a16007aebc0dc403076d524f79b49627710",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-progression-588c2b9bf0e1",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_progression_catalog.py"
+      },
+      "sha256": "59a426f0340c3d3fb4ad5a929d6f0232b6cb15b52f7430aff6b0548968c8f486",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
     }
   ],
   "entries": [
@@ -4100,6 +4859,597 @@
       "corrections_ko": [],
       "related_entry_ids": [],
       "tags": []
+    },
+    {
+      "id": "VGRE-creature-classification-native-kind-flags",
+      "category": "correlation",
+      "title_ko": "creature classification native_kind_flags",
+      "claim_ko": "Actor resource kind1 sets0x10,kind5 sets0x100,kind4 sets4; minion icon uses0x110; selected named definitions independently decoded",
+      "scope": {
+        "layer": "independently_reviewed_progression_rewards",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00942480",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00942d90",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x005b19e0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-progression-57a34aa9c432",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-950f804660d2",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-1b60abe8fbc4",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-c4c358323260",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-336482845157",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-caba033b27b0",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-d8461fd9775d",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-95fa1f21d0c2",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-44728f7a19e6",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.",
+        "No universal CS or objective-award taxonomy",
+        "Producer accepted_for_index:false is preserved: bounded research-catalog inclusion is not acceptance for a replay index, state reducer or reward assignment.",
+        "Raw death source, retained hero display reference, owner-like links and authoritative awarded killer remain distinct."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "progression-rewards-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-creature-credit-generation-checked-link",
+      "category": "correlation",
+      "title_ko": "creature credit generation_checked_link",
+      "claim_ko": "actor+1c8/+1cc is generation-checked, initialized from creation action+37c or alternate+484, and can supply hero display attribution",
+      "scope": {
+        "layer": "independently_reviewed_progression_rewards",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00939e40",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094d480",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094e170",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-progression-57a34aa9c432",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-950f804660d2",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-1b60abe8fbc4",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-c4c358323260",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-336482845157",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-caba033b27b0",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-d8461fd9775d",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-95fa1f21d0c2",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-44728f7a19e6",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.",
+        "Action-object offsets are not replay payload offsets; owner/summoner semantics not universal",
+        "Producer accepted_for_index:false is preserved: bounded research-catalog inclusion is not acceptance for a replay index, state reducer or reward assignment.",
+        "Raw death source, retained hero display reference, owner-like links and authoritative awarded killer remain distinct."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "progression-rewards-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-creature-credit-retained-hero-reference",
+      "category": "correlation",
+      "title_ko": "creature credit retained_hero_reference",
+      "claim_ko": "Negative incoming health-change action can record direct or linked hero into victim+1c0 before damage apply; ineligible later sources leave it retained; hero-death battle log may prefer it",
+      "scope": {
+        "layer": "independently_reviewed_progression_rewards",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094e970",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094eaa0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x009396f0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x005b19e0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-progression-57a34aa9c432",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-950f804660d2",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-1b60abe8fbc4",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-c4c358323260",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-336482845157",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-caba033b27b0",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-d8461fd9775d",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-95fa1f21d0c2",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-44728f7a19e6",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.",
+        "Not universal latest hitter, successful damage or awarded killer",
+        "Producer accepted_for_index:false is preserved: bounded research-catalog inclusion is not acceptance for a replay index, state reducer or reward assignment.",
+        "Raw death source, retained hero display reference, owner-like links and authoritative awarded killer remain distinct."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "progression-rewards-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-creature-cs-coincidence-boundary",
+      "category": "correlation",
+      "title_ko": "creature cs coincidence_boundary",
+      "claim_ko": "H5810 diagnostic2422 death actions,994 resource14 ADD1;990 updates have raw-source/same-time matches,81 ambiguous,4 unmatched",
+      "scope": {
+        "layer": "independently_reviewed_progression_rewards",
+        "direction": "not_applicable",
+        "execution_context": "synthetic_and_development",
+        "artifact_refs": [
+          "h5810-development"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "development_corpus"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-progression-57a34aa9c432",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-950f804660d2",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-1b60abe8fbc4",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-c4c358323260",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-336482845157",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-caba033b27b0",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-d8461fd9775d",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-95fa1f21d0c2",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-44728f7a19e6",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.",
+        "Development-seen unmatched-build sample;1147 candidate pairs are not kills; no per-category counters",
+        "Producer accepted_for_index:false is preserved: bounded research-catalog inclusion is not acceptance for a replay index, state reducer or reward assignment.",
+        "Raw death source, retained hero display reference, owner-like links and authoritative awarded killer remain distinct.",
+        "The pooled exact-time/raw-source join has no section, order or lifetime constraint; candidate pairs do not establish causal kill credit."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "progression-rewards-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-creature-death-raw-source",
+      "category": "correlation",
+      "title_ko": "creature death raw_source",
+      "claim_ko": "ActorDie stores victim and raw source; presentation path is gated; existing decoder preserves unsigned IDs and opaque suffix",
+      "scope": {
+        "layer": "independently_reviewed_progression_rewards",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00819f30",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094c8f0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0092d7d0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-progression-57a34aa9c432",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-950f804660d2",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-1b60abe8fbc4",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-c4c358323260",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-336482845157",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-caba033b27b0",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-d8461fd9775d",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-95fa1f21d0c2",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-44728f7a19e6",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.",
+        "Raw source is not an awarded killer",
+        "Producer accepted_for_index:false is preserved: bounded research-catalog inclusion is not acceptance for a replay index, state reducer or reward assignment.",
+        "Raw death source, retained hero display reference, owner-like links and authoritative awarded killer remain distinct."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "progression-rewards-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-creature-objective-distinct-definitions",
+      "category": "correlation",
+      "title_ko": "creature objective distinct_definitions",
+      "claim_ko": "Ghostwing331,Blackclaw uncaptured332,captured333,Kraken jungle320,captured321 independently identified at kind4",
+      "scope": {
+        "layer": "independently_reviewed_progression_rewards",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00942480",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x005b19e0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-progression-57a34aa9c432",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-950f804660d2",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-1b60abe8fbc4",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-c4c358323260",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-336482845157",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-caba033b27b0",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-d8461fd9775d",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-95fa1f21d0c2",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-44728f7a19e6",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.",
+        "Captured creature death is not automatically objective capture or team credit",
+        "Producer accepted_for_index:false is preserved: bounded research-catalog inclusion is not acceptance for a replay index, state reducer or reward assignment.",
+        "Raw death source, retained hero display reference, owner-like links and authoritative awarded killer remain distinct."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "progression-rewards-followup",
+        "static-only"
+      ],
+      "layout_notes": []
     },
     {
       "id": "VGRE-deepening-combat-041a",
@@ -6937,6 +8287,99 @@
       "tags": []
     },
     {
+      "id": "VGRE-hero-level-effects",
+      "category": "implementation",
+      "title_ko": "영웅 레벨 상한과 성장 효과",
+      "claim_ko": "유효 LEVEL 속성40은 base와 modifier 계층을 합성한다. 12 미만에서 증가량을 남은 상한으로 제한하고 성장 능력치와 능력 포인트를 처리한다. 증가량0도 재계산 경로를 실행할 수 있다.",
+      "scope": {
+        "layer": "native_gameplay",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "corpus_audit",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00944de0",
+          "address_kind": "preferred_va",
+          "role": "level mutation",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093fba0",
+          "address_kind": "preferred_va",
+          "role": "initialization",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-progression-xp-hero-report",
+          "locator": "2. Hero-level mutation, initialization and effects"
+        },
+        {
+          "source_id": "src-progression-22c90cdc19a6",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-e47899d9a88c",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-edc6e409f284",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-51a57ad65eff",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-ea12af3d45eb",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-57a3320adc8b",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-1f6c2d820b1c",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        }
+      ],
+      "limitations_ko": [
+        "base+c0 단독 값은 유효 레벨이 아니다",
+        "시작 레벨과 전체 snapshot/수명 처리를 아직 닫지 않았다",
+        "유한 정상 값 모델 테스트는 native 실행 검증이 아니다"
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp",
+        "hero_level",
+        "historical_unmatched",
+        "progression-rewards-followup"
+      ]
+    },
+    {
       "id": "VGRE-identity-bootstrap-selection",
       "category": "identity",
       "title_ko": "03e9 기록 선택 actor와 팀",
@@ -9717,6 +11160,114 @@
       "layout_notes": []
     },
     {
+      "id": "VGRE-level-action-delta",
+      "category": "implementation",
+      "title_ko": "영웅 레벨 변화 액션",
+      "claim_ko": "0434는 actor u32와 요청 레벨 증가량 u32를 전달한다. 수신기는 actor를 찾은 뒤 증가량을 적용한다. 기록만으로 실제 적용이나 절대 레벨을 단정하지 않는다.",
+      "scope": {
+        "layer": "native_gameplay",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "corpus_audit",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x004d31ec",
+          "address_kind": "preferred_va",
+          "role": "0434 reader",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0081b840",
+          "address_kind": "preferred_va",
+          "role": "constructor",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094b150",
+          "address_kind": "preferred_va",
+          "role": "serializer",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094f120",
+          "address_kind": "preferred_va",
+          "role": "apply",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "0434"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-progression-xp-hero-report",
+          "locator": "1. Applied level action and raw wire fields"
+        },
+        {
+          "source_id": "src-progression-22c90cdc19a6",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-e47899d9a88c",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-edc6e409f284",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-51a57ad65eff",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-ea12af3d45eb",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-57a3320adc8b",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-1f6c2d820b1c",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        }
+      ],
+      "limitations_ko": [
+        "H5810은 기존 자료이며 바이너리 일치가 확인되지 않았다",
+        "역사적 payload14의 끝6바이트는 의미 미확정으로 보존한다"
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp",
+        "hero_level",
+        "historical_unmatched",
+        "progression-rewards-followup"
+      ]
+    },
+    {
       "id": "VGRE-orb-acquisition-stub-boundary",
       "category": "items",
       "title_ko": "Orb acquisition stub boundary",
@@ -11102,6 +12653,1097 @@
       ],
       "related_entry_ids": [],
       "tags": []
+    },
+    {
+      "id": "VGRE-reward-ambient-gold-payout-declaration",
+      "category": "correlation",
+      "title_ko": "ambient gold payout declaration",
+      "claim_ko": "AmbientGold declares resource6/provider context, but selected helper configuration and lifecycle execution are stubs in this client. Capacity9999 is neither gold amount nor recipient count. No split formula or recipient selection is established.",
+      "scope": {
+        "layer": "independently_reviewed_progression_rewards",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x008d2eb0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00528fc0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0045ecd0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x008268c0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-progression-820a55e55144",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-5a0e398204b3",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-c44f49eb6438",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-159ec2054d94",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-e47d6b3ef6fd",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-eee9a8e311d3",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-9a182b69a8af",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.",
+        "No shared-gold/XP recipient eligibility, participation window, last-hit priority, split denominator or authoritative amount established.",
+        "041d prefix carries individual target/operand/resource/mode/presentation fields, not kill source or recipient array. Historical suffixes remain opaque.",
+        "Reporting ratios are not payout coefficients. Finite resource illustrations do not emulate native float32, complete lifetime sources or server causation."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "progression-rewards-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-reward-bounty-multiplier",
+      "category": "correlation",
+      "title_ko": "bounty multiplier",
+      "claim_ko": "Selected ARAM bounty factory declares attribute21/layer2/constant1, but its helper setter and lifecycle execution are stubs. It does not establish an applied bounty multiplier.",
+      "scope": {
+        "layer": "independently_reviewed_progression_rewards",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x008cf910",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00529040",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-progression-820a55e55144",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-5a0e398204b3",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-c44f49eb6438",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-159ec2054d94",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-e47d6b3ef6fd",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-eee9a8e311d3",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-9a182b69a8af",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.",
+        "No shared-gold/XP recipient eligibility, participation window, last-hit priority, split denominator or authoritative amount established.",
+        "041d prefix carries individual target/operand/resource/mode/presentation fields, not kill source or recipient array. Historical suffixes remain opaque.",
+        "Reporting ratios are not payout coefficients. Finite resource illustrations do not emulate native float32, complete lifetime sources or server causation."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "progression-rewards-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-reward-goldshell-distance-provider",
+      "category": "correlation",
+      "title_ko": "goldshell distance provider",
+      "claim_ko": "Goldshell operand0x2e selects a projectile, not a gold amount. Its mode-gated provider resolves actor+0x1bc and returns one handle only within strict squared distance810000. This is not a general shared-XP recipient radius or proof of awarded killer.",
+      "scope": {
+        "layer": "independently_reviewed_progression_rewards",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0088b530",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0086d160",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-progression-820a55e55144",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-5a0e398204b3",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-c44f49eb6438",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-159ec2054d94",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-e47d6b3ef6fd",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-eee9a8e311d3",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-9a182b69a8af",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.",
+        "No shared-gold/XP recipient eligibility, participation window, last-hit priority, split denominator or authoritative amount established.",
+        "041d prefix carries individual target/operand/resource/mode/presentation fields, not kill source or recipient array. Historical suffixes remain opaque.",
+        "Reporting ratios are not payout coefficients. Finite resource illustrations do not emulate native float32, complete lifetime sources or server causation."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "progression-rewards-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-reward-individual-resource-apply",
+      "category": "correlation",
+      "title_ko": "individual resource apply",
+      "claim_ko": "Individual resource6 ADD mutates the resolved target balance and positive operands also increment resource7 income total. SET/debit do not perform that positive-income increment. Same-team filtering belongs to presentation; all branches still require second target resolution before mutation.",
+      "scope": {
+        "layer": "independently_reviewed_progression_rewards",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094f210",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093ead0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0095f160",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0095f270",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-progression-820a55e55144",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-5a0e398204b3",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-c44f49eb6438",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-159ec2054d94",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-e47d6b3ef6fd",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-eee9a8e311d3",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        },
+        {
+          "source_id": "src-progression-9a182b69a8af",
+          "locator": "Reviewed static claim and its explicit conditional limits."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent recording holdout. Historical producer build remains unmatched; no production progression/reward reducer or authoritative award inference.",
+        "No shared-gold/XP recipient eligibility, participation window, last-hit priority, split denominator or authoritative amount established.",
+        "041d prefix carries individual target/operand/resource/mode/presentation fields, not kill source or recipient array. Historical suffixes remain opaque.",
+        "Reporting ratios are not payout coefficients. Finite resource illustrations do not emulate native float32, complete lifetime sources or server causation."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "progression-rewards-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-skill-downgrade-refund",
+      "category": "implementation",
+      "title_ko": "Downgrade and conditional refund",
+      "claim_ko": "043b applies rank/history decrement only for nonzero rank; refund emission depends on global0209e204, not unconditional.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "resource_decode",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094d360",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0092d300",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "043b"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-skill-4ec21246b4db",
+          "locator": "Anchors and limitations; selected raw receipts are separately hashed."
+        },
+        {
+          "source_id": "src-progression-12bb9e88c8de",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-4ec21246b4db",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-eae07b21a838",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-faa9c64596d7",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-4966dd4e9b25",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-209bf9691ed0",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-7257824606df",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-81a39cb66859",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        }
+      ],
+      "limitations_ko": [
+        "Exact supplied build only; no live/server execution or current-version claim.",
+        "H5810 recording build unmatched; request/action observation does not guarantee acceptance.",
+        "Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "skill_rank",
+        "offline_only",
+        "progression-rewards-followup"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-skill-investment-apply",
+      "category": "implementation",
+      "title_ko": "Gated skill investment and point spending",
+      "claim_ko": "043a apply checks effective unspent stat1d and hero-level prerequisite; accepted local branch increments rank/history and spends one point.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "resource_decode",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094df40",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0096b400",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0096b2c0",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093e850",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "043a"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-skill-4ec21246b4db",
+          "locator": "Anchors and limitations; selected raw receipts are separately hashed."
+        },
+        {
+          "source_id": "src-progression-12bb9e88c8de",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-4ec21246b4db",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-eae07b21a838",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-faa9c64596d7",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-4966dd4e9b25",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-209bf9691ed0",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-7257824606df",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-81a39cb66859",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        }
+      ],
+      "limitations_ko": [
+        "Exact supplied build only; no live/server execution or current-version claim.",
+        "H5810 recording build unmatched; request/action observation does not guarantee acceptance.",
+        "Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "skill_rank",
+        "offline_only",
+        "progression-rewards-followup"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-skill-overdrive-condition",
+      "category": "implementation",
+      "title_ko": "Overdrive equality and property bonus differ",
+      "claim_ko": "Resolved named condition is rank==base+(alternate?3:5); raw property bonus applies at rank5 only. Empty resolved slot implementation edge can return true.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "resource_decode",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0092ff60",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093cbf0",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-skill-4ec21246b4db",
+          "locator": "Anchors and limitations; selected raw receipts are separately hashed."
+        },
+        {
+          "source_id": "src-progression-12bb9e88c8de",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-4ec21246b4db",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-eae07b21a838",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-faa9c64596d7",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-4966dd4e9b25",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-209bf9691ed0",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-7257824606df",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-81a39cb66859",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        }
+      ],
+      "limitations_ko": [
+        "Exact supplied build only; no live/server execution or current-version claim.",
+        "H5810 recording build unmatched; request/action observation does not guarantee acceptance.",
+        "Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "skill_rank",
+        "offline_only",
+        "progression-rewards-followup"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-skill-rank-prerequisite",
+      "category": "implementation",
+      "title_ko": "Rank bits, base rank and prerequisites",
+      "claim_ko": "Rank mask1c00 at ability+154; definition+58 base rank; normal requirements1(or2),2,4,6,8, alternate6,9,12; raw setter masks rather than saturates.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "resource_decode",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0095daa0",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00937080",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093f270",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-skill-4ec21246b4db",
+          "locator": "Anchors and limitations; selected raw receipts are separately hashed."
+        },
+        {
+          "source_id": "src-progression-12bb9e88c8de",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-4ec21246b4db",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-eae07b21a838",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-faa9c64596d7",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-4966dd4e9b25",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-209bf9691ed0",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-7257824606df",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-81a39cb66859",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        }
+      ],
+      "limitations_ko": [
+        "Exact supplied build only; no live/server execution or current-version claim.",
+        "H5810 recording build unmatched; request/action observation does not guarantee acceptance.",
+        "Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "skill_rank",
+        "offline_only",
+        "progression-rewards-followup"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-skill-slot-selection",
+      "category": "implementation",
+      "title_ko": "Display slots and runtime identities",
+      "claim_ko": "Initial display selectors vary by hero; Catherine1/2/3 and Ozo0/3/8 refute universal native slot2=ultimate. Runtime override/name mapping must be preserved.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "resource_decode",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x005acbf0",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00936bd0",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-skill-4ec21246b4db",
+          "locator": "Anchors and limitations; selected raw receipts are separately hashed."
+        },
+        {
+          "source_id": "src-progression-12bb9e88c8de",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-4ec21246b4db",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-eae07b21a838",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-faa9c64596d7",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-4966dd4e9b25",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-209bf9691ed0",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-7257824606df",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-81a39cb66859",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        }
+      ],
+      "limitations_ko": [
+        "Exact supplied build only; no live/server execution or current-version claim.",
+        "H5810 recording build unmatched; request/action observation does not guarantee acceptance.",
+        "Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "skill_rank",
+        "offline_only",
+        "progression-rewards-followup"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-skill-snapshot-restore",
+      "category": "implementation",
+      "title_ko": "Absolute skill ranks restored by HeroSpawn",
+      "claim_ko": "HeroSpawn action arrays feed absolute-rank setter and linked-slot synchronization independently of point investment; action offsets are not wire offsets.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "resource_decode",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094e170",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0095c380",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "03f3"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-skill-4ec21246b4db",
+          "locator": "Anchors and limitations; selected raw receipts are separately hashed."
+        },
+        {
+          "source_id": "src-progression-12bb9e88c8de",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-4ec21246b4db",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-eae07b21a838",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-faa9c64596d7",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-4966dd4e9b25",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-209bf9691ed0",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-7257824606df",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-81a39cb66859",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        }
+      ],
+      "limitations_ko": [
+        "Exact supplied build only; no live/server execution or current-version claim.",
+        "H5810 recording build unmatched; request/action observation does not guarantee acceptance.",
+        "Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "skill_rank",
+        "offline_only",
+        "progression-rewards-followup"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-skill-upgrade-request",
+      "category": "implementation",
+      "title_ko": "Skill upgrade request is separate from application",
+      "claim_ko": "0436 selected formatter serializes one native-slot byte; requesting is not a successful applied upgrade.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "resource_decode",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0052a5f0",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x004d6600",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x004cfbf0",
+          "address_kind": "preferred_va",
+          "role": "bounded static progression path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "0436"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-skill-4ec21246b4db",
+          "locator": "Anchors and limitations; selected raw receipts are separately hashed."
+        },
+        {
+          "source_id": "src-progression-12bb9e88c8de",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-4ec21246b4db",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-eae07b21a838",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-faa9c64596d7",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-4966dd4e9b25",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-209bf9691ed0",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-7257824606df",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        },
+        {
+          "source_id": "src-progression-81a39cb66859",
+          "locator": "Frozen review or bounded portable model/curated facts; no runtime inference."
+        }
+      ],
+      "limitations_ko": [
+        "Exact supplied build only; no live/server execution or current-version claim.",
+        "H5810 recording build unmatched; request/action observation does not guarantee acceptance.",
+        "Preserve mode, lifetime, slot overrides and ordering; no match-duration cap imposed."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "skill_rank",
+        "offline_only",
+        "progression-rewards-followup"
+      ],
+      "layout_notes": []
     },
     {
       "id": "VGRE-status-action-specific-gates",
@@ -12647,6 +15289,115 @@
         "record+4: BE u32 content_length",
         "record+8: BE u16 opcode",
         "record+10: payload"
+      ]
+    },
+    {
+      "id": "VGRE-xp-progress-threshold-ui",
+      "category": "implementation",
+      "title_ko": "레벨 내 경험치와 표시 비율",
+      "claim_ko": "resource8은 레벨 내 경험치 진행량이다. HUD는 XP_REQUIRED 속성39로 나누어 목표 비율을 제한한 뒤 캐시를 애니메이션한다. 이미 상한인 경우는 종료하고 레벨1 초기화는0으로 설정한다. 그 외 상한 미만 재계산 경로는 기존 임계값을 호출당 한 번 차감한다.",
+      "scope": {
+        "layer": "native_gameplay",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "corpus_audit",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x005ad770",
+          "address_kind": "preferred_va",
+          "role": "HUD ratio and cache",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00944de0",
+          "address_kind": "preferred_va",
+          "role": "threshold subtraction",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x007d1410",
+          "address_kind": "preferred_va",
+          "role": "named attribute labels",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0095f270",
+          "address_kind": "preferred_va",
+          "role": "resource store",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-progression-xp-hero-report",
+          "locator": "3. XP current progress, threshold, and UI"
+        },
+        {
+          "source_id": "src-progression-22c90cdc19a6",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-e47899d9a88c",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-edc6e409f284",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-51a57ad65eff",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-ea12af3d45eb",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-57a3320adc8b",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        },
+        {
+          "source_id": "src-progression-1f6c2d820b1c",
+          "locator": "Frozen review, input provenance or bounded test-only model."
+        }
+      ],
+      "limitations_ko": [
+        "누적 총 경험치 필드는 확정되지 않았다",
+        "resource7은 LifetimeGold이며 경험치가 아니다",
+        "H5810 임계값84부터244까지의 관측은 보편 곡선 증명이 아니다",
+        "HUD와 helper의 clamp globals가 다르며 동일하다고 가정하지 않는다",
+        "raw 비율은 애니메이션된 실제 표시값이 아니다"
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp",
+        "hero_level",
+        "historical_unmatched",
+        "progression-rewards-followup"
       ]
     }
   ]
