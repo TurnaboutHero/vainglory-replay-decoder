@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+import errno
 import hashlib
 import json
 from pathlib import Path
@@ -153,7 +154,13 @@ class DictionaryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             outer=Path(tmp); root=outer/'root'; root.mkdir(); c=self.fixture_catalog(root)
             outside=outer/'outside'; outside.write_text('outside')
-            (root/'evidence.txt').unlink(); (root/'evidence.txt').symlink_to(outside)
+            (root/'evidence.txt').unlink()
+            try:
+                (root/'evidence.txt').symlink_to(outside)
+            except OSError as error:
+                if error.errno in (errno.EACCES, errno.EPERM) or getattr(error, 'winerror', None) == 1314:
+                    self.skipTest('Symlink creation is not permitted for this account')
+                raise
             self.assertEqual('unsafe_path',d.verify_sources(c,external_roots={'fixture':root})[0]['status'])
 
     def test_source_publication_namespace_mismatch(self):

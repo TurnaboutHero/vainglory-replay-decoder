@@ -1,6 +1,7 @@
 """Synthetic, file-boundary regressions for additive recording identity evidence."""
 
 from dataclasses import asdict
+import errno
 import hashlib
 import json
 import os
@@ -362,10 +363,8 @@ class RecordingIdentityIntegrationTests(unittest.TestCase):
         sibling.write_bytes(sibling_data)
         hard = self.root / 'hard.json'
         os.link(self.replay, hard)
-        symbolic = self.root / 'symbolic.json'
-        symbolic.symlink_to(sibling)
         future = self.root / 'match.2.vgr'
-        for output in (self.replay, sibling, hard, symbolic, future):
+        for output in (self.replay, sibling, hard, future):
             with self.subTest(output=output):
                 result = self.cli(self.replay, '-o', output)
                 self.assertEqual(result.returncode, 2, result.stderr)
@@ -373,9 +372,26 @@ class RecordingIdentityIntegrationTests(unittest.TestCase):
                 self.assertEqual(sibling.read_bytes(), sibling_data)
                 self.assertFalse(future.exists())
 
-    def test_additive_state_and_legacy_json_remain_byte_equivalent_to_baseline(self):
+    def test_identity_report_cannot_overwrite_numeric_sibling_through_symlink(self):
+        sibling = self.replay.with_name('match.1.vgr')
+        sibling_data = anchor(11, 111) + packet(12, 0xffff)
+        sibling.write_bytes(sibling_data)
+        symbolic = self.root / 'symbolic.json'
+        try:
+            symbolic.symlink_to(sibling)
+        except OSError as error:
+            if error.errno in (errno.EACCES, errno.EPERM) or getattr(error, 'winerror', None) == 1314:
+                self.skipTest('Symlink creation is not permitted for this account')
+            raise
+        result = self.cli(self.replay, '-o', symbolic)
+        self.assertEqual(result.returncode, 2, result.stderr)
+        self.assertEqual(self.replay.read_bytes(), self.data)
+        self.assertEqual(sibling.read_bytes(), sibling_data)
+
+    def test_additive_state_projects_to_baseline_except_declared_identity_and_skin(self):
         # Canonical snapshots captured from 65bab83 before identity diagnostics.
-        # Normalize only the disposable input path; every preexisting field is checked.
+        # Preserve the old hashes: validate the intentional skin additions before
+        # projecting them out. Every other preexisting field remains checked.
         expected = {
             'state-json': 'fcbd296c5744400a6967a1331a692082a1e3fdb13a28d6f3075c6e0ab4f063fe',
             'safe-json': 'cccee51c9e67e30e9ca54447830d31c7fa32f21e1221c083e954da862c78ba15',
@@ -394,10 +410,29 @@ class RecordingIdentityIntegrationTests(unittest.TestCase):
                 if format_name == 'state-json':
                     self.assertIn('recording_identity', value)
                     value.pop('recording_identity')
+                    for player in value['players']:
+                        self.assertEqual(player.pop('spawn_skin_hash'), 42)
+                        skin = player['field_status'].pop('skin')
+                        self.assertEqual(skin['status'], 'unverified_rendered_skin')
+                        self.assertEqual(tuple(skin['provenance']['native_fields']),
+                                         ('03ee.skin_hash', 'first_spawn.skin_hash'))
+                        actor = player['field_status']['native_actor_id']
+                        self.assertEqual(actor['reason'],
+                            'framed 03ee actor corroborated by first native spawn definition; skin audited separately')
+                        actor['reason'] = 'framed 03ee actor corroborated by native spawn definition/skin'
                 else:
                     self.assertNotIn('recording_identity', value)
-                canonical = json.dumps(value, sort_keys=True, separators=(',', ':'))
-                canonical = canonical.replace(str(self.replay), '<REPLAY>')
+                # Replace the path before JSON escaping: Windows backslashes
+                # otherwise leave disposable paths inside the canonical hash.
+                def normalize_path(item):
+                    if isinstance(item, str):
+                        return item.replace(str(self.replay), '<REPLAY>')
+                    if isinstance(item, dict):
+                        return {key: normalize_path(child) for key, child in item.items()}
+                    if isinstance(item, (list, tuple)):
+                        return [normalize_path(child) for child in item]
+                    return item
+                canonical = json.dumps(normalize_path(value), sort_keys=True, separators=(',', ':'))
                 self.assertEqual(hashlib.sha256(canonical.encode()).hexdigest(), expected[format_name])
 
 

@@ -4036,7 +4036,7 @@ repo 경로는 현재 checkout에서 hash를 확인합니다. 외부 namespace �
 
 ### src-legacy-8a02e2be2ba4
 
-- [repo:vg/docs/NATIVE_ROSTER_2026-10-04.md](../../../vg/docs/NATIVE_ROSTER_2026-10-04.md)
+- [repo:vg/docs/re_dictionary/baseline/NATIVE_ROSTER-65bab83.md.txt](../../../vg/docs/re_dictionary/baseline/NATIVE_ROSTER-65bab83.md.txt)
 - SHA-256: `51a334c0d4a38469df07f1b18a01e17701fbdeb1064a461ddba9c2a7a5e0b1d1`
 - 종류: existing_report_or_receipt · 보관: existing_repository
 

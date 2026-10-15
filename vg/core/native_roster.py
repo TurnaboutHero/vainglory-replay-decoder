@@ -65,6 +65,13 @@ class NativeRosterPlayer:
     hero_localization_key: str | None
     hero_localization_sha256: str | None
 
+    @property
+    def actor_identity_status(self) -> str:
+        if not self.spawn_observations:
+            return 'missing_spawn'
+        return ('corroborated' if self.spawn_observations[0].definition_index == self.definition_index
+                else 'conflicting_spawn')
+
 
 @dataclass(frozen=True, slots=True)
 class NativeRosterResult:
@@ -169,11 +176,13 @@ def read_native_roster(
                            (latest.definition_index, latest.skin_hash) else 'conflicting_spawn')
         definition = metadata.get(str(latest.definition_index))
         definition_name = definition['definition_name'] if definition else None
-        hero_name = definition['hero_name'] if definition and association == 'corroborated' else None
+        definition_matches = bool(actor_spawns and actor_spawns[0].definition_index == latest.definition_index)
+        hero_name = definition['hero_name'] if definition and definition_matches else None
         hero_status = ('resolved' if hero_name is not None else
-                       'unsupported_catalog' if not catalog_ok and association == 'corroborated' else 'unresolved_definition')
+                       'unsupported_catalog' if not catalog_ok and definition_matches else 'unresolved_definition')
         if association != 'corroborated':
-            issues.append(f'actor {actor}: {association}')
+            detail = ' (skin mismatch; actor definition corroborated)' if definition_matches else ''
+            issues.append(f'actor {actor}: {association}{detail}')
         if latest.name is None:
             issues.append(f'actor {actor}: {latest.name_status}')
         if hero_name is None:

@@ -1373,7 +1373,7 @@
       "kind": "existing_report_or_receipt",
       "location": {
         "namespace": "repo",
-        "path": "vg/docs/NATIVE_ROSTER_2026-10-04.md"
+        "path": "vg/docs/re_dictionary/baseline/NATIVE_ROSTER-65bab83.md.txt"
       },
       "sha256": "51a334c0d4a38469df07f1b18a01e17701fbdeb1064a461ddba9c2a7a5e0b1d1",
       "publication": "existing_repository",
