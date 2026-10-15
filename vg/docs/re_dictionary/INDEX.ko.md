@@ -2,7 +2,7 @@
 
 이 파일은 catalog.json에서 생성됩니다. 직접 수정하지 말고 원본 catalog를 갱신하세요.
 
-기준 checkout: `65bab83` · 갱신: 2026-10-15 · 항목: 133
+기준 checkout: `65bab83` · 갱신: 2026-10-15 · 항목: 141
 
 검토된 기능 묶음과 중요한 정정만 담았습니다. 기존 evidence 전체를 검증 완료로 승격한 목록이 아닙니다.
 정적 명령 검증, synthetic test, 개발 corpus 관측, runtime 관측은 서로 다른 증거입니다. semantic confidence가 높아도 서버 권위나 live 실행은 증명되지 않습니다.
@@ -34,7 +34,7 @@ python -B -m vg.research.dictionary validate --check-index
 - client 산술·HUD·stub: [critical 산술의 mode gate와 RET 경계](#vgre-combat-critical-stub), [4-array 유효 stat 계산](#vgre-combat-effective-stats), [방어 계산은 last-hit HUD 추정](#vgre-combat-hud-attack-estimate), [property scaling과 TooltipDamage](#vgre-combat-property-tooltip)
 - 받은 HP와 표시: [041e 실제 resource 변경 operand](#vgre-health-impact-prefix), [받은 action은 apply로 직접 진입](#vgre-health-incoming-dispatch), [041d SET/ADD와 음수 SET 정정](#vgre-health-resource-set-add), [impact·HP·보호량·표시량 분리](#vgre-health-split-display), [Treant duration extension and gated heal](#vgre-treant-duration-extension-and-heal)
 - action↔impact의 제한된 연관: [아이템 instance는 actor와 함께 묶기](#vgre-correlation-item-instance-scope), [시간·actor 근접성은 인과 키가 아님](#vgre-correlation-no-causal-key), [play actor/target/slot과 불투명 suffix](#vgre-correlation-play-fields), [creature classification native_kind_flags](#vgre-creature-classification-native-kind-flags), [creature credit generation_checked_link](#vgre-creature-credit-generation-checked-link), [creature credit retained_hero_reference](#vgre-creature-credit-retained-hero-reference), [creature cs coincidence_boundary](#vgre-creature-cs-coincidence-boundary), [creature death raw_source](#vgre-creature-death-raw-source), [creature objective distinct_definitions](#vgre-creature-objective-distinct-definitions), [combat target storage](#vgre-deepening-combat-target-storage), [ambient gold payout declaration](#vgre-reward-ambient-gold-payout-declaration), [bounty multiplier](#vgre-reward-bounty-multiplier), [goldshell distance provider](#vgre-reward-goldshell-distance-provider), [individual resource apply](#vgre-reward-individual-resource-apply), [과거 기록의 구조물 사망 진단 한계](#vgre-structure-historical-diagnostic-only)
-- 구현 상태: [영웅 레벨 상한과 성장 효과](#vgre-hero-level-effects), [영웅 레벨 변화 액션](#vgre-level-action-delta), [Downgrade and conditional refund](#vgre-skill-downgrade-refund), [Gated skill investment and point spending](#vgre-skill-investment-apply), [Overdrive equality and property bonus differ](#vgre-skill-overdrive-condition), [Rank bits, base rank and prerequisites](#vgre-skill-rank-prerequisite), [Display slots and runtime identities](#vgre-skill-slot-selection), [Absolute skill ranks restored by HeroSpawn](#vgre-skill-snapshot-restore), [Skill upgrade request is separate from application](#vgre-skill-upgrade-request), [구조물 파괴 표시와 보상 귀속 구별](#vgre-structure-credit-display-vs-award), [구조물 분류: VainNode와 무기고 포탑 구별](#vgre-structure-identity-node-vs-armory-turret), [EntityDestroy 정리 표시 경계](#vgre-structure-lifecycle-cleanup-mark), [ActorDie 상태 요청과 콜백 경계](#vgre-structure-lifecycle-die-state-and-callback), [MarkMyselfDead와 ActorDead 상태 요청](#vgre-structure-lifecycle-mark-dead-request), [포탑 무적 플래그 선언 경계](#vgre-structure-protection-invulnerability-declaration), [VainNode 조건부 체력 회복 콜백](#vgre-structure-regeneration-node-callback), [무기고 재생성 이름과 효과의 증거 한계](#vgre-structure-respawn-symbol-boundary), [수정 파괴와 경기 종료의 미확인 연결](#vgre-structure-terminal-crystal-chain-gap), [경험치·레벨 snapshot 기준값](#vgre-xp-hero-snapshot-baseline), [역사적 XP·레벨 전방 재구성 대조](#vgre-xp-historical-forward-recurrence), [레벨 내 경험치와 표시 비율](#vgre-xp-progress-threshold-ui), [경험치 임계값 계층 연산](#vgre-xp-threshold-layer-operations)
+- 구현 상태: [영웅 레벨 상한과 성장 효과](#vgre-hero-level-effects), [영웅 레벨 변화 액션](#vgre-level-action-delta), [Cancellation callbacks do not prove cancellation](#vgre-recall-cancel-stub-boundary), [Four-unit recall operand is conditional](#vgre-recall-channel-declaration), [Timeout and completion remain distinct evidence](#vgre-recall-completion-stub-boundary), [Recall uses the runtime Withdraw ability](#vgre-recall-runtime-identity), [Revival resets an existing actor](#vgre-respawn-inplace-reset), [Snapshot restoration is not a new lifetime](#vgre-respawn-snapshot-boundary), [Timer display is separate from actual revival](#vgre-respawn-timer-display), [Downgrade and conditional refund](#vgre-skill-downgrade-refund), [Gated skill investment and point spending](#vgre-skill-investment-apply), [Overdrive equality and property bonus differ](#vgre-skill-overdrive-condition), [Rank bits, base rank and prerequisites](#vgre-skill-rank-prerequisite), [Display slots and runtime identities](#vgre-skill-slot-selection), [Absolute skill ranks restored by HeroSpawn](#vgre-skill-snapshot-restore), [Skill upgrade request is separate from application](#vgre-skill-upgrade-request), [구조물 파괴 표시와 보상 귀속 구별](#vgre-structure-credit-display-vs-award), [구조물 분류: VainNode와 무기고 포탑 구별](#vgre-structure-identity-node-vs-armory-turret), [EntityDestroy 정리 표시 경계](#vgre-structure-lifecycle-cleanup-mark), [ActorDie 상태 요청과 콜백 경계](#vgre-structure-lifecycle-die-state-and-callback), [MarkMyselfDead와 ActorDead 상태 요청](#vgre-structure-lifecycle-mark-dead-request), [포탑 무적 플래그 선언 경계](#vgre-structure-protection-invulnerability-declaration), [VainNode 조건부 체력 회복 콜백](#vgre-structure-regeneration-node-callback), [무기고 재생성 이름과 효과의 증거 한계](#vgre-structure-respawn-symbol-boundary), [수정 파괴와 경기 종료의 미확인 연결](#vgre-structure-terminal-crystal-chain-gap), [Generic teleport is not recall or revival](#vgre-teleport-not-revival), [경험치·레벨 snapshot 기준값](#vgre-xp-hero-snapshot-baseline), [역사적 XP·레벨 전방 재구성 대조](#vgre-xp-historical-forward-recurrence), [레벨 내 경험치와 표시 비율](#vgre-xp-progress-threshold-ui), [경험치 임계값 계층 연산](#vgre-xp-threshold-layer-operations)
 - status_effect: [Separate movement attack skill and item gates](#vgre-status-action-specific-gates), [Metadata and identity based blockers](#vgre-status-buff-blocker-matching), [Cleanse metadata filtered cancellation](#vgre-status-cleanse-filtered-queue), [Display records are separate from logical flags](#vgre-status-display-native-distinction), [Per-source gameplay flag lifecycle](#vgre-status-flag-contributor-lifecycle), [Selected named status masks](#vgre-status-named-factory-masks), [Movement modifier maximum per category](#vgre-status-slow-max-category)
 
 ## 파일·빌드 출처
@@ -2450,6 +2450,191 @@ Individual resource6 ADD mutates the resolved target balance and positive operan
 - 근거: [src-progression-57a3320adc8b](#src-progression-57a3320adc8b) · Frozen review, input provenance or bounded test-only model.
 - 근거: [src-progression-1f6c2d820b1c](#src-progression-1f6c2d820b1c) · Frozen review, input provenance or bounded test-only model.
 
+### VGRE-recall-cancel-stub-boundary
+
+**Cancellation callbacks do not prove cancellation**
+
+Combat/ability/movement callbacks are configured with CancelThisBuff, whose run slot is a no-op in this client. Tutorial exclusion and combat filters preclude blanket damage cancellation claims.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, independent_review, file_hash
+- 경계: native_static / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00923320` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x00947cb0` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x0095fa10` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x00946c00` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x00947970` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x009495f0` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x0052f3b0` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x0045ecd0` (win-x86-laa, preferred_va, bounded static revival/recall path)
+- 한계: Exact offline build only; no live/server execution or current-version claim.
+- 한계: No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.
+- 한계: Unmatched H5810 payload widths and callback/stub dependencies block production promotion.
+- 근거: [src-respawn-recall-report](#src-respawn-recall-report) · Named sections and exact-build anchors
+- 근거: [src-revival-8c1997a2fddb](#src-revival-8c1997a2fddb) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-cb9530aedf3a](#src-revival-cb9530aedf3a) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-e3752dc2af42](#src-revival-e3752dc2af42) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-d1c228f50a36](#src-revival-d1c228f50a36) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-816401824cd3](#src-revival-816401824cd3) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-e25b7a76cd70](#src-revival-e25b7a76cd70) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-1a2c0d594897](#src-revival-1a2c0d594897) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-bee92f84fdd6](#src-revival-bee92f84fdd6) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-a728cf571fae](#src-revival-a728cf571fae) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-1fa71c8234b3](#src-revival-1fa71c8234b3) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-4628cf9243e4](#src-revival-4628cf9243e4) · Reviewed bounded original package and synthetic test-only integration.
+
+### VGRE-recall-channel-declaration
+
+**Four-unit recall operand is conditional**
+
+Withdraw factory configures ApplyBuff duration4.0 and stack1; mode/selection gates and client stubs prohibit asserting successful channel duration.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, independent_review, file_hash
+- 경계: native_static / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x008cd400` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x008cd410` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x00819420` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x0085a890` (win-x86-laa, preferred_va, bounded static revival/recall path)
+- 한계: Exact offline build only; no live/server execution or current-version claim.
+- 한계: No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.
+- 한계: Unmatched H5810 payload widths and callback/stub dependencies block production promotion.
+- 근거: [src-respawn-recall-report](#src-respawn-recall-report) · Named sections and exact-build anchors
+- 근거: [src-revival-8c1997a2fddb](#src-revival-8c1997a2fddb) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-cb9530aedf3a](#src-revival-cb9530aedf3a) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-e3752dc2af42](#src-revival-e3752dc2af42) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-d1c228f50a36](#src-revival-d1c228f50a36) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-816401824cd3](#src-revival-816401824cd3) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-e25b7a76cd70](#src-revival-e25b7a76cd70) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-1a2c0d594897](#src-revival-1a2c0d594897) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-bee92f84fdd6](#src-revival-bee92f84fdd6) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-a728cf571fae](#src-revival-a728cf571fae) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-1fa71c8234b3](#src-revival-1fa71c8234b3) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-4628cf9243e4](#src-revival-4628cf9243e4) · Reviewed bounded original package and synthetic test-only integration.
+
+### VGRE-recall-completion-stub-boundary
+
+**Timeout and completion remain distinct evidence**
+
+Timeout has a separate callback slot from End; its TeleportSelection run and provider setter are stubs. Declared destination providers do not establish successful recall completion.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, independent_review, file_hash
+- 경계: native_static / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00923320` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x00946ee0` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x00532910` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x0045cd00` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x008553d0` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x00855340` (win-x86-laa, preferred_va, bounded static revival/recall path)
+- 한계: Exact offline build only; no live/server execution or current-version claim.
+- 한계: No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.
+- 한계: Unmatched H5810 payload widths and callback/stub dependencies block production promotion.
+- 근거: [src-respawn-recall-report](#src-respawn-recall-report) · Named sections and exact-build anchors
+- 근거: [src-revival-8c1997a2fddb](#src-revival-8c1997a2fddb) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-cb9530aedf3a](#src-revival-cb9530aedf3a) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-e3752dc2af42](#src-revival-e3752dc2af42) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-d1c228f50a36](#src-revival-d1c228f50a36) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-816401824cd3](#src-revival-816401824cd3) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-e25b7a76cd70](#src-revival-e25b7a76cd70) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-1a2c0d594897](#src-revival-1a2c0d594897) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-bee92f84fdd6](#src-revival-bee92f84fdd6) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-a728cf571fae](#src-revival-a728cf571fae) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-1fa71c8234b3](#src-revival-1fa71c8234b3) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-4628cf9243e4](#src-revival-4628cf9243e4) · Reviewed bounded original package and synthetic test-only integration.
+
+### VGRE-recall-runtime-identity
+
+**Recall uses the runtime Withdraw ability**
+
+Recall input selects component+18 through pointer matching, including missing-slot sentinel; builder chooses Withdraw default or override. Dispatch is a request, not acceptance.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, independent_review, file_hash
+- 경계: native_static / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00597560` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x0093cd90` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x009564f0` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x0093f7d0` (win-x86-laa, preferred_va, bounded static revival/recall path)
+- 한계: Exact offline build only; no live/server execution or current-version claim.
+- 한계: No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.
+- 한계: Unmatched H5810 payload widths and callback/stub dependencies block production promotion.
+- 근거: [src-respawn-recall-report](#src-respawn-recall-report) · Named sections and exact-build anchors
+- 근거: [src-revival-8c1997a2fddb](#src-revival-8c1997a2fddb) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-cb9530aedf3a](#src-revival-cb9530aedf3a) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-e3752dc2af42](#src-revival-e3752dc2af42) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-d1c228f50a36](#src-revival-d1c228f50a36) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-816401824cd3](#src-revival-816401824cd3) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-e25b7a76cd70](#src-revival-e25b7a76cd70) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-1a2c0d594897](#src-revival-1a2c0d594897) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-bee92f84fdd6](#src-revival-bee92f84fdd6) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-a728cf571fae](#src-revival-a728cf571fae) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-1fa71c8234b3](#src-revival-1fa71c8234b3) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-4628cf9243e4](#src-revival-4628cf9243e4) · Reviewed bounded original package and synthetic test-only integration.
+
+### VGRE-respawn-inplace-reset
+
+**Revival resets an existing actor**
+
+ActorRespawn relocates an existing actor, restores bounded resource0/resource2, clears source-attribution IDs and requests state1. It is not a new actor allocation or guaranteed control transition.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, independent_review, file_hash
+- 경계: native_static / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- Opcode: `0432`
+- 함수/위치: `0x0094c950` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x009572b0` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x0095eb50` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x00966570` (win-x86-laa, preferred_va, bounded static revival/recall path)
+- 한계: Exact offline build only; no live/server execution or current-version claim.
+- 한계: No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.
+- 한계: Unmatched H5810 payload widths and callback/stub dependencies block production promotion.
+- 근거: [src-respawn-recall-report](#src-respawn-recall-report) · Named sections and exact-build anchors
+- 근거: [src-revival-8c1997a2fddb](#src-revival-8c1997a2fddb) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-cb9530aedf3a](#src-revival-cb9530aedf3a) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-e3752dc2af42](#src-revival-e3752dc2af42) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-d1c228f50a36](#src-revival-d1c228f50a36) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-816401824cd3](#src-revival-816401824cd3) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-e25b7a76cd70](#src-revival-e25b7a76cd70) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-1a2c0d594897](#src-revival-1a2c0d594897) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-bee92f84fdd6](#src-revival-bee92f84fdd6) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-a728cf571fae](#src-revival-a728cf571fae) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-1fa71c8234b3](#src-revival-1fa71c8234b3) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-4628cf9243e4](#src-revival-4628cf9243e4) · Reviewed bounded original package and synthetic test-only integration.
+
+### VGRE-respawn-snapshot-boundary
+
+**Snapshot restoration is not a new lifetime**
+
+Already-resolved creation IDs can be skipped; HeroSpawn absolute restoration and timer initialization must not be counted as new revival.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, independent_review, file_hash
+- 경계: native_static / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- Opcode: `03f3`, `03f2`
+- 함수/위치: `0x0094e170` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x0094d480` (win-x86-laa, preferred_va, bounded static revival/recall path)
+- 한계: Exact offline build only; no live/server execution or current-version claim.
+- 한계: No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.
+- 한계: Unmatched H5810 payload widths and callback/stub dependencies block production promotion.
+- 근거: [src-respawn-recall-report](#src-respawn-recall-report) · Named sections and exact-build anchors
+- 근거: [src-revival-8c1997a2fddb](#src-revival-8c1997a2fddb) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-cb9530aedf3a](#src-revival-cb9530aedf3a) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-e3752dc2af42](#src-revival-e3752dc2af42) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-d1c228f50a36](#src-revival-d1c228f50a36) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-816401824cd3](#src-revival-816401824cd3) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-e25b7a76cd70](#src-revival-e25b7a76cd70) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-1a2c0d594897](#src-revival-1a2c0d594897) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-bee92f84fdd6](#src-revival-bee92f84fdd6) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-a728cf571fae](#src-revival-a728cf571fae) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-1fa71c8234b3](#src-revival-1fa71c8234b3) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-4628cf9243e4](#src-revival-4628cf9243e4) · Reviewed bounded original package and synthetic test-only integration.
+
+### VGRE-respawn-timer-display
+
+**Timer display is separate from actual revival**
+
+StartRespawnTimer writes a client-mode-gated component value; existing auxiliary state is retained. HUD zero display does not establish timer expiry dispatching revival.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, independent_review, file_hash
+- 경계: native_static / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- Opcode: `0433`
+- 함수/위치: `0x00950c80` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x0093b850` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x005d3b60` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x0081c430` (win-x86-laa, preferred_va, bounded static revival/recall path)
+- 한계: Exact offline build only; no live/server execution or current-version claim.
+- 한계: No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.
+- 한계: Unmatched H5810 payload widths and callback/stub dependencies block production promotion.
+- 근거: [src-respawn-recall-report](#src-respawn-recall-report) · Named sections and exact-build anchors
+- 근거: [src-revival-8c1997a2fddb](#src-revival-8c1997a2fddb) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-cb9530aedf3a](#src-revival-cb9530aedf3a) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-e3752dc2af42](#src-revival-e3752dc2af42) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-d1c228f50a36](#src-revival-d1c228f50a36) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-816401824cd3](#src-revival-816401824cd3) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-e25b7a76cd70](#src-revival-e25b7a76cd70) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-1a2c0d594897](#src-revival-1a2c0d594897) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-bee92f84fdd6](#src-revival-bee92f84fdd6) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-a728cf571fae](#src-revival-a728cf571fae) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-1fa71c8234b3](#src-revival-1fa71c8234b3) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-4628cf9243e4](#src-revival-4628cf9243e4) · Reviewed bounded original package and synthetic test-only integration.
+
 ### VGRE-skill-downgrade-refund
 
 **Downgrade and conditional refund**
@@ -2821,6 +3006,33 @@ Inspected crystal death sequence leads to effects and ActorDead; no demonstrated
 - 근거: [src-xpstructure-6a4439defef1](#src-xpstructure-6a4439defef1) · Reviewed original finding and conditional evidence boundaries.
 - 근거: [src-xpstructure-28381df28cbc](#src-xpstructure-28381df28cbc) · Reviewed original finding and conditional evidence boundaries.
 - 근거: [src-xpstructure-385b4f7de054](#src-xpstructure-385b4f7de054) · Reviewed original finding and conditional evidence boundaries.
+
+### VGRE-teleport-not-revival
+
+**Generic teleport is not recall or revival**
+
+TeleportTo conditionally changes position and dispatches onTeleport; it does not run ActorRespawn resource/attribution reset. Teleport_Client is a different client positioning path.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, independent_review, file_hash
+- 경계: native_static / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- Opcode: `0409`
+- 함수/위치: `0x00950dc0` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x0094c720` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x0095ee80` (win-x86-laa, preferred_va, bounded static revival/recall path); `0x0052b010` (win-x86-laa, preferred_va, bounded static revival/recall path)
+- 한계: Exact offline build only; no live/server execution or current-version claim.
+- 한계: No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.
+- 한계: Unmatched H5810 payload widths and callback/stub dependencies block production promotion.
+- 근거: [src-respawn-recall-report](#src-respawn-recall-report) · Named sections and exact-build anchors
+- 근거: [src-revival-8c1997a2fddb](#src-revival-8c1997a2fddb) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-cb9530aedf3a](#src-revival-cb9530aedf3a) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-e3752dc2af42](#src-revival-e3752dc2af42) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-d1c228f50a36](#src-revival-d1c228f50a36) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-816401824cd3](#src-revival-816401824cd3) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-e25b7a76cd70](#src-revival-e25b7a76cd70) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-1a2c0d594897](#src-revival-1a2c0d594897) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-bee92f84fdd6](#src-revival-bee92f84fdd6) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-a728cf571fae](#src-revival-a728cf571fae) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-1fa71c8234b3](#src-revival-1fa71c8234b3) · Reviewed bounded original package and synthetic test-only integration.
+- 근거: [src-revival-4628cf9243e4](#src-revival-4628cf9243e4) · Reviewed bounded original package and synthetic test-only integration.
 
 ### VGRE-xp-hero-snapshot-baseline
 
@@ -4678,4 +4890,76 @@ repo 경로는 현재 checkout에서 hash를 확인합니다. 외부 namespace �
 
 - [repo:tests/test_research_xp_structure_catalog.py](../../../tests/test_research_xp_structure_catalog.py)
 - SHA-256: `7ed5447f19a3177d7914c107d65ec409bb6c5452f55ba02e36c946eb251cec94`
+- 종류: source_code · 보관: existing_repository
+
+### src-respawn-recall-report
+
+- [repo:vg/docs/re_dictionary/respawn_recall/REPORT.md](../../../vg/docs/re_dictionary/respawn_recall/REPORT.md)
+- SHA-256: `4acb1e753422737702a3aca6cb08b3d07001a8392807f64f74a8e87810872871`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-revival-8c1997a2fddb
+
+- `research:respawn-recall/frozen-manifest.json`
+- SHA-256: `5c420fa51a0f36a41129687b2e02c1a3a5b22db1eea58df1f585761c8569b412`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-revival-cb9530aedf3a
+
+- `research:respawn-recall/native-spans.json`
+- SHA-256: `32fcf98bcf1786958cb26d6af7e0133d372275cef859b63f6f1aaea650ee3e1c`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-revival-e3752dc2af42
+
+- `research:respawn-recall/external-receipts.json`
+- SHA-256: `2de7ae02d748668332df822830e13833a68b66ee07979b8cdded522c0e0988d0`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-revival-d1c228f50a36
+
+- `research:respawn-recall/corpus-observations.json`
+- SHA-256: `55a2c97ede8a8b3eb28960e73bcfea1453f1445a75cc2995fc9c55516c81be10`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-revival-816401824cd3
+
+- `research:respawn-recall/test_boundaries.py`
+- SHA-256: `03f516741886e66cbafbb31812fc8121a24df0e5874e79e4c0ff70ef9565cbb7`
+- 종류: source_code · 보관: external_reference_only
+
+### src-revival-e25b7a76cd70
+
+- `research:independent-deepening-review/respawn-recall-final-review.json`
+- SHA-256: `f86e288fc2fbb02ff81284597604cb7afd298025160861bf07ea36e4ea23209f`
+- 종류: independent_review · 보관: external_reference_only
+
+### src-revival-1a2c0d594897
+
+- [repo:vg/docs/re_dictionary/respawn_recall/REPORT.md](../../../vg/docs/re_dictionary/respawn_recall/REPORT.md)
+- SHA-256: `4acb1e753422737702a3aca6cb08b3d07001a8392807f64f74a8e87810872871`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-revival-bee92f84fdd6
+
+- [repo:vg/docs/re_dictionary/respawn_recall/additions.json](../../../vg/docs/re_dictionary/respawn_recall/additions.json)
+- SHA-256: `4b63492bd302529f0848fb776919dc5b88f2b1d15db0c4e288b17125bd0f21bb`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-revival-a728cf571fae
+
+- [repo:vg/docs/re_dictionary/respawn_recall/README.md](../../../vg/docs/re_dictionary/respawn_recall/README.md)
+- SHA-256: `fd229fd5a1857f86231c66ed06bd630548c87333e4cd9c4730798d401d1f942b`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-revival-1fa71c8234b3
+
+- [repo:tests/research_models/respawn_recall.py](../../../tests/research_models/respawn_recall.py)
+- SHA-256: `a021e66dcff0fe8cd9e78bcf1845c6f2951eeade2763e82a33b8584c8b9f2971`
+- 종류: source_code · 보관: existing_repository
+
+### src-revival-4628cf9243e4
+
+- [repo:tests/test_research_respawn_recall.py](../../../tests/test_research_respawn_recall.py)
+- SHA-256: `24fd391aa0d6a69e2fe555384ed48fb7f0e63490dfbea2b03e91e12305bc5561`
 - 종류: source_code · 보관: existing_repository

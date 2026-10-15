@@ -1,0 +1,140 @@
+{
+  "schema": "vg.reviewed_respawn_recall_sources.v1",
+  "baseline_commit": "358723728c70af387793bbd98f7ef75891462c27",
+  "native_execution": false,
+  "raw_exports_distributed": false,
+  "sources": [
+    {
+      "id": "src-respawn-recall-report",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/respawn_recall/REPORT.md"
+      },
+      "sha256": "4acb1e753422737702a3aca6cb08b3d07001a8392807f64f74a8e87810872871",
+      "publication": "existing_repository",
+      "locator_note": "Original summary; raw exports external only"
+    },
+    {
+      "id": "src-revival-8c1997a2fddb",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "respawn-recall/frozen-manifest.json"
+      },
+      "sha256": "5c420fa51a0f36a41129687b2e02c1a3a5b22db1eea58df1f585761c8569b412",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-cb9530aedf3a",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "respawn-recall/native-spans.json"
+      },
+      "sha256": "32fcf98bcf1786958cb26d6af7e0133d372275cef859b63f6f1aaea650ee3e1c",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-e3752dc2af42",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "respawn-recall/external-receipts.json"
+      },
+      "sha256": "2de7ae02d748668332df822830e13833a68b66ee07979b8cdded522c0e0988d0",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-d1c228f50a36",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "respawn-recall/corpus-observations.json"
+      },
+      "sha256": "55a2c97ede8a8b3eb28960e73bcfea1453f1445a75cc2995fc9c55516c81be10",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-816401824cd3",
+      "kind": "source_code",
+      "location": {
+        "namespace": "research",
+        "path": "respawn-recall/test_boundaries.py"
+      },
+      "sha256": "03f516741886e66cbafbb31812fc8121a24df0e5874e79e4c0ff70ef9565cbb7",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-e25b7a76cd70",
+      "kind": "independent_review",
+      "location": {
+        "namespace": "research",
+        "path": "independent-deepening-review/respawn-recall-final-review.json"
+      },
+      "sha256": "f86e288fc2fbb02ff81284597604cb7afd298025160861bf07ea36e4ea23209f",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-1a2c0d594897",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/respawn_recall/REPORT.md"
+      },
+      "sha256": "4acb1e753422737702a3aca6cb08b3d07001a8392807f64f74a8e87810872871",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-bee92f84fdd6",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/respawn_recall/additions.json"
+      },
+      "sha256": "4b63492bd302529f0848fb776919dc5b88f2b1d15db0c4e288b17125bd0f21bb",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-a728cf571fae",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/respawn_recall/README.md"
+      },
+      "sha256": "fd229fd5a1857f86231c66ed06bd630548c87333e4cd9c4730798d401d1f942b",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-1fa71c8234b3",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/research_models/respawn_recall.py"
+      },
+      "sha256": "a021e66dcff0fe8cd9e78bcf1845c6f2951eeade2763e82a33b8584c8b9f2971",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-4628cf9243e4",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_respawn_recall.py"
+      },
+      "sha256": "24fd391aa0d6a69e2fe555384ed48fb7f0e63490dfbea2b03e91e12305bc5561",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    }
+  ]
+}

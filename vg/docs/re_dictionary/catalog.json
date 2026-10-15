@@ -2940,6 +2940,138 @@
       "sha256": "7ed5447f19a3177d7914c107d65ec409bb6c5452f55ba02e36c946eb251cec94",
       "publication": "existing_repository",
       "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-respawn-recall-report",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/respawn_recall/REPORT.md"
+      },
+      "sha256": "4acb1e753422737702a3aca6cb08b3d07001a8392807f64f74a8e87810872871",
+      "publication": "existing_repository",
+      "locator_note": "Original summary; raw exports external only"
+    },
+    {
+      "id": "src-revival-8c1997a2fddb",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "respawn-recall/frozen-manifest.json"
+      },
+      "sha256": "5c420fa51a0f36a41129687b2e02c1a3a5b22db1eea58df1f585761c8569b412",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-cb9530aedf3a",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "respawn-recall/native-spans.json"
+      },
+      "sha256": "32fcf98bcf1786958cb26d6af7e0133d372275cef859b63f6f1aaea650ee3e1c",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-e3752dc2af42",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "respawn-recall/external-receipts.json"
+      },
+      "sha256": "2de7ae02d748668332df822830e13833a68b66ee07979b8cdded522c0e0988d0",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-d1c228f50a36",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "respawn-recall/corpus-observations.json"
+      },
+      "sha256": "55a2c97ede8a8b3eb28960e73bcfea1453f1445a75cc2995fc9c55516c81be10",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-816401824cd3",
+      "kind": "source_code",
+      "location": {
+        "namespace": "research",
+        "path": "respawn-recall/test_boundaries.py"
+      },
+      "sha256": "03f516741886e66cbafbb31812fc8121a24df0e5874e79e4c0ff70ef9565cbb7",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-e25b7a76cd70",
+      "kind": "independent_review",
+      "location": {
+        "namespace": "research",
+        "path": "independent-deepening-review/respawn-recall-final-review.json"
+      },
+      "sha256": "f86e288fc2fbb02ff81284597604cb7afd298025160861bf07ea36e4ea23209f",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-1a2c0d594897",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/respawn_recall/REPORT.md"
+      },
+      "sha256": "4acb1e753422737702a3aca6cb08b3d07001a8392807f64f74a8e87810872871",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-bee92f84fdd6",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/respawn_recall/additions.json"
+      },
+      "sha256": "4b63492bd302529f0848fb776919dc5b88f2b1d15db0c4e288b17125bd0f21bb",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-a728cf571fae",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/respawn_recall/README.md"
+      },
+      "sha256": "fd229fd5a1857f86231c66ed06bd630548c87333e4cd9c4730798d401d1f942b",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-1fa71c8234b3",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/research_models/respawn_recall.py"
+      },
+      "sha256": "a021e66dcff0fe8cd9e78bcf1845c6f2951eeade2763e82a33b8584c8b9f2971",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-revival-4628cf9243e4",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_respawn_recall.py"
+      },
+      "sha256": "24fd391aa0d6a69e2fe555384ed48fb7f0e63490dfbea2b03e91e12305bc5561",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
     }
   ],
   "entries": [
@@ -12087,6 +12219,540 @@
       ]
     },
     {
+      "id": "VGRE-recall-cancel-stub-boundary",
+      "category": "implementation",
+      "title_ko": "Cancellation callbacks do not prove cancellation",
+      "claim_ko": "Combat/ability/movement callbacks are configured with CancelThisBuff, whose run slot is a no-op in this client. Tutorial exclusion and combat filters preclude blanket damage cancellation claims.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00923320",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00947cb0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0095fa10",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00946c00",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00947970",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x009495f0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0052f3b0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0045ecd0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-respawn-recall-report",
+          "locator": "Named sections and exact-build anchors"
+        },
+        {
+          "source_id": "src-revival-8c1997a2fddb",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-cb9530aedf3a",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-e3752dc2af42",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-d1c228f50a36",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-816401824cd3",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-e25b7a76cd70",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-1a2c0d594897",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-bee92f84fdd6",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-a728cf571fae",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-1fa71c8234b3",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-4628cf9243e4",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        }
+      ],
+      "limitations_ko": [
+        "Exact offline build only; no live/server execution or current-version claim.",
+        "No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.",
+        "Unmatched H5810 payload widths and callback/stub dependencies block production promotion."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "respawn",
+        "recall",
+        "offline_only",
+        "reviewed-respawn-recall"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-recall-channel-declaration",
+      "category": "implementation",
+      "title_ko": "Four-unit recall operand is conditional",
+      "claim_ko": "Withdraw factory configures ApplyBuff duration4.0 and stack1; mode/selection gates and client stubs prohibit asserting successful channel duration.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x008cd400",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x008cd410",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00819420",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0085a890",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-respawn-recall-report",
+          "locator": "Named sections and exact-build anchors"
+        },
+        {
+          "source_id": "src-revival-8c1997a2fddb",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-cb9530aedf3a",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-e3752dc2af42",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-d1c228f50a36",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-816401824cd3",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-e25b7a76cd70",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-1a2c0d594897",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-bee92f84fdd6",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-a728cf571fae",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-1fa71c8234b3",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-4628cf9243e4",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        }
+      ],
+      "limitations_ko": [
+        "Exact offline build only; no live/server execution or current-version claim.",
+        "No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.",
+        "Unmatched H5810 payload widths and callback/stub dependencies block production promotion."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "respawn",
+        "recall",
+        "offline_only",
+        "reviewed-respawn-recall"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-recall-completion-stub-boundary",
+      "category": "implementation",
+      "title_ko": "Timeout and completion remain distinct evidence",
+      "claim_ko": "Timeout has a separate callback slot from End; its TeleportSelection run and provider setter are stubs. Declared destination providers do not establish successful recall completion.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00923320",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00946ee0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00532910",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0045cd00",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x008553d0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00855340",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-respawn-recall-report",
+          "locator": "Named sections and exact-build anchors"
+        },
+        {
+          "source_id": "src-revival-8c1997a2fddb",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-cb9530aedf3a",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-e3752dc2af42",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-d1c228f50a36",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-816401824cd3",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-e25b7a76cd70",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-1a2c0d594897",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-bee92f84fdd6",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-a728cf571fae",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-1fa71c8234b3",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-4628cf9243e4",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        }
+      ],
+      "limitations_ko": [
+        "Exact offline build only; no live/server execution or current-version claim.",
+        "No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.",
+        "Unmatched H5810 payload widths and callback/stub dependencies block production promotion."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "respawn",
+        "recall",
+        "offline_only",
+        "reviewed-respawn-recall"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-recall-runtime-identity",
+      "category": "implementation",
+      "title_ko": "Recall uses the runtime Withdraw ability",
+      "claim_ko": "Recall input selects component+18 through pointer matching, including missing-slot sentinel; builder chooses Withdraw default or override. Dispatch is a request, not acceptance.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00597560",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093cd90",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x009564f0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093f7d0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-respawn-recall-report",
+          "locator": "Named sections and exact-build anchors"
+        },
+        {
+          "source_id": "src-revival-8c1997a2fddb",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-cb9530aedf3a",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-e3752dc2af42",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-d1c228f50a36",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-816401824cd3",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-e25b7a76cd70",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-1a2c0d594897",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-bee92f84fdd6",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-a728cf571fae",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-1fa71c8234b3",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-4628cf9243e4",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        }
+      ],
+      "limitations_ko": [
+        "Exact offline build only; no live/server execution or current-version claim.",
+        "No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.",
+        "Unmatched H5810 payload widths and callback/stub dependencies block production promotion."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "respawn",
+        "recall",
+        "offline_only",
+        "reviewed-respawn-recall"
+      ],
+      "layout_notes": []
+    },
+    {
       "id": "VGRE-replay-game-clock-anchor-display",
       "category": "cooldown",
       "title_ko": "게임 시계 앵커·재생 누적·화면 시간",
@@ -12776,6 +13442,368 @@
         "replay",
         "queue"
       ]
+    },
+    {
+      "id": "VGRE-respawn-inplace-reset",
+      "category": "implementation",
+      "title_ko": "Revival resets an existing actor",
+      "claim_ko": "ActorRespawn relocates an existing actor, restores bounded resource0/resource2, clears source-attribution IDs and requests state1. It is not a new actor allocation or guaranteed control transition.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094c950",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x009572b0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0095eb50",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00966570",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "0432"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-respawn-recall-report",
+          "locator": "Named sections and exact-build anchors"
+        },
+        {
+          "source_id": "src-revival-8c1997a2fddb",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-cb9530aedf3a",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-e3752dc2af42",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-d1c228f50a36",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-816401824cd3",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-e25b7a76cd70",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-1a2c0d594897",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-bee92f84fdd6",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-a728cf571fae",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-1fa71c8234b3",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-4628cf9243e4",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        }
+      ],
+      "limitations_ko": [
+        "Exact offline build only; no live/server execution or current-version claim.",
+        "No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.",
+        "Unmatched H5810 payload widths and callback/stub dependencies block production promotion."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "respawn",
+        "recall",
+        "offline_only",
+        "reviewed-respawn-recall"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-respawn-snapshot-boundary",
+      "category": "implementation",
+      "title_ko": "Snapshot restoration is not a new lifetime",
+      "claim_ko": "Already-resolved creation IDs can be skipped; HeroSpawn absolute restoration and timer initialization must not be counted as new revival.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094e170",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094d480",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "03f3",
+        "03f2"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-respawn-recall-report",
+          "locator": "Named sections and exact-build anchors"
+        },
+        {
+          "source_id": "src-revival-8c1997a2fddb",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-cb9530aedf3a",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-e3752dc2af42",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-d1c228f50a36",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-816401824cd3",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-e25b7a76cd70",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-1a2c0d594897",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-bee92f84fdd6",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-a728cf571fae",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-1fa71c8234b3",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-4628cf9243e4",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        }
+      ],
+      "limitations_ko": [
+        "Exact offline build only; no live/server execution or current-version claim.",
+        "No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.",
+        "Unmatched H5810 payload widths and callback/stub dependencies block production promotion."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "respawn",
+        "recall",
+        "offline_only",
+        "reviewed-respawn-recall"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-respawn-timer-display",
+      "category": "implementation",
+      "title_ko": "Timer display is separate from actual revival",
+      "claim_ko": "StartRespawnTimer writes a client-mode-gated component value; existing auxiliary state is retained. HUD zero display does not establish timer expiry dispatching revival.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00950c80",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093b850",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x005d3b60",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0081c430",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "0433"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-respawn-recall-report",
+          "locator": "Named sections and exact-build anchors"
+        },
+        {
+          "source_id": "src-revival-8c1997a2fddb",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-cb9530aedf3a",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-e3752dc2af42",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-d1c228f50a36",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-816401824cd3",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-e25b7a76cd70",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-1a2c0d594897",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-bee92f84fdd6",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-a728cf571fae",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-1fa71c8234b3",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-4628cf9243e4",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        }
+      ],
+      "limitations_ko": [
+        "Exact offline build only; no live/server execution or current-version claim.",
+        "No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.",
+        "Unmatched H5810 payload widths and callback/stub dependencies block production promotion."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "respawn",
+        "recall",
+        "offline_only",
+        "reviewed-respawn-recall"
+      ],
+      "layout_notes": []
     },
     {
       "id": "VGRE-result-request-relative-win",
@@ -15942,6 +16970,131 @@
       "tags": [
         "xp-structure-followup",
         "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-teleport-not-revival",
+      "category": "implementation",
+      "title_ko": "Generic teleport is not recall or revival",
+      "claim_ko": "TeleportTo conditionally changes position and dispatches onTeleport; it does not run ActorRespawn resource/attribution reset. Teleport_Client is a different client positioning path.",
+      "scope": {
+        "layer": "native_static",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00950dc0",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094c720",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0095ee80",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0052b010",
+          "address_kind": "preferred_va",
+          "role": "bounded static revival/recall path",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "0409"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-respawn-recall-report",
+          "locator": "Named sections and exact-build anchors"
+        },
+        {
+          "source_id": "src-revival-8c1997a2fddb",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-cb9530aedf3a",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-e3752dc2af42",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-d1c228f50a36",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-816401824cd3",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-e25b7a76cd70",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-1a2c0d594897",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-bee92f84fdd6",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-a728cf571fae",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-1fa71c8234b3",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        },
+        {
+          "source_id": "src-revival-4628cf9243e4",
+          "locator": "Reviewed bounded original package and synthetic test-only integration."
+        }
+      ],
+      "limitations_ko": [
+        "Exact offline build only; no live/server execution or current-version claim.",
+        "No accepted recall, cancellation reason, duration formula, new actor lifetime or control recovery inferred from observed opcodes.",
+        "Unmatched H5810 payload widths and callback/stub dependencies block production promotion."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "respawn",
+        "recall",
+        "offline_only",
+        "reviewed-respawn-recall"
       ],
       "layout_notes": []
     },

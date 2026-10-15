@@ -154,3 +154,9 @@ sources or shared-reward eligibility. Historical producer build remains unmatche
 The isolated extension from `2a9925d` adds 13 research entries, for 133 total, and 25 bounded model/catalog tests. All 120 prior entries and 230 prior source definitions remain unchanged. The 250 current source hashes verify with original external roots. The XP recurrence checker reproduces 5010 float32 comparisons using ten initial baselines from the same development-seen, unmatched recording; this is not independent gameplay proof. Structure findings retain unaccepted replay-index/production flags, with raw exports and assets external.
 
 Independent producer receipts are referenced in the catalog. Integration receipt and final full-suite log are held externally to avoid self-referential hashes. Production/research Python and catalog schema are unchanged.
+
+## Reviewed respawn/recall extension (2026-10-15)
+
+The isolated local extension from `3587237` adds eight bounded research entries and six portable model/catalog tests. All133 prior entries,250 prior sources and nine artifact definitions remain unchanged;141 entries and262 source hashes verify with original external roots. Four tests are extracted from the approved original suite, with two integration guard tests added. Original native/corpus checks and raw evidence remain external.
+
+The independent review verifies80 native spans,68 selected receipt hashes and the original seven tests. Native payload widths differ from the unmatched historical fixture; configured four-unit recall duration and client behavior stubs do not establish successful recall or a universal live rule. Production/research Python and schema remain unchanged. Final suite and integration approval receipts remain external.
