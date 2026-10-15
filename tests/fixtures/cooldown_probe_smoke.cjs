@@ -3,16 +3,26 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
-const {execFileSync, spawnSync} = require('node:child_process');
+const {spawnSync} = require('node:child_process');
 const crypto = require('node:crypto');
 const repo = path.resolve(__dirname, '../..');
 const evidence = path.resolve(process.argv[2] || '.omo/evidence/cooldown-collector');
 fs.mkdirSync(evidence, {recursive: true});
-const git = (...args) => execFileSync('git', ['-C', repo, ...args], {encoding: 'utf8'});
-const head = git('rev-parse', 'HEAD').trim(), status = git('status', '--porcelain');
+// Git is optional provenance, never a fixture dependency. In particular, do not
+// accidentally report an enclosing checkout's HEAD for an extracted archive.
+function gitMetadata(...args) {
+  if (!fs.existsSync(path.join(repo, '.git'))) return null;
+  const result = spawnSync('git', ['-C', repo, ...args], {encoding: 'utf8'});
+  return result.status === 0 ? result.stdout.trimEnd() : null;
+}
+const head = gitMetadata('rev-parse', 'HEAD'), status = gitMetadata('status', '--porcelain');
 const sourcePath = 'vg/tools/player_state_capture/player_state_probe.js';
-const stock = git('show', `33611314a29d2ad57a4c56a2f6da569b22ec9641:${sourcePath}`);
-assert.equal(fs.readFileSync(path.join(repo, sourcePath), 'utf8'), stock);
+// Pinned from commit 33611314a29d2ad57a4c56a2f6da569b22ec9641. Keep the
+// stock-source invariant without requiring that historical Git object locally.
+const stock = fs.readFileSync(path.join(repo, sourcePath), 'utf8');
+const stockSha256 = '24660b5c811dff07691bf28437aaf8a6cda26021c1780a0284484a98556684f1';
+assert.equal(crypto.createHash('sha256').update(stock).digest('hex'), stockSha256,
+  'Stock player_state_probe.js differs from the pinned baseline');
 const extensionPath = path.join(repo, 'vg/tools/player_state_capture/cooldown_probe.js');
 const extension = fs.readFileSync(extensionPath, 'utf8');
 const combined = stock + '\n' + extension;
