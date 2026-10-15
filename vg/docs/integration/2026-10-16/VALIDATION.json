@@ -15,7 +15,22 @@
       "cross_volume_relpath_error": 1,
       "symlink_fixture_callback_failure_assertions": 2
     },
-    "baseline_reproduction": "The two assertion failures and cross-volume error reproduce unchanged on main 65bab83; symlink privilege errors occur directly in fixture creation. No security settings changed."
+    "baseline_reproduction": "The two assertion failures and cross-volume error reproduce unchanged on main 65bab83; symlink privilege errors occur directly in fixture creation. No security settings changed.",
+    "root_cause_summary": {
+      "distinct_platform_root_causes": 2,
+      "symlink_privilege": {
+        "affected_test_methods": 24,
+        "direct_error_records": 57,
+        "secondary_cleanup_error_records": 2,
+        "callback_assertion_failures": 2
+      },
+      "cross_volume_relpath": {
+        "affected_test_methods": 1,
+        "error_records": 1
+      },
+      "total_affected_test_methods": 25,
+      "interpretation": "60 error records are not 60 independent defects. Subtests repeat fixture failures; two missing-fixture cleanup records are secondary. The 2 assertion failures arise from unavailable symlink callbacks. Existing main reproduction is representative, not a complete baseline suite."
+    }
   },
   "available_suite": {
     "discovered": 1169,
