@@ -1,0 +1,81 @@
+ENTRY 0093d4a0 BODY [[0093d4a0, 0093d503]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+undefined4 __fastcall FUN_0093d4a0(int param_1)
+
+{
+  int *piVar1;
+  char cVar2;
+  int iVar3;
+  
+  piVar1 = *(int **)(param_1 + 0x20);
+  if (piVar1 != (int *)0x0) {
+    if (*(int *)(param_1 + 0x24) == piVar1[1]) {
+      iVar3 = (**(code **)(*piVar1 + 8))();
+      if (iVar3 != 0) {
+        piVar1 = *(int **)(param_1 + 0x20);
+        if (piVar1 != (int *)0x0) {
+          if (*(int *)(param_1 + 0x24) == piVar1[1]) {
+            (**(code **)(*piVar1 + 8))();
+          }
+          else {
+            *(undefined4 *)(param_1 + 0x20) = 0;
+            *(undefined4 *)(param_1 + 0x24) = _DAT_020ec6fc;
+          }
+        }
+        cVar2 = func_0x0112aa20();
+        if (cVar2 == '\0') {
+          return 1;
+        }
+      }
+    }
+    else {
+      *(undefined4 *)(param_1 + 0x20) = 0;
+      *(undefined4 *)(param_1 + 0x24) = _DAT_020ec6fc;
+    }
+  }
+  return 0;
+}
+
+
+
+INSTRUCTIONS
+0093d4a0 PUSH ESI
+0093d4a1 MOV ESI,ECX
+0093d4a3 MOV ECX,dword ptr [ESI + 0x20]
+0093d4a6 TEST ECX,ECX
+0093d4a8 JZ 0x0093d4c1
+0093d4aa MOV EAX,dword ptr [ESI + 0x24]
+0093d4ad CMP EAX,dword ptr [ECX + 0x4]
+0093d4b0 JZ 0x0093d4c5
+0093d4b2 MOV dword ptr [ESI + 0x20],0x0
+0093d4b9 MOV EAX,[0x020ec6fc]
+0093d4be MOV dword ptr [ESI + 0x24],EAX
+0093d4c1 XOR AL,AL
+0093d4c3 POP ESI
+0093d4c4 RET
+0093d4c5 MOV EAX,dword ptr [ECX]
+0093d4c7 CALL dword ptr [EAX + 0x8]
+0093d4ca TEST EAX,EAX
+0093d4cc JZ 0x0093d4c1
+0093d4ce MOV ECX,dword ptr [ESI + 0x20]
+0093d4d1 TEST ECX,ECX
+0093d4d3 JZ 0x0093d4ec
+0093d4d5 MOV EAX,dword ptr [ESI + 0x24]
+0093d4d8 CMP EAX,dword ptr [ECX + 0x4]
+0093d4db JZ 0x0093d4fd
+0093d4dd MOV dword ptr [ESI + 0x20],0x0
+0093d4e4 MOV EAX,[0x020ec6fc]
+0093d4e9 MOV dword ptr [ESI + 0x24],EAX
+0093d4ec XOR EAX,EAX
+0093d4ee MOV ECX,EAX
+0093d4f0 CALL 0x0112aa20
+0093d4f5 TEST AL,AL
+0093d4f7 JNZ 0x0093d4c1
+0093d4f9 MOV AL,0x1
+0093d4fb POP ESI
+0093d4fc RET
+0093d4fd MOV EAX,dword ptr [ECX]
+0093d4ff CALL dword ptr [EAX + 0x8]
+0093d502 JMP 0x0093d4ee

@@ -1,0 +1,22 @@
+{
+  "scope": "static event field interpretation only; no native runtime validation",
+  "static_executable_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "receiver_reference_executable_sha256": "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+  "build_difference": "Input evidence reports PE LAA flag difference; no recording build identity inferred",
+  "report_sha256": "fc86360569a37e7e352c00c816bca997b75673dff2c679ed1d7b9b3c9665c142",
+  "static_receipts_sha256": {
+    "pass1/0081bb60.txt": "a499ad658b964b0b5f350ce8647f0e40f936cb39fb7d8c3762b89a995cda3d97",
+    "pass1/0081b8d0.txt": "7baec1a7c622a396ce9cf8f648440ed6b04e1d4530fea34da3524370d3d87e88",
+    "pass1/0052ad40.txt": "1af65a62d295bcd60afb8102835abfe8d3e286f684b69e951cb8e8c95a233779",
+    "pass3/00945cc0.txt": "ca59a135d24731e5cd4ef28abb0bc35b68ceb0086507f9b1f01f2031a67ec9e2",
+    "pass3/00945d70.txt": "4f6ff697999b43f6b48044397374801667c6bddcd44e8ab85dde723e98c12d40",
+    "pass4/0094f170.txt": "129ed52720ab05c4a1bdb89e7895b558e7db337642e861dea2f3bbfc732076fe",
+    "pass4/0052aea0.txt": "d63e8b6889a7825fef866204b6217030776d1b2293d129168e471a12fa1389f2",
+    "pass3/009401f0.txt": "769d6b2d3e8e77f25b83495c67382a5755f06e8f88d077c234fe6ff989f079f1"
+  },
+  "existing_receiver_branch_sha256": {
+    "0428.c.txt": "a641e632d94278d29935625f9e357b5e786d0b0a072d019e9d0e566691f914c8",
+    "0429.c.txt": "5b176b8ca755d2f6e74f2e4ed0f12761fc488a6033766eb1fd30e767c7ac7b54",
+    "048a.c.txt": "37668d3636cdcb49e5d042176b573b41eaaea731baf3d5f701f28fc338e8b156"
+  }
+}

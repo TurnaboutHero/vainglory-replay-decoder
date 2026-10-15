@@ -1,0 +1,94 @@
+ENTRY 008708a0 BODY [[008708a0, 00870945]]
+
+void __fastcall FUN_008708a0(int param_1)
+
+{
+  int *piVar1;
+  int iVar2;
+  uint uVar3;
+  uint uVar4;
+  
+  for (piVar1 = *(int **)(param_1 + 0x28); piVar1 != (int *)0x0;
+      piVar1 = (int *)(**(code **)(*piVar1 + 0x1c))()) {
+    (**(code **)(*piVar1 + 0xc))(param_1);
+  }
+  if ((*(uint *)(param_1 + 0x154) & 0x3c0) != 0) {
+    uVar4 = 0;
+    do {
+      iVar2 = func_0x00937290();
+      uVar3 = *(uint *)(iVar2 + 500);
+      uVar3 = (((uVar3 >> 10) - 1) * 0x400 ^ uVar3) & 0x3c00 ^ uVar3;
+      *(uint *)(iVar2 + 500) = uVar3;
+      if ((uVar3 & 0x3c00) == 0) {
+        uVar3 = *(uint *)(iVar2 + 0x48) & 0x1f;
+        if ((uVar3 != 0x1f) && ((short)((uint *)(iVar2 + 0x48))[uVar3 * 8 + 2] == 5)) {
+          func_0x00966570(6,0,0);
+        }
+      }
+      uVar4 = uVar4 + 1;
+    } while (uVar4 < (*(uint *)(param_1 + 0x154) >> 6 & 0xf));
+    *(uint *)(param_1 + 0x154) = *(uint *)(param_1 + 0x154) & 0xfffffc3f;
+  }
+  return;
+}
+
+
+
+INSTRUCTIONS
+008708a0 PUSH ESI
+008708a1 PUSH EDI
+008708a2 MOV EDI,ECX
+008708a4 MOV ESI,dword ptr [EDI + 0x28]
+008708a7 TEST ESI,ESI
+008708a9 JZ 0x008708c5
+008708ab NOP dword ptr [EAX + EAX*0x1]
+008708b0 MOV EAX,dword ptr [ESI]
+008708b2 MOV ECX,ESI
+008708b4 PUSH EDI
+008708b5 CALL dword ptr [EAX + 0xc]
+008708b8 MOV EAX,dword ptr [ESI]
+008708ba MOV ECX,ESI
+008708bc CALL dword ptr [EAX + 0x1c]
+008708bf MOV ESI,EAX
+008708c1 TEST ESI,ESI
+008708c3 JNZ 0x008708b0
+008708c5 TEST dword ptr [EDI + 0x154],0x3c0
+008708cf JBE 0x00870943
+008708d1 XOR ESI,ESI
+008708d3 MOV ECX,EDI
+008708d5 CALL 0x00937290
+008708da MOV ECX,dword ptr [EAX + 0x1f4]
+008708e0 MOV EDX,ECX
+008708e2 SHR EDX,0xa
+008708e5 DEC EDX
+008708e6 SHL EDX,0xa
+008708e9 XOR EDX,ECX
+008708eb AND EDX,0x3c00
+008708f1 XOR EDX,ECX
+008708f3 MOV dword ptr [EAX + 0x1f4],EDX
+008708f9 TEST EDX,0x3c00
+008708ff JNZ 0x00870924
+00870901 LEA ECX,[EAX + 0x48]
+00870904 MOV EAX,dword ptr [ECX]
+00870906 AND EAX,0x1f
+00870909 CMP EAX,0x1f
+0087090c JZ 0x00870924
+0087090e SHL EAX,0x5
+00870911 CMP word ptr [EAX + ECX*0x1 + 0x8],0x5
+00870917 JNZ 0x00870924
+00870919 PUSH 0x0
+0087091b PUSH 0x0
+0087091d PUSH 0x6
+0087091f CALL 0x00966570
+00870924 MOV ECX,dword ptr [EDI + 0x154]
+0087092a INC ESI
+0087092b MOV EAX,ECX
+0087092d SHR EAX,0x6
+00870930 AND EAX,0xf
+00870933 CMP ESI,EAX
+00870935 JC 0x008708d3
+00870937 AND ECX,0xfffffc3f
+0087093d MOV dword ptr [EDI + 0x154],ECX
+00870943 POP EDI
+00870944 POP ESI
+00870945 RET

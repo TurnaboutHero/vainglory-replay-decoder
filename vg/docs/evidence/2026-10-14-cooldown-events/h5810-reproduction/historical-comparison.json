@@ -1,0 +1,69 @@
+{
+  "historical_receipt_commit": "b68ab8f969dcab915a52aa99371485ec17667d29",
+  "historical_decoder_commit": "dbb571871e255e5a818b21beb68e61657bb06828",
+  "boundary_equal": true,
+  "query_timing_equal": true,
+  "resource7_comparison": [
+    {
+      "actor": 1500,
+      "cloud_bits": 1166379350,
+      "historical_native_bits": 1166379350,
+      "equal": true
+    },
+    {
+      "actor": 1501,
+      "cloud_bits": 1165089792,
+      "historical_native_bits": 1165089792,
+      "equal": true
+    },
+    {
+      "actor": 1502,
+      "cloud_bits": 1173443072,
+      "historical_native_bits": 1173443072,
+      "equal": true
+    },
+    {
+      "actor": 1503,
+      "cloud_bits": 1169565526,
+      "historical_native_bits": 1169565526,
+      "equal": true
+    },
+    {
+      "actor": 1504,
+      "cloud_bits": 1168556032,
+      "historical_native_bits": 1168556032,
+      "equal": true
+    },
+    {
+      "actor": 1505,
+      "cloud_bits": 1169188864,
+      "historical_native_bits": 1169188864,
+      "equal": true
+    },
+    {
+      "actor": 1506,
+      "cloud_bits": 1166721024,
+      "historical_native_bits": 1166721024,
+      "equal": true
+    },
+    {
+      "actor": 1507,
+      "cloud_bits": 1166623744,
+      "historical_native_bits": 1166623744,
+      "equal": true
+    },
+    {
+      "actor": 1508,
+      "cloud_bits": 1166263638,
+      "historical_native_bits": 1166263638,
+      "equal": true
+    },
+    {
+      "actor": 1509,
+      "cloud_bits": 1168637952,
+      "historical_native_bits": 1168637952,
+      "equal": true
+    }
+  ],
+  "visible_inventory_entries": 42
+}

@@ -1,0 +1,95 @@
+ENTRY 0052aea0 BODY [[0052aea0, 0052af4c]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __fastcall FUN_0052aea0(int param_1)
+
+{
+  byte bVar1;
+  int iVar2;
+  
+  iVar2 = func_0x00857970(*(undefined4 *)(param_1 + 0x10));
+  if (iVar2 != 0) {
+    iVar2 = FUN_008579e0(iVar2,param_1 + 0x14);
+    if (iVar2 == 0) {
+      func_0x01129d20(_DAT_01ef0b3c);
+      bVar1 = *(byte *)(param_1 + 0x28);
+      FUN_009401f0(param_1 + 0x14,*(uint *)(param_1 + 0x24) & 3,bVar1 & 1,bVar1 >> 1 & 1,
+                   bVar1 >> 2 & 1);
+      FUN_0095dd50(*(undefined4 *)(param_1 + 0x1c));
+      FUN_0095dcf0(*(undefined1 *)(param_1 + 0x21));
+    }
+    FUN_0095cf10(*(undefined4 *)(param_1 + 0x18));
+    FUN_0095cd10(*(undefined1 *)(param_1 + 0x20));
+  }
+  return;
+}
+
+
+
+INSTRUCTIONS
+0052aea0 PUSH EBX
+0052aea1 PUSH ESI
+0052aea2 MOV ESI,ECX
+0052aea4 PUSH dword ptr [ESI + 0x10]
+0052aea7 CALL 0x00857970
+0052aeac MOV EBX,EAX
+0052aeae ADD ESP,0x4
+0052aeb1 TEST EBX,EBX
+0052aeb3 JZ 0x0052af4a
+0052aeb9 PUSH EDI
+0052aeba LEA EAX,[ESI + 0x14]
+0052aebd PUSH EAX
+0052aebe PUSH EBX
+0052aebf CALL 0x008579e0
+0052aec4 MOV EDI,EAX
+0052aec6 ADD ESP,0x8
+0052aec9 TEST EDI,EDI
+0052aecb JNZ 0x0052af2b
+0052aecd PUSH dword ptr [0x01ef0b3c]
+0052aed3 MOV ECX,EBX
+0052aed5 CALL 0x01129d20
+0052aeda MOV CL,byte ptr [ESI + 0x28]
+0052aedd MOV EDI,EAX
+0052aedf MOV AL,CL
+0052aee1 SHR AL,0x2
+0052aee4 AND AL,0x1
+0052aee6 MOVZX EAX,AL
+0052aee9 PUSH EAX
+0052aeea MOV AL,CL
+0052aeec AND CL,0x1
+0052aeef SHR AL,0x1
+0052aef1 AND AL,0x1
+0052aef3 MOVZX EAX,AL
+0052aef6 PUSH EAX
+0052aef7 MOVZX EAX,CL
+0052aefa MOV ECX,EDI
+0052aefc PUSH EAX
+0052aefd MOV EAX,dword ptr [ESI + 0x24]
+0052af00 AND EAX,0x3
+0052af03 PUSH EAX
+0052af04 LEA EAX,[ESI + 0x14]
+0052af07 PUSH EAX
+0052af08 CALL 0x009401f0
+0052af0d MOVSS XMM0,dword ptr [ESI + 0x1c]
+0052af12 PUSH ECX
+0052af13 MOV ECX,EDI
+0052af15 MOVSS dword ptr [ESP],XMM0
+0052af1a CALL 0x0095dd50
+0052af1f MOVZX EAX,byte ptr [ESI + 0x21]
+0052af23 MOV ECX,EDI
+0052af25 PUSH EAX
+0052af26 CALL 0x0095dcf0
+0052af2b MOVSS XMM0,dword ptr [ESI + 0x18]
+0052af30 PUSH ECX
+0052af31 MOV ECX,EDI
+0052af33 MOVSS dword ptr [ESP],XMM0
+0052af38 CALL 0x0095cf10
+0052af3d MOVZX EAX,byte ptr [ESI + 0x20]
+0052af41 MOV ECX,EDI
+0052af43 PUSH EAX
+0052af44 CALL 0x0095cd10
+0052af49 POP EDI
+0052af4a POP ESI
+0052af4b POP EBX
+0052af4c RET

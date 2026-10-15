@@ -1,0 +1,45 @@
+ENTRY 01129d20 BODY [[01129d20, 01129d51]]
+
+void __thiscall FUN_01129d20(int param_1,undefined4 param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  iVar2 = func_0x01129dd0(param_2);
+  if (iVar2 == 0) {
+    return;
+  }
+  *(int *)(iVar2 + 8) = param_1;
+  iVar1 = *(int *)(param_1 + 0xc);
+  *(int *)(param_1 + 0xc) = iVar2;
+  if (iVar1 != 0) {
+    *(int *)(iVar2 + 0x10) = iVar1;
+  }
+  return;
+}
+
+
+
+INSTRUCTIONS
+01129d20 PUSH EBP
+01129d21 MOV EBP,ESP
+01129d23 PUSH ESI
+01129d24 PUSH dword ptr [EBP + 0x8]
+01129d27 MOV ESI,ECX
+01129d29 MOV ECX,dword ptr [0x020ec828]
+01129d2f CALL 0x01129dd0
+01129d34 TEST EAX,EAX
+01129d36 JNZ 0x01129d3d
+01129d38 POP ESI
+01129d39 POP EBP
+01129d3a RET 0x4
+01129d3d MOV dword ptr [EAX + 0x8],ESI
+01129d40 MOV ECX,dword ptr [ESI + 0xc]
+01129d43 MOV dword ptr [ESI + 0xc],EAX
+01129d46 TEST ECX,ECX
+01129d48 JZ 0x01129d4d
+01129d4a MOV dword ptr [EAX + 0x10],ECX
+01129d4d POP ESI
+01129d4e POP EBP
+01129d4f RET 0x4

@@ -1,0 +1,81 @@
+ENTRY 0094b6c0 BODY [[0094b6c0, 0094b74b]]
+
+void __fastcall FUN_0094b6c0(int param_1)
+
+{
+  char cVar1;
+  undefined4 uVar2;
+  undefined4 uStack_18;
+  undefined4 uStack_14;
+  uint uStack_10;
+  undefined1 uStack_c;
+  uint uStack_8;
+  
+  if (DAT_0209e204 != '\0') {
+    func_0x00945cc0();
+    uStack_8 = *(uint *)(param_1 + 0x18);
+    cVar1 = *(char *)(param_1 + 0x1c);
+    uVar2 = *(undefined4 *)(param_1 + 0x14);
+    uStack_18 = Ordinal_8(*(undefined4 *)(param_1 + 0x10));
+    uStack_14 = Ordinal_8(uVar2);
+    uStack_10 = (uStack_8 & 0xff0000 | uStack_8 >> 0x10) >> 8 |
+                (uStack_8 << 0x10 | uStack_8 & 0xff00) << 8;
+    uStack_c = cVar1 != '\0';
+    func_0x008173c0(&uStack_18,0);
+  }
+  return;
+}
+
+
+
+INSTRUCTIONS
+0094b6c0 PUSH EBP
+0094b6c1 MOV EBP,ESP
+0094b6c3 SUB ESP,0x14
+0094b6c6 CMP byte ptr [0x0209e204],0x0
+0094b6cd PUSH ESI
+0094b6ce MOV ESI,ECX
+0094b6d0 JZ 0x0094b747
+0094b6d2 PUSH EBX
+0094b6d3 PUSH EDI
+0094b6d4 CALL 0x00945cc0
+0094b6d9 MOVSS XMM0,dword ptr [ESI + 0x18]
+0094b6de PUSH dword ptr [ESI + 0x10]
+0094b6e1 MOV BL,byte ptr [ESI + 0x1c]
+0094b6e4 MOV EDI,dword ptr [ESI + 0x14]
+0094b6e7 MOV ESI,dword ptr [0x0120a640]
+0094b6ed MOVSS dword ptr [EBP + -0x4],XMM0
+0094b6f2 CALL ESI
+0094b6f4 PUSH EDI
+0094b6f5 MOV dword ptr [EBP + -0x14],EAX
+0094b6f8 CALL ESI
+0094b6fa MOVSS XMM0,dword ptr [EBP + -0x4]
+0094b6ff MOV dword ptr [EBP + -0x10],EAX
+0094b702 MOVSS dword ptr [EBP + -0x4],XMM0
+0094b707 MOV ECX,dword ptr [EBP + -0x4]
+0094b70a MOV EDX,ECX
+0094b70c AND EDX,0xff0000
+0094b712 MOV EAX,ECX
+0094b714 SHR EAX,0x10
+0094b717 OR EDX,EAX
+0094b719 MOV EAX,ECX
+0094b71b SHL EAX,0x10
+0094b71e AND ECX,0xff00
+0094b724 OR EAX,ECX
+0094b726 SHR EDX,0x8
+0094b729 SHL EAX,0x8
+0094b72c OR EDX,EAX
+0094b72e TEST BL,BL
+0094b730 LEA EAX,[EBP + -0x14]
+0094b733 MOV dword ptr [EBP + -0xc],EDX
+0094b736 PUSH 0x0
+0094b738 PUSH EAX
+0094b739 SETNZ byte ptr [EBP + -0x8]
+0094b73d CALL 0x008173c0
+0094b742 ADD ESP,0x8
+0094b745 POP EDI
+0094b746 POP EBX
+0094b747 POP ESI
+0094b748 MOV ESP,EBP
+0094b74a POP EBP
+0094b74b RET

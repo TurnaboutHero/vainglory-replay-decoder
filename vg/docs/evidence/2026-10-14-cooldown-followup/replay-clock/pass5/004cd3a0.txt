@@ -1,0 +1,97 @@
+ENTRY 004cd3a0 BODY [[004cd3a0, 004cd43b]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+float10 FUN_004cd3a0(float param_1)
+
+{
+  float fVar1;
+  uint uVar2;
+  uint uVar3;
+  uint uVar4;
+  float fVar5;
+  float fStack_8;
+  
+  fVar5 = 0.0;
+  uVar4 = 0;
+  fStack_8 = 0.0;
+  uVar3 = 0;
+  uVar2 = uVar4;
+  if (_DAT_01eb09dc != 0) {
+    do {
+      fVar1 = *(float *)(_DAT_01eb09e4 + uVar3 * 4);
+      uVar2 = uVar3;
+      if ((float)((uint)(param_1 - fVar5) & _DAT_012112b0) <=
+          (float)((uint)(param_1 - fVar1) & _DAT_012112b0)) {
+        uVar2 = uVar4;
+        fVar1 = fVar5;
+      }
+      fVar5 = fVar1;
+      uVar3 = uVar3 + 1;
+      uVar4 = uVar2;
+      fStack_8 = fVar5;
+    } while (uVar3 < _DAT_01eb09dc);
+  }
+  if (_DAT_01eb09d8 != 0) {
+    func_0x0096c220(_DAT_01eb09d8);
+    _DAT_01eb09d8 = 0;
+  }
+  DAT_01ef0b2c = 1;
+  _DAT_01ef0b38 = uVar2;
+  func_0x004cb3e0();
+  return (float10)fStack_8;
+}
+
+
+
+INSTRUCTIONS
+004cd3a0 PUSH EBP
+004cd3a1 MOV EBP,ESP
+004cd3a3 PUSH ECX
+004cd3a4 MOV EDX,dword ptr [0x01eb09dc]
+004cd3aa XORPS XMM2,XMM2
+004cd3ad PUSH ESI
+004cd3ae XOR ESI,ESI
+004cd3b0 MOVSS dword ptr [EBP + -0x4],XMM2
+004cd3b5 XOR ECX,ECX
+004cd3b7 TEST EDX,EDX
+004cd3b9 JZ 0x004cd406
+004cd3bb MOVSS XMM4,dword ptr [EBP + 0x8]
+004cd3c0 MOVSS XMM5,dword ptr [0x012112b0]
+004cd3c8 PUSH EDI
+004cd3c9 MOV EDI,dword ptr [0x01eb09e4]
+004cd3cf NOP
+004cd3d0 MOVSS XMM3,dword ptr [EDI + ECX*0x4]
+004cd3d5 MOVAPS XMM0,XMM4
+004cd3d8 MOVAPS XMM1,XMM4
+004cd3db SUBSS XMM0,XMM3
+004cd3df SUBSS XMM1,XMM2
+004cd3e3 ANDPS XMM0,XMM5
+004cd3e6 ANDPS XMM1,XMM5
+004cd3e9 COMISS XMM1,XMM0
+004cd3ec JBE 0x004cd3f1
+004cd3ee MOVAPS XMM2,XMM3
+004cd3f1 COMISS XMM1,XMM0
+004cd3f4 MOV EAX,ECX
+004cd3f6 CMOVBE EAX,ESI
+004cd3f9 INC ECX
+004cd3fa MOV ESI,EAX
+004cd3fc CMP ECX,EDX
+004cd3fe JC 0x004cd3d0
+004cd400 MOVSS dword ptr [EBP + -0x4],XMM2
+004cd405 POP EDI
+004cd406 MOV EAX,[0x01eb09d8]
+004cd40b TEST EAX,EAX
+004cd40d JZ 0x004cd422
+004cd40f PUSH EAX
+004cd410 CALL 0x0096c220
+004cd415 ADD ESP,0x4
+004cd418 MOV dword ptr [0x01eb09d8],0x0
+004cd422 MOV dword ptr [0x01ef0b38],ESI
+004cd428 MOV byte ptr [0x01ef0b2c],0x1
+004cd42f CALL 0x004cb3e0
+004cd434 FLD float ptr [EBP + -0x4]
+004cd437 POP ESI
+004cd438 MOV ESP,EBP
+004cd43a POP EBP
+004cd43b RET

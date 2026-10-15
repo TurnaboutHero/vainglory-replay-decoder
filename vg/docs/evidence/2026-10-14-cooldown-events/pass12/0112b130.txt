@@ -1,0 +1,24 @@
+ENTRY 0112b130 BODY [[0112b130, 0112b148]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __thiscall FUN_0112b130(int param_1,double param_2)
+
+{
+  if (param_2 <= _DAT_01212298) {
+    param_2 = _DAT_01212298;
+  }
+  *(double *)(param_1 + 0x20) = param_2;
+  return;
+}
+
+
+
+INSTRUCTIONS
+0112b130 PUSH EBP
+0112b131 MOV EBP,ESP
+0112b133 MOVSD XMM0,qword ptr [EBP + 0x8]
+0112b138 MAXSD XMM0,qword ptr [0x01212298]
+0112b140 MOVSD qword ptr [ECX + 0x20],XMM0
+0112b145 POP EBP
+0112b146 RET 0x8

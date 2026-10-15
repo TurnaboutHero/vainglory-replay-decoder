@@ -1,0 +1,55 @@
+ENTRY 009686d0 BODY [[009686d0, 00968719]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_009686d0(int param_1)
+
+{
+  float fVar1;
+  float10 fVar2;
+  
+  if ((param_1 == 0) || (*(int *)(*(int *)(param_1 + 4) + 0x54) != _DAT_0209133c)) {
+    param_1 = 0;
+  }
+  if (*(char *)(param_1 + 0x28) == '\0') {
+    fVar2 = (float10)func_0x0112a7a0();
+    fVar1 = (float)((float10)*(float *)(param_1 + 0x24) - fVar2);
+    *(float *)(param_1 + 0x24) = fVar1;
+    if (fVar1 <= 0.0) {
+      (**(code **)(**(int **)(param_1 + 0x1c) + 4))(param_1);
+    }
+  }
+  return;
+}
+
+
+
+INSTRUCTIONS
+009686d0 PUSH EBP
+009686d1 MOV EBP,ESP
+009686d3 PUSH ESI
+009686d4 MOV ESI,dword ptr [EBP + 0x8]
+009686d7 TEST ESI,ESI
+009686d9 JZ 0x009686e9
+009686db MOV EAX,dword ptr [ESI + 0x4]
+009686de MOV EAX,dword ptr [EAX + 0x54]
+009686e1 CMP EAX,dword ptr [0x0209133c]
+009686e7 JZ 0x009686eb
+009686e9 XOR ESI,ESI
+009686eb CMP byte ptr [ESI + 0x28],0x0
+009686ef JNZ 0x00968717
+009686f1 CALL 0x0112a7a0
+009686f6 FSUBR float ptr [ESI + 0x24]
+009686f9 XORPS XMM0,XMM0
+009686fc FSTP float ptr [EBP + 0x8]
+009686ff MOVSS XMM1,dword ptr [EBP + 0x8]
+00968704 COMISS XMM0,XMM1
+00968707 MOVSS dword ptr [ESI + 0x24],XMM1
+0096870c JC 0x00968717
+0096870e MOV ECX,dword ptr [ESI + 0x1c]
+00968711 PUSH ESI
+00968712 MOV EAX,dword ptr [ECX]
+00968714 CALL dword ptr [EAX + 0x4]
+00968717 POP ESI
+00968718 POP EBP
+00968719 RET

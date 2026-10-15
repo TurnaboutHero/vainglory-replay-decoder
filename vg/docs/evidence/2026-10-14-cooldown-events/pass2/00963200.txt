@@ -1,0 +1,179 @@
+ENTRY 00963200 BODY [[00963200, 0096331a]]
+
+void __thiscall FUN_00963200(int param_1,int param_2)
+
+{
+  int iVar1;
+  undefined4 uVar2;
+  int iVar3;
+  uint uVar4;
+  int *piVar5;
+  bool bVar6;
+  float fVar7;
+  uint uStack_8;
+  
+  uVar4 = 0;
+  if ((*(byte *)(param_1 + 0x71) & 0x7f) != 0) {
+    piVar5 = (int *)(param_1 + 0x1c);
+    do {
+      iVar1 = *piVar5;
+      if ((iVar1 != 0) && (*(int *)(iVar1 + 0x30) == param_2)) goto LAB_0096323b;
+      uVar4 = uVar4 + 1;
+      piVar5 = piVar5 + 1;
+    } while (uVar4 < (*(byte *)(param_1 + 0x71) & 0x7f));
+  }
+  iVar1 = 0;
+LAB_0096323b:
+  if ((*(int *)(iVar1 + 0x18) != 0) &&
+     (iVar3 = *(int *)(*(int *)(iVar1 + 0x18) + 0x124), iVar3 != 0)) {
+    fVar7 = *(float *)(iVar3 + 0x38);
+    bVar6 = false;
+    if (fVar7 < 0.0) {
+      fVar7 = (*(float *)(iVar3 + 0x30) + *(float *)(iVar3 + 0x2c)) * *(float *)(iVar3 + 0x34);
+      bVar6 = fVar7 < 0.0;
+    }
+    if (!bVar6 && fVar7 != 0.0) {
+      iVar1 = **(int **)(iVar1 + 0x14);
+      if (iVar1 == 0) {
+        iVar1 = 0;
+      }
+      else {
+        uVar2 = func_0x0096c7a0(iVar1,0x12345678);
+        iVar1 = func_0x004c4450(iVar1,uVar2);
+      }
+      uStack_8 = 0;
+      if (*(char *)(param_1 + 0x70) != '\0') {
+        piVar5 = (int *)(param_1 + 0x1c);
+        do {
+          iVar3 = *piVar5;
+          if ((iVar3 != 0) && (param_2 != *(int *)(iVar3 + 0x30))) {
+            iVar3 = **(int **)(iVar3 + 0x14);
+            if (iVar3 == 0) {
+              iVar3 = 0;
+            }
+            else {
+              uVar2 = func_0x0096c7a0(iVar3,0x12345678);
+              iVar3 = func_0x004c4450(iVar3,uVar2);
+            }
+            if (iVar1 == iVar3) {
+              FUN_00563a30(3,0,0);
+            }
+          }
+          uStack_8 = uStack_8 + 1;
+          piVar5 = piVar5 + 1;
+        } while (uStack_8 < *(byte *)(param_1 + 0x70));
+      }
+    }
+  }
+  return;
+}
+
+
+
+INSTRUCTIONS
+00963200 PUSH EBP
+00963201 MOV EBP,ESP
+00963203 SUB ESP,0x8
+00963206 PUSH EBX
+00963207 MOV EAX,ECX
+00963209 XOR EDX,EDX
+0096320b PUSH ESI
+0096320c PUSH EDI
+0096320d MOV dword ptr [EBP + -0x8],EAX
+00963210 MOVZX EDI,byte ptr [EAX + 0x71]
+00963214 AND EDI,0x7f
+00963217 JBE 0x00963236
+00963219 LEA ESI,[EAX + 0x1c]
+0096321c NOP dword ptr [EAX]
+00963220 MOV EAX,dword ptr [ESI]
+00963222 TEST EAX,EAX
+00963224 JZ 0x0096322e
+00963226 MOV EBX,dword ptr [EBP + 0x8]
+00963229 CMP dword ptr [EAX + 0x30],EBX
+0096322c JZ 0x0096323b
+0096322e INC EDX
+0096322f ADD ESI,0x4
+00963232 CMP EDX,EDI
+00963234 JC 0x00963220
+00963236 MOV EBX,dword ptr [EBP + 0x8]
+00963239 XOR EAX,EAX
+0096323b MOV ECX,dword ptr [EAX + 0x18]
+0096323e TEST ECX,ECX
+00963240 JZ 0x00963312
+00963246 MOV ECX,dword ptr [ECX + 0x124]
+0096324c TEST ECX,ECX
+0096324e JZ 0x00963312
+00963254 MOVSS XMM0,dword ptr [ECX + 0x38]
+00963259 XORPS XMM1,XMM1
+0096325c COMISS XMM0,XMM1
+0096325f JNC 0x00963273
+00963261 MOVSS XMM0,dword ptr [ECX + 0x30]
+00963266 ADDSS XMM0,dword ptr [ECX + 0x2c]
+0096326b MULSS XMM0,dword ptr [ECX + 0x34]
+00963270 COMISS XMM0,XMM1
+00963273 JBE 0x00963312
+00963279 MOV EAX,dword ptr [EAX + 0x14]
+0096327c MOV ESI,dword ptr [EAX]
+0096327e TEST ESI,ESI
+00963280 JZ 0x0096329e
+00963282 PUSH 0x12345678
+00963287 PUSH ESI
+00963288 CALL 0x0096c7a0
+0096328d ADD ESP,0x4
+00963290 PUSH EAX
+00963291 PUSH ESI
+00963292 CALL 0x004c4450
+00963297 ADD ESP,0xc
+0096329a MOV ESI,EAX
+0096329c JMP 0x009632a0
+0096329e XOR ESI,ESI
+009632a0 MOV EAX,dword ptr [EBP + -0x8]
+009632a3 XOR ECX,ECX
+009632a5 MOV dword ptr [EBP + -0x4],ECX
+009632a8 CMP byte ptr [EAX + 0x70],CL
+009632ab JBE 0x00963312
+009632ad LEA EDI,[EAX + 0x1c]
+009632b0 MOV EAX,dword ptr [EDI]
+009632b2 TEST EAX,EAX
+009632b4 JZ 0x009632fd
+009632b6 CMP EBX,dword ptr [EAX + 0x30]
+009632b9 JZ 0x009632fd
+009632bb MOV EAX,dword ptr [EAX + 0x14]
+009632be MOV EBX,dword ptr [EAX]
+009632c0 TEST EBX,EBX
+009632c2 JZ 0x009632e1
+009632c4 PUSH 0x12345678
+009632c9 PUSH EBX
+009632ca CALL 0x0096c7a0
+009632cf ADD ESP,0x4
+009632d2 PUSH EAX
+009632d3 PUSH EBX
+009632d4 CALL 0x004c4450
+009632d9 MOV ECX,dword ptr [EBP + -0x4]
+009632dc ADD ESP,0xc
+009632df JMP 0x009632e3
+009632e1 XOR EAX,EAX
+009632e3 CMP ESI,EAX
+009632e5 JNZ 0x009632fd
+009632e7 MOV EAX,dword ptr [EDI]
+009632e9 PUSH 0x0
+009632eb PUSH 0x0
+009632ed PUSH 0x3
+009632ef MOV ECX,dword ptr [EAX + 0x18]
+009632f2 ADD ECX,0x38
+009632f5 CALL 0x00563a30
+009632fa MOV ECX,dword ptr [EBP + -0x4]
+009632fd MOV EAX,dword ptr [EBP + -0x8]
+00963300 INC ECX
+00963301 MOV EBX,dword ptr [EBP + 0x8]
+00963304 ADD EDI,0x4
+00963307 MOV dword ptr [EBP + -0x4],ECX
+0096330a MOVZX EAX,byte ptr [EAX + 0x70]
+0096330e CMP ECX,EAX
+00963310 JC 0x009632b0
+00963312 POP EDI
+00963313 POP ESI
+00963314 POP EBX
+00963315 MOV ESP,EBP
+00963317 POP EBP
+00963318 RET 0x4

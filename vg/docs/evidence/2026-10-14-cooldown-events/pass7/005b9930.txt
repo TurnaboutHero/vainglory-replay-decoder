@@ -1,0 +1,22 @@
+ENTRY 005b9930 BODY [[005b9930, 005b994f]]
+
+void FUN_005b9930(undefined4 param_1,undefined4 param_2)
+
+{
+  func_0x005ad730(param_1,param_2);
+  return;
+}
+
+
+
+INSTRUCTIONS
+005b9930 PUSH EBP
+005b9931 MOV EBP,ESP
+005b9933 MOVSS XMM0,dword ptr [EBP + 0xc]
+005b9938 PUSH ECX
+005b9939 MOVSS dword ptr [ESP],XMM0
+005b993e ADD ECX,0x250
+005b9944 PUSH dword ptr [EBP + 0x8]
+005b9947 CALL 0x005ad730
+005b994c POP EBP
+005b994d RET 0x8

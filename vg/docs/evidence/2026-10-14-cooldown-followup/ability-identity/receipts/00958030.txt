@@ -1,0 +1,91 @@
+ENTRY 00958030 BODY [[00958030, 009580eb]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+undefined4 * FUN_00958030(undefined4 *param_1)
+
+{
+  uint uVar1;
+  int *unaff_FS_OFFSET;
+  int iStack_10;
+  undefined *puStack_c;
+  undefined4 uStack_8;
+  
+  puStack_c = &DAT_011cd138;
+  iStack_10 = *unaff_FS_OFFSET;
+  uVar1 = _DAT_01e44f28 ^ (uint)&stack0xfffffffc;
+  *unaff_FS_OFFSET = (int)&iStack_10;
+  *param_1 = &UNK_0121c294;
+  uStack_8 = 0;
+  func_0x01129bb0(uVar1);
+  param_1[5] = &UNK_01280648;
+  *param_1 = &UNK_01280658;
+  param_1[5] = &UNK_01280668;
+  param_1[7] = &UNK_01280678;
+  param_1[8] = 0;
+  param_1[9] = _DAT_020ec6fc;
+  param_1[10] = 0;
+  param_1[0x11] = param_1[0x11] & 0xfffffffc;
+  *(byte *)(param_1 + 0x12) = *(byte *)(param_1 + 0x12) & 0xf8;
+  param_1[0xb] = 0;
+  param_1[0xc] = 0;
+  param_1[0xd] = 0x3f800000;
+  param_1[0xe] = 0xbf800000;
+  param_1[0xf] = 0;
+  *(undefined2 *)(param_1 + 0x10) = 0;
+  *(undefined1 *)((int)param_1 + 0x42) = 0;
+  *unaff_FS_OFFSET = iStack_10;
+  return param_1;
+}
+
+
+
+INSTRUCTIONS
+00958030 PUSH EBP
+00958031 MOV EBP,ESP
+00958033 PUSH -0x1
+00958035 PUSH 0x11cd138
+0095803a MOV EAX,FS:[0x0]
+00958040 PUSH EAX
+00958041 PUSH ECX
+00958042 PUSH ESI
+00958043 PUSH EDI
+00958044 MOV EAX,[0x01e44f28]
+00958049 XOR EAX,EBP
+0095804b PUSH EAX
+0095804c LEA EAX,[EBP + -0xc]
+0095804f MOV FS:[0x0],EAX
+00958055 MOV EDI,dword ptr [EBP + 0x8]
+00958058 MOV dword ptr [EBP + 0x8],EDI
+0095805b MOV dword ptr [EDI],0x121c294
+00958061 LEA ESI,[EDI + 0x14]
+00958064 MOV dword ptr [EBP + -0x4],0x0
+0095806b MOV ECX,ESI
+0095806d MOV dword ptr [EBP + -0x10],ESI
+00958070 CALL 0x01129bb0
+00958075 MOV dword ptr [ESI],0x1280648
+0095807b MOV dword ptr [EDI],0x1280658
+00958081 MOV dword ptr [ESI],0x1280668
+00958087 MOV dword ptr [EDI + 0x1c],0x1280678
+0095808e MOV dword ptr [EDI + 0x20],0x0
+00958095 MOV EAX,[0x020ec6fc]
+0095809a MOV dword ptr [EDI + 0x24],EAX
+0095809d MOV EAX,EDI
+0095809f MOV dword ptr [EDI + 0x28],0x0
+009580a6 AND dword ptr [EDI + 0x44],0xfffffffc
+009580aa AND byte ptr [EDI + 0x48],0xf8
+009580ae MOV dword ptr [EDI + 0x2c],0x0
+009580b5 MOV dword ptr [EDI + 0x30],0x0
+009580bc MOV dword ptr [EDI + 0x34],0x3f800000
+009580c3 MOV dword ptr [EDI + 0x38],0xbf800000
+009580ca MOV dword ptr [EDI + 0x3c],0x0
+009580d1 MOV word ptr [EDI + 0x40],0x0
+009580d7 MOV byte ptr [EDI + 0x42],0x0
+009580db MOV ECX,dword ptr [EBP + -0xc]
+009580de MOV dword ptr FS:[0x0],ECX
+009580e5 POP ECX
+009580e6 POP EDI
+009580e7 POP ESI
+009580e8 MOV ESP,EBP
+009580ea POP EBP
+009580eb RET

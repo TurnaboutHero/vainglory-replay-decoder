@@ -10,20 +10,24 @@ END_MATCH_EVIDENCE_SHA256: Final = "659f9eed557a426db57554d2a768efe34ba9fe02ba10
 END_MATCH_EVIDENCE: Final = "windows-659f9eed"
 ITEM_EVENT_EVIDENCE: Final = "rea-item-events.windows_2026_10_14.v1"
 ITEM_ACTIVATION_EVIDENCE: Final = "rea-item-activation.windows_2026_10_14.v1"
+COOLDOWN_EVENT_EVIDENCE: Final = "rea-cooldown-events.static_2026_10_14.v1"
+COOLDOWN_EVENT_EVIDENCE_SHA256: Final = "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc"
 ATTRIBUTE_STATS: Final[dict[int, str]] = {0x29: "kills", 0x2A: "deaths"}
 type KnownOpcode = Literal[
-    0x03F1, 0x040B, 0x041C, 0x041D, 0x042B, 0x0430, 0x0431,
-    0x0448, 0x0449, 0x044A, 0x044C, 0x044D, 0x048F,
+    0x03F1, 0x040B, 0x041C, 0x041D, 0x0428, 0x0429, 0x042B, 0x0430, 0x0431,
+    0x0448, 0x0449, 0x044A, 0x044C, 0x044D, 0x048A, 0x048F,
 ]
 DEFAULT_OPCODES: Final = frozenset({
-    0x03F1, 0x041C, 0x041D, 0x042B, 0x0430, 0x0431,
-    0x0448, 0x0449, 0x044A, 0x044C, 0x044D, 0x048F,
+    0x03F1, 0x041C, 0x041D, 0x0428, 0x0429, 0x042B, 0x0430, 0x0431,
+    0x0448, 0x0449, 0x044A, 0x044C, 0x044D, 0x048A, 0x048F,
 })
 EXPECTED_CONTENT_LENGTH: Final[dict[KnownOpcode, int]] = {
     0x03F1: 8,
     0x040B: 8,
     0x041C: 24,
     0x041D: 16,
+    0x0428: 16,
+    0x0429: 16,
     0x042B: 16,
     0x0430: 16,  # Two opcode bytes plus the observed 14-byte payload.
     0x0431: 8,
@@ -32,6 +36,7 @@ EXPECTED_CONTENT_LENGTH: Final[dict[KnownOpcode, int]] = {
     0x044A: 24,
     0x044C: 24,
     0x044D: 16,
+    0x048A: 24,
     0x048F: 8,
 }
 
@@ -78,6 +83,22 @@ class DecodedFields(TypedDict, total=False):
     native_target_raw: int
     native_coordinate_bits: list[int]
     native_position: list[float | None]
+    native_lookup_key: int
+    native_ability_slot_index: int
+    native_operand_raw: int
+    native_mode_raw: int
+    native_config_value: float | None
+    native_config_value_bits: int
+    native_byte16_raw: int
+    native_byte17_raw: int
+    native_byte18_raw: int
+    native_byte19_raw: int
+    native_byte20_raw: int
+    native_byte21_raw: int
+    native_byte18_masked: int
+    native_byte19_equals_one: bool
+    native_byte20_equals_one: bool
+    native_byte21_equals_one: bool
 
 
 def _is_known_opcode(opcode: int) -> TypeGuard[KnownOpcode]:
@@ -174,6 +195,29 @@ def decode_fields(record: VGRRecord) -> DecodedFields:
                 "native_flags": [payload[10], payload[11]],
                 "native_stat": "assists" if payload[8] == 0x0B else None,
             }
+        case 0x0428 | 0x0429:
+            # The lookup key and ability-array index are distinct namespaces.
+            fields: DecodedFields = {
+                "decoding_status": "decoded",
+                "ref0": struct.unpack_from(">I", payload, 0)[0],
+                "native_mode_raw": payload[12],
+                "native_operation": "direct" if payload[12] != 0 else "relative",
+                "remaining_hex": payload[13:].hex(),
+                "native_conditional": True,
+                "native_semantic_scope": "static_event_fields",
+                "native_evidence": COOLDOWN_EVENT_EVIDENCE,
+                "native_evidence_sha256": COOLDOWN_EVENT_EVIDENCE_SHA256,
+            }
+            if record.opcode == 0x0428:
+                fields["native_type"] = "cooldown_change_event"
+                fields["native_lookup_key"] = struct.unpack_from(">I", payload, 4)[0]
+                fields["value"], fields["value_bits"] = _float_fields(payload, 8)
+            else:
+                fields["native_type"] = "ability_charge_change_event"
+                fields["native_ability_slot_index"] = struct.unpack_from(">I", payload, 4)[0]
+                # Retain unsigned wire bits; receiver signedness is not established.
+                fields["native_operand_raw"] = struct.unpack_from(">I", payload, 8)[0]
+            return fields
         case 0x042B:
             return {
                 "decoding_status": "decoded",
@@ -277,6 +321,32 @@ def decode_fields(record: VGRRecord) -> DecodedFields:
                 "remaining_hex": payload[8:].hex(),
                 "native_evidence": ITEM_EVENT_EVIDENCE,
                 "native_evidence_sha256": END_MATCH_EVIDENCE_SHA256,
+            }
+        case 0x048A:
+            value, value_bits = _float_fields(payload, 8)
+            config_value, config_bits = _float_fields(payload, 12)
+            return {
+                "decoding_status": "decoded",
+                "native_type": "cooldown_sync_event",
+                "ref0": struct.unpack_from(">I", payload, 0)[0],
+                "native_lookup_key": struct.unpack_from(">I", payload, 4)[0],
+                "value": value, "value_bits": value_bits,
+                "native_config_value": config_value,
+                "native_config_value_bits": config_bits,
+                "native_byte16_raw": payload[16],
+                "native_byte17_raw": payload[17],
+                "native_byte18_raw": payload[18],
+                "native_byte19_raw": payload[19],
+                "native_byte20_raw": payload[20],
+                "native_byte21_raw": payload[21],
+                "native_byte18_masked": payload[18] & 3,
+                "native_byte19_equals_one": payload[19] == 1,
+                "native_byte20_equals_one": payload[20] == 1,
+                "native_byte21_equals_one": payload[21] == 1,
+                "native_conditional": True,
+                "native_semantic_scope": "static_event_fields",
+                "native_evidence": COOLDOWN_EVENT_EVIDENCE,
+                "native_evidence_sha256": COOLDOWN_EVENT_EVIDENCE_SHA256,
             }
         case 0x048F:
             return {

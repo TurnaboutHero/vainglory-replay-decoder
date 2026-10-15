@@ -1,0 +1,41 @@
+ENTRY 0081b8d0 BODY [[0081b8d0, 0081b90e]]
+
+undefined4 * __thiscall
+FUN_0081b8d0(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4,
+            undefined1 param_5)
+
+{
+  param_1[4] = param_2;
+  param_1[5] = param_3;
+  param_1[6] = param_4;
+  *(undefined1 *)(param_1 + 7) = param_5;
+  param_1[1] = 0;
+  param_1[2] = 0;
+  *(undefined1 *)(param_1 + 3) = 0;
+  *param_1 = &UNK_0127c98c;
+  return param_1;
+}
+
+
+
+INSTRUCTIONS
+0081b8d0 PUSH EBP
+0081b8d1 MOV EBP,ESP
+0081b8d3 PUSH ECX
+0081b8d4 MOV EAX,dword ptr [EBP + 0x8]
+0081b8d7 MOV dword ptr [ECX + 0x10],EAX
+0081b8da MOV EAX,dword ptr [EBP + 0xc]
+0081b8dd MOV dword ptr [ECX + 0x14],EAX
+0081b8e0 MOV EAX,dword ptr [EBP + 0x10]
+0081b8e3 MOV dword ptr [ECX + 0x18],EAX
+0081b8e6 MOV AL,byte ptr [EBP + 0x14]
+0081b8e9 MOV byte ptr [ECX + 0x1c],AL
+0081b8ec MOV EAX,ECX
+0081b8ee MOV dword ptr [EBP + -0x4],ECX
+0081b8f1 MOV dword ptr [ECX + 0x4],0x0
+0081b8f8 MOV dword ptr [ECX + 0x8],0x0
+0081b8ff MOV byte ptr [ECX + 0xc],0x0
+0081b903 MOV dword ptr [ECX],0x127c98c
+0081b909 MOV ESP,EBP
+0081b90b POP EBP
+0081b90c RET 0x10

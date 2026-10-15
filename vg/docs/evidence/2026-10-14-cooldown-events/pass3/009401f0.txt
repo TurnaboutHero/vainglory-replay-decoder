@@ -1,0 +1,41 @@
+ENTRY 009401f0 BODY [[009401f0, 0094022d]]
+
+void __thiscall
+FUN_009401f0(int param_1,undefined4 *param_2,uint param_3,byte param_4,char param_5,char param_6)
+
+{
+  *(undefined4 *)(param_1 + 0x28) = *param_2;
+  *(uint *)(param_1 + 0x44) = *(uint *)(param_1 + 0x44) ^ (*(uint *)(param_1 + 0x44) ^ param_3) & 3;
+  *(byte *)(param_1 + 0x48) =
+       ((*(byte *)(param_1 + 0x48) & 0xfe | param_4) & 0xfd | param_5 * '\x02') & 0xfb |
+       param_6 << 2;
+  return;
+}
+
+
+
+INSTRUCTIONS
+009401f0 PUSH EBP
+009401f1 MOV EBP,ESP
+009401f3 MOV EAX,dword ptr [EBP + 0x8]
+009401f6 MOV EDX,ECX
+009401f8 MOV EAX,dword ptr [EAX]
+009401fa MOV CL,byte ptr [EDX + 0x48]
+009401fd MOV dword ptr [EDX + 0x28],EAX
+00940200 AND CL,0xfe
+00940203 MOV EAX,dword ptr [EDX + 0x44]
+00940206 XOR EAX,dword ptr [EBP + 0xc]
+00940209 OR CL,byte ptr [EBP + 0x10]
+0094020c AND EAX,0x3
+0094020f XOR dword ptr [EDX + 0x44],EAX
+00940212 AND CL,0xfd
+00940215 MOV AL,byte ptr [EBP + 0x14]
+00940218 ADD AL,AL
+0094021a OR CL,AL
+0094021c MOV AL,byte ptr [EBP + 0x18]
+0094021f AND CL,0xfb
+00940222 SHL AL,0x2
+00940225 OR CL,AL
+00940227 MOV byte ptr [EDX + 0x48],CL
+0094022a POP EBP
+0094022b RET 0x14

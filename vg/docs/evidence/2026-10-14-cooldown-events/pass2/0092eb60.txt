@@ -1,0 +1,57 @@
+ENTRY 0092eb60 BODY [[0092eb60, 0092ebb9]]
+
+void __fastcall FUN_0092eb60(int param_1)
+
+{
+  undefined4 *puVar1;
+  
+  puVar1 = (undefined4 *)func_0x00859670(0x20,4);
+  *puVar1 = &UNK_01215f08;
+  puVar1[1] = *(undefined4 *)(param_1 + 4);
+  puVar1[2] = *(undefined4 *)(param_1 + 8);
+  *(undefined1 *)(puVar1 + 3) = *(undefined1 *)(param_1 + 0xc);
+  *puVar1 = &UNK_0127ca18;
+  puVar1[4] = *(undefined4 *)(param_1 + 0x10);
+  puVar1[5] = *(undefined4 *)(param_1 + 0x14);
+  puVar1[6] = *(undefined4 *)(param_1 + 0x18);
+  *(undefined1 *)(puVar1 + 7) = *(undefined1 *)(param_1 + 0x1c);
+  func_0x0092f720(puVar1);
+  return;
+}
+
+
+
+INSTRUCTIONS
+0092eb60 PUSH EBP
+0092eb61 MOV EBP,ESP
+0092eb63 PUSH EBX
+0092eb64 PUSH ESI
+0092eb65 PUSH 0x4
+0092eb67 MOV EBX,ECX
+0092eb69 MOV ECX,dword ptr [EBP + 0x8]
+0092eb6c PUSH 0x20
+0092eb6e CALL 0x00859670
+0092eb73 MOV ESI,EAX
+0092eb75 PUSH ESI
+0092eb76 MOV dword ptr [ESI],0x1215f08
+0092eb7c MOV EDX,dword ptr [EBX + 0x4]
+0092eb7f MOV dword ptr [ESI + 0x4],EDX
+0092eb82 MOV ECX,dword ptr [EBX + 0x8]
+0092eb85 MOV dword ptr [ESI + 0x8],ECX
+0092eb88 MOV CL,byte ptr [EBX + 0xc]
+0092eb8b MOV byte ptr [ESI + 0xc],CL
+0092eb8e MOV ECX,dword ptr [EBP + 0x8]
+0092eb91 MOV dword ptr [ESI],0x127ca18
+0092eb97 MOV EDX,dword ptr [EBX + 0x10]
+0092eb9a MOV dword ptr [ESI + 0x10],EDX
+0092eb9d MOV EAX,dword ptr [EBX + 0x14]
+0092eba0 MOV dword ptr [ESI + 0x14],EAX
+0092eba3 MOV EAX,dword ptr [EBX + 0x18]
+0092eba6 MOV dword ptr [ESI + 0x18],EAX
+0092eba9 MOV AL,byte ptr [EBX + 0x1c]
+0092ebac MOV byte ptr [ESI + 0x1c],AL
+0092ebaf CALL 0x0092f720
+0092ebb4 POP ESI
+0092ebb5 POP EBX
+0092ebb6 POP EBP
+0092ebb7 RET 0x4

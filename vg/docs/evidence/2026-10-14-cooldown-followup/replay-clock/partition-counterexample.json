@@ -1,0 +1,44 @@
+{
+  "scope": "Synthetic witnesses only; no game execution",
+  "dispatch_boundary": {
+    "record_timestamp": 0.125,
+    "previous_published_delta": 0.25,
+    "cursor_before": 0.0,
+    "cursor_after": 0.25,
+    "set_remaining": 1.0,
+    "trace_a_current_delta": 0.125,
+    "trace_b_current_delta": 0.25,
+    "trace_a_after_tick": {
+      "remaining": 0.875,
+      "bits": "3f600000"
+    },
+    "trace_b_after_tick": {
+      "remaining": 0.75,
+      "bits": "3f400000"
+    },
+    "interpretation": "Both frames admit the same record, because pump uses previous published delta. The existing, unpaused timer, set to 1 by an admitted action before stage 4, then sees different current delta. Record timestamp and record order alone cannot select the post-tick remaining value."
+  },
+  "equal_total_float32": {
+    "initial": 1.0,
+    "trace_a_deltas": [
+      2.9802322387695312e-08,
+      2.9802322387695312e-08,
+      2.9802322387695312e-08,
+      2.9802322387695312e-08
+    ],
+    "trace_b_deltas": [
+      1.1920928955078125e-07
+    ],
+    "sum_a": 1.1920928955078125e-07,
+    "sum_b": 1.1920928955078125e-07,
+    "trace_a": {
+      "remaining": 1.0,
+      "bits": "3f800000"
+    },
+    "trace_b": {
+      "remaining": 0.9999998807907104,
+      "bits": "3f7ffffe"
+    },
+    "interpretation": "Even an exact known summed delta does not encode the number and partition of float32 stores. Tiny dyadic values deliberately isolate rounding, not typical frame timing."
+  }
+}

@@ -1,0 +1,20 @@
+ENTRY 00536790 BODY [[00536790, 0053679d]]
+
+void FUN_00536790(undefined4 *param_1)
+
+{
+  (**(code **)*param_1)(0);
+  return;
+}
+
+
+
+INSTRUCTIONS
+00536790 PUSH EBP
+00536791 MOV EBP,ESP
+00536793 MOV ECX,dword ptr [EBP + 0x8]
+00536796 PUSH 0x0
+00536798 MOV EAX,dword ptr [ECX]
+0053679a CALL dword ptr [EAX]
+0053679c POP EBP
+0053679d RET

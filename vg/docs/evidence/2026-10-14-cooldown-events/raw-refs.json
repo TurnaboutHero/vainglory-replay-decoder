@@ -1,0 +1,91 @@
+{
+  "0x121d898": {
+    "string": "onPlayAbility",
+    "absolute_refs": [
+      "0x551b83",
+      "0x5982c3",
+      "0x598ea7",
+      "0x94f0c6",
+      "0x9528a5",
+      "0x952a03",
+      "0x952c03",
+      "0x952d84"
+    ]
+  },
+  "0x121d8a8": {
+    "string": "onCooldownModified",
+    "absolute_refs": [
+      "0x551be3",
+      "0x95cfb4"
+    ]
+  },
+  "0x121d8bc": {
+    "string": "onCooldownEnded",
+    "absolute_refs": [
+      "0x551c23",
+      "0x954913",
+      "0x954be3",
+      "0x95ce65"
+    ]
+  },
+  "0x128ec04": {
+    "string": "onCooldownStarted",
+    "absolute_refs": [
+      "0x954853",
+      "0x954b23",
+      "0x95cd88",
+      "0x961497"
+    ]
+  },
+  "0x95cf10": {
+    "raw_e8_candidates": [
+      "0x52af38",
+      "0x94331f",
+      "0x945d44",
+      "0x945dc2"
+    ]
+  },
+  "0x95cd10": {
+    "raw_e8_candidates": [
+      "0x52af44",
+      "0x93343b",
+      "0x93f65a",
+      "0x93ff35",
+      "0x94f19c",
+      "0x94f1bd",
+      "0x9519e0",
+      "0x9542ac",
+      "0x95d0e6",
+      "0x95d115",
+      "0x9618a4",
+      "0x962a65"
+    ]
+  },
+  "0x9613b0": {
+    "raw_e8_candidates": [
+      "0x93344d",
+      "0x93cfdb",
+      "0x95c514",
+      "0x95d127"
+    ]
+  },
+  "0x956380": {
+    "raw_e8_candidates": [
+      "0x9519e7",
+      "0x95d0ed"
+    ]
+  },
+  "0x93d4a0": {
+    "raw_e8_candidates": [
+      "0x936a1c",
+      "0x936e37",
+      "0x938417",
+      "0x93c867",
+      "0x945d76",
+      "0x952687",
+      "0x956387",
+      "0x95cf1c",
+      "0x9613cc"
+    ]
+  }
+}

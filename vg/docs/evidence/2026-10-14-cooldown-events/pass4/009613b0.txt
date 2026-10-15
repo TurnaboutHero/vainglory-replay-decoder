@@ -1,0 +1,244 @@
+ENTRY 009613b0 BODY [[009613b0, 00961572]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __thiscall FUN_009613b0(int param_1,undefined4 param_2)
+
+{
+  char *pcVar1;
+  char cVar2;
+  int iVar3;
+  int *piVar4;
+  uint uVar5;
+  uint uVar6;
+  uint uVar7;
+  uint uVar8;
+  uint uVar9;
+  uint uVar10;
+  uint uVar11;
+  uint uVar12;
+  
+  if (*(float *)(param_1 + 0x2c) < _DAT_01213f98) {
+    return;
+  }
+  cVar2 = func_0x0093d4a0();
+  if (cVar2 != '\0') goto LAB_0096147a;
+  iVar3 = func_0x01129d20(_DAT_0209133c);
+  if (iVar3 == 0) {
+    piVar4 = (int *)0x0;
+LAB_00961406:
+    *(int **)(param_1 + 0x20) = piVar4;
+    iVar3 = _DAT_020ec6fc;
+  }
+  else {
+    piVar4 = (int *)(iVar3 + 0x14);
+    if ((piVar4 == (int *)0x0) || (*(int *)(iVar3 + 0x18) == _DAT_020ec6fc)) goto LAB_00961406;
+    *(int **)(param_1 + 0x20) = piVar4;
+    iVar3 = *(int *)(iVar3 + 0x18);
+  }
+  *(int *)(param_1 + 0x24) = iVar3;
+  if (piVar4 == (int *)0x0) {
+    return;
+  }
+  if (iVar3 != piVar4[1]) {
+    *(undefined4 *)(param_1 + 0x20) = 0;
+    *(int *)(param_1 + 0x24) = _DAT_020ec6fc;
+    return;
+  }
+  iVar3 = (**(code **)(*piVar4 + 8))();
+  if (iVar3 == 0) {
+    return;
+  }
+  piVar4 = *(int **)(param_1 + 0x20);
+  if (piVar4 == (int *)0x0) {
+LAB_00961463:
+    iVar3 = 0;
+  }
+  else {
+    if (*(int *)(param_1 + 0x24) != piVar4[1]) {
+      *(undefined4 *)(param_1 + 0x20) = 0;
+      *(int *)(param_1 + 0x24) = _DAT_020ec6fc;
+      goto LAB_00961463;
+    }
+    iVar3 = (**(code **)(*piVar4 + 8))();
+  }
+  *(undefined4 *)(iVar3 + 0x20) = param_2;
+  *(undefined4 *)(iVar3 + 0x24) = param_2;
+  *(int *)(iVar3 + 0x1c) = param_1 + 0x1c;
+LAB_0096147a:
+  if (*(char *)(param_1 + 0x42) == '\0') {
+    uVar12 = 0;
+    uVar5 = 1;
+    uVar11 = 0;
+    do {
+      uVar6 = ((int)(char)(&UNK_0128ec04)[uVar11] + uVar5) % 0xfff1;
+      uVar7 = ((int)(char)(&UNK_0128ec05)[uVar11] + uVar6) % 0xfff1;
+      uVar8 = ((int)(char)(&UNK_0128ec06)[uVar11] + uVar7) % 0xfff1;
+      uVar9 = ((int)(char)(&UNK_0128ec07)[uVar11] + uVar8) % 0xfff1;
+      uVar10 = ((int)(char)(&UNK_0128ec08)[uVar11] + uVar9) % 0xfff1;
+      pcVar1 = &UNK_0128ec09 + uVar11;
+      uVar11 = uVar11 + 6;
+      uVar5 = ((int)*pcVar1 + uVar10) % 0xfff1;
+      uVar12 = ((((((uVar12 + uVar6) % 0xfff1 + uVar7) % 0xfff1 + uVar8) % 0xfff1 + uVar9) % 0xfff1
+                + uVar10) % 0xfff1 + uVar5) % 0xfff1;
+    } while (uVar11 < 0x12);
+    FUN_00536dd0(0,1,uVar12 << 0x10 | uVar5,param_1);
+  }
+  return;
+}
+
+
+
+INSTRUCTIONS
+009613b0 PUSH EBP
+009613b1 MOV EBP,ESP
+009613b3 PUSH ECX
+009613b4 PUSH EDI
+009613b5 MOV EDI,ECX
+009613b7 MOV dword ptr [EBP + -0x4],EDI
+009613ba MOVSS XMM0,dword ptr [EDI + 0x2c]
+009613bf COMISS XMM0,dword ptr [0x01213f98]
+009613c6 JC 0x00961560
+009613cc CALL 0x0093d4a0
+009613d1 TEST AL,AL
+009613d3 JNZ 0x0096147a
+009613d9 PUSH dword ptr [0x0209133c]
+009613df MOV ECX,EDI
+009613e1 CALL 0x01129d20
+009613e6 TEST EAX,EAX
+009613e8 JZ 0x00961404
+009613ea LEA ECX,[EAX + 0x14]
+009613ed TEST ECX,ECX
+009613ef JZ 0x00961406
+009613f1 MOV EAX,dword ptr [ECX + 0x4]
+009613f4 CMP EAX,dword ptr [0x020ec6fc]
+009613fa JZ 0x00961406
+009613fc MOV dword ptr [EDI + 0x20],ECX
+009613ff MOV EAX,dword ptr [ECX + 0x4]
+00961402 JMP 0x0096140e
+00961404 XOR ECX,ECX
+00961406 MOV dword ptr [EDI + 0x20],ECX
+00961409 MOV EAX,[0x020ec6fc]
+0096140e MOV dword ptr [EDI + 0x24],EAX
+00961411 TEST ECX,ECX
+00961413 JZ 0x00961560
+00961419 CMP EAX,dword ptr [ECX + 0x4]
+0096141c JZ 0x00961434
+0096141e MOV dword ptr [EDI + 0x20],0x0
+00961425 MOV EAX,[0x020ec6fc]
+0096142a MOV dword ptr [EDI + 0x24],EAX
+0096142d POP EDI
+0096142e MOV ESP,EBP
+00961430 POP EBP
+00961431 RET 0x4
+00961434 MOV EAX,dword ptr [ECX]
+00961436 CALL dword ptr [EAX + 0x8]
+00961439 TEST EAX,EAX
+0096143b JZ 0x00961560
+00961441 MOV ECX,dword ptr [EDI + 0x20]
+00961444 TEST ECX,ECX
+00961446 JZ 0x00961463
+00961448 MOV EAX,dword ptr [EDI + 0x24]
+0096144b CMP EAX,dword ptr [ECX + 0x4]
+0096144e JZ 0x00961567
+00961454 MOV dword ptr [EDI + 0x20],0x0
+0096145b MOV EAX,[0x020ec6fc]
+00961460 MOV dword ptr [EDI + 0x24],EAX
+00961463 XOR ECX,ECX
+00961465 MOVSS XMM0,dword ptr [EBP + 0x8]
+0096146a LEA EAX,[EDI + 0x1c]
+0096146d MOVSS dword ptr [ECX + 0x20],XMM0
+00961472 MOVSS dword ptr [ECX + 0x24],XMM0
+00961477 MOV dword ptr [ECX + 0x1c],EAX
+0096147a CMP byte ptr [EDI + 0x42],0x0
+0096147e JA 0x00961560
+00961484 PUSH EBX
+00961485 PUSH ESI
+00961486 XOR ESI,ESI
+00961488 MOV ECX,0x1
+0096148d XOR EBX,EBX
+0096148f MOV EDI,0xfff1
+00961494 MOVSX EAX,byte ptr [EBX + 0x128ec04]
+0096149b XOR EDX,EDX
+0096149d ADD EAX,ECX
+0096149f DIV EDI
+009614a1 MOV ECX,EDX
+009614a3 XOR EDX,EDX
+009614a5 LEA EAX,[ESI + ECX*0x1]
+009614a8 DIV EDI
+009614aa MOVSX EAX,byte ptr [EBX + 0x128ec05]
+009614b1 ADD EAX,ECX
+009614b3 MOV ESI,EDX
+009614b5 XOR EDX,EDX
+009614b7 DIV EDI
+009614b9 MOV ECX,EDX
+009614bb XOR EDX,EDX
+009614bd LEA EAX,[ESI + ECX*0x1]
+009614c0 DIV EDI
+009614c2 MOVSX EAX,byte ptr [EBX + 0x128ec06]
+009614c9 ADD EAX,ECX
+009614cb MOV ESI,EDX
+009614cd XOR EDX,EDX
+009614cf DIV EDI
+009614d1 MOV ECX,EDX
+009614d3 XOR EDX,EDX
+009614d5 LEA EAX,[ESI + ECX*0x1]
+009614d8 DIV EDI
+009614da MOVSX EAX,byte ptr [EBX + 0x128ec07]
+009614e1 ADD EAX,ECX
+009614e3 MOV ESI,EDX
+009614e5 XOR EDX,EDX
+009614e7 DIV EDI
+009614e9 MOV ECX,EDX
+009614eb XOR EDX,EDX
+009614ed LEA EAX,[ESI + ECX*0x1]
+009614f0 DIV EDI
+009614f2 MOVSX EAX,byte ptr [EBX + 0x128ec08]
+009614f9 MOV ESI,EDX
+009614fb ADD EAX,ECX
+009614fd XOR EDX,EDX
+009614ff DIV EDI
+00961501 MOV ECX,EDX
+00961503 XOR EDX,EDX
+00961505 LEA EAX,[ESI + ECX*0x1]
+00961508 DIV EDI
+0096150a MOVSX EAX,byte ptr [EBX + 0x128ec09]
+00961511 ADD EBX,0x6
+00961514 MOV ESI,EDX
+00961516 ADD EAX,ECX
+00961518 XOR EDX,EDX
+0096151a DIV EDI
+0096151c MOV ECX,EDX
+0096151e XOR EDX,EDX
+00961520 LEA EAX,[ESI + ECX*0x1]
+00961523 DIV EDI
+00961525 MOV ESI,EDX
+00961527 CMP EBX,0x12
+0096152a JC 0x00961494
+00961530 MOV EDI,dword ptr [EBP + -0x4]
+00961533 MOV dword ptr [EBP + 0x8],ECX
+00961536 MOV ECX,dword ptr [EDI + 0x8]
+00961539 TEST ECX,ECX
+0096153b JZ 0x0096154b
+0096153d MOV EAX,dword ptr [ECX + 0x4]
+00961540 MOV EAX,dword ptr [EAX + 0x54]
+00961543 CMP EAX,dword ptr [0x01e6ee20]
+00961549 JZ 0x0096154d
+0096154b XOR ECX,ECX
+0096154d PUSH EDI
+0096154e SHL ESI,0x10
+00961551 OR ESI,dword ptr [EBP + 0x8]
+00961554 PUSH ESI
+00961555 PUSH 0x1
+00961557 PUSH 0x0
+00961559 CALL 0x00536dd0
+0096155e POP ESI
+0096155f POP EBX
+00961560 POP EDI
+00961561 MOV ESP,EBP
+00961563 POP EBP
+00961564 RET 0x4
+00961567 MOV EAX,dword ptr [ECX]
+00961569 CALL dword ptr [EAX + 0x8]
+0096156c MOV ECX,EAX
+0096156e JMP 0x00961465

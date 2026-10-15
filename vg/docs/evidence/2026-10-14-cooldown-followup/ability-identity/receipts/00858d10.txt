@@ -1,0 +1,179 @@
+ENTRY 00858d10 BODY [[00858d10, 00858e1c]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __thiscall FUN_00858d10(int param_1,char *param_2,char *param_3)
+
+{
+  char cVar1;
+  uint uVar2;
+  int iVar3;
+  undefined4 uVar4;
+  char *pcVar5;
+  int *piVar6;
+  uint uVar7;
+  uint uVar8;
+  
+  pcVar5 = param_2;
+  if (param_3 != (char *)0x0) {
+    pcVar5 = param_3;
+  }
+  if (pcVar5 == (char *)0x0) {
+    uVar2 = 0;
+  }
+  else {
+    uVar2 = 0x811c9dc5;
+    cVar1 = *pcVar5;
+    while (cVar1 != '\0') {
+      pcVar5 = pcVar5 + 1;
+      uVar2 = ((int)cVar1 ^ uVar2) * 0x1000193;
+      cVar1 = *pcVar5;
+    }
+  }
+  uVar8 = 0;
+  if (*(byte *)(param_1 + 0x164) != 0) {
+    piVar6 = (int *)(param_1 + 0x28);
+    do {
+      pcVar5 = *(char **)(*piVar6 + 0x128);
+      if (pcVar5 == (char *)0x0) {
+        iVar3 = *(int *)(*piVar6 + 0x1c);
+        if (iVar3 == 0) {
+          pcVar5 = "<null>";
+          goto LAB_00858d86;
+        }
+        pcVar5 = *(char **)(iVar3 + 4);
+        if (pcVar5 != (char *)0x0) goto LAB_00858d86;
+        uVar7 = 0;
+      }
+      else {
+LAB_00858d86:
+        uVar7 = 0x811c9dc5;
+        cVar1 = *pcVar5;
+        while (cVar1 != '\0') {
+          pcVar5 = pcVar5 + 1;
+          uVar7 = ((int)cVar1 ^ uVar7) * 0x1000193;
+          cVar1 = *pcVar5;
+        }
+      }
+      if (uVar2 == uVar7) {
+        return;
+      }
+      uVar8 = uVar8 + 1;
+      piVar6 = piVar6 + 1;
+    } while (uVar8 < *(byte *)(param_1 + 0x164));
+  }
+  func_0x0112a790(0,param_2,0);
+  iVar3 = func_0x0112ab50();
+  if ((iVar3 != 0) && (*(char *)(param_1 + 0x164) != '\x14')) {
+    uVar4 = FUN_01129d20(_DAT_020e9d20);
+    FUN_0093f270(iVar3,param_1,param_3);
+    if (*(char *)(iVar3 + 0x6a) != '\0') {
+      *(uint *)(param_1 + 0x160) = (uint)*(byte *)(param_1 + 0x164);
+    }
+    *(undefined4 *)(param_1 + 0x28 + (uint)*(byte *)(param_1 + 0x164) * 4) = uVar4;
+    *(char *)(param_1 + 0x164) = *(char *)(param_1 + 0x164) + '\x01';
+  }
+  return;
+}
+
+
+
+INSTRUCTIONS
+00858d10 PUSH EBP
+00858d11 MOV EBP,ESP
+00858d13 SUB ESP,0x8
+00858d16 MOV EAX,dword ptr [EBP + 0xc]
+00858d19 TEST EAX,EAX
+00858d1b MOV EDX,dword ptr [EBP + 0x8]
+00858d1e PUSH EBX
+00858d1f CMOVNZ EDX,EAX
+00858d22 MOV EBX,ECX
+00858d24 MOV dword ptr [EBP + -0x8],EBX
+00858d27 PUSH ESI
+00858d28 PUSH EDI
+00858d29 TEST EDX,EDX
+00858d2b JZ 0x00858d4e
+00858d2d MOV CL,byte ptr [EDX]
+00858d2f MOV EAX,0x811c9dc5
+00858d34 TEST CL,CL
+00858d36 JZ 0x00858d50
+00858d38 MOVSX ECX,CL
+00858d3b LEA EDX,[EDX + 0x1]
+00858d3e XOR ECX,EAX
+00858d40 IMUL EAX,ECX,0x1000193
+00858d46 MOV CL,byte ptr [EDX]
+00858d48 TEST CL,CL
+00858d4a JNZ 0x00858d38
+00858d4c JMP 0x00858d50
+00858d4e XOR EAX,EAX
+00858d50 MOVZX ECX,byte ptr [EBX + 0x164]
+00858d57 XOR EDI,EDI
+00858d59 MOV dword ptr [EBP + -0x4],ECX
+00858d5c TEST ECX,ECX
+00858d5e JZ 0x00858db5
+00858d60 ADD EBX,0x28
+00858d63 MOV EDX,dword ptr [EBX]
+00858d65 MOV ECX,dword ptr [EDX + 0x128]
+00858d6b TEST ECX,ECX
+00858d6d JNZ 0x00858d86
+00858d6f MOV ECX,dword ptr [EDX + 0x1c]
+00858d72 TEST ECX,ECX
+00858d74 JZ 0x00858d81
+00858d76 MOV ECX,dword ptr [ECX + 0x4]
+00858d79 TEST ECX,ECX
+00858d7b JNZ 0x00858d86
+00858d7d XOR ESI,ESI
+00858d7f JMP 0x00858da5
+00858d81 MOV ECX,0x128ec24
+00858d86 MOV DL,byte ptr [ECX]
+00858d88 MOV ESI,0x811c9dc5
+00858d8d TEST DL,DL
+00858d8f JZ 0x00858da5
+00858d91 MOVSX EDX,DL
+00858d94 LEA ECX,[ECX + 0x1]
+00858d97 XOR EDX,ESI
+00858d99 IMUL ESI,EDX,0x1000193
+00858d9f MOV DL,byte ptr [ECX]
+00858da1 TEST DL,DL
+00858da3 JNZ 0x00858d91
+00858da5 CMP EAX,ESI
+00858da7 JZ 0x00858e14
+00858da9 INC EDI
+00858daa ADD EBX,0x4
+00858dad CMP EDI,dword ptr [EBP + -0x4]
+00858db0 JC 0x00858d63
+00858db2 MOV EBX,dword ptr [EBP + -0x8]
+00858db5 PUSH 0x0
+00858db7 PUSH dword ptr [EBP + 0x8]
+00858dba PUSH 0x0
+00858dbc CALL 0x0112a790
+00858dc1 MOV ECX,EAX
+00858dc3 CALL 0x0112ab50
+00858dc8 MOV ESI,EAX
+00858dca TEST ESI,ESI
+00858dcc JZ 0x00858e14
+00858dce CMP byte ptr [EBX + 0x164],0x14
+00858dd5 JZ 0x00858e14
+00858dd7 PUSH dword ptr [0x020e9d20]
+00858ddd MOV ECX,EBX
+00858ddf CALL 0x01129d20
+00858de4 PUSH dword ptr [EBP + 0xc]
+00858de7 MOV EDI,EAX
+00858de9 PUSH EBX
+00858dea PUSH ESI
+00858deb MOV ECX,EDI
+00858ded CALL 0x0093f270
+00858df2 CMP byte ptr [ESI + 0x6a],0x0
+00858df6 MOV CL,byte ptr [EBX + 0x164]
+00858dfc JZ 0x00858e07
+00858dfe MOVZX EAX,CL
+00858e01 MOV dword ptr [EBX + 0x160],EAX
+00858e07 MOVZX EAX,CL
+00858e0a MOV dword ptr [EBX + EAX*0x4 + 0x28],EDI
+00858e0e INC byte ptr [EBX + 0x164]
+00858e14 POP EDI
+00858e15 POP ESI
+00858e16 POP EBX
+00858e17 MOV ESP,EBP
+00858e19 POP EBP
+00858e1a RET 0x8

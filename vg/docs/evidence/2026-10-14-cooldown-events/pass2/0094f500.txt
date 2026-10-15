@@ -1,0 +1,124 @@
+ENTRY 0094f500 BODY [[00945cc0, 00945d6d] [0094f500, 0094f50d]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_0094f500(void)
+
+{
+  int iVar1;
+  uint uVar2;
+  int extraout_ECX;
+  uint uVar3;
+  int aiStack_12c8 [1195];
+  undefined4 uStack_1c;
+  int *piStack_18;
+  undefined4 uStack_14;
+  undefined4 uStack_10;
+  
+  if (DAT_0209e204 != '\0') {
+    return;
+  }
+  func_0x011b8a10();
+  uStack_10 = 0x945ce2;
+  iVar1 = func_0x00857970();
+  if (iVar1 != 0) {
+    uStack_10 = _DAT_01ef0b3c;
+    iVar1 = *(int *)(extraout_ECX + 0x14);
+    piStack_18 = aiStack_12c8;
+    uStack_14 = 0x4b0;
+    uStack_1c = 0x945d06;
+    uVar2 = func_0x0112a700();
+    uVar3 = 0;
+    if (uVar2 != 0) {
+      while (*(int *)(aiStack_12c8[uVar3] + 0x28) != iVar1) {
+        uVar3 = uVar3 + 1;
+        if (uVar2 <= uVar3) {
+          func_0x011b8440();
+          return;
+        }
+      }
+      uStack_10 = *(undefined4 *)(extraout_ECX + 0x18);
+      if (*(char *)(extraout_ECX + 0x1c) != '\0') {
+        uStack_14 = 0x945d49;
+        func_0x0095cf10();
+        func_0x011b8440();
+        return;
+      }
+      uStack_14 = 0x945d5e;
+      func_0x00945d70();
+    }
+  }
+  func_0x011b8440();
+  return;
+}
+
+
+
+INSTRUCTIONS
+00945cc0 PUSH EBP
+00945cc1 MOV EBP,ESP
+00945cc3 MOV EAX,0x12c4
+00945cc8 CALL 0x011b8a10
+00945ccd MOV EAX,[0x01e44f28]
+00945cd2 XOR EAX,EBP
+00945cd4 MOV dword ptr [EBP + -0x4],EAX
+00945cd7 PUSH EDI
+00945cd8 MOV EDI,ECX
+00945cda PUSH dword ptr [EDI + 0x10]
+00945cdd CALL 0x00857970
+00945ce2 ADD ESP,0x4
+00945ce5 TEST EAX,EAX
+00945ce7 JZ 0x00945d5f
+00945ce9 PUSH ESI
+00945cea PUSH dword ptr [0x01ef0b3c]
+00945cf0 MOV ESI,dword ptr [EDI + 0x14]
+00945cf3 LEA ECX,[EBP + 0xffffed3c]
+00945cf9 PUSH 0x4b0
+00945cfe PUSH ECX
+00945cff MOV ECX,EAX
+00945d01 CALL 0x0112a700
+00945d06 XOR ECX,ECX
+00945d08 TEST EAX,EAX
+00945d0a JZ 0x00945d5e
+00945d0c NOP dword ptr [EAX]
+00945d10 MOV EDX,dword ptr [EBP + ECX*0x4 + 0xffffed3c]
+00945d17 CMP dword ptr [EDX + 0x28],ESI
+00945d1a JZ 0x00945d31
+00945d1c INC ECX
+00945d1d CMP ECX,EAX
+00945d1f JC 0x00945d10
+00945d21 POP ESI
+00945d22 POP EDI
+00945d23 MOV ECX,dword ptr [EBP + -0x4]
+00945d26 XOR ECX,EBP
+00945d28 CALL 0x011b8440
+00945d2d MOV ESP,EBP
+00945d2f POP EBP
+00945d30 RET
+00945d31 CMP byte ptr [EDI + 0x1c],0x0
+00945d35 MOVSS XMM0,dword ptr [EDI + 0x18]
+00945d3a PUSH ECX
+00945d3b MOVSS dword ptr [ESP],XMM0
+00945d40 MOV ECX,EDX
+00945d42 JZ 0x00945d59
+00945d44 CALL 0x0095cf10
+00945d49 POP ESI
+00945d4a POP EDI
+00945d4b MOV ECX,dword ptr [EBP + -0x4]
+00945d4e XOR ECX,EBP
+00945d50 CALL 0x011b8440
+00945d55 MOV ESP,EBP
+00945d57 POP EBP
+00945d58 RET
+00945d59 CALL 0x00945d70
+00945d5e POP ESI
+00945d5f MOV ECX,dword ptr [EBP + -0x4]
+00945d62 XOR ECX,EBP
+00945d64 POP EDI
+00945d65 CALL 0x011b8440
+00945d6a MOV ESP,EBP
+00945d6c POP EBP
+00945d6d RET
+0094f500 CMP byte ptr [0x0209e204],0x0
+0094f507 JZ 0x00945cc0
+0094f50d RET

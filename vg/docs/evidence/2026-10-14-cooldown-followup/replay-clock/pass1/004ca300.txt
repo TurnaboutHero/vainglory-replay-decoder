@@ -1,0 +1,13 @@
+ENTRY 004ca300 BODY [[004ca300, 004ca305]]
+
+undefined1 FUN_004ca300(void)
+
+{
+  return DAT_01ef0b2d;
+}
+
+
+
+INSTRUCTIONS
+004ca300 MOV AL,[0x01ef0b2d]
+004ca305 RET

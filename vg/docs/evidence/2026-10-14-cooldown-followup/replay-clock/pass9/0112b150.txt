@@ -1,0 +1,19 @@
+ENTRY 0112b150 BODY [[0112b150, 0112b161]]
+
+void FUN_0112b150(int param_1,undefined4 param_2)
+
+{
+  *(undefined4 *)(&DAT_020ec834 + param_1 * 4) = param_2;
+  return;
+}
+
+
+
+INSTRUCTIONS
+0112b150 PUSH EBP
+0112b151 MOV EBP,ESP
+0112b153 MOV EAX,dword ptr [EBP + 0x8]
+0112b156 MOV ECX,dword ptr [EBP + 0xc]
+0112b159 MOV dword ptr [EAX*0x4 + 0x20ec834],ECX
+0112b160 POP EBP
+0112b161 RET

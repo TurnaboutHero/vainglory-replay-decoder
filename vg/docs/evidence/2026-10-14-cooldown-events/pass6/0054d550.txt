@@ -1,0 +1,24 @@
+ENTRY 0054d550 BODY [[0054d550, 0054d574]]
+
+void FUN_0054d550(undefined4 param_1,undefined4 param_2,double param_3)
+
+{
+  func_0x005b9930(param_2,(float)param_3);
+  return;
+}
+
+
+
+INSTRUCTIONS
+0054d550 PUSH EBP
+0054d551 MOV EBP,ESP
+0054d553 MOVSD XMM0,qword ptr [EBP + 0x10]
+0054d558 CVTPD2PS XMM0,XMM0
+0054d55c PUSH ECX
+0054d55d MOV ECX,dword ptr [EBP + 0x8]
+0054d560 LEA ECX,[ECX + 0x1e8]
+0054d566 MOVSS dword ptr [ESP],XMM0
+0054d56b PUSH dword ptr [EBP + 0xc]
+0054d56e CALL 0x005b9930
+0054d573 POP EBP
+0054d574 RET

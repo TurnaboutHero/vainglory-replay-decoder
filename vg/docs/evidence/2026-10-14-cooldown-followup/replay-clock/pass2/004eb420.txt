@@ -1,0 +1,16 @@
+ENTRY 004eb420 BODY [[004eb420, 004eb428]]
+
+undefined4 __fastcall FUN_004eb420(int param_1)
+
+{
+  *(undefined4 *)(param_1 + 4) = *(undefined4 *)(param_1 + 8);
+  return CONCAT31((int3)((uint)*(undefined4 *)(param_1 + 8) >> 8),1);
+}
+
+
+
+INSTRUCTIONS
+004eb420 MOV EAX,dword ptr [ECX + 0x8]
+004eb423 MOV dword ptr [ECX + 0x4],EAX
+004eb426 MOV AL,0x1
+004eb428 RET

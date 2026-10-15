@@ -1,0 +1,94 @@
+ENTRY 005a6b40 BODY [[005a6b40, 005a6bce]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+uint __thiscall FUN_005a6b40(int param_1,int param_2)
+
+{
+  int iVar1;
+  int *piVar2;
+  uint uVar3;
+  
+  piVar2 = *(int **)(param_1 + 0xe8);
+  if (piVar2 != (int *)0x0) {
+    if (*(int *)(param_1 + 0xec) == piVar2[1]) {
+      piVar2 = (int *)(**(code **)(*piVar2 + 8))();
+      goto LAB_005a6b73;
+    }
+    *(undefined4 *)(param_1 + 0xe8) = 0;
+    *(undefined4 *)(param_1 + 0xec) = _DAT_020ec6fc;
+  }
+  piVar2 = (int *)0x0;
+LAB_005a6b73:
+  iVar1 = piVar2[3];
+  do {
+    if (iVar1 == 0) {
+LAB_005a6b8f:
+      return (uint)piVar2 & 0xffffff00;
+    }
+    piVar2 = *(int **)(iVar1 + 4);
+    if (piVar2[0x15] == _DAT_01ef397c) {
+      piVar2 = (int *)func_0x00936950(*(undefined4 *)(param_1 + 0x16b0));
+      if (*(int *)(param_2 + 0x28) == *piVar2) {
+        uVar3 = func_0x00936780(*(undefined4 *)(param_1 + 0x16b0));
+        return CONCAT31((int3)((uVar3 & 0xffffff0c) >> 8),(char)(uVar3 & 0xffffff0c) == '\x04');
+      }
+      goto LAB_005a6b8f;
+    }
+    iVar1 = *(int *)(iVar1 + 0x10);
+  } while( true );
+}
+
+
+
+INSTRUCTIONS
+005a6b40 PUSH EBP
+005a6b41 MOV EBP,ESP
+005a6b43 PUSH ESI
+005a6b44 PUSH EDI
+005a6b45 MOV EDI,ECX
+005a6b47 MOV ECX,dword ptr [EDI + 0xe8]
+005a6b4d TEST ECX,ECX
+005a6b4f JZ 0x005a6b71
+005a6b51 MOV EAX,dword ptr [EDI + 0xec]
+005a6b57 CMP EAX,dword ptr [ECX + 0x4]
+005a6b5a JZ 0x005a6b97
+005a6b5c MOV dword ptr [EDI + 0xe8],0x0
+005a6b66 MOV EAX,[0x020ec6fc]
+005a6b6b MOV dword ptr [EDI + 0xec],EAX
+005a6b71 XOR EAX,EAX
+005a6b73 MOV ESI,dword ptr [EAX + 0xc]
+005a6b76 TEST ESI,ESI
+005a6b78 JZ 0x005a6b8f
+005a6b7a MOV ECX,dword ptr [0x01ef397c]
+005a6b80 MOV EAX,dword ptr [ESI + 0x4]
+005a6b83 CMP dword ptr [EAX + 0x54],ECX
+005a6b86 JZ 0x005a6b9e
+005a6b88 MOV ESI,dword ptr [ESI + 0x10]
+005a6b8b TEST ESI,ESI
+005a6b8d JNZ 0x005a6b80
+005a6b8f POP EDI
+005a6b90 XOR AL,AL
+005a6b92 POP ESI
+005a6b93 POP EBP
+005a6b94 RET 0x4
+005a6b97 MOV EAX,dword ptr [ECX]
+005a6b99 CALL dword ptr [EAX + 0x8]
+005a6b9c JMP 0x005a6b73
+005a6b9e PUSH dword ptr [EDI + 0x16b0]
+005a6ba4 MOV ECX,ESI
+005a6ba6 CALL 0x00936950
+005a6bab MOV ECX,dword ptr [EBP + 0x8]
+005a6bae MOV ECX,dword ptr [ECX + 0x28]
+005a6bb1 CMP ECX,dword ptr [EAX]
+005a6bb3 JNZ 0x005a6b8f
+005a6bb5 PUSH dword ptr [EDI + 0x16b0]
+005a6bbb MOV ECX,ESI
+005a6bbd CALL 0x00936780
+005a6bc2 AND AL,0xc
+005a6bc4 CMP AL,0x4
+005a6bc6 POP EDI
+005a6bc7 SETZ AL
+005a6bca POP ESI
+005a6bcb POP EBP
+005a6bcc RET 0x4

@@ -1,0 +1,30 @@
+ENTRY 004eab50 BODY [[004eab50, 004eab6a]]
+
+undefined1 __fastcall FUN_004eab50(int param_1)
+
+{
+  char cVar1;
+  
+  cVar1 = func_0x004cd970();
+  if (cVar1 != '\0') {
+    *(undefined4 *)(param_1 + 4) = 1;
+    return 1;
+  }
+  return 0;
+}
+
+
+
+INSTRUCTIONS
+004eab50 PUSH ESI
+004eab51 MOV ESI,ECX
+004eab53 CALL 0x004cd970
+004eab58 TEST AL,AL
+004eab5a JZ 0x004eab67
+004eab5c MOV dword ptr [ESI + 0x4],0x1
+004eab63 MOV AL,0x1
+004eab65 POP ESI
+004eab66 RET
+004eab67 XOR AL,AL
+004eab69 POP ESI
+004eab6a RET

@@ -1,0 +1,15 @@
+ENTRY 0112a7a0 BODY [[0112a7a0, 0112a7a6]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+float10 FUN_0112a7a0(void)
+
+{
+  return (float10)_DAT_020ec6d0;
+}
+
+
+
+INSTRUCTIONS
+0112a7a0 FLD float ptr [0x020ec6d0]
+0112a7a6 RET

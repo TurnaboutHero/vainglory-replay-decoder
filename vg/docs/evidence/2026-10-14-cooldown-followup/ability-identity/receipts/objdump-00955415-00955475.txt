@@ -1,0 +1,19 @@
+  955415:	8b 8e 48 a3 00 00    	mov    0xa348(%esi),%ecx
+  95541b:	ba b0 04 00 00       	mov    $0x4b0,%edx
+  955420:	bf 01 00 00 00       	mov    $0x1,%edi
+  955425:	68 f0 2d 94 00       	push   $0x942df0
+  95542a:	8d 41 01             	lea    0x1(%ecx),%eax
+  95542d:	89 86 48 a3 00 00    	mov    %eax,0xa348(%esi)
+  955433:	69 c1 7c 01 00 00    	imul   $0x17c,%ecx,%eax
+  955439:	03 c6                	add    %esi,%eax
+  95543b:	81 a0 70 01 00 00 ff 	andl   $0x8000ffff,0x170(%eax)
+  955442:	ff 00 80 
+  955445:	66 89 90 70 01 00 00 	mov    %dx,0x170(%eax)
+  95544c:	ba 80 00 00 00       	mov    $0x80,%edx
+  955451:	c7 40 5c 30 80 95 00 	movl   $0x958030,0x5c(%eax)
+  955458:	c7 40 60 90 67 53 00 	movl   $0x536790,0x60(%eax)
+  95545f:	89 48 54             	mov    %ecx,0x54(%eax)
+  955462:	c7 40 58 4c 00 00 00 	movl   $0x4c,0x58(%eax)
+  955469:	89 86 4c a3 00 00    	mov    %eax,0xa34c(%esi)
+  95546f:	89 0d 3c 0b ef 01    	mov    %ecx,0x1ef0b3c
+  955475:	8b 8e 48 a3 00 00    	mov    0xa348(%esi),%ecx

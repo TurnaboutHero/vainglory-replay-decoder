@@ -1,0 +1,60 @@
+ENTRY 0094f500 BODY [[0094f500, 0094f50d]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_0094f500(void)
+
+{
+  int iVar1;
+  uint uVar2;
+  int extraout_ECX;
+  uint uVar3;
+  int aiStack_12c8 [1195];
+  undefined4 uStack_1c;
+  int *piStack_18;
+  undefined4 uStack_14;
+  undefined4 uStack_10;
+  
+  if (DAT_0209e204 != '\0') {
+    return;
+  }
+  func_0x011b8a10();
+  uStack_10 = 0x945ce2;
+  iVar1 = func_0x00857970();
+  if (iVar1 != 0) {
+    uStack_10 = _DAT_01ef0b3c;
+    iVar1 = *(int *)(extraout_ECX + 0x14);
+    piStack_18 = aiStack_12c8;
+    uStack_14 = 0x4b0;
+    uStack_1c = 0x945d06;
+    uVar2 = func_0x0112a700();
+    uVar3 = 0;
+    if (uVar2 != 0) {
+      while (*(int *)(aiStack_12c8[uVar3] + 0x28) != iVar1) {
+        uVar3 = uVar3 + 1;
+        if (uVar2 <= uVar3) {
+          func_0x011b8440();
+          return;
+        }
+      }
+      uStack_10 = *(undefined4 *)(extraout_ECX + 0x18);
+      if (*(char *)(extraout_ECX + 0x1c) != '\0') {
+        uStack_14 = 0x945d49;
+        func_0x0095cf10();
+        func_0x011b8440();
+        return;
+      }
+      uStack_14 = 0x945d5e;
+      func_0x00945d70();
+    }
+  }
+  func_0x011b8440();
+  return;
+}
+
+
+
+INSTRUCTIONS
+0094f500 CMP byte ptr [0x0209e204],0x0
+0094f507 JZ 0x00945cc0
+0094f50d RET

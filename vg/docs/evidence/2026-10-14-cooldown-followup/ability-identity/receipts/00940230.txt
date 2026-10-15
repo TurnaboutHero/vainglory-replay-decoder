@@ -1,0 +1,149 @@
+ENTRY 00940230 BODY [[00940230, 0094033a]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __thiscall FUN_00940230(int param_1,int param_2,undefined4 param_3,undefined4 param_4)
+
+{
+  char cVar1;
+  undefined4 uVar2;
+  int iVar3;
+  
+  iVar3 = param_2;
+  *(undefined2 *)(param_1 + 0x34) = 1;
+  *(undefined4 *)(param_1 + 0x2c) = param_4;
+  *(int *)(param_1 + 0x14) = param_2;
+  *(undefined4 *)(param_1 + 0x30) = param_3;
+  if (*(char *)(param_2 + 0x38) == '\0') {
+    cVar1 = func_0x0096c770(*(undefined4 *)(param_2 + 0x11c));
+    if (cVar1 == '\0') {
+      func_0x005f5050(*(undefined4 *)(*(int *)(param_1 + 0x14) + 0x11c));
+      iVar3 = FUN_008579e0(*(undefined4 *)(*(int *)(param_1 + 8) + 8),&param_2);
+      if (iVar3 == 0) {
+        iVar3 = func_0x01129d20(_DAT_01ef0b3c);
+        *(byte *)(iVar3 + 0x48) = *(byte *)(iVar3 + 0x48) & 0xf8;
+        *(int *)(iVar3 + 0x28) = param_2;
+        *(uint *)(iVar3 + 0x44) = *(uint *)(iVar3 + 0x44) & 0xfffffffe | 2;
+        FUN_0095dcf0(1);
+      }
+    }
+    return;
+  }
+  uVar2 = func_0x01129d20(_DAT_020e9d20);
+  *(undefined4 *)(param_1 + 0x18) = uVar2;
+  if (*(char *)(iVar3 + 0x38) == '\0') {
+    func_0x0093f270(0,0,0);
+    return;
+  }
+  cVar1 = func_0x0096c770(*(undefined4 *)(iVar3 + 0x3c));
+  if (cVar1 != '\0') {
+    func_0x0093f270(iVar3 + 0x40,0,0);
+    return;
+  }
+  func_0x0112a790(0,*(undefined4 *)(iVar3 + 0x3c),0);
+  uVar2 = func_0x0112ab50();
+  func_0x0093f270(uVar2,0,0);
+  return;
+}
+
+
+
+INSTRUCTIONS
+00940230 PUSH EBP
+00940231 MOV EBP,ESP
+00940233 PUSH ESI
+00940234 MOV ESI,ECX
+00940236 MOV EAX,0x1
+0094023b PUSH EDI
+0094023c MOV EDI,dword ptr [EBP + 0x8]
+0094023f MOV word ptr [ESI + 0x34],AX
+00940243 MOV EAX,dword ptr [EBP + 0x10]
+00940246 MOV dword ptr [ESI + 0x2c],EAX
+00940249 MOV EAX,dword ptr [EBP + 0xc]
+0094024c MOV dword ptr [ESI + 0x14],EDI
+0094024f MOV dword ptr [ESI + 0x30],EAX
+00940252 CMP byte ptr [EDI + 0x38],0x0
+00940256 JZ 0x009402ca
+00940258 PUSH dword ptr [0x020e9d20]
+0094025e CALL 0x01129d20
+00940263 MOV dword ptr [ESI + 0x18],EAX
+00940266 CMP byte ptr [EDI + 0x38],0x0
+0094026a JNZ 0x0094027f
+0094026c MOV ECX,dword ptr [ESI + 0x18]
+0094026f XOR EAX,EAX
+00940271 PUSH EAX
+00940272 PUSH EAX
+00940273 PUSH EAX
+00940274 CALL 0x0093f270
+00940279 POP EDI
+0094027a POP ESI
+0094027b POP EBP
+0094027c RET 0xc
+0094027f PUSH dword ptr [EDI + 0x3c]
+00940282 CALL 0x0096c770
+00940287 ADD ESP,0x4
+0094028a TEST AL,AL
+0094028c JZ 0x009402a4
+0094028e MOV ECX,dword ptr [ESI + 0x18]
+00940291 LEA EAX,[EDI + 0x40]
+00940294 PUSH 0x0
+00940296 PUSH 0x0
+00940298 PUSH EAX
+00940299 CALL 0x0093f270
+0094029e POP EDI
+0094029f POP ESI
+009402a0 POP EBP
+009402a1 RET 0xc
+009402a4 PUSH 0x0
+009402a6 PUSH dword ptr [EDI + 0x3c]
+009402a9 PUSH 0x0
+009402ab CALL 0x0112a790
+009402b0 MOV ECX,EAX
+009402b2 CALL 0x0112ab50
+009402b7 MOV ECX,dword ptr [ESI + 0x18]
+009402ba PUSH 0x0
+009402bc PUSH 0x0
+009402be PUSH EAX
+009402bf CALL 0x0093f270
+009402c4 POP EDI
+009402c5 POP ESI
+009402c6 POP EBP
+009402c7 RET 0xc
+009402ca PUSH dword ptr [EDI + 0x11c]
+009402d0 CALL 0x0096c770
+009402d5 ADD ESP,0x4
+009402d8 TEST AL,AL
+009402da JNZ 0x00940335
+009402dc MOV EAX,dword ptr [ESI + 0x14]
+009402df MOV ECX,dword ptr [EAX + 0x11c]
+009402e5 PUSH ECX
+009402e6 MOV EAX,ESP
+009402e8 MOV dword ptr [EAX],ECX
+009402ea LEA ECX,[EBP + 0x8]
+009402ed CALL 0x005f5050
+009402f2 MOV EAX,dword ptr [ESI + 0x8]
+009402f5 MOV ESI,dword ptr [EAX + 0x8]
+009402f8 LEA EAX,[EBP + 0x8]
+009402fb PUSH EAX
+009402fc PUSH ESI
+009402fd CALL 0x008579e0
+00940302 ADD ESP,0x8
+00940305 TEST EAX,EAX
+00940307 JNZ 0x00940335
+00940309 PUSH dword ptr [0x01ef0b3c]
+0094030f MOV ECX,ESI
+00940311 CALL 0x01129d20
+00940316 MOV ECX,dword ptr [EBP + 0x8]
+00940319 PUSH 0x1
+0094031b AND byte ptr [EAX + 0x48],0xf8
+0094031f MOV dword ptr [EAX + 0x28],ECX
+00940322 MOV ECX,dword ptr [EAX + 0x44]
+00940325 AND ECX,0xfffffffe
+00940328 OR ECX,0x2
+0094032b MOV dword ptr [EAX + 0x44],ECX
+0094032e MOV ECX,EAX
+00940330 CALL 0x0095dcf0
+00940335 POP EDI
+00940336 POP ESI
+00940337 POP EBP
+00940338 RET 0xc

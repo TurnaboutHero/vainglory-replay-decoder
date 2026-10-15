@@ -1,0 +1,31 @@
+{
+  "acquired_at_utc": "2026-10-14T09:07:52.311945+00:00",
+  "client": {
+    "source": "https://client.vgna.net/windows/VGNA-Client-PC-latest-Setup.exe",
+    "manifest_source": "https://client.vgna.net/windows/release-manifest-latest.json",
+    "installer_bytes": 1756937702,
+    "installer_sha256": "5e2cd96ae9e5a6fe7cf5c2cdd9d1b513db1f306c72b2f389939805a6786afc67",
+    "main_exe_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+    "pe_characteristics": "0x122",
+    "laa_cleared_in_memory_only_sha256": "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+    "definition_manifest_sha256": "7292b885378be83cb8596601bad7d0c7adfaab1e91e23f8ea65601f03136755c",
+    "execution": "No game code executed; archive extraction only"
+  },
+  "replay": {
+    "source": "https://replays.richardtravel.com/replay/bundle?match=00add1f2-a259-45ed-beda-2463bc3a3760-8b68b2dd-924e-4c75-b662-c9da67df376d",
+    "recording": "H5810",
+    "purpose": "Reproduction baseline, not new holdout",
+    "recorder_platform_provenance": "Unknown",
+    "segments": 168,
+    "concatenated_sha256": "ae8e37a0eb42f8d323311b20ceee2a1314fe97ae330be24cf30e3ffeca4870f0",
+    "zip_sha256": "bd3d0c94d947c240c875310d4b0d7118095fdca6a1489ab2c6585769734cf4b0",
+    "zip_hash_note": "Archive regenerated with current created_at; source bytes exactly match historical reference"
+  },
+  "bubbleland": {
+    "page": "https://bubbleland.org/download-vainglory/",
+    "listed_version": "4.13.0",
+    "listed_size": "1.63 GB",
+    "downloaded": false,
+    "blocker": "Public article available via web reader; raw page and Drive fetch returned 403, MEGA full fragment unavailable. No access restriction bypass."
+  }
+}
