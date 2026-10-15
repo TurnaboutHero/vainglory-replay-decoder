@@ -44,6 +44,15 @@ python -B -m vg.decoder_v2.decode_match "replays/match.0.vgr" --playback-speed 5
 python -B -m vg.decoder_v2.decode_match "replays/match.0.vgr" --display-evidence "receipts/terminal-display.json" -o "reports/observed.json"
 ```
 
+## Inspect a plaintext outgoing request
+
+The separate [offline outgoing request decoder](vg/docs/OFFLINE_OUTGOING_REQUESTS.md)
+accepts one explicitly untransformed Windows request frame, with exact lengths
+and typed raw fields for movement, ability and item activation. Use
+`python -B -m vg.core.outgoing_requests --schema` to inspect its bounded schema.
+This does not decode VGR records, decrypt traffic, contact a server or prove
+request success; existing replay interpretation and eligibility remain unchanged.
+
 ## Running the regression suite
 
 The complete offline suite requires Python 3.12+ and **Node.js 18+** (`node`
