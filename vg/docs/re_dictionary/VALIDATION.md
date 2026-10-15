@@ -52,3 +52,16 @@ read-only CLI behavior and index determinism.
   receipts remain distinct; uncertain claims retain their limitations
 - Baseline `65bab83` does not include the separate actor/skin identity split;
   dictionary documentation is not an implementation or integration claim
+
+## Combined offline integration
+
+The combined feature branch starts at `65bab83` and adds recording identity
+diagnostics, bounded outgoing request parsing, the VGNL offline importer and
+this dictionary. The identity module adds diagnostics to `native_roster.py`.
+To keep historical dictionary evidence immutable, its original roster source
+reference now resolves to `baseline/native_roster-65bab83.py.txt`, an exact
+snapshot of `vg/core/native_roster.py` at `65bab83` with the original hash.
+This does not upgrade historical roster claims or actor/skin split status.
+
+All 97 catalog source hashes still verify against the original evidence roots.
+The 54 external references still require explicitly provided roots.

@@ -1815,7 +1815,7 @@ repo 경로는 현재 checkout에서 hash를 확인합니다. 외부 namespace �
 
 ### src-legacy-d5c9da98be4d
 
-- [repo:vg/core/native_roster.py](../../../vg/core/native_roster.py)
+- [repo:vg/docs/re_dictionary/baseline/native_roster-65bab83.py.txt](../../../vg/docs/re_dictionary/baseline/native_roster-65bab83.py.txt)
 - SHA-256: `b3ced4d30bdb45459b3c315ac528efb59ae083c8263af85299e31dc8420452c7`
 - 종류: existing_report_or_receipt · 보관: existing_repository
 

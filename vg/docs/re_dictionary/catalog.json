@@ -1087,11 +1087,11 @@
       "kind": "existing_report_or_receipt",
       "location": {
         "namespace": "repo",
-        "path": "vg/core/native_roster.py"
+        "path": "vg/docs/re_dictionary/baseline/native_roster-65bab83.py.txt"
       },
       "sha256": "b3ced4d30bdb45459b3c315ac528efb59ae083c8263af85299e31dc8420452c7",
       "publication": "existing_repository",
-      "locator_note": "The hash binds the whole original file; no content is imported from external files."
+      "locator_note": "Exact vg/core/native_roster.py snapshot from baseline 65bab83, preserving the original SHA-256 and historical roster claims. The integrated working module adds recording identity diagnostics; this snapshot does not assert those diagnostics were present in the baseline."
     },
     {
       "id": "src-legacy-dd8d0c7f3e7d",
