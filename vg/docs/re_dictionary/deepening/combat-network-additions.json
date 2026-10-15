@@ -1,0 +1,200 @@
+{
+  "schema": "combat_network_deepening_additions_v1",
+  "build": {
+    "sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+    "architecture": "PE32 x86",
+    "image_base": "00400000",
+    "address_kind": "preferred_virtual"
+  },
+  "scope": "offline client only",
+  "opcodes": [
+    {
+      "field_endian": "big",
+      "semantic_status": "native_prefix_and_guarded_helper_semantics",
+      "historical_application": "unverified",
+      "native_apply_guard": "actor resolves and byte[0209e204] != 0",
+      "authoritative_server_behavior": null,
+      "causal_transaction_key": null,
+      "opcode": "041a",
+      "native_prefix_bytes": 13,
+      "observed_h5810_payload_bytes": 14,
+      "opaque_suffix_bytes": 1,
+      "fields": [
+        {
+          "name": "actor_raw",
+          "offset": 0,
+          "width": 4
+        },
+        {
+          "name": "original_slot_raw",
+          "offset": 4,
+          "width": 4
+        },
+        {
+          "name": "replacement_slot_raw",
+          "offset": 8,
+          "width": 4
+        },
+        {
+          "name": "control_raw_nonzero_normalized",
+          "offset": 12,
+          "width": 1
+        }
+      ],
+      "callchain": {
+        "dispatcher": "004d1520",
+        "constructor": "0081bda0",
+        "queue": "0092c240 -> 00931bd0",
+        "apply": "0094fc20",
+        "component_helper": "00951d50",
+        "serializer": "008177c0"
+      },
+      "confidence": "high_static_same_build; historical use conditional",
+      "h5810_count": 780
+    },
+    {
+      "field_endian": "big",
+      "semantic_status": "native_prefix_and_guarded_helper_semantics",
+      "historical_application": "unverified",
+      "native_apply_guard": "actor resolves and byte[0209e204] != 0",
+      "authoritative_server_behavior": null,
+      "causal_transaction_key": null,
+      "opcode": "041b",
+      "native_prefix_bytes": 8,
+      "observed_h5810_payload_bytes": 14,
+      "opaque_suffix_bytes": 6,
+      "fields": [
+        {
+          "name": "actor_raw",
+          "offset": 0,
+          "width": 4
+        },
+        {
+          "name": "original_slot_raw",
+          "offset": 4,
+          "width": 4
+        }
+      ],
+      "callchain": {
+        "dispatcher": "004d1590",
+        "constructor": "0081a370",
+        "queue": "0092c240 -> 00931bd0",
+        "apply": "0094cf80",
+        "component_helper": "00871d70",
+        "serializer": "00814ac0"
+      },
+      "confidence": "high_static_same_build; historical use conditional",
+      "h5810_count": 1180
+    },
+    {
+      "opcode": "0425",
+      "native_prefix_bytes": 4,
+      "fields": [
+        {
+          "name": "target_actor_raw",
+          "offset": 0,
+          "width": 4,
+          "endian": "big"
+        }
+      ],
+      "callchain": [
+        "004d3ac2",
+        "005296f0",
+        "005297a0",
+        "00939790 selects player actor",
+        "00857970 actor and target resolution",
+        "00597190",
+        "00599be0 or0050f1b0"
+      ],
+      "effect": "local selected-target handle update/clear",
+      "guards": [
+        "selected player actor resolves",
+        "actor has child of type01ef38c4",
+        "nested selection object exists for final handle store"
+      ],
+      "explicit_actor_on_wire": false,
+      "transaction_key": null,
+      "attack_success": null,
+      "unresolved_target_behavior": "passes null then clears target selection",
+      "confidence": "high static consumer, historical application unverified"
+    }
+  ],
+  "override_table": {
+    "component_offset": "0x84",
+    "entry_count": 20,
+    "entry_stride": 8,
+    "source_bits": [
+      0,
+      14
+    ],
+    "replacement_bits": [
+      15,
+      29
+    ],
+    "preserved_word_bits": [
+      30,
+      31
+    ],
+    "active": "(entry_byte4 & 3) != 0",
+    "insert": "first inactive; preserve upper word bits; source/replacement mask 0x7fff; flags=(flags&0xfd)|1; full table no-op",
+    "resolve": "first active exact full-source comparison against stored15bits; one-level mapping else identity",
+    "clear": "clear low2flags for all exact-source matches",
+    "important_limit": "Insertion truncates source but lookup/clear do not mask input; noncanonical source>32767 does not round-trip"
+  },
+  "play_target_storage": {
+    "chain": [
+      "0094ff00",
+      "00952920 / 00952ca0 / 00952b00",
+      "00957260",
+      "0095f600 or direct vector stores"
+    ],
+    "guard": "0209e204 == 0; opposite override-apply gate",
+    "selected_object": "component+28+4*resolve(original_slot)",
+    "target_handle_offsets": [
+      "0x108",
+      "0x10c"
+    ],
+    "vector_offsets": [
+      "0x110",
+      "0x114",
+      "0x118"
+    ],
+    "flags_offset": "0x154",
+    "actor_mode_flags": "(old&0xffffffcf)|8",
+    "vector_mode_flags": "(old&0xffffffd7)|0x10",
+    "original_slot_still_used_by": [
+      "009432c0 state transition",
+      "onPlayAbility notification"
+    ],
+    "transaction_key": null
+  },
+  "behavior_context": {
+    "dispatcher": "00946710",
+    "fields": [
+      "ability_definition_pointer",
+      "actor_pointer",
+      "target_actor_pointer_or_null",
+      "vector_pointer_or_null"
+    ],
+    "sink": "actor+30 list+14 node+260; behavior+28 virtual+40",
+    "cast_instance_key": null,
+    "runtime_implementations": "unresolved"
+  },
+  "limits": [
+    "Global0209e204 semantic name/runtime value unresolved",
+    "Historical payload suffixes opaque",
+    "No live validation",
+    "No unique request/impact pairing",
+    "Dynamic behavior callbacks unresolved",
+    "State IDs retained numeric without public names"
+  ],
+  "mode_initialization": {
+    "setter": "0095da70",
+    "store": "0095da76",
+    "direct_caller": "004bff80",
+    "callsite": "004bffc1",
+    "argument": 0,
+    "argument_instruction": "004bffbf PUSH 0",
+    "scan_limit": "559 literal-address references; one direct E8 setter call candidate, validated by instructions; not whole-program alias-write exclusion"
+  }
+}

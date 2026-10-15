@@ -65,3 +65,28 @@ This does not upgrade historical roster claims or actor/skin split status.
 
 All 97 catalog source hashes still verify against the original evidence roots.
 The 54 external references still require explicitly provided roots.
+
+## Independently reviewed research follow-up
+
+The follow-up to combined baseline `709dd8bb` adds 20 bounded/unresolved entries,
+bringing the catalog to 71 entries, 137 sources and the same 9 artifacts. All 51
+original entries, 97 original source records and 9 artifact records are unchanged.
+The adjacent `deepening/README.md` summarizes the three investigations;
+`deepening/SOURCE_MANIFEST.json` lists the new source hashes and namespaces.
+
+Default validation verifies 52 repository sources and reports 85 external
+references as unresolved. With both original roots supplied, all 137 hashes
+verify. The Draft 2020-12 schema and deterministic index checks pass.
+The focused dictionary/model/guardrail run passes 55 tests: 30 existing dictionary
+tests, 7 terminal models, 5 override models, 8 cooldown arithmetic models and
+5 research-scope guardrails. Independent review separately reran all 25 new tests.
+
+The producer review receipt is an external hash-pinned catalog source. Independent
+integration review verified the 20 additions, unchanged original entries and no
+production decoder diff. New raw native exports remain external; all-request
+provenance and withheld winner remain unchanged. Synthetic models cover selected
+normal-range control flow/arithmetic, not complete native execution, historical
+application, general cast eligibility, exact final display or server validation.
+
+Final combined offline regression suite: 1,065 tests passed in 108.778 seconds
+using Python 3.12.14. The full command above includes all 25 new tests.

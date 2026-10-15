@@ -2,7 +2,7 @@
 
 이 파일은 catalog.json에서 생성됩니다. 직접 수정하지 말고 원본 catalog를 갱신하세요.
 
-기준 checkout: `65bab83` · 갱신: 2026-10-15 · 항목: 51
+기준 checkout: `65bab83` · 갱신: 2026-10-15 · 항목: 71
 
 검토된 기능 묶음과 중요한 정정만 담았습니다. 기존 evidence 전체를 검증 완료로 승격한 목록이 아닙니다.
 정적 명령 검증, synthetic test, 개발 corpus 관측, runtime 관측은 서로 다른 증거입니다. semantic confidence가 높아도 서버 권위나 live 실행은 증명되지 않습니다.
@@ -23,17 +23,17 @@ python -B -m vg.research.dictionary validate --check-index
 
 - 파일·빌드 출처: [Windows 파일 해시와 주소 기준](#vgre-provenance-pe-variants)
 - 프레임·시간 소유권: [VGR 레코드 경계와 시각 소유권](#vgre-vgr-record-framing)
-- actor·roster·계정 경계: [Actor 리소스 종류와 네이티브 분류](#vgre-entity-actor-resource-kind), [040b 삭제 액션과 지연 정리](#vgre-entity-destroy-lifecycle-observation), [03e9 기록 선택 actor와 팀](#vgre-identity-bootstrap-selection), [03ee 외부 문자열의 관측 이력](#vgre-identity-external-string-history), [한 기록 family와 unknown completeness](#vgre-identity-recording-family-validation), [03ee 명단의 네이티브 식별 계약](#vgre-identity-roster-native-contract), [생성 관찰·스킨 값·실제 수명 분리](#vgre-identity-spawn-skin-observation)
-- 종료·승패·완전성: [03f1 요청 팀과 상대 승리 boolean](#vgre-result-request-relative-win)
+- actor·roster·계정 경계: [identity authenticated account from roster](#vgre-deepening-identity-authenticated-account-from-roster), [identity external string mastery cache](#vgre-deepening-identity-external-string-mastery-cache), [identity mastery response cache](#vgre-deepening-identity-mastery-response-cache), [identity mastery rpc method](#vgre-deepening-identity-mastery-rpc-method), [Actor 리소스 종류와 네이티브 분류](#vgre-entity-actor-resource-kind), [040b 삭제 액션과 지연 정리](#vgre-entity-destroy-lifecycle-observation), [03e9 기록 선택 actor와 팀](#vgre-identity-bootstrap-selection), [03ee 외부 문자열의 관측 이력](#vgre-identity-external-string-history), [한 기록 family와 unknown completeness](#vgre-identity-recording-family-validation), [03ee 명단의 네이티브 식별 계약](#vgre-identity-roster-native-contract), [생성 관찰·스킨 값·실제 수명 분리](#vgre-identity-spawn-skin-observation)
+- 종료·승패·완전성: [terminal banner reason keys](#vgre-deepening-terminal-banner-reason-keys), [terminal clock lifecycle](#vgre-deepening-terminal-clock-lifecycle), [terminal gold final refresh cache](#vgre-deepening-terminal-gold-final-refresh-cache), [terminal last request is final result](#vgre-deepening-terminal-last-request-is-final-result), [terminal primary entry](#vgre-deepening-terminal-primary-entry), [terminal repeated field callback divergence](#vgre-deepening-terminal-repeated-field-callback-divergence), [03f1 요청 팀과 상대 승리 boolean](#vgre-result-request-relative-win)
 - 아이템·설정·소유: [아이템 인스턴스·수량·인벤토리 갱신](#vgre-inventory-native-instance-state), [아이템 사용 요청과 모드별 메시지](#vgre-item-activation-envelope), [설정 mode와 선택 제스처 분리](#vgre-item-configuration-selection), [회복 아이템·정찰 카메라의 키와 생성 선언](#vgre-item-consumable-keys-spawn-declaration), [판매 요청과 구매 거절 알림의 한계](#vgre-item-sell-reject-prefix)
-- 쿨다운·clock·timer: [능력 슬롯과 궁극기 표시 순서](#vgre-ability-slot-ultimate-identity), [만료 초과량과 재생성 타이머의 다음 순회](#vgre-cooldown-expiry-overshoot-stage4), [소유자·키 기반 공유 쿨다운 상태](#vgre-cooldown-owner-key-identity), [기록 시각만으로 쿨다운을 복원할 수 없는 이유](#vgre-cooldown-replay-time-identifiability), [타이머 본체 역참조와 HUD 숫자 변환](#vgre-cooldown-timer-reference-hud), [쿨다운·충전 이벤트의 원시 필드](#vgre-cooldown-wire-fields), [게임 시계 앵커·재생 누적·화면 시간](#vgre-replay-game-clock-anchor-display)
-- 게임 요청과 전송: [0411/0412/0413 능력 요청](#vgre-request-ability-layouts), [0448/0449/044a 아이템 요청](#vgre-request-item-layouts), [이동 3종과 공격 대상 선택](#vgre-request-movement-attack), [게임 요청 compact frame](#vgre-request-plain-frame), [전송 facade와 replay no-send 분기](#vgre-request-send-replay-boundary)
+- 쿨다운·clock·timer: [능력 슬롯과 궁극기 표시 순서](#vgre-ability-slot-ultimate-identity), [만료 초과량과 재생성 타이머의 다음 순회](#vgre-cooldown-expiry-overshoot-stage4), [소유자·키 기반 공유 쿨다운 상태](#vgre-cooldown-owner-key-identity), [기록 시각만으로 쿨다운을 복원할 수 없는 이유](#vgre-cooldown-replay-time-identifiability), [타이머 본체 역참조와 HUD 숫자 변환](#vgre-cooldown-timer-reference-hud), [쿨다운·충전 이벤트의 원시 필드](#vgre-cooldown-wire-fields), [combat packed override](#vgre-deepening-combat-packed-override), [cooldown buff capacity lifecycle](#vgre-deepening-cooldown-buff-capacity-lifecycle), [cooldown buff duration modifiers](#vgre-deepening-cooldown-buff-duration-modifiers), [cooldown effective stat flags](#vgre-deepening-cooldown-effective-stat-flags), [cooldown two state blocker selector](#vgre-deepening-cooldown-two-state-blocker-selector), [scout cam upgrade modifier declarations](#vgre-deepening-scout-cam-upgrade-modifier-declarations), [게임 시계 앵커·재생 누적·화면 시간](#vgre-replay-game-clock-anchor-display)
+- 게임 요청과 전송: [combat 041a](#vgre-deepening-combat-041a), [combat 041b](#vgre-deepening-combat-041b), [combat 0425](#vgre-deepening-combat-0425), [0411/0412/0413 능력 요청](#vgre-request-ability-layouts), [0448/0449/044a 아이템 요청](#vgre-request-item-layouts), [이동 3종과 공격 대상 선택](#vgre-request-movement-attack), [게임 요청 compact frame](#vgre-request-plain-frame), [전송 facade와 replay no-send 분기](#vgre-request-send-replay-boundary)
 - 플랫폼 JSON schema: [authenticate는 executeCommand 인수](#vgre-platform-authenticate-command), [첫 RPC parameter는 credential일 수 있음](#vgre-platform-credential-capable-identity), [플랫폼 JSON envelope](#vgre-platform-json-envelope), [lobby·party·pending의 서로 다른 schema](#vgre-platform-lobby-party-pending), [명명된 matchId와 품질 telemetry](#vgre-platform-match-state-quality), [startSessionForPlayer 11개 값](#vgre-platform-start-session)
 - Android 패키지와 routing: [connect hook은 원래 목적지 관측](#vgre-android-match-socket-observation), [원본과 VGNA의 한정된 변경 범위](#vgre-android-matched-base-delta), [region bootstrap은 고정 routing](#vgre-android-region-routing)
 - VGNA replay upload: [identity event의 출처와 응답](#vgre-upload-identity-events), [continuous upload policy 연결은 미확정](#vgre-upload-policy-bounded-gap), [terminal_scoreboard는 entity→hero만](#vgre-upload-terminal-hero-only), [VGNL 68-byte transport header](#vgre-upload-vgnl-frame)
 - client 산술·HUD·stub: [critical 산술의 mode gate와 RET 경계](#vgre-combat-critical-stub), [4-array 유효 stat 계산](#vgre-combat-effective-stats), [방어 계산은 last-hit HUD 추정](#vgre-combat-hud-attack-estimate), [property scaling과 TooltipDamage](#vgre-combat-property-tooltip)
 - 받은 HP와 표시: [041e 실제 resource 변경 operand](#vgre-health-impact-prefix), [받은 action은 apply로 직접 진입](#vgre-health-incoming-dispatch), [041d SET/ADD와 음수 SET 정정](#vgre-health-resource-set-add), [impact·HP·보호량·표시량 분리](#vgre-health-split-display)
-- action↔impact의 제한된 연관: [아이템 instance는 actor와 함께 묶기](#vgre-correlation-item-instance-scope), [시간·actor 근접성은 인과 키가 아님](#vgre-correlation-no-causal-key), [play actor/target/slot과 불투명 suffix](#vgre-correlation-play-fields)
+- action↔impact의 제한된 연관: [아이템 instance는 actor와 함께 묶기](#vgre-correlation-item-instance-scope), [시간·actor 근접성은 인과 키가 아님](#vgre-correlation-no-causal-key), [play actor/target/slot과 불투명 suffix](#vgre-correlation-play-fields), [combat target storage](#vgre-deepening-combat-target-storage)
 
 ## 파일·빌드 출처
 
@@ -85,6 +85,90 @@ python -B -m vg.research.dictionary validate --check-index
 
 
 ## actor·roster·계정 경계
+
+### VGRE-deepening-identity-authenticated-account-from-roster
+
+**identity authenticated account from roster**
+
+Client mastery cache use does not prove authentication, service account namespace, uploader ownership, or modern VGNA compatibility.
+
+- 상태: unresolved · 의미 확신: unassigned · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0093b270` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0056f050` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00997dc0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction.
+- 근거: [src-deepening-09908834d9ba](#src-deepening-09908834d9ba) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f8c7558a816d](#src-deepening-f8c7558a816d) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f1eed04cad1f](#src-deepening-f1eed04cad1f) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-09908834d9ba](#src-deepening-09908834d9ba) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-6c2e708b509a](#src-deepening-6c2e708b509a) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
+### VGRE-deepening-identity-external-string-mastery-cache
+
+**identity external string mastery cache**
+
+Roster entry+44 string getter0093b270 feeds scoreboard lookup0056f050 outer key; nested hero value passes through KindredHeroMasteryManifest thresholds and result is stored UI+75a4.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0093b270` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x006f5d07` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x006f5d32` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x006f5d3a` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0056f050` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x007e50c0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x01264028` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction.
+- 근거: [src-deepening-09908834d9ba](#src-deepening-09908834d9ba) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f8c7558a816d](#src-deepening-f8c7558a816d) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f1eed04cad1f](#src-deepening-f1eed04cad1f) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f804572b3e72](#src-deepening-f804572b3e72) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-3bbf4528ff44](#src-deepening-3bbf4528ff44) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-1de244922c2b](#src-deepening-1de244922c2b) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-e358da15fc1e](#src-deepening-e358da15fc1e) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-ddcafec18612](#src-deepening-ddcafec18612) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-6c2e708b509a](#src-deepening-6c2e708b509a) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
+### VGRE-deepening-identity-mastery-response-cache
+
+**identity mastery response cache**
+
+Handler0056f190 traverses response vector rows stride24, outer string+c, nested string/integer rows stride1c; stores same cache. This proves client dataflow, not source authenticity.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0056f190` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0056f217` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0056f22b` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0121fc78` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction.
+- 근거: [src-deepening-09908834d9ba](#src-deepening-09908834d9ba) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f8c7558a816d](#src-deepening-f8c7558a816d) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f1eed04cad1f](#src-deepening-f1eed04cad1f) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-7f0bce357f27](#src-deepening-7f0bce357f27) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f7ad612fc5c4](#src-deepening-f7ad612fc5c4) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-6c2e708b509a](#src-deepening-6c2e708b509a) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
+### VGRE-deepening-identity-mastery-rpc-method
+
+**identity mastery rpc method**
+
+Platform table01293fb8 slot4c resolves00997de0 using literal getHeroMastery; builder0098d780 serializes context string and vector. No network request occurred; response dispatch and authentication remain unverified.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x01293fb8` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00997de0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x01295260` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0098d780` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction.
+- 근거: [src-deepening-09908834d9ba](#src-deepening-09908834d9ba) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f8c7558a816d](#src-deepening-f8c7558a816d) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f1eed04cad1f](#src-deepening-f1eed04cad1f) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-a684ae59db6d](#src-deepening-a684ae59db6d) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-2d186061c682](#src-deepening-2d186061c682) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-0be03adf5873](#src-deepening-0be03adf5873) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-8df4eb06449a](#src-deepening-8df4eb06449a) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-6c2e708b509a](#src-deepening-6c2e708b509a) · Bounded synthetic test model only; does not prove native execution or runtime application.
 
 ### VGRE-entity-actor-resource-kind
 
@@ -268,6 +352,132 @@ Actor SYMB type key 0x2419fb6c와 일치하는 resource root의 첫 scalar uint3
 
 
 ## 종료·승패·완전성
+
+### VGRE-deepening-terminal-banner-reason-keys
+
+**terminal banner reason keys**
+
+0073af90 selects VICTORY/DEFEAT by boolean for reason0 and SURRENDER for reason2; other reasons skip text-key assignment in this function.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0073af90` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0124fc04` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0124fc24` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0124fc40` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction.
+- 근거: [src-deepening-09908834d9ba](#src-deepening-09908834d9ba) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f8c7558a816d](#src-deepening-f8c7558a816d) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f1eed04cad1f](#src-deepening-f1eed04cad1f) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-592d9786b4a9](#src-deepening-592d9786b4a9) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-b0dd017522f4](#src-deepening-b0dd017522f4) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-6c2e708b509a](#src-deepening-6c2e708b509a) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
+### VGRE-deepening-terminal-clock-lifecycle
+
+**terminal clock lifecycle**
+
+Accepted primary2 commits before result callback and has no primary tick. Final refresh still reads controller clock, not terminal packet timestamp; UI formatter is modulo60-cache gated.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00549ffa` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0054a019` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x005497a0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00548870` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x006f557d` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction.
+- 근거: [src-deepening-09908834d9ba](#src-deepening-09908834d9ba) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f8c7558a816d](#src-deepening-f8c7558a816d) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f1eed04cad1f](#src-deepening-f1eed04cad1f) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-3f546d5d0d00](#src-deepening-3f546d5d0d00) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-6dda242b856c](#src-deepening-6dda242b856c) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-6ab9f1b58c3c](#src-deepening-6ab9f1b58c3c) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-d32981953aa3](#src-deepening-d32981953aa3) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-6c2e708b509a](#src-deepening-6c2e708b509a) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
+### VGRE-deepening-terminal-gold-final-refresh-cache
+
+**terminal gold final refresh cache**
+
+Final refresh visits16 rows without reset of each row gold cache; formatter runs only when truncated resource7*float32(.01) exceeds prior cached integer.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x006f5020` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x006f502b` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x006f7104` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x006f710a` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x006f711b` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction.
+- 근거: [src-deepening-09908834d9ba](#src-deepening-09908834d9ba) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f8c7558a816d](#src-deepening-f8c7558a816d) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f1eed04cad1f](#src-deepening-f1eed04cad1f) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-65f790466d1d](#src-deepening-65f790466d1d) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-58bc1f4ae6c5](#src-deepening-58bc1f4ae6c5) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-6c2e708b509a](#src-deepening-6c2e708b509a) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
+### VGRE-deepening-terminal-last-request-is-final-result
+
+**terminal last request is final result**
+
+Neither last request nor first recorded request universally proves accepted callback/display result; initial state, guards, perspective, and nested UI transitions matter.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00549fa0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00549fb7` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00564e90` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction.
+- 근거: [src-deepening-09908834d9ba](#src-deepening-09908834d9ba) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f8c7558a816d](#src-deepening-f8c7558a816d) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f1eed04cad1f](#src-deepening-f1eed04cad1f) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-6dda242b856c](#src-deepening-6dda242b856c) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-2626275848a3](#src-deepening-2626275848a3) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-ce219ed8f1ee](#src-deepening-ce219ed8f1ee) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-6c2e708b509a](#src-deepening-6c2e708b509a) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
+### VGRE-deepening-terminal-primary-entry
+
+**terminal primary entry**
+
+00549620 writes team/reason, then synchronously requests primary2 before secondary3. Primary2 entry00548c90 executes only if the primary transition accepts.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0054962d` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00549633` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00549699` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x005496a6` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00549fa0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00549fec` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00549ffa` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0054a019` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction.
+- 근거: [src-deepening-09908834d9ba](#src-deepening-09908834d9ba) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f8c7558a816d](#src-deepening-f8c7558a816d) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f1eed04cad1f](#src-deepening-f1eed04cad1f) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-afbcd8686e13](#src-deepening-afbcd8686e13) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-6dda242b856c](#src-deepening-6dda242b856c) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-3f546d5d0d00](#src-deepening-3f546d5d0d00) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-6c2e708b509a](#src-deepening-6c2e708b509a) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
+### VGRE-deepening-terminal-repeated-field-callback-divergence
+
+**terminal repeated field callback divergence**
+
+A repeat while primary2 overwrites controller fields but same-state primary guard prevents a fresh result callback. Counterexample is synthetic, not an observed replay.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0054962d` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00549633` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00549fa0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00549fa2` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction.
+- 근거: [src-deepening-09908834d9ba](#src-deepening-09908834d9ba) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f8c7558a816d](#src-deepening-f8c7558a816d) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-f1eed04cad1f](#src-deepening-f1eed04cad1f) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-afbcd8686e13](#src-deepening-afbcd8686e13) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-6dda242b856c](#src-deepening-6dda242b856c) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-0792a03dcffe](#src-deepening-0792a03dcffe) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-ce219ed8f1ee](#src-deepening-ce219ed8f1ee) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-6c2e708b509a](#src-deepening-6c2e708b509a) · Bounded synthetic test model only; does not prove native execution or runtime application.
 
 ### VGRE-result-request-relative-win
 
@@ -654,6 +864,131 @@ state+0x20에는 timer body가 아니라 body+0x14 inner reference가 저장된�
 - 근거: [src-legacy-39db69cadeb8](#src-legacy-39db69cadeb8) · Selected claim and limitations in this source; historical status may be superseded by the listed corrections.
 - 근거: [src-legacy-06d5353318de](#src-legacy-06d5353318de) · Selected claim and limitations in this source; historical status may be superseded by the listed corrections.
 
+### VGRE-deepening-combat-packed-override
+
+**combat packed override**
+
+Twenty packed entries at component+0x84 use first-inactive insertion, first-match single-level lookup and clear-all-matches. Slots store 15 bits; lookup/clear compare the unmasked operand. Full table insertion is a no-op; duplicate sources are possible.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00951d50` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00957260` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00871d70` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 원문 layout: Insertion truncates source but lookup/clear do not mask input; noncanonical source>32767 does not round-trip
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: Override apply requires resolved actor and global 0x0209e204 != 0; incoming play uses the opposite gate. Setup 0x004bff80 calls setter 0x0095da70 with zero; literal/direct-call scans cannot exclude alias or indirect writes.
+- 한계: Historical payload suffixes remain opaque; no acknowledgement, hit success, causal transaction key or unique request/impact pairing. Numeric state transition requests may be rejected; dynamic behavior callbacks remain unresolved.
+- 근거: [src-deepening-34c9e68da6ff](#src-deepening-34c9e68da6ff) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-8911ccbae0f8](#src-deepening-8911ccbae0f8) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-9d37dc38eb98](#src-deepening-9d37dc38eb98) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-2f20bcbf5127](#src-deepening-2f20bcbf5127) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
+### VGRE-deepening-cooldown-buff-capacity-lifecycle
+
+**cooldown buff capacity lifecycle**
+
+Named ModifyMaxCharges methods change signed state+41 and current state+42 independently of base+40. Positive deltas grant current charges; negative deltas clamp only above the resulting cap. Lifetime wrappers dispatch addition/inverse methods.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0081d5c0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x009617e0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x009629b0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x009541b0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0093f1b0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0086ecb0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00810930` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x009477c0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00948320` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: Outer exact buff activation/removal/refresh timing remains unresolved; method labels describe arithmetic.
+- 한계: Byte wrapping and signed/unsigned comparisons prevent unrestricted integer extrapolation.
+- 한계: Not proof every replay charge input successfully applies.
+- 근거: [src-deepening-763146dae926](#src-deepening-763146dae926) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-d4f1a88174ec](#src-deepening-d4f1a88174ec) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-37d63228f200](#src-deepening-37d63228f200) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-882cd47fa830](#src-deepening-882cd47fa830) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-b5a020905ffa](#src-deepening-b5a020905ffa) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
+### VGRE-deepening-cooldown-buff-duration-modifiers
+
+**cooldown buff duration modifiers**
+
+Named ModifyMaxCooldown methods alter state+30/+34/+38 through add/multiply/override, inverse and new-minus-old/new-over-old update operations. Selected methods do not rewrite running timer state.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0081d600` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x009618c0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00962a90` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x009542d0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0093f210` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x005f9280` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0086bbf0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: Mode2 removal resets override -1, not saved prior override.
+- 한계: Mode1 inverse/update has no local zero-divisor guard.
+- 한계: No authoritative server stacking/uniqueness or full duration timing asserted.
+- 근거: [src-deepening-763146dae926](#src-deepening-763146dae926) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-d4f1a88174ec](#src-deepening-d4f1a88174ec) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-37d63228f200](#src-deepening-37d63228f200) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-882cd47fa830](#src-deepening-882cd47fa830) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-b5a020905ffa](#src-deepening-b5a020905ffa) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
+### VGRE-deepening-cooldown-effective-stat-flags
+
+**cooldown effective stat flags**
+
+0086bbf0 conditionally applies stat25 fractional reduction then divides by at least1 of stat15. Initial definition flags map to state+48; Flask/Cam flags0 bypass both, RingoC/KrulC lowbits3 enable stat25.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0086bbf0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0093f270` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0044e081` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: Initial creation only; existing shared state reuse does not reinitialize flags.
+- 한계: Startup stat25 upper approx0.35 and lower -FLT_MAX do not prove immutable runtime caps.
+- 한계: Nominal duration and start/remaining timer are distinct.
+- 근거: [src-deepening-763146dae926](#src-deepening-763146dae926) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-d4f1a88174ec](#src-deepening-d4f1a88174ec) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-37d63228f200](#src-deepening-37d63228f200) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-882cd47fa830](#src-deepening-882cd47fa830) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-b5a020905ffa](#src-deepening-b5a020905ffa) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
+### VGRE-deepening-cooldown-two-state-blocker-selector
+
+**cooldown two state blocker selector**
+
+00939d30 selects greatest charge-gated remaining among ability+11c/+120; a state with positive charge contributes zero. It does not directly examine+124.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00939d30` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0093c860` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: Not a universal cast eligibility/readiness predicate.
+- 한계: Timer validity and object-lifetime preconditions retain prior collector corrections.
+- 한계: No live HUD or authoritative successful cast evidence.
+- 근거: [src-deepening-763146dae926](#src-deepening-763146dae926) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-d4f1a88174ec](#src-deepening-d4f1a88174ec) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-37d63228f200](#src-deepening-37d63228f200) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-882cd47fa830](#src-deepening-882cd47fa830) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-b5a020905ffa](#src-deepening-b5a020905ffa) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
+### VGRE-deepening-scout-cam-upgrade-modifier-declarations
+
+**scout cam upgrade modifier declarations**
+
+Cam-targeted factories configure ScoutPak +1/-30; SuperScout extra +2/-30 by item property differences; Standard3v3 -1/-10. Resource527 declares both SuperScout and ScoutPak controls; conditional raw3 witness inventory includes527.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x008e25b0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x008f1410` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x008f2a00` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00867c60` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00867ca0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00867e10` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00867e70` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00939570` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0093f1b0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0093f210` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: Declaration and real native methods do not prove active buff lifetime or exact recorded capacity.
+- 한계: Conditional totals3/120,5/90,1/140 assume unmodified base2/150 and named controls applied once.
+- 한계: H5810 executable build remains unknown; inventory association is conditional.
+- 근거: [src-deepening-763146dae926](#src-deepening-763146dae926) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-d4f1a88174ec](#src-deepening-d4f1a88174ec) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-37d63228f200](#src-deepening-37d63228f200) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-882cd47fa830](#src-deepening-882cd47fa830) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-b5a020905ffa](#src-deepening-b5a020905ffa) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
 ### VGRE-replay-game-clock-anchor-display
 
 **게임 시계 앵커·재생 누적·화면 시간**
@@ -686,6 +1021,73 @@ state+0x20에는 timer body가 아니라 body+0x14 inner reference가 저장된�
 
 
 ## 게임 요청과 전송
+
+### VGRE-deepening-combat-041a
+
+**combat 041a**
+
+Opcode 041a consumes a 13-byte native prefix. Guarded override insertion/clear helper semantics are established; historical application is unverified.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- Opcode: `041a`
+- 함수/위치: `0x004d1520` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0081bda0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0094fc20` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00951d50` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x008177c0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 필드: actor_raw = payload_after_opcode+0 (be_u32); Native consumed prefix only; opaque suffix not assigned semantics.
+- 필드: original_slot_raw = payload_after_opcode+4 (be_u32); Native consumed prefix only; opaque suffix not assigned semantics.
+- 필드: replacement_slot_raw = payload_after_opcode+8 (be_u32); Native consumed prefix only; opaque suffix not assigned semantics.
+- 필드: control_raw_nonzero_normalized = payload_after_opcode+12 (u8); Native consumed prefix only; opaque suffix not assigned semantics.
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: Override apply requires resolved actor and global 0x0209e204 != 0; incoming play uses the opposite gate. Setup 0x004bff80 calls setter 0x0095da70 with zero; literal/direct-call scans cannot exclude alias or indirect writes.
+- 한계: Historical payload suffixes remain opaque; no acknowledgement, hit success, causal transaction key or unique request/impact pairing. Numeric state transition requests may be rejected; dynamic behavior callbacks remain unresolved.
+- 근거: [src-deepening-34c9e68da6ff](#src-deepening-34c9e68da6ff) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-8911ccbae0f8](#src-deepening-8911ccbae0f8) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-9d37dc38eb98](#src-deepening-9d37dc38eb98) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-2f20bcbf5127](#src-deepening-2f20bcbf5127) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
+### VGRE-deepening-combat-041b
+
+**combat 041b**
+
+Opcode 041b consumes a 8-byte native prefix. Guarded override insertion/clear helper semantics are established; historical application is unverified.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- Opcode: `041b`
+- 함수/위치: `0x004d1590` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0081a370` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0094cf80` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00871d70` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00814ac0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 필드: actor_raw = payload_after_opcode+0 (be_u32); Native consumed prefix only; opaque suffix not assigned semantics.
+- 필드: original_slot_raw = payload_after_opcode+4 (be_u32); Native consumed prefix only; opaque suffix not assigned semantics.
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: Override apply requires resolved actor and global 0x0209e204 != 0; incoming play uses the opposite gate. Setup 0x004bff80 calls setter 0x0095da70 with zero; literal/direct-call scans cannot exclude alias or indirect writes.
+- 한계: Historical payload suffixes remain opaque; no acknowledgement, hit success, causal transaction key or unique request/impact pairing. Numeric state transition requests may be rejected; dynamic behavior callbacks remain unresolved.
+- 근거: [src-deepening-34c9e68da6ff](#src-deepening-34c9e68da6ff) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-8911ccbae0f8](#src-deepening-8911ccbae0f8) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-9d37dc38eb98](#src-deepening-9d37dc38eb98) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-2f20bcbf5127](#src-deepening-2f20bcbf5127) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
+### VGRE-deepening-combat-0425
+
+**combat 0425**
+
+Opcode 0425 consumes a 4-byte native prefix. When selected actor and required child component resolve, updates/clears the selected player actor target handle; unresolved target then clears selection. No caster, request sequence or success byte is consumed.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- Opcode: `0425`
+- 함수/위치: `0x004d3ac2` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x005296f0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x005297a0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00597190` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 필드: target_actor_raw = payload_after_opcode+0 (be_u32); Native consumed prefix only; opaque suffix not assigned semantics.
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: Override apply requires resolved actor and global 0x0209e204 != 0; incoming play uses the opposite gate. Setup 0x004bff80 calls setter 0x0095da70 with zero; literal/direct-call scans cannot exclude alias or indirect writes.
+- 한계: Historical payload suffixes remain opaque; no acknowledgement, hit success, causal transaction key or unique request/impact pairing. Numeric state transition requests may be rejected; dynamic behavior callbacks remain unresolved.
+- 근거: [src-deepening-34c9e68da6ff](#src-deepening-34c9e68da6ff) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-8911ccbae0f8](#src-deepening-8911ccbae0f8) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-9d37dc38eb98](#src-deepening-9d37dc38eb98) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-2f20bcbf5127](#src-deepening-2f20bcbf5127) · Bounded synthetic test model only; does not prove native execution or runtime application.
 
 ### VGRE-request-ability-layouts
 
@@ -1240,6 +1642,27 @@ H5810 negative impact35192개에 대해 raw timestamp1.0 window에서 same-sourc
 - 근거: [src-correlation_native](#src-correlation_native) · Exact native prefixes
 - 근거: [src-artifact-07c468b8ae82](#src-artifact-07c468b8ae82) · whole artifact; content remains external
 
+### VGRE-deepening-combat-target-storage
+
+**combat target storage**
+
+Incoming play resolves the runtime override before target/vector writes, while state transition and onPlayAbility use the original slot. Target generation is an object-lifetime guard, not a cast transaction key. Target+vector writes replace coordinate/mode flags but retain handle storage.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_native_deepening / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0094ff00` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00952920` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00957260` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x0095f600` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x009432c0` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source)); `0x00946710` (win-x86-laa, preferred_va, Reviewed function, instruction, or data address (see cited source))
+- 한계: Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.
+- 한계: Override apply requires resolved actor and global 0x0209e204 != 0; incoming play uses the opposite gate. Setup 0x004bff80 calls setter 0x0095da70 with zero; literal/direct-call scans cannot exclude alias or indirect writes.
+- 한계: Historical payload suffixes remain opaque; no acknowledgement, hit success, causal transaction key or unique request/impact pairing. Numeric state transition requests may be rejected; dynamic behavior callbacks remain unresolved.
+- 한계: Copied destination handle is not immediately cleared when input validation fails. Nonzero handle storage alone does not prove active target mode.
+- 한계: Behavior context has definition/actor/target/vector pointers; dynamic implementations and applied authoritative effects remain unresolved.
+- 근거: [src-deepening-34c9e68da6ff](#src-deepening-34c9e68da6ff) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-8911ccbae0f8](#src-deepening-8911ccbae0f8) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-9d37dc38eb98](#src-deepening-9d37dc38eb98) · Reviewed claim and its explicit limits; consult source for exact instruction locations.
+- 근거: [src-deepening-014b40b70e6f](#src-deepening-014b40b70e6f) · Frozen independent producer review, including exact approved source hashes and remaining limits.
+- 근거: [src-deepening-2f20bcbf5127](#src-deepening-2f20bcbf5127) · Bounded synthetic test model only; does not prove native execution or runtime application.
+
 ## 정확한 입력 파일과 주소 공간
 
 ### win-x86-laa
@@ -1458,6 +1881,246 @@ repo 경로는 현재 checkout에서 hash를 확인합니다. 외부 namespace �
 - `research:client-damage-math/portable/REPORT.md`
 - SHA-256: `d90a7c4f04f0c1b5d1a3ea744ebc6f0f1fe5b8c803e2415a5e4a984caeaa4a7e`
 - 종류: analysis_report · 보관: external_reference_only
+
+### src-deepening-014b40b70e6f
+
+- `research:independent-deepening-review/review.json`
+- SHA-256: `e6c834c265e2af39ea31279bf584e2aba5dde59f0529938bb24ea294a9720b08`
+- 종류: independent_review · 보관: external_reference_only
+
+### src-deepening-06095db2b8c7
+
+- [repo:tests/research_models/override_fields.py](../../../tests/research_models/override_fields.py)
+- SHA-256: `e2ec34bbe4c8f26ef492f28467fed4f348514f3e123a50c45ac34d598535ccc3`
+- 종류: source_code · 보관: existing_repository
+
+### src-deepening-0792a03dcffe
+
+- `research:match-result-deepening/synthetic-terminal-counterexample.json`
+- SHA-256: `4a168b367c0f899bf713b99e99b9b9ca909dab8635a76a05bacd83e45b04da38`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-deepening-09908834d9ba
+
+- `research:match-result-deepening/REPORT.md`
+- SHA-256: `00ac40a5f389815be047fefd89150a582cbfcd1b19f680c5ae418f521ec600a8`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-deepening-0be03adf5873
+
+- `research:match-result-deepening/native/mastery-rpc-key.txt`
+- SHA-256: `37f4ce6a3482093c607af730ca9d4268327d924326a73e720c4eb47d2e4f1c9e`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-1de244922c2b
+
+- `research:match-result-deepening/native/mastery-lookup.txt`
+- SHA-256: `97977795d02810d0556680456903e7937bc97a1aa530bc87fe9080c7c7a5e772`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-232fc680c622
+
+- [repo:vg/docs/re_dictionary/deepening/README.md](../../../vg/docs/re_dictionary/deepening/README.md)
+- SHA-256: `f0f8d654db11998281646fd19477b0ad0a369f48c001ad934dae0dd42a200ef9`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-deepening-2626275848a3
+
+- `research:match-result-deepening/terminal2/00564e50.txt`
+- SHA-256: `9413f4c0c1f793afa319a4cdf216d89f81a5cbb60ad331a856f69d425bc2b481`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-deepening-2d186061c682
+
+- `research:match-result-deepening/native/platform-getHeroMastery.txt`
+- SHA-256: `98dd513240e0d596f343438d12c08db23346672e558060606574502ae4985c97`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-2f20bcbf5127
+
+- [repo:tests/test_research_override_fields.py](../../../tests/test_research_override_fields.py)
+- SHA-256: `536ed4f84cc7a5298e485444503c5740e4cd60128b0e179044b950683d1a3928`
+- 종류: source_code · 보관: existing_repository
+
+### src-deepening-34c9e68da6ff
+
+- `research:combat-network-deepening/ARTIFACTS.sha256.json`
+- SHA-256: `99b9f8c46bbad2483cdbc7706000316416a74a9a8bf3308e7572f5c4ac205694`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-deepening-37d63228f200
+
+- `research:cooldown-deepening/portable/evidence-checks.json`
+- SHA-256: `67f5d05e007839127020154e2a89afcd5f2fc03823d00f3de76c568afcfc748e`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-deepening-3bbf4528ff44
+
+- `research:match-result-deepening/native/row-identity-reader.txt`
+- SHA-256: `8f192fb682a451852f521acb18e7bdce47ddc8c3e296319ba81b73e1a556feba`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-3f546d5d0d00
+
+- `research:match-result-deepening/native/primary-constructor.txt`
+- SHA-256: `a75f0a27483606c6770ae34ae4e2d3368a93d6f12bc60916e88c22cd8ba45bfa`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-58bc1f4ae6c5
+
+- `research:match-result-deepening/native/gold-ui-gate.txt`
+- SHA-256: `b9d4ca1fc3da9bde6443d937a637b73b907113e143cffe210e342376bf66bb46`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-592d9786b4a9
+
+- `research:match-result-deepening/native/banner-consumer.txt`
+- SHA-256: `aafdb115e82b3406942668a63552847f36f356fc660203319b4f59069b0e7313`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-65f790466d1d
+
+- `research:match-result-deepening/native/final-row-refresh.txt`
+- SHA-256: `ae2187928c24a5c6a2de9cc522f8f8a669520293b740ad4846c28a64c77fe19c`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-6ab9f1b58c3c
+
+- `research:match-result-deepening/native/clock-tick.txt`
+- SHA-256: `bbc5d4a3e89eee7dec1d6aec9c3bb3b3a2afe412a03e0f3bb8ddc07cf9c0398a`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-6c2e708b509a
+
+- [repo:tests/test_research_terminal_model.py](../../../tests/test_research_terminal_model.py)
+- SHA-256: `865cedffcc00e27925191d37ae39a4ebae02f817814070ea8d725def0d3899fe`
+- 종류: source_code · 보관: existing_repository
+
+### src-deepening-6dda242b856c
+
+- `research:match-result-deepening/native/primary-transition.txt`
+- SHA-256: `2ca1a69d1076caaff9b117461e768e517855de5bdc14192d707cbb252ba0e3b0`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-763146dae926
+
+- `research:cooldown-deepening/portable/REPORT.md`
+- SHA-256: `fd9bfdd07422d854fbcdbabee127471d788e3f3924547580bdc52da26e37d28f`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-deepening-7f0bce357f27
+
+- `research:match-result-deepening/native/mastery-response.txt`
+- SHA-256: `f6e5402111d16adc27e09c356b51aefb00d9b54702304694f096925fc41196e1`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-882cd47fa830
+
+- [repo:vg/docs/re_dictionary/deepening/cooldown-additions.json](../../../vg/docs/re_dictionary/deepening/cooldown-additions.json)
+- SHA-256: `21948d47581c419572ae71271d866710791958852c6227d3c2002d247b572b82`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-deepening-8911ccbae0f8
+
+- `research:combat-network-deepening/REPORT.md`
+- SHA-256: `10584f746f7c0a4a0f65ac9a0be5b8be4c76bec0c1fb1919f67624e8d45b8eab`
+- 종류: analysis_report · 보관: external_reference_only
+
+### src-deepening-8df4eb06449a
+
+- `research:match-result-deepening/native/mastery-request-builder.txt`
+- SHA-256: `c1b274d19b24bd6efdd1c0a72d9f393aedd0bb622c66f725f10c23368fe96f87`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-9676a04fd41e
+
+- [repo:tests/test_research_followup_catalog.py](../../../tests/test_research_followup_catalog.py)
+- SHA-256: `da713cf8c01a9faa8a2c1fe6d4031da3ace6fbb01edec2ab96756c668635042c`
+- 종류: source_code · 보관: existing_repository
+
+### src-deepening-9d37dc38eb98
+
+- [repo:vg/docs/re_dictionary/deepening/combat-network-additions.json](../../../vg/docs/re_dictionary/deepening/combat-network-additions.json)
+- SHA-256: `7ae2a5624b23ab5f7b6183f82eba583c165345b0522f09cd28306ffec3516523`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-deepening-a684ae59db6d
+
+- `research:match-result-deepening/native/platform-interface-slot.txt`
+- SHA-256: `c36a999877933303a96b697d9f686e2c6c5780f55ba6b541194a383fa46c713a`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-afbcd8686e13
+
+- `research:match-result-deepening/native/terminal-setter.txt`
+- SHA-256: `eeef0fba32ea8704af439ee78ab111016ee12bb059cab70724c5e7accc020b59`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-b0dd017522f4
+
+- `research:match-result-deepening/native/banner-keys.txt`
+- SHA-256: `72df35939225703c84063b38630f977f00aaffb4c36e3e18ad6e71c914a258d6`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-b5a020905ffa
+
+- [repo:tests/test_research_cooldown_models.py](../../../tests/test_research_cooldown_models.py)
+- SHA-256: `a99ed095453bf3c191516d3dd021ba5118232921d23bf112ce5b6bf97abf8c1e`
+- 종류: source_code · 보관: existing_repository
+
+### src-deepening-ce219ed8f1ee
+
+- `research:match-result-deepening/test_terminal_model.py`
+- SHA-256: `86cf827e689433128ad7389a319e7455d28992152152062aa6b507d087ad43ae`
+- 종류: source_code · 보관: external_reference_only
+
+### src-deepening-d32981953aa3
+
+- `research:match-result-deepening/native/clock-ui-gate.txt`
+- SHA-256: `f2b2a1cc48f2b8e6096a84b80897fe3ac1b50e100f0b87c8ba7982018600815a`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-d4f1a88174ec
+
+- `research:cooldown-deepening/portable/receipt-hashes.json`
+- SHA-256: `e0dc2ebe834b878e274cf0d76da00cd686af213517e563f117363d4a3d24c2a6`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-deepening-ddcafec18612
+
+- `research:match-result-deepening/native/mastery-manifest-keys.txt`
+- SHA-256: `f5a4fb230e64cde35ffce3674cf942802b39100ac1a5859fa3e21e14bb6c5745`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-e358da15fc1e
+
+- `research:match-result-deepening/native/mastery-tier.txt`
+- SHA-256: `71ac81632ab6bed40284094d30407252f4d4529208beacdb520b9022706e27c1`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-f1eed04cad1f
+
+- [repo:vg/docs/re_dictionary/deepening/match-result-additions.json](../../../vg/docs/re_dictionary/deepening/match-result-additions.json)
+- SHA-256: `fbfbbe5d61ea51336ed851cff1b70e93eb53517a5903abf94507d2a47af51c6b`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-deepening-f7ad612fc5c4
+
+- `research:match-result-deepening/terminal7/0056f500.txt`
+- SHA-256: `5839a0a565c1a47820b9036fa8222121d0422ecdbcdfc7deddf4f72a6b832485`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-deepening-f804572b3e72
+
+- `research:match-result-deepening/native/roster-string-getter.txt`
+- SHA-256: `57444aff329506bc2b083c455d6c0935f71eaf4929326bd131e3474b7335a5db`
+- 종류: native_receipt_reference · 보관: external_reference_only
+
+### src-deepening-f8c7558a816d
+
+- `research:match-result-deepening/manifest.json`
+- SHA-256: `98b0ecc30c753bf509921b3eb6f444458f3b3fc3274ffe87767293bd84b9c8ee`
+- 종류: evidence_manifest · 보관: external_reference_only
 
 ### src-health
 

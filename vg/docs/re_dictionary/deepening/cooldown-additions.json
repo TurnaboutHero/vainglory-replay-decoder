@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "integration": "Safe original summary additions; adapt to catalog schema, retain limitations. No native exports for repository.",
+  "entries": [
+    {
+      "id": "VGRE-cooldown-buff-capacity-lifecycle",
+      "category": "cooldown",
+      "title_en": "Buff capacity adjustment arithmetic",
+      "claim_en": "Named ModifyMaxCharges methods change signed state+41 and current state+42 independently of base+40. Positive deltas grant current charges; negative deltas clamp only above the resulting cap. Lifetime wrappers dispatch addition/inverse methods.",
+      "artifact_id": "win-x86-laa",
+      "artifact_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "address_kind": "preferred_va",
+      "proof_status": "supported",
+      "execution": "static_only",
+      "native_execution": false,
+      "recording_build_match": "unknown",
+      "functions": [
+        "0x0081d5c0",
+        "0x009617e0",
+        "0x009629b0",
+        "0x009541b0",
+        "0x0093f1b0",
+        "0x0086ecb0",
+        "0x00810930",
+        "0x009477c0",
+        "0x00948320"
+      ],
+      "limitations": [
+        "Outer exact buff activation/removal/refresh timing remains unresolved; method labels describe arithmetic.",
+        "Byte wrapping and signed/unsigned comparisons prevent unrestricted integer extrapolation.",
+        "Not proof every replay charge input successfully applies."
+      ],
+      "evidence_report": "REPORT.md"
+    },
+    {
+      "id": "VGRE-cooldown-buff-duration-modifiers",
+      "category": "cooldown",
+      "title_en": "Additive multiplicative override duration fields",
+      "claim_en": "Named ModifyMaxCooldown methods alter state+30/+34/+38 through add/multiply/override, inverse and new-minus-old/new-over-old update operations. Selected methods do not rewrite running timer state.",
+      "artifact_id": "win-x86-laa",
+      "artifact_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "address_kind": "preferred_va",
+      "proof_status": "supported",
+      "execution": "static_only",
+      "native_execution": false,
+      "recording_build_match": "unknown",
+      "functions": [
+        "0x0081d600",
+        "0x009618c0",
+        "0x00962a90",
+        "0x009542d0",
+        "0x0093f210",
+        "0x005f9280",
+        "0x0086bbf0"
+      ],
+      "limitations": [
+        "Mode2 removal resets override -1, not saved prior override.",
+        "Mode1 inverse/update has no local zero-divisor guard.",
+        "No authoritative server stacking/uniqueness or full duration timing asserted."
+      ],
+      "evidence_report": "REPORT.md"
+    },
+    {
+      "id": "VGRE-scout-cam-upgrade-modifier-declarations",
+      "category": "cooldown",
+      "title_en": "Scout Cam declared capacity and cooldown adjustments",
+      "claim_en": "Cam-targeted factories configure ScoutPak +1/-30; SuperScout extra +2/-30 by item property differences; Standard3v3 -1/-10. Resource527 declares both SuperScout and ScoutPak controls; conditional raw3 witness inventory includes527.",
+      "artifact_id": "win-x86-laa",
+      "artifact_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "address_kind": "preferred_va",
+      "proof_status": "supported",
+      "execution": "static_only",
+      "native_execution": false,
+      "recording_build_match": "unknown",
+      "functions": [
+        "0x008e25b0",
+        "0x008f1410",
+        "0x008f2a00",
+        "0x00867c60",
+        "0x00867ca0",
+        "0x00867e10",
+        "0x00867e70",
+        "0x00939570",
+        "0x0093f1b0",
+        "0x0093f210"
+      ],
+      "limitations": [
+        "Declaration and real native methods do not prove active buff lifetime or exact recorded capacity.",
+        "Conditional totals3/120,5/90,1/140 assume unmodified base2/150 and named controls applied once.",
+        "H5810 executable build remains unknown; inventory association is conditional."
+      ],
+      "evidence_report": "REPORT.md"
+    },
+    {
+      "id": "VGRE-cooldown-effective-stat-flags",
+      "category": "cooldown",
+      "title_en": "Initial cooldown stat flags and effective duration",
+      "claim_en": "0086bbf0 conditionally applies stat25 fractional reduction then divides by at least1 of stat15. Initial definition flags map to state+48; Flask/Cam flags0 bypass both, RingoC/KrulC lowbits3 enable stat25.",
+      "artifact_id": "win-x86-laa",
+      "artifact_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "address_kind": "preferred_va",
+      "proof_status": "supported",
+      "execution": "static_only",
+      "native_execution": false,
+      "recording_build_match": "unknown",
+      "functions": [
+        "0x0086bbf0",
+        "0x0093f270",
+        "0x0044e081"
+      ],
+      "limitations": [
+        "Initial creation only; existing shared state reuse does not reinitialize flags.",
+        "Startup stat25 upper approx0.35 and lower -FLT_MAX do not prove immutable runtime caps.",
+        "Nominal duration and start/remaining timer are distinct."
+      ],
+      "evidence_report": "REPORT.md"
+    },
+    {
+      "id": "VGRE-cooldown-two-state-blocker-selector",
+      "category": "cooldown",
+      "title_en": "Charge-gated two-state blocker selection",
+      "claim_en": "00939d30 selects greatest charge-gated remaining among ability+11c/+120; a state with positive charge contributes zero. It does not directly examine+124.",
+      "artifact_id": "win-x86-laa",
+      "artifact_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "address_kind": "preferred_va",
+      "proof_status": "supported",
+      "execution": "static_only",
+      "native_execution": false,
+      "recording_build_match": "unknown",
+      "functions": [
+        "0x00939d30",
+        "0x0093c860"
+      ],
+      "limitations": [
+        "Not a universal cast eligibility/readiness predicate.",
+        "Timer validity and object-lifetime preconditions retain prior collector corrections.",
+        "No live HUD or authoritative successful cast evidence."
+      ],
+      "evidence_report": "REPORT.md"
+    }
+  ]
+}

@@ -434,6 +434,446 @@
       "locator_note": "The hash binds the whole original file; no content is imported from external files."
     },
     {
+      "id": "src-deepening-014b40b70e6f",
+      "kind": "independent_review",
+      "location": {
+        "namespace": "research",
+        "path": "independent-deepening-review/review.json"
+      },
+      "sha256": "e6c834c265e2af39ea31279bf584e2aba5dde59f0529938bb24ea294a9720b08",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-06095db2b8c7",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/research_models/override_fields.py"
+      },
+      "sha256": "e2ec34bbe4c8f26ef492f28467fed4f348514f3e123a50c45ac34d598535ccc3",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-0792a03dcffe",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/synthetic-terminal-counterexample.json"
+      },
+      "sha256": "4a168b367c0f899bf713b99e99b9b9ca909dab8635a76a05bacd83e45b04da38",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-09908834d9ba",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/REPORT.md"
+      },
+      "sha256": "00ac40a5f389815be047fefd89150a582cbfcd1b19f680c5ae418f521ec600a8",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-0be03adf5873",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/mastery-rpc-key.txt"
+      },
+      "sha256": "37f4ce6a3482093c607af730ca9d4268327d924326a73e720c4eb47d2e4f1c9e",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-1de244922c2b",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/mastery-lookup.txt"
+      },
+      "sha256": "97977795d02810d0556680456903e7937bc97a1aa530bc87fe9080c7c7a5e772",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-232fc680c622",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/deepening/README.md"
+      },
+      "sha256": "f0f8d654db11998281646fd19477b0ad0a369f48c001ad934dae0dd42a200ef9",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-2626275848a3",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/terminal2/00564e50.txt"
+      },
+      "sha256": "9413f4c0c1f793afa319a4cdf216d89f81a5cbb60ad331a856f69d425bc2b481",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-2d186061c682",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/platform-getHeroMastery.txt"
+      },
+      "sha256": "98dd513240e0d596f343438d12c08db23346672e558060606574502ae4985c97",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-2f20bcbf5127",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_override_fields.py"
+      },
+      "sha256": "536ed4f84cc7a5298e485444503c5740e4cd60128b0e179044b950683d1a3928",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-34c9e68da6ff",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "combat-network-deepening/ARTIFACTS.sha256.json"
+      },
+      "sha256": "99b9f8c46bbad2483cdbc7706000316416a74a9a8bf3308e7572f5c4ac205694",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-37d63228f200",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "cooldown-deepening/portable/evidence-checks.json"
+      },
+      "sha256": "67f5d05e007839127020154e2a89afcd5f2fc03823d00f3de76c568afcfc748e",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-3bbf4528ff44",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/row-identity-reader.txt"
+      },
+      "sha256": "8f192fb682a451852f521acb18e7bdce47ddc8c3e296319ba81b73e1a556feba",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-3f546d5d0d00",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/primary-constructor.txt"
+      },
+      "sha256": "a75f0a27483606c6770ae34ae4e2d3368a93d6f12bc60916e88c22cd8ba45bfa",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-58bc1f4ae6c5",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/gold-ui-gate.txt"
+      },
+      "sha256": "b9d4ca1fc3da9bde6443d937a637b73b907113e143cffe210e342376bf66bb46",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-592d9786b4a9",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/banner-consumer.txt"
+      },
+      "sha256": "aafdb115e82b3406942668a63552847f36f356fc660203319b4f59069b0e7313",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-65f790466d1d",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/final-row-refresh.txt"
+      },
+      "sha256": "ae2187928c24a5c6a2de9cc522f8f8a669520293b740ad4846c28a64c77fe19c",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-6ab9f1b58c3c",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/clock-tick.txt"
+      },
+      "sha256": "bbc5d4a3e89eee7dec1d6aec9c3bb3b3a2afe412a03e0f3bb8ddc07cf9c0398a",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-6c2e708b509a",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_terminal_model.py"
+      },
+      "sha256": "865cedffcc00e27925191d37ae39a4ebae02f817814070ea8d725def0d3899fe",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-6dda242b856c",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/primary-transition.txt"
+      },
+      "sha256": "2ca1a69d1076caaff9b117461e768e517855de5bdc14192d707cbb252ba0e3b0",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-763146dae926",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "cooldown-deepening/portable/REPORT.md"
+      },
+      "sha256": "fd9bfdd07422d854fbcdbabee127471d788e3f3924547580bdc52da26e37d28f",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-7f0bce357f27",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/mastery-response.txt"
+      },
+      "sha256": "f6e5402111d16adc27e09c356b51aefb00d9b54702304694f096925fc41196e1",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-882cd47fa830",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/deepening/cooldown-additions.json"
+      },
+      "sha256": "21948d47581c419572ae71271d866710791958852c6227d3c2002d247b572b82",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-8911ccbae0f8",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "research",
+        "path": "combat-network-deepening/REPORT.md"
+      },
+      "sha256": "10584f746f7c0a4a0f65ac9a0be5b8be4c76bec0c1fb1919f67624e8d45b8eab",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-8df4eb06449a",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/mastery-request-builder.txt"
+      },
+      "sha256": "c1b274d19b24bd6efdd1c0a72d9f393aedd0bb622c66f725f10c23368fe96f87",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-9676a04fd41e",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_followup_catalog.py"
+      },
+      "sha256": "da713cf8c01a9faa8a2c1fe6d4031da3ace6fbb01edec2ab96756c668635042c",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-9d37dc38eb98",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/deepening/combat-network-additions.json"
+      },
+      "sha256": "7ae2a5624b23ab5f7b6183f82eba583c165345b0522f09cd28306ffec3516523",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-a684ae59db6d",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/platform-interface-slot.txt"
+      },
+      "sha256": "c36a999877933303a96b697d9f686e2c6c5780f55ba6b541194a383fa46c713a",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-afbcd8686e13",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/terminal-setter.txt"
+      },
+      "sha256": "eeef0fba32ea8704af439ee78ab111016ee12bb059cab70724c5e7accc020b59",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-b0dd017522f4",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/banner-keys.txt"
+      },
+      "sha256": "72df35939225703c84063b38630f977f00aaffb4c36e3e18ad6e71c914a258d6",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-b5a020905ffa",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_cooldown_models.py"
+      },
+      "sha256": "a99ed095453bf3c191516d3dd021ba5118232921d23bf112ce5b6bf97abf8c1e",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-ce219ed8f1ee",
+      "kind": "source_code",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/test_terminal_model.py"
+      },
+      "sha256": "86cf827e689433128ad7389a319e7455d28992152152062aa6b507d087ad43ae",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-d32981953aa3",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/clock-ui-gate.txt"
+      },
+      "sha256": "f2b2a1cc48f2b8e6096a84b80897fe3ac1b50e100f0b87c8ba7982018600815a",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-d4f1a88174ec",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "cooldown-deepening/portable/receipt-hashes.json"
+      },
+      "sha256": "e0dc2ebe834b878e274cf0d76da00cd686af213517e563f117363d4a3d24c2a6",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-ddcafec18612",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/mastery-manifest-keys.txt"
+      },
+      "sha256": "f5a4fb230e64cde35ffce3674cf942802b39100ac1a5859fa3e21e14bb6c5745",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-e358da15fc1e",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/mastery-tier.txt"
+      },
+      "sha256": "71ac81632ab6bed40284094d30407252f4d4529208beacdb520b9022706e27c1",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-f1eed04cad1f",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/deepening/match-result-additions.json"
+      },
+      "sha256": "fbfbbe5d61ea51336ed851cff1b70e93eb53517a5903abf94507d2a47af51c6b",
+      "publication": "existing_repository",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-f7ad612fc5c4",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/terminal7/0056f500.txt"
+      },
+      "sha256": "5839a0a565c1a47820b9036fa8222121d0422ecdbcdfc7deddf4f72a6b832485",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-f804572b3e72",
+      "kind": "native_receipt_reference",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/native/roster-string-getter.txt"
+      },
+      "sha256": "57444aff329506bc2b083c455d6c0935f71eaf4929326bd131e3474b7335a5db",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
+      "id": "src-deepening-f8c7558a816d",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "match-result-deepening/manifest.json"
+      },
+      "sha256": "98b0ecc30c753bf509921b3eb6f444458f3b3fc3274ffe87767293bd84b9c8ee",
+      "publication": "external_reference_only",
+      "locator_note": "Hash-pinned reviewed source; external native excerpts are not redistributed."
+    },
+    {
       "id": "src-health",
       "kind": "analysis_report",
       "location": {
@@ -3017,6 +3457,2190 @@
       "corrections_ko": [],
       "related_entry_ids": [],
       "tags": []
+    },
+    {
+      "id": "VGRE-deepening-combat-041a",
+      "category": "requests",
+      "title_ko": "combat 041a",
+      "claim_ko": "Opcode 041a consumes a 13-byte native prefix. Guarded override insertion/clear helper semantics are established; historical application is unverified.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x004d1520",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0081bda0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094fc20",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00951d50",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x008177c0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [
+        {
+          "name": "actor_raw",
+          "offset": 0,
+          "encoding": "be_u32",
+          "offset_base": "payload_after_opcode",
+          "note": "Native consumed prefix only; opaque suffix not assigned semantics."
+        },
+        {
+          "name": "original_slot_raw",
+          "offset": 4,
+          "encoding": "be_u32",
+          "offset_base": "payload_after_opcode",
+          "note": "Native consumed prefix only; opaque suffix not assigned semantics."
+        },
+        {
+          "name": "replacement_slot_raw",
+          "offset": 8,
+          "encoding": "be_u32",
+          "offset_base": "payload_after_opcode",
+          "note": "Native consumed prefix only; opaque suffix not assigned semantics."
+        },
+        {
+          "name": "control_raw_nonzero_normalized",
+          "offset": 12,
+          "encoding": "u8",
+          "offset_base": "payload_after_opcode",
+          "note": "Native consumed prefix only; opaque suffix not assigned semantics."
+        }
+      ],
+      "opcodes": [
+        "041a"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-34c9e68da6ff",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-8911ccbae0f8",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-9d37dc38eb98",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-2f20bcbf5127",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "Override apply requires resolved actor and global 0x0209e204 != 0; incoming play uses the opposite gate. Setup 0x004bff80 calls setter 0x0095da70 with zero; literal/direct-call scans cannot exclude alias or indirect writes.",
+        "Historical payload suffixes remain opaque; no acknowledgement, hit success, causal transaction key or unique request/impact pairing. Numeric state transition requests may be rejected; dynamic behavior callbacks remain unresolved."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-combat-041b",
+      "category": "requests",
+      "title_ko": "combat 041b",
+      "claim_ko": "Opcode 041b consumes a 8-byte native prefix. Guarded override insertion/clear helper semantics are established; historical application is unverified.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x004d1590",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0081a370",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094cf80",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00871d70",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00814ac0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [
+        {
+          "name": "actor_raw",
+          "offset": 0,
+          "encoding": "be_u32",
+          "offset_base": "payload_after_opcode",
+          "note": "Native consumed prefix only; opaque suffix not assigned semantics."
+        },
+        {
+          "name": "original_slot_raw",
+          "offset": 4,
+          "encoding": "be_u32",
+          "offset_base": "payload_after_opcode",
+          "note": "Native consumed prefix only; opaque suffix not assigned semantics."
+        }
+      ],
+      "opcodes": [
+        "041b"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-34c9e68da6ff",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-8911ccbae0f8",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-9d37dc38eb98",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-2f20bcbf5127",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "Override apply requires resolved actor and global 0x0209e204 != 0; incoming play uses the opposite gate. Setup 0x004bff80 calls setter 0x0095da70 with zero; literal/direct-call scans cannot exclude alias or indirect writes.",
+        "Historical payload suffixes remain opaque; no acknowledgement, hit success, causal transaction key or unique request/impact pairing. Numeric state transition requests may be rejected; dynamic behavior callbacks remain unresolved."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-combat-0425",
+      "category": "requests",
+      "title_ko": "combat 0425",
+      "claim_ko": "Opcode 0425 consumes a 4-byte native prefix. When selected actor and required child component resolve, updates/clears the selected player actor target handle; unresolved target then clears selection. No caster, request sequence or success byte is consumed.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x004d3ac2",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x005296f0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x005297a0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00597190",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [
+        {
+          "name": "target_actor_raw",
+          "offset": 0,
+          "encoding": "be_u32",
+          "offset_base": "payload_after_opcode",
+          "note": "Native consumed prefix only; opaque suffix not assigned semantics."
+        }
+      ],
+      "opcodes": [
+        "0425"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-34c9e68da6ff",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-8911ccbae0f8",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-9d37dc38eb98",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-2f20bcbf5127",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "Override apply requires resolved actor and global 0x0209e204 != 0; incoming play uses the opposite gate. Setup 0x004bff80 calls setter 0x0095da70 with zero; literal/direct-call scans cannot exclude alias or indirect writes.",
+        "Historical payload suffixes remain opaque; no acknowledgement, hit success, causal transaction key or unique request/impact pairing. Numeric state transition requests may be rejected; dynamic behavior callbacks remain unresolved."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-combat-packed-override",
+      "category": "cooldown",
+      "title_ko": "combat packed override",
+      "claim_ko": "Twenty packed entries at component+0x84 use first-inactive insertion, first-match single-level lookup and clear-all-matches. Slots store 15 bits; lookup/clear compare the unmasked operand. Full table insertion is a no-op; duplicate sources are possible.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00951d50",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00957260",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00871d70",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-34c9e68da6ff",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-8911ccbae0f8",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-9d37dc38eb98",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-2f20bcbf5127",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "Override apply requires resolved actor and global 0x0209e204 != 0; incoming play uses the opposite gate. Setup 0x004bff80 calls setter 0x0095da70 with zero; literal/direct-call scans cannot exclude alias or indirect writes.",
+        "Historical payload suffixes remain opaque; no acknowledgement, hit success, causal transaction key or unique request/impact pairing. Numeric state transition requests may be rejected; dynamic behavior callbacks remain unresolved."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": [
+        "Insertion truncates source but lookup/clear do not mask input; noncanonical source>32767 does not round-trip"
+      ]
+    },
+    {
+      "id": "VGRE-deepening-combat-target-storage",
+      "category": "correlation",
+      "title_ko": "combat target storage",
+      "claim_ko": "Incoming play resolves the runtime override before target/vector writes, while state transition and onPlayAbility use the original slot. Target generation is an object-lifetime guard, not a cast transaction key. Target+vector writes replace coordinate/mode flags but retain handle storage.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094ff00",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00952920",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00957260",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0095f600",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x009432c0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00946710",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-34c9e68da6ff",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-8911ccbae0f8",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-9d37dc38eb98",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-2f20bcbf5127",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "Override apply requires resolved actor and global 0x0209e204 != 0; incoming play uses the opposite gate. Setup 0x004bff80 calls setter 0x0095da70 with zero; literal/direct-call scans cannot exclude alias or indirect writes.",
+        "Historical payload suffixes remain opaque; no acknowledgement, hit success, causal transaction key or unique request/impact pairing. Numeric state transition requests may be rejected; dynamic behavior callbacks remain unresolved.",
+        "Copied destination handle is not immediately cleared when input validation fails. Nonzero handle storage alone does not prove active target mode.",
+        "Behavior context has definition/actor/target/vector pointers; dynamic implementations and applied authoritative effects remain unresolved."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-cooldown-buff-capacity-lifecycle",
+      "category": "cooldown",
+      "title_ko": "cooldown buff capacity lifecycle",
+      "claim_ko": "Named ModifyMaxCharges methods change signed state+41 and current state+42 independently of base+40. Positive deltas grant current charges; negative deltas clamp only above the resulting cap. Lifetime wrappers dispatch addition/inverse methods.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0081d5c0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x009617e0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x009629b0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x009541b0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093f1b0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0086ecb0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00810930",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x009477c0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00948320",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-763146dae926",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-d4f1a88174ec",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-37d63228f200",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-882cd47fa830",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-b5a020905ffa",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "Outer exact buff activation/removal/refresh timing remains unresolved; method labels describe arithmetic.",
+        "Byte wrapping and signed/unsigned comparisons prevent unrestricted integer extrapolation.",
+        "Not proof every replay charge input successfully applies."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-cooldown-buff-duration-modifiers",
+      "category": "cooldown",
+      "title_ko": "cooldown buff duration modifiers",
+      "claim_ko": "Named ModifyMaxCooldown methods alter state+30/+34/+38 through add/multiply/override, inverse and new-minus-old/new-over-old update operations. Selected methods do not rewrite running timer state.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0081d600",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x009618c0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00962a90",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x009542d0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093f210",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x005f9280",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0086bbf0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-763146dae926",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-d4f1a88174ec",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-37d63228f200",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-882cd47fa830",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-b5a020905ffa",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "Mode2 removal resets override -1, not saved prior override.",
+        "Mode1 inverse/update has no local zero-divisor guard.",
+        "No authoritative server stacking/uniqueness or full duration timing asserted."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-cooldown-effective-stat-flags",
+      "category": "cooldown",
+      "title_ko": "cooldown effective stat flags",
+      "claim_ko": "0086bbf0 conditionally applies stat25 fractional reduction then divides by at least1 of stat15. Initial definition flags map to state+48; Flask/Cam flags0 bypass both, RingoC/KrulC lowbits3 enable stat25.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0086bbf0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093f270",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0044e081",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-763146dae926",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-d4f1a88174ec",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-37d63228f200",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-882cd47fa830",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-b5a020905ffa",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "Initial creation only; existing shared state reuse does not reinitialize flags.",
+        "Startup stat25 upper approx0.35 and lower -FLT_MAX do not prove immutable runtime caps.",
+        "Nominal duration and start/remaining timer are distinct."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-cooldown-two-state-blocker-selector",
+      "category": "cooldown",
+      "title_ko": "cooldown two state blocker selector",
+      "claim_ko": "00939d30 selects greatest charge-gated remaining among ability+11c/+120; a state with positive charge contributes zero. It does not directly examine+124.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00939d30",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093c860",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-763146dae926",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-d4f1a88174ec",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-37d63228f200",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-882cd47fa830",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-b5a020905ffa",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "Not a universal cast eligibility/readiness predicate.",
+        "Timer validity and object-lifetime preconditions retain prior collector corrections.",
+        "No live HUD or authoritative successful cast evidence."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-identity-authenticated-account-from-roster",
+      "category": "identity",
+      "title_ko": "identity authenticated account from roster",
+      "claim_ko": "Client mastery cache use does not prove authentication, service account namespace, uploader ownership, or modern VGNA compatibility.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "unresolved",
+        "semantic_confidence": "unassigned",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093b270",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0056f050",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00997dc0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-09908834d9ba",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f8c7558a816d",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f1eed04cad1f",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-09908834d9ba",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-6c2e708b509a",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-identity-external-string-mastery-cache",
+      "category": "identity",
+      "title_ko": "identity external string mastery cache",
+      "claim_ko": "Roster entry+44 string getter0093b270 feeds scoreboard lookup0056f050 outer key; nested hero value passes through KindredHeroMasteryManifest thresholds and result is stored UI+75a4.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093b270",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x006f5d07",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x006f5d32",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x006f5d3a",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0056f050",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x007e50c0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x01264028",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-09908834d9ba",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f8c7558a816d",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f1eed04cad1f",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f804572b3e72",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-3bbf4528ff44",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-1de244922c2b",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-e358da15fc1e",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-ddcafec18612",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-6c2e708b509a",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-identity-mastery-response-cache",
+      "category": "identity",
+      "title_ko": "identity mastery response cache",
+      "claim_ko": "Handler0056f190 traverses response vector rows stride24, outer string+c, nested string/integer rows stride1c; stores same cache. This proves client dataflow, not source authenticity.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0056f190",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0056f217",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0056f22b",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0121fc78",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-09908834d9ba",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f8c7558a816d",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f1eed04cad1f",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-7f0bce357f27",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f7ad612fc5c4",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-6c2e708b509a",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-identity-mastery-rpc-method",
+      "category": "identity",
+      "title_ko": "identity mastery rpc method",
+      "claim_ko": "Platform table01293fb8 slot4c resolves00997de0 using literal getHeroMastery; builder0098d780 serializes context string and vector. No network request occurred; response dispatch and authentication remain unverified.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x01293fb8",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00997de0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x01295260",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0098d780",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-09908834d9ba",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f8c7558a816d",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f1eed04cad1f",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-a684ae59db6d",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-2d186061c682",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-0be03adf5873",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-8df4eb06449a",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-6c2e708b509a",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-scout-cam-upgrade-modifier-declarations",
+      "category": "cooldown",
+      "title_ko": "scout cam upgrade modifier declarations",
+      "claim_ko": "Cam-targeted factories configure ScoutPak +1/-30; SuperScout extra +2/-30 by item property differences; Standard3v3 -1/-10. Resource527 declares both SuperScout and ScoutPak controls; conditional raw3 witness inventory includes527.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x008e25b0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x008f1410",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x008f2a00",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00867c60",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00867ca0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00867e10",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00867e70",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00939570",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093f1b0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093f210",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-763146dae926",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-d4f1a88174ec",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-37d63228f200",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-882cd47fa830",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-b5a020905ffa",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "Declaration and real native methods do not prove active buff lifetime or exact recorded capacity.",
+        "Conditional totals3/120,5/90,1/140 assume unmodified base2/150 and named controls applied once.",
+        "H5810 executable build remains unknown; inventory association is conditional."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-terminal-banner-reason-keys",
+      "category": "result",
+      "title_ko": "terminal banner reason keys",
+      "claim_ko": "0073af90 selects VICTORY/DEFEAT by boolean for reason0 and SURRENDER for reason2; other reasons skip text-key assignment in this function.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0073af90",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0124fc04",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0124fc24",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0124fc40",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-09908834d9ba",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f8c7558a816d",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f1eed04cad1f",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-592d9786b4a9",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-b0dd017522f4",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-6c2e708b509a",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-terminal-clock-lifecycle",
+      "category": "result",
+      "title_ko": "terminal clock lifecycle",
+      "claim_ko": "Accepted primary2 commits before result callback and has no primary tick. Final refresh still reads controller clock, not terminal packet timestamp; UI formatter is modulo60-cache gated.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00549ffa",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0054a019",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x005497a0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00548870",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x006f557d",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-09908834d9ba",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f8c7558a816d",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f1eed04cad1f",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-3f546d5d0d00",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-6dda242b856c",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-6ab9f1b58c3c",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-d32981953aa3",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-6c2e708b509a",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-terminal-gold-final-refresh-cache",
+      "category": "result",
+      "title_ko": "terminal gold final refresh cache",
+      "claim_ko": "Final refresh visits16 rows without reset of each row gold cache; formatter runs only when truncated resource7*float32(.01) exceeds prior cached integer.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x006f5020",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x006f502b",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x006f7104",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x006f710a",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x006f711b",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-09908834d9ba",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f8c7558a816d",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f1eed04cad1f",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-65f790466d1d",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-58bc1f4ae6c5",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-6c2e708b509a",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-terminal-last-request-is-final-result",
+      "category": "result",
+      "title_ko": "terminal last request is final result",
+      "claim_ko": "Neither last request nor first recorded request universally proves accepted callback/display result; initial state, guards, perspective, and nested UI transitions matter.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00549fa0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00549fb7",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00564e90",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-09908834d9ba",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f8c7558a816d",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f1eed04cad1f",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-6dda242b856c",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-2626275848a3",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-ce219ed8f1ee",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-6c2e708b509a",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-terminal-primary-entry",
+      "category": "result",
+      "title_ko": "terminal primary entry",
+      "claim_ko": "00549620 writes team/reason, then synchronously requests primary2 before secondary3. Primary2 entry00548c90 executes only if the primary transition accepts.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0054962d",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00549633",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00549699",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x005496a6",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00549fa0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00549fec",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00549ffa",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0054a019",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-09908834d9ba",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f8c7558a816d",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f1eed04cad1f",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-afbcd8686e13",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-6dda242b856c",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-3f546d5d0d00",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-6c2e708b509a",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-deepening-terminal-repeated-field-callback-divergence",
+      "category": "result",
+      "title_ko": "terminal repeated field callback divergence",
+      "claim_ko": "A repeat while primary2 overwrites controller fields but same-state primary guard prevents a fresh result callback. Counterexample is synthetic, not an observed replay.",
+      "scope": {
+        "layer": "independently_reviewed_native_deepening",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0054962d",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00549633",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00549fa0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00549fa2",
+          "address_kind": "preferred_va",
+          "role": "Reviewed function, instruction, or data address (see cited source)",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-deepening-09908834d9ba",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f8c7558a816d",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-f1eed04cad1f",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-afbcd8686e13",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-6dda242b856c",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-0792a03dcffe",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-ce219ed8f1ee",
+          "locator": "Reviewed claim and its explicit limits; consult source for exact instruction locations."
+        },
+        {
+          "source_id": "src-deepening-014b40b70e6f",
+          "locator": "Frozen independent producer review, including exact approved source hashes and remaining limits."
+        },
+        {
+          "source_id": "src-deepening-6c2e708b509a",
+          "locator": "Bounded synthetic test model only; does not prove native execution or runtime application."
+        }
+      ],
+      "limitations_ko": [
+        "Static client build only; no native/server execution or fresh independent recording holdout. Historical producer build and applied runtime state remain unverified.",
+        "No certified/displayed winner, exact final gold/time, authenticated account or uploader inference. Callback order excludes reentrancy and nested UI guard reconstruction."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "deepening",
+        "static-only"
+      ],
+      "layout_notes": []
     },
     {
       "id": "VGRE-entity-actor-resource-kind",
