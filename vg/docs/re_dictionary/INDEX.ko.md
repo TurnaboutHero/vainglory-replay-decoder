@@ -2,7 +2,7 @@
 
 이 파일은 catalog.json에서 생성됩니다. 직접 수정하지 말고 원본 catalog를 갱신하세요.
 
-기준 checkout: `65bab83` · 갱신: 2026-10-15 · 항목: 120
+기준 checkout: `65bab83` · 갱신: 2026-10-15 · 항목: 133
 
 검토된 기능 묶음과 중요한 정정만 담았습니다. 기존 evidence 전체를 검증 완료로 승격한 목록이 아닙니다.
 정적 명령 검증, synthetic test, 개발 corpus 관측, runtime 관측은 서로 다른 증거입니다. semantic confidence가 높아도 서버 권위나 live 실행은 증명되지 않습니다.
@@ -33,8 +33,8 @@ python -B -m vg.research.dictionary validate --check-index
 - VGNA replay upload: [identity event의 출처와 응답](#vgre-upload-identity-events), [continuous upload policy 연결은 미확정](#vgre-upload-policy-bounded-gap), [terminal_scoreboard는 entity→hero만](#vgre-upload-terminal-hero-only), [VGNL 68-byte transport header](#vgre-upload-vgnl-frame)
 - client 산술·HUD·stub: [critical 산술의 mode gate와 RET 경계](#vgre-combat-critical-stub), [4-array 유효 stat 계산](#vgre-combat-effective-stats), [방어 계산은 last-hit HUD 추정](#vgre-combat-hud-attack-estimate), [property scaling과 TooltipDamage](#vgre-combat-property-tooltip)
 - 받은 HP와 표시: [041e 실제 resource 변경 operand](#vgre-health-impact-prefix), [받은 action은 apply로 직접 진입](#vgre-health-incoming-dispatch), [041d SET/ADD와 음수 SET 정정](#vgre-health-resource-set-add), [impact·HP·보호량·표시량 분리](#vgre-health-split-display), [Treant duration extension and gated heal](#vgre-treant-duration-extension-and-heal)
-- action↔impact의 제한된 연관: [아이템 instance는 actor와 함께 묶기](#vgre-correlation-item-instance-scope), [시간·actor 근접성은 인과 키가 아님](#vgre-correlation-no-causal-key), [play actor/target/slot과 불투명 suffix](#vgre-correlation-play-fields), [creature classification native_kind_flags](#vgre-creature-classification-native-kind-flags), [creature credit generation_checked_link](#vgre-creature-credit-generation-checked-link), [creature credit retained_hero_reference](#vgre-creature-credit-retained-hero-reference), [creature cs coincidence_boundary](#vgre-creature-cs-coincidence-boundary), [creature death raw_source](#vgre-creature-death-raw-source), [creature objective distinct_definitions](#vgre-creature-objective-distinct-definitions), [combat target storage](#vgre-deepening-combat-target-storage), [ambient gold payout declaration](#vgre-reward-ambient-gold-payout-declaration), [bounty multiplier](#vgre-reward-bounty-multiplier), [goldshell distance provider](#vgre-reward-goldshell-distance-provider), [individual resource apply](#vgre-reward-individual-resource-apply)
-- 구현 상태: [영웅 레벨 상한과 성장 효과](#vgre-hero-level-effects), [영웅 레벨 변화 액션](#vgre-level-action-delta), [Downgrade and conditional refund](#vgre-skill-downgrade-refund), [Gated skill investment and point spending](#vgre-skill-investment-apply), [Overdrive equality and property bonus differ](#vgre-skill-overdrive-condition), [Rank bits, base rank and prerequisites](#vgre-skill-rank-prerequisite), [Display slots and runtime identities](#vgre-skill-slot-selection), [Absolute skill ranks restored by HeroSpawn](#vgre-skill-snapshot-restore), [Skill upgrade request is separate from application](#vgre-skill-upgrade-request), [레벨 내 경험치와 표시 비율](#vgre-xp-progress-threshold-ui)
+- action↔impact의 제한된 연관: [아이템 instance는 actor와 함께 묶기](#vgre-correlation-item-instance-scope), [시간·actor 근접성은 인과 키가 아님](#vgre-correlation-no-causal-key), [play actor/target/slot과 불투명 suffix](#vgre-correlation-play-fields), [creature classification native_kind_flags](#vgre-creature-classification-native-kind-flags), [creature credit generation_checked_link](#vgre-creature-credit-generation-checked-link), [creature credit retained_hero_reference](#vgre-creature-credit-retained-hero-reference), [creature cs coincidence_boundary](#vgre-creature-cs-coincidence-boundary), [creature death raw_source](#vgre-creature-death-raw-source), [creature objective distinct_definitions](#vgre-creature-objective-distinct-definitions), [combat target storage](#vgre-deepening-combat-target-storage), [ambient gold payout declaration](#vgre-reward-ambient-gold-payout-declaration), [bounty multiplier](#vgre-reward-bounty-multiplier), [goldshell distance provider](#vgre-reward-goldshell-distance-provider), [individual resource apply](#vgre-reward-individual-resource-apply), [과거 기록의 구조물 사망 진단 한계](#vgre-structure-historical-diagnostic-only)
+- 구현 상태: [영웅 레벨 상한과 성장 효과](#vgre-hero-level-effects), [영웅 레벨 변화 액션](#vgre-level-action-delta), [Downgrade and conditional refund](#vgre-skill-downgrade-refund), [Gated skill investment and point spending](#vgre-skill-investment-apply), [Overdrive equality and property bonus differ](#vgre-skill-overdrive-condition), [Rank bits, base rank and prerequisites](#vgre-skill-rank-prerequisite), [Display slots and runtime identities](#vgre-skill-slot-selection), [Absolute skill ranks restored by HeroSpawn](#vgre-skill-snapshot-restore), [Skill upgrade request is separate from application](#vgre-skill-upgrade-request), [구조물 파괴 표시와 보상 귀속 구별](#vgre-structure-credit-display-vs-award), [구조물 분류: VainNode와 무기고 포탑 구별](#vgre-structure-identity-node-vs-armory-turret), [EntityDestroy 정리 표시 경계](#vgre-structure-lifecycle-cleanup-mark), [ActorDie 상태 요청과 콜백 경계](#vgre-structure-lifecycle-die-state-and-callback), [MarkMyselfDead와 ActorDead 상태 요청](#vgre-structure-lifecycle-mark-dead-request), [포탑 무적 플래그 선언 경계](#vgre-structure-protection-invulnerability-declaration), [VainNode 조건부 체력 회복 콜백](#vgre-structure-regeneration-node-callback), [무기고 재생성 이름과 효과의 증거 한계](#vgre-structure-respawn-symbol-boundary), [수정 파괴와 경기 종료의 미확인 연결](#vgre-structure-terminal-crystal-chain-gap), [경험치·레벨 snapshot 기준값](#vgre-xp-hero-snapshot-baseline), [역사적 XP·레벨 전방 재구성 대조](#vgre-xp-historical-forward-recurrence), [레벨 내 경험치와 표시 비율](#vgre-xp-progress-threshold-ui), [경험치 임계값 계층 연산](#vgre-xp-threshold-layer-operations)
 - status_effect: [Separate movement attack skill and item gates](#vgre-status-action-specific-gates), [Metadata and identity based blockers](#vgre-status-buff-blocker-matching), [Cleanse metadata filtered cancellation](#vgre-status-cleanse-filtered-queue), [Display records are separate from logical flags](#vgre-status-display-native-distinction), [Per-source gameplay flag lifecycle](#vgre-status-flag-contributor-lifecycle), [Selected named status masks](#vgre-status-named-factory-masks), [Movement modifier maximum per category](#vgre-status-slow-max-category)
 
 ## 파일·빌드 출처
@@ -2381,6 +2381,28 @@ Individual resource6 ADD mutates the resolved target balance and positive operan
 - 근거: [src-progression-eee9a8e311d3](#src-progression-eee9a8e311d3) · Reviewed static claim and its explicit conditional limits.
 - 근거: [src-progression-9a182b69a8af](#src-progression-9a182b69a8af) · Reviewed static claim and its explicit conditional limits.
 
+### VGRE-structure-historical-diagnostic-only
+
+**과거 기록의 구조물 사망 진단 한계**
+
+168 development-seen H5810 sections contain14 tentative selected-structure ActorDie joins, including distinct ArmoryTurret5v5 and VainNode.
+
+- 상태: bounded · 의미 확신: low · 검증: file_hash, independent_review, development_corpus
+- 경계: independently_reviewed_xp_structures / not_applicable / synthetic_and_development
+- 정확한 파일: `h5810-development`
+- 한계: Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.
+- 한계: Unmatched recording build; not independent validation, objective count, complete lifetime or award evidence
+- 한계: Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer.
+- 근거: [src-xpstructure-b1238a34526e](#src-xpstructure-b1238a34526e) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-8dc70eba04c3](#src-xpstructure-8dc70eba04c3) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-a704cbe439e7](#src-xpstructure-a704cbe439e7) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-2398d95e7a51](#src-xpstructure-2398d95e7a51) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-62b4e1680b7f](#src-xpstructure-62b4e1680b7f) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-595cc00855e6](#src-xpstructure-595cc00855e6) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-6a4439defef1](#src-xpstructure-6a4439defef1) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-28381df28cbc](#src-xpstructure-28381df28cbc) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-385b4f7de054](#src-xpstructure-385b4f7de054) · Reviewed original finding and conditional evidence boundaries.
+
 
 ## 구현 상태
 
@@ -2593,6 +2615,260 @@ HeroSpawn action arrays feed absolute-rank setter and linked-slot synchronizatio
 - 근거: [src-progression-7257824606df](#src-progression-7257824606df) · Frozen review or bounded portable model/curated facts; no runtime inference.
 - 근거: [src-progression-81a39cb66859](#src-progression-81a39cb66859) · Frozen review or bounded portable model/curated facts; no runtime inference.
 
+### VGRE-structure-credit-display-vs-award
+
+**구조물 파괴 표시와 보상 귀속 구별**
+
+TurretDestroyed announcement uses victim classification/team/view presentation; prior retained-hero display source path does not establish structure objective credit.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_xp_structures / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00541430` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x005b19e0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0094e970` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.
+- 한계: Raw source, team, last hit, awarded player/team and gold/XP distribution remain distinct
+- 한계: Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer.
+- 근거: [src-xpstructure-b1238a34526e](#src-xpstructure-b1238a34526e) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-8dc70eba04c3](#src-xpstructure-8dc70eba04c3) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-a704cbe439e7](#src-xpstructure-a704cbe439e7) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-2398d95e7a51](#src-xpstructure-2398d95e7a51) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-62b4e1680b7f](#src-xpstructure-62b4e1680b7f) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-595cc00855e6](#src-xpstructure-595cc00855e6) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-6a4439defef1](#src-xpstructure-6a4439defef1) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-28381df28cbc](#src-xpstructure-28381df28cbc) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-385b4f7de054](#src-xpstructure-385b4f7de054) · Reviewed original finding and conditional evidence boundaries.
+
+### VGRE-structure-identity-node-vs-armory-turret
+
+**구조물 분류: VainNode와 무기고 포탑 구별**
+
+Manifest297 VainNode is kind3 with DESCRIPTIVE_TITLE_ARMORY;341 ArmoryTurret5v5 is kind3 with DESCRIPTIVE_TITLE_TURRET. Exact VainNode name selects flag4000; other kind3 selects2000; kind2 selects8000.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_xp_structures / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00942480` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x005b19e0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.
+- 한계: Korean alias 무쇠마루 unresolved; no name-substring taxonomy or objective credit
+- 한계: Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer.
+- 근거: [src-xpstructure-b1238a34526e](#src-xpstructure-b1238a34526e) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-8dc70eba04c3](#src-xpstructure-8dc70eba04c3) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-a704cbe439e7](#src-xpstructure-a704cbe439e7) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-2398d95e7a51](#src-xpstructure-2398d95e7a51) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-62b4e1680b7f](#src-xpstructure-62b4e1680b7f) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-595cc00855e6](#src-xpstructure-595cc00855e6) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-6a4439defef1](#src-xpstructure-6a4439defef1) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-28381df28cbc](#src-xpstructure-28381df28cbc) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-385b4f7de054](#src-xpstructure-385b4f7de054) · Reviewed original finding and conditional evidence boundaries.
+
+### VGRE-structure-lifecycle-cleanup-mark
+
+**EntityDestroy 정리 표시 경계**
+
+EntityDestroy resolves actor, broadcasts onBeforeActorDestroyed, marks object-pool cleanup bitmap.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_xp_structures / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0092b630` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0081a6c0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0094d470` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0112a1f0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.
+- 한계: No direct deallocation time or structure kill/respawn inference
+- 한계: Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer.
+- 근거: [src-xpstructure-b1238a34526e](#src-xpstructure-b1238a34526e) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-8dc70eba04c3](#src-xpstructure-8dc70eba04c3) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-a704cbe439e7](#src-xpstructure-a704cbe439e7) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-2398d95e7a51](#src-xpstructure-2398d95e7a51) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-62b4e1680b7f](#src-xpstructure-62b4e1680b7f) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-595cc00855e6](#src-xpstructure-595cc00855e6) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-6a4439defef1](#src-xpstructure-6a4439defef1) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-28381df28cbc](#src-xpstructure-28381df28cbc) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-385b4f7de054](#src-xpstructure-385b4f7de054) · Reviewed original finding and conditional evidence boundaries.
+
+### VGRE-structure-lifecycle-die-state-and-callback
+
+**ActorDie 상태 요청과 콜백 경계**
+
+ActorDie apply rejects already-state3/4 predicate, requests actor state3, and broadcasts onActorDie. Transition routine can reject disallowed edges.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_xp_structures / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0092c110` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0094c8f0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00558e40` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00966570` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.
+- 한계: Death observation/broadcast is not state-commit, cleanup completion or reward proof
+- 한계: Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer.
+- 근거: [src-xpstructure-b1238a34526e](#src-xpstructure-b1238a34526e) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-8dc70eba04c3](#src-xpstructure-8dc70eba04c3) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-a704cbe439e7](#src-xpstructure-a704cbe439e7) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-2398d95e7a51](#src-xpstructure-2398d95e7a51) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-62b4e1680b7f](#src-xpstructure-62b4e1680b7f) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-595cc00855e6](#src-xpstructure-595cc00855e6) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-6a4439defef1](#src-xpstructure-6a4439defef1) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-28381df28cbc](#src-xpstructure-28381df28cbc) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-385b4f7de054](#src-xpstructure-385b4f7de054) · Reviewed original finding and conditional evidence boundaries.
+
+### VGRE-structure-lifecycle-mark-dead-request
+
+**MarkMyselfDead와 ActorDead 상태 요청**
+
+VainNode and5v5 crystal death sequences end in MarkMyselfDead; behavior emits single-ID ActionActorDead in producer mode. Apply requests state4 only from current state3.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_xp_structures / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0085c3a0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x008c7670` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x008c6e40` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00526e60` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0092d780` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0094c8b0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.
+- 한계: Not ActorDie raw-source event, EntityDestroy, rebuild or match end
+- 한계: Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer.
+- 근거: [src-xpstructure-b1238a34526e](#src-xpstructure-b1238a34526e) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-8dc70eba04c3](#src-xpstructure-8dc70eba04c3) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-a704cbe439e7](#src-xpstructure-a704cbe439e7) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-2398d95e7a51](#src-xpstructure-2398d95e7a51) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-62b4e1680b7f](#src-xpstructure-62b4e1680b7f) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-595cc00855e6](#src-xpstructure-595cc00855e6) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-6a4439defef1](#src-xpstructure-6a4439defef1) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-28381df28cbc](#src-xpstructure-28381df28cbc) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-385b4f7de054](#src-xpstructure-385b4f7de054) · Reviewed original finding and conditional evidence boundaries.
+
+### VGRE-structure-protection-invulnerability-declaration
+
+**포탑 무적 플래그 선언 경계**
+
+Turret invulnerability declares gameplay-flag selector0200 and flyout buff, separate from death/dead/destroy actions.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_xp_structures / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x009195f0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0081d390` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00961580` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x009625e0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.
+- 한계: Authoritative damage veto and complete protection rules not recovered
+- 한계: Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer.
+- 근거: [src-xpstructure-b1238a34526e](#src-xpstructure-b1238a34526e) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-8dc70eba04c3](#src-xpstructure-8dc70eba04c3) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-a704cbe439e7](#src-xpstructure-a704cbe439e7) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-2398d95e7a51](#src-xpstructure-2398d95e7a51) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-62b4e1680b7f](#src-xpstructure-62b4e1680b7f) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-595cc00855e6](#src-xpstructure-595cc00855e6) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-6a4439defef1](#src-xpstructure-6a4439defef1) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-28381df28cbc](#src-xpstructure-28381df28cbc) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-385b4f7de054](#src-xpstructure-385b4f7de054) · Reviewed original finding and conditional evidence boundaries.
+
+### VGRE-structure-regeneration-node-callback
+
+**VainNode 조건부 체력 회복 콜백**
+
+Node pre-damage callback writes vainNodeTimeOfLastDamage when target matches; interval producer gates on mode and strict elapsed>5, then emits self health-change amount based on derived health limit times float32(1/180).
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_xp_structures / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x00933e90` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0091a8e0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00933de0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.
+- 한계: Pre-calculation timestamp is not successful damage; cadence, initial value, runtime availability and rebuild rule unresolved
+- 한계: Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer.
+- 근거: [src-xpstructure-b1238a34526e](#src-xpstructure-b1238a34526e) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-8dc70eba04c3](#src-xpstructure-8dc70eba04c3) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-a704cbe439e7](#src-xpstructure-a704cbe439e7) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-2398d95e7a51](#src-xpstructure-2398d95e7a51) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-62b4e1680b7f](#src-xpstructure-62b4e1680b7f) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-595cc00855e6](#src-xpstructure-595cc00855e6) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-6a4439defef1](#src-xpstructure-6a4439defef1) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-28381df28cbc](#src-xpstructure-28381df28cbc) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-385b4f7de054](#src-xpstructure-385b4f7de054) · Reviewed original finding and conditional evidence boundaries.
+
+### VGRE-structure-respawn-symbol-boundary
+
+**무기고 재생성 이름과 효과의 증거 한계**
+
+ArmoryDestroyed/ArmoryRespawned initializers hash/store IDs; VainNode Spawn factory configures an effect. Bounded absolute refs find initialization only for event globals.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_xp_structures / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x0044e210` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0044e1e0` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x008c77f0` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.
+- 한계: Names/effects do not establish scheduler, respawn timer or new lifetime
+- 한계: Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer.
+- 근거: [src-xpstructure-b1238a34526e](#src-xpstructure-b1238a34526e) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-8dc70eba04c3](#src-xpstructure-8dc70eba04c3) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-a704cbe439e7](#src-xpstructure-a704cbe439e7) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-2398d95e7a51](#src-xpstructure-2398d95e7a51) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-62b4e1680b7f](#src-xpstructure-62b4e1680b7f) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-595cc00855e6](#src-xpstructure-595cc00855e6) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-6a4439defef1](#src-xpstructure-6a4439defef1) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-28381df28cbc](#src-xpstructure-28381df28cbc) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-385b4f7de054](#src-xpstructure-385b4f7de054) · Reviewed original finding and conditional evidence boundaries.
+
+### VGRE-structure-terminal-crystal-chain-gap
+
+**수정 파괴와 경기 종료의 미확인 연결**
+
+Inspected crystal death sequence leads to effects and ActorDead; no demonstrated end-action producer. Downstream result request fields and guarded callback remain separately proven.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, static_instructions
+- 경계: independently_reviewed_xp_structures / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- 함수/위치: `0x008c6e40` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x00549620` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x004c0e10` (win-x86-laa, preferred_va, Reviewed native function or instruction address); `0x0094d450` (win-x86-laa, preferred_va, Reviewed native function or instruction address)
+- 한계: Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.
+- 한계: No crystal-to-match-end causal edge; reason0 not relabelled crystal destruction; no winner inference
+- 한계: Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer.
+- 근거: [src-xpstructure-b1238a34526e](#src-xpstructure-b1238a34526e) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-8dc70eba04c3](#src-xpstructure-8dc70eba04c3) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-a704cbe439e7](#src-xpstructure-a704cbe439e7) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-2398d95e7a51](#src-xpstructure-2398d95e7a51) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-62b4e1680b7f](#src-xpstructure-62b4e1680b7f) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-595cc00855e6](#src-xpstructure-595cc00855e6) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-6a4439defef1](#src-xpstructure-6a4439defef1) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-28381df28cbc](#src-xpstructure-28381df28cbc) · Reviewed original finding and conditional evidence boundaries.
+- 근거: [src-xpstructure-385b4f7de054](#src-xpstructure-385b4f7de054) · Reviewed original finding and conditional evidence boundaries.
+
+### VGRE-xp-hero-snapshot-baseline
+
+**경험치·레벨 snapshot 기준값**
+
+03f3 payload294는 기본 LEVEL40,318은 resource8 경험치,322는 기본 XP_REQUIRED39이다. gate326과 후속 레벨 반복705를 별도 보존하며 기본값을 유효 최종 상태로 단정하지 않는다.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, corpus_audit, independent_review, file_hash
+- 경계: native_gameplay / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- Opcode: `03f3`
+- 함수/위치: `0x004d5930` (win-x86-laa, preferred_va, decoded snapshot handler); `0x0081ac20` (win-x86-laa, preferred_va, hero spawn constructor); `0x00957710` (win-x86-laa, preferred_va, stats object initializer); `0x0081c640` (win-x86-laa, preferred_va, four-layer zero initialization)
+- 한계: 역사적 단일 recording의 내부 일치이며 독립 holdout 또는 빌드 일치 검증이 아니다
+- 한계: 다른 opcode·동적 callback·actor 수명 및 재사용은 이 제한 모델에서 미확정이다
+- 한계: 누적 총 XP와 일반 production 상태 승격은 보류한다
+- 한계: An already-resolved actor returns before snapshot restoration. Masked layers0/1/2 and resources restore; layer3 is not overwritten. Post-snapshot level loops remain separate from raw projections.
+- 근거: [src-xp-hero-baseline-delta](#src-xp-hero-baseline-delta) · Newly closed native baseline path
+- 근거: [src-xpstructure-4c87bbb49385](#src-xpstructure-4c87bbb49385) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-8802887875c0](#src-xpstructure-8802887875c0) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-fcd2cd2d78ec](#src-xpstructure-fcd2cd2d78ec) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-9db49c798366](#src-xpstructure-9db49c798366) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-f5fc78917c33](#src-xpstructure-f5fc78917c33) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-4a57a28151e4](#src-xpstructure-4a57a28151e4) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-5641260791b8](#src-xpstructure-5641260791b8) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-eb1fbd75d0df](#src-xpstructure-eb1fbd75d0df) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+
+### VGRE-xp-historical-forward-recurrence
+
+**역사적 XP·레벨 전방 재구성 대조**
+
+H5810 첫 snapshot10개로 시작한 제한적 float32 모델이 후속 snapshot1670개의 레벨·XP·임계값5010개를 모두 정확히 재현한다. 비교용 snapshot으로 상태를 재설정하지 않았고 독립 구현도 같은 결과를 냈다.
+
+- 상태: bounded · 의미 확신: high · 검증: file_hash, independent_review, synthetic_tests, development_corpus
+- 경계: native_gameplay / not_applicable / synthetic_and_development
+- 정확한 파일: `h5810-development`
+- 한계: 역사적 단일 recording의 내부 일치이며 독립 holdout 또는 빌드 일치 검증이 아니다
+- 한계: 다른 opcode·동적 callback·actor 수명 및 재사용은 이 제한 모델에서 미확정이다
+- 한계: 누적 총 XP와 일반 production 상태 승격은 보류한다
+- 근거: [src-xp-hero-baseline-delta](#src-xp-hero-baseline-delta) · Forward recurrence test, no checkpoint resetting
+- 근거: [src-xpstructure-4c87bbb49385](#src-xpstructure-4c87bbb49385) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-8802887875c0](#src-xpstructure-8802887875c0) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-fcd2cd2d78ec](#src-xpstructure-fcd2cd2d78ec) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-9db49c798366](#src-xpstructure-9db49c798366) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-f5fc78917c33](#src-xpstructure-f5fc78917c33) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-4a57a28151e4](#src-xpstructure-4a57a28151e4) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-5641260791b8](#src-xpstructure-5641260791b8) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-eb1fbd75d0df](#src-xpstructure-eb1fbd75d0df) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+
 ### VGRE-xp-progress-threshold-ui
 
 **레벨 내 경험치와 표시 비율**
@@ -2616,6 +2892,30 @@ resource8은 레벨 내 경험치 진행량이다. HUD는 XP_REQUIRED 속성39�
 - 근거: [src-progression-ea12af3d45eb](#src-progression-ea12af3d45eb) · Frozen review, input provenance or bounded test-only model.
 - 근거: [src-progression-57a3320adc8b](#src-progression-57a3320adc8b) · Frozen review, input provenance or bounded test-only model.
 - 근거: [src-progression-1f6c2d820b1c](#src-progression-1f6c2d820b1c) · Frozen review, input provenance or bounded test-only model.
+
+### VGRE-xp-threshold-layer-operations
+
+**경험치 임계값 계층 연산**
+
+041c의 mode0은 선택 계층 ADD이고 nonzero는 SET이다. 속성39/40 직접 저장은 XP 소비나 레벨업을 자동 실행하지 않으며 이후 동적 buff callback은 별도 경로다.
+
+- 상태: bounded · 의미 확신: high · 검증: static_instructions, synthetic_tests, corpus_audit, independent_review, file_hash
+- 경계: native_gameplay / not_applicable / static_only
+- 정확한 파일: `win-x86-laa`
+- Opcode: `041c`
+- 함수/위치: `0x0094f1d0` (win-x86-laa, preferred_va, attribute receiver); `0x0095c620` (win-x86-laa, preferred_va, SET wrapper); `0x0093e850` (win-x86-laa, preferred_va, ADD wrapper); `0x0086f1e0` (win-x86-laa, preferred_va, dynamic callback dispatcher)
+- 한계: 역사적 단일 recording의 내부 일치이며 독립 holdout 또는 빌드 일치 검증이 아니다
+- 한계: 다른 opcode·동적 callback·actor 수명 및 재사용은 이 제한 모델에서 미확정이다
+- 한계: 누적 총 XP와 일반 production 상태 승격은 보류한다
+- 근거: [src-xp-hero-baseline-delta](#src-xp-hero-baseline-delta) · Threshold and level mutation semantics
+- 근거: [src-xpstructure-4c87bbb49385](#src-xpstructure-4c87bbb49385) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-8802887875c0](#src-xpstructure-8802887875c0) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-fcd2cd2d78ec](#src-xpstructure-fcd2cd2d78ec) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-9db49c798366](#src-xpstructure-9db49c798366) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-f5fc78917c33](#src-xpstructure-f5fc78917c33) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-4a57a28151e4](#src-xpstructure-4a57a28151e4) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-5641260791b8](#src-xpstructure-5641260791b8) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
+- 근거: [src-xpstructure-eb1fbd75d0df](#src-xpstructure-eb1fbd75d0df) · Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout.
 
 
 ## status_effect
@@ -4258,4 +4558,124 @@ repo 경로는 현재 checkout에서 hash를 확인합니다. 외부 namespace �
 
 - [repo:tests/test_research_progression_catalog.py](../../../tests/test_research_progression_catalog.py)
 - SHA-256: `59a426f0340c3d3fb4ad5a929d6f0232b6cb15b52f7430aff6b0548968c8f486`
+- 종류: source_code · 보관: existing_repository
+
+### src-xp-hero-baseline-delta
+
+- [repo:vg/docs/re_dictionary/progression_rewards/XP_BASELINE_DELTA.md](../../../vg/docs/re_dictionary/progression_rewards/XP_BASELINE_DELTA.md)
+- SHA-256: `46b68433b466141613f0b924d563af4814df208f1522a27b700ec7545a705234`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-xpstructure-4c87bbb49385
+
+- `research:xp-level-baseline-delta/frozen-manifest.json`
+- SHA-256: `6af0df77f491b97b4285e96f12c14639fab76157b5c82674676102d5ea4b5ec0`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-xpstructure-8802887875c0
+
+- `research:xp-level-baseline-delta/native-anchors.json`
+- SHA-256: `a68e4d3b3cb9963665c31dac546b52e93c3c354fdbbfad081a6aef40006f8756`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-xpstructure-fcd2cd2d78ec
+
+- `research:xp-level-baseline-delta/recurrence-check.json`
+- SHA-256: `278d8375dfeb09aabee0ed0b09e9be927f8f2fb65e51526d8d03e739db7192c2`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-xpstructure-9db49c798366
+
+- `research:independent-deepening-review/xp-recurrence-independent.json`
+- SHA-256: `a8bbd9921e8c4b14d31c4fd29927a4351320b340053849bde01102e48ff66c21`
+- 종류: independent_review · 보관: external_reference_only
+
+### src-xpstructure-f5fc78917c33
+
+- `research:independent-deepening-review/xp-baseline-final-review.json`
+- SHA-256: `f77897f9ec5554a95cfe0ddff05fe15e82069f39bca6bbaef4751032734c0bb5`
+- 종류: independent_review · 보관: external_reference_only
+
+### src-xpstructure-4a57a28151e4
+
+- [repo:vg/docs/re_dictionary/xp_structures/xp-baseline-additions.json](../../../vg/docs/re_dictionary/xp_structures/xp-baseline-additions.json)
+- SHA-256: `5a191f9817d5d5811cc8cd970f4a8346282afa7a637061cb0f0c6df5fe8a0a9e`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-xpstructure-5641260791b8
+
+- [repo:tests/research_models/xp_baseline.py](../../../tests/research_models/xp_baseline.py)
+- SHA-256: `6b5d71c8b67191de5f791ea36050b382d3ac7db2fbd6823698a96b8f0cd505da`
+- 종류: source_code · 보관: existing_repository
+
+### src-xpstructure-eb1fbd75d0df
+
+- [repo:tests/test_research_xp_baseline.py](../../../tests/test_research_xp_baseline.py)
+- SHA-256: `5aa5e05c92d73181976eb2f871c0f4e5351545d4799dbc23bd48aed7b4273861`
+- 종류: source_code · 보관: existing_repository
+
+### src-xpstructure-b1238a34526e
+
+- `research:structure-destruction/portable/PACKAGE.sha256.json`
+- SHA-256: `d9c00660b08616b3390ce0b5bd0889afb644b3c7d94a9f9aa2b098bfeb245883`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-xpstructure-8dc70eba04c3
+
+- `research:structure-destruction/portable/native-spans.json`
+- SHA-256: `329ccf95366b2195b8e7986ad10224ea287d3d62468191740bdb887cf56b82fd`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-xpstructure-a704cbe439e7
+
+- `research:structure-destruction/portable/external-receipts.json`
+- SHA-256: `46226396462923e8a95a7bb19a8edfb851f671d1a9b0b5e2b9951d35d682d11c`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-xpstructure-2398d95e7a51
+
+- `research:structure-destruction/portable/verification.json`
+- SHA-256: `b9c716d86419c7e241f4bfdbbb0b4b358a0013ccc58ce953e7163aaf223d8571`
+- 종류: evidence_manifest · 보관: external_reference_only
+
+### src-xpstructure-62b4e1680b7f
+
+- `research:independent-deepening-review/structure-destruction-final-review.json`
+- SHA-256: `d5f21e05e34fe649f669da08af4d3f440b86e0416dfb06f8baa031450ff3e6b4`
+- 종류: independent_review · 보관: external_reference_only
+
+### src-xpstructure-595cc00855e6
+
+- [repo:vg/docs/re_dictionary/xp_structures/STRUCTURE_DESTRUCTION.md](../../../vg/docs/re_dictionary/xp_structures/STRUCTURE_DESTRUCTION.md)
+- SHA-256: `55c1a2a0390dce77f49285c1a23a8fd5fb4885c6f42368cea20b94f21526a6c8`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-xpstructure-6a4439defef1
+
+- [repo:vg/docs/re_dictionary/xp_structures/structure-additions.json](../../../vg/docs/re_dictionary/xp_structures/structure-additions.json)
+- SHA-256: `b5dd0ad12f56c1b034ed5814e614722f1ad04c1dfb20045140a002ede02d6cdc`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-xpstructure-28381df28cbc
+
+- [repo:tests/research_models/structure_boundaries.py](../../../tests/research_models/structure_boundaries.py)
+- SHA-256: `42dc789f0301892df4ad5983f22b555be955b3ab480954768cf51d48c8bc564d`
+- 종류: source_code · 보관: existing_repository
+
+### src-xpstructure-385b4f7de054
+
+- [repo:tests/test_research_structure_boundaries.py](../../../tests/test_research_structure_boundaries.py)
+- SHA-256: `0a9572cc0444ee30264233a8409abcc16c9fdd553a8c54df30dec6380fc2f81f`
+- 종류: source_code · 보관: existing_repository
+
+### src-xpstructure-f44ee0535493
+
+- [repo:vg/docs/re_dictionary/xp_structures/README.md](../../../vg/docs/re_dictionary/xp_structures/README.md)
+- SHA-256: `d19bdff6242d00a54dcb5f3d76c7a50299f433b7610d68d614713a55ca488427`
+- 종류: analysis_report · 보관: existing_repository
+
+### src-xpstructure-2a29f3cd9391
+
+- [repo:tests/test_research_xp_structure_catalog.py](../../../tests/test_research_xp_structure_catalog.py)
+- SHA-256: `7ed5447f19a3177d7914c107d65ec409bb6c5452f55ba02e36c946eb251cec94`
 - 종류: source_code · 보관: existing_repository

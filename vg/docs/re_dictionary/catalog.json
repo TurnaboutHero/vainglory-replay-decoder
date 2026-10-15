@@ -2720,6 +2720,226 @@
       "sha256": "59a426f0340c3d3fb4ad5a929d6f0232b6cb15b52f7430aff6b0548968c8f486",
       "publication": "existing_repository",
       "locator_note": "Reviewed static source; raw native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xp-hero-baseline-delta",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/progression_rewards/XP_BASELINE_DELTA.md"
+      },
+      "sha256": "46b68433b466141613f0b924d563af4814df208f1522a27b700ec7545a705234",
+      "publication": "existing_repository",
+      "locator_note": "Original static summary; raw exports retained externally. Proposed destination, integration must update if moved."
+    },
+    {
+      "id": "src-xpstructure-4c87bbb49385",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "xp-level-baseline-delta/frozen-manifest.json"
+      },
+      "sha256": "6af0df77f491b97b4285e96f12c14639fab76157b5c82674676102d5ea4b5ec0",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-8802887875c0",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "xp-level-baseline-delta/native-anchors.json"
+      },
+      "sha256": "a68e4d3b3cb9963665c31dac546b52e93c3c354fdbbfad081a6aef40006f8756",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-fcd2cd2d78ec",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "xp-level-baseline-delta/recurrence-check.json"
+      },
+      "sha256": "278d8375dfeb09aabee0ed0b09e9be927f8f2fb65e51526d8d03e739db7192c2",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-9db49c798366",
+      "kind": "independent_review",
+      "location": {
+        "namespace": "research",
+        "path": "independent-deepening-review/xp-recurrence-independent.json"
+      },
+      "sha256": "a8bbd9921e8c4b14d31c4fd29927a4351320b340053849bde01102e48ff66c21",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-f5fc78917c33",
+      "kind": "independent_review",
+      "location": {
+        "namespace": "research",
+        "path": "independent-deepening-review/xp-baseline-final-review.json"
+      },
+      "sha256": "f77897f9ec5554a95cfe0ddff05fe15e82069f39bca6bbaef4751032734c0bb5",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-4a57a28151e4",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/xp_structures/xp-baseline-additions.json"
+      },
+      "sha256": "5a191f9817d5d5811cc8cd970f4a8346282afa7a637061cb0f0c6df5fe8a0a9e",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-5641260791b8",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/research_models/xp_baseline.py"
+      },
+      "sha256": "6b5d71c8b67191de5f791ea36050b382d3ac7db2fbd6823698a96b8f0cd505da",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-eb1fbd75d0df",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_xp_baseline.py"
+      },
+      "sha256": "5aa5e05c92d73181976eb2f871c0f4e5351545d4799dbc23bd48aed7b4273861",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-b1238a34526e",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "structure-destruction/portable/PACKAGE.sha256.json"
+      },
+      "sha256": "d9c00660b08616b3390ce0b5bd0889afb644b3c7d94a9f9aa2b098bfeb245883",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-8dc70eba04c3",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "structure-destruction/portable/native-spans.json"
+      },
+      "sha256": "329ccf95366b2195b8e7986ad10224ea287d3d62468191740bdb887cf56b82fd",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-a704cbe439e7",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "structure-destruction/portable/external-receipts.json"
+      },
+      "sha256": "46226396462923e8a95a7bb19a8edfb851f671d1a9b0b5e2b9951d35d682d11c",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-2398d95e7a51",
+      "kind": "evidence_manifest",
+      "location": {
+        "namespace": "research",
+        "path": "structure-destruction/portable/verification.json"
+      },
+      "sha256": "b9c716d86419c7e241f4bfdbbb0b4b358a0013ccc58ce953e7163aaf223d8571",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-62b4e1680b7f",
+      "kind": "independent_review",
+      "location": {
+        "namespace": "research",
+        "path": "independent-deepening-review/structure-destruction-final-review.json"
+      },
+      "sha256": "d5f21e05e34fe649f669da08af4d3f440b86e0416dfb06f8baa031450ff3e6b4",
+      "publication": "external_reference_only",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-595cc00855e6",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/xp_structures/STRUCTURE_DESTRUCTION.md"
+      },
+      "sha256": "55c1a2a0390dce77f49285c1a23a8fd5fb4885c6f42368cea20b94f21526a6c8",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-6a4439defef1",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/xp_structures/structure-additions.json"
+      },
+      "sha256": "b5dd0ad12f56c1b034ed5814e614722f1ad04c1dfb20045140a002ede02d6cdc",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-28381df28cbc",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/research_models/structure_boundaries.py"
+      },
+      "sha256": "42dc789f0301892df4ad5983f22b555be955b3ab480954768cf51d48c8bc564d",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-385b4f7de054",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_structure_boundaries.py"
+      },
+      "sha256": "0a9572cc0444ee30264233a8409abcc16c9fdd553a8c54df30dec6380fc2f81f",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-f44ee0535493",
+      "kind": "analysis_report",
+      "location": {
+        "namespace": "repo",
+        "path": "vg/docs/re_dictionary/xp_structures/README.md"
+      },
+      "sha256": "d19bdff6242d00a54dcb5f3d76c7a50299f433b7610d68d614713a55ca488427",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
+    },
+    {
+      "id": "src-xpstructure-2a29f3cd9391",
+      "kind": "source_code",
+      "location": {
+        "namespace": "repo",
+        "path": "tests/test_research_xp_structure_catalog.py"
+      },
+      "sha256": "7ed5447f19a3177d7914c107d65ec409bb6c5452f55ba02e36c946eb251cec94",
+      "publication": "existing_repository",
+      "locator_note": "Reviewed bounded source; native/resource/replay exports remain external."
     }
   ],
   "entries": [
@@ -14696,6 +14916,1036 @@
       "layout_notes": []
     },
     {
+      "id": "VGRE-structure-credit-display-vs-award",
+      "category": "implementation",
+      "title_ko": "구조물 파괴 표시와 보상 귀속 구별",
+      "claim_ko": "TurretDestroyed announcement uses victim classification/team/view presentation; prior retained-hero display source path does not establish structure objective credit.",
+      "scope": {
+        "layer": "independently_reviewed_xp_structures",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00541430",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x005b19e0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094e970",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-xpstructure-b1238a34526e",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-8dc70eba04c3",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-a704cbe439e7",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-2398d95e7a51",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-62b4e1680b7f",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-595cc00855e6",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-6a4439defef1",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-28381df28cbc",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-385b4f7de054",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.",
+        "Raw source, team, last hit, awarded player/team and gold/XP distribution remain distinct",
+        "Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp-structure-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-structure-historical-diagnostic-only",
+      "category": "correlation",
+      "title_ko": "과거 기록의 구조물 사망 진단 한계",
+      "claim_ko": "168 development-seen H5810 sections contain14 tentative selected-structure ActorDie joins, including distinct ArmoryTurret5v5 and VainNode.",
+      "scope": {
+        "layer": "independently_reviewed_xp_structures",
+        "direction": "not_applicable",
+        "execution_context": "synthetic_and_development",
+        "artifact_refs": [
+          "h5810-development"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "low",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "development_corpus"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-xpstructure-b1238a34526e",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-8dc70eba04c3",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-a704cbe439e7",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-2398d95e7a51",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-62b4e1680b7f",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-595cc00855e6",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-6a4439defef1",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-28381df28cbc",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-385b4f7de054",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.",
+        "Unmatched recording build; not independent validation, objective count, complete lifetime or award evidence",
+        "Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp-structure-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-structure-identity-node-vs-armory-turret",
+      "category": "implementation",
+      "title_ko": "구조물 분류: VainNode와 무기고 포탑 구별",
+      "claim_ko": "Manifest297 VainNode is kind3 with DESCRIPTIVE_TITLE_ARMORY;341 ArmoryTurret5v5 is kind3 with DESCRIPTIVE_TITLE_TURRET. Exact VainNode name selects flag4000; other kind3 selects2000; kind2 selects8000.",
+      "scope": {
+        "layer": "independently_reviewed_xp_structures",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00942480",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x005b19e0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-xpstructure-b1238a34526e",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-8dc70eba04c3",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-a704cbe439e7",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-2398d95e7a51",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-62b4e1680b7f",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-595cc00855e6",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-6a4439defef1",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-28381df28cbc",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-385b4f7de054",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.",
+        "Korean alias 무쇠마루 unresolved; no name-substring taxonomy or objective credit",
+        "Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp-structure-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-structure-lifecycle-cleanup-mark",
+      "category": "implementation",
+      "title_ko": "EntityDestroy 정리 표시 경계",
+      "claim_ko": "EntityDestroy resolves actor, broadcasts onBeforeActorDestroyed, marks object-pool cleanup bitmap.",
+      "scope": {
+        "layer": "independently_reviewed_xp_structures",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0092b630",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0081a6c0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094d470",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0112a1f0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-xpstructure-b1238a34526e",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-8dc70eba04c3",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-a704cbe439e7",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-2398d95e7a51",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-62b4e1680b7f",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-595cc00855e6",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-6a4439defef1",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-28381df28cbc",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-385b4f7de054",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.",
+        "No direct deallocation time or structure kill/respawn inference",
+        "Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp-structure-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-structure-lifecycle-die-state-and-callback",
+      "category": "implementation",
+      "title_ko": "ActorDie 상태 요청과 콜백 경계",
+      "claim_ko": "ActorDie apply rejects already-state3/4 predicate, requests actor state3, and broadcasts onActorDie. Transition routine can reject disallowed edges.",
+      "scope": {
+        "layer": "independently_reviewed_xp_structures",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0092c110",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094c8f0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00558e40",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00966570",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-xpstructure-b1238a34526e",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-8dc70eba04c3",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-a704cbe439e7",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-2398d95e7a51",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-62b4e1680b7f",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-595cc00855e6",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-6a4439defef1",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-28381df28cbc",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-385b4f7de054",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.",
+        "Death observation/broadcast is not state-commit, cleanup completion or reward proof",
+        "Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp-structure-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-structure-lifecycle-mark-dead-request",
+      "category": "implementation",
+      "title_ko": "MarkMyselfDead와 ActorDead 상태 요청",
+      "claim_ko": "VainNode and5v5 crystal death sequences end in MarkMyselfDead; behavior emits single-ID ActionActorDead in producer mode. Apply requests state4 only from current state3.",
+      "scope": {
+        "layer": "independently_reviewed_xp_structures",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0085c3a0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x008c7670",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x008c6e40",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00526e60",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0092d780",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094c8b0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-xpstructure-b1238a34526e",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-8dc70eba04c3",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-a704cbe439e7",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-2398d95e7a51",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-62b4e1680b7f",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-595cc00855e6",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-6a4439defef1",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-28381df28cbc",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-385b4f7de054",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.",
+        "Not ActorDie raw-source event, EntityDestroy, rebuild or match end",
+        "Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp-structure-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-structure-protection-invulnerability-declaration",
+      "category": "implementation",
+      "title_ko": "포탑 무적 플래그 선언 경계",
+      "claim_ko": "Turret invulnerability declares gameplay-flag selector0200 and flyout buff, separate from death/dead/destroy actions.",
+      "scope": {
+        "layer": "independently_reviewed_xp_structures",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x009195f0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0081d390",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00961580",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x009625e0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-xpstructure-b1238a34526e",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-8dc70eba04c3",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-a704cbe439e7",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-2398d95e7a51",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-62b4e1680b7f",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-595cc00855e6",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-6a4439defef1",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-28381df28cbc",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-385b4f7de054",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.",
+        "Authoritative damage veto and complete protection rules not recovered",
+        "Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp-structure-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-structure-regeneration-node-callback",
+      "category": "implementation",
+      "title_ko": "VainNode 조건부 체력 회복 콜백",
+      "claim_ko": "Node pre-damage callback writes vainNodeTimeOfLastDamage when target matches; interval producer gates on mode and strict elapsed>5, then emits self health-change amount based on derived health limit times float32(1/180).",
+      "scope": {
+        "layer": "independently_reviewed_xp_structures",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00933e90",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0091a8e0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00933de0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-xpstructure-b1238a34526e",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-8dc70eba04c3",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-a704cbe439e7",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-2398d95e7a51",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-62b4e1680b7f",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-595cc00855e6",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-6a4439defef1",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-28381df28cbc",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-385b4f7de054",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.",
+        "Pre-calculation timestamp is not successful damage; cadence, initial value, runtime availability and rebuild rule unresolved",
+        "Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp-structure-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-structure-respawn-symbol-boundary",
+      "category": "implementation",
+      "title_ko": "무기고 재생성 이름과 효과의 증거 한계",
+      "claim_ko": "ArmoryDestroyed/ArmoryRespawned initializers hash/store IDs; VainNode Spawn factory configures an effect. Bounded absolute refs find initialization only for event globals.",
+      "scope": {
+        "layer": "independently_reviewed_xp_structures",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0044e210",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0044e1e0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x008c77f0",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-xpstructure-b1238a34526e",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-8dc70eba04c3",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-a704cbe439e7",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-2398d95e7a51",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-62b4e1680b7f",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-595cc00855e6",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-6a4439defef1",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-28381df28cbc",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-385b4f7de054",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.",
+        "Names/effects do not establish scheduler, respawn timer or new lifetime",
+        "Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp-structure-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
+      "id": "VGRE-structure-terminal-crystal-chain-gap",
+      "category": "implementation",
+      "title_ko": "수정 파괴와 경기 종료의 미확인 연결",
+      "claim_ko": "Inspected crystal death sequence leads to effects and ActorDead; no demonstrated end-action producer. Downstream result request fields and guarded callback remain separately proven.",
+      "scope": {
+        "layer": "independently_reviewed_xp_structures",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "static_instructions"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x008c6e40",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00549620",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x004c0e10",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094d450",
+          "address_kind": "preferred_va",
+          "role": "Reviewed native function or instruction address",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-xpstructure-b1238a34526e",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-8dc70eba04c3",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-a704cbe439e7",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-2398d95e7a51",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-62b4e1680b7f",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-595cc00855e6",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-6a4439defef1",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-28381df28cbc",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        },
+        {
+          "source_id": "src-xpstructure-385b4f7de054",
+          "locator": "Reviewed original finding and conditional evidence boundaries."
+        }
+      ],
+      "limitations_ko": [
+        "Exact-build static client scope only; no native/server execution or independent observed-state holdout. Historical recording build remains unmatched. No production state or reward/terminal attribution promotion.",
+        "No crystal-to-match-end causal edge; reason0 not relabelled crystal destruction; no winner inference",
+        "Producer findings retain accepted_for_index:false and production_ready:false. This entry is a bounded research summary, not acceptance into a replay index or reducer."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp-structure-followup",
+        "static-only"
+      ],
+      "layout_notes": []
+    },
+    {
       "id": "VGRE-treant-duration-extension-and-heal",
       "category": "health",
       "title_ko": "Treant duration extension and gated heal",
@@ -15292,6 +16542,201 @@
       ]
     },
     {
+      "id": "VGRE-xp-hero-snapshot-baseline",
+      "category": "implementation",
+      "title_ko": "경험치·레벨 snapshot 기준값",
+      "claim_ko": "03f3 payload294는 기본 LEVEL40,318은 resource8 경험치,322는 기본 XP_REQUIRED39이다. gate326과 후속 레벨 반복705를 별도 보존하며 기본값을 유효 최종 상태로 단정하지 않는다.",
+      "scope": {
+        "layer": "native_gameplay",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "corpus_audit",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x004d5930",
+          "address_kind": "preferred_va",
+          "role": "decoded snapshot handler",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0081ac20",
+          "address_kind": "preferred_va",
+          "role": "hero spawn constructor",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x00957710",
+          "address_kind": "preferred_va",
+          "role": "stats object initializer",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0081c640",
+          "address_kind": "preferred_va",
+          "role": "four-layer zero initialization",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "03f3"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-xp-hero-baseline-delta",
+          "locator": "Newly closed native baseline path"
+        },
+        {
+          "source_id": "src-xpstructure-4c87bbb49385",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-8802887875c0",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-fcd2cd2d78ec",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-9db49c798366",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-f5fc78917c33",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-4a57a28151e4",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-5641260791b8",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-eb1fbd75d0df",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        }
+      ],
+      "limitations_ko": [
+        "역사적 단일 recording의 내부 일치이며 독립 holdout 또는 빌드 일치 검증이 아니다",
+        "다른 opcode·동적 callback·actor 수명 및 재사용은 이 제한 모델에서 미확정이다",
+        "누적 총 XP와 일반 production 상태 승격은 보류한다",
+        "An already-resolved actor returns before snapshot restoration. Masked layers0/1/2 and resources restore; layer3 is not overwritten. Post-snapshot level loops remain separate from raw projections."
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp",
+        "hero_level",
+        "historical_unmatched",
+        "xp-structure-followup"
+      ]
+    },
+    {
+      "id": "VGRE-xp-historical-forward-recurrence",
+      "category": "implementation",
+      "title_ko": "역사적 XP·레벨 전방 재구성 대조",
+      "claim_ko": "H5810 첫 snapshot10개로 시작한 제한적 float32 모델이 후속 snapshot1670개의 레벨·XP·임계값5010개를 모두 정확히 재현한다. 비교용 snapshot으로 상태를 재설정하지 않았고 독립 구현도 같은 결과를 냈다.",
+      "scope": {
+        "layer": "native_gameplay",
+        "direction": "not_applicable",
+        "execution_context": "synthetic_and_development",
+        "artifact_refs": [
+          "h5810-development"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "file_hash",
+          "independent_review",
+          "synthetic_tests",
+          "development_corpus"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [],
+      "fields": [],
+      "opcodes": [],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-xp-hero-baseline-delta",
+          "locator": "Forward recurrence test, no checkpoint resetting"
+        },
+        {
+          "source_id": "src-xpstructure-4c87bbb49385",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-8802887875c0",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-fcd2cd2d78ec",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-9db49c798366",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-f5fc78917c33",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-4a57a28151e4",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-5641260791b8",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-eb1fbd75d0df",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        }
+      ],
+      "limitations_ko": [
+        "역사적 단일 recording의 내부 일치이며 독립 holdout 또는 빌드 일치 검증이 아니다",
+        "다른 opcode·동적 callback·actor 수명 및 재사용은 이 제한 모델에서 미확정이다",
+        "누적 총 XP와 일반 production 상태 승격은 보류한다"
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp",
+        "hero_level",
+        "historical_unmatched",
+        "xp-structure-followup"
+      ]
+    },
+    {
       "id": "VGRE-xp-progress-threshold-ui",
       "category": "implementation",
       "title_ko": "레벨 내 경험치와 표시 비율",
@@ -15398,6 +16843,119 @@
         "hero_level",
         "historical_unmatched",
         "progression-rewards-followup"
+      ]
+    },
+    {
+      "id": "VGRE-xp-threshold-layer-operations",
+      "category": "implementation",
+      "title_ko": "경험치 임계값 계층 연산",
+      "claim_ko": "041c의 mode0은 선택 계층 ADD이고 nonzero는 SET이다. 속성39/40 직접 저장은 XP 소비나 레벨업을 자동 실행하지 않으며 이후 동적 buff callback은 별도 경로다.",
+      "scope": {
+        "layer": "native_gameplay",
+        "direction": "not_applicable",
+        "execution_context": "static_only",
+        "artifact_refs": [
+          "win-x86-laa"
+        ],
+        "recording_build_match": "unverified"
+      },
+      "proof": {
+        "status": "bounded",
+        "semantic_confidence": "high",
+        "validation_kinds": [
+          "static_instructions",
+          "synthetic_tests",
+          "corpus_audit",
+          "independent_review",
+          "file_hash"
+        ],
+        "native_or_server_execution_performed_for_this_catalog": false
+      },
+      "functions": [
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0094f1d0",
+          "address_kind": "preferred_va",
+          "role": "attribute receiver",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0095c620",
+          "address_kind": "preferred_va",
+          "role": "SET wrapper",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0093e850",
+          "address_kind": "preferred_va",
+          "role": "ADD wrapper",
+          "name": null
+        },
+        {
+          "artifact_id": "win-x86-laa",
+          "address": "0x0086f1e0",
+          "address_kind": "preferred_va",
+          "role": "dynamic callback dispatcher",
+          "name": null
+        }
+      ],
+      "fields": [],
+      "opcodes": [
+        "041c"
+      ],
+      "calls": [],
+      "evidence": [
+        {
+          "source_id": "src-xp-hero-baseline-delta",
+          "locator": "Threshold and level mutation semantics"
+        },
+        {
+          "source_id": "src-xpstructure-4c87bbb49385",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-8802887875c0",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-fcd2cd2d78ec",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-9db49c798366",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-f5fc78917c33",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-4a57a28151e4",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-5641260791b8",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        },
+        {
+          "source_id": "src-xpstructure-eb1fbd75d0df",
+          "locator": "Frozen independent review, build-bound provenance or test-only model; not a separate recording holdout."
+        }
+      ],
+      "limitations_ko": [
+        "역사적 단일 recording의 내부 일치이며 독립 holdout 또는 빌드 일치 검증이 아니다",
+        "다른 opcode·동적 callback·actor 수명 및 재사용은 이 제한 모델에서 미확정이다",
+        "누적 총 XP와 일반 production 상태 승격은 보류한다"
+      ],
+      "corrections_ko": [],
+      "related_entry_ids": [],
+      "tags": [
+        "xp",
+        "hero_level",
+        "historical_unmatched",
+        "xp-structure-followup"
       ]
     }
   ]

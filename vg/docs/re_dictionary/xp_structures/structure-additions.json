@@ -1,0 +1,132 @@
+{
+  "schema": "structure-destruction.research.v1",
+  "build_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "recording_client": "unverified",
+  "accepted_for_index": false,
+  "production_ready": false,
+  "entries": [
+    {
+      "id": "structure.identity.node_vs_armory_turret",
+      "primary_va": "00942480",
+      "related_vas": [
+        "005b19e0"
+      ],
+      "finding": "Manifest297 VainNode is kind3 with DESCRIPTIVE_TITLE_ARMORY;341 ArmoryTurret5v5 is kind3 with DESCRIPTIVE_TITLE_TURRET. Exact VainNode name selects flag4000; other kind3 selects2000; kind2 selects8000.",
+      "limits": "Korean alias \ubb34\uc1e0\ub9c8\ub8e8 unresolved; no name-substring taxonomy or objective credit",
+      "accepted_for_index": false,
+      "production_ready": false
+    },
+    {
+      "id": "structure.lifecycle.die_state_and_callback",
+      "primary_va": "0092c110",
+      "related_vas": [
+        "0094c8f0",
+        "00558e40",
+        "00966570"
+      ],
+      "finding": "ActorDie apply rejects already-state3/4 predicate, requests actor state3, and broadcasts onActorDie. Transition routine can reject disallowed edges.",
+      "limits": "Death observation/broadcast is not state-commit, cleanup completion or reward proof",
+      "accepted_for_index": false,
+      "production_ready": false
+    },
+    {
+      "id": "structure.lifecycle.mark_dead_request",
+      "primary_va": "0085c3a0",
+      "related_vas": [
+        "008c7670",
+        "008c6e40",
+        "00526e60",
+        "0092d780",
+        "0094c8b0"
+      ],
+      "finding": "VainNode and5v5 crystal death sequences end in MarkMyselfDead; behavior emits single-ID ActionActorDead in producer mode. Apply requests state4 only from current state3.",
+      "limits": "Not ActorDie raw-source event, EntityDestroy, rebuild or match end",
+      "accepted_for_index": false,
+      "production_ready": false
+    },
+    {
+      "id": "structure.lifecycle.cleanup_mark",
+      "primary_va": "0092b630",
+      "related_vas": [
+        "0081a6c0",
+        "0094d470",
+        "0112a1f0"
+      ],
+      "finding": "EntityDestroy resolves actor, broadcasts onBeforeActorDestroyed, marks object-pool cleanup bitmap.",
+      "limits": "No direct deallocation time or structure kill/respawn inference",
+      "accepted_for_index": false,
+      "production_ready": false
+    },
+    {
+      "id": "structure.regeneration.node_callback",
+      "primary_va": "00933e90",
+      "related_vas": [
+        "0091a8e0",
+        "00933de0"
+      ],
+      "finding": "Node pre-damage callback writes vainNodeTimeOfLastDamage when target matches; interval producer gates on mode and strict elapsed>5, then emits self health-change amount based on derived health limit times float32(1/180).",
+      "limits": "Pre-calculation timestamp is not successful damage; cadence, initial value, runtime availability and rebuild rule unresolved",
+      "accepted_for_index": false,
+      "production_ready": false
+    },
+    {
+      "id": "structure.protection.invulnerability_declaration",
+      "primary_va": "009195f0",
+      "related_vas": [
+        "0081d390",
+        "00961580",
+        "009625e0"
+      ],
+      "finding": "Turret invulnerability declares gameplay-flag selector0200 and flyout buff, separate from death/dead/destroy actions.",
+      "limits": "Authoritative damage veto and complete protection rules not recovered",
+      "accepted_for_index": false,
+      "production_ready": false
+    },
+    {
+      "id": "structure.respawn.symbol_boundary",
+      "primary_va": "0044e210",
+      "related_vas": [
+        "0044e1e0",
+        "008c77f0"
+      ],
+      "finding": "ArmoryDestroyed/ArmoryRespawned initializers hash/store IDs; VainNode Spawn factory configures an effect. Bounded absolute refs find initialization only for event globals.",
+      "limits": "Names/effects do not establish scheduler, respawn timer or new lifetime",
+      "accepted_for_index": false,
+      "production_ready": false
+    },
+    {
+      "id": "structure.credit.display_vs_award",
+      "primary_va": "00541430",
+      "related_vas": [
+        "005b19e0",
+        "0094e970"
+      ],
+      "finding": "TurretDestroyed announcement uses victim classification/team/view presentation; prior retained-hero display source path does not establish structure objective credit.",
+      "limits": "Raw source, team, last hit, awarded player/team and gold/XP distribution remain distinct",
+      "accepted_for_index": false,
+      "production_ready": false
+    },
+    {
+      "id": "structure.terminal.crystal_chain_gap",
+      "primary_va": "008c6e40",
+      "related_vas": [
+        "00549620",
+        "004c0e10",
+        "0094d450"
+      ],
+      "finding": "Inspected crystal death sequence leads to effects and ActorDead; no demonstrated end-action producer. Downstream result request fields and guarded callback remain separately proven.",
+      "limits": "No crystal-to-match-end causal edge; reason0 not relabelled crystal destruction; no winner inference",
+      "accepted_for_index": false,
+      "production_ready": false
+    },
+    {
+      "id": "structure.historical.diagnostic_only",
+      "primary_va": null,
+      "related_vas": [],
+      "finding": "168 development-seen H5810 sections contain14 tentative selected-structure ActorDie joins, including distinct ArmoryTurret5v5 and VainNode.",
+      "limits": "Unmatched recording build; not independent validation, objective count, complete lifetime or award evidence",
+      "accepted_for_index": false,
+      "production_ready": false
+    }
+  ]
+}

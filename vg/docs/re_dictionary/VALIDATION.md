@@ -148,3 +148,9 @@ recalculation and subtraction of one old threshold rather than a per-level loop.
 Learned-rank algebra excludes rank zero. Resource models illustrate finite small
 integer ADD/SET distinctions only, not native floating point, full lifetime
 sources or shared-reward eligibility. Historical producer build remains unmatched.
+
+## Reviewed XP baseline and structure extension (2026-10-15)
+
+The isolated extension from `2a9925d` adds 13 research entries, for 133 total, and 25 bounded model/catalog tests. All 120 prior entries and 230 prior source definitions remain unchanged. The 250 current source hashes verify with original external roots. The XP recurrence checker reproduces 5010 float32 comparisons using ten initial baselines from the same development-seen, unmatched recording; this is not independent gameplay proof. Structure findings retain unaccepted replay-index/production flags, with raw exports and assets external.
+
+Independent producer receipts are referenced in the catalog. Integration receipt and final full-suite log are held externally to avoid self-referential hashes. Production/research Python and catalog schema are unchanged.
