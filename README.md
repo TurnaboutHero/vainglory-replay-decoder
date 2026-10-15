@@ -73,6 +73,16 @@ Set `COOLDOWN_PROBE_EVIDENCE_DIR` to an explicit directory to retain logs and
 receipts for inspection, including failed runs. These offline mocks do not
 establish native runtime correctness or decoded cooldown certainty.
 
+## Import offline VGNL payloads
+
+Locally saved, complete VGNL binary WebSocket application payloads can be validated
+and imported with `python -B -m vg.core.vgnl_importer`. The importer retains exact
+input bytes and hashes, reports sequence/epoch/section/offset conflicts and gaps,
+and only reconstructs unambiguous contiguous observed bytes. It does not contact
+servers or promote account identity, replay completeness or final results. See the
+[offline VGNL importer guide](vg/docs/VGNL_OFFLINE_IMPORTER.md) for CLI/API usage,
+resume/terminal metadata limits and the synthetic-only transport validation scope.
+
 ## Choose the workflow
 
 | Need | Entry point | What to retain |
