@@ -1,0 +1,54 @@
+{
+  "base": "326582d5a944ad5cf24de871d4417253e68ecf4c",
+  "selected_binary_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "candidates": [
+    {
+      "id": "time_ultimate",
+      "existing_start": "01_COOLDOWN.md and ability HUD/clock followups",
+      "next_check": "020ec6d0/020ec6dc writes;020ec828 registry;0112a3c0;00943900;020e9d20/020ea218;perhero resource selector metadata",
+      "status": "closed_bounded_static_or_explicit_runtime_boundary",
+      "actual_result": "0470/047c one-byte inputs reach publication guard through session-definition+27 veto; registry publication/deferred retirement connected;4hero CFF selector/key paths corroborated.",
+      "closure_reason": "Closed selected static gates/registration;historical time partition,UI pause and genericultimate identity need matched-build observation."
+    },
+    {
+      "id": "respawn_spawnpoint",
+      "existing_start": "04_REVIVAL_RECALL.md",
+      "next_check": "0209e204 writers;timer+18 writes and constructors/registration beyond received-mode creation",
+      "status": "closed_bounded_static_or_explicit_runtime_boundary",
+      "actual_result": "Startup writes mode0;remaining two type references are type-IDcopy and snapshotread,not nonzero timer+18 initialization.",
+      "closure_reason": "Closed examined references;nonzero-mode spawnpoint initialization/authoritative production not recovered."
+    },
+    {
+      "id": "terminal_producer",
+      "existing_start": "03_RESULT_TEAMS.md",
+      "next_check": "EndMatch and surrender constructors/producer registration;accepted transition only after guard",
+      "status": "closed_bounded_static_or_explicit_runtime_boundary",
+      "actual_result": "0092df00 is vtable clone,notqueueproducer;state2 entrycallback548c90 registration recovered.",
+      "closure_reason": "No new authoritative terminal producer;accepted transition/rendered result need trace."
+    },
+    {
+      "id": "stack_load_override_interval",
+      "existing_start": "05_NAMED_STACKS.md",
+      "next_check": "0112a790\u21920112ab50 load/cache;action+38/+3c override producers;00954aa0 interval dispatcher",
+      "status": "closed_bounded_static_or_explicit_runtime_boundary",
+      "actual_result": "Registered memory name lookup and missing-manifest load interface connected;default apply overrideNULL;regularintervaldebt is adjusted once;timeoutcanadddispatch.",
+      "closure_reason": "Closed localstatic roles;loadedhash/customoverride/runtimecadence unresolved."
+    },
+    {
+      "id": "combat_order",
+      "existing_start": "02_REWARDS.md and05_NAMED_STACKS.md",
+      "next_check": "01a730ac precalc dispatcher\u21920086eb50\u2192health outputs;rejection/immunity before/after hooks",
+      "status": "closed_bounded_static_or_explicit_runtime_boundary",
+      "actual_result": "ImpactHealth serializer+4 conditionally adjustsnonlethalinput and sends041e;apply+8 earlyhooks precede protectionallocation/resources4,5,0,1 writes.",
+      "closure_reason": "Closed selected preparation/application order;complete precalculation immunity/rejection producer remains unestablished."
+    },
+    {
+      "id": "reward_snapshot_cause",
+      "existing_start": "02_REWARDS.md",
+      "next_check": "snapshot source-to-serialization fields;explicit cause/group/recipient identifiers only",
+      "status": "closed_bounded_static_or_explicit_runtime_boundary",
+      "actual_result": "Full03f3serializer packages peractorstate/arrays;no explicit awardcause/group/recipientset identified.",
+      "closure_reason": "Boundednegative only;unnamedfields/othernetworkpaths/authoritative award remain open."
+    }
+  ]
+}

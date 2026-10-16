@@ -1,0 +1,23 @@
+{
+  "schema": "vg.extended-validation.v1",
+  "change_scope": "Documentation and evidence receipts only; production code and tests unchanged from326582d",
+  "focused": {
+    "count": 16,
+    "result": "passed",
+    "private_log_sha256": "3b02d098e6ca7715e998c6def020b552f6b891aeed946ea4d8b8ff5594fd3a91"
+  },
+  "dictionary": {
+    "entries": 141,
+    "local_hashes_verified": 90,
+    "external_unresolved": 172,
+    "source_failures": 0,
+    "index_matches": true,
+    "private_log_sha256": "64a853980c96feb2df0267974bcdeb21a5030470d175482a191bee25e4eb182a"
+  },
+  "selected_PE_checks": "EXTENDED_PE_CHECK.json",
+  "independent_review": "No blockers in time gate,vtable roles,nonlethal preparation,actual apply order,interval debt/timeout distinction; typo cadence corrected. Respawn/terminal and snapshot reviewed independently.",
+  "full_suite": "Not rerun locally for docs-only follow-up. Parent full1173/0failure/0error/0skip targets326582d exclusively;see INDEPENDENT_326582d.md.",
+  "native_execution": false,
+  "screen_validation": false,
+  "new_replay_holdout": false
+}

@@ -1,0 +1,1938 @@
+{
+  "schema": "vg.extended-rea-receipt.v1",
+  "base": "326582d5a944ad5cf24de871d4417253e68ecf4c",
+  "scope": "Exact-build static extraction only. Acquisition counts are not new-function counts. Failed,unrelated,duplicate and interior resolutions retain explicit limits. Raw native exports remain outside Git.",
+  "normalization": "UTF8 compact sorted-key JSON normalized_result ensure_ascii false",
+  "ephemeral_project_closed": true,
+  "acquisitions": [
+    {
+      "acquisition": 4,
+      "private_export_sha256": "d9cd8a6c3812bc2e6ca0e2b8bbfe234255b2b3009f526e3ea22def851a9be162",
+      "status": "evidence",
+      "evidence_id": "ev_ca8ddd5f6b7f694518fd7c84945d00816b0abcc4f8a10dc72ccbf2f25fe548e5",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x020ec6d0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "1c9b547e3892f369dc155ab4e32af132226f463ca79b0a1ddf6fa5e74d2765a8"
+    },
+    {
+      "acquisition": 5,
+      "private_export_sha256": "373abc174bed92967af594ffbbe53fd3409086b1c09072a9eaceb3a6e89ce853",
+      "status": "evidence",
+      "evidence_id": "ev_0c6475d92ba10103cf9a88a9725e43ee9ef3e675ad7099d1f6ee181c13c036b8",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x0209e204"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "f7d0c09c2c4832924b49cf0b530b4d59585af146d39dfa3de6b9acf47eb477d4"
+    },
+    {
+      "acquisition": 6,
+      "private_export_sha256": "d4cc67d9f76fc4c49b615410d463d630365da8f8ec47e71f2412a0ab4712738f",
+      "status": "evidence",
+      "evidence_id": "ev_cf0472b8870f5ec48b8ef6476e1540dc056af64200dff24cc12150b2d0ff53ad",
+      "operation": "procedure_references",
+      "parameters": {
+        "procedure": "0x0112af70",
+        "direction": "incoming"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "2928075d9234beebdc5bf3bf79879b548eabfae087c7d26785c5b51b813b10f9"
+    },
+    {
+      "acquisition": 7,
+      "private_export_sha256": "32fbbea6a6d3475844fd877da8272f69197201b16ad02d3b70c7af989e39ec09",
+      "status": "evidence",
+      "evidence_id": "ev_eb2b0c77c6157bea8400f6fd9449667f4a0e2d595e97113795ce527f4e47b82a",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x020ec6dc"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "9adea5472d5e8616ae45bb7a56213fac796c1768c2254ee62666694ff07f4819"
+    },
+    {
+      "acquisition": 8,
+      "private_export_sha256": "dcc888516b4a63a43473dc0717ff05bc4ddddb2a430e6b1896e07b9f060b1ac7",
+      "status": "evidence",
+      "evidence_id": "ev_2e101555cc491bd7549f284f6bd5e28dec366c2e811de977c15a44a8b46c1998",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x020ec828"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "97f2ad346dab1362da4e1a6741e3942a12649c93fc1a96b54f7efa8233c4f706"
+    },
+    {
+      "acquisition": 9,
+      "private_export_sha256": "a19d345c474a70c740ef1ea029a7ba2102e6dfab652773cb10b935b2ebfa8b5e",
+      "status": "evidence",
+      "evidence_id": "ev_bbfac5178a759c38700e19e0a6b89f9d123d70093e081c04bba2d46b3eb699af",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0112a3c0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "68166a531721765023cdfae5822caae42682292d8b34a8064ea593f14284ad18"
+    },
+    {
+      "acquisition": 10,
+      "private_export_sha256": "813b1cdc2d692da344ca96939c29aae35873363514388d498cd87a28c2e92474",
+      "status": "evidence",
+      "evidence_id": "ev_23cf5ed1a05ab9714544bee7ad4f442a6f3936fdb5697e41631b179f5bc42288",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x00943900"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "3689bd1d9d935185269d135287b09cca8824096a5af8e16cbd0f2f77f6241459"
+    },
+    {
+      "acquisition": 11,
+      "private_export_sha256": "aa3715a432e29bd818bf6deed573efad867cace0d44d04b37a02c3658628fd7c",
+      "status": "evidence",
+      "evidence_id": "ev_11bcaf99fd6ca100c60e9f41287cca21a13a9a8446fe4913576590715a651ae3",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x020e9d20"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "8d5d6634463af46dd4fb3e21fb72367b398b876245567336b1927ce975f2d266"
+    },
+    {
+      "acquisition": 12,
+      "private_export_sha256": "c39e9d1920b635f3330e322039fe3b027f2be730ef31d9bb246570dcbdb5372f",
+      "status": "evidence",
+      "evidence_id": "ev_52f6dffaa16855edba10758b15cc5ffa6f1d762595c2fea12b67fe68f5b60c4f",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x020ea218"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "1dab3edf0efa4df549f28ed26cfd533085fbf688654359e7d08a85d52f4f5b4e"
+    },
+    {
+      "acquisition": 13,
+      "private_export_sha256": "375f48fbab1f2dda2bbcc8eec2dd079cb0a0763df0bb5975d0450e05bc8459a1",
+      "status": "evidence",
+      "evidence_id": "ev_f74de352a177413b4f65ed2141509d9536ffbad78efab47c8b7d6709e69eea8c",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x01a761b0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "cea89f4476030662909f2b84a9e31f52db0be4c36290e6d4dca2ae3f2888885c"
+    },
+    {
+      "acquisition": 14,
+      "private_export_sha256": "0a00c10423e8d6a4e8ed796ed0069b54c3d9e84c9eed2ccb5fa0290abfd06e67",
+      "status": "evidence",
+      "evidence_id": "ev_0248478b74cd316e51793ba5d114f273ad5a3b869424f8a260b2b0cbf976cea8",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0095da70"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "80316ac8255d322048cdab7c8da44e5a4c39b705a808b732bfbfc7ed2fc2bd41"
+    },
+    {
+      "acquisition": 15,
+      "private_export_sha256": "dbbd21f6b334f8c2d33ebde9ea336b87baf6252d1f7ff7eebcd3c966db11eae1",
+      "status": "evidence",
+      "evidence_id": "ev_bdeef3541086043725eec0c0c911a5b5e15a0a5ae220b794fdd03b30592d9cc9",
+      "operation": "procedure_references",
+      "parameters": {
+        "procedure": "0x0095da70",
+        "direction": "incoming"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "e37a289105addd51db182e44bbbcd296c4ecc65f5a3e05beb2bc6f6e881ce58f"
+    },
+    {
+      "acquisition": 16,
+      "private_export_sha256": "95e835eba9c3abb612f5ed3f7991e18e0ec21d8c6ed0fcc5b3dbf1d57a5ecdf3",
+      "status": "evidence",
+      "evidence_id": "ev_10375d3e68da0a3c9672b8eac1ae3bd3900386079147fdad798d2aaa84d2cffc",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0112ab90"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "042314d26d508fbf16dc896232215e73b7dc0e6ec7ecd3d35668e207ae0a7d25"
+    },
+    {
+      "acquisition": 17,
+      "private_export_sha256": "1c2c652dd7c30436c6ef37c9ab1f8d8c405348ad57f28f5567c9eec485fee5e3",
+      "status": "evidence",
+      "evidence_id": "ev_95b87756d7c32fd779cc17abcb27b808c131dcac54055c7c85d18e5de0b8e8ff",
+      "operation": "procedure_references",
+      "parameters": {
+        "procedure": "0x0112ab90",
+        "direction": "incoming"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "88af81fb9675cbff0aa588d0cf2819eefc500d114135cba6fb17d5f83932bca8"
+    },
+    {
+      "acquisition": 18,
+      "private_export_sha256": "410122613ff5be6a890826d3890a185e48771fea23321e6a2dfef6b1aed6816e",
+      "status": "query_error_not_evidence",
+      "interpretation_limit": "No containing Ghidra function; raw type-ID initializer checked separately"
+    },
+    {
+      "acquisition": 19,
+      "private_export_sha256": "4c474d100a5e768ce9eb74c342a2df2f908cec795e33e6163f91ac462921ab9e",
+      "status": "evidence",
+      "evidence_id": "ev_b3244eeb8f5da17a1db3790de9e8e9ad97892d564d1a932752670815ded1d828",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x004ca483"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "ae407e10ccf6b09157eb07c8a0816e2761b4347c8066eba1c1161db6b2b20bea",
+      "interpretation_limit": "Interior resolves prior004ca310 snapshot; corroboration only"
+    },
+    {
+      "acquisition": 20,
+      "private_export_sha256": "26721d3c08d2119861908365f2a6671ad7b9ef2515eb26979fd1da1a14bf8bb2",
+      "status": "evidence",
+      "evidence_id": "ev_1b84011a0625f0d98d7698043368145ed12ac7a56c6fd08e722b9dd553b1f2af",
+      "operation": "procedure_references",
+      "parameters": {
+        "procedure": "0x0092df00",
+        "direction": "incoming"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "0cceb93efee4853a5b70dc3ec76472da1049bf027012da03086696e94d2ea070"
+    },
+    {
+      "acquisition": 21,
+      "private_export_sha256": "1adaf5be97cf31d760bc2d3a008ce17c8316d76140749ce3e3577348f29d2de1",
+      "status": "evidence",
+      "evidence_id": "ev_fdbc92bbe823a0640e5c2a3ebfaadf1d72bf5249bd1a1caadbb0c1b6650bcee1",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x0127c834"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "8465959f466995a52effecbaf905183aa59c5c87686b3e411eb1f207ae72919c"
+    },
+    {
+      "acquisition": 22,
+      "private_export_sha256": "47c8a9c7500108bf11a24767fdbad8629cb302ecf865b3af9547ed1b7039faed",
+      "status": "query_error_not_evidence",
+      "interpretation_limit": "No function at wrapper interior; only bounded raw bytes retained"
+    },
+    {
+      "acquisition": 23,
+      "private_export_sha256": "0969f34cb416a2cb728409f58ae512aad06b858f2fd088a10703ce520cf70f07",
+      "status": "evidence",
+      "evidence_id": "ev_6e3d0a6d816d4d6ac669ed50c18467f9928b37e3cfc5ce5a22c57b15aa700e92",
+      "operation": "procedure_references",
+      "parameters": {
+        "procedure": "0x00549f60",
+        "direction": "incoming"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "0cc0ff5e07eee71cb4d56d677b27887cb892d5ac99845d09c653da0c31dd010f"
+    },
+    {
+      "acquisition": 24,
+      "private_export_sha256": "fb23fe13bac3c660f8eac7463fd31fddf592be748963e989c0984d6b50a6187e",
+      "status": "evidence",
+      "evidence_id": "ev_9669baf0b2500959c3e7a295fecc0027833da57895c48bf2558d589571945852",
+      "operation": "procedure_references",
+      "parameters": {
+        "procedure": "0x0054a030",
+        "direction": "incoming"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "3ab65b224bec34bd7427c6e7db0e3a93f902de1e0d1ec2fbcf3440eeff89d00f"
+    },
+    {
+      "acquisition": 25,
+      "private_export_sha256": "76df36429bf2a0bd8af5b25458a8691f17eb9ac6389a492796caad7b0efe2875",
+      "status": "evidence",
+      "evidence_id": "ev_c85b1cbffe5b85a9cd30c78fa9de4d88acc932eed2f57373c8c2ce77bed196fc",
+      "operation": "procedure_references",
+      "parameters": {
+        "procedure": "0x00548c90",
+        "direction": "incoming"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "d6b1df4afcec62f508b1718d1739f9c0535ced79989817734e8b57cb154ca575"
+    },
+    {
+      "acquisition": 26,
+      "private_export_sha256": "675822c84d0f5bd237e16e10b6b83dfafa1ae1c8c6ea32778d5c06b75285a601",
+      "status": "evidence",
+      "evidence_id": "ev_20832b43ea4a78224737b7c71c5ac8dd4fd774174c2d5af649561cd2ccf4356c",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0112a790"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "9b2cb12286b915beb1dc7a64deb6411b054af3b9ca539ee0a1b418d3b822a607"
+    },
+    {
+      "acquisition": 27,
+      "private_export_sha256": "66da14b6f87f9d9ca98be1728db2ac8812e0a80799b5bedd7d8aaa6b899aee7d",
+      "status": "evidence",
+      "evidence_id": "ev_d003b173a29380645219af9151d93883201b971b9e076a1bc7102619fd852f59",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0112ab50"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "d8306e0fcc1cf1cf082be5f27171eb54831a3796a05498d15f8de1436de6c773"
+    },
+    {
+      "acquisition": 28,
+      "private_export_sha256": "5ede8cb1ffc71b6d884011e28ef2e3ed701b2a8480de2d31ea39d0334e39fee0",
+      "status": "evidence",
+      "evidence_id": "ev_ea03496aa4b904184851afd029280b0627d757c33c189e352cac022091386a14",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x00954aa0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "11b54216cec6bc080fec299ea6e4a61f567347df582ecab055272aa126f0a187"
+    },
+    {
+      "acquisition": 29,
+      "private_export_sha256": "e075790e4f2cf3404a7ac7f882509c1edd717547ee56b1ab75565d717f01b228",
+      "status": "evidence",
+      "evidence_id": "ev_4a9acf689c438c73b71dc137d85f72ec6845f665d544b68b442cecb3247a9d5f",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x01a730ac"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "4647ca74ab468162876d77240da45e1753601c97abf98217eaa7b06a93ee07c6"
+    },
+    {
+      "acquisition": 30,
+      "private_export_sha256": "adf0968c3901a7ed87a15f42149e06cf1cb91ad303b85c63d6255e4ca92ffd5d",
+      "status": "evidence",
+      "evidence_id": "ev_543d4e31778e5601b7b9312aabf6997369a915841fe6bbedf94f8e3572a07fa6",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0086eb50"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "b6b964e4b6276abea0c9713c26b2ac40c0942adb062a1b6f11dd990a5a219e53"
+    },
+    {
+      "acquisition": 31,
+      "private_export_sha256": "54d6f02d14cd0598c351af0bf1c3fa5d37500f5521dc593efc010c5eb0302496",
+      "status": "evidence",
+      "evidence_id": "ev_7b2b00cb656b895cc61b7eb6c4c718b9f5621a15967778b86ba34475640c27c0",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x004cbc90"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "6a4a01050e36f3b92ebd93398fa68a1f267e87bf2911fe9f97019eb2a7a2d3b1"
+    },
+    {
+      "acquisition": 32,
+      "private_export_sha256": "ec3e3b0e6e14f6db604b03a26ed5066c29509c539b69dd00461ec15a98a209ba",
+      "status": "evidence",
+      "evidence_id": "ev_8276d47a5b248a92e11f2de88c0a388eec6fa42d11dd289bfddf11fd40bfd555",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x004bf650"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "e312f926ef3e805968e03791636684a2214b23d2664092b6def879dc6a860261"
+    },
+    {
+      "acquisition": 33,
+      "private_export_sha256": "a24ace15ce706931f82e585b7008651e5e036769c8b99eb018516ea6b9b5bafd",
+      "status": "evidence",
+      "evidence_id": "ev_c06b6e5b6159c48c12498eebde14964fe88d134cc5cbcd159e39e94fd795c601",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x004bfdc0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "65bd94e14c9e420facedf36df4dee0819bc5f12dc0675f0ff9f7033958772182"
+    },
+    {
+      "acquisition": 34,
+      "private_export_sha256": "325f503762e77dd0d474aec20b251d48c5115c232e2de4c13fc66048384e7482",
+      "status": "evidence",
+      "evidence_id": "ev_0f4ff3dba8ee152ffdde8557da1e109d2ada3a2ada25c1aa44c49502a06a5c34",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x004c0380"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "47c0f42116a934650e1b0414a128eb6380bf87e6f3cf543e045d83d00e1c2d1d"
+    },
+    {
+      "acquisition": 35,
+      "private_export_sha256": "884c5d34bb3b1144d16300b75a7e57fb7097884971cc61080476bea7919adc4d",
+      "status": "evidence",
+      "evidence_id": "ev_863bdefd1b33f9a706428b47680a1f0992a8b00e8e78dfa7c576f34b711c5d64",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x004bff80"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "b259b4fa854df182a524b2ded23ead2d3a96005b2d5dd7e2479caf9e2b0deba3"
+    },
+    {
+      "acquisition": 36,
+      "private_export_sha256": "6072ab96d5e463343e77dd12dd4962cbf6d9cab14edbc4ae424f9c46784b3063",
+      "status": "evidence",
+      "evidence_id": "ev_1ff41eb2abb535c75207e4c9a9f524de759d1964a888b0f84dea2d0aa7a55842",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0112c050"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "313b7dc1463db5acec0b1993ca9ea39302e6e9e7d4644ed802ba2987e4ef7ecc"
+    },
+    {
+      "acquisition": 37,
+      "private_export_sha256": "991c4bcc5be700cd1ccdad78d36123f97045a5edd58606ae5c5526b4ec97bb48",
+      "status": "query_error_not_evidence",
+      "interpretation_limit": "Unrelated guessed initializer address has no function; excluded"
+    },
+    {
+      "acquisition": 38,
+      "private_export_sha256": "55512f4faf43ad082d47b2397847de9fbd761b31745783f77f598d91ab431ea7",
+      "status": "evidence",
+      "evidence_id": "ev_9e4050b63e6cebf839370adaef121439602314a360e689691e6c62931b5637a8",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x00870b80"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "49674ad86e21e509c540a8543f38fc76bfd0dd893084f89f7a65b43389ca9c52",
+      "interpretation_limit": "Interior resolves00870b10; not separate function"
+    },
+    {
+      "acquisition": 39,
+      "private_export_sha256": "8783712d69d46c824c74de0579b65f8c97d390891c59f60dad57a7300292c3dc",
+      "status": "evidence",
+      "evidence_id": "ev_a215dd27f075137fcd26c434c01b0cd7ad64e7cec89befec8bf9290a22f5eefa",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x01a73014"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "d842b8f5c3f472ec55da396357d6d21b8181b23f16aab8c4283192fd2609d42d"
+    },
+    {
+      "acquisition": 40,
+      "private_export_sha256": "19736f27bec4034f02d4c38fc0a948f19d6b04acad14df6439fa27cca84c11bd",
+      "status": "evidence",
+      "evidence_id": "ev_e12aaa309a30a14a34ec6a2a2241e10df64037e7c4746f9b1a982eba1fe5cb47",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x020ec81c"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "dc8e81574043ce665487e0bcacb59a4c5d5d2be2f8a4f301dd8a864f1169e8f5"
+    },
+    {
+      "acquisition": 41,
+      "private_export_sha256": "732929b26d8356d249f398de31d0d7e585b69a5ed317fc730c40fb3b1383d647",
+      "status": "evidence",
+      "evidence_id": "ev_d2c59acb8f59de2108bfadf4b0e8d48334d9a497c3eb94a12ab9f1db26b11a61",
+      "operation": "procedure_references",
+      "parameters": {
+        "procedure": "0x0081a6a0",
+        "direction": "incoming"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "aba66206b03ca4975e5ba2ac1e3bda4d6b862e9706599d4058ad28036d34c2db"
+    },
+    {
+      "acquisition": 42,
+      "private_export_sha256": "64a0f3a5cd1bc6dba86b5279566656d6da6333d8991aff3ec6f1fbab9e6fcdda",
+      "status": "evidence",
+      "evidence_id": "ev_04e29fcbb97b68ae06a1a2c1bc021b833c37d972590410c161c7d1ddee146abd",
+      "operation": "procedure_assembly",
+      "parameters": {
+        "procedure": "0x004cbc90"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "d217c9ab48d99284b30f88410e04197e3a45cec5022219374e0e71cca1f5337d"
+    },
+    {
+      "acquisition": 43,
+      "private_export_sha256": "6927783e945a945ffc73d88cd558993b4ebb810eca1585453785a8b8fac3c3d6",
+      "status": "evidence",
+      "evidence_id": "ev_8d2468895feca66d722cbe194b2ee71431ebcf6912f01c38812ae6d9cc266651",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x00967b00"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "2b9dfb0738ef37f1098791a89d5204123a32f2e71440735e543d697cf7f5afed",
+      "interpretation_limit": "Interior resolves00967a20 interval update"
+    },
+    {
+      "acquisition": 44,
+      "private_export_sha256": "8661d25f10f080949a93bf530bfdbccab39500ec8e8f5892a73513ccbb04ee27",
+      "status": "evidence",
+      "evidence_id": "ev_2595ba93b401a760656b56ab3d4e4fc3e516d955efb9ca02d7b5155bf0589288",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x00966410"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "0380b9fb142fdf68d2592fc1483c50ab67f776b3f14bba6388a113c027592d24"
+    },
+    {
+      "acquisition": 45,
+      "private_export_sha256": "34277695dbe9632abaa88358d687a1fbeb66649b4ff198d721a851bcce3d4808",
+      "status": "evidence",
+      "evidence_id": "ev_512b9537b4f09c837f9444749730edd248bdf760c8a669c211cc89abef93591c",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x008cf100"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "8a5d0ed84176ba33cc4cd83f9ec443093852d775399770b54c7a88d9a74d351b",
+      "interpretation_limit": "Interior resolves008cf0d0 registration; not pre-calculation producer"
+    },
+    {
+      "acquisition": 46,
+      "private_export_sha256": "b16ccfc6f144768b5c519d99124da279812f0e0c4ef8261ca7e598d30820260f",
+      "status": "evidence",
+      "evidence_id": "ev_23c5f57434bb56f0e72334944c8f4139e64a474d9bdde4b22bff3a9bb422ddda",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0112b780"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "d1eed4ee900ae5d45a426f7ec01cf35fdf625e2ea4b588708755d742a9c109c7",
+      "interpretation_limit": "Interior resolves0112b410 registry initialization"
+    },
+    {
+      "acquisition": 47,
+      "private_export_sha256": "d137eebde9c8e9336ce2f1434591cf1a0505886b91263feab10c962f8d642b22",
+      "status": "evidence",
+      "evidence_id": "ev_28ac0605cbb16f4f2f43438ca2a790c7fbf186e712820b115c4ded139e683d02",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0112aba0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "a34c26c6ab3b11868f8c40171d94f9be9e69eaca7edf4b4b9c905bbb1b7c94f1"
+    },
+    {
+      "acquisition": 48,
+      "private_export_sha256": "7173c9f7c7bcced441b2ff4b8e0555f64a9b222373eadb4d683f7af82dfbd502",
+      "status": "evidence",
+      "evidence_id": "ev_1210680e5f6670f95982c4360d22b4db7f849f67d0eff9d801789f930ee8f008",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0112b080"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "c0c8b97c741af446f4100657f9232ec95f9e27c9d062d802ca8295d0165af745"
+    },
+    {
+      "acquisition": 49,
+      "private_export_sha256": "5553c5997837b936e8fadd4b4560f85f7679d51ece946da0c7693a3d3a5ba21e",
+      "status": "evidence",
+      "evidence_id": "ev_282ae15d67c1120330a162954600f34e3b0824fb455146f68ba450cfa2c8719b",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x004c70be"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "f9cf07175a92b4e9420e42db3268e73104b246aba603e5dee36a1fe2dddd1830",
+      "interpretation_limit": "Interior resolves004c6fa0 non-ability key fallback; not ultimate evidence"
+    },
+    {
+      "acquisition": 50,
+      "private_export_sha256": "57e2d2437688911b29bf2caf1d40c2d71622a13cf3c55751daa27045866b8d4f",
+      "status": "evidence",
+      "evidence_id": "ev_958f24b1ecda1d8aa7c5baf9be44026457529d4b50515f79e270da366b65175f",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x005483c0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "63503f4d3d2465b5a7e6f17bb4cbde8789d22e0ae34bb5e4a7492f3808285650"
+    },
+    {
+      "acquisition": 51,
+      "private_export_sha256": "b8b6da4309ceb944aac0ea9d14382022d005202c50365663f053cc3cd4726b30",
+      "status": "evidence",
+      "evidence_id": "ev_9ffafa3bd40871470bb728561061c4db3145d0c6a55160655b9207fa1d8bf73c",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0054a210"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "06378ce7b7bce7d681752b14bf52d251862676978f0211ba6093f93a37ff98c0"
+    },
+    {
+      "acquisition": 52,
+      "private_export_sha256": "6911c6192357b0127994826e87efaae4a5f7fecb83bd7dc357ce73a64fdac0b4",
+      "status": "evidence",
+      "evidence_id": "ev_81a4c64e6598482d5a7e79a7e8f541d50b637d4811ee506069bf2f29a00c8714",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x00938fb0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "d92f4bc78ee5a80545911692afc4f2aefb0650609f393280df68382e9f7c635f"
+    },
+    {
+      "acquisition": 53,
+      "private_export_sha256": "1f8b445c90d235ce3ef911575f835850b6e56b84b2cb6c9b2499c22d54855c8b",
+      "status": "evidence",
+      "evidence_id": "ev_f8831715024c92b50522b14d0c24dae698c5fcf058b4d2a7160141e16dd0ceb8",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x00936100"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "a47f663b0aa6083687c47bba1e015b31651752bfb0daedf4bedc55348dbfa0c2"
+    },
+    {
+      "acquisition": 54,
+      "private_export_sha256": "e74e2586c20e7143f90db64717182d2cdd1b76cab0f2a0fff53ffccba089a042",
+      "status": "evidence",
+      "evidence_id": "ev_890e330a2a286513e50845d23050c678cb02ba4fac5722a75995f7f46afe33ba",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x00936170"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "4299ed90b8853fa256357a878e2fd587064334823a85a602a0778972207ba8e7"
+    },
+    {
+      "acquisition": 55,
+      "private_export_sha256": "15b503c3b6d4bb1b4563f3e76e45f2cffb9d2b0164f7fdc335a3430feb02f5fb",
+      "status": "evidence",
+      "evidence_id": "ev_1608984e0c9d7b27c9f88cc9583c88a33c5ae1c301eb026bcd49fa0abb2735ce",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0092df00"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "4cb719260536118451a4ff9ecc5f7c59e0ab7614185f10e8a9e24486b272a606"
+    },
+    {
+      "acquisition": 56,
+      "private_export_sha256": "170f232a25e6e97fc34da60b6916f920cfdda313195fc0a038f782343c6ee754",
+      "status": "evidence",
+      "evidence_id": "ev_00e082c6f769b382fce8dae06beb6049407b2bff3c4f472c6cf67c596c7579d3",
+      "operation": "procedure_references",
+      "parameters": {
+        "procedure": "0x004bfdc0",
+        "direction": "incoming"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "61b7a19c27aeb463fe7977b1bcdb4ff6b80d7a7322f530e5593e7ff74aae390f"
+    },
+    {
+      "acquisition": 57,
+      "private_export_sha256": "befbce36f4e8e1d7e24e72b92ea07c9985ac90e70c0e8076f48ef13e6be77edf",
+      "status": "evidence",
+      "evidence_id": "ev_4c157337711a40fddc99bce166973eaea86977df1c4a1678bdbd9f9267865e16",
+      "operation": "read_bytes",
+      "parameters": {
+        "address": "0x00402f10",
+        "length": 48
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "0e49b75d1ec89cc8690d6143a6e31f6a241a957f4b180c6d4c77e490507965db"
+    },
+    {
+      "acquisition": 58,
+      "private_export_sha256": "d36a6815936e0220012243b6ecec07e8ae7b7def54f490a2a49da799018566f9",
+      "status": "evidence",
+      "evidence_id": "ev_887d4b05225699e5acb2874323200fa6c790c5f361e1812d09e30bf3c413f9b4",
+      "operation": "read_bytes",
+      "parameters": {
+        "address": "0x005b74b0",
+        "length": 48
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "8bc4208e56dec047259e2b1fe2cba8e39953141b8c6c8fad00ac32a14dbe81fb"
+    },
+    {
+      "acquisition": 59,
+      "private_export_sha256": "ed30fcf16bb5b1f9e28a875a99b38a9878fef0fac92d415cdf5e3decd36fddd2",
+      "status": "evidence",
+      "evidence_id": "ev_0e36031bd572684e769f0355dd93a2751288ae015a7ce6babd175fe387f223c2",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x004cfec0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "69ebc49c1a08b6a69a4ffdb531d0e62fb05d7eb2db75f26afa8453337cd2752c"
+    },
+    {
+      "acquisition": 60,
+      "private_export_sha256": "98dfdea35e4cbbdc772f17c67146154f0190e80b58cb495f1f5f363115f14693",
+      "status": "evidence",
+      "evidence_id": "ev_8af8839d49a677acdc9873c71712656f7ff1cad5d4a99cb82a8788d5839baa4d",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0112cee0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "eaec7c626dff9cde6060d53c55a3c5bfc20e6f4a0cb96fd40e2a73b4a70960a2"
+    },
+    {
+      "acquisition": 61,
+      "private_export_sha256": "73531fe7505da58fe29c4cf95af5ebbcf3ec4e78a12c6a09d2e1a35e1d980263",
+      "status": "evidence",
+      "evidence_id": "ev_229ca433fa59271e44ec6d1b4d97324bc67b3513d4c7160237cd58d0b600314e",
+      "operation": "procedure_assembly",
+      "parameters": {
+        "procedure": "0x0112ab50"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "3816cddc7a6216e67f18e3c9a0680aeb766874bae6a09a18aa525db5376b24e4"
+    },
+    {
+      "acquisition": 62,
+      "private_export_sha256": "55cce9f1f9b11d7d4999b3ef6b4081d5301f124936f8ba93e19fad227287c554",
+      "status": "evidence",
+      "evidence_id": "ev_ede92de35d079ec64a6f3dc269f8c7019dfc1da8b19d0084cd43f73555728386",
+      "operation": "procedure_assembly",
+      "parameters": {
+        "procedure": "0x00967a20"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "dd5f8a5000c0af86c383c61cc1d1ecde208c2cbe9478d33e95fb04e261fb1e71"
+    },
+    {
+      "acquisition": 63,
+      "private_export_sha256": "b0a4fe3ac816d1ca6586ff74978475ad2535d1a46507d7bea1be748fa8ad45ee",
+      "status": "evidence",
+      "evidence_id": "ev_98ba7b9fd8b6e970a0b992a3bfb484e3455c2776ac213fcbaab1f54b478f7221",
+      "operation": "procedure_assembly",
+      "parameters": {
+        "procedure": "0x004bff80"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "3c8cd587e59f36bf4f33318543a55bbf1b82c9ba3935159f5af5d80d8cc935a7"
+    },
+    {
+      "acquisition": 64,
+      "private_export_sha256": "fc291dec45004e3e8a7543b67af81e6fba952248f7e3331990c1bf51cefa6273",
+      "status": "evidence",
+      "evidence_id": "ev_807688f6d82670177731edde266ffc4daf72fa86512de34e5196e769cd44d83f",
+      "operation": "read_bytes",
+      "parameters": {
+        "address": "0x004d44c0",
+        "length": 64
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "bec754a00657a3a943f99874ed2b5aff4bc9623ffe3599074ce240a7fa0aa5b8"
+    },
+    {
+      "acquisition": 65,
+      "private_export_sha256": "07a2b6864ea39bf33009cf25627b9390e7fd7ec2d5b3003d0e2e26f617a0027e",
+      "status": "evidence",
+      "evidence_id": "ev_42017830ee0560aa6820d0a1feb559ed95ff604c03895f27a31d609bfa79f3a0",
+      "operation": "read_bytes",
+      "parameters": {
+        "address": "0x004d4a80",
+        "length": 64
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "88cc9bd997f500036a6ab50f67c204440a3ee560564dc17cce2015653b1d73fe"
+    },
+    {
+      "acquisition": 66,
+      "private_export_sha256": "f91f78cac2cd04bf88970c7bedb70f2de197cc42436e9ce23e3a7d283ab54ba2",
+      "status": "evidence",
+      "evidence_id": "ev_a1470880bf435b3f91c34b5d773c45775ea45d0fc299de307bd05007fa2c839b",
+      "operation": "procedure_references",
+      "parameters": {
+        "procedure": "0x0086f110",
+        "direction": "incoming"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "b1e147f01db5469cf8be25b453f18672f0e69368ba439883b0e7ee844a758218"
+    },
+    {
+      "acquisition": 67,
+      "private_export_sha256": "d9c8eb0e61cc25a7d3bd224251a84b8598d1a5168eefd803064dce29625ca3a9",
+      "status": "evidence",
+      "evidence_id": "ev_4e70096e5d92f1411b0089fd5e4e97c5e6b8f87d4a584a5e458f7850a9b90f7b",
+      "operation": "search_strings",
+      "parameters": {
+        "pattern": "onPreCalculateDamageExchange",
+        "mode": "regex",
+        "case_sensitive": false
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "11bf8f48703b79cf0c77040205e19291b88ffdb74f3e473374612db3f8690305"
+    },
+    {
+      "acquisition": 68,
+      "private_export_sha256": "c64d2188c163ae791eee68fe97b7357350164e91656bf107e56d4e2f958a2171",
+      "status": "evidence",
+      "evidence_id": "ev_e44e095688fa693a679d2e1f3a8c19efcb961d7fd6223a4067465aa3283486a9",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0112c3a0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "99c4e407fc6d280725c331c7dbebce270bfbb29825e352f14106bec26925bf1f",
+      "interpretation_limit": "Unrelated token-text parser guess; excluded"
+    },
+    {
+      "acquisition": 69,
+      "private_export_sha256": "74f151cb53eb28d8b30a02e2a15c86b09f60c84a7de98778b4829dd51f600ee3",
+      "status": "evidence",
+      "evidence_id": "ev_fe8b82f7235de338f79c9ae09b8d6a1c80cc14c61e0bde8bc9c58608edcca567",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0112ce20"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "589a5d447ae3cba53a2ee3606735abb75139971af4b75fca06a5b63740be82ce",
+      "interpretation_limit": "Unrelated token-text parser guess; excluded"
+    },
+    {
+      "acquisition": 70,
+      "private_export_sha256": "8e0041f7f0161c3667f3fafe68f9b61eda4a13adaf88e6badaea1fd3f9e849b1",
+      "status": "evidence",
+      "evidence_id": "ev_1cb6ba8e32460389944514de32676ae668b95e949023ce70b2b8ad195e3bbb8a",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0086f110"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "beb646963f840ec25b62149f43413aadb59eae4b181a723ee3cf5cfa7ddba158"
+    },
+    {
+      "acquisition": 71,
+      "private_export_sha256": "ab77fe80ab09753e3e29a61b739728c2bd95b39eda2ff0ee2a928c12fbc91fdf",
+      "status": "evidence",
+      "evidence_id": "ev_fcbb0492b19b4906218ad0a144e4b025a99843a91eaae9d3b58674782a59c54b",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x00870b10"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "49674ad86e21e509c540a8543f38fc76bfd0dd893084f89f7a65b43389ca9c52",
+      "interpretation_limit": "Repeated00870b10; no new-function claim"
+    },
+    {
+      "acquisition": 72,
+      "private_export_sha256": "f6290011fde78f257bfe8c4cea504cea478b7c6365c218adf7f0304027cf330d",
+      "status": "evidence",
+      "evidence_id": "ev_e953d5d59228845413e04474f0b831558e1b3f691b6237938b5fa2bbb01c880f",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x01268710"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "32aead6bdcdcb41efdac1b8919c4a7c31a73b8d954641891619560876950c7ab"
+    },
+    {
+      "acquisition": 73,
+      "private_export_sha256": "6df7e725ea80fdf89dbb7195b4ba929bae28b915dfba3bf62dd2c13bd6ccce7b",
+      "status": "evidence",
+      "evidence_id": "ev_a7eca60620a9ad6f059cd8ef6aeec4d490a6b1cea8ea333973f5c8d14022fea8",
+      "operation": "procedure_references",
+      "parameters": {
+        "procedure": "0x0112c050",
+        "direction": "incoming"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "75f95a44e91fa9d603152751cbcff9c05721c67898ad89af493f5b9f4df02c37"
+    },
+    {
+      "acquisition": 74,
+      "private_export_sha256": "17c38807cd9062f4d27f7bbfde36af0e3859738e4e26777a728a36c0da8d6c4e",
+      "status": "evidence",
+      "evidence_id": "ev_e573dad6bcb105adb63b5131d86f93c9d5065354cc123960ad02e5f97fc51462",
+      "operation": "procedure_assembly",
+      "parameters": {
+        "procedure": "0x004bfdc0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "9885912f66e3e3f40c236c999a35ca0129dc2c7835587793a19d1dbb3a5e3196"
+    },
+    {
+      "acquisition": 75,
+      "private_export_sha256": "4d6a1829fc1d6acdc5322340919c93f8ce59f33c4d49a57015b516846856fa81",
+      "status": "evidence",
+      "evidence_id": "ev_07663b80027429e93a6e4b9594851538a161fbcb8c9da867522206ed0ae4ac3a",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x01129ea0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "fb182b1e558f084a07e6a998195ce247dae487ded077a1b18edcd8ecd665bd58"
+    },
+    {
+      "acquisition": 76,
+      "private_export_sha256": "1341d5a2c76c711d743e5dfb1a34f34945b7f60543139b67b4567dc0dd25bef7",
+      "status": "evidence",
+      "evidence_id": "ev_2489f6a6b592434710d94de4a5a226fa90c1984f95b3c9ba397d86ad27d05136",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0112be10"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "c63d9169f1000799ca320236e8ac16555fdf3512d8510fcd8b8d429b0dade452"
+    },
+    {
+      "acquisition": 77,
+      "private_export_sha256": "591c260a655998e57d01f9e827f88c77bdccd84084ee0a42f4490ae153fdea1f",
+      "status": "evidence",
+      "evidence_id": "ev_4590d2716695c1539f08fc2da64d314bd22ed5cad22e23fe1863dca7bce821a6",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0112bfb0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "946381e4479c7f5459847f10db6d768d18617017810c1508fc04e8f53a077e81"
+    },
+    {
+      "acquisition": 78,
+      "private_export_sha256": "df3fdb773686a53a72cb944349182099edb3361d6f514a4cda9a0df82ca671ad",
+      "status": "evidence",
+      "evidence_id": "ev_a0756be5b062f3cfd97f4d79cc875f835b7545ee2d317338225ab875e094aaf7",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0081a060"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "8b3cc6ab06ca584fb0663b09c0faeecdd520ba13a153c35bd7208f19dbfcc7a4"
+    },
+    {
+      "acquisition": 79,
+      "private_export_sha256": "d91f1517a1fc7c60176b53ccab8699ba5d363e32e95e31dfa02c9bb4994d5ac0",
+      "status": "evidence",
+      "evidence_id": "ev_43eae772fc806e84ab681ad7283b0e6e8c869d1bd0ae0d97e9f533693f444821",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x00944180"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "f9a198f9f22597e861e764a5bf1cc7ac5b36a6b952e1c37283b4b24351918c26",
+      "interpretation_limit": "Interior resolves previously established00944110; excluded from novelty"
+    },
+    {
+      "acquisition": 80,
+      "private_export_sha256": "6a1114590f60cc55323fdd911c6e26a4a4eb122c442a32b3ce53b4a2ef219e30",
+      "status": "evidence",
+      "evidence_id": "ev_9b3500ae02bc2ab1afcc9b266c73b307b35518845bc8ddd2c474d57771d400e2",
+      "operation": "procedure_references",
+      "parameters": {
+        "procedure": "0x0081a060",
+        "direction": "incoming"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "aa168b547abd4925d4ce18f9fe9585460a31bede2db30e13124e366eb30e06fe"
+    },
+    {
+      "acquisition": 81,
+      "private_export_sha256": "9332fe82bd9e00bae315b2d9f98529595aa62308a2b37d07526d6448fc0c6632",
+      "status": "evidence",
+      "evidence_id": "ev_e2e3b8cf803fa4afc85cbedd3a20458d95bca02bb3d6812024f227c8bfbbb4cb",
+      "operation": "procedure_references",
+      "parameters": {
+        "procedure": "0x0086eb50",
+        "direction": "incoming"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "4dd9527702c6588601411a5d9d5c68d513752dc227a0658d136969d68c92588b"
+    },
+    {
+      "acquisition": 82,
+      "private_export_sha256": "f5a16545b35e9cf5419fa9dba7cea67590bce001bfa5e44b08dfd1f332874cf3",
+      "status": "evidence",
+      "evidence_id": "ev_eec53faba2c998750f084bef114712f0f4deb5986813ab6af20a676ce864fb67",
+      "operation": "xrefs",
+      "parameters": {
+        "address": "0x01a730a8"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "acquisition": 83,
+      "private_export_sha256": "f7ab25a6aa7edecddb24e4a9b2a78c7fc0308f4ee498cd0783b7c2d348b4de4b",
+      "status": "evidence",
+      "evidence_id": "ev_4c054e8f67f08d57dd85db7e277c65e446e01b02ca47e284d82498b3df5ab1d1",
+      "operation": "procedure_assembly",
+      "parameters": {
+        "procedure": "0x0086eb50"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "7695216431a52aa404f0eab6dbf622dc34f7527345ae9b158c51030f19d26872"
+    },
+    {
+      "acquisition": 84,
+      "private_export_sha256": "db39cf5733e484e3763a6d9a83a7fd8b6ea0e742fe84dddeaaf18328eb1b313a",
+      "status": "evidence",
+      "evidence_id": "ev_b7ce88203d15e8cd15a487a3151e07ad7b5c7cb841e9497819a70f62da7e3842",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0094af20"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "2b7b835cb3d4965e3dc617b9a2c69eb7511c6d5b5366bc916d0121b52be8fbab"
+    },
+    {
+      "acquisition": 85,
+      "private_export_sha256": "00d90830ebd8bda5342388f6a60b276f2ffdbcbfac1ad0b7821143472e2c43c2",
+      "status": "evidence",
+      "evidence_id": "ev_f13a2263f9ec11a1023aff498b8f65bcca0fe8693b2152b64e8e98548b4cb22c",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x00959a30"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "40037cd1bd62f46945ccd11098115a0087c9fd1e957529c37847a77eb7111e78"
+    },
+    {
+      "acquisition": 86,
+      "private_export_sha256": "cdb3387ce4a137b6f952bc89981604bb4b4cc71f24e7be77da1f1838fe3655ba",
+      "status": "evidence",
+      "evidence_id": "ev_cbb58a68a138c1164c2ae526c48484ae5ba1fac88411903a5ebe282553aca464",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x00959c40"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "9b1fef5128c319394f8bbb0f54e6bad011bcf7b9b18baaa06ebe7286c5a1122d"
+    },
+    {
+      "acquisition": 87,
+      "private_export_sha256": "d319cfa1720857fa6323fbba4f9cc05a150b173161b3fedc983386464b328ece",
+      "status": "evidence",
+      "evidence_id": "ev_355046d926d62591c0276dc57720f1210ba80631b11eb0a3d542e8ec0b68ddeb",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0112b3a5"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "0216920150733b7f955f96247e4d4e2933c8e19d8706fe633cc95584ce192f42",
+      "interpretation_limit": "Interior resolves teardown0112b180; no resource-load claim"
+    },
+    {
+      "acquisition": 88,
+      "private_export_sha256": "de38584927479741d33b276462e3de464a42185f3138803081283533459898b7",
+      "status": "evidence",
+      "evidence_id": "ev_359b98977c5da44341248f07f5de89ebc7761207c49c1a1f0c22fd2089aa1888",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0112b296"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "0216920150733b7f955f96247e4d4e2933c8e19d8706fe633cc95584ce192f42",
+      "interpretation_limit": "Duplicate teardown0112b180; no new-function claim"
+    },
+    {
+      "acquisition": 89,
+      "private_export_sha256": "50b67f5782764aa79437e27ab8ab39501942da765db467dbd2530d7bd0084297",
+      "status": "evidence",
+      "evidence_id": "ev_a89d892e284a6ceb9c5179a835f7371c172119ce09d55afaeef10e86f5f62562",
+      "operation": "procedure_references",
+      "parameters": {
+        "procedure": "0x0094af20",
+        "direction": "incoming"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "d8db9e80ddd0950477129b7fa27106439302c2d783087f120b91010a47aa0bdc"
+    },
+    {
+      "acquisition": 90,
+      "private_export_sha256": "22c5b125d286b7477590800574eafd49cad7af7d44e58e1cb29ac20cfb270fe4",
+      "status": "evidence",
+      "evidence_id": "ev_a17f576ac65390f41153aaf435a4902635a821a35f923a177e80ff98acc5415e",
+      "operation": "procedure_assembly",
+      "parameters": {
+        "procedure": "0x0112a3c0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "c9f64f88ad1f47f750885a9366bfe3beca25ee2f8ea9cf0c662829ccd407da9a"
+    },
+    {
+      "acquisition": 91,
+      "private_export_sha256": "84e17b88cddb8b8b48298a01d3e43db44145eadcfd7512a343afaacf6c050f69",
+      "status": "evidence",
+      "evidence_id": "ev_53e27f8968608396b38f759ec51191adc0b606405ccfd26e873be3e2eda4766f",
+      "operation": "procedure_assembly",
+      "parameters": {
+        "procedure": "0x0112b9e0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "f6b764fbf771eba948cf75a4899273cbe8d3421a9bf8a0e81d1c77582a504392"
+    },
+    {
+      "acquisition": 92,
+      "private_export_sha256": "001cf23e1397dc982080df53304daeb495373eda4993f1e718926eff87699afc",
+      "status": "evidence",
+      "evidence_id": "ev_6b3c813792c3564c986f6832ff381bc44ddf57077ade1529fc3ac092b25b5daa",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x004c0de0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "f02ffd2583945f03257adb9b4ebe2b039370a01ddde8dc15a8c33e476d8c5f34"
+    },
+    {
+      "acquisition": 93,
+      "private_export_sha256": "c730df45cacdd0a1d2175fc26a1dd456b72acc7a115fcb30cfcfa34a7b92c993",
+      "status": "evidence",
+      "evidence_id": "ev_480555fe87b491e0c90faa7e0d280561b8e71f49aead99f68f036f7a4d229d82",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x00548bf0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "01fec0b04a9c5e08d0c33970ba359c35e1b2000c6223486f18d5d60d1f3a5df2"
+    },
+    {
+      "acquisition": 94,
+      "private_export_sha256": "a262bd7ebdd33ad56c74dce4f0f6ef854abc937d489b2a840d4bf68bd5c4773d",
+      "status": "evidence",
+      "evidence_id": "ev_8c73bc647e0e77f8fcbc0983ef39c0953475a34e047adac9ccf77fcca0ee1ed5",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x004dade0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "89bed80fa3a400602b7b1ba0f6697f30e16e31b06bbaaacdaff36ada5a29d8b0"
+    },
+    {
+      "acquisition": 95,
+      "private_export_sha256": "fbe6419368cd08c4bd72e38bc90b3a68d6c0a64cd00d4ebb292e8671213ccf61",
+      "status": "evidence",
+      "evidence_id": "ev_8fd6c641fd4427b3d391fbdf81c421a1252fb2b4e3feea60788b8ca85d042ce5",
+      "operation": "procedure_assembly",
+      "parameters": {
+        "procedure": "0x0094af20"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "cbfc98e8b92b3b1e626fd405f0c609b25edfb00c805a779d645653080896ce8c"
+    },
+    {
+      "acquisition": 96,
+      "private_export_sha256": "03f8c388652715c84b3bf7da625dd0b67ef5f6d9e75e25fb647210bfd4490abf",
+      "status": "evidence",
+      "evidence_id": "ev_b1aca50dc7de4b2e43b0268c6315e1774733fd717b12fc8210c9c5b10da04cd6",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x008167c0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "4ea8a7bdb7c5317c8b300df43b9d8f16c3ff5ea01078a496c152fc2536539a4c"
+    },
+    {
+      "acquisition": 97,
+      "private_export_sha256": "ad3d9824b0fd41c0dcced508924c33f80b91e21307580fe16c0922742be7a919",
+      "status": "evidence",
+      "evidence_id": "ev_27bde5fdfc6f6d8fc36f4fb1d4090a935d1ceaedc3f55c049f354462355fa44a",
+      "operation": "procedure_assembly",
+      "parameters": {
+        "procedure": "0x0094c9a0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "99ca7558272a2d16fb51f347a4945583e1ce78d2f949e183141f43829ec4022b"
+    },
+    {
+      "acquisition": 98,
+      "private_export_sha256": "b9ae367c4e6c16c51f6450ab2c43ce25edc1fb19e5a37d3a10ec520682d4d0f4",
+      "status": "evidence",
+      "evidence_id": "ev_676304c69eb53fe4395f7e672ee7e350563e456bf576ffdd00860ec7e67de1cf",
+      "operation": "procedure_assembly",
+      "parameters": {
+        "procedure": "0x005483c0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "ab21435e59c8f404899a997b13060563bac465df83e907d9e383c5376d7f3fb4"
+    },
+    {
+      "acquisition": 99,
+      "private_export_sha256": "788ee4cca391f846edbe5a751d8f29c8c3054a15751ded8d4bb7a65183e0fe7b",
+      "status": "evidence",
+      "evidence_id": "ev_6da9d483ae7598ffbc8fa8047aac4d8a10fb1fb267507d4b897eb93c3c007ac0",
+      "operation": "procedure_references",
+      "parameters": {
+        "procedure": "0x0112b080",
+        "direction": "incoming"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "444cf36f90494d7bd4c8b0a0e462f6395e15fcf1f1905d80935c9061065bbe18"
+    },
+    {
+      "acquisition": 100,
+      "private_export_sha256": "c6949cf5b0af9c4e66b89cfc6598a2546b54135b07dd4c004d4c0709adac2ee3",
+      "status": "evidence",
+      "evidence_id": "ev_542082be15b1809cca37900fc0af91c2cf935d72633debeaf14d072051101e0a",
+      "operation": "procedure_references",
+      "parameters": {
+        "procedure": "0x0112aba0",
+        "direction": "incoming"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "69065060ed318d5f051cf3d3c4fe50e34b8ca121a69454858c92f6ce0659fdb6"
+    },
+    {
+      "acquisition": 101,
+      "private_export_sha256": "d80a6723dbf831a268697da567339d2d87497728eccff6333997a908edcac161",
+      "status": "evidence",
+      "evidence_id": "ev_933d123a101071ee7c398a8baf089c38cfa1aabda0b8ebd0e33743cbc26fefe1",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x004bf790"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "bf9ddf17c4e69b15375c16d2c3409782e12ba45e7c3684744256cc87441083b9"
+    },
+    {
+      "acquisition": 102,
+      "private_export_sha256": "e9657d956d02d6d4d7eb45dda32e7c9001dde60544e0c244f89e56ea282fa77f",
+      "status": "evidence",
+      "evidence_id": "ev_55633b8e1c9cb7b76bbc9debe0d775fd08a27d2dc841cae181774ab1d5fe837b",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0112ade0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "4cac15cec38fd49ac3a365e5ee8f32e7d68eb5a896655d01707dd0b1eea6b31e"
+    },
+    {
+      "acquisition": 103,
+      "private_export_sha256": "2054df2acfbace72e79cbb477c168f436862260a51fdee1d6e4e1cecbf78b514",
+      "status": "evidence",
+      "evidence_id": "ev_d9fd562053642004e03d0ce6d85b1594f61f2a63da4dd0e9ca821c6f913b85bd",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x004cfea0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "ffb2b2a37e9d74003981de05b01aed72f02c6d620f8133b6f23be886abaf3ac4"
+    },
+    {
+      "acquisition": 104,
+      "private_export_sha256": "9c21d1c111d2946d3cb76bd4d00fde02ab59825945154f1b8a231ce1aa53c370",
+      "status": "evidence",
+      "evidence_id": "ev_eaf451d0efccb04b60834a9528ab654cc0ec6d132356b7ccbe956c7e0c1f4124",
+      "operation": "procedure_assembly",
+      "parameters": {
+        "procedure": "0x008167c0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "7cee998ce39ce213e974a34218c5175b8d3fd45cd1d7223bd200e6d579e102ea"
+    },
+    {
+      "acquisition": 105,
+      "private_export_sha256": "f61b06b6d420872247d2035cedb3ee9b7523f963dd9106b1f6ce56480e4e14f0",
+      "status": "evidence",
+      "evidence_id": "ev_b705459eb3fb107ce54da7cafe0f1343359a231cb13defb1f77d89b5e65f7428",
+      "operation": "procedure_references",
+      "parameters": {
+        "procedure": "0x0094e970",
+        "direction": "incoming"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "5e85380512d07b6c727b009dc5eb23e380ae540652bb0b7069168d19ce3c6d02",
+      "interpretation_limit": "Empty typed reference inventory cannot override independently verified vtable words107"
+    },
+    {
+      "acquisition": 106,
+      "private_export_sha256": "ddddfd21cc7a0a0ae5efcc51f2df73ad0355d8e612cb6d9930d01556b2d791ac",
+      "status": "evidence",
+      "evidence_id": "ev_82367622c1fc196d0bcfe19aafc68a088b31f0fbdf267b133a35ba84fdb6e518",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x0094e970"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "2cebd4a4ba2ffb78e9aa8a59038b8c76dd41612d934fb0d3ef1078624fade656"
+    },
+    {
+      "acquisition": 107,
+      "private_export_sha256": "d25a5a83e0ee4900180f4b50b667b49211f736c57a662d03c4c6f08e25d4f137",
+      "status": "evidence",
+      "evidence_id": "ev_a137feb4ed4149560e8e42c7f208edb5760e35f728191b21c59a7226a93bf2ab",
+      "operation": "read_bytes",
+      "parameters": {
+        "address": "0x0127c920",
+        "length": 48
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "95f5896ea1bef16aa471d5b470a36d2fc611d926a8ff7187be1a9084a8198871"
+    },
+    {
+      "acquisition": 108,
+      "private_export_sha256": "ec94d65215fe691834ad75b34092a3ca7950588ee4b94bd0f87eb455467af5a3",
+      "status": "evidence",
+      "evidence_id": "ev_1d90a451058c2216a26c5cde2d4af137019f437876472e3851936cb4f18c3166",
+      "operation": "procedure_assembly",
+      "parameters": {
+        "procedure": "0x0094e970"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "cf0baf0b30f9ad14d72af466c8ddc7656cb922e9e6163d963a0e1101ede1f8f3"
+    },
+    {
+      "acquisition": 109,
+      "private_export_sha256": "d58723d4e4bb33d192268347c00ee3b18cce975cff0fde055e7ec1da2fb6496c",
+      "status": "evidence",
+      "evidence_id": "ev_f98f79864c9a86471abb80e2aebad4a8ff1e1bea84ee0bc676810b15b8e06fce",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x004eb3f0"
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "2497abe323690ca7a741c6f1c838de0167320a8c4e4405e6f338a84fb171dd51"
+    },
+    {
+      "acquisition": 110,
+      "private_export_sha256": "13e8323dd7c400115bb90cbf83eab09766b4f004b4e3c52f23713b8183f35368",
+      "status": "evidence",
+      "evidence_id": "ev_7e8897f9edc9a11eec68b95bebf9dcf7ce1598b485359cfe42ce59823fb091ad",
+      "operation": "search_strings",
+      "parameters": {
+        "pattern": "Action.*(Health|Damage)",
+        "mode": "regex",
+        "case_sensitive": false
+      },
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17",
+      "normalized_result_sha256": "3f585cbf035f7567c3211db3d1ca7d522d84953ea32dd36f1b042ce5db2f24d3"
+    }
+  ]
+}

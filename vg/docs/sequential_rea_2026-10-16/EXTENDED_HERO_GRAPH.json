@@ -1,0 +1,137 @@
+{
+  "schema": "vg.selected-hero-selector-resource-check.v1",
+  "binary_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "manifest_sha256": "7292b885378be83cb8596601bad7d0c7adfaab1e91e23f8ea65601f03136755c",
+  "private_full_export_sha256": "5688d2d374219354b7af151ced8a86e0c4fbfa73415c0160e370e01084798477",
+  "scope": "Fresh independent selected local CFF decode corroborating prior catalog selectors; third UI button is not a generic ultimate marker. No new translated-text proof, runtime override resolution or historical recording identity.",
+  "heroes": [
+    {
+      "symbol": "*Catherine*",
+      "resource_name": "98B6FF5C43A2EB13831F4EAD75CD0886",
+      "sha256": "e18ac6fad3f0798f7d4174dc706a8966d0b5668a07825ab155bb2d40773ed943",
+      "root": 0,
+      "inline_component": "0x4c",
+      "ordered_list_relocation": "component+0x18",
+      "selector_offsets": [
+        "0x24",
+        "0x28",
+        "0x2c"
+      ],
+      "selectors": [
+        1,
+        2,
+        3
+      ],
+      "selected_abilities": [
+        "Ability__Catherine__A",
+        "Ability__Catherine__B",
+        "Ability__Catherine__C"
+      ],
+      "third_selected": {
+        "native_slot": 3,
+        "inst_offset": "0xe2c",
+        "name": "Ability__Catherine__C",
+        "localized_keys": {
+          "0x0": "HERO_ABILITY_CATHERINE_DEADLY_GRACE_NAME",
+          "0x10": "HERO_ABILITY_CATHERINE_DEADLY_GRACE_DESC"
+        }
+      }
+    },
+    {
+      "symbol": "*Ozo*",
+      "resource_name": "9FA9C19B1B6175E859A8CD1995DB95EC",
+      "sha256": "ee7449362035f8e8621631561a68be45ef1f37696f15d25b7741e3b672d67ae6",
+      "root": 0,
+      "inline_component": "0x4c",
+      "ordered_list_relocation": "component+0x18",
+      "selector_offsets": [
+        "0x24",
+        "0x28",
+        "0x2c"
+      ],
+      "selectors": [
+        0,
+        3,
+        8
+      ],
+      "selected_abilities": [
+        "Ability__Ozo__A1",
+        "Ability__Ozo__B",
+        "Ability__Ozo__C"
+      ],
+      "third_selected": {
+        "native_slot": 8,
+        "inst_offset": "0x1740",
+        "name": "Ability__Ozo__C",
+        "localized_keys": {
+          "0x0": "HERO_ABILITY_OZO_C_NAME",
+          "0x10": "HERO_ABILITY_OZO_C_DESC"
+        }
+      }
+    },
+    {
+      "symbol": "*Varya*",
+      "resource_name": "BF0619BD1F02D456C67949B60479EC4D",
+      "sha256": "7739b8e8eaf4d1f6f8cd949c69111b85c4cb76ae4a42d50206fe9a7d95082aa6",
+      "root": 0,
+      "inline_component": "0x4c",
+      "ordered_list_relocation": "component+0x18",
+      "selector_offsets": [
+        "0x24",
+        "0x28",
+        "0x2c"
+      ],
+      "selectors": [
+        0,
+        4,
+        8
+      ],
+      "selected_abilities": [
+        "Ability__Varya__A",
+        "Ability__Varya__B",
+        "Ability__Varya__C"
+      ],
+      "third_selected": {
+        "native_slot": 8,
+        "inst_offset": "0x16e0",
+        "name": "Ability__Varya__C",
+        "localized_keys": {
+          "0x0": "HERO_ABILITY_VARYA_C_NAME",
+          "0x10": "HERO_ABILITY_VARYA_C_DESC"
+        }
+      }
+    },
+    {
+      "symbol": "*Ringo*",
+      "resource_name": "E2E212FBCFCE9E9E2A7D85CA951B5389",
+      "sha256": "8cb91d10db411455aed5e17d5195d8dbbf612134780a4b784d871dba7ddc0e82",
+      "root": 0,
+      "inline_component": "0x4c",
+      "ordered_list_relocation": "component+0x18",
+      "selector_offsets": [
+        "0x24",
+        "0x28",
+        "0x2c"
+      ],
+      "selectors": [
+        0,
+        1,
+        2
+      ],
+      "selected_abilities": [
+        "Ability__Ringo__A",
+        "Ability__Ringo__B",
+        "Ability__Ringo__C"
+      ],
+      "third_selected": {
+        "native_slot": 2,
+        "inst_offset": "0xa5c",
+        "name": "Ability__Ringo__C",
+        "localized_keys": {
+          "0x0": "HERO_ABILITY_RINGO_HELLFIRE_SAKE_NAME",
+          "0x10": "HERO_ABILITY_RINGO_HELLFIRE_SAKE_DESC"
+        }
+      }
+    }
+  ]
+}

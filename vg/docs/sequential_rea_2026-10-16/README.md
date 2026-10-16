@@ -80,3 +80,20 @@ python -X utf8 -B -m vg.research.inspect_stack_items --binary <selected-local-ex
 Public deliverables are this directory, vg/research/verify_sequential_pe.py,
 vg/research/inspect_stack_items.py, tests/test_sequential_pe.py, and the small
 native_event_fields/cooldown/end-match test additions. No binaries or recordings.
+
+## Extended follow-up after326582d
+
+[Independent parent verification](INDEPENDENT_326582d.md) applies to326582d only.
+The subsequent docs-only extension follows [candidate outcomes](EXTENDED_CANDIDATES.json):
+[time/ultimate](06_TIME_ULTIMATE_EXTENSION.md),
+[respawn/terminal](07_RESPAWN_TERMINAL_EXTENSION.md),
+[reward snapshot](08_REWARD_SNAPSHOT_EXTENSION.md),and
+[stack/combat](09_STACK_COMBAT_EXTENSION.md).
+New exact-build evidence includes0470/047c-to-publication-control with veto,
+deferred scheduler cleanup,mode0 startup,regular interval debt behavior,and
+ImpactHealth serialization/preparation versus application ordering.
+[Selected PE checks](EXTENDED_PE_CHECK.json),[hero resource checks](EXTENDED_HERO_GRAPH.json)
+and [fresh REA receipt](EXTENDED_REA_RECEIPT.json) preserve bounded reproduction inputs.
+No production code or tests change in this extension;no new decoder reducer or
+historical build promotion. Loaded resource identity,spawnpoint initialization,
+authoritative terminal/reward/precalculation and actualscreen behavior remain open.

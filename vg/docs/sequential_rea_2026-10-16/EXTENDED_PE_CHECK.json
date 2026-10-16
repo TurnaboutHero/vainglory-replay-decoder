@@ -1,0 +1,67 @@
+{
+  "schema": "vg.extended-selected-pe-check.v1",
+  "binary_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "calls": [
+    {
+      "site": "004bffc1",
+      "target": "0095da70"
+    },
+    {
+      "site": "004bfde4",
+      "target": "0112ab90"
+    },
+    {
+      "site": "004d44e6",
+      "target": "004bfdc0"
+    },
+    {
+      "site": "004d4aa0",
+      "target": "004bfdc0"
+    },
+    {
+      "site": "0094af60",
+      "target": "0086eb50"
+    },
+    {
+      "site": "0094b047",
+      "target": "008167c0"
+    },
+    {
+      "site": "00967baf",
+      "target": "0086f110"
+    },
+    {
+      "site": "0094eca5",
+      "target": "0086eb50"
+    }
+  ],
+  "impact_health_vtable": [
+    {
+      "site": "0127c92c",
+      "target": "0094af20"
+    },
+    {
+      "site": "0127c930",
+      "target": "0094e970"
+    },
+    {
+      "site": "0127c934",
+      "target": "0092e690"
+    }
+  ],
+  "startup_mode_operand": {
+    "site": "004bffbf",
+    "push_immediate": 0
+  },
+  "allocation_factor": {
+    "address": "01213f9c",
+    "binary32_bits": "3f000000",
+    "value": 0.5
+  },
+  "type_id_initializer": {
+    "start": "00402f20",
+    "load_absolute": "01e3f840",
+    "store_absolute": "01ef0b44"
+  },
+  "scope": "Independent bounded PE reads corroborate selected direct edges/table words/constants only. No full control-flow execution,network/screen validation or historical build certification."
+}
