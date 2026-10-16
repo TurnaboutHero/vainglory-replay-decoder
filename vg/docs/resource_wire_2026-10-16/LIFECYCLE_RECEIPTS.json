@@ -1,0 +1,53 @@
+{
+  "schema": "vg.resource-lifecycle-receipts.v1",
+  "tool": "Ghidra 12.1.3 existing copied project; fresh offline decompilation and assembly",
+  "binary_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "exports": [
+    {
+      "artifact": "pass1/00858a70.txt",
+      "sha256": "6b020b6de02bdadb71bad117f3dd1ffa143323093e71cf409d0f2bd25fabc038",
+      "entry_and_body": "ENTRY 00858a70 BODY [[00858a70, 00858b09]]"
+    },
+    {
+      "artifact": "pass1/00860cb0.txt",
+      "sha256": "91bfb3856f58bf86a4c49048a38afa1a19d7882f9a5b1acc3a619faa48053548",
+      "entry_and_body": "ENTRY 00860cb0 BODY [[00860cb0, 00860ed6]]"
+    },
+    {
+      "artifact": "pass1/0112a080.txt",
+      "sha256": "747ab94fff1856a66cd56fd3f77ada0d81b4440e3d29986bd8305fb727457089",
+      "entry_and_body": "ENTRY 0112a080 BODY [[0112a080, 0112a0c1]]"
+    },
+    {
+      "artifact": "pass1/00958cf0.txt",
+      "sha256": "c92fde3e5981be8b17dc9279c012f59d07c41f595f0844894b936d878914d8d0",
+      "entry_and_body": "ENTRY 00958cf0 BODY [[00958cf0, 00958d67]]"
+    },
+    {
+      "artifact": "pass3/00841f00.txt",
+      "sha256": "8052d4d9b5484c41d2b88ada49639f3a68fcd8aa2ec8d30c7d46da887bb5e866",
+      "entry_and_body": "ENTRY 00841f00 BODY [[00841f00, 008420e5]]"
+    },
+    {
+      "artifact": "pass3/00966410.txt",
+      "sha256": "9b51726b195c0a39d6d90f7e84e7a0dff03b396bfc948c399733e92a4dd333da",
+      "entry_and_body": "ENTRY 00966410 BODY [[0092d6a0, 0092d776] [00966410, 0096656c]]"
+    },
+    {
+      "artifact": "pass3/0095f4d0.txt",
+      "sha256": "6d2ec88db8ab38023bc9856855860ae1db15072f0d70d7951a3c88bc08591ff3",
+      "entry_and_body": "ENTRY 0095f4d0 BODY [[0095f4d0, 0095f5a0]]"
+    },
+    {
+      "artifact": "pass3/0092d6a0.txt",
+      "sha256": "d0f8869473fab03c0a65620adf0c4d60f3235574da1dbd5609350f2488015d3c",
+      "entry_and_body": "ENTRY 0092d6a0 BODY [[0092d6a0, 0092d776]]"
+    },
+    {
+      "artifact": "pass4/0092c110.txt",
+      "sha256": "0dadcf76eb90d00010bf6a45b16383a6606b1c6a661a9c243a579ab90c282688",
+      "entry_and_body": "ENTRY 0092c110 BODY [[0092c110, 0092c236]]"
+    }
+  ],
+  "limits": "Raw exports remain external. Consult 03_LIFECYCLE.md for incomplete pseudocode, shared-tail/PIC and corrected interior-address caveats. Hashes do not certify runtime semantics."
+}

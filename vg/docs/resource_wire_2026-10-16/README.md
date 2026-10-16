@@ -33,3 +33,7 @@ python -m unittest tests.test_resource_wire_evidence tests.test_resource_wire_ob
 `0094e970`의 기존 damage apply도 resource4/5를 직접 바꾼다. 그러므로 `041d`만 모두 모아도 전체 aggregate 상태나 실제 보호량이 복원된다는 보장은 없다. 다른 mutation·spawn baseline·해제·수명 경계가 별도로 필요하다.
 
 `041d`에 없는 instance·source·cause는 같은 actor·값·시간만으로 복원하지 않는다. 다른 source가 같은 scalar resource를 바꿀 수 있다. 현재 Windows 화면 실행을 가정하지 않았고 새 실제 화면 관측은 없다. 원본 게임 바이너리·리플레이·전체 native export는 제출하지 않는다.
+
+## Lifecycle follow-up
+
+[Expiry, removal and reset boundaries](03_LIFECYCLE.md) closes the negative remaining-instance cleanup and ordinary timeout-to-zero-stack hook. This is static lifecycle evidence, not reliable current resource reconstruction or a universal death/respawn reset. The hash-gated PE check and focused tests are reproducible without native execution.

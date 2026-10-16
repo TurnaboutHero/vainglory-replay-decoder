@@ -1,0 +1,150 @@
+{
+  "schema": "vg.resource-lifecycle-pe.v1",
+  "binary_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "edges": [
+    {
+      "site": "00966568",
+      "target": "0092d6a0",
+      "kind": "tail-jump"
+    },
+    {
+      "site": "0092d6a8",
+      "target": "0095f4d0",
+      "kind": "call"
+    },
+    {
+      "site": "009664e0",
+      "target": "0095f4d0",
+      "kind": "call"
+    },
+    {
+      "site": "00860d97",
+      "target": "00858a70",
+      "kind": "call"
+    },
+    {
+      "site": "00842053",
+      "target": "00858a70",
+      "kind": "call"
+    },
+    {
+      "site": "00858aee",
+      "target": "0092e950",
+      "kind": "call"
+    },
+    {
+      "site": "00858af5",
+      "target": "0112a080",
+      "kind": "call"
+    },
+    {
+      "site": "0092c137",
+      "target": "00966570",
+      "kind": "call"
+    }
+  ],
+  "selected_checks": [
+    {
+      "site": "0127db78",
+      "size": 4,
+      "sha256": "400a156ebb61c0256a8c482cee85e6482691d19395e6cfa486f35b8cb69b5ca6"
+    },
+    {
+      "site": "0095f566",
+      "size": 3,
+      "sha256": "07a45921fdd031b0f5d5c20c13da9c875096af63506eebf282138dea7d6eed5f"
+    },
+    {
+      "site": "00858aaa",
+      "size": 5,
+      "sha256": "e2d902ba13cac7fd1f568ca2061d0e4153661bfec6a36d7d27a9e038c38464b2"
+    },
+    {
+      "site": "00858aaf",
+      "size": 7,
+      "sha256": "9a221991257ef4791246e326f07a2ca94cb63223dc41ebe05dfdfb87a4a60f25"
+    },
+    {
+      "site": "01212300",
+      "size": 16,
+      "sha256": "df141773470ba96aff5d6e9264a0bd638c9c6f3bb7ad30881cf4db943b5dd021"
+    },
+    {
+      "site": "00858ac3",
+      "size": 7,
+      "sha256": "d357b4a86ac3598368ff9074ed2961bda03bf3edf03375b0a6a100b5e13a2e40"
+    },
+    {
+      "site": "00858ad5",
+      "size": 6,
+      "sha256": "18955cbb681c39cbd5041cdee48a6d1100856467531982d2e55db3d4b7900af9"
+    },
+    {
+      "site": "00860d4a",
+      "size": 7,
+      "sha256": "211e093a68226fd9fd9eee161b85a884a638ac876dcea9adddb3b959ebc7751f"
+    },
+    {
+      "site": "00842049",
+      "size": 6,
+      "sha256": "796f1adc862189eb5d52a2ae8db2923d2febbcac69097fd67870bdc333ebbbf3"
+    }
+  ],
+  "spans": [
+    {
+      "start": "00858a70",
+      "end_exclusive": "00858b0a",
+      "purpose": "negative-remainder-action",
+      "sha256": "962d79ddf722556ca4c475477429c645919e70c66c24263fb76a839d15d85ea1"
+    },
+    {
+      "start": "00860cb0",
+      "end_exclusive": "00860ed7",
+      "purpose": "temporary-resource-stack-hook",
+      "sha256": "41d780d9523b9dc151be5f6cdc7f922a0e62a6802a67e6a5c0a045602fd3e8a7"
+    },
+    {
+      "start": "00841f00",
+      "end_exclusive": "008420e6",
+      "purpose": "selected-state4-and-decay",
+      "sha256": "96b5c9ac631ef67ab23926c8f5f66de951bc7b4b967445d51668687c989b09b6"
+    },
+    {
+      "start": "0095f4d0",
+      "end_exclusive": "0095f5a1",
+      "purpose": "stack-setter",
+      "sha256": "594a3ea5f238423897f8a4c6966c33cb227a289530897be4bf5f2f864e5649d8"
+    },
+    {
+      "start": "00966410",
+      "end_exclusive": "0096656d",
+      "purpose": "timeout-contiguous-body",
+      "sha256": "b2e0e41458451db1794d179583974fbda2775564420935912d2235548898fb02"
+    },
+    {
+      "start": "0092d6a0",
+      "end_exclusive": "0092d777",
+      "purpose": "buff-end",
+      "sha256": "6d31a78c378a1bc1c2011f4be27ef344786ad941496c73cd8963a2598e013bbf"
+    },
+    {
+      "start": "0112a080",
+      "end_exclusive": "0112a0c2",
+      "purpose": "pool-bit-mark",
+      "sha256": "ac521669717cfea0d4ea76778604045d5d75fc6be9f28d684b12846c10f61f4d"
+    },
+    {
+      "start": "0092c110",
+      "end_exclusive": "0092c237",
+      "purpose": "death-state-and-callback",
+      "sha256": "545ec546e509a7fdd9134b51d97f2c691fe3a36b4a53934cfe79963447f950c4"
+    },
+    {
+      "start": "009572b0",
+      "end_exclusive": "0095764b",
+      "purpose": "respawn-contiguous-span",
+      "sha256": "6474f4e566a9e68fc5390996e744bba57cec905650101a5c1d15bcaafcd23a96"
+    }
+  ],
+  "scope": "Selected static bytes only. No native execution, exhaustive writer coverage, replay-build match, expiry cause attribution, or current resource reconstruction."
+}
