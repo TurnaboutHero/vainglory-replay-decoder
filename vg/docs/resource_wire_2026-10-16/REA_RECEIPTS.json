@@ -1,0 +1,238 @@
+{
+  "schema": "vg.resource-wire-native-receipts.v1",
+  "scope": "Local host hashes with original envelopes; external reviewers without them cannot independently recalculate these hashes. No full native exports or original binary included.",
+  "receipts": [
+    {
+      "file": "009-procedure_pseudo_code-0x0094f210.json",
+      "sha256": "9962c213cb14cbe851670497b71acbbea8d78df923fd64deb6cd26c140c8141f",
+      "bytes": 14069,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_b186fdf9c12df1dbb82ef048bc64106f9525d135ac2377aa662b1db2c9499dac",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_pseudo_code",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "010-procedure_pseudo_code-0x0081b960.json",
+      "sha256": "f18bbb0c0bf125651f6930eb25c581d4b52f0a48e6edcebdbe6cb8c33eaaf8aa",
+      "bytes": 10526,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_94b7a7c7d4812a15b1d42764eab706717514b8954059a5a95a5a1416971cef36",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_pseudo_code",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "011-procedure_pseudo_code-0x0094b380.json",
+      "sha256": "4a0c760a567335da08c8c3084e0986a43a14064084410ba0fd72dede1d72fca9",
+      "bytes": 14286,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_45d0314206eabdfc56c6ae0b27c6f076b88ad968af4227acfa12217c2b16d196",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_pseudo_code",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "012-procedure_pseudo_code-0x0092e950.json",
+      "sha256": "c7bba61812810086c1c2a4dac99b382916a0db2d7f484b8ff1dd683799fb4052",
+      "bytes": 11946,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_3aa779035b7a19756ad7b5140dab3b25f501ba14f8bec97df9ce1d391edcc76b",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_pseudo_code",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "024-procedure_assembly-0x0094b380.json",
+      "sha256": "58a2552f54840ab17a22a1c456fa6cdea4c0c000ecfc453a164619cd96f969a3",
+      "bytes": 17466,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_b1d33295c5a7f3b9f2d5acec49d44d615593d1b7590cba1d8927c43de56c538e",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_assembly",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "025-procedure_assembly-0x0092e950.json",
+      "sha256": "efa3badb7b048f5e002209d7e17ec2fd4bfd3147695c8a8416288eb97ac1b560",
+      "bytes": 13350,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_255100dd5db72e4dcdb01d786ba3773ccee3e7ebe58f965fc1810e01598124e0",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_assembly",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "037-procedure_assembly-0x0081b960.json",
+      "sha256": "b8086ec2e3229672c6c7dac6473e217083682e4efa628706b8e527b19149be18",
+      "bytes": 11298,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_65dfc9da71155b87996f0a5c543bacbfffd7295b01d11ad4541c8738a42cf52e",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_assembly",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "038-procedure_assembly-0x0092f720.json",
+      "sha256": "8714e8d9e31a4bd3e1596043c536ce16c69985a10dfb9c54c34401e4080bd943",
+      "bytes": 15302,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_2912d628643cd0646767a60df013d9a090b6ba13fa46524c31508efe53f85362",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_assembly",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "039-procedure_assembly-0x00931bd0.json",
+      "sha256": "cd1c6a65cc5cabae9cd974422354f81af70c05a3afc424da1492ca17680ef83a",
+      "bytes": 18056,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_a54c2935df0202678b5ff0572faa2daad5eb3ffe267b24e92d59a3eba6625441",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_assembly",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "042-procedure_pseudo_code-0x00816ec0.json",
+      "sha256": "761f5f35c91fed580291d9a0e36f3917b149e593536bea1f33400eecb7d8b80e",
+      "bytes": 18142,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_86d37bc3e209841090c678b388128ce834a4ef301709717458e2a879b18b531e",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_pseudo_code",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "019-procedure_pseudo_code-0x0092d2f0.json",
+      "sha256": "4cd4d8c4499369262088843b63bb5644d990ffea9007bfd6d60c4450f50027c6",
+      "bytes": 9098,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_10831953b8b2ab4514e2b026ace27920db3f24ec672359977c4f5e29587cb060",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_pseudo_code",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "020-procedure_pseudo_code-0x0095ff00.json",
+      "sha256": "7d580987e56dfc85c3fae1a6074e46e37a9c7086e1ba87e7742a88b4d3cf5ee7",
+      "bytes": 9098,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_636cdbbf262214bf95ff8cf9713c7023044ee423afc17e991b6fcdbbb9103123",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_pseudo_code",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "sequential-rea/038-procedure_pseudo_code-0x0093ead0.json",
+      "sha256": "fb55415dd5c70bc54a60e49d386151fdfc601d5b5024040c079d66b25636cd9c",
+      "bytes": 15806,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_548c144db132d979065b1881c65ecd68e3983ecf226188a62aae413c017e1450",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_pseudo_code",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "sequential-rea/039-procedure_pseudo_code-0x0095f160.json",
+      "sha256": "9de878a7ffe88b94377bc62a3fcfe29c1d63fa010d7a6a017e0b3152f9fe7f20",
+      "bytes": 13710,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_5542712a40af7bf79486e946de6038da3192ca9fc7e87aa642287c51ae057911",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_pseudo_code",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "sequential-rea/040-procedure_pseudo_code-0x0095f270.json",
+      "sha256": "5c40034cfdf67dc9125ee756e69e98335b05a3b09e7bdea72f4046a122d5a3eb",
+      "bytes": 21174,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_4624d1b4036cd71b40f880f3fde2ff2f417e188dd6dca33e2fd5f7a340a95a7f",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_pseudo_code",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "extended-rea/106-procedure_pseudo_code-0x0094e970.json",
+      "sha256": "ddddfd21cc7a0a0ae5efcc51f2df73ad0355d8e612cb6d9930d01556b2d791ac",
+      "bytes": 32151,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_82367622c1fc196d0bcfe19aafc68a088b31f0fbdf267b133a35ba84fdb6e518",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_pseudo_code",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "extended-rea/108-procedure_assembly-0x0094e970.json",
+      "sha256": "ec94d65215fe691834ad75b34092a3ca7950588ee4b94bd0f87eb455467af5a3",
+      "bytes": 50293,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_1d90a451058c2216a26c5cde2d4af137019f437876472e3851936cb4f18c3166",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_assembly",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "stat-stacking/084-procedure_pseudo_code-0x00858000.json",
+      "sha256": "91e8c42a0056447a9841ff0f74466dd9b860c55bc26e6df7800680593f11e8dd",
+      "bytes": 12170,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_c0a15ae98ed737919ca9cf59b4c15d3706607e3b12f291468e614904992cba62",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_pseudo_code",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "effect-closure/051-procedure_pseudo_code-0x00858230.json",
+      "sha256": "b1a0e1f977eba1549d19a592911dd059a027ca480b6d4ea87dc4ee8ac43b1613",
+      "bytes": 11638,
+      "acquisition": "reused_local_envelope",
+      "evidence_id": "ev_052109df1853670e333eb83fe29ca77ac7021bf7b41d952009bfe00f34f1d4c1",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_pseudo_code",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "resource-wire/002-open_binary-.json",
+      "sha256": "507f78894044c3dc3e05868bbc45e4c1f99353ff3cf195e6cdc969cf38e41012",
+      "bytes": 829,
+      "acquisition": "fresh_resource_wire"
+    },
+    {
+      "file": "resource-wire/004-procedure_assembly-0x00858230.json",
+      "sha256": "aa7eb5f3e95404ac27f076c3ae0d943cbe18d976854ad020e24d4ad1214d71ab",
+      "bytes": 15823,
+      "acquisition": "fresh_resource_wire",
+      "evidence_id": "ev_3ce862969589e363d51bad7e2cff6ce4ca7e2a36c2884d7978ef49c842ff2b24",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_assembly",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "resource-wire/005-procedure_assembly-0x00858000.json",
+      "sha256": "9e6f42534c2300ed58c22a38a5ff87d9c4ffa28788e6b41246b05acc389ad41d",
+      "bytes": 16471,
+      "acquisition": "fresh_resource_wire",
+      "evidence_id": "ev_6d45b71ca5477cf75c7f648fc02abd182e043b13f97485c1c5a79fb397d9fd4c",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_assembly",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "resource-wire/006-procedure_assembly-0x00816ec0.json",
+      "sha256": "2a1435b3594e0c82ba5081a165f6947e6cbca90cc246377be88806c9791affeb",
+      "bytes": 19287,
+      "acquisition": "fresh_resource_wire",
+      "evidence_id": "ev_2a874fe6aea3ddc986768973e9d3ce2fb0bce532e2a4af2fbf970f2966ceed2d",
+      "subject_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+      "operation": "procedure_assembly",
+      "analysis_profile_digest": "b9d116ea480a02cc8773b19372074a3caf77785cbc080b1ac7133b5110e40b17"
+    },
+    {
+      "file": "resource-wire/007-close_binary-.json",
+      "sha256": "91683238e2c2be60f24bb6f58507be78509eb6e89b76b6370314800762ad8bc8",
+      "bytes": 220,
+      "acquisition": "fresh_resource_wire"
+    }
+  ]
+}
