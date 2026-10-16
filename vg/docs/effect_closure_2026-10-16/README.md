@@ -23,3 +23,7 @@
 ## 남은 실검증
 
 Capacitor의 15% 선언을 실제 accepted amount로 바꾸는 소비자, Phinn/Rook의 최종 자원 반영, armor/shield/shred/pierce/Grumpjaw의 실제 비가환 실행 순서는 확인되지 않았다. 현재 설치물의 일부 실행 graph는 stub에 닿으며, 별도 서버 코드도 확보하지 않았다. 이는 서버 구현 전체의 부재나 라이브 효과 미지원의 증명이 아니다. 각 보고서의 최소 실험은 source/target generation, resource instance, accepted action 전후 amount와 중간 단계값을 필요로 한다. 최종 HP만으로 서로 교환 가능한 연산 순서는 식별되지 않는다.
+
+## 후속: 생명의 샘의 HP 저장 경계
+
+[회복 증폭 소비자 후속 조사](../amplification_consumers_2026-10-16/README.md)는 생명의 샘 producer에서 resource0 ADD와 maxHP clamp의 첫 실제 저장까지 연결한다. 이 명시적 경로에 amp33..36 계산은 없으며, 저장 뒤 generic callback에 전달되는 값은 accepted HP 차이가 아니라 원래 requested operand다. 실제 15% 소비자·후속 callback·서버 효과는 여전히 별도 미확정이다.
