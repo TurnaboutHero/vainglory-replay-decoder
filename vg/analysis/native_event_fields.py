@@ -60,6 +60,9 @@ class DecodedFields(TypedDict, total=False):
     native_class: str
     native_winning_team_id: int
     native_winning_team_raw: int
+    native_requested_team_raw: int
+    native_requested_team_id: int
+    native_result_scope: str
     native_end_reason: int
     native_surrender: bool
     native_type: str
@@ -99,6 +102,11 @@ class DecodedFields(TypedDict, total=False):
     native_byte19_equals_one: bool
     native_byte20_equals_one: bool
     native_byte21_equals_one: bool
+    native_charge_setter_input: int
+    native_base_charge_creation_input: int
+    native_config_apply_scope: str
+    native_charge_apply_scope: str
+    native_input_apply_order: list[str]
 
 
 def _is_known_opcode(opcode: int) -> TypeGuard[KnownOpcode]:
@@ -149,6 +157,11 @@ def decode_fields(record: VGRRecord) -> DecodedFields:
                 "native_class": "Nuo::Kindred::ActionEndMatch",
                 "native_winning_team_raw": winning_team_raw,
                 "native_winning_team_id": winning_team_raw & 0xFF,
+                # Legacy winning_team names remain compatible; these are end
+                # request operands, not a certified match winner or UI color.
+                "native_requested_team_raw": winning_team_raw,
+                "native_requested_team_id": winning_team_raw & 0xFF,
+                "native_result_scope": "end_request",
                 "native_end_reason": payload[4],
                 "native_surrender": payload[4] == 2,
                 "remaining_hex": payload[5:].hex(),
@@ -343,6 +356,14 @@ def decode_fields(record: VGRRecord) -> DecodedFields:
                 "native_byte19_equals_one": payload[19] == 1,
                 "native_byte20_equals_one": payload[20] == 1,
                 "native_byte21_equals_one": payload[21] == 1,
+                # Static receiver input roles, not observed application/results.
+                # 0052aea0 skips configuration for an existing keyed state,
+                # then dispatches 0095cf10 before 0095cd10 on both paths.
+                "native_charge_setter_input": payload[16],
+                "native_base_charge_creation_input": payload[17],
+                "native_config_apply_scope": "new_state_only",
+                "native_charge_apply_scope": "existing_or_new_state",
+                "native_input_apply_order": ["timer_input", "charge_setter_input"],
                 "native_conditional": True,
                 "native_semantic_scope": "static_event_fields",
                 "native_evidence": COOLDOWN_EVENT_EVIDENCE,

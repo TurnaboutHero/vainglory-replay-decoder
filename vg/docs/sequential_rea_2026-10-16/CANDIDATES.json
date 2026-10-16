@@ -1,0 +1,54 @@
+{
+  "schema": "vg.sequential-research-candidates.v1",
+  "baseline": "832ed978922184e83b0b1397243836774d785977",
+  "artifact_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "steps": [
+    {
+      "number": 1,
+      "topic": "cooldown/ultimate availability",
+      "status": "closed_bounded_static_and_runtime_boundary",
+      "closure_rule": "Fresh supported edge or explicit implementation/runtime boundary with falsification experiment"
+    },
+    {
+      "number": 2,
+      "topic": "reward recipients",
+      "status": "closed_client_stub_and_missing_authoritative_producer",
+      "closure_rule": "Fresh supported edge or explicit implementation/runtime boundary with falsification experiment"
+    },
+    {
+      "number": 3,
+      "topic": "terminal/team/crystal identity",
+      "status": "closed_request_and_surrender_ui_paths_team_perspective_boundary",
+      "closure_rule": "Fresh supported edge or explicit implementation/runtime boundary with falsification experiment"
+    },
+    {
+      "number": 4,
+      "topic": "revival/recall",
+      "status": "closed_new_conditional_inline_producer_and_client_recall_stub_boundary",
+      "closure_rule": "Fresh supported edge or explicit implementation/runtime boundary with falsification experiment"
+    },
+    {
+      "number": 5,
+      "topic": "named buff/item stacks",
+      "status": "closed_named_stack_action_and_separate_definition_cap_bridge",
+      "closure_rule": "Fresh supported edge or explicit implementation/runtime boundary with falsification experiment"
+    }
+  ],
+  "followups": [
+    {
+      "id": "effective_named_buff_cap",
+      "why": "Item declaration MAX is not runtime cap; creation copies separate buff definition+24",
+      "status": "closed_static_named_caps5_15_separate_buff_definition"
+    },
+    {
+      "id": "inline_producer_search_method",
+      "why": "Constructor-only negative search missed genuine respawn/stack producers",
+      "status": "closed_method_corrected_with_explicit_vtable_and_queue_edges"
+    },
+    {
+      "id": "attribute_delta_application",
+      "why": "Connect stacks to actual state mutation rather than a name-only behavior list",
+      "status": "closed_conditional_queue_apply_path_no_runtime_claim"
+    }
+  ]
+}

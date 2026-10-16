@@ -1,0 +1,97 @@
+{
+  "schema": "vg.sequential-validation.v1",
+  "environment": {
+    "os": "Windows",
+    "python": "3.13",
+    "node": "22.22.2",
+    "temporary_directory": "workspace-local C: process TEMP/TMP; no security settings changed"
+  },
+  "unfiltered": {
+    "tests": 1173,
+    "failures": 2,
+    "errors": 59,
+    "skipped": 3,
+    "seconds": 123.477,
+    "classification": "57 WinError1314 error records,2 absent-symlink cleanup errors,2 assertions secondary to denied symlink creation. No other failures after LF checkout correction."
+  },
+  "available_scope": {
+    "discovered": 1173,
+    "platform_blocked_methods": 24,
+    "run": 1173,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 27,
+    "success": true,
+    "scope": "All cases attempted unfiltered first. This second run replaces only platform-blocked method IDs with explicit skips; not full symlink/cross-drive validation.",
+    "passed_non_skipped": 1146
+  },
+  "blocked_method_ids": {
+    "test_batch_output_safety.BatchOutputSafetyTests.test_dangling_symlink_to_future_sibling_is_protected": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_batch_output_safety.BatchOutputSafetyTests.test_index_correction_files_and_aliases_are_protected": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_batch_output_safety.BatchOutputSafetyTests.test_output_alias_created_during_decode_is_rejected": "Symlink fixture creation fails with Windows privilege 1314; cleanup then unlinks an absent fixture",
+    "test_batch_output_safety.BatchOutputSafetyTests.test_symlink_to_second_family_is_protected": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_batch_output_safety.BatchOutputSafetyTests.test_symlinked_parent_is_protected": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_decoder_v2_output_safety.MatchOutputSafetyTests.test_dangling_symlink_to_future_sibling_is_protected": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_decoder_v2_output_safety.MatchOutputSafetyTests.test_input_symlink_keeps_lexical_sibling_discovery": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_decoder_v2_output_safety.MatchOutputSafetyTests.test_symlink_alias_is_protected": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_decoder_v2_output_safety.MatchOutputSafetyTests.test_symlinked_parent_is_protected": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_event_timeline.EventTimelineTests.test_cli_rejects_discoverable_outputs_through_symlink_paths": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_player_state_accuracy.AccuracyTests.test_output_manifest_hardlink_and_symlink_collision": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_player_state_cli.PlayerStateCliTests.test_output_direct_sibling_hardlink_and_symlink_collisions_are_rejected": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_io_contracts.ProductIOContracts.test_shared_contract_failure": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_io_recovery.ProductIORecovery.test_recovery_refuses_source_hardlink_and_output_symlink": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_loader.TestProductLoader.test_loader_failure_report_aliases_before_and_after_process": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_research_13.ProductTruthResearch.test_research_failure": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_research_14.ProductFoundationResearch.test_research_failure": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_research_15.ProductActionResearch.test_research_failure": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_research_16.ProductPolicyResearch.test_research_failure": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_research_17.ProductComparisonResearch.test_research_failure": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_research_18.ProductSeriesResearch.test_research_failure": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_research_18.ProductSeriesResearch.test_xp_limit_consumed_inputs": "Windows account lacks symbolic-link creation privilege (WinError1314)",
+    "test_product_io_contracts.ProductIOContracts.test_changed_source_and_late_alias_are_rejected": "Symlink fixture callback cannot create alias, causing publication_failed; reproduced unchanged on main",
+    "test_product_v2_journey.ProductV2JourneyTests.test_v2_journey_failure_reserved_sources_reject_stage_time_aliases": "Symlink fixture callback cannot create alias and leaves staged fixture; reproduced unchanged on main"
+  },
+  "focused_final": {
+    "tests": 16,
+    "failures": 0,
+    "errors": 0
+  },
+  "additional_check": {
+    "tests": 47,
+    "result": "passed after correcting checkout LF bytes; includes source-receipt suites and2wrong-build tests",
+    "node_vm_checks": 81
+  },
+  "dictionary": {
+    "entries": 141,
+    "verified_source_hashes": 90,
+    "external_unresolved": 172,
+    "source_failures": 0,
+    "generated_index_matches": true
+  },
+  "static_reproduction": {
+    "direct_calls": 17,
+    "vtable_words": 7,
+    "inline_respawn_vtable": 1,
+    "named_registry_sequences": 5,
+    "resource_declarations": 4,
+    "all_reproduced": true
+  },
+  "independent_reviews": [
+    "cooldown fields and result operands: no blockers",
+    "respawn producer: mode and pointer preconditions retained",
+    "separate named cap bridge and4resource inspector: no blockers;16focused tests passed"
+  ],
+  "private_log_sha256": {
+    "unfiltered-final-tests.log": "f8114a612e12235ed97091e6ef4badc61c34a481fdc215b188eb455ea8038615",
+    "available-tests.log": "fef35b4696ca9b6e75b90a867a6a631625c151870df578df32d60b6ce626bcdc",
+    "focused-final-tests.log": "252d8770c3bf2f4430187e999f6ba1651ce4d34c30f0e0fdb6b6372ff279000b",
+    "dictionary-validation.json": "64a853980c96feb2df0267974bcdeb21a5030470d175482a191bee25e4eb182a",
+    "checkout-correction-tests.log": "a7eabd608773eb0bb50cfd6715765f267300c4accdac946dd93ef7ce018fdefd"
+  },
+  "limitations": [
+    "Whole method IDs blocked by symlink privilege were replaced with skips only on the second run; portable checks within those methods are also omitted.",
+    "No full Windows suite pass; independent Linux run required for omitted coverage.",
+    "No new replay holdout or native client/screen/server execution.",
+    "LF checkout restored from exact HEAD archive; no source hashes updated to hide newline drift."
+  ]
+}
