@@ -1,0 +1,73 @@
+ENTRY 00530ad0 BODY [[00530ad0, 00530b50]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+ushort * FUN_00530ad0(void)
+
+{
+  ushort *puVar1;
+  
+  if (_DAT_02090de0 == 0xffff) {
+    return (ushort *)0x0;
+  }
+  if (_DAT_02090de0 == 0xffff) {
+    puVar1 = (ushort *)0x0;
+  }
+  else {
+    puVar1 = (ushort *)((uint)_DAT_02090de0 * 0x84 + 0x1ef45e0);
+    if (_DAT_02090de0 == _DAT_02090de2) {
+      _DAT_02090de0 = 0xffff;
+    }
+    else {
+      _DAT_02090de0 = *puVar1;
+    }
+    _DAT_02090de4 = _DAT_02090de4 + 1;
+  }
+  puVar1[2] = 0;
+  puVar1[3] = 0;
+  *(undefined **)puVar1 = &UNK_0121b690;
+  _DAT_02090df0 = _DAT_02090df0 + 1;
+  if (_DAT_02090df4 < _DAT_02090df0) {
+    _DAT_02090df4 = _DAT_02090df0;
+  }
+  return puVar1;
+}
+
+
+
+INSTRUCTIONS
+00530ad0 MOV AX,[0x02090de0]
+00530ad6 PUSH ESI
+00530ad7 MOV ESI,0xffff
+00530adc CMP AX,SI
+00530adf JNZ 0x00530ae5
+00530ae1 XOR EAX,EAX
+00530ae3 POP ESI
+00530ae4 RET
+00530ae5 MOVZX EDX,AX
+00530ae8 CMP DX,SI
+00530aeb JNZ 0x00530af1
+00530aed XOR ECX,ECX
+00530aef JMP 0x00530b1e
+00530af1 IMUL ECX,EDX,0x84
+00530af7 ADD ECX,0x1ef45e0
+00530afd CMP DX,word ptr [0x02090de2]
+00530b04 JNZ 0x00530b0f
+00530b06 MOV word ptr [0x02090de0],SI
+00530b0d JMP 0x00530b18
+00530b0f MOV AX,word ptr [ECX]
+00530b12 MOV [0x02090de0],AX
+00530b18 INC dword ptr [0x02090de4]
+00530b1e LEA EAX,[ECX + 0x3]
+00530b21 AND EAX,0xfffffffc
+00530b24 POP ESI
+00530b25 MOV dword ptr [EAX + 0x4],0x0
+00530b2c MOV dword ptr [EAX],0x121b690
+00530b32 MOV EDX,dword ptr [0x02090df0]
+00530b38 MOV ECX,dword ptr [0x02090df4]
+00530b3e INC EDX
+00530b3f CMP EDX,ECX
+00530b41 MOV dword ptr [0x02090df0],EDX
+00530b47 CMOVA ECX,EDX
+00530b4a MOV dword ptr [0x02090df4],ECX
+00530b50 RET

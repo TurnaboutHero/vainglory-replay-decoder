@@ -1,0 +1,34 @@
+ENTRY 0045cd00 BODY [[0045cd00, 0045cd04]]
+
+undefined4 __fastcall __4CompressionDataHandler_gloox__QAEAAV01_ABV01__Z(undefined4 param_1)
+
+{
+                    /* 0x5cd00  232  ??4CompressionDataHandler@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  234  ??4ConnectionDataHandler@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  235  ??4ConnectionListener@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  236  ??4DNS@gloox@@QAEAAV01@$$QAV01@@Z
+                       0x5cd00  237  ??4DNS@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  245  ??4DiscoHandler@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  246  ??4DiscoNodeHandler@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  251  ??4IqHandler@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  255  ??4LogHandler@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  258  ??4MUCInvitationHandler@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  261  ??4MUCRoomConfigHandler@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  262  ??4MUCRoomHandler@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  265  ??4MessageHandler@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  267  ??4MessageSessionHandler@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  271  ??4PresenceHandler@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  273  ??4PrivateXMLHandler@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  276  ??4RosterListener@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  282  ??4StatisticsHandler@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  284  ??4SubscriptionHandler@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  285  ??4TLSHandler@gloox@@QAEAAV01@ABV01@@Z
+                       0x5cd00  287  ??4TagHandler@gloox@@QAEAAV01@ABV01@@Z */
+  return param_1;
+}
+
+
+
+INSTRUCTIONS
+0045cd00 MOV EAX,ECX
+0045cd02 RET 0x4

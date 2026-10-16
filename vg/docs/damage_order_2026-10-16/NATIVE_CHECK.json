@@ -1,0 +1,117 @@
+{
+  "schema": "vg.damage-order-native.v1",
+  "binary_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "anchors": [
+    {
+      "address": "00530b25",
+      "hex": "c7400400000000c70090b62101"
+    },
+    {
+      "address": "008e5bd0",
+      "hex": "c745f8f0238400c745fc04000000"
+    },
+    {
+      "address": "008e5bef",
+      "hex": "e8dcaec4ff8bd08d4a04"
+    },
+    {
+      "address": "008e5c12",
+      "hex": "8d4df8ff46108b02518bcaff5014"
+    },
+    {
+      "address": "0121b690",
+      "hex": "d02f5300d0ec4500d0ec4500d0ec4500d0ec450000cd450000cd450000cd450060964500"
+    },
+    {
+      "address": "0045cd00",
+      "hex": "8bc1c20400"
+    },
+    {
+      "address": "0045ecd0",
+      "hex": "c20400"
+    },
+    {
+      "address": "00459660",
+      "hex": "8bc1c3"
+    },
+    {
+      "address": "00532fda",
+      "hex": "c70694b02101"
+    }
+  ],
+  "rtti_boundaries": [
+    {
+      "locator_slot": "0121b68c",
+      "name": ".?AVBuffBehavior_MultiplyDamage@Kindred@Nuo@@"
+    },
+    {
+      "locator_slot": "0121b6b4",
+      "name": ".?AV?$BehaviorHelper_Heal@UBuffBehaviorContext@Kindred@Nuo@@@Kindred@Nuo@@"
+    }
+  ],
+  "literal_occurrences": {
+    "020e736c": [
+      {
+        "file_offset": 316479,
+        "va": "0044e03f"
+      }
+    ],
+    "020e7370": [
+      {
+        "file_offset": 316484,
+        "va": "0044e044"
+      }
+    ],
+    "020e7374": [
+      {
+        "file_offset": 316489,
+        "va": "0044e049"
+      },
+      {
+        "file_offset": 4422665,
+        "va": "00838809"
+      }
+    ],
+    "020e7378": [
+      {
+        "file_offset": 316494,
+        "va": "0044e04e"
+      }
+    ],
+    "01a760bc": [
+      {
+        "file_offset": 316732,
+        "va": "0044e13c"
+      }
+    ],
+    "01a760c0": [
+      {
+        "file_offset": 316740,
+        "va": "0044e144"
+      }
+    ],
+    "01a760c4": [
+      {
+        "file_offset": 316748,
+        "va": "0044e14c"
+      },
+      {
+        "file_offset": 4422673,
+        "va": "00838811"
+      }
+    ],
+    "01a760c8": [
+      {
+        "file_offset": 316756,
+        "va": "0044e154"
+      }
+    ],
+    "008423f0": [
+      {
+        "file_offset": 5132243,
+        "va": "008e5bd3"
+      }
+    ]
+  },
+  "scope": "Exact static client bytes; literal hits are not exhaustive semantic xrefs; no server execution"
+}

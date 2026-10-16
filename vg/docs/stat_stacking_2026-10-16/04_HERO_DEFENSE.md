@@ -35,6 +35,8 @@ fresh024 `00944de0`은 actor ECX의 정의 `actor+1c`를 읽고 `new_level-1`을
 
 ## 패시브 provider와 선택 클라이언트의 stub 경계
 
+추가 검증: [provider 전달 단계 정정](../damage_order_2026-10-16/REPORT.md). 아래 "지정"은 인자로 전달하려는 구성 의도를 뜻한다. 실제 `virtual+14`는 인자를 무시하는 stub이므로 이 선택 객체에 provider가 저장되었다는 뜻이 아니다.
+
 fresh023 `008e5b60`은 등록된 `Buff_Grumpjaw_Perk_Armor` factory이다. buff+248에 `0095a340`,+244에 `00868d70`을 설정하고, `008102e0`으로 만든 callback들에 조건 비트와 behavior 목록을 붙인다. `00530ad0`이 만드는 behavior에는 provider `008423f0`를 지정한다. 이 factory가 여기서 armor/shield attribute7/8의 증가를 직접 setter에 쓰는 본문은 아니다.
 
 fresh063 `008423f0`은 context가 가리키는 buff의 unsigned16 count `+250`과 owner actor 정의 `+1a8`의 property index2를 읽어 **`1 - property2 * count`**를 반환한다. 이 property가 위의 로컬0.07이면 다음 provider 값이 나온다. 이는 누적 곱 `(1-.07)^n`이 아니다.
