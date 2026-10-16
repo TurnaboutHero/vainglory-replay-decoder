@@ -2,7 +2,6 @@
 
 import argparse
 from collections.abc import Iterable, Iterator, Sequence
-from contextlib import nullcontext
 from dataclasses import asdict, dataclass
 import json
 from pathlib import Path
@@ -21,6 +20,8 @@ from vg.core.definition_catalog import (
 )
 from vg.core.entity_identity import EntityResolver
 from vg.core.vgr_records import VGRRecord, VGRRecordError, iter_records
+from vg.core.replay_output import ReportInputs, ReplayOutputError
+from vg.analysis.timeline_output import capture_output, publish_timeline
 
 
 APPLE_DOUBLE_MAGIC: Final = b"\x00\x05\x16\x07"
@@ -186,7 +187,12 @@ def _parser() -> argparse.ArgumentParser:
 def main(argv: Sequence[str] | None = None) -> int:
     args = _parser().parse_args(argv)
     try:
+        expected_output = capture_output(args.output) if args.output is not None else None
         sections = _discover_sections(args.path)
+        inputs = (ReportInputs(files=tuple(path for _, path in sections) + tuple(
+            path for path in (args.manifest, args.executable,
+                              *(Path(row[1]) for row in args.entity_resource or [])) if path is not None),
+            replays=(args.path,)) if args.output is not None else None)
         catalog = None
         catalog_args = (args.manifest, args.executable, args.build_sha256, args.manifest_sha256)
         resource_paths: list[Path] = []
@@ -243,13 +249,17 @@ def main(argv: Sequence[str] | None = None) -> int:
                     reason="output path is an input .vgr section",
                 )
 
-        output_context = (args.output.open("w", encoding="utf-8", newline="\n")
-                          if args.output is not None else nullcontext(sys.stdout))
-        with output_context as stream:
-            rows = iter_timeline(args.path, opcodes=args.opcode, entity_ids=args.entity,
-                                 catalog=catalog, build_sha256=args.build_sha256)
-            _write_jsonl(rows, stream)
-    except (OSError, CatalogError, TimelineInputError, VGRRecordError) as error:
+        rows = iter_timeline(args.path, opcodes=args.opcode, entity_ids=args.entity,
+                             catalog=catalog, build_sha256=args.build_sha256)
+        if args.output is None:
+            _write_jsonl(rows, sys.stdout)
+        else:
+            assert inputs is not None and expected_output is not None
+            publish_timeline(args.output, expected_output, lambda stream: _write_jsonl(rows, stream), inputs)
+    except (OSError, ValueError, TypeError) as error:
+        if isinstance(error, ReplayOutputError):
+            print(f"error: {error.code}: {error}", file=sys.stderr)
+            return 2
         print(f"error: {error}", file=sys.stderr)
         return 2
     return 0
