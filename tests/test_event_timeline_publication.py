@@ -184,6 +184,99 @@ class TimelinePublicationTests(unittest.TestCase):
         # there rather than deleting through a pathname that changed ownership.
         self.assertEqual(len(list(moved.glob('.report.jsonl.*.tmp'))), 1)
 
+    def test_replaced_stage_is_not_published_or_deleted(self):
+        for exists in (True, False):
+            with self.subTest(exists=exists):
+                self.output.write_bytes(b'prior report\n')
+                if not exists:
+                    self.output.unlink()
+                foreign_stage = []
+                validate = timeline_output.validate_report_outputs
+                calls = 0
+                def replaced(inputs, outputs):
+                    nonlocal calls
+                    validate(inputs, outputs)
+                    calls += 1
+                    if calls == 2:
+                        stage, = self.root.glob('.report.jsonl.*.tmp')
+                        replacement = self.root / 'foreign.tmp'
+                        replacement.write_bytes(b'foreign stage bytes')
+                        os.replace(replacement, stage)
+                        foreign_stage.append(stage)
+                with patch.object(timeline_output, 'validate_report_outputs', replaced):
+                    status, _, error = self.run_main()
+                self.assertEqual(status, 2)
+                self.assertIn('publication_conflict', error)
+                self.assertEqual(self.output.exists(), exists)
+                if exists:
+                    self.assertEqual(self.output.read_bytes(), b'prior report\n')
+                self.assertEqual(foreign_stage[0].read_bytes(), b'foreign stage bytes')
+                foreign_stage[0].unlink()
+
+    def test_destination_rechecked_after_final_input_validation(self):
+        validate = timeline_output.validate_report_outputs
+        calls = 0
+        def changed(inputs, outputs):
+            nonlocal calls
+            validate(inputs, outputs)
+            calls += 1
+            if calls == 2:
+                self.output.write_bytes(b'external during input validation')
+        with patch.object(timeline_output, 'validate_report_outputs', changed):
+            status, _, error = self.run_main()
+        self.assertEqual(status, 2)
+        self.assertIn('publication_conflict', error)
+        self.assertEqual(self.output.read_bytes(), b'external during input validation')
+        self.assert_clean()
+
+    def test_stage_modified_after_fsync_is_preserved_on_conflict(self):
+        validate = timeline_output.validate_report_outputs
+        calls = 0
+        foreign_stage = []
+        def changed(inputs, outputs):
+            nonlocal calls
+            validate(inputs, outputs)
+            calls += 1
+            if calls == 2:
+                stage, = self.root.glob('.report.jsonl.*.tmp')
+                stage.write_bytes(b'external same-inode stage modification')
+                foreign_stage.append(stage)
+        with patch.object(timeline_output, 'validate_report_outputs', changed):
+            status, _, error = self.run_main()
+        self.assertEqual(status, 2)
+        self.assertIn('publication_conflict', error)
+        self.assertEqual(self.output.read_bytes(), b'prior report\n')
+        self.assertEqual(foreign_stage[0].read_bytes(), b'external same-inode stage modification')
+
+    def test_parent_replacement_during_final_input_check_cannot_publish_foreign_stage(self):
+        parent = self.root / 'reports'
+        parent.mkdir()
+        self.output = parent / 'report.jsonl'
+        self.output.write_bytes(b'prior report\n')
+        moved = self.root / 'moved'
+        validate = timeline_output.validate_report_outputs
+        calls = 0
+        foreign_stage = []
+        def changed(inputs, outputs):
+            nonlocal calls
+            validate(inputs, outputs)
+            calls += 1
+            if calls == 2:
+                stage, = parent.glob('.report.jsonl.*.tmp')
+                parent.rename(moved)
+                parent.mkdir()
+                self.output.write_bytes(b'external report')
+                stage.write_bytes(b'foreign stage in replaced parent')
+                foreign_stage.append(stage)
+        with patch.object(timeline_output, 'validate_report_outputs', changed):
+            status, _, error = self.run_main()
+        self.assertEqual(status, 2)
+        self.assertIn('publication_conflict', error)
+        self.assertEqual(self.output.read_bytes(), b'external report')
+        self.assertEqual((moved / 'report.jsonl').read_bytes(), b'prior report\n')
+        self.assertEqual(foreign_stage[0].read_bytes(), b'foreign stage in replaced parent')
+        self.assertEqual(len(list(moved.glob('.report.jsonl.*.tmp'))), 1)
+
     def test_input_changes_and_new_sibling_abort_publication(self):
         for action in ('change', 'sibling'):
             with self.subTest(action=action):

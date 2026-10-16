@@ -56,6 +56,8 @@ def publish_timeline(output: Path, expected: OutputSnapshot,
 
     temporary = None
     temporary_identity = None
+    staged_stat = None
+    published = False
     try:
         check_destination()
         validate_report_outputs(inputs, (output,))
@@ -67,8 +69,22 @@ def publish_timeline(output: Path, expected: OutputSnapshot,
             write(stream)
             stream.flush()
             os.fsync(stream.fileno())
-        check_destination()
+            staged_stat = os.fstat(stream.fileno())
+        # Input hashing may be lengthy. Check destination and stage ownership
+        # only after it finishes, immediately before the publication syscall.
         validate_report_outputs(inputs, (output,))
+        check_destination()
+        try:
+            current_stage = temporary.lstat()
+        except OSError as error:
+            raise ReplayOutputError(output, 'Staging file changed during publication',
+                                    'publication_conflict') from error
+        if (not stat.S_ISREG(current_stage.st_mode)
+                or (current_stage.st_dev, current_stage.st_ino) != temporary_identity
+                or (current_stage.st_size, current_stage.st_mtime_ns, current_stage.st_ctime_ns)
+                != (staged_stat.st_size, staged_stat.st_mtime_ns, staged_stat.st_ctime_ns)):
+            raise ReplayOutputError(output, 'Staging file changed during publication',
+                                    'publication_conflict')
         if expected.identity is None:
             try:
                 os.link(temporary, output)
@@ -76,6 +92,7 @@ def publish_timeline(output: Path, expected: OutputSnapshot,
                 raise ReplayOutputError(output, 'Destination appeared during publication', 'publication_conflict') from error
         else:
             os.replace(temporary, output)
+        published = True
     finally:
         if temporary is not None:
             # A moved/replaced parent invalidates this pathname. Never remove a
@@ -88,5 +105,8 @@ def publish_timeline(output: Path, expected: OutputSnapshot,
             else:
                 if ((parent_info.st_dev, parent_info.st_ino) ==
                         (expected.parent_device, expected.parent_inode)
-                        and (info.st_dev, info.st_ino) == temporary_identity):
+                        and (info.st_dev, info.st_ino) == temporary_identity
+                        and (published or staged_stat is None
+                             or (info.st_size, info.st_mtime_ns, info.st_ctime_ns)
+                             == (staged_stat.st_size, staged_stat.st_mtime_ns, staged_stat.st_ctime_ns))):
                     temporary.unlink()

@@ -80,3 +80,26 @@ case. The 14 new tests are included in these 58, not additive. Independent code
 review found no remaining blocker within the documented optimistic contract.
 The baseline Linux 1,205-test result reported by the parent is not reused as
 validation of this change. Compilation and staged whitespace checks passed.
+
+## Dot-side publication hardening
+
+Independent Linux review reproduced two gaps in the first fix: a replaced stage
+pathname could be published as if it were the owned temporary, and a destination
+changed during the final full-input hashing pass could be overwritten because the
+destination check preceded that pass.
+
+The final input/alias validation now runs before the final destination check.
+The publisher then verifies that the stage is still the same regular-file inode
+and has the size/modification/change metadata captured from the flushed, fsynced
+open descriptor. A substituted or subsequently modified stage raises
+`publication_conflict` before publication. Failure cleanup preserves a foreign
+replacement stage or a detected same-inode external edit; a successfully linked
+owned stage is still removed normally. Parent replacement continues to preserve
+both the original report in the moved directory and foreign paths in its
+replacement. A deliberately preserved stage may need manual inspection/cleanup.
+
+Four additional tests cover replacement stages for existing/absent destinations,
+destination changes during the final input check, same-inode stage modification
+after fsync, and parent replacement during that check. All 18 publication tests
+pass on Linux. These checks narrow the optimistic check-to-publish interval;
+they do not add an OS-level compare-and-swap or eliminate the final syscall race.
