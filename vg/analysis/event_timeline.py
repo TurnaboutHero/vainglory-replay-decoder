@@ -170,7 +170,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("path", type=Path, help="numbered .vgr replay section")
     parser.add_argument("-o", "--output", type=Path, help="write JSONL to this path")
     parser.add_argument("--opcode", action="append", type=_integer,
-                        help="opcode integer; repeat to select more (default includes 0x0430 ActionActorDie, "
+                        help="opcode integer; repeat to select more (default includes raw 0x041e impact operands, 0x0430 ActionActorDie, "
                              "item activation requests/messages, sell requests, buy rejection notifications and raw cooldown/charge events)")
     parser.add_argument("--entity", action="append", type=_integer, help="ref0/ref1 integer, including ActorDie victim/raw source; repeat to select more")
     parser.add_argument("--manifest", type=Path, help="user-owned definition manifest")
