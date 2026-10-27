@@ -1,0 +1,123 @@
+{
+  "image_base": 4194304,
+  "input": {
+    "name": "Vainglory.exe",
+    "sha256": "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+    "size": 29545984
+  },
+  "literals": [
+    {
+      "code_xrefs": [
+        5022365
+      ],
+      "file_offset": 14766316,
+      "literal": "%s/%s.%d.vgr",
+      "va": 18964204
+    },
+    {
+      "code_xrefs": [
+        5021911
+      ],
+      "file_offset": 14766332,
+      "literal": "%s/%s",
+      "va": 18964220
+    },
+    {
+      "code_xrefs": [
+        18496937,
+        4199424,
+        4200492,
+        4205610
+      ],
+      "file_offset": 21349840,
+      "literal": "%s/%s",
+      "va": 25547728
+    },
+    {
+      "code_xrefs": [
+        4206947
+      ],
+      "file_offset": 14766224,
+      "literal": "replayManifest.txt",
+      "va": 18964112
+    },
+    {
+      "code_xrefs": [
+        5036573
+      ],
+      "file_offset": 14766260,
+      "literal": "replayManifest-",
+      "va": 18964148
+    },
+    {
+      "code_xrefs": [
+        5027054
+      ],
+      "file_offset": 14766284,
+      "literal": "_%Y-%m-%dT%H-%M-%S.dat",
+      "va": 18964172
+    },
+    {
+      "code_xrefs": [
+        5036854,
+        9491433
+      ],
+      "file_offset": 14766252,
+      "literal": "%s\n",
+      "va": 18964140
+    },
+    {
+      "code_xrefs": [
+        18296289,
+        4325193,
+        4198463,
+        4199458,
+        4200745
+      ],
+      "file_offset": 21315172,
+      "literal": "%s\n",
+      "va": 25513060
+    },
+    {
+      "code_xrefs": [
+        5027095,
+        7990911,
+        5292519,
+        12374340
+      ],
+      "file_offset": 14766308,
+      "literal": "wb",
+      "va": 18964196
+    },
+    {
+      "code_xrefs": [
+        5026861,
+        8023449,
+        5260039,
+        4889744,
+        11682207
+      ],
+      "file_offset": 14766312,
+      "literal": "rb",
+      "va": 18964200
+    },
+    {
+      "code_xrefs": [
+        5036632
+      ],
+      "file_offset": 14766276,
+      "literal": ".txt",
+      "va": 18964164
+    },
+    {
+      "code_xrefs": [
+        5036738
+      ],
+      "file_offset": 14766248,
+      "literal": "w",
+      "va": 18964136
+    }
+  ],
+  "schema": "vg.windows-client-xrefs.v1",
+  "scope": "absolute PE32 dword references inside .text; no execution"
+}

@@ -1,0 +1,1445 @@
+{
+  "action_class_count": 49,
+  "action_classes": [
+    {
+      "class": "ActionActivateItem",
+      "constructors": [
+        "Nuo::Kindred::ActionActivateItem::ActionActivateItem(unsigned int, unsigned int, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionActivateItem::onRequest()",
+        "Nuo::Kindred::ActionActivateItem::onResponse()",
+        "Nuo::Kindred::ActionActivateItem::~ActionActivateItem()"
+      ]
+    },
+    {
+      "class": "ActionActorDead",
+      "constructors": [
+        "Nuo::Kindred::ActionActorDead::ActionActorDead(unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionActorDead::onRequest()",
+        "Nuo::Kindred::ActionActorDead::onResponse()",
+        "Nuo::Kindred::ActionActorDead::~ActionActorDead()"
+      ]
+    },
+    {
+      "class": "ActionActorDie",
+      "constructors": [
+        "Nuo::Kindred::ActionActorDie::ActionActorDie(unsigned int, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionActorDie::onRequest()",
+        "Nuo::Kindred::ActionActorDie::onResponse()",
+        "Nuo::Kindred::ActionActorDie::~ActionActorDie()"
+      ]
+    },
+    {
+      "class": "ActionActorRespawn",
+      "constructors": [
+        "Nuo::Kindred::ActionActorRespawn::ActionActorRespawn(unsigned int, Nuo::Math::Vector3 const&)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionActorRespawn::onRequest()",
+        "Nuo::Kindred::ActionActorRespawn::onResponse()",
+        "Nuo::Kindred::ActionActorRespawn::~ActionActorRespawn()"
+      ]
+    },
+    {
+      "class": "ActionApplyBuff",
+      "constructors": [
+        "Nuo::Kindred::ActionApplyBuff::ActionApplyBuff(unsigned int, unsigned int, char const*, float, unsigned int, unsigned int, float)",
+        "Nuo::Kindred::ActionApplyBuff::ActionApplyBuff(unsigned int, unsigned int, unsigned int, float, unsigned int, unsigned int, float)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionApplyBuff::onRequest()",
+        "Nuo::Kindred::ActionApplyBuff::onResponse()",
+        "Nuo::Kindred::ActionApplyBuff::~ActionApplyBuff()"
+      ]
+    },
+    {
+      "class": "ActionAssignMaster",
+      "constructors": [
+        "Nuo::Kindred::ActionAssignMaster::ActionAssignMaster(unsigned int, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionAssignMaster::onRequest()",
+        "Nuo::Kindred::ActionAssignMaster::onResponse()",
+        "Nuo::Kindred::ActionAssignMaster::~ActionAssignMaster()"
+      ]
+    },
+    {
+      "class": "ActionAutoActorBounce",
+      "constructors": [
+        "Nuo::Kindred::ActionAutoActorBounce::ActionAutoActorBounce(unsigned int, float, float)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionAutoActorBounce::onRequest()",
+        "Nuo::Kindred::ActionAutoActorBounce::onResponse()",
+        "Nuo::Kindred::ActionAutoActorBounce::~ActionAutoActorBounce()"
+      ]
+    },
+    {
+      "class": "ActionAutoMoveTo",
+      "constructors": [
+        "Nuo::Kindred::ActionAutoMoveTo::ActionAutoMoveTo(unsigned int, float, Nuo::Math::Vector3 const&)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionAutoMoveTo::onRequest()",
+        "Nuo::Kindred::ActionAutoMoveTo::onResponse()",
+        "Nuo::Kindred::ActionAutoMoveTo::~ActionAutoMoveTo()"
+      ]
+    },
+    {
+      "class": "ActionAutoOrbit",
+      "constructors": [
+        "Nuo::Kindred::ActionAutoOrbit::ActionAutoOrbit(unsigned int, Nuo::Math::Vector3 const&, float, float)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionAutoOrbit::onRequest()",
+        "Nuo::Kindred::ActionAutoOrbit::onResponse()",
+        "Nuo::Kindred::ActionAutoOrbit::~ActionAutoOrbit()"
+      ]
+    },
+    {
+      "class": "ActionBuyAbility",
+      "constructors": [
+        "Nuo::Kindred::ActionBuyAbility::ActionBuyAbility(unsigned int, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionBuyAbility::onRequest()",
+        "Nuo::Kindred::ActionBuyAbility::onResponse()",
+        "Nuo::Kindred::ActionBuyAbility::~ActionBuyAbility()"
+      ]
+    },
+    {
+      "class": "ActionBuyItem",
+      "constructors": [
+        "Nuo::Kindred::ActionBuyItem::ActionBuyItem(unsigned int, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionBuyItem::onRequest()",
+        "Nuo::Kindred::ActionBuyItem::onResponse()",
+        "Nuo::Kindred::ActionBuyItem::~ActionBuyItem()"
+      ]
+    },
+    {
+      "class": "ActionCancelAbility",
+      "constructors": [
+        "Nuo::Kindred::ActionCancelAbility::ActionCancelAbility(unsigned int, unsigned char)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionCancelAbility::onRequest()",
+        "Nuo::Kindred::ActionCancelAbility::onResponse()",
+        "Nuo::Kindred::ActionCancelAbility::~ActionCancelAbility()"
+      ]
+    },
+    {
+      "class": "ActionCancelAutoOrbit",
+      "constructors": [
+        "Nuo::Kindred::ActionCancelAutoOrbit::ActionCancelAutoOrbit(unsigned int, Nuo::Math::Vector3 const&)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionCancelAutoOrbit::onRequest()",
+        "Nuo::Kindred::ActionCancelAutoOrbit::onResponse()",
+        "Nuo::Kindred::ActionCancelAutoOrbit::~ActionCancelAutoOrbit()"
+      ]
+    },
+    {
+      "class": "ActionCancelBuff",
+      "constructors": [
+        "Nuo::Kindred::ActionCancelBuff::ActionCancelBuff(unsigned int, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionCancelBuff::onRequest()",
+        "Nuo::Kindred::ActionCancelBuff::onResponse()",
+        "Nuo::Kindred::ActionCancelBuff::~ActionCancelBuff()"
+      ]
+    },
+    {
+      "class": "ActionClearAbilityOverride",
+      "constructors": [
+        "Nuo::Kindred::ActionClearAbilityOverride::ActionClearAbilityOverride(unsigned int, unsigned int, bool)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionClearAbilityOverride::onRequest()",
+        "Nuo::Kindred::ActionClearAbilityOverride::onResponse()",
+        "Nuo::Kindred::ActionClearAbilityOverride::~ActionClearAbilityOverride()"
+      ]
+    },
+    {
+      "class": "ActionConsumeItem",
+      "constructors": [
+        "Nuo::Kindred::ActionConsumeItem::ActionConsumeItem(unsigned int, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionConsumeItem::onRequest()",
+        "Nuo::Kindred::ActionConsumeItem::onResponse()",
+        "Nuo::Kindred::ActionConsumeItem::~ActionConsumeItem()"
+      ]
+    },
+    {
+      "class": "ActionDecrementBuffStack",
+      "constructors": [
+        "Nuo::Kindred::ActionDecrementBuffStack::ActionDecrementBuffStack(unsigned int, unsigned int, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionDecrementBuffStack::onRequest()",
+        "Nuo::Kindred::ActionDecrementBuffStack::onResponse()",
+        "Nuo::Kindred::ActionDecrementBuffStack::~ActionDecrementBuffStack()"
+      ]
+    },
+    {
+      "class": "ActionDetonateProjectile",
+      "constructors": [
+        "Nuo::Kindred::ActionDetonateProjectile::ActionDetonateProjectile(unsigned int, Nuo::Math::Vector3 const&)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionDetonateProjectile::onRequest()",
+        "Nuo::Kindred::ActionDetonateProjectile::onResponse()",
+        "Nuo::Kindred::ActionDetonateProjectile::~ActionDetonateProjectile()"
+      ]
+    },
+    {
+      "class": "ActionEndMatch",
+      "constructors": [
+        "Nuo::Kindred::ActionEndMatch::ActionEndMatch(unsigned int, Nuo::Kindred::EndGameReason)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionEndMatch::onRequest()",
+        "Nuo::Kindred::ActionEndMatch::onResponse()",
+        "Nuo::Kindred::ActionEndMatch::~ActionEndMatch()"
+      ]
+    },
+    {
+      "class": "ActionEntityDestroy",
+      "constructors": [
+        "Nuo::Kindred::ActionEntityDestroy::ActionEntityDestroy(unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionEntityDestroy::onRequest()",
+        "Nuo::Kindred::ActionEntityDestroy::onResponse()",
+        "Nuo::Kindred::ActionEntityDestroy::~ActionEntityDestroy()"
+      ]
+    },
+    {
+      "class": "ActionEntitySpawn",
+      "constructors": [
+        "Nuo::Kindred::ActionEntitySpawn::ActionEntitySpawn(Nuo::Kindred::ActionEntitySpawn const&)",
+        "Nuo::Kindred::ActionEntitySpawn::ActionEntitySpawn(unsigned int, unsigned int, unsigned int, Nuo::Math::Vector3 const&, Nuo::Math::Vector3 const&, Nuo::Kindred::ActorAttributes const&, bool, Nuo::Kindred::ActorSpawnState, int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, void (*)(Nuo::Kindred::CKinActor*))"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionEntitySpawn::getPathIndex() const",
+        "Nuo::Kindred::ActionEntitySpawn::onRequest()",
+        "Nuo::Kindred::ActionEntitySpawn::onResponse()",
+        "Nuo::Kindred::ActionEntitySpawn::~ActionEntitySpawn()"
+      ]
+    },
+    {
+      "class": "ActionFaceDir",
+      "constructors": [
+        "Nuo::Kindred::ActionFaceDir::ActionFaceDir(unsigned int, Nuo::Math::Vector3 const&)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionFaceDir::onRequest()",
+        "Nuo::Kindred::ActionFaceDir::onResponse()",
+        "Nuo::Kindred::ActionFaceDir::~ActionFaceDir()"
+      ]
+    },
+    {
+      "class": "ActionFireProjectile",
+      "constructors": [
+        "Nuo::Kindred::ActionFireProjectile::ActionFireProjectile(Nuo::Kindred::ActionFireProjectile const&)",
+        "Nuo::Kindred::ActionFireProjectile::ActionFireProjectile(unsigned int, unsigned int, Nuo::Math::Vector3 const&, unsigned int, unsigned int, unsigned int, bool, unsigned int, unsigned int)",
+        "Nuo::Kindred::ActionFireProjectile::ActionFireProjectile(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, bool, unsigned int, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionFireProjectile::onRequest()",
+        "Nuo::Kindred::ActionFireProjectile::onResponse()",
+        "Nuo::Kindred::ActionFireProjectile::~ActionFireProjectile()"
+      ]
+    },
+    {
+      "class": "ActionGrantAbility",
+      "constructors": [
+        "Nuo::Kindred::ActionGrantAbility::ActionGrantAbility(unsigned int, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionGrantAbility::onRequest()",
+        "Nuo::Kindred::ActionGrantAbility::onResponse()",
+        "Nuo::Kindred::ActionGrantAbility::~ActionGrantAbility()"
+      ]
+    },
+    {
+      "class": "ActionGrantItem",
+      "constructors": [
+        "Nuo::Kindred::ActionGrantItem::ActionGrantItem(unsigned int, unsigned int, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionGrantItem::onRequest()",
+        "Nuo::Kindred::ActionGrantItem::onResponse()",
+        "Nuo::Kindred::ActionGrantItem::~ActionGrantItem()"
+      ]
+    },
+    {
+      "class": "ActionHeroSpawn",
+      "constructors": [
+        "Nuo::Kindred::ActionHeroSpawn::ActionHeroSpawn(Nuo::Kindred::ActionHeroSpawn const&)",
+        "Nuo::Kindred::ActionHeroSpawn::ActionHeroSpawn(unsigned int, unsigned int, unsigned int, Nuo::Math::Vector3 const&, Nuo::Math::Vector3 const&, Nuo::Kindred::ActorAttributes const&, bool, bool, Nuo::Kindred::ActorSpawnState, float, unsigned int const*, unsigned int const*, unsigned int const*, float const*, unsigned int, unsigned int const*, unsigned int const*, float const*, unsigned int, int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, void (*)(Nuo::Kindred::CKinActor*))"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionHeroSpawn::getPathIndex() const",
+        "Nuo::Kindred::ActionHeroSpawn::onRequest()",
+        "Nuo::Kindred::ActionHeroSpawn::onResponse()",
+        "Nuo::Kindred::ActionHeroSpawn::~ActionHeroSpawn()"
+      ]
+    },
+    {
+      "class": "ActionImpactHealth",
+      "constructors": [
+        "Nuo::Kindred::ActionImpactHealth::ActionImpactHealth(unsigned int, float, Nuo::Kindred::CombatDamageParams::DamageType, Nuo::Kindred::CombatDamageParams::DamageSource, bool, unsigned int)",
+        "Nuo::Kindred::ActionImpactHealth::ActionImpactHealth(unsigned int, float, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionImpactHealth::onRequest()",
+        "Nuo::Kindred::ActionImpactHealth::onResponse()",
+        "Nuo::Kindred::ActionImpactHealth::~ActionImpactHealth()"
+      ]
+    },
+    {
+      "class": "ActionItemActivated",
+      "constructors": [
+        "Nuo::Kindred::ActionItemActivated::ActionItemActivated(unsigned int, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionItemActivated::onRequest()",
+        "Nuo::Kindred::ActionItemActivated::onResponse()",
+        "Nuo::Kindred::ActionItemActivated::~ActionItemActivated()"
+      ]
+    },
+    {
+      "class": "ActionLevelUp",
+      "constructors": [
+        "Nuo::Kindred::ActionLevelUp::ActionLevelUp(unsigned int, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionLevelUp::onRequest()",
+        "Nuo::Kindred::ActionLevelUp::onResponse()",
+        "Nuo::Kindred::ActionLevelUp::~ActionLevelUp()"
+      ]
+    },
+    {
+      "class": "ActionMakeAnnouncement",
+      "constructors": [
+        "Nuo::Kindred::ActionMakeAnnouncement::ActionMakeAnnouncement(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionMakeAnnouncement::onRequest()",
+        "Nuo::Kindred::ActionMakeAnnouncement::onResponse()",
+        "Nuo::Kindred::ActionMakeAnnouncement::~ActionMakeAnnouncement()"
+      ]
+    },
+    {
+      "class": "ActionModifyActorAttribute",
+      "constructors": [
+        "Nuo::Kindred::ActionModifyActorAttribute::ActionModifyActorAttribute(Nuo::Kindred::ActionModifyActorAttribute const&)",
+        "Nuo::Kindred::ActionModifyActorAttribute::ActionModifyActorAttribute(unsigned int, Nuo::Kindred::ActorAttribute, Nuo::Kindred::ActorAttributePart, float, bool, bool, unsigned int, bool)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionModifyActorAttribute::modifyActorAttribute()",
+        "Nuo::Kindred::ActionModifyActorAttribute::onRequest()",
+        "Nuo::Kindred::ActionModifyActorAttribute::onResponse()",
+        "Nuo::Kindred::ActionModifyActorAttribute::~ActionModifyActorAttribute()"
+      ]
+    },
+    {
+      "class": "ActionModifyBuffDuration",
+      "constructors": [
+        "Nuo::Kindred::ActionModifyBuffDuration::ActionModifyBuffDuration(unsigned int, unsigned int, float)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionModifyBuffDuration::onRequest()",
+        "Nuo::Kindred::ActionModifyBuffDuration::onResponse()",
+        "Nuo::Kindred::ActionModifyBuffDuration::~ActionModifyBuffDuration()"
+      ]
+    },
+    {
+      "class": "ActionModifyBuffStack",
+      "constructors": [
+        "Nuo::Kindred::ActionModifyBuffStack::ActionModifyBuffStack(unsigned int, unsigned int, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionModifyBuffStack::onRequest()",
+        "Nuo::Kindred::ActionModifyBuffStack::onResponse()",
+        "Nuo::Kindred::ActionModifyBuffStack::~ActionModifyBuffStack()"
+      ]
+    },
+    {
+      "class": "ActionModifyCooldown",
+      "constructors": [
+        "Nuo::Kindred::ActionModifyCooldown::ActionModifyCooldown(unsigned int, unsigned int, float, bool, bool)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionModifyCooldown::onRequest()",
+        "Nuo::Kindred::ActionModifyCooldown::onResponse()",
+        "Nuo::Kindred::ActionModifyCooldown::~ActionModifyCooldown()"
+      ]
+    },
+    {
+      "class": "ActionModifyEnergyCost",
+      "constructors": [
+        "Nuo::Kindred::ActionModifyEnergyCost::ActionModifyEnergyCost(unsigned int, unsigned int, int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionModifyEnergyCost::onRequest()",
+        "Nuo::Kindred::ActionModifyEnergyCost::onResponse()",
+        "Nuo::Kindred::ActionModifyEnergyCost::~ActionModifyEnergyCost()"
+      ]
+    },
+    {
+      "class": "ActionModifyVisibility",
+      "constructors": [
+        "Nuo::Kindred::ActionModifyVisibility::ActionModifyVisibility(unsigned int, unsigned int, unsigned int, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionModifyVisibility::onRequest()",
+        "Nuo::Kindred::ActionModifyVisibility::onResponse()",
+        "Nuo::Kindred::ActionModifyVisibility::~ActionModifyVisibility()"
+      ]
+    },
+    {
+      "class": "ActionMoveTo",
+      "constructors": [
+        "Nuo::Kindred::ActionMoveTo::ActionMoveTo(unsigned int, Nuo::Math::Vector3 const&)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionMoveTo::onRequest()",
+        "Nuo::Kindred::ActionMoveTo::onResponse()",
+        "Nuo::Kindred::ActionMoveTo::~ActionMoveTo()"
+      ]
+    },
+    {
+      "class": "ActionMoveToAndFace",
+      "constructors": [
+        "Nuo::Kindred::ActionMoveToAndFace::ActionMoveToAndFace(unsigned int, unsigned int, Nuo::Math::Vector3 const&)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionMoveToAndFace::onRequest()",
+        "Nuo::Kindred::ActionMoveToAndFace::onResponse()",
+        "Nuo::Kindred::ActionMoveToAndFace::~ActionMoveToAndFace()"
+      ]
+    },
+    {
+      "class": "ActionMoveToCorrection",
+      "constructors": [
+        "Nuo::Kindred::ActionMoveToCorrection::ActionMoveToCorrection(unsigned int, Nuo::Math::Vector3 const&, float)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionMoveToCorrection::onRequest()",
+        "Nuo::Kindred::ActionMoveToCorrection::onResponse()",
+        "Nuo::Kindred::ActionMoveToCorrection::~ActionMoveToCorrection()"
+      ]
+    },
+    {
+      "class": "ActionOverrideAbility",
+      "constructors": [
+        "Nuo::Kindred::ActionOverrideAbility::ActionOverrideAbility(unsigned int, unsigned int, unsigned int, int, bool, bool, bool)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionOverrideAbility::onRequest()",
+        "Nuo::Kindred::ActionOverrideAbility::onResponse()",
+        "Nuo::Kindred::ActionOverrideAbility::~ActionOverrideAbility()"
+      ]
+    },
+    {
+      "class": "ActionPauseGame",
+      "constructors": [
+        "Nuo::Kindred::ActionPauseGame::ActionPauseGame(bool)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionPauseGame::onRequest()",
+        "Nuo::Kindred::ActionPauseGame::onResponse()",
+        "Nuo::Kindred::ActionPauseGame::~ActionPauseGame()"
+      ]
+    },
+    {
+      "class": "ActionPing",
+      "constructors": [
+        "Nuo::Kindred::ActionPing::ActionPing(Nuo::Kindred::ActionPing const&)",
+        "Nuo::Kindred::ActionPing::ActionPing(unsigned int, unsigned int, Nuo::Math::Vector3 const&, unsigned int, int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionPing::onRequest()",
+        "Nuo::Kindred::ActionPing::onResponse()",
+        "Nuo::Kindred::ActionPing::~ActionPing()"
+      ]
+    },
+    {
+      "class": "ActionPlayAbility",
+      "constructors": [
+        "Nuo::Kindred::ActionPlayAbility::ActionPlayAbility(Nuo::Kindred::ActionPlayAbility const&)",
+        "Nuo::Kindred::ActionPlayAbility::ActionPlayAbility(Nuo::Kindred::ActionRequestActivateAbility const&, unsigned int)",
+        "Nuo::Kindred::ActionPlayAbility::ActionPlayAbility(unsigned int, Nuo::Math::Vector3 const&, unsigned char)",
+        "Nuo::Kindred::ActionPlayAbility::ActionPlayAbility(unsigned int, unsigned int, unsigned char)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionPlayAbility::onRequest()",
+        "Nuo::Kindred::ActionPlayAbility::onResponse()",
+        "Nuo::Kindred::ActionPlayAbility::~ActionPlayAbility()"
+      ]
+    },
+    {
+      "class": "ActionRequestActivateAbility",
+      "constructors": [
+        "Nuo::Kindred::ActionRequestActivateAbility::ActionRequestActivateAbility(Nuo::Kindred::ActionRequestActivateAbility const&)",
+        "Nuo::Kindred::ActionRequestActivateAbility::ActionRequestActivateAbility(unsigned int, Nuo::Math::Vector3 const&, unsigned char)",
+        "Nuo::Kindred::ActionRequestActivateAbility::ActionRequestActivateAbility(unsigned int, unsigned int, unsigned char)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionRequestActivateAbility::onRequest()",
+        "Nuo::Kindred::ActionRequestActivateAbility::onResponse()",
+        "Nuo::Kindred::ActionRequestActivateAbility::~ActionRequestActivateAbility()"
+      ]
+    },
+    {
+      "class": "ActionSellItem",
+      "constructors": [
+        "Nuo::Kindred::ActionSellItem::ActionSellItem(unsigned int, unsigned int)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionSellItem::onRequest()",
+        "Nuo::Kindred::ActionSellItem::onResponse()",
+        "Nuo::Kindred::ActionSellItem::~ActionSellItem()"
+      ]
+    },
+    {
+      "class": "ActionSetSurrenderStateRequest",
+      "constructors": [
+        "Nuo::Kindred::ActionSetSurrenderStateRequest::ActionSetSurrenderStateRequest(unsigned int, Nuo::Kindred::SurrenderState::Vote)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionSetSurrenderStateRequest::onRequest()",
+        "Nuo::Kindred::ActionSetSurrenderStateRequest::onResponse()",
+        "Nuo::Kindred::ActionSetSurrenderStateRequest::~ActionSetSurrenderStateRequest()"
+      ]
+    },
+    {
+      "class": "ActionStartRespawnTimer",
+      "constructors": [
+        "Nuo::Kindred::ActionStartRespawnTimer::ActionStartRespawnTimer(unsigned int, float)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionStartRespawnTimer::onRequest()",
+        "Nuo::Kindred::ActionStartRespawnTimer::onResponse()",
+        "Nuo::Kindred::ActionStartRespawnTimer::~ActionStartRespawnTimer()"
+      ]
+    },
+    {
+      "class": "ActionTeamSurrenderStateChanged",
+      "constructors": [
+        "Nuo::Kindred::ActionTeamSurrenderStateChanged::ActionTeamSurrenderStateChanged(unsigned int, Nuo::Kindred::SurrenderState::TeamState, unsigned int const*, unsigned char const*, float const*, float)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionTeamSurrenderStateChanged::onRequest()",
+        "Nuo::Kindred::ActionTeamSurrenderStateChanged::onResponse()",
+        "Nuo::Kindred::ActionTeamSurrenderStateChanged::~ActionTeamSurrenderStateChanged()"
+      ]
+    },
+    {
+      "class": "ActionTeleportTo",
+      "constructors": [
+        "Nuo::Kindred::ActionTeleportTo::ActionTeleportTo(unsigned int, Nuo::Math::Vector3 const&)"
+      ],
+      "methods": [
+        "Nuo::Kindred::ActionTeleportTo::onRequest()",
+        "Nuo::Kindred::ActionTeleportTo::onResponse()",
+        "Nuo::Kindred::ActionTeleportTo::~ActionTeleportTo()"
+      ]
+    }
+  ],
+  "counts": {
+    "demangle_unchanged": 0,
+    "demangled_changed": 43629,
+    "mangled_names": 43629
+  },
+  "cross_client": {
+    "both": [
+      "ActionActorDead",
+      "ActionActorDie",
+      "ActionActorRespawn",
+      "ActionApplyBuff",
+      "ActionAutoActorBounce",
+      "ActionAutoMoveTo",
+      "ActionAutoOrbit",
+      "ActionBuyItem",
+      "ActionCancelAbility",
+      "ActionCancelAutoOrbit",
+      "ActionCancelBuff",
+      "ActionClearAbilityOverride",
+      "ActionConsumeItem",
+      "ActionDecrementBuffStack",
+      "ActionDetonateProjectile",
+      "ActionEndMatch",
+      "ActionEntityDestroy",
+      "ActionEntitySpawn",
+      "ActionFaceDir",
+      "ActionFireProjectile",
+      "ActionGrantAbility",
+      "ActionGrantItem",
+      "ActionHeroSpawn",
+      "ActionImpactHealth",
+      "ActionItemActivated",
+      "ActionLevelUp",
+      "ActionMakeAnnouncement",
+      "ActionModifyActorAttribute",
+      "ActionModifyBuffDuration",
+      "ActionModifyBuffStack",
+      "ActionModifyCooldown",
+      "ActionModifyVisibility",
+      "ActionMoveTo",
+      "ActionMoveToAndFace",
+      "ActionMoveToCorrection",
+      "ActionOverrideAbility",
+      "ActionPing",
+      "ActionPlayAbility",
+      "ActionRequestActivateAbility",
+      "ActionSellItem",
+      "ActionSetSurrenderStateRequest",
+      "ActionStartRespawnTimer",
+      "ActionTeamSurrenderStateChanged",
+      "ActionTeleportTo"
+    ],
+    "client_only": [
+      "ActionActivateItem",
+      "ActionAssignMaster",
+      "ActionBuyAbility",
+      "ActionModifyEnergyCost",
+      "ActionPauseGame"
+    ],
+    "counts": {
+      "both": 44,
+      "client": 49,
+      "client_only": 5,
+      "repo": 84,
+      "repo_only": 40
+    },
+    "reference": {
+      "action_names": 84,
+      "path": "vg/docs/event_semantics_2026-10-04.json",
+      "sha256": "9bec8765397e1db669522a9ec86cde52f0f6efd41b2e853dc886ae4045256674"
+    },
+    "repo_only": [
+      "ActionActorUndead",
+      "ActionAutoMoveToActorResponse",
+      "ActionBroadcastSwapTarget",
+      "ActionCreateZoneOfControl",
+      "ActionDestroyZoneOfControl",
+      "ActionDowngradeAbility",
+      "ActionEquipTalent",
+      "ActionHUDQuickMessage",
+      "ActionInvalidateTalent",
+      "ActionModifyAbilityCharges",
+      "ActionModifyActorResource",
+      "ActionModifyBasicAttackTarget",
+      "ActionModifyBuffMaxStacks",
+      "ActionModifyBuffVar",
+      "ActionModifyGameModeVar",
+      "ActionModifyItemStack",
+      "ActionMoveToServerAuthoritative",
+      "ActionPauseCooldown",
+      "ActionPauseTutorial",
+      "ActionPlayPfxAtLocation",
+      "ActionPlayVoiceOver",
+      "ActionQuickBuyItem",
+      "ActionReorderItem",
+      "ActionRequestActivateItem",
+      "ActionRequestEquipTalent",
+      "ActionRequestModifyBasicAttackTarget",
+      "ActionRequestRecommendedBuildPath",
+      "ActionSetBuildPath",
+      "ActionSetPlayerAsSpectator",
+      "ActionSetRecommendedBuildPath",
+      "ActionSetSimulationSpeed",
+      "ActionShowFlyoutText",
+      "ActionShowMatchPrepSequence",
+      "ActionSpectatorExitMatchRequest",
+      "ActionStartMatch",
+      "ActionStopActor",
+      "ActionSyncAbilityBehavior",
+      "ActionTimeoutBuff",
+      "ActionTutorialStateChangedResponse",
+      "ActionUnequipTalent"
+    ]
+  },
+  "input": {
+    "name": "libGame.so",
+    "sha256": "4aeb54599af10327fdc37b6df0e297dfbc32cebfadf9ceb46ac750d77fb2f159",
+    "size": 21885948
+  },
+  "replay_line_format_count": 41,
+  "replay_line_formats": {
+    "LocalInput_MoveTo": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 3,
+      "fields": [
+        "float",
+        "float",
+        "float"
+      ],
+      "format": "%.5f:LocalInput_MoveTo:%.5f,%.5f,%.5f",
+      "token_count": 3,
+      "total_token_count": 3,
+      "trailing_comma": false
+    },
+    "PktActivateItem": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 3,
+      "fields": [
+        "int32",
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktActivateItem:%d,%d,%d",
+      "token_count": 3,
+      "total_token_count": 3,
+      "trailing_comma": false
+    },
+    "PktActorDead": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 1,
+      "fields": [
+        "int32"
+      ],
+      "format": "%.5f:PktActorDead:%d",
+      "token_count": 1,
+      "total_token_count": 1,
+      "trailing_comma": false
+    },
+    "PktActorDie": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 2,
+      "fields": [
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktActorDie:%d,%d",
+      "token_count": 2,
+      "total_token_count": 2,
+      "trailing_comma": false
+    },
+    "PktActorRespawn": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 4,
+      "fields": [
+        "int32",
+        "float",
+        "float",
+        "float"
+      ],
+      "format": "%.5f:PktActorRespawn:%d,%.5f,%.5f,%.5f",
+      "token_count": 4,
+      "total_token_count": 4,
+      "trailing_comma": false
+    },
+    "PktApplyBuff": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 7,
+      "fields": [
+        "int32",
+        "int32",
+        "int32",
+        "float",
+        "int32",
+        "int32",
+        "float"
+      ],
+      "format": "%.5f:PktApplyBuff:%d,%d,%d,%.5f,%d,%d,%.5f",
+      "token_count": 7,
+      "total_token_count": 7,
+      "trailing_comma": false
+    },
+    "PktCancelAbility": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 2,
+      "fields": [
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktCancelAbility:%d,%d",
+      "token_count": 2,
+      "total_token_count": 2,
+      "trailing_comma": false
+    },
+    "PktCancelBuff": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 2,
+      "fields": [
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktCancelBuff:%d,%d",
+      "token_count": 2,
+      "total_token_count": 2,
+      "trailing_comma": false
+    },
+    "PktConnected": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 4,
+      "fields": [
+        "int32",
+        "int32",
+        "int32",
+        "string"
+      ],
+      "format": "%.5f:PktConnected:%d,%d,%d,%s",
+      "token_count": 4,
+      "total_token_count": 4,
+      "trailing_comma": false
+    },
+    "PktConsumeItem": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 2,
+      "fields": [
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktConsumeItem:%d,%d",
+      "token_count": 2,
+      "total_token_count": 2,
+      "trailing_comma": false
+    },
+    "PktDecrementBuff": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 3,
+      "fields": [
+        "int32",
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktDecrementBuff:%d,%d,%d",
+      "token_count": 3,
+      "total_token_count": 3,
+      "trailing_comma": false
+    },
+    "PktDetonateProjectile": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 4,
+      "fields": [
+        "int32",
+        "float",
+        "float",
+        "float"
+      ],
+      "format": "%.5f:PktDetonateProjectile:%d,%.5f,%.5f,%.5f",
+      "token_count": 4,
+      "total_token_count": 4,
+      "trailing_comma": false
+    },
+    "PktEndMatch": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 2,
+      "fields": [
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktEndMatch:%d,%d",
+      "token_count": 2,
+      "total_token_count": 2,
+      "trailing_comma": false
+    },
+    "PktEntityAutoActorBounce": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 3,
+      "fields": [
+        "int32",
+        "float",
+        "float"
+      ],
+      "format": "%.5f:PktEntityAutoActorBounce:%d,%.5f,%.5f",
+      "token_count": 3,
+      "total_token_count": 3,
+      "trailing_comma": false
+    },
+    "PktEntityAutoMoveTo": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 5,
+      "fields": [
+        "int32",
+        "float",
+        "float",
+        "float",
+        "float"
+      ],
+      "format": "%.5f:PktEntityAutoMoveTo:%d,%.5f,%.5f,%.5f,%.5f",
+      "token_count": 5,
+      "total_token_count": 5,
+      "trailing_comma": false
+    },
+    "PktEntityAutoOrbit": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 6,
+      "fields": [
+        "int32",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float"
+      ],
+      "format": "%.5f:PktEntityAutoOrbit:%d,%.5f,%.5f,%.5f,%.5f,%.5f",
+      "token_count": 6,
+      "total_token_count": 6,
+      "trailing_comma": false
+    },
+    "PktEntityCancelAutoOrbit": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 4,
+      "fields": [
+        "int32",
+        "float",
+        "float",
+        "float"
+      ],
+      "format": "%.5f:PktEntityCancelAutoOrbit:%d,%.5f,%.5f,%.5f",
+      "token_count": 4,
+      "total_token_count": 4,
+      "trailing_comma": false
+    },
+    "PktEntityDestroy": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 1,
+      "fields": [
+        "int32"
+      ],
+      "format": "%.5f:PktEntityDestroy:%d",
+      "token_count": 1,
+      "total_token_count": 1,
+      "trailing_comma": false
+    },
+    "PktEntityFaceDir": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 4,
+      "fields": [
+        "int32",
+        "float",
+        "float",
+        "float"
+      ],
+      "format": "%.5f:PktEntityFaceDir:%d,%.5f,%.5f,%.5f",
+      "token_count": 4,
+      "total_token_count": 4,
+      "trailing_comma": false
+    },
+    "PktEntityMoveTo": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 4,
+      "fields": [
+        "int32",
+        "float",
+        "float",
+        "float"
+      ],
+      "format": "%.5f:PktEntityMoveTo:%d,%.5f,%.5f,%.5f",
+      "token_count": 4,
+      "total_token_count": 4,
+      "trailing_comma": false
+    },
+    "PktEntityMoveToAndFace": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 5,
+      "fields": [
+        "int32",
+        "int32",
+        "float",
+        "float",
+        "float"
+      ],
+      "format": "%.5f:PktEntityMoveToAndFace:%d,%d,%.5f,%.5f,%.5f",
+      "token_count": 5,
+      "total_token_count": 5,
+      "trailing_comma": false
+    },
+    "PktEntitySpawn": {
+      "count_scope": "literal-only",
+      "empty_tokens": 1,
+      "field_count": 29,
+      "fields": [
+        "int32",
+        "int32",
+        "int32",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktEntitySpawn:%d,%d,%d,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%d,%d,%d,%d,%d,%d,%d,%d,",
+      "token_count": 29,
+      "total_token_count": 30,
+      "trailing_comma": true
+    },
+    "PktEntityTeleportTo": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 4,
+      "fields": [
+        "int32",
+        "float",
+        "float",
+        "float"
+      ],
+      "format": "%.5f:PktEntityTeleportTo:%d,%.5f,%.5f,%.5f",
+      "token_count": 4,
+      "total_token_count": 4,
+      "trailing_comma": false
+    },
+    "PktFireProjectile": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 12,
+      "fields": [
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "float",
+        "float",
+        "float",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktFireProjectile:%d,%d,%d,%d,%.5f,%.5f,%.5f,%d,%d,%d,%d,%d",
+      "token_count": 12,
+      "total_token_count": 12,
+      "trailing_comma": false
+    },
+    "PktGrantAbility": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 2,
+      "fields": [
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktGrantAbility:%d,%d",
+      "token_count": 2,
+      "total_token_count": 2,
+      "trailing_comma": false
+    },
+    "PktGrantItem": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 3,
+      "fields": [
+        "int32",
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktGrantItem:%d,%d,%d",
+      "token_count": 3,
+      "total_token_count": 3,
+      "trailing_comma": false
+    },
+    "PktHeroSpawn": {
+      "count_scope": "literal-only",
+      "empty_tokens": 1,
+      "field_count": 90,
+      "fields": [
+        "int32",
+        "int32",
+        "int32",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "int32",
+        "int32",
+        "float",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "float",
+        "float",
+        "float",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktHeroSpawn:%d,%d,%d,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%d,%d,%.5f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f,%d,%d,%d,%d,%d,%d,%.5f,%.5f,%.5f,%d,%d,%d,%d,%d,%d,%d,",
+      "token_count": 90,
+      "total_token_count": 91,
+      "trailing_comma": true
+    },
+    "PktImpactHealth": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 6,
+      "fields": [
+        "int32",
+        "int32",
+        "float",
+        "int32",
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktImpactHealth:%d,%d,%.5f,%d,%d,%d",
+      "token_count": 6,
+      "total_token_count": 6,
+      "trailing_comma": false
+    },
+    "PktItemActivated": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 2,
+      "fields": [
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktItemActivated:%d,%d",
+      "token_count": 2,
+      "total_token_count": 2,
+      "trailing_comma": false
+    },
+    "PktJoinedMatch": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 3,
+      "fields": [
+        "int32",
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktJoinedMatch:%d,%d,%d",
+      "token_count": 3,
+      "total_token_count": 3,
+      "trailing_comma": false
+    },
+    "PktLevelUp": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 2,
+      "fields": [
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktLevelUp:%d,%d",
+      "token_count": 2,
+      "total_token_count": 2,
+      "trailing_comma": false
+    },
+    "PktModifyActorAttribute": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 7,
+      "fields": [
+        "int32",
+        "int32",
+        "float",
+        "int32",
+        "int32",
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktModifyActorAttribute:%d,%d,%.5f,%d,%d,%d,%d",
+      "token_count": 7,
+      "total_token_count": 7,
+      "trailing_comma": false
+    },
+    "PktModifyBuffDuration": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 3,
+      "fields": [
+        "int32",
+        "int32",
+        "float"
+      ],
+      "format": "%.5f:PktModifyBuffDuration:%d,%d,%.5f",
+      "token_count": 3,
+      "total_token_count": 3,
+      "trailing_comma": false
+    },
+    "PktModifyBuffStack": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 3,
+      "fields": [
+        "int32",
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktModifyBuffStack:%d,%d,%d",
+      "token_count": 3,
+      "total_token_count": 3,
+      "trailing_comma": false
+    },
+    "PktModifyCooldown": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 5,
+      "fields": [
+        "int32",
+        "int32",
+        "float",
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktModifyCooldown:%d,%d,%.5f,%d,%d",
+      "token_count": 5,
+      "total_token_count": 5,
+      "trailing_comma": false
+    },
+    "PktModifyVisibility": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 4,
+      "fields": [
+        "int32",
+        "int32",
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktModifyVisibility:%d,%d,%d,%d",
+      "token_count": 4,
+      "total_token_count": 4,
+      "trailing_comma": false
+    },
+    "PktPlayAbility": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 3,
+      "fields": [
+        "int32",
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktPlayAbility:%d,%d,%d",
+      "token_count": 3,
+      "total_token_count": 3,
+      "trailing_comma": false
+    },
+    "PktPlayAbilityOnLoc": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 5,
+      "fields": [
+        "int32",
+        "float",
+        "float",
+        "float",
+        "int32"
+      ],
+      "format": "%.5f:PktPlayAbilityOnLoc:%d,%.5f,%.5f,%.5f,%d",
+      "token_count": 5,
+      "total_token_count": 5,
+      "trailing_comma": false
+    },
+    "PktPlayerConnected": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 3,
+      "fields": [
+        "int32",
+        "int32",
+        "string"
+      ],
+      "format": "%.5f:PktPlayerConnected:%d,%d,%s",
+      "token_count": 3,
+      "total_token_count": 3,
+      "trailing_comma": false
+    },
+    "PktPlayerInfo": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 3,
+      "fields": [
+        "int32",
+        "int32",
+        "string"
+      ],
+      "format": "%.5f:PktPlayerInfo:%d,%d,%s",
+      "token_count": 3,
+      "total_token_count": 3,
+      "trailing_comma": false
+    },
+    "PktSellItem": {
+      "count_scope": "literal-only",
+      "empty_tokens": 0,
+      "field_count": 2,
+      "fields": [
+        "int32",
+        "int32"
+      ],
+      "format": "%.5f:PktSellItem:%d,%d",
+      "token_count": 2,
+      "total_token_count": 2,
+      "trailing_comma": false
+    }
+  },
+  "replay_string_literals": [
+    "N3Nuo7Kindred13KindredReplayE",
+    "VaingloryReplay.dat"
+  ],
+  "replay_symbols": [
+    "Nuo::Kindred::CKinPlayerClientController::setInReplayMode(bool)",
+    "Nuo::Kindred::KindredReplay::KindredReplay()",
+    "Nuo::Kindred::KindredReplay::connect()",
+    "Nuo::Kindred::KindredReplay::disconnect()",
+    "Nuo::Kindred::KindredReplay::init()",
+    "Nuo::Kindred::KindredReplay::isConnected()",
+    "Nuo::Kindred::KindredReplay::isConnecting()",
+    "Nuo::Kindred::KindredReplay::isLocalOnly()",
+    "Nuo::Kindred::KindredReplay::isOfType(Nuo::Kindred::KindredConnectionType)",
+    "Nuo::Kindred::KindredReplay::pause()",
+    "Nuo::Kindred::KindredReplay::resume()",
+    "Nuo::Kindred::KindredReplay::rewind()",
+    "Nuo::Kindred::KindredReplay::service()",
+    "Nuo::Kindred::KindredReplay::uninit()",
+    "Nuo::Kindred::KindredReplay::write(void const*, unsigned int)",
+    "Nuo::Kindred::KindredReplay::~KindredReplay()",
+    "Nuo::Kindred::_sReplayFile",
+    "Nuo::Kindred::closeReplayFile()",
+    "Nuo::Kindred::closeReplayFileForRead()",
+    "Nuo::Kindred::configDoPlaybackReplay()",
+    "Nuo::Kindred::configDoRecordReplay()",
+    "Nuo::Kindred::flushReplayFile()",
+    "Nuo::Kindred::getPreferenceClient_PlaybackReplay()",
+    "Nuo::Kindred::getPreferenceClient_RecordReplay()",
+    "Nuo::Kindred::getReplayDataFilename(bool)",
+    "Nuo::Kindred::networkIsReplayMode()",
+    "Nuo::Kindred::networkReplayPause()",
+    "Nuo::Kindred::networkReplayResume()",
+    "Nuo::Kindred::onResumeReplayRecording()",
+    "Nuo::Kindred::openReplayFile()",
+    "Nuo::Kindred::openReplayFileForRead()",
+    "Nuo::Kindred::rewindReplayFileForRead()",
+    "Nuo::Kindred::setReplayDataFilename(Nuo::Base::String&)",
+    "Nuo::Kindred::setReplayRecording(bool)",
+    "Nuo::Kindred::shutdownReplay()",
+    "typeinfo for Nuo::Kindred::KindredReplay",
+    "typeinfo name for Nuo::Kindred::KindredReplay",
+    "vtable for Nuo::Kindred::KindredReplay"
+  ],
+  "schema": "vg.android-client-symbols.v1",
+  "scope": "printable strings and demangled names only; no code execution or payload decoding",
+  "warnings": [
+    "PktEntitySpawn: literal ends with a comma; 29 conversions are a literal-only lower bound",
+    "PktHeroSpawn: literal ends with a comma; 90 conversions are a literal-only lower bound"
+  ]
+}
