@@ -23,6 +23,15 @@ class WindowsClientXrefTests(unittest.TestCase):
                  "offset": 0, "raw_size": len(data)}]
         self.assertEqual(code_xrefs(data, rows, 0x400000, target), [0x401004])
 
+    def test_code_xrefs_handles_multiple_references(self):
+        target = 0x1215EEC
+        data = (b"\x90" * 4 + struct.pack("<I", target) + b"\x90" * 4
+                + struct.pack("<I", target) + b"\x90")
+        rows = [{"name": ".text", "rva": 0x1000, "vsize": len(data),
+                 "offset": 0, "raw_size": len(data)}]
+        self.assertEqual(code_xrefs(data, rows, 0x400000, target),
+                         [0x401004, 0x40100C])
+
     def test_literal_spec_parses_optional_va(self):
         self.assertEqual(parse_literal_spec("%s/%s"), ("%s/%s", None))
         self.assertEqual(parse_literal_spec("w@0x1215ea8"), ("w", 0x1215EA8))

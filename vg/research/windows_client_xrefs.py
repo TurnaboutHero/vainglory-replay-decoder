@@ -77,13 +77,14 @@ def code_xrefs(data: bytes, rows, image_base: int, va: int) -> list[int]:
         return []
     pattern = struct.pack("<I", va)
     hits: list[int] = []
-    start = text["offset"]
-    end = start + text["raw_size"]
+    text_offset = text["offset"]
+    end = text_offset + text["raw_size"]
+    start = text_offset
     while True:
         index = data.find(pattern, start, end)
         if index < 0:
             return hits
-        hits.append(image_base + text["rva"] + (index - start))
+        hits.append(image_base + text["rva"] + (index - text_offset))
         start = index + 1
 
 
