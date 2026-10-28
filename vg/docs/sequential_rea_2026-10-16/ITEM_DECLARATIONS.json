@@ -1,0 +1,115 @@
+{
+  "schema": "vg.named-stack-item-declarations.v1",
+  "build_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "scope": "Selected local resource declarations only; not inherited effective runtime values or observed stack state",
+  "items": [
+    {
+      "definition_name": "Item_Bonesaw",
+      "resource_name": "BBB2B75EDB5B7BF1903527D074EA4414",
+      "resource_sha256": "9ebd8b1a6e0ec873e3f5e2477086f56857bb1f2d90b273b924d62677dcbaa8bc",
+      "properties": [
+        {
+          "index": 0,
+          "name": "ARMOR_PEN",
+          "selector_1_declared_value": 0.20000000298023224,
+          "value_bits": "3e4ccccd"
+        },
+        {
+          "index": 1,
+          "name": "SHRED",
+          "selector_1_declared_value": 0.10000000149011612,
+          "value_bits": "3dcccccd"
+        },
+        {
+          "index": 2,
+          "name": "DURATION",
+          "selector_1_declared_value": 3.0,
+          "value_bits": "40400000"
+        },
+        {
+          "index": 3,
+          "name": "MAX",
+          "selector_1_declared_value": 5.0,
+          "value_bits": "40a00000"
+        }
+      ]
+    },
+    {
+      "definition_name": "Item_PiercingSpear",
+      "resource_name": "66D56F1624A8244CF0D292B7FA17ABD1",
+      "resource_sha256": "ba5671f3c0df64e7fd3b62ddddfdb29f3e5abd33110af0f0ceee2381dd9262b2",
+      "properties": [
+        {
+          "index": 0,
+          "name": "ARMOR_PEN",
+          "selector_1_declared_value": 0.10000000149011612,
+          "value_bits": "3dcccccd"
+        }
+      ]
+    },
+    {
+      "definition_name": "Item_DragonsEye",
+      "resource_name": "21C204A34AAEF1A634F9D2430A7F820A",
+      "resource_sha256": "d3edad89a9234cd21408a0c3a5fbc2b3fcaa7041754ba305a9bf6e5141649bf6",
+      "properties": [
+        {
+          "index": 0,
+          "name": "BONUS_CRYSTAL",
+          "selector_1_declared_value": 10.0,
+          "value_bits": "41200000"
+        },
+        {
+          "index": 1,
+          "name": "AMP_DURATION",
+          "selector_1_declared_value": 5.0,
+          "value_bits": "40a00000"
+        },
+        {
+          "index": 2,
+          "name": "FALLOFF_PER_SEC",
+          "selector_1_declared_value": 3.0,
+          "value_bits": "40400000"
+        },
+        {
+          "index": 3,
+          "name": "MAX_STACKS",
+          "selector_1_declared_value": 15.0,
+          "value_bits": "41700000"
+        }
+      ]
+    }
+  ],
+  "buff_table": {
+    "resource_name": "551BCB541D80053BACD0A897B7993A77",
+    "resource_sha256": "e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79",
+    "symbol_type": "69bb0cf9",
+    "definition_count": 1381,
+    "selected": [
+      {
+        "definition_index": 264,
+        "name": "Buff_Item_Bonesaw",
+        "definition_cap_u16_at_24": 1
+      },
+      {
+        "definition_index": 265,
+        "name": "Buff_Item_BonesawDebuff",
+        "definition_cap_u16_at_24": 5
+      },
+      {
+        "definition_index": 332,
+        "name": "Buff_Item_Bonesaw_Pen",
+        "definition_cap_u16_at_24": 1
+      },
+      {
+        "definition_index": 336,
+        "name": "Buff_Item_DragonsEye_Control",
+        "definition_cap_u16_at_24": 1
+      },
+      {
+        "definition_index": 337,
+        "name": "Buff_Item_DragonsEye_CrystalBonus",
+        "definition_cap_u16_at_24": 15
+      }
+    ]
+  }
+}

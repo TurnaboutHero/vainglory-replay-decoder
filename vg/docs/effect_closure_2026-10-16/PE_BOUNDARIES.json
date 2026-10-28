@@ -1,0 +1,66 @@
+{
+  "schema": "vg.effect-boundary-pe.v1",
+  "selected_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "original_sha256": "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+  "bytes": 29545984,
+  "only_difference": {
+    "file_offset": "186",
+    "characteristic": "IMAGE_FILE_LARGE_ADDRESS_AWARE",
+    "xor": "20"
+  },
+  "stubs": [
+    {
+      "address": "004b7c00",
+      "bytes": "d9eec3"
+    },
+    {
+      "address": "00450910",
+      "bytes": "c3"
+    },
+    {
+      "address": "0045ecd0",
+      "bytes": "c20400"
+    }
+  ],
+  "calls": [
+    {
+      "site": "00860d1c",
+      "target": "004b7c00"
+    },
+    {
+      "site": "00860d35",
+      "target": "004b7c00"
+    },
+    {
+      "site": "00839cd2",
+      "target": "00450910"
+    },
+    {
+      "site": "0083886c",
+      "target": "00450910"
+    }
+  ],
+  "vtable_edges": [
+    {
+      "site": "0121b138",
+      "target": "0045ecd0"
+    },
+    {
+      "site": "0121b42c",
+      "target": "0045ecd0"
+    },
+    {
+      "site": "0121b2e8",
+      "target": "0045ecd0"
+    },
+    {
+      "site": "0121b694",
+      "target": "0045ecd0"
+    },
+    {
+      "site": "0127db78",
+      "target": "00860cb0"
+    }
+  ],
+  "scope": "Selected static paths have identical code in installed original; no runtime gameplay, server absence or universal support claim"
+}

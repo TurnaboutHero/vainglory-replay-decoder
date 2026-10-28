@@ -1,0 +1,736 @@
+{
+  "schema": "vg.stat-stacking-name-items.v1",
+  "selected_build_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "metadata_build_sha256": "659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642",
+  "metadata_sha256_lf": "e40df722ee5eaff7ff63e21403944bbf6de35eb84126f8fe0ce27e7bc66d0783",
+  "localization_sources": [
+    {
+      "language": "en",
+      "resource_name": "7ED4F1146624D2D991A07272993B26C4",
+      "sha256": "209df4c745201dec58bd5ef2497f1835298b21cbc8f23bd1bb1669589462d8d4",
+      "entry_count": 7322,
+      "decode": "strict base64 -> UTF-8; quoted entries; text escapes retained"
+    },
+    {
+      "language": "ko",
+      "resource_name": "AE9CB5A29032FAFA098A4BBE22C79B84",
+      "sha256": "610d2d6a3a543a11ffa555284ddcc3ce90af2aa1b7b54afb99a6dcf98b469a5e",
+      "entry_count": 7322,
+      "decode": "strict base64 -> UTF-8; quoted entries; text escapes retained"
+    }
+  ],
+  "scope": "Installed local names and declarations only; no live/historical build certification or effective stat/stack/heal inference. Fixed stat offsets4/8 remain declared operands until native application traced.",
+  "items": [
+    {
+      "definition_index": 479,
+      "definition_name": "Item_SerpentMask",
+      "query_spelling": "바다뱀의가면",
+      "exact_korean_name": "바다뱀의 가면",
+      "english_name": "Serpent Mask",
+      "name_key": "STORE_ITEM_SERPENT_MASK_NAME",
+      "query_match": "explicit_whitespace_variant",
+      "resource_name": "1CDE66CE2915BAE2CEE39077344885DB",
+      "resource_sha256": "02aae9198736394ede481b527137c640ca41886527dafb1d1b3cced2684cea0d",
+      "quantity_rules_declared": {
+        "stackable": false,
+        "max_stack": 1,
+        "unique": false,
+        "grant_skip": false
+      },
+      "active_capability_byte": 0,
+      "active_capability_declared": false,
+      "passive_key_name_declared": "",
+      "external_ability_name_declared": "",
+      "inline_ability_name_declared": null,
+      "buffs_declared": [
+        {
+          "index": 0,
+          "name": "Buff_Item_High_Vamp"
+        },
+        {
+          "index": 1,
+          "name": "Buff_Item_BookOfEulogies_Control"
+        },
+        {
+          "index": 2,
+          "name": "Buff_Item_SerpentMask_Control"
+        },
+        {
+          "index": 3,
+          "name": "Buff_Item_UnifiedVamp_Control"
+        }
+      ],
+      "properties": [
+        {
+          "index": 0,
+          "name": "VAMP",
+          "selector_1_declared_bits": "3e800000",
+          "selector_1_declared_value": 0.25
+        },
+        {
+          "index": 1,
+          "name": "CAP_MIN",
+          "selector_1_declared_bits": "43c80000",
+          "selector_1_declared_value": 400.0
+        },
+        {
+          "index": 2,
+          "name": "CAP_MAX",
+          "selector_1_declared_bits": "44480000",
+          "selector_1_declared_value": 800.0
+        },
+        {
+          "index": 3,
+          "name": "RECHARGE_TIME",
+          "selector_1_declared_bits": "42f00000",
+          "selector_1_declared_value": 120.0
+        },
+        {
+          "index": 4,
+          "name": "OMNI_VAMP",
+          "selector_1_declared_bits": "3e19999a",
+          "selector_1_declared_value": 0.15000000596046448
+        }
+      ],
+      "fixed_stat_array_root_2c": [
+        {
+          "index": 0,
+          "attribute_id_u32": 4,
+          "declared_operands": [
+            {
+              "offset_hex": "4",
+              "bits": "428c0000",
+              "value": 70.0
+            },
+            {
+              "offset_hex": "8",
+              "bits": "00000000",
+              "value": 0.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "definition_index": 480,
+      "definition_name": "Item_TensionBow",
+      "query_spelling": "탄성궁",
+      "exact_korean_name": "탄성궁",
+      "english_name": "Tension Bow",
+      "name_key": "STORE_ITEM_TENSION_BOW_NAME",
+      "query_match": "exact",
+      "resource_name": "7BFDD848F7B92E9391BF99BB499B0110",
+      "resource_sha256": "cbc45369f566d9f049d91b0ae7f754bec9e8d3b2739d6cf8119009278e49e4c9",
+      "quantity_rules_declared": {
+        "stackable": false,
+        "max_stack": 1,
+        "unique": false,
+        "grant_skip": false
+      },
+      "active_capability_byte": 0,
+      "active_capability_declared": false,
+      "passive_key_name_declared": "TensionBow",
+      "external_ability_name_declared": "",
+      "inline_ability_name_declared": null,
+      "buffs_declared": [
+        {
+          "index": 0,
+          "name": "Buff_Item_TensionBow"
+        },
+        {
+          "index": 1,
+          "name": "Buff_Item_PiercingSpear_Pen"
+        },
+        {
+          "index": 2,
+          "name": "Buff_Item_TensionBow_Pen"
+        },
+        {
+          "index": 3,
+          "name": "Buff_Item_Bonesaw_Pen"
+        }
+      ],
+      "properties": [
+        {
+          "index": 0,
+          "name": "ARMOR_PEN",
+          "selector_1_declared_bits": "3e99999a",
+          "selector_1_declared_value": 0.30000001192092896
+        },
+        {
+          "index": 1,
+          "name": "TIME",
+          "selector_1_declared_bits": "40c00000",
+          "selector_1_declared_value": 6.0
+        },
+        {
+          "index": 2,
+          "name": "DAMAGE",
+          "selector_1_declared_bits": "42c80000",
+          "selector_1_declared_value": 100.0
+        },
+        {
+          "index": 3,
+          "name": "DAMAGE_STRINGS",
+          "selector_1_declared_bits": "42c80000",
+          "selector_1_declared_value": 100.0
+        },
+        {
+          "index": 4,
+          "name": "BONUS_WEAPON_RATIO",
+          "selector_1_declared_bits": "3f800000",
+          "selector_1_declared_value": 1.0
+        }
+      ],
+      "fixed_stat_array_root_2c": [
+        {
+          "index": 0,
+          "attribute_id_u32": 4,
+          "declared_operands": [
+            {
+              "offset_hex": "4",
+              "bits": "42200000",
+              "value": 40.0
+            },
+            {
+              "offset_hex": "8",
+              "bits": "00000000",
+              "value": 0.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "definition_index": 482,
+      "definition_name": "Item_Bonesaw",
+      "query_spelling": "뼈톱",
+      "exact_korean_name": "뼈톱",
+      "english_name": "Bonesaw",
+      "name_key": "STORE_ITEM_BONESAW_NAME",
+      "query_match": "exact",
+      "resource_name": "BBB2B75EDB5B7BF1903527D074EA4414",
+      "resource_sha256": "9ebd8b1a6e0ec873e3f5e2477086f56857bb1f2d90b273b924d62677dcbaa8bc",
+      "quantity_rules_declared": {
+        "stackable": false,
+        "max_stack": 1,
+        "unique": false,
+        "grant_skip": false
+      },
+      "active_capability_byte": 0,
+      "active_capability_declared": false,
+      "passive_key_name_declared": "",
+      "external_ability_name_declared": "",
+      "inline_ability_name_declared": null,
+      "buffs_declared": [
+        {
+          "index": 0,
+          "name": "Buff_Item_Bonesaw"
+        },
+        {
+          "index": 1,
+          "name": "Buff_Item_PiercingSpear_Pen"
+        },
+        {
+          "index": 2,
+          "name": "Buff_Item_Bonesaw_Pen"
+        }
+      ],
+      "properties": [
+        {
+          "index": 0,
+          "name": "ARMOR_PEN",
+          "selector_1_declared_bits": "3e4ccccd",
+          "selector_1_declared_value": 0.20000000298023224
+        },
+        {
+          "index": 1,
+          "name": "SHRED",
+          "selector_1_declared_bits": "3dcccccd",
+          "selector_1_declared_value": 0.10000000149011612
+        },
+        {
+          "index": 2,
+          "name": "DURATION",
+          "selector_1_declared_bits": "40400000",
+          "selector_1_declared_value": 3.0
+        },
+        {
+          "index": 3,
+          "name": "MAX",
+          "selector_1_declared_bits": "40a00000",
+          "selector_1_declared_value": 5.0
+        }
+      ],
+      "fixed_stat_array_root_2c": [
+        {
+          "index": 0,
+          "attribute_id_u32": 4,
+          "declared_operands": [
+            {
+              "offset_hex": "4",
+              "bits": "41f00000",
+              "value": 30.0
+            },
+            {
+              "offset_hex": "8",
+              "bits": "00000000",
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "attribute_id_u32": 15,
+          "declared_operands": [
+            {
+              "offset_hex": "4",
+              "bits": "3e99999a",
+              "value": 0.30000001192092896
+            },
+            {
+              "offset_hex": "8",
+              "bits": "00000000",
+              "value": 0.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "definition_index": 496,
+      "definition_name": "Item_BrokenMyth",
+      "query_spelling": "신화의종말",
+      "exact_korean_name": "신화의 종말",
+      "english_name": "Broken Myth",
+      "name_key": "STORE_ITEM_BROKEN_MYTH_NAME",
+      "query_match": "explicit_whitespace_variant",
+      "resource_name": "55B2FED986781AD263FCC54084156A1F",
+      "resource_sha256": "642dfffda76b6feb32e6a411ffd489fe73d0d1b4765c2586de65cd0dfcbf9a2e",
+      "quantity_rules_declared": {
+        "stackable": false,
+        "max_stack": 1,
+        "unique": false,
+        "grant_skip": false
+      },
+      "active_capability_byte": 0,
+      "active_capability_declared": false,
+      "passive_key_name_declared": "",
+      "external_ability_name_declared": "",
+      "inline_ability_name_declared": null,
+      "buffs_declared": [
+        {
+          "index": 0,
+          "name": "Buff_Item_PiercingShard_Pen"
+        },
+        {
+          "index": 1,
+          "name": "Buff_Item_BrokenMyth_Pen"
+        }
+      ],
+      "properties": [
+        {
+          "index": 0,
+          "name": "SHIELD_PIERCE",
+          "selector_1_declared_bits": "3ee66666",
+          "selector_1_declared_value": 0.44999998807907104
+        }
+      ],
+      "fixed_stat_array_root_2c": [
+        {
+          "index": 0,
+          "attribute_id_u32": 5,
+          "declared_operands": [
+            {
+              "offset_hex": "4",
+              "bits": "42480000",
+              "value": 50.0
+            },
+            {
+              "offset_hex": "8",
+              "bits": "00000000",
+              "value": 0.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "definition_index": 520,
+      "definition_name": "Item_PoisonedShiv",
+      "query_spelling": "맹독단검",
+      "exact_korean_name": "맹독 단검",
+      "english_name": "Poisoned Shiv",
+      "name_key": "STORE_ITEM_POISONED_SHIV_NAME",
+      "query_match": "explicit_whitespace_variant",
+      "resource_name": "C004022B19B8B95312D035BB04DEDB4F",
+      "resource_sha256": "caabdb31018b31f412d8e6dcd246e17e246e0c9ede5bf9903f94cbdecf7e08c8",
+      "quantity_rules_declared": {
+        "stackable": false,
+        "max_stack": 1,
+        "unique": false,
+        "grant_skip": false
+      },
+      "active_capability_byte": 0,
+      "active_capability_declared": false,
+      "passive_key_name_declared": "",
+      "external_ability_name_declared": "",
+      "inline_ability_name_declared": null,
+      "buffs_declared": [
+        {
+          "index": 0,
+          "name": "Buff_Item_Mid_Vamp"
+        },
+        {
+          "index": 1,
+          "name": "Buff_Item_UnifiedVamp_Control"
+        },
+        {
+          "index": 2,
+          "name": "Buff_Item_PoisonedShiv"
+        },
+        {
+          "index": 3,
+          "name": "Buff_Item_BookOfEulogies_Control"
+        }
+      ],
+      "properties": [
+        {
+          "index": 0,
+          "name": "Hits_To_Proc",
+          "selector_1_declared_bits": "40000000",
+          "selector_1_declared_value": 2.0
+        },
+        {
+          "index": 1,
+          "name": "Mortal_Wound_Duration",
+          "selector_1_declared_bits": "40000000",
+          "selector_1_declared_value": 2.0
+        },
+        {
+          "index": 2,
+          "name": "VAMP",
+          "selector_1_declared_bits": "3dcccccd",
+          "selector_1_declared_value": 0.10000000149011612
+        }
+      ],
+      "fixed_stat_array_root_2c": [
+        {
+          "index": 0,
+          "attribute_id_u32": 4,
+          "declared_operands": [
+            {
+              "offset_hex": "4",
+              "bits": "420c0000",
+              "value": 35.0
+            },
+            {
+              "offset_hex": "8",
+              "bits": "00000000",
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "attribute_id_u32": 15,
+          "declared_operands": [
+            {
+              "offset_hex": "4",
+              "bits": "3eb33333",
+              "value": 0.3499999940395355
+            },
+            {
+              "offset_hex": "8",
+              "bits": "00000000",
+              "value": 0.0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "hero": {
+    "query_spelling": "사슬니",
+    "exact_korean_name": "사슬니",
+    "english_name": "Grumpjaw",
+    "name_key": "CHAR_INFO_GRUMPJAW_NAME",
+    "internal_key_family": "GRUMPJAW",
+    "kind": "hero_not_item",
+    "definition_index": 396,
+    "definition_name": "Grumpjaw",
+    "resource_name": "1DB03E986921288B174C67FEA457D5DC",
+    "resource_sha256": "046b55a3f561974874a0a39fccd1040a3664d70f393c1c5ed0347bdd7c6af7d4",
+    "resource_name_key_field_hex": "14",
+    "resource_actor_name_field_hex": "10"
+  },
+  "lifesteal_buff_definitions": {
+    "resource_name": "551BCB541D80053BACD0A897B7993A77",
+    "resource_sha256": "e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79",
+    "selected": [
+      {
+        "definition_index": 305,
+        "name": "Buff_Item_SerpentMask",
+        "definition_cap_u16_at_24": 1200,
+        "reuse_policy_u32_at_28": 0
+      },
+      {
+        "definition_index": 306,
+        "name": "Buff_Item_SerpentMask_Control",
+        "definition_cap_u16_at_24": 1,
+        "reuse_policy_u32_at_28": 0
+      },
+      {
+        "definition_index": 309,
+        "name": "Buff_Item_PoisonedShiv",
+        "definition_cap_u16_at_24": 1,
+        "reuse_policy_u32_at_28": 0
+      },
+      {
+        "definition_index": 310,
+        "name": "Buff_Item_PoisonedShiv_Payload",
+        "definition_cap_u16_at_24": 1,
+        "reuse_policy_u32_at_28": 0
+      },
+      {
+        "definition_index": 325,
+        "name": "Buff_Item_BookOfEulogies_Control",
+        "definition_cap_u16_at_24": 1,
+        "reuse_policy_u32_at_28": 0
+      },
+      {
+        "definition_index": 327,
+        "name": "Buff_Item_Mid_Vamp",
+        "definition_cap_u16_at_24": 1,
+        "reuse_policy_u32_at_28": 0
+      },
+      {
+        "definition_index": 328,
+        "name": "Buff_Item_High_Vamp",
+        "definition_cap_u16_at_24": 1,
+        "reuse_policy_u32_at_28": 0
+      },
+      {
+        "definition_index": 329,
+        "name": "Buff_Item_UnifiedVamp_Control",
+        "definition_cap_u16_at_24": 1,
+        "reuse_policy_u32_at_28": 0
+      }
+    ]
+  },
+  "supporting_vamp_provider_items": [
+    {
+      "definition_index": 499,
+      "definition_name": "Item_BookOfEulogies",
+      "resource_name": "89541A997F5C9392C625C8179B0D6813",
+      "resource_sha256": "11df72fda7091fa44283bdbe905e380583edbde1977d5a2a4f26ac433e75a2d2",
+      "active_capability_byte": 0,
+      "active_capability_declared": false,
+      "passive_key_name_declared": "",
+      "external_ability_name_declared": "",
+      "inline_ability_name_declared": null,
+      "buffs_declared": [
+        {
+          "index": 0,
+          "name": "Buff_Item_Low_Vamp"
+        },
+        {
+          "index": 1,
+          "name": "Buff_Item_BookOfEulogies_Control"
+        },
+        {
+          "index": 2,
+          "name": "Buff_Item_UnifiedVamp_Control"
+        }
+      ],
+      "properties": [
+        {
+          "index": 0,
+          "name": "VAMP",
+          "selector_1_declared_bits": "3d4ccccd",
+          "selector_1_declared_value": 0.05000000074505806
+        },
+        {
+          "index": 1,
+          "name": "HEAL_RANGED",
+          "selector_1_declared_bits": "41200000",
+          "selector_1_declared_value": 10.0
+        },
+        {
+          "index": 2,
+          "name": "HEAL_MELEE",
+          "selector_1_declared_bits": "41f00000",
+          "selector_1_declared_value": 30.0
+        }
+      ]
+    },
+    {
+      "definition_index": 500,
+      "definition_name": "Item_BarbedNeedle",
+      "resource_name": "9D94489421923C2EA4A67E569D5FC9A0",
+      "resource_sha256": "ef80a278f77868032e64ac89f67211c2fd93c5f2c797706376f0fc0ff0ea2e76",
+      "active_capability_byte": 0,
+      "active_capability_declared": false,
+      "passive_key_name_declared": "",
+      "external_ability_name_declared": "",
+      "inline_ability_name_declared": null,
+      "buffs_declared": [
+        {
+          "index": 0,
+          "name": "Buff_Item_Mid_Vamp"
+        },
+        {
+          "index": 1,
+          "name": "Buff_Item_BookOfEulogies_Control"
+        },
+        {
+          "index": 2,
+          "name": "Buff_Item_UnifiedVamp_Control"
+        }
+      ],
+      "properties": [
+        {
+          "index": 0,
+          "name": "VAMP",
+          "selector_1_declared_bits": "3dcccccd",
+          "selector_1_declared_value": 0.10000000149011612
+        }
+      ]
+    }
+  ],
+  "named_marker_definition_metadata": {
+    "resource_name": "551BCB541D80053BACD0A897B7993A77",
+    "resource_sha256": "e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79",
+    "scope": "Hash-checked local buff declarations. Capacity and reuse policy do not certify accepted runtime instance sharing; remaining scalar words are unlabelled, not inferred priorities.",
+    "selected": [
+      {
+        "definition_index": 319,
+        "name": "Buff_Item_PiercingShard_Pen",
+        "cap_u16_at_24": 1,
+        "reuse_policy_u32_at_28": 0,
+        "unlabelled_scalar_words": {
+          "10": "00000000",
+          "14": "00000000",
+          "18": "00010000",
+          "1c": "00010000",
+          "20": "ffffffff",
+          "24": "00000001",
+          "28": "00000000",
+          "2c": "00000003"
+        }
+      },
+      {
+        "definition_index": 320,
+        "name": "Buff_Item_BrokenMyth_Pen",
+        "cap_u16_at_24": 1,
+        "reuse_policy_u32_at_28": 0,
+        "unlabelled_scalar_words": {
+          "10": "00000000",
+          "14": "00000000",
+          "18": "00010000",
+          "1c": "00010000",
+          "20": "ffffffff",
+          "24": "00000001",
+          "28": "00000000",
+          "2c": "00000003"
+        }
+      },
+      {
+        "definition_index": 326,
+        "name": "Buff_Item_Low_Vamp",
+        "cap_u16_at_24": 1,
+        "reuse_policy_u32_at_28": 0,
+        "unlabelled_scalar_words": {
+          "10": "00000000",
+          "14": "00000000",
+          "18": "00010000",
+          "1c": "00010000",
+          "20": "ffffffff",
+          "24": "00000001",
+          "28": "00000000",
+          "2c": "00000003"
+        }
+      },
+      {
+        "definition_index": 327,
+        "name": "Buff_Item_Mid_Vamp",
+        "cap_u16_at_24": 1,
+        "reuse_policy_u32_at_28": 0,
+        "unlabelled_scalar_words": {
+          "10": "00000000",
+          "14": "00000000",
+          "18": "00010000",
+          "1c": "00010000",
+          "20": "ffffffff",
+          "24": "00000001",
+          "28": "00000000",
+          "2c": "00000003"
+        }
+      },
+      {
+        "definition_index": 328,
+        "name": "Buff_Item_High_Vamp",
+        "cap_u16_at_24": 1,
+        "reuse_policy_u32_at_28": 0,
+        "unlabelled_scalar_words": {
+          "10": "00000000",
+          "14": "00000000",
+          "18": "00010000",
+          "1c": "00010000",
+          "20": "ffffffff",
+          "24": "00000001",
+          "28": "00000000",
+          "2c": "00000003"
+        }
+      },
+      {
+        "definition_index": 330,
+        "name": "Buff_Item_PiercingSpear_Pen",
+        "cap_u16_at_24": 1,
+        "reuse_policy_u32_at_28": 0,
+        "unlabelled_scalar_words": {
+          "10": "00000000",
+          "14": "00000000",
+          "18": "00010000",
+          "1c": "00010000",
+          "20": "ffffffff",
+          "24": "00000001",
+          "28": "00000000",
+          "2c": "00000003"
+        }
+      },
+      {
+        "definition_index": 331,
+        "name": "Buff_Item_TensionBow_Pen",
+        "cap_u16_at_24": 1,
+        "reuse_policy_u32_at_28": 0,
+        "unlabelled_scalar_words": {
+          "10": "00000000",
+          "14": "00000000",
+          "18": "00010000",
+          "1c": "00010000",
+          "20": "ffffffff",
+          "24": "00000001",
+          "28": "00000000",
+          "2c": "00000003"
+        }
+      },
+      {
+        "definition_index": 332,
+        "name": "Buff_Item_Bonesaw_Pen",
+        "cap_u16_at_24": 1,
+        "reuse_policy_u32_at_28": 0,
+        "unlabelled_scalar_words": {
+          "10": "00000000",
+          "14": "00000000",
+          "18": "00010000",
+          "1c": "00010000",
+          "20": "ffffffff",
+          "24": "00000001",
+          "28": "00000000",
+          "2c": "00000003"
+        }
+      }
+    ]
+  }
+}

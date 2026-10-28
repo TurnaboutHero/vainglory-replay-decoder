@@ -1,0 +1,109 @@
+{
+  "schema": "vg.lifespring-hp-boundary.v1",
+  "binary_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "scope": "Static selected path through first HP store; no runtime, callback completion or server claims",
+  "calls": [
+    {
+      "site": "0083c68e",
+      "target": "0092e950"
+    },
+    {
+      "site": "0092e9ae",
+      "target": "0092f720"
+    },
+    {
+      "site": "0094f2bc",
+      "target": "0093ead0"
+    },
+    {
+      "site": "0093eb54",
+      "target": "0095f270"
+    },
+    {
+      "site": "0093eb6b",
+      "target": "0086f300"
+    },
+    {
+      "site": "0093ec29",
+      "target": "00539400"
+    }
+  ],
+  "vtable_apply": {
+    "site": "0127c9bc",
+    "target": "0094f210"
+  },
+  "slices": [
+    {
+      "name": "producer_missing_hp_and_threshold",
+      "start": "0083c621",
+      "end_exclusive": "0083c647",
+      "sha256": "4b5335da6a5c9c46f70dab7721fc1e3ea3132bfdb1914605b97511bdb99305ec"
+    },
+    {
+      "name": "producer_action_fields",
+      "start": "0083c647",
+      "end_exclusive": "0083c693",
+      "sha256": "b63e1da9d00638b2a2390de5ec1c1a414a89fbb77890169188b765b75f061524"
+    },
+    {
+      "name": "clone_amount_and_flags",
+      "start": "0092e984",
+      "end_exclusive": "0092e9b3",
+      "sha256": "b80f08808919152c8911214f539fbd8db7aec3c4b8130b22c8cdbcf69edcaebd"
+    },
+    {
+      "name": "apply_hp_gate_and_unchanged_operand",
+      "start": "0094f294",
+      "end_exclusive": "0094f2c3",
+      "sha256": "a0a6f19563300fb1ebbf989f1cc424ce3baeeec0bd2eaba74901fd162418d199"
+    },
+    {
+      "name": "add_and_post_store_notification",
+      "start": "0093eb40",
+      "end_exclusive": "0093eb70",
+      "sha256": "0fcfeb1db1e0a5b17cc83fe8a96f7d8dcba85fa39e4961f2e5d4c31c29381bc4"
+    },
+    {
+      "name": "resource_zero_store_complete_branch",
+      "start": "0095f270",
+      "end_exclusive": "0095f2ec",
+      "sha256": "4e0d6132c8b830153dec6372e4990386abe2e87509a84985c6f8d0d679fe744b"
+    }
+  ],
+  "instruction_checks": [
+    {
+      "site": "0083c629",
+      "bytes": "f30f5c45f0d95de8f30f5945e8f30f59833c0200000f2f05c4422101764c"
+    },
+    {
+      "site": "0092e993",
+      "bytes": "8b4318894618"
+    },
+    {
+      "site": "0094f2a1",
+      "bytes": "8b41200f57c00f2f80f00200007326"
+    },
+    {
+      "site": "0094f2b0",
+      "bytes": "f30f10461851f30f11042452"
+    },
+    {
+      "site": "0093eb40",
+      "bytes": "f30f1084b1f0020000f30f58c151f30f11042456"
+    },
+    {
+      "site": "0093eb60",
+      "bytes": "8d450c5056ff355030a701"
+    },
+    {
+      "site": "0095f278",
+      "bytes": "0f57db8b4508f30f5fc3f30f118481f002000085c0755d"
+    },
+    {
+      "site": "0095f2d4",
+      "bytes": "f30f5d81f0020000f30f5fc3f30f1181f00200005dc20800"
+    }
+  ],
+  "notification_operand": "address of original requested ADD operand, not recomputed stored-minus-old delta",
+  "amp_scope": "No stat33..36 calculation in selected producer, unchanged action-copy/apply, ADD or resource0 setter branch; indirect callbacks and upstream inputs remain outside scope"
+}

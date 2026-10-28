@@ -1,0 +1,66 @@
+ENTRY 00947cb0 BODY [[00947cb0, 00947d15]]
+
+void __thiscall FUN_00947cb0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
+
+{
+  char cVar1;
+  int *piVar2;
+  undefined1 auStack_234 [532];
+  undefined4 uStack_20;
+  
+  cVar1 = func_0x0095fa10(param_2,param_3,param_4);
+  if (cVar1 != '\0') {
+    func_0x0081d300(param_2);
+    uStack_20 = param_3;
+    for (piVar2 = (int *)(-(uint)(*(int *)(param_1 + 8) != 0) & *(int *)(param_1 + 8) - 4U);
+        piVar2 != (int *)0x0; piVar2 = (int *)(-(uint)(piVar2[1] != 0) & piVar2[1] - 4U)) {
+      (**(code **)(*piVar2 + 4))(auStack_234);
+    }
+  }
+  return;
+}
+
+
+
+INSTRUCTIONS
+00947cb0 PUSH EBP
+00947cb1 MOV EBP,ESP
+00947cb3 SUB ESP,0x230
+00947cb9 PUSH ESI
+00947cba PUSH EDI
+00947cbb PUSH dword ptr [EBP + 0x10]
+00947cbe MOV EDI,dword ptr [EBP + 0xc]
+00947cc1 MOV ESI,ECX
+00947cc3 PUSH EDI
+00947cc4 PUSH dword ptr [EBP + 0x8]
+00947cc7 CALL 0x0095fa10
+00947ccc TEST AL,AL
+00947cce JZ 0x00947d0e
+00947cd0 PUSH dword ptr [EBP + 0x8]
+00947cd3 LEA ECX,[EBP + 0xfffffdd0]
+00947cd9 CALL 0x0081d300
+00947cde MOV ESI,dword ptr [ESI + 0x8]
+00947ce1 MOV dword ptr [EBP + -0x1c],EDI
+00947ce4 LEA EAX,[ESI + -0x4]
+00947ce7 NEG ESI
+00947ce9 SBB ESI,ESI
+00947ceb AND ESI,EAX
+00947ced JZ 0x00947d0e
+00947cef NOP
+00947cf0 MOV EAX,dword ptr [ESI]
+00947cf2 LEA ECX,[EBP + 0xfffffdd0]
+00947cf8 PUSH ECX
+00947cf9 MOV ECX,ESI
+00947cfb CALL dword ptr [EAX + 0x4]
+00947cfe MOV EAX,dword ptr [ESI + 0x4]
+00947d01 MOV ESI,EAX
+00947d03 ADD EAX,-0x4
+00947d06 NEG ESI
+00947d08 SBB ESI,ESI
+00947d0a AND ESI,EAX
+00947d0c JNZ 0x00947cf0
+00947d0e POP EDI
+00947d0f POP ESI
+00947d10 MOV ESP,EBP
+00947d12 POP EBP
+00947d13 RET 0xc

@@ -1,0 +1,67 @@
+{
+  "schema": "vg.stat-stacking-pe.v1",
+  "binary_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "cdr_initialization": {
+    "site": "0044e081",
+    "destination": "020e73ac",
+    "instruction_hex": "c705ac730e023333b33e",
+    "float_bits": "3eb33333",
+    "float_value": 0.3499999940395355,
+    "scope": "Static initialization store; not an immutable runtime cap"
+  },
+  "lower_bound_initializers": [
+    {
+      "address": "01a760fc",
+      "bits": "00000000"
+    },
+    {
+      "address": "01a760d4",
+      "bits": "3f000000"
+    }
+  ],
+  "folded_stubs": [
+    {
+      "address": "00450910",
+      "bytes": "c3"
+    },
+    {
+      "address": "0045ecd0",
+      "bytes": "c20400"
+    },
+    {
+      "address": "004b7c00",
+      "bytes": "d9eec3"
+    }
+  ],
+  "registrations": [
+    {
+      "name": "Buff_Item_BrokenMyth_Pen",
+      "copy_site": "0044b63b",
+      "name_global": "01a744b0",
+      "entry": "01a79f10",
+      "factory": "008ee190"
+    },
+    {
+      "name": "Buff_Item_TensionBow_Pen",
+      "copy_site": "0044b6a9",
+      "name_global": "01a74528",
+      "entry": "01a79f68",
+      "factory": "008f3190"
+    },
+    {
+      "name": "Buff_Item_Bonesaw_Pen",
+      "copy_site": "0044b6b3",
+      "name_global": "01a74534",
+      "entry": "01a79f70",
+      "factory": "008edd90"
+    },
+    {
+      "name": "Buff_Grumpjaw_Perk_Armor",
+      "copy_site": "0044cbdf",
+      "name_global": "01a73310",
+      "entry": "01a7b060",
+      "factory": "008e5b60"
+    }
+  ],
+  "scope": "Selected static bytes only, not gameplay execution"
+}

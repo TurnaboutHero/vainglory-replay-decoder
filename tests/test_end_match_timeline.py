@@ -60,6 +60,26 @@ class EndMatchTimelineTests(unittest.TestCase):
                 self.assertEqual(fields['expected_content_length'], 8)
                 self.assertFalse(any(key.startswith('native_') for key in fields))
 
+    def test_contradictory_end_requests_remain_independent_operands(self) -> None:
+        values = (0x12345602, 0xabcdef01, 0xfedcba02)
+        payloads = [struct.pack('>IBB', raw, 2, 0xa5) for raw in values]
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'match.0.vgr'
+            path.write_bytes(b''.join(packet(100 + i, payload)
+                                      for i, payload in enumerate(payloads)))
+            rows = list(iter_timeline(path, opcodes=[0x03f1]))
+        self.assertEqual([row['native_requested_team_raw'] for row in rows], list(values))
+        self.assertEqual([row['native_requested_team_id'] for row in rows], [2, 1, 2])
+        for row, raw, payload in zip(rows, values, payloads):
+            self.assertEqual(row['native_requested_team_raw'], row['native_winning_team_raw'])
+            self.assertEqual(row['native_requested_team_id'], row['native_winning_team_id'])
+            self.assertEqual(row['native_result_scope'], 'end_request')
+            self.assertEqual(row['payload_hex'], payload.hex())
+            self.assertEqual(row['native_requested_team_raw'], raw)
+            for unsupported in ('winner', 'certified_winner', 'winning_color', 'team_color',
+                                'match_completed', 'request_accepted', 'selected_actor_won'):
+                self.assertNotIn(unsupported, row)
+
     def test_following_record_does_not_supply_timestamp(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / 'match.0.vgr'

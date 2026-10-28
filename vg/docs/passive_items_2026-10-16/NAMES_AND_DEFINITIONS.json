@@ -1,0 +1,1049 @@
+{
+  "schema": "vg.selected-item-name-resource-evidence.v1",
+  "scope": "Current installed asset names and declarations with selected static native initialization roles; actual running/recording version and runtime effect application unverified",
+  "executable_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "manifest": {
+    "resource_id": "03A640B504C2B4D7C8CBF3A04E189223",
+    "sha256": "7292b885378be83cb8596601bad7d0c7adfaab1e91e23f8ea65601f03136755c",
+    "definition_count": 932
+  },
+  "cff_profile": {
+    "key_table_va": "01e3f978",
+    "version": 12,
+    "architecture": 0
+  },
+  "localization_sources": [
+    {
+      "language": "en",
+      "relative_resource_name": "Localization/english.strings",
+      "resource_id": "7ED4F1146624D2D991A07272993B26C4",
+      "sha256": "209df4c745201dec58bd5ef2497f1835298b21cbc8f23bd1bb1669589462d8d4",
+      "entry_count": 7322,
+      "decode": "strict base64 -> UTF-8 -> quoted key/value strings; escape sequences retained"
+    },
+    {
+      "language": "ko",
+      "relative_resource_name": "Localization/localization_ko.strings",
+      "resource_id": "AE9CB5A29032FAFA098A4BBE22C79B84",
+      "sha256": "610d2d6a3a543a11ffa555284ddcc3ce90af2aa1b7b54afb99a6dcf98b469a5e",
+      "entry_count": 7322,
+      "decode": "strict base64 -> UTF-8 -> quoted key/value strings; escape sequences retained"
+    }
+  ],
+  "items": [
+    {
+      "definition_index": 482,
+      "definition_symbol": "*Item_Bonesaw*",
+      "resource_id": "BBB2B75EDB5B7BF1903527D074EA4414",
+      "resource_sha256": "9ebd8b1a6e0ec873e3f5e2477086f56857bb1f2d90b273b924d62677dcbaa8bc",
+      "root_inst_offset": "0x0",
+      "symbol_type": "0xfc7583e1",
+      "localization_key_at_root_08": "STORE_ITEM_BONESAW_NAME",
+      "korean_name": "뼈톱",
+      "english_name": "Bonesaw",
+      "active_byte_at_root_38": 0,
+      "external_ability_ref_at_root_3c": "",
+      "embedded_ability_name_at_root_44": "",
+      "passive_cooldown_name_at_root_11c": "",
+      "declared_effect_categories": [
+        "passive",
+        "conditional_target_armor_stacks"
+      ],
+      "category_evidence_scope": "localized description plus selected resource references/property labels; not executed native effects",
+      "item_properties_pointer_at_root": "0x130",
+      "item_properties": [
+        {
+          "index": 0,
+          "offset": "0x2e4",
+          "name": "ARMOR_PEN",
+          "selector1_f32": 0.20000000298023224,
+          "bits": "0x3e4ccccd"
+        },
+        {
+          "index": 1,
+          "offset": "0x310",
+          "name": "SHRED",
+          "selector1_f32": 0.10000000149011612,
+          "bits": "0x3dcccccd"
+        },
+        {
+          "index": 2,
+          "offset": "0x338",
+          "name": "DURATION",
+          "selector1_f32": 3.0,
+          "bits": "0x40400000"
+        },
+        {
+          "index": 3,
+          "offset": "0x364",
+          "name": "MAX",
+          "selector1_f32": 5.0,
+          "bits": "0x40a00000"
+        }
+      ],
+      "active_ability_properties_pointer_at_root": "0xcc",
+      "active_ability_properties": [],
+      "buff_name_references": [
+        {
+          "inst_pointer_offset": "0x1f0",
+          "symbol": "Buff_Item_Bonesaw"
+        },
+        {
+          "inst_pointer_offset": "0x208",
+          "symbol": "Buff_Item_PiercingSpear_Pen"
+        },
+        {
+          "inst_pointer_offset": "0x228",
+          "symbol": "Buff_Item_Bonesaw_Pen"
+        }
+      ],
+      "fixed_attribute_values": "not semantically decoded in this review; passive classification does not exclude fixed stats"
+    },
+    {
+      "definition_index": 523,
+      "definition_symbol": "*Item_DragonsEye*",
+      "resource_id": "21C204A34AAEF1A634F9D2430A7F820A",
+      "resource_sha256": "d3edad89a9234cd21408a0c3a5fbc2b3fcaa7041754ba305a9bf6e5141649bf6",
+      "root_inst_offset": "0x0",
+      "symbol_type": "0xfc7583e1",
+      "localization_key_at_root_08": "STORE_ITEM_DRAGONS_EYE_NAME",
+      "korean_name": "용의 눈",
+      "english_name": "Dragon's Eye",
+      "active_byte_at_root_38": 0,
+      "external_ability_ref_at_root_3c": "",
+      "embedded_ability_name_at_root_44": "",
+      "passive_cooldown_name_at_root_11c": "",
+      "declared_effect_categories": [
+        "passive",
+        "conditional_crystal_stacks_and_decay"
+      ],
+      "category_evidence_scope": "localized description plus selected resource references/property labels; not executed native effects",
+      "item_properties_pointer_at_root": "0x130",
+      "item_properties": [
+        {
+          "index": 0,
+          "offset": "0x2ac",
+          "name": "BONUS_CRYSTAL",
+          "selector1_f32": 10.0,
+          "bits": "0x41200000"
+        },
+        {
+          "index": 1,
+          "offset": "0x2dc",
+          "name": "AMP_DURATION",
+          "selector1_f32": 5.0,
+          "bits": "0x40a00000"
+        },
+        {
+          "index": 2,
+          "offset": "0x30c",
+          "name": "FALLOFF_PER_SEC",
+          "selector1_f32": 3.0,
+          "bits": "0x40400000"
+        },
+        {
+          "index": 3,
+          "offset": "0x33c",
+          "name": "MAX_STACKS",
+          "selector1_f32": 15.0,
+          "bits": "0x41700000"
+        }
+      ],
+      "active_ability_properties_pointer_at_root": "0xcc",
+      "active_ability_properties": [],
+      "buff_name_references": [
+        {
+          "inst_pointer_offset": "0x1ec",
+          "symbol": "Buff_Item_DragonsEye_Control"
+        }
+      ],
+      "fixed_attribute_values": "not semantically decoded in this review; passive classification does not exclude fixed stats"
+    },
+    {
+      "definition_index": 525,
+      "definition_symbol": "*Item_SlumberingHusk*",
+      "resource_id": "ABFF72F05789D6566BD2389BFD300BFC",
+      "resource_sha256": "c8621d33f3908a55747310e834674ef3863854c11325e87162768b7e021f7b4a",
+      "root_inst_offset": "0x0",
+      "symbol_type": "0xfc7583e1",
+      "localization_key_at_root_08": "STORE_ITEM_SLUMBERING_HUSK_NAME",
+      "korean_name": "거대괴수 갑주",
+      "english_name": "Slumbering Husk",
+      "active_byte_at_root_38": 0,
+      "external_ability_ref_at_root_3c": "",
+      "embedded_ability_name_at_root_44": "",
+      "passive_cooldown_name_at_root_11c": "SlumberingHusk",
+      "declared_effect_categories": [
+        "passive",
+        "burst_threshold",
+        "fortified_health_duration",
+        "lockout"
+      ],
+      "category_evidence_scope": "localized description plus selected resource references/property labels; not executed native effects",
+      "item_properties_pointer_at_root": "0x130",
+      "item_properties": [
+        {
+          "index": 0,
+          "offset": "0x2ec",
+          "name": "Trigger_Threshold",
+          "selector1_f32": 0.25,
+          "bits": "0x3e800000"
+        },
+        {
+          "index": 1,
+          "offset": "0x320",
+          "name": "Burst_Window",
+          "selector1_f32": 1.0,
+          "bits": "0x3f800000"
+        },
+        {
+          "index": 2,
+          "offset": "0x350",
+          "name": "Fortified_Health_Duration",
+          "selector1_f32": 3.0,
+          "bits": "0x40400000"
+        },
+        {
+          "index": 3,
+          "offset": "0x38c",
+          "name": "Lockout_Duration",
+          "selector1_f32": 30.0,
+          "bits": "0x41f00000"
+        }
+      ],
+      "active_ability_properties_pointer_at_root": "0xcc",
+      "active_ability_properties": [],
+      "buff_name_references": [
+        {
+          "inst_pointer_offset": "0x218",
+          "symbol": "Buff_Item_SlumberingHuskControl"
+        }
+      ],
+      "fixed_attribute_values": "not semantically decoded in this review; passive classification does not exclude fixed stats"
+    },
+    {
+      "definition_index": 539,
+      "definition_symbol": "*Item_SeraphicShell*",
+      "resource_id": "5B4F38F9D21A2B81FB876171CE6B0F98",
+      "resource_sha256": "23ffe6385cfa9c9f568cf0564ec8110e56ae750d09b59d29ce26d4d3203192b6",
+      "root_inst_offset": "0x0",
+      "symbol_type": "0xfc7583e1",
+      "localization_key_at_root_08": "STORE_ITEM_SERAPHIC_SHELL_NAME",
+      "korean_name": "천상의 장막",
+      "english_name": "Celestial Shroud",
+      "active_byte_at_root_38": 0,
+      "external_ability_ref_at_root_3c": "",
+      "embedded_ability_name_at_root_44": "",
+      "passive_cooldown_name_at_root_11c": "SeraphicShell",
+      "declared_effect_categories": [
+        "passive",
+        "ability_damage_block",
+        "cooldown"
+      ],
+      "category_evidence_scope": "localized description plus selected resource references/property labels; not executed native effects",
+      "item_properties_pointer_at_root": "0x130",
+      "item_properties": [
+        {
+          "index": 0,
+          "offset": "0x2dc",
+          "name": "MAGIC_DAMAGE_REDUCTION",
+          "selector1_f32": 1.0,
+          "bits": "0x3f800000"
+        },
+        {
+          "index": 1,
+          "offset": "0x314",
+          "name": "COOLDOWN",
+          "selector1_f32": 35.0,
+          "bits": "0x420c0000"
+        },
+        {
+          "index": 2,
+          "offset": "0x340",
+          "name": "BLOCK_DURATION",
+          "selector1_f32": 0.5,
+          "bits": "0x3f000000"
+        }
+      ],
+      "active_ability_properties_pointer_at_root": "0xcc",
+      "active_ability_properties": [],
+      "buff_name_references": [
+        {
+          "inst_pointer_offset": "0x214",
+          "symbol": "Buff_Item_SeraphicShell"
+        }
+      ],
+      "fixed_attribute_values": "not semantically decoded in this review; passive classification does not exclude fixed stats"
+    },
+    {
+      "definition_index": 504,
+      "definition_symbol": "*Item_Lifespring*",
+      "resource_id": "6DDEBC81D54A151903FD8ED28295DD87",
+      "resource_sha256": "313469cc650b03374b1f9e0a5d7527166c6071d4ee3695f6a1e7a1f96ecb243f",
+      "root_inst_offset": "0x0",
+      "symbol_type": "0xfc7583e1",
+      "localization_key_at_root_08": "STORE_ITEM_LIFEWELL_NAME",
+      "korean_name": "생명의 샘",
+      "english_name": "Lifespring",
+      "active_byte_at_root_38": 0,
+      "external_ability_ref_at_root_3c": "",
+      "embedded_ability_name_at_root_44": "",
+      "passive_cooldown_name_at_root_11c": "",
+      "declared_effect_categories": [
+        "passive",
+        "out_of_combat_regeneration"
+      ],
+      "category_evidence_scope": "localized description plus selected resource references/property labels; not executed native effects",
+      "item_properties_pointer_at_root": "0x130",
+      "item_properties": [
+        {
+          "index": 0,
+          "offset": "0x26c",
+          "name": "PCT_MISSING_HEALTH_HEAL",
+          "selector1_f32": 0.014999999664723873,
+          "bits": "0x3c75c28f"
+        },
+        {
+          "index": 1,
+          "offset": "0x2a4",
+          "name": "TIME_OUT_OF_COMBAT",
+          "selector1_f32": 5.0,
+          "bits": "0x40a00000"
+        }
+      ],
+      "active_ability_properties_pointer_at_root": "0xcc",
+      "active_ability_properties": [],
+      "buff_name_references": [
+        {
+          "inst_pointer_offset": "0x1dc",
+          "symbol": "Buff_Item_Lifespring"
+        }
+      ],
+      "fixed_attribute_values": "not semantically decoded in this review; passive classification does not exclude fixed stats"
+    },
+    {
+      "definition_index": 531,
+      "definition_symbol": "*Item_RooksDecree*",
+      "resource_id": "1FD1BD03669F6F58728A2C5A47DB3B1E",
+      "resource_sha256": "f332aea67b16b4fa84f664cf20047b140ee1c96cac25b1b9bc0384b05579c3fc",
+      "root_inst_offset": "0x0",
+      "symbol_type": "0xfc7583e1",
+      "localization_key_at_root_08": "STORE_ITEM_ROOKS_DECREE_NAME",
+      "korean_name": "수호령",
+      "english_name": "Rook's Decree",
+      "active_byte_at_root_38": 0,
+      "external_ability_ref_at_root_3c": "",
+      "embedded_ability_name_at_root_44": "",
+      "passive_cooldown_name_at_root_11c": "RooksDecree",
+      "declared_effect_categories": [
+        "passive",
+        "ability_then_attack",
+        "ally_barrier",
+        "cooldown"
+      ],
+      "category_evidence_scope": "localized description plus selected resource references/property labels; not executed native effects",
+      "item_properties_pointer_at_root": "0x130",
+      "item_properties": [
+        {
+          "index": 0,
+          "offset": "0x2f8",
+          "name": "BONUS_HEALTH_RATIO",
+          "selector1_f32": 0.15000000596046448,
+          "bits": "0x3e19999a"
+        },
+        {
+          "index": 1,
+          "offset": "0x32c",
+          "name": "BARRIER_STRENGTH",
+          "selector1_f32": 150.0,
+          "bits": "0x43160000"
+        },
+        {
+          "index": 2,
+          "offset": "0x360",
+          "name": "COOLDOWN",
+          "selector1_f32": 10.0,
+          "bits": "0x41200000"
+        },
+        {
+          "index": 3,
+          "offset": "0x38c",
+          "name": "DURATION",
+          "selector1_f32": 2.0,
+          "bits": "0x40000000"
+        }
+      ],
+      "active_ability_properties_pointer_at_root": "0xcc",
+      "active_ability_properties": [],
+      "buff_name_references": [
+        {
+          "inst_pointer_offset": "0x230",
+          "symbol": "Buff_Item_RooksDecree"
+        }
+      ],
+      "fixed_attribute_values": "not semantically decoded in this review; passive classification does not exclude fixed stats"
+    },
+    {
+      "definition_index": 534,
+      "definition_symbol": "*Item_CapacitorPlate*",
+      "resource_id": "BC0C89FE5C550B32C501FACA5E276BEA",
+      "resource_sha256": "826ad9643e0412a9f8c8f1e94accb2fa156d5321a355eb507e715066c9e00468",
+      "root_inst_offset": "0x0",
+      "symbol_type": "0xfc7583e1",
+      "localization_key_at_root_08": "STORE_ITEM_CAPACITOR_PLATE_NAME",
+      "korean_name": "축전판",
+      "english_name": "Capacitor Plate",
+      "active_byte_at_root_38": 0,
+      "external_ability_ref_at_root_3c": "",
+      "embedded_ability_name_at_root_44": "",
+      "passive_cooldown_name_at_root_11c": "",
+      "declared_effect_categories": [
+        "passive",
+        "heal_barrier_amplification",
+        "ally_speed",
+        "per_target_lockout"
+      ],
+      "category_evidence_scope": "localized description plus selected resource references/property labels; not executed native effects",
+      "item_properties_pointer_at_root": "0x130",
+      "item_properties": [
+        {
+          "index": 0,
+          "offset": "0x304",
+          "name": "HEAL_AMP",
+          "selector1_f32": 0.15000000596046448,
+          "bits": "0x3e19999a"
+        },
+        {
+          "index": 1,
+          "offset": "0x330",
+          "name": "BARRIER_AMP",
+          "selector1_f32": 0.15000000596046448,
+          "bits": "0x3e19999a"
+        },
+        {
+          "index": 2,
+          "offset": "0x35c",
+          "name": "MSPD_STRENGTH",
+          "selector1_f32": 1.5,
+          "bits": "0x3fc00000"
+        },
+        {
+          "index": 3,
+          "offset": "0x38c",
+          "name": "MSPD_DURATION",
+          "selector1_f32": 3.0,
+          "bits": "0x40400000"
+        },
+        {
+          "index": 4,
+          "offset": "0x3bc",
+          "name": "LOCKOUT_DURATION",
+          "selector1_f32": 15.0,
+          "bits": "0x41700000"
+        }
+      ],
+      "active_ability_properties_pointer_at_root": "0xcc",
+      "active_ability_properties": [],
+      "buff_name_references": [
+        {
+          "inst_pointer_offset": "0x240",
+          "symbol": "Buff_Item_CapacitorPlate_Control"
+        }
+      ],
+      "fixed_attribute_values": "not semantically decoded in this review; passive classification does not exclude fixed stats"
+    },
+    {
+      "definition_index": 535,
+      "definition_symbol": "*Item_ProtectorContract*",
+      "resource_id": "7749ECB5692A34AFE30384C55144E61D",
+      "resource_sha256": "d9aee60d624c91e57ad7fa1d7344e4f7e86ce3ba3ff587f7db1249c3083bebbb",
+      "root_inst_offset": "0x0",
+      "symbol_type": "0xfc7583e1",
+      "localization_key_at_root_08": "STORE_ITEM_PROTECTOR_CONTRACT_NAME",
+      "korean_name": "수호자의 계약서",
+      "english_name": "Protector Contract",
+      "active_byte_at_root_38": 0,
+      "external_ability_ref_at_root_3c": "",
+      "embedded_ability_name_at_root_44": "",
+      "passive_cooldown_name_at_root_11c": "ProtectorContract",
+      "declared_effect_categories": [
+        "passive",
+        "context_only_not_requested_guardian",
+        "barrier",
+        "cooldown"
+      ],
+      "category_evidence_scope": "localized description plus selected resource references/property labels; not executed native effects",
+      "item_properties_pointer_at_root": "0x130",
+      "item_properties": [
+        {
+          "index": 0,
+          "offset": "0x2a0",
+          "name": "BARRIER_STRENGTH",
+          "selector1_f32": 150.0,
+          "bits": "0x43160000"
+        },
+        {
+          "index": 1,
+          "offset": "0x2d4",
+          "name": "DURATION",
+          "selector1_f32": 2.0,
+          "bits": "0x40000000"
+        },
+        {
+          "index": 2,
+          "offset": "0x300",
+          "name": "COOLDOWN",
+          "selector1_f32": 12.0,
+          "bits": "0x41400000"
+        }
+      ],
+      "active_ability_properties_pointer_at_root": "0xcc",
+      "active_ability_properties": [],
+      "buff_name_references": [
+        {
+          "inst_pointer_offset": "0x1f4",
+          "symbol": "Buff_Item_ProtectorContract"
+        }
+      ],
+      "fixed_attribute_values": "not semantically decoded in this review; passive classification does not exclude fixed stats"
+    },
+    {
+      "definition_index": 487,
+      "definition_symbol": "*Item_FountainOfRenewal*",
+      "resource_id": "3A4A448F2A4B2A65D84997E8DBC3784A",
+      "resource_sha256": "4f367432f83f947b6446c2f083d0d1de81d0c6ab678bfe3202140088cdb32c37",
+      "root_inst_offset": "0x0",
+      "symbol_type": "0xfc7583e1",
+      "localization_key_at_root_08": "STORE_ITEM_FOUNTAIN_NAME",
+      "korean_name": "재생의 분수",
+      "english_name": "Fountain of Renewal",
+      "active_byte_at_root_38": 1,
+      "external_ability_ref_at_root_3c": "",
+      "embedded_ability_name_at_root_44": "Ability__Item__FountainOfRenewal",
+      "passive_cooldown_name_at_root_11c": "",
+      "declared_effect_categories": [
+        "active",
+        "passive_lifespring_reference",
+        "timed_heal"
+      ],
+      "category_evidence_scope": "localized description plus selected resource references/property labels; not executed native effects",
+      "item_properties_pointer_at_root": "0x130",
+      "item_properties": [
+        {
+          "index": 0,
+          "offset": "0x358",
+          "name": "HEAL_PER_PCT_MISSING_HEALTH",
+          "selector1_f32": 2.5,
+          "bits": "0x40200000"
+        },
+        {
+          "index": 1,
+          "offset": "0x394",
+          "name": "HEAL_TIME",
+          "selector1_f32": 3.0,
+          "bits": "0x40400000"
+        },
+        {
+          "index": 2,
+          "offset": "0x3c0",
+          "name": "RANGE",
+          "selector1_f32": 12.0,
+          "bits": "0x41400000"
+        },
+        {
+          "index": 3,
+          "offset": "0x3e8",
+          "name": "Shot Travel Time",
+          "selector1_f32": 0.5,
+          "bits": "0x3f000000"
+        }
+      ],
+      "active_ability_properties_pointer_at_root": "0xcc",
+      "active_ability_properties": [
+        {
+          "index": 0,
+          "inst_offset": "0x304",
+          "name": "Cooldown",
+          "selector1_f32": 75.0,
+          "bits": "42960000"
+        }
+      ],
+      "buff_name_references": [
+        {
+          "inst_pointer_offset": "0x218",
+          "symbol": "Buff_Item_Lifespring"
+        }
+      ],
+      "fixed_attribute_values": "not semantically decoded in this review; passive classification does not exclude fixed stats"
+    },
+    {
+      "definition_index": 488,
+      "definition_symbol": "*Item_Crucible*",
+      "resource_id": "2E729BE9B5F19D6BCDCDE778A0A70442",
+      "resource_sha256": "c24706505293f06fd1c63dc45e226f8aec345afcbb67a003b4a81af0b9e58fd2",
+      "root_inst_offset": "0x0",
+      "symbol_type": "0xfc7583e1",
+      "localization_key_at_root_08": "STORE_ITEM_TEAM_BLOCK_NAME",
+      "korean_name": "도가니",
+      "english_name": "Crucible",
+      "active_byte_at_root_38": 1,
+      "external_ability_ref_at_root_3c": "",
+      "embedded_ability_name_at_root_44": "Ability__Item__Crucible",
+      "passive_cooldown_name_at_root_11c": "",
+      "declared_effect_categories": [
+        "active",
+        "team_reflex_block"
+      ],
+      "category_evidence_scope": "localized description plus selected resource references/property labels; not executed native effects",
+      "item_properties_pointer_at_root": "0x130",
+      "item_properties": [
+        {
+          "index": 0,
+          "offset": "0x2e8",
+          "name": "RANGE",
+          "selector1_f32": 12.0,
+          "bits": "0x41400000"
+        }
+      ],
+      "active_ability_properties_pointer_at_root": "0xcc",
+      "active_ability_properties": [
+        {
+          "index": 0,
+          "inst_offset": "0x2a0",
+          "name": "Cooldown",
+          "selector1_f32": 75.0,
+          "bits": "42960000"
+        }
+      ],
+      "buff_name_references": [],
+      "fixed_attribute_values": "not semantically decoded in this review; passive classification does not exclude fixed stats"
+    },
+    {
+      "definition_index": 497,
+      "definition_symbol": "*Item_WarTreads*",
+      "resource_id": "41FDBF5A5B14790853F419D420A34DFD",
+      "resource_sha256": "48d93ffbbe4c855c02835b01b3ddbb387231007bf3f5a704dabf22216b8ba645",
+      "root_inst_offset": "0x0",
+      "symbol_type": "0xfc7583e1",
+      "localization_key_at_root_08": "STORE_ITEM_WAR_TREADS_NAME",
+      "korean_name": "전쟁 걸음",
+      "english_name": "War Treads",
+      "active_byte_at_root_38": 1,
+      "external_ability_ref_at_root_3c": "",
+      "embedded_ability_name_at_root_44": "Ability__Item__WarTreads",
+      "passive_cooldown_name_at_root_11c": "",
+      "declared_effect_categories": [
+        "active",
+        "passive_travel_reference",
+        "timed_team_speed"
+      ],
+      "category_evidence_scope": "localized description plus selected resource references/property labels; not executed native effects",
+      "item_properties_pointer_at_root": "0x130",
+      "item_properties": [
+        {
+          "index": 0,
+          "offset": "0x33c",
+          "name": "SPEED",
+          "selector1_f32": 3.0,
+          "bits": "0x40400000"
+        },
+        {
+          "index": 1,
+          "offset": "0x364",
+          "name": "BASE_DURATION",
+          "selector1_f32": 3.0,
+          "bits": "0x40400000"
+        },
+        {
+          "index": 2,
+          "offset": "0x394",
+          "name": "PER_ALLY_BONUS_DURATION",
+          "selector1_f32": 0.0,
+          "bits": "0x0"
+        },
+        {
+          "index": 3,
+          "offset": "0x3cc",
+          "name": "RANGE",
+          "selector1_f32": 12.0,
+          "bits": "0x41400000"
+        },
+        {
+          "index": 4,
+          "offset": "0x3f4",
+          "name": "STORMGUARD_BONUS_DMG",
+          "selector1_f32": 0.0,
+          "bits": "0x0"
+        },
+        {
+          "index": 5,
+          "offset": "0x42c",
+          "name": "MOVE",
+          "selector1_f32": 0.5,
+          "bits": "0x3f000000"
+        },
+        {
+          "index": 6,
+          "offset": "0x454",
+          "name": "TRAVEL",
+          "selector1_f32": 0.5,
+          "bits": "0x3f000000"
+        }
+      ],
+      "active_ability_properties_pointer_at_root": "0xcc",
+      "active_ability_properties": [
+        {
+          "index": 0,
+          "inst_offset": "0x2dc",
+          "name": "Cooldown",
+          "selector1_f32": 60.0,
+          "bits": "42700000"
+        }
+      ],
+      "buff_name_references": [
+        {
+          "inst_pointer_offset": "0x1e8",
+          "symbol": "Buff_Item_TravelBoots"
+        },
+        {
+          "inst_pointer_offset": "0x204",
+          "symbol": "Buff_Item_Travel"
+        }
+      ],
+      "fixed_attribute_values": "not semantically decoded in this review; passive classification does not exclude fixed stats"
+    },
+    {
+      "definition_index": 533,
+      "definition_symbol": "*Item_Pulseweave*",
+      "resource_id": "6DA6C7A7489D1681EC0D2C5A7866D2B8",
+      "resource_sha256": "96ef2b64541b626bf5596f96a4f70a7aeee43628c0dfed49d32458c7e5755991",
+      "root_inst_offset": "0x0",
+      "symbol_type": "0xfc7583e1",
+      "localization_key_at_root_08": "STORE_ITEM_PULSEWEAVE_NAME",
+      "korean_name": "척력장",
+      "english_name": "Pulseweave",
+      "active_byte_at_root_38": 0,
+      "external_ability_ref_at_root_3c": "",
+      "embedded_ability_name_at_root_44": "",
+      "passive_cooldown_name_at_root_11c": "Pulseweave",
+      "declared_effect_categories": [
+        "passive",
+        "candidate_only_for_unmatched_spelling",
+        "trigger",
+        "damage_slow",
+        "cooldown"
+      ],
+      "category_evidence_scope": "localized description plus selected resource references/property labels; not executed native effects",
+      "item_properties_pointer_at_root": "0x130",
+      "item_properties": [
+        {
+          "index": 0,
+          "offset": "0x2e8",
+          "name": "BONUS_BASE_MSPD",
+          "selector1_f32": 0.07999999821186066,
+          "bits": "0x3da3d70a"
+        },
+        {
+          "index": 1,
+          "offset": "0x318",
+          "name": "COOLDOWN",
+          "selector1_f32": 45.0,
+          "bits": "0x42340000"
+        },
+        {
+          "index": 2,
+          "offset": "0x344",
+          "name": "TRIGGER_TIME",
+          "selector1_f32": 3.0,
+          "bits": "0x40400000"
+        },
+        {
+          "index": 3,
+          "offset": "0x374",
+          "name": "MSPD_STRENGTH",
+          "selector1_f32": 2.0,
+          "bits": "0x40000000"
+        },
+        {
+          "index": 4,
+          "offset": "0x3a4",
+          "name": "DAMAGE_BHP_SCALING",
+          "selector1_f32": 0.15000000596046448,
+          "bits": "0x3e19999a"
+        },
+        {
+          "index": 5,
+          "offset": "0x3d8",
+          "name": "SLOW_BASE_STRENGTH",
+          "selector1_f32": 0.05000000074505806,
+          "bits": "0x3d4ccccd"
+        },
+        {
+          "index": 6,
+          "offset": "0x40c",
+          "name": "SLOW_BHP_SCALING",
+          "selector1_f32": 0.0003000000142492354,
+          "bits": "0x399d4952"
+        },
+        {
+          "index": 7,
+          "offset": "0x440",
+          "name": "SLOW_DURATION",
+          "selector1_f32": 3.0,
+          "bits": "0x40400000"
+        },
+        {
+          "index": 8,
+          "offset": "0x470",
+          "name": "BURN_RADIUS",
+          "selector1_f32": 2.700000047683716,
+          "bits": "0x402ccccd"
+        },
+        {
+          "index": 9,
+          "offset": "0x49c",
+          "name": "DAMAGE_PER_SECOND",
+          "selector1_f32": 0.5,
+          "bits": "0x3f000000"
+        }
+      ],
+      "active_ability_properties_pointer_at_root": "0xcc",
+      "active_ability_properties": [],
+      "buff_name_references": [
+        {
+          "inst_pointer_offset": "0x1e8",
+          "symbol": "Buff_Item_Pulseweave_Control"
+        },
+        {
+          "inst_pointer_offset": "0x20c",
+          "symbol": "Buff_Item_Lifespring"
+        },
+        {
+          "inst_pointer_offset": "0x4e0",
+          "symbol": "Buff_Item_Pulseweave_Burn"
+        },
+        {
+          "inst_pointer_offset": "0x550",
+          "symbol": "Buff_Item_Pulseweave_Burst"
+        }
+      ],
+      "fixed_attribute_values": "not semantically decoded in this review; passive classification does not exclude fixed stats"
+    }
+  ],
+  "exact_unmatched_request": {
+    "input": "척령장",
+    "exact_korean_name_match": false,
+    "nearby_candidate_name": "척력장",
+    "candidate_definition_index": 533,
+    "candidate_equivalence_confirmed": false
+  },
+  "context_only_definition_index": 535,
+  "buff_table": {
+    "resource_id": "551BCB541D80053BACD0A897B7993A77",
+    "resource_sha256": "e1a2478259c48bf69dfab706cd364915614d0ce212a292f34487834c3156bd79",
+    "definition_count": 1381,
+    "selected": [
+      {
+        "definition_index": 264,
+        "name": "Buff_Item_Bonesaw",
+        "inst_offset": "0x94ec",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 265,
+        "name": "Buff_Item_BonesawDebuff",
+        "inst_offset": "0x955c",
+        "cap_u16_24": 5,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 268,
+        "name": "Buff_Item_ReflexBlock",
+        "inst_offset": "0x96d8",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 269,
+        "name": "Buff_Item_MarkedByReflexBlock",
+        "inst_offset": "0x974c",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 270,
+        "name": "Buff_Item_FountainOfRenewal",
+        "inst_offset": "0x97e0",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 282,
+        "name": "Buff_Item_WarTreads_Speed",
+        "inst_offset": "0x9d9c",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 300,
+        "name": "Buff_Item_Lifespring",
+        "inst_offset": "0xa6ac",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 314,
+        "name": "Buff_Item_SlumberingHuskControl",
+        "inst_offset": "0xada8",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 315,
+        "name": "Buff_Item_SlumberingHuskFortifiedHealth",
+        "inst_offset": "0xae28",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 332,
+        "name": "Buff_Item_Bonesaw_Pen",
+        "inst_offset": "0xb64c",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 336,
+        "name": "Buff_Item_DragonsEye_Control",
+        "inst_offset": "0xb82c",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 337,
+        "name": "Buff_Item_DragonsEye_CrystalBonus",
+        "inst_offset": "0xb8a8",
+        "cap_u16_24": 15,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 341,
+        "name": "Buff_Item_SeraphicShell",
+        "inst_offset": "0xbaa8",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 342,
+        "name": "Buff_Item_SeraphicShell_IsActive",
+        "inst_offset": "0xbb20",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 345,
+        "name": "Buff_Item_ProtectorContract",
+        "inst_offset": "0xbcac",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 346,
+        "name": "Buff_Item_ProtectorContract_AttackBuff",
+        "inst_offset": "0xbd28",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 347,
+        "name": "Buff_Item_ProtectorContract_Barrier",
+        "inst_offset": "0xbdcc",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 351,
+        "name": "Buff_Item_Pulseweave_Control",
+        "inst_offset": "0xbfdc",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 352,
+        "name": "Buff_Item_Pulseweave_Active",
+        "inst_offset": "0xc058",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 353,
+        "name": "Buff_Item_Pulseweave_Slow",
+        "inst_offset": "0xc0d4",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 354,
+        "name": "Buff_Item_CapacitorPlate_Control",
+        "inst_offset": "0xc14c",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 355,
+        "name": "Buff_Item_CapacitorPlate_SpeedBoost",
+        "inst_offset": "0xc1cc",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 356,
+        "name": "Buff_Item_CapacitorPlate_Lockout",
+        "inst_offset": "0xc250",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 357,
+        "name": "Buff_Item_RooksDecree",
+        "inst_offset": "0xc2e8",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 358,
+        "name": "Buff_Item_RooksDecree_AttackBuff",
+        "inst_offset": "0xc35c",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      },
+      {
+        "definition_index": 359,
+        "name": "Buff_Item_RooksDecree_Barrier",
+        "inst_offset": "0xc3f4",
+        "cap_u16_24": 1,
+        "reuse_policy_u32_28": 0
+      }
+    ],
+    "reuse_interpretation_scope": "All selected policy values are 0. In reviewed 00863050 normal active-buff reuse matches definition hash; no item-instance predicate. Does not establish independent stacks per owned copy or an unlimited lifetime."
+  },
+  "method_sources": [
+    {
+      "path": "vg/core/cff_resource.py",
+      "sha256": "a8ac5ac4047dbe21961f2c33993fdebe869dbb950b4b900aad11cdb51d4a61aa"
+    },
+    {
+      "path": "vg/core/definition_catalog.py",
+      "sha256": "a687606214f5fc531b20f82f3dbb6e713791a05b1e6614f1314578188b9315a6"
+    },
+    {
+      "path": "vg/core/native_inventory_definitions.json",
+      "sha256": "e40df722ee5eaff7ff63e21403944bbf6de35eb84126f8fe0ce27e7bc66d0783"
+    },
+    {
+      "path": "vg/docs/evidence/2026-10-04-inventory/function-00940230.c",
+      "sha256": "164ef0c61a379b0260293ea083f0e53e2810fd1ccd82ae5f4062bad72b0ec3d8"
+    }
+  ]
+}

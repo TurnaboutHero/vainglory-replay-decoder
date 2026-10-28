@@ -12,13 +12,15 @@ ITEM_EVENT_EVIDENCE: Final = "rea-item-events.windows_2026_10_14.v1"
 ITEM_ACTIVATION_EVIDENCE: Final = "rea-item-activation.windows_2026_10_14.v1"
 COOLDOWN_EVENT_EVIDENCE: Final = "rea-cooldown-events.static_2026_10_14.v1"
 COOLDOWN_EVENT_EVIDENCE_SHA256: Final = "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc"
+IMPACT_EVENT_EVIDENCE: Final = "rea-impact-wire.windows_2026_10_16.v1"
+IMPACT_EVENT_EVIDENCE_SHA256: Final = "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc"
 ATTRIBUTE_STATS: Final[dict[int, str]] = {0x29: "kills", 0x2A: "deaths"}
 type KnownOpcode = Literal[
-    0x03F1, 0x040B, 0x041C, 0x041D, 0x0428, 0x0429, 0x042B, 0x0430, 0x0431,
+    0x03F1, 0x040B, 0x041C, 0x041D, 0x041E, 0x0428, 0x0429, 0x042B, 0x0430, 0x0431,
     0x0448, 0x0449, 0x044A, 0x044C, 0x044D, 0x048A, 0x048F,
 ]
 DEFAULT_OPCODES: Final = frozenset({
-    0x03F1, 0x041C, 0x041D, 0x0428, 0x0429, 0x042B, 0x0430, 0x0431,
+    0x03F1, 0x041C, 0x041D, 0x041E, 0x0428, 0x0429, 0x042B, 0x0430, 0x0431,
     0x0448, 0x0449, 0x044A, 0x044C, 0x044D, 0x048A, 0x048F,
 })
 EXPECTED_CONTENT_LENGTH: Final[dict[KnownOpcode, int]] = {
@@ -26,6 +28,7 @@ EXPECTED_CONTENT_LENGTH: Final[dict[KnownOpcode, int]] = {
     0x040B: 8,
     0x041C: 24,
     0x041D: 16,
+    0x041E: 24,  # Observed payload22; receiver consumes16, suffix6 stays opaque.
     0x0428: 16,
     0x0429: 16,
     0x042B: 16,
@@ -60,6 +63,9 @@ class DecodedFields(TypedDict, total=False):
     native_class: str
     native_winning_team_id: int
     native_winning_team_raw: int
+    native_requested_team_raw: int
+    native_requested_team_id: int
+    native_result_scope: str
     native_end_reason: int
     native_surrender: bool
     native_type: str
@@ -90,6 +96,9 @@ class DecodedFields(TypedDict, total=False):
     native_config_value: float | None
     native_config_value_bits: int
     native_byte16_raw: int
+    native_code_raw: int
+    native_byte14_raw: int
+    native_byte15_raw: int
     native_byte17_raw: int
     native_byte18_raw: int
     native_byte19_raw: int
@@ -99,6 +108,11 @@ class DecodedFields(TypedDict, total=False):
     native_byte19_equals_one: bool
     native_byte20_equals_one: bool
     native_byte21_equals_one: bool
+    native_charge_setter_input: int
+    native_base_charge_creation_input: int
+    native_config_apply_scope: str
+    native_charge_apply_scope: str
+    native_input_apply_order: list[str]
 
 
 def _is_known_opcode(opcode: int) -> TypeGuard[KnownOpcode]:
@@ -123,6 +137,8 @@ def decode_fields(record: VGRRecord) -> DecodedFields:
     Item requests/notifications decode only a traced receiver or serializer
     prefix. Activation-mode semantics do not establish successful consumption.
     Suffixes, callback side effects and purchase outcomes remain unverified.
+    Impact source is a raw actor reference, not credited damage ownership.
+    Its serialized operand is not an accepted resource4/5 decrement.
     """
     if not _is_known_opcode(record.opcode):
         return {"decoding_status": "unknown_opcode"}
@@ -149,6 +165,11 @@ def decode_fields(record: VGRRecord) -> DecodedFields:
                 "native_class": "Nuo::Kindred::ActionEndMatch",
                 "native_winning_team_raw": winning_team_raw,
                 "native_winning_team_id": winning_team_raw & 0xFF,
+                # Legacy winning_team names remain compatible; these are end
+                # request operands, not a certified match winner or UI color.
+                "native_requested_team_raw": winning_team_raw,
+                "native_requested_team_id": winning_team_raw & 0xFF,
+                "native_result_scope": "end_request",
                 "native_end_reason": payload[4],
                 "native_surrender": payload[4] == 2,
                 "remaining_hex": payload[5:].hex(),
@@ -194,6 +215,24 @@ def decode_fields(record: VGRRecord) -> DecodedFields:
                 "native_index": payload[8], "native_operation": "set" if payload[9] != 0 else "add",
                 "native_flags": [payload[10], payload[11]],
                 "native_stat": "assists" if payload[8] == 0x0B else None,
+            }
+        case 0x041E:
+            # Serializer may bound the operand before emission. Apply then
+            # splits it using local actor state; it is not a resource4/5 delta.
+            value, raw_bits = _float_fields(payload, 8)
+            return {
+                "decoding_status": "decoded",
+                "ref0": struct.unpack_from(">I", payload, 0)[0],
+                "ref1": struct.unpack_from(">I", payload, 4)[0],
+                "value": value, "value_bits": raw_bits,
+                "native_code_raw": struct.unpack_from(">H", payload, 12)[0],
+                "native_byte14_raw": payload[14], "native_byte15_raw": payload[15],
+                "remaining_hex": payload[16:].hex(),
+                "native_type": "impact_health_action",
+                "native_class": "Nuo::Kindred::ActionImpactHealth",
+                "native_semantic_scope": "raw_impact_operand",
+                "native_evidence": IMPACT_EVENT_EVIDENCE,
+                "native_evidence_sha256": IMPACT_EVENT_EVIDENCE_SHA256,
             }
         case 0x0428 | 0x0429:
             # The lookup key and ability-array index are distinct namespaces.
@@ -343,6 +382,14 @@ def decode_fields(record: VGRRecord) -> DecodedFields:
                 "native_byte19_equals_one": payload[19] == 1,
                 "native_byte20_equals_one": payload[20] == 1,
                 "native_byte21_equals_one": payload[21] == 1,
+                # Static receiver input roles, not observed application/results.
+                # 0052aea0 skips configuration for an existing keyed state,
+                # then dispatches 0095cf10 before 0095cd10 on both paths.
+                "native_charge_setter_input": payload[16],
+                "native_base_charge_creation_input": payload[17],
+                "native_config_apply_scope": "new_state_only",
+                "native_charge_apply_scope": "existing_or_new_state",
+                "native_input_apply_order": ["timer_input", "charge_setter_input"],
                 "native_conditional": True,
                 "native_semantic_scope": "static_event_fields",
                 "native_evidence": COOLDOWN_EVENT_EVIDENCE,

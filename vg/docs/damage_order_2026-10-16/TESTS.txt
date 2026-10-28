@@ -1,0 +1,13 @@
+test_downstream_nonlinearity_does_not_reveal_commuting_order (test_damage_order_native.ExperimentIdentifiability.test_downstream_nonlinearity_does_not_reveal_commuting_order) ... ok
+test_intermediate_observation_or_between_stage_clip_can_separate (test_damage_order_native.ExperimentIdentifiability.test_intermediate_observation_or_between_stage_clip_can_separate) ... ok
+test_positive_defense_separates_two_penetration_hypotheses (test_damage_order_native.ExperimentIdentifiability.test_positive_defense_separates_two_penetration_hypotheses) ... ok
+test_zero_defense_cannot_separate_two_penetration_hypotheses (test_damage_order_native.ExperimentIdentifiability.test_zero_defense_cannot_separate_two_penetration_hypotheses) ... ok
+test_all_anchors_match (test_damage_order_native.NativeAnchors.test_all_anchors_match) ... ok
+test_each_changed_anchor_rejected (test_damage_order_native.NativeAnchors.test_each_changed_anchor_rejected) ... ok
+test_handoff_and_execution_are_separate_stubs (test_damage_order_native.NativeAnchors.test_handoff_and_execution_are_separate_stubs) ... ok
+test_other_binary_rejected (test_damage_order_native.NativeAnchors.test_other_binary_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.002s
+
+OK

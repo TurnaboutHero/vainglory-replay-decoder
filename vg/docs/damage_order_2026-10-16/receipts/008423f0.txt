@@ -1,0 +1,69 @@
+ENTRY 008423f0 BODY [[008423f0, 0084245a]]
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+float10 FUN_008423f0(int *param_1)
+
+{
+  int iVar1;
+  int *piVar2;
+  int iVar3;
+  float fVar4;
+  
+  iVar3 = 0;
+  fVar4 = (float)((double)*(ushort *)(*param_1 + 0x250) + _UNK_012122c0);
+  piVar2 = *(int **)(*(int *)(*(int *)(*(int *)(*param_1 + 8) + 8) + 0x1c) + 0x1a8);
+  iVar1 = *piVar2;
+  while( true ) {
+    if (iVar1 == 0) {
+      return (float10)1 - (float10)fRam00000004 * (float10)fVar4;
+    }
+    if (iVar3 == 2) break;
+    piVar2 = piVar2 + 1;
+    iVar3 = iVar3 + 1;
+    iVar1 = *piVar2;
+  }
+  return (float10)1 - (float10)*(float *)(*piVar2 + 4) * (float10)fVar4;
+}
+
+
+
+INSTRUCTIONS
+008423f0 PUSH EBP
+008423f1 MOV EBP,ESP
+008423f3 MOV EAX,dword ptr [EBP + 0x8]
+008423f6 MOV ECX,dword ptr [EAX]
+008423f8 MOVZX EAX,word ptr [ECX + 0x250]
+008423ff MOVD XMM0,EAX
+00842403 SHR EAX,0x1f
+00842406 CVTDQ2PD XMM0,XMM0
+0084240a ADDSD XMM0,qword ptr [EAX*0x8 + 0x12122c0]
+00842413 MOV EAX,dword ptr [ECX + 0x8]
+00842416 XOR ECX,ECX
+00842418 MOV EAX,dword ptr [EAX + 0x8]
+0084241b CVTPD2PS XMM0,XMM0
+0084241f MOV EAX,dword ptr [EAX + 0x1c]
+00842422 MOV EAX,dword ptr [EAX + 0x1a8]
+00842428 MOVSS dword ptr [EBP + 0x8],XMM0
+0084242d CMP dword ptr [EAX],ECX
+0084242f JZ 0x0084243f
+00842431 CMP ECX,0x2
+00842434 JZ 0x0084244d
+00842436 ADD EAX,0x4
+00842439 INC ECX
+0084243a CMP dword ptr [EAX],0x0
+0084243d JNZ 0x00842431
+0084243f XOR EAX,EAX
+00842441 FLD float ptr [EAX + 0x4]
+00842444 FMUL float ptr [EBP + 0x8]
+00842447 FLD1
+00842449 FSUBRP
+0084244b POP EBP
+0084244c RET
+0084244d MOV EAX,dword ptr [EAX]
+0084244f FLD float ptr [EAX + 0x4]
+00842452 FMUL float ptr [EBP + 0x8]
+00842455 FLD1
+00842457 FSUBRP
+00842459 POP EBP
+0084245a RET

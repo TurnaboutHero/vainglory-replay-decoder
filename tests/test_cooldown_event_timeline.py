@@ -77,6 +77,29 @@ class CooldownEventTimelineTests(unittest.TestCase):
         self.assertEqual(fields['native_byte18_masked'], 2)
         self.assertEqual([fields[f'native_byte{i}_equals_one'] for i in (19, 20, 21)],
                          [True, False, False])
+        self.assertEqual(fields['native_charge_setter_input'], 5)
+        self.assertEqual(fields['native_base_charge_creation_input'], 17)
+
+    def test_sync_input_roles_do_not_determine_application_or_retained_state(self):
+        first = sync(value=0, config=0x42960000)[:16] + bytes((3, 4, 2, 1, 0, 1))
+        later = sync(value=0, config=0x42a00000)[:16] + bytes((2, 7, 1, 0, 1, 0))
+        for payload, config_bits, charge, base in (
+            (first, 0x42960000, 3, 4), (later, 0x42a00000, 2, 7),
+        ):
+            fields = decode_fields(record(0x048a, payload))
+            self.assertEqual(fields['native_config_value_bits'], config_bits)
+            self.assertEqual(fields['native_charge_setter_input'], charge)
+            self.assertEqual(fields['native_base_charge_creation_input'], base)
+            self.assertEqual(fields['native_config_apply_scope'], 'new_state_only')
+            self.assertEqual(fields['native_charge_apply_scope'], 'existing_or_new_state')
+            self.assertEqual(fields['native_input_apply_order'],
+                             ['timer_input', 'charge_setter_input'])
+            self.assertEqual(fields['native_semantic_scope'], 'static_event_fields')
+            for unsupported in ('state_created', 'applied_config', 'remaining_seconds',
+                                'resulting_charges', 'ready', 'success'):
+                self.assertNotIn(unsupported, fields)
+            self.assertEqual(fields['value_bits'], 0)
+            json.dumps(fields, allow_nan=False)
 
     def test_all_float_bits_preserved_and_nonfinite_json_null(self):
         for bits in (0, 0x80000000, 0x3f800000, 0xbf800000, 0x7f800000,

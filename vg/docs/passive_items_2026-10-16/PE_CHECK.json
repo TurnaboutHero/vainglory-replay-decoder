@@ -1,0 +1,37 @@
+{
+  "schema": "vg.passive-pe-check.v1",
+  "binary_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "vtable_edges": [
+    {
+      "site": "0127d3c0",
+      "target": "0085a890"
+    },
+    {
+      "site": "0127d500",
+      "target": "0085db70"
+    },
+    {
+      "site": "0121a2e0",
+      "target": "0045e8a0"
+    },
+    {
+      "site": "0121a680",
+      "target": "0085a750"
+    },
+    {
+      "site": "0121a658",
+      "target": "0085b440"
+    },
+    {
+      "site": "0127d1ac",
+      "target": "0092cbb0"
+    }
+  ],
+  "apply_to_myself_dispatch_bytes": "c20800",
+  "shell_property_global": {
+    "address": "01a73e48",
+    "pointee": "0126cfa4",
+    "symbol": "*Item_SeraphicShell*"
+  },
+  "scope": "Static selected edges only; no execution or complete control-flow proof"
+}

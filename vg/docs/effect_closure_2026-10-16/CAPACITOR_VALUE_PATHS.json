@@ -1,0 +1,589 @@
+{
+  "schema": "vg.capacitor-value-paths.v1",
+  "build_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "scope": "Static byte candidates only. REA must corroborate boundaries and semantics; no live stat/effect claims.",
+  "direct_E8_candidates": {
+    "004b7c00": [
+      {
+        "site": "00860d1c",
+        "preceding_24_bytes": "1e83e801754051f30f110424ffb378010000ffb71c020000"
+      },
+      {
+        "site": "00860d35",
+        "preceding_24_bytes": "df6ec5ffeb1751f30f110424ffb378010000ffb71c020000"
+      }
+    ],
+    "00860cb0": [],
+    "00937480": [
+      {
+        "site": "00824aeb",
+        "preceding_24_bytes": "0f84a500000083c0044183380075ee33f66aff6a058d4f20"
+      },
+      {
+        "site": "0083305e",
+        "preceding_24_bytes": "0b01000083c0044183380075ee33f66aff83c7206a048bcf"
+      },
+      {
+        "site": "00833092",
+        "preceding_24_bytes": "6a28f30f5f05a860a701f30f594604f30f5845fcf30f1100"
+      },
+      {
+        "site": "00833103",
+        "preceding_24_bytes": "59caf30f590dbc282901f30f584d08f30f114d08f30f110e"
+      },
+      {
+        "site": "0084819a",
+        "preceding_24_bytes": "00000080bf397e180f85d40000008b4f206aff6a0083c120"
+      },
+      {
+        "site": "008ece3b",
+        "preceding_24_bytes": "c74014000080bf66c7401801008b4f2083c120f30f1145f0"
+      },
+      {
+        "site": "0093ea97",
+        "preceding_24_bytes": "5ed00f2fd5760cf30f58d1f30f1196f802000053578d4e20"
+      },
+      {
+        "site": "009452a3",
+        "preceding_24_bytes": "0f114de80f57c9f30f1145f4e9870100006aff8d4f206a00"
+      },
+      {
+        "site": "009452d0",
+        "preceding_24_bytes": "f30f5f059860a7010f2f05983f210176376aff6a008d4f20"
+      },
+      {
+        "site": "00945314",
+        "preceding_24_bytes": "4df4eb0df30f1005c4422101f30f1145f46aff6a028d4f20"
+      },
+      {
+        "site": "00945341",
+        "preceding_24_bytes": "f30f5f05a060a7010f2f05983f2101763d6aff6a028d4f20"
+      },
+      {
+        "site": "009453ed",
+        "preceding_24_bytes": "58caf30f594814f30f59cbf30f59c8f30f58ccf30f114de8"
+      }
+    ]
+  },
+  "literal_pointer_candidates": {
+    "004b7c00": [
+      {
+        "site": "0121e9bc",
+        "executable_section": false
+      }
+    ],
+    "00860cb0": [
+      {
+        "site": "0127db78",
+        "executable_section": false
+      }
+    ]
+  },
+  "attributes": [
+    {
+      "stat_id": 33,
+      "name": "INCOMING_BARRIER_AMP",
+      "actor_component_offsets": {
+        "layer0": "a4",
+        "layer1": "158",
+        "layer2": "20c",
+        "layer3": "2c0"
+      },
+      "upper": {
+        "address": "020e73cc",
+        "initializer_store": "0044e0b6",
+        "initialized_bits": "7f7fffff",
+        "executable_literal_candidates": [
+          {
+            "site": "0044e0b7",
+            "executable_section": true
+          }
+        ]
+      },
+      "lower": {
+        "address": "01a7611c",
+        "file_backed_bits_before_startup": "00000000",
+        "initialized_bits": "bf800000",
+        "initializer_source": "01212314",
+        "executable_literal_candidates": []
+      }
+    },
+    {
+      "stat_id": 34,
+      "name": "OUTGOING_BARRIER_AMP",
+      "actor_component_offsets": {
+        "layer0": "a8",
+        "layer1": "15c",
+        "layer2": "210",
+        "layer3": "2c4"
+      },
+      "upper": {
+        "address": "020e73d0",
+        "initializer_store": "0044e0bb",
+        "initialized_bits": "7f7fffff",
+        "executable_literal_candidates": [
+          {
+            "site": "0044e0bc",
+            "executable_section": true
+          }
+        ]
+      },
+      "lower": {
+        "address": "01a76120",
+        "file_backed_bits_before_startup": "00000000",
+        "initialized_bits": "bf800000",
+        "initializer_source": "01212318",
+        "executable_literal_candidates": []
+      }
+    },
+    {
+      "stat_id": 35,
+      "name": "INCOMING_HEAL_AMP",
+      "actor_component_offsets": {
+        "layer0": "ac",
+        "layer1": "160",
+        "layer2": "214",
+        "layer3": "2c8"
+      },
+      "upper": {
+        "address": "020e73d4",
+        "initializer_store": "0044e0c0",
+        "initialized_bits": "7f7fffff",
+        "executable_literal_candidates": [
+          {
+            "site": "0044e0c1",
+            "executable_section": true
+          }
+        ]
+      },
+      "lower": {
+        "address": "01a76124",
+        "file_backed_bits_before_startup": "00000000",
+        "initialized_bits": "bf800000",
+        "initializer_source": "0121231c",
+        "executable_literal_candidates": []
+      }
+    },
+    {
+      "stat_id": 36,
+      "name": "OUTGOING_HEAL_AMP",
+      "actor_component_offsets": {
+        "layer0": "b0",
+        "layer1": "164",
+        "layer2": "218",
+        "layer3": "2cc"
+      },
+      "upper": {
+        "address": "020e73d8",
+        "initializer_store": "0044e0c5",
+        "initialized_bits": "7f7fffff",
+        "executable_literal_candidates": [
+          {
+            "site": "0044e0c6",
+            "executable_section": true
+          }
+        ]
+      },
+      "lower": {
+        "address": "01a76128",
+        "file_backed_bits_before_startup": "00000000",
+        "initialized_bits": "bf800000",
+        "initializer_source": "immediate at 0044e181",
+        "executable_literal_candidates": [
+          {
+            "site": "0044e17d",
+            "executable_section": true
+          }
+        ]
+      }
+    }
+  ],
+  "behavior_lifecycle_slots": [
+    {
+      "class_suffix": "ModifyAttribute",
+      "vtable": "0121b2e4",
+      "slots": {
+        "04": "0045ecd0",
+        "08": "0045ecd0",
+        "0c": "0045ecd0",
+        "10": "0045ecd0"
+      }
+    },
+    {
+      "class_suffix": "GrantTemporaryResourceNew",
+      "vtable": "0121b134",
+      "slots": {
+        "04": "0045ecd0",
+        "08": "0045ecd0",
+        "0c": "0045ecd0",
+        "10": "0045ecd0"
+      }
+    },
+    {
+      "class_suffix": "ApplyBuffToSelection",
+      "vtable": "0121b428",
+      "slots": {
+        "04": "0045ecd0",
+        "08": "0045ecd0",
+        "0c": "0045ecd0",
+        "10": "0045ecd0"
+      }
+    }
+  ],
+  "shared_calculation_bytes": "d9eec3",
+  "configuration_stubs": [
+    {
+      "address": "00528fc0",
+      "bytes": "8bc1c20800",
+      "meaning": "mov eax,ecx; ret 8; no stores"
+    },
+    {
+      "address": "00529040",
+      "bytes": "8bc1c20c00",
+      "meaning": "mov eax,ecx; ret 12; no stores"
+    }
+  ],
+  "reim_post_attack_jump": {
+    "source": "00847620",
+    "bytes": "e90ba6ffff",
+    "target": "00841c30"
+  },
+  "actor_attribute_constructor": {
+    "wrapper_vtable_operand_site": "00957760",
+    "raw_stat_base": "actor attribute component +20",
+    "call_site": "0095776a",
+    "initializer": "0081c640",
+    "body_bytes": 111,
+    "body_sha256": "54e066a7a88652cd37898b56e51acc410be5ca6fc1eaf68aa638ed77bec04ad1",
+    "loop_iterations": 45,
+    "initial_layer0_1_2_3_bits": [
+      "00000000",
+      "00000000",
+      "00000000",
+      "00000000"
+    ],
+    "scope": "Construction only; later definition, action, grant and replicated state writes can differ."
+  },
+  "folded_alias": {
+    "vtable": "0121e9b0",
+    "slot": "0c",
+    "rtti": ".?AVCKinSetActorRepUniform@Kindred@Nuo@@"
+  },
+  "raw_stat_formula": "((layer3 + 1) * layer1 + layer0) * (layer2 + 1)",
+  "formula_scope": "00937480 selector -1; this is an un-clamped four-layer getter, not amount amplification or proof of contribution lifetime.",
+  "hero_declarations": [
+    {
+      "name": "Phinn",
+      "resource_id": "4AB809A4E9DFF0585281C1AB70EAF2BC",
+      "resource_sha256": "4df3571ea1e7cbd33a95ec068ba82f99c496b9d11beeee3549e76b54a3f0f9cf",
+      "root_64_ability_pointer_array": "3e4",
+      "ability_index": 1,
+      "ability_offset": "7c8",
+      "ability_name": "Ability__Phinn__B",
+      "B_properties": [
+        {
+          "index": 5,
+          "entry_offset": "af4",
+          "name": "Duration",
+          "raw_fields": {
+            "04": {
+              "bits": "40000000",
+              "float": 2.0
+            },
+            "08": {
+              "bits": "00000000",
+              "float": 0.0
+            },
+            "0c": {
+              "bits": "3f800000",
+              "float": 1.0
+            }
+          }
+        },
+        {
+          "index": 6,
+          "entry_offset": "b34",
+          "name": "Fortified Health Base",
+          "raw_fields": {
+            "04": {
+              "bits": "42c80000",
+              "float": 100.0
+            },
+            "08": {
+              "bits": "41c80000",
+              "float": 25.0
+            },
+            "0c": {
+              "bits": "41c80000",
+              "float": 25.0
+            }
+          }
+        },
+        {
+          "index": 7,
+          "entry_offset": "b80",
+          "name": "MaxHealthScaling",
+          "raw_fields": {
+            "04": {
+              "bits": "3d4ccccd",
+              "float": 0.05000000074505806
+            },
+            "08": {
+              "bits": "00000000",
+              "float": 0.0
+            },
+            "0c": {
+              "bits": "00000000",
+              "float": 0.0
+            }
+          }
+        },
+        {
+          "index": 8,
+          "entry_offset": "bc8",
+          "name": "DefenseFinnStatScaling",
+          "raw_fields": {
+            "04": {
+              "bits": "3e3851ec",
+              "float": 0.18000000715255737
+            },
+            "08": {
+              "bits": "00000000",
+              "float": 0.0
+            },
+            "0c": {
+              "bits": "00000000",
+              "float": 0.0
+            }
+          }
+        },
+        {
+          "index": 9,
+          "entry_offset": "c14",
+          "name": "Range",
+          "raw_fields": {
+            "04": {
+              "bits": "41000000",
+              "float": 8.0
+            },
+            "08": {
+              "bits": "00000000",
+              "float": 0.0
+            },
+            "0c": {
+              "bits": "00000000",
+              "float": 0.0
+            }
+          }
+        }
+      ],
+      "perk_properties": [
+        {
+          "index": 0,
+          "entry_offset": "7834",
+          "name": "PERK_DEFENSIVE_STAT_BONUS",
+          "raw_fields": {
+            "04": {
+              "bits": "3e3851ec",
+              "float": 0.18000000715255737
+            },
+            "08": {
+              "bits": "00000000",
+              "float": 0.0
+            },
+            "0c": {
+              "bits": "00000000",
+              "float": 0.0
+            }
+          }
+        }
+      ],
+      "raw_field_scope": "Declaration bytes only; +08/+0c are not assigned rank/overdrive algebra without their native getter."
+    },
+    {
+      "name": "Reim",
+      "resource_id": "E69FFAF512614E619DEA07FF9CCA56E8",
+      "resource_sha256": "daf3c1e1c840ac17fe51a510597e8850d5dfbc92127c83dbc1bb41f84c2839fe",
+      "root_64_ability_pointer_array": "358",
+      "ability_index": 1,
+      "ability_offset": "7d0",
+      "ability_name": "Ability__Reim__B",
+      "B_properties": [
+        {
+          "index": 0,
+          "entry_offset": "998",
+          "name": "Cooldown",
+          "raw_fields": {
+            "04": {
+              "bits": "41400000",
+              "float": 12.0
+            },
+            "08": {
+              "bits": "bf000000",
+              "float": -0.5
+            },
+            "0c": {
+              "bits": "00000000",
+              "float": 0.0
+            }
+          }
+        },
+        {
+          "index": 1,
+          "entry_offset": "9d8",
+          "name": "Energy Cost",
+          "raw_fields": {
+            "04": {
+              "bits": "42700000",
+              "float": 60.0
+            },
+            "08": {
+              "bits": "40a00000",
+              "float": 5.0
+            },
+            "0c": {
+              "bits": "00000000",
+              "float": 0.0
+            }
+          }
+        },
+        {
+          "index": 2,
+          "entry_offset": "a18",
+          "name": "Range",
+          "raw_fields": {
+            "04": {
+              "bits": "40900000",
+              "float": 4.5
+            },
+            "08": {
+              "bits": "00000000",
+              "float": 0.0
+            },
+            "0c": {
+              "bits": "00000000",
+              "float": 0.0
+            }
+          }
+        },
+        {
+          "index": 3,
+          "entry_offset": "a54",
+          "name": "B_RootDuration",
+          "raw_fields": {
+            "04": {
+              "bits": "3f800000",
+              "float": 1.0
+            },
+            "08": {
+              "bits": "00000000",
+              "float": 0.0
+            },
+            "0c": {
+              "bits": "3f000000",
+              "float": 0.5
+            }
+          }
+        }
+      ],
+      "perk_properties": [
+        {
+          "index": 6,
+          "entry_offset": "6870",
+          "name": "FROSTGUARD_DURATION",
+          "raw_fields": {
+            "04": {
+              "bits": "40200000",
+              "float": 2.5
+            },
+            "08": {
+              "bits": "00000000",
+              "float": 0.0
+            },
+            "0c": {
+              "bits": "00000000",
+              "float": 0.0
+            }
+          }
+        },
+        {
+          "index": 7,
+          "entry_offset": "68a4",
+          "name": "FROSTGUARD_FALLOFF_DURATION",
+          "raw_fields": {
+            "04": {
+              "bits": "40200000",
+              "float": 2.5
+            },
+            "08": {
+              "bits": "00000000",
+              "float": 0.0
+            },
+            "0c": {
+              "bits": "00000000",
+              "float": 0.0
+            }
+          }
+        },
+        {
+          "index": 8,
+          "entry_offset": "68e0",
+          "name": "FROSTGUARD_MAX_HEALTH_PERCENT",
+          "raw_fields": {
+            "04": {
+              "bits": "3ecccccd",
+              "float": 0.4000000059604645
+            },
+            "08": {
+              "bits": "00000000",
+              "float": 0.0
+            },
+            "0c": {
+              "bits": "00000000",
+              "float": 0.0
+            }
+          }
+        },
+        {
+          "index": 9,
+          "entry_offset": "6920",
+          "name": "FROSTGUARD_HERO_FORT_HEALTH",
+          "raw_fields": {
+            "04": {
+              "bits": "3e19999a",
+              "float": 0.15000000596046448
+            },
+            "08": {
+              "bits": "00000000",
+              "float": 0.0
+            },
+            "0c": {
+              "bits": "00000000",
+              "float": 0.0
+            }
+          }
+        },
+        {
+          "index": 10,
+          "entry_offset": "695c",
+          "name": "FROSTGUARD_NONHERO_FORT_HEALTH",
+          "raw_fields": {
+            "04": {
+              "bits": "3ccccccd",
+              "float": 0.02500000037252903
+            },
+            "08": {
+              "bits": "00000000",
+              "float": 0.0
+            },
+            "0c": {
+              "bits": "00000000",
+              "float": 0.0
+            }
+          }
+        }
+      ],
+      "raw_field_scope": "Declaration bytes only; +08/+0c are not assigned rank/overdrive algebra without their native getter."
+    }
+  ]
+}

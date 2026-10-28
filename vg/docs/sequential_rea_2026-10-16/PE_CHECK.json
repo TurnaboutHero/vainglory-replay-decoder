@@ -1,0 +1,138 @@
+{
+  "schema": "vg.sequential-pe-check.v1",
+  "binary_sha256": "d6717c157f1608c896255a4bc9290a819d428f1f6d9fb1605c65ebb8e6f620cc",
+  "calls": [
+    {
+      "site": "0052af08",
+      "target": "009401f0"
+    },
+    {
+      "site": "0052af1a",
+      "target": "0095dd50"
+    },
+    {
+      "site": "0052af26",
+      "target": "0095dcf0"
+    },
+    {
+      "site": "0052af38",
+      "target": "0095cf10"
+    },
+    {
+      "site": "0052af44",
+      "target": "0095cd10"
+    },
+    {
+      "site": "0095d0ed",
+      "target": "00956380"
+    },
+    {
+      "site": "0095d127",
+      "target": "009613b0"
+    },
+    {
+      "site": "009519e0",
+      "target": "0095cd10"
+    },
+    {
+      "site": "009519e7",
+      "target": "00956380"
+    },
+    {
+      "site": "005ad752",
+      "target": "005a40e0"
+    },
+    {
+      "site": "005ad717",
+      "target": "005a4070"
+    },
+    {
+      "site": "00953a50",
+      "target": "0092d820"
+    },
+    {
+      "site": "00955bff",
+      "target": "0112af70"
+    },
+    {
+      "site": "0084b5e0",
+      "target": "0092ea80"
+    },
+    {
+      "site": "008615d3",
+      "target": "0092e8e0"
+    },
+    {
+      "site": "0094f4cb",
+      "target": "0095f4d0"
+    },
+    {
+      "site": "008ef067",
+      "target": "009604f0"
+    }
+  ],
+  "vtable_targets": [
+    {
+      "site": "0128067c",
+      "target": "009519a0"
+    },
+    {
+      "site": "0121b3dc",
+      "target": "0045ecd0"
+    },
+    {
+      "site": "0121b3d0",
+      "target": "0045cd00"
+    },
+    {
+      "site": "0121b0d4",
+      "target": "0045ecd0"
+    },
+    {
+      "site": "0127dba8",
+      "target": "00861530"
+    },
+    {
+      "site": "0127c9f8",
+      "target": "0094f440"
+    },
+    {
+      "site": "0127c9a8",
+      "target": "0094f1d0"
+    }
+  ],
+  "inline_respawn_vtable": "0127c6d0",
+  "item_buff_registry": [
+    {
+      "copy_site": "0044b569",
+      "name_source": "01a743e0",
+      "entry": "01a79e68",
+      "factory": "008edc70"
+    },
+    {
+      "copy_site": "0044b587",
+      "name_source": "01a743ec",
+      "entry": "01a79e80",
+      "factory": "008edcc0"
+    },
+    {
+      "copy_site": "0044b6b3",
+      "name_source": "01a74534",
+      "entry": "01a79f70",
+      "factory": "008edd90"
+    },
+    {
+      "copy_site": "0044b6db",
+      "name_source": "01a7455c",
+      "entry": "01a79f90",
+      "factory": "008eefb0"
+    },
+    {
+      "copy_site": "0044b6e5",
+      "name_source": "01a74570",
+      "entry": "01a79f98",
+      "factory": "008ef000"
+    }
+  ],
+  "scope": "Static selected edges only, not execution or full control-flow verification"
+}

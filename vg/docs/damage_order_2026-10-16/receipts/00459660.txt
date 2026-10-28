@@ -1,0 +1,21 @@
+ENTRY 00459660 BODY [[00459660, 00459662]]
+
+undefined4 __fastcall
+_category_Identity_Disco_gloox__QBEABV__basic_string_DU__char_traits_D_std__V__allocator_D_2__std__XZ
+          (undefined4 param_1)
+
+{
+                    /* 0x59660  532
+                       ?category@Identity@Disco@gloox@@QBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ
+                       0x59660  767  ?jid@Item@Disco@gloox@@QBEABVJID@3@XZ
+                       0x59660  928
+                       ?resource@JID@gloox@@QBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ
+                        */
+  return param_1;
+}
+
+
+
+INSTRUCTIONS
+00459660 MOV EAX,ECX
+00459662 RET

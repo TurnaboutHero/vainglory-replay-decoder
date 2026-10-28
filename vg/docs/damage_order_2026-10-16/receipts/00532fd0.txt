@@ -1,0 +1,30 @@
+ENTRY 00532fd0 BODY [[00532fd0, 00532ff3]]
+
+undefined4 * __thiscall FUN_00532fd0(undefined4 *param_1,byte param_2)
+
+{
+  *param_1 = &UNK_0121b094;
+  if ((param_2 & 1) != 0) {
+    func_0x011b8432(param_1,8);
+  }
+  return param_1;
+}
+
+
+
+INSTRUCTIONS
+00532fd0 PUSH EBP
+00532fd1 MOV EBP,ESP
+00532fd3 TEST byte ptr [EBP + 0x8],0x1
+00532fd7 PUSH ESI
+00532fd8 MOV ESI,ECX
+00532fda MOV dword ptr [ESI],0x121b094
+00532fe0 JZ 0x00532fed
+00532fe2 PUSH 0x8
+00532fe4 PUSH ESI
+00532fe5 CALL 0x011b8432
+00532fea ADD ESP,0x8
+00532fed MOV EAX,ESI
+00532fef POP ESI
+00532ff0 POP EBP
+00532ff1 RET 0x4

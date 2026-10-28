@@ -1,0 +1,270 @@
+# Vainglory.exe SHA-256 659f9eed557a426db57554d2a768efe34ba9fe02ba1085d77db64390b0d92642
+# llvm-objdump -d --no-show-raw-insn --triple=i386-pc-windows-msvc
+
+## 0x4ca240-0x4ca2e0
+
+004a0950 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z>:
+  4ca240:      	pushl	%ebp
+  4ca241:      	movl	%esp, %ebp
+  4ca243:      	subl	$0x20c, %esp            # imm = 0x20C
+  4ca249:      	movl	0x1e44f28, %eax
+  4ca24e:      	xorl	%ebp, %eax
+  4ca250:      	movl	%eax, -0x4(%ebp)
+  4ca253:      	pushl	%esi
+  4ca254:      	movl	0x8(%ebp), %esi
+  4ca257:      	leal	-0x208(%ebp), %eax
+  4ca25d:      	pushl	$0x104                  # imm = 0x104
+  4ca262:      	pushl	%eax
+  4ca263:      	pushl	$0x2
+  4ca265:      	movl	$0x20e9da0, %ecx        # imm = 0x20E9DA0
+  4ca26a:      	movl	%esi, -0x20c(%ebp)
+  4ca270:      	calll	0x970870 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x4cff20>
+  4ca275:      	pushl	0x1ef0b38
+  4ca27b:      	cmpl	$0x10, 0x18ff138
+  4ca282:      	movl	$0x18ff124, %eax        # imm = 0x18FF124
+  4ca287:      	cmovael	0x18ff124, %eax
+  4ca28e:      	pushl	%eax
+  4ca28f:      	leal	-0x208(%ebp), %eax
+  4ca295:      	pushl	%eax
+  4ca296:      	leal	-0x104(%ebp), %eax
+  4ca29c:      	pushl	$0x1215eec              # imm = 0x1215EEC
+  4ca2a1:      	pushl	%eax
+  4ca2a2:      	calll	0x96c5e0 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x4cbc90>
+  4ca2a7:      	leal	-0x104(%ebp), %ecx
+  4ca2ad:      	movl	$0x0, 0x10(%esi)
+  4ca2b4:      	movl	$0xf, 0x14(%esi)
+  4ca2bb:      	leal	0x1(%ecx), %edx
+  4ca2be:      	addl	$0x14, %esp
+  4ca2c1:      	movb	$0x0, (%esi)
+  4ca2c4:      	movb	(%ecx), %al
+  4ca2c6:      	incl	%ecx
+  4ca2c7:      	testb	%al, %al
+  4ca2c9:      	jne	0x4ca2c4 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x29974>
+  4ca2cb:      	subl	%edx, %ecx
+  4ca2cd:      	leal	-0x104(%ebp), %eax
+  4ca2d3:      	pushl	%ecx
+  4ca2d4:      	pushl	%eax
+  4ca2d5:      	movl	%esi, %ecx
+  4ca2d7:      	calll	0x457390 <?add@Tag@gloox@@CAXAAV?$list@PBVTag@gloox@@V?$allocator@PBVTag@gloox@@@std@@@std@@ABV34@@Z+0xa50>
+  4ca2dc:      	movl	-0x4(%ebp), %ecx
+  4ca2df:      	movl	%esi, %eax
+
+## 0x4cb3e0-0x4cb470
+
+004a0950 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z>:
+  4cb3e0:      	pushl	%ebp
+  4cb3e1:      	movl	%esp, %ebp
+  4cb3e3:      	pushl	$-0x1
+  4cb3e5:      	pushl	$0x11c46d8              # imm = 0x11C46D8
+  4cb3ea:      	movl	%fs:0x0, %eax
+  4cb3f0:      	pushl	%eax
+  4cb3f1:      	subl	$0x1c, %esp
+  4cb3f4:      	movl	0x1e44f28, %eax
+  4cb3f9:      	xorl	%ebp, %eax
+  4cb3fb:      	movl	%eax, -0x10(%ebp)
+  4cb3fe:      	pushl	%ebx
+  4cb3ff:      	pushl	%eax
+  4cb400:      	leal	-0xc(%ebp), %eax
+  4cb403:      	movl	%eax, %fs:0x0
+  4cb409:      	leal	-0x28(%ebp), %eax
+  4cb40c:      	pushl	%eax
+  4cb40d:      	calll	0x4ca240 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x298f0>
+  4cb412:      	addl	$0x4, %esp
+  4cb415:      	movl	0x1eb09d8, %eax
+  4cb41a:      	movl	$0x0, -0x4(%ebp)
+  4cb421:      	testl	%eax, %eax
+  4cb423:      	jne	0x4cb445 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x2aaf5>
+  4cb425:      	cmpl	$0x10, -0x14(%ebp)
+  4cb429:      	leal	-0x28(%ebp), %eax
+  4cb42c:      	pushl	$0x1215ee8              # imm = 0x1215EE8
+  4cb431:      	cmovael	-0x28(%ebp), %eax
+  4cb435:      	pushl	%eax
+  4cb436:      	calll	0x96c240 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x4cb8f0>
+  4cb43b:      	addl	$0x8, %esp
+  4cb43e:      	movl	%eax, 0x1eb09d8
+  4cb443:      	testl	%eax, %eax
+  4cb445:      	movl	-0x14(%ebp), %edx
+  4cb448:      	setne	%bl
+  4cb44b:      	cmpl	$0x10, %edx
+  4cb44e:      	jb	0x4cb47e <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x2ab2e>
+  4cb450:      	movl	-0x28(%ebp), %ecx
+  4cb453:      	incl	%edx
+  4cb454:      	movl	%ecx, %eax
+  4cb456:      	cmpl	$0x1000, %edx           # imm = 0x1000
+  4cb45c:      	jb	0x4cb474 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x2ab24>
+  4cb45e:      	movl	-0x4(%ecx), %ecx
+  4cb461:      	addl	$0x23, %edx
+  4cb464:      	subl	%ecx, %eax
+  4cb466:      	addl	$-0x4, %eax
+  4cb469:      	cmpl	$0x1f, %eax
+  4cb46c:      	jbe	0x4cb474 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x2ab24>
+  4cb46e:      	calll	*0x120a750
+
+## 0x4cb4a0-0x4cb540
+
+004a0950 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z>:
+  4cb4a0:      	pushl	%ebp
+  4cb4a1:      	movl	%esp, %ebp
+  4cb4a3:      	pushl	$-0x1
+  4cb4a5:      	pushl	$0x11c6058              # imm = 0x11C6058
+  4cb4aa:      	movl	%fs:0x0, %eax
+  4cb4b0:      	pushl	%eax
+  4cb4b1:      	subl	$0x64, %esp
+  4cb4b4:      	movl	0x1e44f28, %eax
+  4cb4b9:      	xorl	%ebp, %eax
+  4cb4bb:      	movl	%eax, -0x10(%ebp)
+  4cb4be:      	pushl	%eax
+  4cb4bf:      	leal	-0xc(%ebp), %eax
+  4cb4c2:      	movl	%eax, %fs:0x0
+  4cb4c8:      	leal	-0x68(%ebp), %eax
+  4cb4cb:      	pushl	%eax
+  4cb4cc:      	calll	0x4ca240 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x298f0>
+  4cb4d1:      	leal	-0x70(%ebp), %eax
+  4cb4d4:      	movl	$0x0, -0x4(%ebp)
+  4cb4db:      	pushl	%eax
+  4cb4dc:      	calll	*0x120a8ac
+  4cb4e2:      	leal	-0x70(%ebp), %eax
+  4cb4e5:      	pushl	%eax
+  4cb4e6:      	calll	*0x120a8a4
+  4cb4ec:      	pushl	%eax
+  4cb4ed:      	pushl	$0x1215ecc              # imm = 0x1215ECC
+  4cb4f2:      	leal	-0x50(%ebp), %eax
+  4cb4f5:      	pushl	$0x40
+  4cb4f7:      	pushl	%eax
+  4cb4f8:      	calll	*0x120a8a8
+  4cb4fe:      	addl	$0x1c, %esp
+  4cb501:      	movl	$0x1eb09e8, %ecx        # imm = 0x1EB09E8
+  4cb506:      	calll	0x943900 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x4a2fb0>
+  4cb50b:      	testb	%al, %al
+  4cb50d:      	jne	0x4cb533 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x2abe3>
+  4cb50f:      	cmpl	$0x10, -0x54(%ebp)
+  4cb513:      	leal	-0x68(%ebp), %eax
+  4cb516:      	pushl	$0x1215ee4              # imm = 0x1215EE4
+  4cb51b:      	cmovael	-0x68(%ebp), %eax
+  4cb51f:      	pushl	%eax
+  4cb520:      	calll	0x96c240 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x4cb8f0>
+  4cb525:      	addl	$0x8, %esp
+  4cb528:      	movl	$0x1eb09e8, %ecx        # imm = 0x1EB09E8
+  4cb52d:      	pushl	%eax
+  4cb52e:      	calll	0x45eb10 <?setPriority@Resource@gloox@@AAEXH@Z>
+  4cb533:      	movl	-0x54(%ebp), %edx
+  4cb536:      	cmpl	$0x10, %edx
+  4cb539:      	jb	0x4cb569 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x2ac19>
+  4cb53b:      	movl	-0x68(%ebp), %ecx
+  4cb53e:      	incl	%edx
+  4cb53f:      	movl	%ecx, %eax
+
+## 0x4cda00-0x4cdb50
+
+004a0950 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z>:
+  4cda00:      	incl	-0x72ef2b83(%ebx)
+  4cda06:      	incl	%ebp
+  4cda07:      	sarb	$0x75, %bh
+  4cda0a:      	rorb	(%edi)
+  4cda0c:      	incl	%ebx
+  4cda0d:      	incl	%ebp
+  4cda0e:      	sarb	$0x50, 0x18ff124(%ecx)
+  4cda15:      	calll	0x457390 <?add@Tag@gloox@@CAXAAV?$list@PBVTag@gloox@@V?$allocator@PBVTag@gloox@@@std@@@std@@ABV34@@Z+0xa50>
+  4cda1a:      	pushl	$0xf
+  4cda1c:      	pushl	$0x1215eb4              # imm = 0x1215EB4
+  4cda21:      	leal	-0x28(%ebp), %ecx
+  4cda24:      	movl	$0x0, -0x18(%ebp)
+  4cda2b:      	movl	$0xf, -0x14(%ebp)
+  4cda32:      	movb	$0x0, -0x28(%ebp)
+  4cda36:      	calll	0x457390 <?add@Tag@gloox@@CAXAAV?$list@PBVTag@gloox@@V?$allocator@PBVTag@gloox@@@std@@@std@@ABV34@@Z+0xa50>
+  4cda3b:      	cmpl	$0x10, 0x14(%edi)
+  4cda3f:      	movl	%edi, %eax
+  4cda41:      	movb	$0x1, -0x4(%ebp)
+  4cda45:      	jb	0x4cda49 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x2d0f9>
+  4cda47:      	movl	(%edi), %eax
+  4cda49:      	pushl	0x10(%edi)
+  4cda4c:      	leal	-0x28(%ebp), %ecx
+  4cda4f:      	pushl	%eax
+  4cda50:      	calll	0x4574c0 <?add@Tag@gloox@@CAXAAV?$list@PBVTag@gloox@@V?$allocator@PBVTag@gloox@@@std@@@std@@ABV34@@Z+0xb80>
+  4cda55:      	pushl	$0x4
+  4cda57:      	pushl	$0x1215ec4              # imm = 0x1215EC4
+  4cda5c:      	leal	-0x28(%ebp), %ecx
+  4cda5f:      	calll	0x4574c0 <?add@Tag@gloox@@CAXAAV?$list@PBVTag@gloox@@V?$allocator@PBVTag@gloox@@@std@@@std@@ABV34@@Z+0xb80>
+  4cda64:      	cmpl	$0x10, -0x14(%ebp)
+  4cda68:      	leal	-0x28(%ebp), %eax
+  4cda6b:      	pushl	-0x18(%ebp)
+  4cda6e:      	cmovael	-0x28(%ebp), %eax
+  4cda72:      	movl	$0x18ff1f4, %ecx        # imm = 0x18FF1F4
+  4cda77:      	pushl	%eax
+  4cda78:      	calll	0x457390 <?add@Tag@gloox@@CAXAAV?$list@PBVTag@gloox@@V?$allocator@PBVTag@gloox@@@std@@@std@@ABV34@@Z+0xa50>
+  4cda7d:      	leal	-0x28(%ebp), %ecx
+  4cda80:      	movb	$0x0, -0x4(%ebp)
+  4cda84:      	calll	0x456d80 <?add@Tag@gloox@@CAXAAV?$list@PBVTag@gloox@@V?$allocator@PBVTag@gloox@@@std@@@std@@ABV34@@Z+0x440>
+  4cda89:      	movl	$0x0, 0x1ef0b30
+  4cda93:      	movl	$0x0, 0x1ef0b38
+  4cda9d:      	movb	$0x1, 0x1ef0b2d
+  4cdaa4:      	calll	0x4c8080 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x27730>
+  4cdaa9:      	leal	-0x28(%ebp), %eax
+  4cdaac:      	pushl	%eax
+  4cdaad:      	calll	0x4ca080 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x29730>
+  4cdab2:      	addl	$0x4, %esp
+  4cdab5:      	cmpl	$0x10, 0x14(%eax)
+  4cdab9:      	movb	$0x2, -0x4(%ebp)
+  4cdabd:      	jb	0x4cdac1 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x2d171>
+  4cdabf:      	movl	(%eax), %eax
+  4cdac1:      	pushl	$0x1215ea8              # imm = 0x1215EA8
+  4cdac6:      	pushl	%eax
+  4cdac7:      	calll	0x96c240 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x4cb8f0>
+  4cdacc:      	movl	-0x14(%ebp), %edx
+  4cdacf:      	addl	$0x8, %esp
+  4cdad2:      	movb	$0x0, -0x4(%ebp)
+  4cdad6:      	movl	%eax, %esi
+  4cdad8:      	cmpl	$0x10, %edx
+  4cdadb:      	jb	0x4cdb0b <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x2d1bb>
+  4cdadd:      	movl	-0x28(%ebp), %ecx
+  4cdae0:      	incl	%edx
+  4cdae1:      	movl	%ecx, %eax
+  4cdae3:      	cmpl	$0x1000, %edx           # imm = 0x1000
+  4cdae9:      	jb	0x4cdb01 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x2d1b1>
+  4cdaeb:      	movl	-0x4(%ecx), %ecx
+  4cdaee:      	addl	$0x23, %edx
+  4cdaf1:      	subl	%ecx, %eax
+  4cdaf3:      	addl	$-0x4, %eax
+  4cdaf6:      	cmpl	$0x1f, %eax
+  4cdaf9:      	jbe	0x4cdb01 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x2d1b1>
+  4cdafb:      	calll	*0x120a750
+  4cdb01:      	pushl	%edx
+  4cdb02:      	pushl	%ecx
+  4cdb03:      	calll	0x11b8432 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0xd17ae2>
+  4cdb08:      	addl	$0x8, %esp
+  4cdb0b:      	movl	$0x0, -0x18(%ebp)
+  4cdb12:      	movl	$0xf, -0x14(%ebp)
+  4cdb19:      	movb	$0x0, -0x28(%ebp)
+  4cdb1d:      	testl	%esi, %esi
+  4cdb1f:      	je	0x4cdb49 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x2d1f9>
+  4cdb21:      	cmpl	$0x10, 0x18ff138
+  4cdb28:      	movl	$0x18ff124, %eax        # imm = 0x18FF124
+  4cdb2d:      	cmovael	0x18ff124, %eax
+  4cdb34:      	pushl	%eax
+  4cdb35:      	pushl	$0x1215eac              # imm = 0x1215EAC
+  4cdb3a:      	pushl	%esi
+  4cdb3b:      	calll	0x96c280 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x4cb930>
+  4cdb40:      	pushl	%esi
+  4cdb41:      	calll	0x96c220 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x4cb8d0>
+  4cdb46:      	addl	$0x10, %esp
+  4cdb49:      	movl	$0x1eb09e8, %ecx        # imm = 0x1EB09E8
+  4cdb4e:      	calll	0x9406e0 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0x49fd90>
+
+## 0x403160-0x403190
+
+00401000 <.text>:
+  403160:      	pushl	$0x12
+  403162:      	pushl	$0x1215e90              # imm = 0x1215E90
+  403167:      	movl	$0x18ff1f4, %ecx        # imm = 0x18FF1F4
+  40316c:      	calll	0x457390 <?add@Tag@gloox@@CAXAAV?$list@PBVTag@gloox@@V?$allocator@PBVTag@gloox@@@std@@@std@@ABV34@@Z+0xa50>
+  403171:      	pushl	$0x1205e20              # imm = 0x1205E20
+  403176:      	calll	0x11b86c7 <?handleIqID@PrivateXML@gloox@@UAEXABVIQ@2@H@Z+0xd17d77>
+  40317b:      	popl	%ecx
+  40317c:      	retl
+  40317d:      	int3
+  40317e:      	int3
+  40317f:      	int3
+  403180:      	pushl	$0x7
+  403182:      	pushl	$0x1215e88              # imm = 0x1215E88
+  403187:      	movl	$0x18ff124, %ecx        # imm = 0x18FF124
+  40318c:      	calll	0x457390 <?add@Tag@gloox@@CAXAAV?$list@PBVTag@gloox@@V?$allocator@PBVTag@gloox@@@std@@@std@@ABV34@@Z+0xa50>
